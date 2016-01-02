@@ -68,8 +68,8 @@ public final class BudgetFunctions extends UtilityFunctions {
      * @return The budget for the new task which is the belief activated, if
      * necessary
      */
-    static BudgetValue solutionEval(Sentence problem, Sentence solution, Task task, Memory memory) {
-        BudgetValue budget = null;
+    static BudgetValueAtomic solutionEval(SentenceHandle problem, Sentence solution, Task task, Memory memory) {
+        BudgetValueAtomic budget = null;
         boolean feedbackToLinks = false;
         if (task == null) {                   // called in continued processing
             task = memory.currentTask;
@@ -81,7 +81,7 @@ public final class BudgetFunctions extends UtilityFunctions {
             task.incPriority(quality);
         } else {
             float taskPriority = task.getPriority();
-            budget = new BudgetValue(or(taskPriority, quality), task.getDurability(), truthToQuality(solution.getTruth()));
+            budget = new BudgetValueAtomic(or(taskPriority, quality), task.getDurability(), truthToQuality(solution.getTruth()));
             task.setPriority(Math.min(1 - quality, taskPriority));
         }
         if (feedbackToLinks) {
@@ -101,7 +101,7 @@ public final class BudgetFunctions extends UtilityFunctions {
      * @param truth The truth value of the conclusion of revision
      * @return The budget for the new task
      */
-    static BudgetValue revise(TruthValue tTruth, TruthValue bTruth, TruthValue truth, boolean feedbackToLinks, Memory memory) {
+    static BudgetValueAtomic revise(TruthValue tTruth, TruthValue bTruth, TruthValue truth, boolean feedbackToLinks, Memory memory) {
         float difT = truth.getExpDifAbs(tTruth);
         Task task = memory.currentTask;
         task.decPriority(1 - difT);
@@ -119,7 +119,7 @@ public final class BudgetFunctions extends UtilityFunctions {
         float priority = or(dif, task.getPriority());
         float durability = aveAri(dif, task.getDurability());
         float quality = truthToQuality(truth);
-        return new BudgetValue(priority, durability, quality);
+        return new BudgetValueAtomic(priority, durability, quality);
     }
 
     /**
@@ -135,7 +135,7 @@ public final class BudgetFunctions extends UtilityFunctions {
         float priority = or(dif, task.getPriority());
         float durability = aveAri(dif, task.getDurability());
         float quality = truthToQuality(bTruth);
-        return new BudgetValue(priority, durability, quality);
+        return new BudgetValueAtomic(priority, durability, quality);
     }
 
     /* ----------------------- Links ----------------------- */
@@ -146,9 +146,9 @@ public final class BudgetFunctions extends UtilityFunctions {
      * @param n Number of links
      * @return Budget value for each link
      */
-    public static BudgetValue distributeAmongLinks(BudgetValue b, int n) {
+    public static BudgetValueAtomic distributeAmongLinks(BudgetValueAtomic b, int n) {
         float priority = (float) (b.getPriority() / Math.sqrt(n));
-        return new BudgetValue(priority, b.getDurability(), b.getQuality());
+        return new BudgetValueAtomic(priority, b.getDurability(), b.getQuality());
     }
 
     /* ----------------------- Concept ----------------------- */
@@ -158,7 +158,7 @@ public final class BudgetFunctions extends UtilityFunctions {
      * @param concept The concept
      * @param budget The budget for the new item
      */
-    public static void activate(Concept concept, BudgetValue budget) {
+    public static void activate(Concept concept, BudgetValueAtomic budget) {
         float oldPri = concept.getPriority();
         float priority = or(oldPri, budget.getPriority());
         float durability = aveAri(concept.getDurability(), budget.getDurability());
@@ -182,7 +182,7 @@ public final class BudgetFunctions extends UtilityFunctions {
      * @param forgetRate The budget for the new item
      * @param relativeThreshold The relative threshold of the bag
      */
-    public static void forget(BudgetValue budget, float forgetRate, float relativeThreshold) {
+    public static void forget(BudgetValueAtomic budget, float forgetRate, float relativeThreshold) {
         double quality = budget.getQuality() * relativeThreshold;      // re-scaled quality
         double p = budget.getPriority() - quality;                     // priority above quality
         if (p > 0) {
@@ -198,7 +198,7 @@ public final class BudgetFunctions extends UtilityFunctions {
      * @param baseValue The budget value to be modified
      * @param adjustValue The budget doing the adjusting
      */
-    public static void merge(BudgetValue baseValue, BudgetValue adjustValue) {
+    public static void merge(BudgetValueAtomic baseValue, BudgetValueAtomic adjustValue) {
         baseValue.setPriority(Math.max(baseValue.getPriority(), adjustValue.getPriority()));
         baseValue.setDurability(Math.max(baseValue.getDurability(), adjustValue.getDurability()));
         baseValue.setQuality(Math.max(baseValue.getQuality(), adjustValue.getQuality()));
@@ -211,7 +211,7 @@ public final class BudgetFunctions extends UtilityFunctions {
      * @param truth The truth value of the conclusion
      * @return The budget value of the conclusion
      */
-    static BudgetValue forward(TruthValue truth, Memory memory) {
+    static BudgetValueAtomic forward(TruthValue truth, Memory memory) {
         return budgetInference(truthToQuality(truth), 1, memory);
     }
 
@@ -222,7 +222,7 @@ public final class BudgetFunctions extends UtilityFunctions {
      * @param memory Reference to the memory
      * @return The budget value of the conclusion
      */
-    public static BudgetValue backward(TruthValue truth, Memory memory) {
+    public static BudgetValueAtomic backward(TruthValue truth, Memory memory) {
         return budgetInference(truthToQuality(truth), 1, memory);
     }
 
@@ -233,7 +233,7 @@ public final class BudgetFunctions extends UtilityFunctions {
      * @param memory Reference to the memory
      * @return The budget value of the conclusion
      */
-    public static BudgetValue backwardWeak(TruthValue truth, Memory memory) {
+    public static BudgetValueAtomic backwardWeak(TruthValue truth, Memory memory) {
         return budgetInference(w2c(1) * truthToQuality(truth), 1, memory);
     }
 
@@ -246,7 +246,7 @@ public final class BudgetFunctions extends UtilityFunctions {
      * @param memory Reference to the memory
      * @return The budget of the conclusion
      */
-    public static BudgetValue compoundForward(TruthValue truth, Term content, Memory memory) {
+    public static BudgetValueAtomic compoundForward(TruthValue truth, Term content, Memory memory) {
         return budgetInference(truthToQuality(truth), content.getComplexity(), memory);
     }
 
@@ -257,7 +257,7 @@ public final class BudgetFunctions extends UtilityFunctions {
      * @param memory Reference to the memory
      * @return The budget of the conclusion
      */
-    public static BudgetValue compoundBackward(Term content, Memory memory) {
+    public static BudgetValueAtomic compoundBackward(Term content, Memory memory) {
         return budgetInference(1, content.getComplexity(), memory);
     }
 
@@ -268,7 +268,7 @@ public final class BudgetFunctions extends UtilityFunctions {
      * @param memory Reference to the memory
      * @return The budget of the conclusion
      */
-    public static BudgetValue compoundBackwardWeak(Term content, Memory memory) {
+    public static BudgetValueAtomic compoundBackwardWeak(Term content, Memory memory) {
         return budgetInference(w2c(1), content.getComplexity(), memory);
     }
 
@@ -280,7 +280,7 @@ public final class BudgetFunctions extends UtilityFunctions {
      * @param memory Reference to the memory
      * @return Budget of the conclusion task
      */
-    public static BudgetValue budgetInference(float qual, int complexity, Memory memory) {
+    public static BudgetValueAtomic budgetInference(float qual, int complexity, Memory memory) {
         Item t = memory.currentTaskLink;
         if (t == null) {
             t = memory.currentTask;
@@ -296,6 +296,6 @@ public final class BudgetFunctions extends UtilityFunctions {
             bLink.incPriority(or(quality, targetActivation));
             bLink.incDurability(quality);
         }
-        return new BudgetValue(priority, durability, quality);
+        return new BudgetValueAtomic(priority, durability, quality);
     }
 }

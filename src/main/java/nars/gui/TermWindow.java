@@ -23,7 +23,7 @@ package nars.gui;
 import java.awt.*;
 import java.awt.event.*;
 
-import nars.entity.Concept;
+import nars.entity.ConceptAtomic;
 import nars.entity.EntityObserver;
 //import nars.io.StringParser;
 import nars.storage.Memory;
@@ -92,7 +92,7 @@ public class TermWindow extends NarsFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Button b = (Button) e.getSource();
         if (b == playButton) {
-            Concept concept = memory.nameToConcept(termField.getText().trim());
+            ConceptAtomic concept = memory.nameToConcept(termField.getText().trim());
             if (concept != null) {
                 EntityObserver entityObserver = new ConceptWindow(concept);
 				concept.startPlay(entityObserver , true);

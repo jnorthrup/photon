@@ -99,15 +99,15 @@ public abstract class StringParser extends Symbols {
             String str = buffer.toString().trim();
             int last = str.length() - 1;
             char punc = str.charAt(last);
-            Stamp stamp = new Stamp(time);
-            TruthValue truth = parseTruth(truthString, punc);
+            StampHandle stamp = new StampHandle(time);
+            TruthValueRefier truth = parseTruth(truthString, punc);
             Term content = parseTerm(str.substring(0, last), memory);
-            Sentence sentence = new Sentence(content, punc, truth, stamp);
+            SentenceHandle sentence = new SentenceHandle(content, punc, truth, stamp);
             if ((content instanceof Conjunction) && Variable.containVarDep(content.getName())) {
                 sentence.setRevisible(false);
             }
-            BudgetValue budget = parseBudget(budgetString, punc, truth);
-            task = new Task(sentence, budget);
+            BudgetValueAtomic budget = parseBudget(budgetString, punc, truth);
+            task = new TaskHandle(sentence, budget);
         } catch (InvalidInputException e) {
             String message = " !!! INVALID INPUT: parseTask: " + buffer + " --- " + e.getMessage();
             System.out.println(message);
@@ -174,7 +174,7 @@ public abstract class StringParser extends Symbols {
      * @param type Task type
      * @return the input TruthValue
      */
-    public static TruthValue parseTruth(String s, char type) {
+    public static TruthValueRefier parseTruth(String s, char type) {
         if (type == QUESTION_MARK) {
             return null;
         }
@@ -189,7 +189,7 @@ public abstract class StringParser extends Symbols {
                 confidence = Float.parseFloat(s.substring(i + 1));
             }
         }
-        return new TruthValue(frequency, confidence);
+        return new TruthValueRefier(frequency, confidence);
     }
 
     /**
@@ -202,7 +202,7 @@ public abstract class StringParser extends Symbols {
      * @throws nars.io.StringParser.InvalidInputException If the String cannot
      * be parsed into a BudgetValue
      */
-    public static BudgetValue parseBudget(String s, char punctuation, TruthValue truth) throws InvalidInputException {
+    public static BudgetValueAtomic parseBudget(String s, char punctuation, TruthValue truth) throws InvalidInputException {
         float priority, durability;
         switch (punctuation) {
             case JUDGMENT_MARK:
@@ -226,7 +226,7 @@ public abstract class StringParser extends Symbols {
             }
         }
         float quality = (truth == null) ? 1 : BudgetFunctions.truthToQuality(truth);
-        return new BudgetValue(priority, durability, quality);
+        return new BudgetValueAtomic(priority, durability, quality);
     }
 
     /* ---------- parse String into term ---------- */

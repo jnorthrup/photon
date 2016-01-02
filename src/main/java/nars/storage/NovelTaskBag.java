@@ -22,12 +22,13 @@
 package nars.storage;
 
 import nars.entity.Task;
+import nars.entity.TaskHandle;
 import nars.main_nogui.Parameters;
 
 /**
  * New tasks that contain new Term.
  */
-public class NovelTaskBag extends Bag<Task> {
+public class NovelTaskBag extends Bag<TaskHandle> {
 
     /** Constructor
      * @param memory The reference of memory

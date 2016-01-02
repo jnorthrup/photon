@@ -1,299 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="552e4fbc-c84e-40e4-83f2-839eac17de96" name="Default" comment="ancient revival">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/Examples-1.3.3/Example-NAL7-abridged.txt" afterPath="$PROJECT_DIR$/src/main/resources/Examples-1.3.3/Example-NAL7-abridged.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/Examples-1.3.3/Example-NAL7-complete.txt" afterPath="$PROJECT_DIR$/src/main/resources/Examples-1.3.3/Example-NAL7-complete.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/Examples-1.3.3/Example-NAL8-1-abridged.txt" afterPath="$PROJECT_DIR$/src/main/resources/Examples-1.3.3/Example-NAL8-1-abridged.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/Examples-1.3.3/Example-NAL8-1-complete.txt" afterPath="$PROJECT_DIR$/src/main/resources/Examples-1.3.3/Example-NAL8-1-complete.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/Examples-1.3.3/Example-NAL8-2-abridged.txt" afterPath="$PROJECT_DIR$/src/main/resources/Examples-1.3.3/Example-NAL8-2-abridged.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/Examples-1.3.3/Example-NAL8-2-complete.txt" afterPath="$PROJECT_DIR$/src/main/resources/Examples-1.3.3/Example-NAL8-2-complete.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/Examples-1.3.3/Example-NAL8-3-abridged.txt" afterPath="$PROJECT_DIR$/src/main/resources/Examples-1.3.3/Example-NAL8-3-abridged.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/Examples-1.3.3/Example-NAL8-3-complete.txt" afterPath="$PROJECT_DIR$/src/main/resources/Examples-1.3.3/Example-NAL8-3-complete.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/Examples-1.3.3/Example-NAL8-4-abridged.txt" afterPath="$PROJECT_DIR$/src/main/resources/Examples-1.3.3/Example-NAL8-4-abridged.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/Examples-1.3.3/Example-NAL8-4-complete.txt" afterPath="$PROJECT_DIR$/src/main/resources/Examples-1.3.3/Example-NAL8-4-complete.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/Examples-1.3.3/Example-NAL8-5-abridged.txt" afterPath="$PROJECT_DIR$/src/main/resources/Examples-1.3.3/Example-NAL8-5-abridged.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/Examples-1.3.3/Example-NAL8-5-complete.txt" afterPath="$PROJECT_DIR$/src/main/resources/Examples-1.3.3/Example-NAL8-5-complete.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/Examples/Example-MultiStep-edited.txt" afterPath="$PROJECT_DIR$/src/main/resources/Examples/Example-MultiStep-edited.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/Examples/Example-MultiStep-unedited.txt" afterPath="$PROJECT_DIR$/src/main/resources/Examples/Example-MultiStep-unedited.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/Examples/Example-NAL1-edited.txt" afterPath="$PROJECT_DIR$/src/main/resources/Examples/Example-NAL1-edited.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/Examples/Example-NAL1-unedited.txt" afterPath="$PROJECT_DIR$/src/main/resources/Examples/Example-NAL1-unedited.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/Examples/Example-NAL2-edited.txt" afterPath="$PROJECT_DIR$/src/main/resources/Examples/Example-NAL2-edited.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/Examples/Example-NAL2-unedited.txt" afterPath="$PROJECT_DIR$/src/main/resources/Examples/Example-NAL2-unedited.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/Examples/Example-NAL3-edited.txt" afterPath="$PROJECT_DIR$/src/main/resources/Examples/Example-NAL3-edited.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/Examples/Example-NAL3-unedited.txt" afterPath="$PROJECT_DIR$/src/main/resources/Examples/Example-NAL3-unedited.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/Examples/Example-NAL4-edited.txt" afterPath="$PROJECT_DIR$/src/main/resources/Examples/Example-NAL4-edited.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/Examples/Example-NAL4-unedited.txt" afterPath="$PROJECT_DIR$/src/main/resources/Examples/Example-NAL4-unedited.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/Examples/Example-NAL5-edited.txt" afterPath="$PROJECT_DIR$/src/main/resources/Examples/Example-NAL5-edited.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/Examples/Example-NAL5-unedited.txt" afterPath="$PROJECT_DIR$/src/main/resources/Examples/Example-NAL5-unedited.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/Examples/Example-NAL6-edited.txt" afterPath="$PROJECT_DIR$/src/main/resources/Examples/Example-NAL6-edited.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/Examples/Example-NAL6-unedited.txt" afterPath="$PROJECT_DIR$/src/main/resources/Examples/Example-NAL6-unedited.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/Examples/Example-NLP-edited.txt" afterPath="$PROJECT_DIR$/src/main/resources/Examples/Example-NLP-edited.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/Examples/Example-NLP-unedited.txt" afterPath="$PROJECT_DIR$/src/main/resources/Examples/Example-NLP-unedited.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/NARS-applet.html" afterPath="$PROJECT_DIR$/src/main/resources/NARS-applet.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/README.TXT" afterPath="$PROJECT_DIR$/src/main/resources/README.TXT" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/README_USER.txt" afterPath="$PROJECT_DIR$/src/main/resources/README_USER.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/tests/nal1/forward-in.nars" afterPath="$PROJECT_DIR$/src/main/resources/tests/nal1/forward-in.nars" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/tests/nal1/revision_choice-in.nars" afterPath="$PROJECT_DIR$/src/main/resources/tests/nal1/revision_choice-in.nars" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/tests/nal2/similarity-in.nars" afterPath="$PROJECT_DIR$/src/main/resources/tests/nal2/similarity-in.nars" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/tests/nal4/definition-in.nars" afterPath="$PROJECT_DIR$/src/main/resources/tests/nal4/definition-in.nars" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/tests/nal4/definition2-in.nars" afterPath="$PROJECT_DIR$/src/main/resources/tests/nal4/definition2-in.nars" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/tests/nal5/syllogism-in.nars" afterPath="$PROJECT_DIR$/src/main/resources/tests/nal5/syllogism-in.nars" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/tests/nal6/dependent_variable_introduction-in.nars" afterPath="$PROJECT_DIR$/src/main/resources/tests/nal6/dependent_variable_introduction-in.nars" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/tests/nal6/independent_variable_introduction-in.nars" afterPath="$PROJECT_DIR$/src/main/resources/tests/nal6/independent_variable_introduction-in.nars" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/tests/nal6/multi-variable_introduction-in.nars" afterPath="$PROJECT_DIR$/src/main/resources/tests/nal6/multi-variable_introduction-in.nars" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/nars-dist/tests/nal6/variable-elimination-in.nars" afterPath="$PROJECT_DIR$/src/main/resources/tests/nal6/variable-elimination-in.nars" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/use_cases/pattern_matching1/README.md" afterPath="$PROJECT_DIR$/src/main/resources/use_cases/pattern_matching1/README.md" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/use_cases/pattern_matching1/pattern_matching_1.3.3_all.nars" afterPath="$PROJECT_DIR$/src/main/resources/use_cases/pattern_matching1/pattern_matching_1.3.3_all.nars" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/use_cases/pattern_matching1/pattern_matching_1.3.3_case1.nars" afterPath="$PROJECT_DIR$/src/main/resources/use_cases/pattern_matching1/pattern_matching_1.3.3_case1.nars" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/use_cases/pattern_matching1/pattern_matching_1.3.3_case1_simpler.nars" afterPath="$PROJECT_DIR$/src/main/resources/use_cases/pattern_matching1/pattern_matching_1.3.3_case1_simpler.nars" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/use_cases/pattern_matching1/pattern_matching_1.5_all.nars" afterPath="$PROJECT_DIR$/src/main/resources/use_cases/pattern_matching1/pattern_matching_1.5_all.nars" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/use_cases/pattern_matching1/pattern_matching_1.5_case1.nars" afterPath="$PROJECT_DIR$/src/main/resources/use_cases/pattern_matching1/pattern_matching_1.5_case1.nars" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/use_cases/pattern_matching1/pattern_matching_1.5_case1_simpler.nars" afterPath="$PROJECT_DIR$/src/main/resources/use_cases/pattern_matching1/pattern_matching_1.5_case1_simpler.nars" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/use_cases/pattern_matching1/pattern_matching_1.5_case2.nars" afterPath="$PROJECT_DIR$/src/main/resources/use_cases/pattern_matching1/pattern_matching_1.5_case2.nars" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/old/use_cases/pattern_matching1/pattern_matching_1.5_case3.nars" afterPath="$PROJECT_DIR$/src/main/resources/use_cases/pattern_matching1/pattern_matching_1.5_case3.nars" />
+    <list default="true" id="552e4fbc-c84e-40e4-83f2-839eac17de96" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/nars/entity/BudgetValueAtomic.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/nars/entity/ConceptAtomic.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/nars/entity/ItemAtomic.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/nars/entity/SentenceHandle.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/nars/entity/StampHandle.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/nars/entity/TaskHandle.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/nars/entity/TaskLinkHandle.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/nars/entity/TermLinkHandle.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/nars/entity/TruthValueRefier.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/dist/javadoc/nars/entity/BudgetValue.html" afterPath="$PROJECT_DIR$/old/dist/javadoc/nars/entity/BudgetValue.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/dist/javadoc/nars/entity/Concept.html" afterPath="$PROJECT_DIR$/old/dist/javadoc/nars/entity/Concept.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/dist/javadoc/nars/entity/Item.html" afterPath="$PROJECT_DIR$/old/dist/javadoc/nars/entity/Item.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/dist/javadoc/nars/entity/Sentence.html" afterPath="$PROJECT_DIR$/old/dist/javadoc/nars/entity/Sentence.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/dist/javadoc/nars/entity/Stamp.html" afterPath="$PROJECT_DIR$/old/dist/javadoc/nars/entity/Stamp.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/dist/javadoc/nars/entity/Task.html" afterPath="$PROJECT_DIR$/old/dist/javadoc/nars/entity/Task.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/dist/javadoc/nars/entity/TaskLink.html" afterPath="$PROJECT_DIR$/old/dist/javadoc/nars/entity/TaskLink.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/dist/javadoc/nars/entity/TermLink.html" afterPath="$PROJECT_DIR$/old/dist/javadoc/nars/entity/TermLink.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/dist/javadoc/nars/entity/TruthValue.html" afterPath="$PROJECT_DIR$/old/dist/javadoc/nars/entity/TruthValue.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/dist/javadoc/nars/entity/class-use/BudgetValue.html" afterPath="$PROJECT_DIR$/old/dist/javadoc/nars/entity/class-use/BudgetValue.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/dist/javadoc/nars/entity/class-use/ShortFloat.html" afterPath="$PROJECT_DIR$/old/dist/javadoc/nars/entity/class-use/ShortFloat.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/dist/javadoc/nars/gui/MessageDialog.html" afterPath="$PROJECT_DIR$/old/dist/javadoc/nars/gui/MessageDialog.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/dist/javadoc/nars/io/class-use/InputChannel.html" afterPath="$PROJECT_DIR$/old/dist/javadoc/nars/io/class-use/InputChannel.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/dist/javadoc/nars/io/class-use/OutputChannel.html" afterPath="$PROJECT_DIR$/old/dist/javadoc/nars/io/class-use/OutputChannel.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/dist/javadoc/nars/language/CompoundTerm.html" afterPath="$PROJECT_DIR$/old/dist/javadoc/nars/language/CompoundTerm.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/dist/javadoc/nars/language/Conjunction.html" afterPath="$PROJECT_DIR$/old/dist/javadoc/nars/language/Conjunction.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/dist/javadoc/nars/language/Equivalence.html" afterPath="$PROJECT_DIR$/old/dist/javadoc/nars/language/Equivalence.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/dist/javadoc/nars/language/Implication.html" afterPath="$PROJECT_DIR$/old/dist/javadoc/nars/language/Implication.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/dist/javadoc/nars/language/Statement.html" afterPath="$PROJECT_DIR$/old/dist/javadoc/nars/language/Statement.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/dist/javadoc/nars/language/Term.html" afterPath="$PROJECT_DIR$/old/dist/javadoc/nars/language/Term.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/dist/javadoc/nars/language/class-use/Term.html" afterPath="$PROJECT_DIR$/old/dist/javadoc/nars/language/class-use/Term.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/dist/javadoc/nars/main_nogui/ReasonerBatch.html" afterPath="$PROJECT_DIR$/old/dist/javadoc/nars/main_nogui/ReasonerBatch.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/dist/javadoc/nars/storage/Bag.html" afterPath="$PROJECT_DIR$/old/dist/javadoc/nars/storage/Bag.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/dist/javadoc/nars/storage/ConceptBag.html" afterPath="$PROJECT_DIR$/old/dist/javadoc/nars/storage/ConceptBag.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/dist/javadoc/nars/storage/Memory.html" afterPath="$PROJECT_DIR$/old/dist/javadoc/nars/storage/Memory.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/dist/javadoc/nars/storage/NovelTaskBag.html" afterPath="$PROJECT_DIR$/old/dist/javadoc/nars/storage/NovelTaskBag.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/dist/javadoc/nars/storage/TaskLinkBag.html" afterPath="$PROJECT_DIR$/old/dist/javadoc/nars/storage/TaskLinkBag.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/dist/javadoc/nars/storage/TermLinkBag.html" afterPath="$PROJECT_DIR$/old/dist/javadoc/nars/storage/TermLinkBag.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/dist/javadoc/nars/storage/class-use/Memory.html" afterPath="$PROJECT_DIR$/old/dist/javadoc/nars/storage/class-use/Memory.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars/gui/ConceptWindow.java" afterPath="$PROJECT_DIR$/old/nars/gui/ConceptWindow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars/gui/InferenceRecorder.java" afterPath="$PROJECT_DIR$/old/nars/gui/InferenceRecorder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars/gui/InferenceWindow.java" afterPath="$PROJECT_DIR$/old/nars/gui/InferenceWindow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars/gui/InputWindow.java" afterPath="$PROJECT_DIR$/old/nars/gui/InputWindow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars/gui/MainWindow.java" afterPath="$PROJECT_DIR$/old/nars/gui/MainWindow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars/gui/MessageDialog.java" afterPath="$PROJECT_DIR$/old/nars/gui/MessageDialog.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars/gui/ParameterWindow.java" afterPath="$PROJECT_DIR$/old/nars/gui/ParameterWindow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars/gui/TermWindow.java" afterPath="$PROJECT_DIR$/old/nars/gui/TermWindow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars/main/Reasoner.java" afterPath="$PROJECT_DIR$/old/nars/main/Reasoner.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/entity/BudgetValue.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/entity/BudgetValue.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/entity/Concept.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/entity/Concept.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/entity/Item.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/entity/Item.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/entity/ShortFloat.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/entity/ShortFloat.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/entity/Stamp.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/entity/Stamp.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/entity/Task.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/entity/Task.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/entity/TaskLink.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/entity/TaskLink.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/entity/TermLink.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/entity/TermLink.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/entity/TruthValue.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/entity/TruthValue.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/gui/BagWindow.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/gui/BagWindow.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/gui/ConceptWindow.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/gui/ConceptWindow.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/gui/InferenceWindow.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/gui/InferenceWindow.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/gui/InputWindow.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/gui/InputWindow.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/gui/MainWindow.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/gui/MainWindow.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/gui/MessageDialog.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/gui/MessageDialog.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/gui/ParameterWindow.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/gui/ParameterWindow.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/gui/TermWindow.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/gui/TermWindow.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/inference/BudgetFunctions.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/inference/BudgetFunctions.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/inference/CompositionalRules.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/inference/CompositionalRules.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/inference/LocalRules.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/inference/LocalRules.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/inference/RuleTables.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/inference/RuleTables.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/inference/StructuralRules.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/inference/StructuralRules.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/io/ExperienceReader.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/io/ExperienceReader.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/io/ExperienceWriter.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/io/ExperienceWriter.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/io/InferenceRecorder.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/io/InferenceRecorder.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/io/StringParser.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/io/StringParser.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/language/CompoundTerm.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/language/CompoundTerm.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/language/Conjunction.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/language/Conjunction.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/language/DifferenceExt.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/language/DifferenceExt.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/language/DifferenceInt.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/language/DifferenceInt.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/language/Disjunction.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/language/Disjunction.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/language/Equivalence.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/language/Equivalence.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/language/ImageExt.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/language/ImageExt.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/language/ImageInt.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/language/ImageInt.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/language/Implication.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/language/Implication.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/language/Inheritance.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/language/Inheritance.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/language/IntersectionExt.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/language/IntersectionExt.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/language/IntersectionInt.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/language/IntersectionInt.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/language/Negation.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/language/Negation.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/language/Product.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/language/Product.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/language/SetExt.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/language/SetExt.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/language/SetInt.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/language/SetInt.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/language/Similarity.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/language/Similarity.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/language/Statement.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/language/Statement.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/language/Term.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/language/Term.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/language/Variable.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/language/Variable.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/main/Reasoner.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/main/Reasoner.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/main_nogui/NARSBatch.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/main_nogui/NARSBatch.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/storage/Bag.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/storage/Bag.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/storage/ConceptBag.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/storage/ConceptBag.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/storage/Distributor.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/storage/Distributor.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/storage/Memory.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/storage/Memory.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/storage/NovelTaskBag.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/storage/NovelTaskBag.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/storage/TaskLinkBag.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/storage/TaskLinkBag.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/storage/TermLinkBag.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/main/scala/nars/storage/TermLinkBag.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/test/java/nars/main_nogui/TestReasoning.java" afterPath="$PROJECT_DIR$/old/nars_core/src/test/java/nars/main_nogui/TestReasoning.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/test/java/nars/main_nogui/TestReasoning0.java" afterPath="$PROJECT_DIR$/old/nars_core/src/test/java/nars/main_nogui/TestReasoning0.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core/src/test/scala/nars/main_nogui/TestReasoning.scala" afterPath="$PROJECT_DIR$/old/nars_core/src/test/scala/nars/main_nogui/TestReasoning.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/entity/BudgetValue.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/entity/BudgetValue.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/entity/Concept.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/entity/Concept.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/entity/Item.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/entity/Item.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/entity/Sentence.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/entity/Sentence.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/entity/ShortFloat.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/entity/ShortFloat.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/entity/Stamp.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/entity/Stamp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/entity/Task.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/entity/Task.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/entity/TaskLink.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/entity/TaskLink.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/entity/TermLink.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/entity/TermLink.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/entity/TruthValue.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/entity/TruthValue.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/inference/BudgetFunctions.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/inference/BudgetFunctions.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/inference/CompositionalRules.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/inference/CompositionalRules.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/inference/LocalRules.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/inference/LocalRules.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/inference/RuleTables.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/inference/RuleTables.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/inference/StructuralRules.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/inference/StructuralRules.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/io/ExperienceReader.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/io/ExperienceReader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/io/ExperienceWriter.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/io/ExperienceWriter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/io/StringParser.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/io/StringParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/language/CompoundTerm.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/language/CompoundTerm.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/language/Conjunction.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/language/Conjunction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/language/DifferenceExt.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/language/DifferenceExt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/language/DifferenceInt.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/language/DifferenceInt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/language/Disjunction.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/language/Disjunction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/language/Equivalence.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/language/Equivalence.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/language/ImageExt.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/language/ImageExt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/language/ImageInt.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/language/ImageInt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/language/Implication.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/language/Implication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/language/Inheritance.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/language/Inheritance.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/language/IntersectionExt.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/language/IntersectionExt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/language/IntersectionInt.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/language/IntersectionInt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/language/Negation.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/language/Negation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/language/Product.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/language/Product.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/language/SetExt.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/language/SetExt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/language/SetInt.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/language/SetInt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/language/Similarity.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/language/Similarity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/language/Statement.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/language/Statement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/language/Term.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/language/Term.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/language/Variable.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/language/Variable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/main_nogui/NARSBatch.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/main_nogui/NARSBatch.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/main_nogui/ReasonerBatch.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/main_nogui/ReasonerBatch.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/storage/Bag.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/storage/Bag.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/storage/ConceptBag.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/storage/ConceptBag.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/storage/Distributor.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/storage/Distributor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/storage/Memory.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/storage/Memory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/storage/NovelTaskBag.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/storage/NovelTaskBag.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/storage/TaskLinkBag.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/storage/TaskLinkBag.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nars_core_java/nars/storage/TermLinkBag.java" afterPath="$PROJECT_DIR$/old/nars_core_java/nars/storage/TermLinkBag.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nbproject/build-impl.xml" afterPath="$PROJECT_DIR$/old/nbproject/build-impl.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/nbproject/project.properties" afterPath="$PROJECT_DIR$/old/nbproject/project.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/JLex/Main.java" afterPath="$PROJECT_DIR$/old/open-nars/src/JLex/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/entity/Base.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/entity/Base.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/entity/BudgetValue.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/entity/BudgetValue.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/entity/Concept.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/entity/Concept.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/entity/Item.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/entity/Item.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/entity/Sentence.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/entity/Sentence.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/entity/ShortFloat.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/entity/ShortFloat.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/entity/Task.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/entity/Task.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/entity/TaskLink.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/entity/TaskLink.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/entity/TermLink.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/entity/TermLink.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/entity/TruthValue.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/entity/TruthValue.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/inference/BudgetFunctions.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/inference/BudgetFunctions.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/inference/CompositionalRules.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/inference/CompositionalRules.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/inference/MatchingRules.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/inference/MatchingRules.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/inference/RuleTables.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/inference/RuleTables.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/inference/StructuralRules.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/inference/StructuralRules.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/inference/SyllogisticRules.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/inference/SyllogisticRules.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/BooleanLiteral.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/BooleanLiteral.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/CompoundTerm.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/CompoundTerm.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/Conjunction.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/Conjunction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/ConjunctionParallel.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/ConjunctionParallel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/ConjunctionSequence.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/ConjunctionSequence.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/DifferenceExt.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/DifferenceExt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/DifferenceInt.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/DifferenceInt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/Disjunction.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/Disjunction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/Equivalence.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/Equivalence.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/EquivalenceAfter.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/EquivalenceAfter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/EquivalenceWhen.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/EquivalenceWhen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/ImageExt.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/ImageExt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/ImageInt.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/ImageInt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/Implication.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/Implication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/ImplicationAfter.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/ImplicationAfter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/ImplicationBefore.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/ImplicationBefore.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/ImplicationWhen.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/ImplicationWhen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/Inheritance.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/Inheritance.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/IntersectionExt.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/IntersectionExt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/IntersectionInt.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/IntersectionInt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/Negation.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/Negation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/NumericLiteral.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/NumericLiteral.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/Product.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/Product.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/SetExt.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/SetExt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/SetInt.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/SetInt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/Similarity.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/Similarity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/Statement.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/Statement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/Tense.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/Tense.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/TenseFuture.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/TenseFuture.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/TensePast.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/TensePast.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/TensePresent.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/TensePresent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/Term.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/Term.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/URIRef.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/URIRef.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/Variable.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/language/Variable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/main/Memory.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/main/Memory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/main/Reasoner.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/main/Reasoner.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/parser/InvalidInputException.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/parser/InvalidInputException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/parser/loan/Loan/PrettyPrinter.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/parser/loan/Loan/PrettyPrinter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/parser/loan/Loan/Yylex.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/parser/loan/Loan/Yylex.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/parser/loan/Loan/parser.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/parser/loan/Loan/parser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/parser/loan/LoanParser.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/parser/loan/LoanParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/parser/loan/loan.g" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/parser/loan/loan.g" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/parser/narsese/NarseseParser.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/parser/narsese/NarseseParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/storage/Bag.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/storage/Bag.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/storage/ConceptBag.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/storage/ConceptBag.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/storage/Distributor.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/storage/Distributor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/storage/TaskBag.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/storage/TaskBag.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/storage/TaskLinkBag.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/storage/TaskLinkBag.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/storage/TermLinkBag.java" afterPath="$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/storage/TermLinkBag.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/java_cup/Main.java" afterPath="$PROJECT_DIR$/old/open-nars/src/java_cup/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/java_cup/action_part.java" afterPath="$PROJECT_DIR$/old/open-nars/src/java_cup/action_part.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/java_cup/action_production.java" afterPath="$PROJECT_DIR$/old/open-nars/src/java_cup/action_production.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/java_cup/emit.java" afterPath="$PROJECT_DIR$/old/open-nars/src/java_cup/emit.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/java_cup/lalr_item.java" afterPath="$PROJECT_DIR$/old/open-nars/src/java_cup/lalr_item.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/java_cup/lalr_item_set.java" afterPath="$PROJECT_DIR$/old/open-nars/src/java_cup/lalr_item_set.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/java_cup/lalr_state.java" afterPath="$PROJECT_DIR$/old/open-nars/src/java_cup/lalr_state.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/java_cup/lalr_transition.java" afterPath="$PROJECT_DIR$/old/open-nars/src/java_cup/lalr_transition.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/java_cup/lexer.java" afterPath="$PROJECT_DIR$/old/open-nars/src/java_cup/lexer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/java_cup/lr_item_core.java" afterPath="$PROJECT_DIR$/old/open-nars/src/java_cup/lr_item_core.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/java_cup/non_terminal.java" afterPath="$PROJECT_DIR$/old/open-nars/src/java_cup/non_terminal.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/java_cup/parse_action_row.java" afterPath="$PROJECT_DIR$/old/open-nars/src/java_cup/parse_action_row.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/java_cup/parse_action_table.java" afterPath="$PROJECT_DIR$/old/open-nars/src/java_cup/parse_action_table.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/java_cup/parse_reduce_row.java" afterPath="$PROJECT_DIR$/old/open-nars/src/java_cup/parse_reduce_row.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/java_cup/parse_reduce_table.java" afterPath="$PROJECT_DIR$/old/open-nars/src/java_cup/parse_reduce_table.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/java_cup/parser.cup" afterPath="$PROJECT_DIR$/old/open-nars/src/java_cup/parser.cup" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/java_cup/parser.java" afterPath="$PROJECT_DIR$/old/open-nars/src/java_cup/parser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/java_cup/production.java" afterPath="$PROJECT_DIR$/old/open-nars/src/java_cup/production.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/java_cup/production_part.java" afterPath="$PROJECT_DIR$/old/open-nars/src/java_cup/production_part.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/java_cup/reduce_action.java" afterPath="$PROJECT_DIR$/old/open-nars/src/java_cup/reduce_action.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/java_cup/runtime/lr_parser.java" afterPath="$PROJECT_DIR$/old/open-nars/src/java_cup/runtime/lr_parser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/java_cup/runtime/virtual_parse_stack.java" afterPath="$PROJECT_DIR$/old/open-nars/src/java_cup/runtime/virtual_parse_stack.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/java_cup/shift_action.java" afterPath="$PROJECT_DIR$/old/open-nars/src/java_cup/shift_action.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/java_cup/simple_calc/parser.java" afterPath="$PROJECT_DIR$/old/open-nars/src/java_cup/simple_calc/parser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/java_cup/simple_calc/scanner.java" afterPath="$PROJECT_DIR$/old/open-nars/src/java_cup/simple_calc/scanner.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/java_cup/symbol.java" afterPath="$PROJECT_DIR$/old/open-nars/src/java_cup/symbol.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/java_cup/symbol_part.java" afterPath="$PROJECT_DIR$/old/open-nars/src/java_cup/symbol_part.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/java_cup/symbol_set.java" afterPath="$PROJECT_DIR$/old/open-nars/src/java_cup/symbol_set.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/java_cup/terminal.java" afterPath="$PROJECT_DIR$/old/open-nars/src/java_cup/terminal.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/src/java_cup/terminal_set.java" afterPath="$PROJECT_DIR$/old/open-nars/src/java_cup/terminal_set.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/open-nars/tools/com/googlecode/opennars/tools/actuary/Actuary.java" afterPath="$PROJECT_DIR$/old/open-nars/tools/com/googlecode/opennars/tools/actuary/Actuary.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/dist/javadoc/nars/entity/class-use/Concept.html" afterPath="$PROJECT_DIR$/old/dist/javadoc/nars/entity/class-use/Concept.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/dist/javadoc/nars/entity/class-use/Item.html" afterPath="$PROJECT_DIR$/old/dist/javadoc/nars/entity/class-use/Item.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/dist/javadoc/nars/entity/class-use/Sentence.html" afterPath="$PROJECT_DIR$/old/dist/javadoc/nars/entity/class-use/Sentence.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/dist/javadoc/nars/entity/class-use/Stamp.html" afterPath="$PROJECT_DIR$/old/dist/javadoc/nars/entity/class-use/Stamp.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/dist/javadoc/nars/entity/class-use/Task.html" afterPath="$PROJECT_DIR$/old/dist/javadoc/nars/entity/class-use/Task.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/dist/javadoc/nars/entity/class-use/TaskLink.html" afterPath="$PROJECT_DIR$/old/dist/javadoc/nars/entity/class-use/TaskLink.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/dist/javadoc/nars/entity/class-use/TermLink.html" afterPath="$PROJECT_DIR$/old/dist/javadoc/nars/entity/class-use/TermLink.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/old/dist/javadoc/nars/entity/class-use/TruthValue.html" afterPath="$PROJECT_DIR$/old/dist/javadoc/nars/entity/class-use/TruthValue.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/entity/BudgetValue.java" afterPath="$PROJECT_DIR$/src/main/java/nars/entity/BudgetValue.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/entity/Concept.java" afterPath="$PROJECT_DIR$/src/main/java/nars/entity/Concept.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/entity/EntityObserver.java" afterPath="$PROJECT_DIR$/src/main/java/nars/entity/EntityObserver.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/entity/Item.java" afterPath="$PROJECT_DIR$/src/main/java/nars/entity/Item.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/entity/Sentence.java" afterPath="$PROJECT_DIR$/src/main/java/nars/entity/Sentence.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/entity/ShortFloat.java" afterPath="$PROJECT_DIR$/src/main/java/nars/entity/ShortFloat.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/entity/Stamp.java" afterPath="$PROJECT_DIR$/src/main/java/nars/entity/Stamp.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/entity/Task.java" afterPath="$PROJECT_DIR$/src/main/java/nars/entity/Task.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/entity/TaskLink.java" afterPath="$PROJECT_DIR$/src/main/java/nars/entity/TaskLink.java" />
@@ -301,106 +43,25 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/entity/TruthValue.java" afterPath="$PROJECT_DIR$/src/main/java/nars/entity/TruthValue.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/gui/BagWindow.java" afterPath="$PROJECT_DIR$/src/main/java/nars/gui/BagWindow.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/gui/ConceptWindow.java" afterPath="$PROJECT_DIR$/src/main/java/nars/gui/ConceptWindow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/gui/InferenceRecorder.java" afterPath="$PROJECT_DIR$/src/main/java/nars/gui/InferenceRecorder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/gui/InferenceWindow.java" afterPath="$PROJECT_DIR$/src/main/java/nars/gui/InferenceWindow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/gui/InputWindow.java" afterPath="$PROJECT_DIR$/src/main/java/nars/gui/InputWindow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/gui/MainWindow.java" afterPath="$PROJECT_DIR$/src/main/java/nars/gui/MainWindow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/gui/MessageDialog.java" afterPath="$PROJECT_DIR$/src/main/java/nars/gui/MessageDialog.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/gui/ParameterWindow.java" afterPath="$PROJECT_DIR$/src/main/java/nars/gui/ParameterWindow.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/gui/TermWindow.java" afterPath="$PROJECT_DIR$/src/main/java/nars/gui/TermWindow.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/inference/BudgetFunctions.java" afterPath="$PROJECT_DIR$/src/main/java/nars/inference/BudgetFunctions.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/inference/CompositionalRules.java" afterPath="$PROJECT_DIR$/src/main/java/nars/inference/CompositionalRules.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/inference/LocalRules.java" afterPath="$PROJECT_DIR$/src/main/java/nars/inference/LocalRules.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/inference/RuleTables.java" afterPath="$PROJECT_DIR$/src/main/java/nars/inference/RuleTables.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/inference/StructuralRules.java" afterPath="$PROJECT_DIR$/src/main/java/nars/inference/StructuralRules.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/io/ExperienceReader.java" afterPath="$PROJECT_DIR$/src/main/java/nars/io/ExperienceReader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/io/ExperienceWriter.java" afterPath="$PROJECT_DIR$/src/main/java/nars/io/ExperienceWriter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/inference/SyllogisticRules.java" afterPath="$PROJECT_DIR$/src/main/java/nars/inference/SyllogisticRules.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/inference/TruthFunctions.java" afterPath="$PROJECT_DIR$/src/main/java/nars/inference/TruthFunctions.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/io/StringParser.java" afterPath="$PROJECT_DIR$/src/main/java/nars/io/StringParser.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/language/CompoundTerm.java" afterPath="$PROJECT_DIR$/src/main/java/nars/language/CompoundTerm.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/language/Conjunction.java" afterPath="$PROJECT_DIR$/src/main/java/nars/language/Conjunction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/language/DifferenceExt.java" afterPath="$PROJECT_DIR$/src/main/java/nars/language/DifferenceExt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/language/DifferenceInt.java" afterPath="$PROJECT_DIR$/src/main/java/nars/language/DifferenceInt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/language/Disjunction.java" afterPath="$PROJECT_DIR$/src/main/java/nars/language/Disjunction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/language/Equivalence.java" afterPath="$PROJECT_DIR$/src/main/java/nars/language/Equivalence.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/language/ImageExt.java" afterPath="$PROJECT_DIR$/src/main/java/nars/language/ImageExt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/language/ImageInt.java" afterPath="$PROJECT_DIR$/src/main/java/nars/language/ImageInt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/language/Implication.java" afterPath="$PROJECT_DIR$/src/main/java/nars/language/Implication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/language/Inheritance.java" afterPath="$PROJECT_DIR$/src/main/java/nars/language/Inheritance.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/language/IntersectionExt.java" afterPath="$PROJECT_DIR$/src/main/java/nars/language/IntersectionExt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/language/IntersectionInt.java" afterPath="$PROJECT_DIR$/src/main/java/nars/language/IntersectionInt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/language/Negation.java" afterPath="$PROJECT_DIR$/src/main/java/nars/language/Negation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/language/Product.java" afterPath="$PROJECT_DIR$/src/main/java/nars/language/Product.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/language/SetExt.java" afterPath="$PROJECT_DIR$/src/main/java/nars/language/SetExt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/language/SetInt.java" afterPath="$PROJECT_DIR$/src/main/java/nars/language/SetInt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/language/Similarity.java" afterPath="$PROJECT_DIR$/src/main/java/nars/language/Similarity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/language/Statement.java" afterPath="$PROJECT_DIR$/src/main/java/nars/language/Statement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/language/Term.java" afterPath="$PROJECT_DIR$/src/main/java/nars/language/Term.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/language/Variable.java" afterPath="$PROJECT_DIR$/src/main/java/nars/language/Variable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/main/Reasoner.java" afterPath="$PROJECT_DIR$/src/main/java/nars/main/Reasoner.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/main_nogui/NARSBatch.java" afterPath="$PROJECT_DIR$/src/main/java/nars/main_nogui/NARSBatch.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/main_nogui/ReasonerBatch.java" afterPath="$PROJECT_DIR$/src/main/java/nars/main_nogui/ReasonerBatch.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/storage/Bag.java" afterPath="$PROJECT_DIR$/src/main/java/nars/storage/Bag.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/storage/BagObserver.java" afterPath="$PROJECT_DIR$/src/main/java/nars/storage/BagObserver.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/storage/ConceptBag.java" afterPath="$PROJECT_DIR$/src/main/java/nars/storage/ConceptBag.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/storage/Distributor.java" afterPath="$PROJECT_DIR$/src/main/java/nars/storage/Distributor.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/storage/Memory.java" afterPath="$PROJECT_DIR$/src/main/java/nars/storage/Memory.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/storage/NovelTaskBag.java" afterPath="$PROJECT_DIR$/src/main/java/nars/storage/NovelTaskBag.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/storage/NullBagObserver.java" afterPath="$PROJECT_DIR$/src/main/java/nars/storage/NullBagObserver.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/storage/TaskLinkBag.java" afterPath="$PROJECT_DIR$/src/main/java/nars/storage/TaskLinkBag.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nars/storage/TermLinkBag.java" afterPath="$PROJECT_DIR$/src/main/java/nars/storage/TermLinkBag.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/entity/BudgetValue.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/entity/BudgetValue.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/entity/Concept.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/entity/Concept.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/entity/Item.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/entity/Item.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/entity/ShortFloat.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/entity/ShortFloat.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/entity/Stamp.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/entity/Stamp.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/entity/Task.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/entity/Task.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/entity/TaskLink.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/entity/TaskLink.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/entity/TermLink.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/entity/TermLink.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/entity/TruthValue.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/entity/TruthValue.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/gui/BagWindow.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/gui/BagWindow.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/gui/ConceptWindow.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/gui/ConceptWindow.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/gui/InferenceWindow.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/gui/InferenceWindow.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/gui/InputWindow.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/gui/InputWindow.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/gui/MainWindow.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/gui/MainWindow.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/gui/MessageDialog.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/gui/MessageDialog.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/gui/ParameterWindow.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/gui/ParameterWindow.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/gui/TermWindow.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/gui/TermWindow.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/inference/BudgetFunctions.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/inference/BudgetFunctions.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/inference/CompositionalRules.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/inference/CompositionalRules.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/inference/LocalRules.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/inference/LocalRules.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/inference/RuleTables.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/inference/RuleTables.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/inference/StructuralRules.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/inference/StructuralRules.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/io/ExperienceReader.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/io/ExperienceReader.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/io/ExperienceWriter.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/io/ExperienceWriter.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/io/InferenceRecorder.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/io/InferenceRecorder.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/io/StringParser.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/io/StringParser.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/language/CompoundTerm.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/language/CompoundTerm.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/language/Conjunction.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/language/Conjunction.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/language/DifferenceExt.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/language/DifferenceExt.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/language/DifferenceInt.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/language/DifferenceInt.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/language/Disjunction.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/language/Disjunction.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/language/Equivalence.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/language/Equivalence.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/language/ImageExt.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/language/ImageExt.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/language/ImageInt.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/language/ImageInt.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/language/Implication.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/language/Implication.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/language/Inheritance.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/language/Inheritance.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/language/IntersectionExt.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/language/IntersectionExt.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/language/IntersectionInt.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/language/IntersectionInt.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/language/Negation.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/language/Negation.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/language/Product.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/language/Product.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/language/SetExt.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/language/SetExt.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/language/SetInt.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/language/SetInt.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/language/Similarity.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/language/Similarity.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/language/Statement.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/language/Statement.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/language/Term.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/language/Term.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/language/Variable.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/language/Variable.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/main/Reasoner.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/main/Reasoner.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/main_nogui/NARSBatch.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/main_nogui/NARSBatch.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/storage/Bag.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/storage/Bag.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/storage/ConceptBag.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/storage/ConceptBag.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/storage/Distributor.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/storage/Distributor.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/storage/Memory.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/storage/Memory.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/storage/NovelTaskBag.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/storage/NovelTaskBag.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/storage/TaskLinkBag.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/storage/TaskLinkBag.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nars/storage/TermLinkBag.scala" afterPath="$PROJECT_DIR$/src/main/scala/nars/storage/TermLinkBag.scala" />
     </list>
     <ignored path="opennars.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -425,61 +86,126 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="EntityObserver.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/nars/entity/EntityObserver.java">
+      <file leaf-file-name="NovelTaskBag.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/nars/storage/NovelTaskBag.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+            <state relative-caret-position="153">
+              <caret line="30" column="48" selection-start-line="30" selection-start-column="48" selection-end-line="30" selection-end-column="48" />
+              <folding>
+                <element signature="e#0#1496#0" expanded="false" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#1066#1067#0" expanded="false" />
+                <element signature="e#1095#1096#0" expanded="false" />
+                <element signature="e#1234#1235#0" expanded="false" />
+                <element signature="e#1284#1285#0" expanded="false" />
+                <element signature="e#1432#1433#0" expanded="false" />
+                <element signature="e#1491#1492#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Memory.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/nars/storage/Memory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3315">
+              <caret line="237" column="42" selection-start-line="237" selection-start-column="42" selection-end-line="237" selection-end-column="42" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TruthValue.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/nars/entity/TruthValue.java">
+      <file leaf-file-name="ConceptBag.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/nars/storage/ConceptBag.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-272">
-              <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+            <state relative-caret-position="153">
+              <caret line="30" column="50" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
+              <folding>
+                <element signature="e#0#1516#0" expanded="false" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#1055#1056#0" expanded="false" />
+                <element signature="e#1084#1085#0" expanded="false" />
+                <element signature="e#1240#1241#0" expanded="false" />
+                <element signature="e#1290#1291#0" expanded="false" />
+                <element signature="e#1454#1455#0" expanded="false" />
+                <element signature="e#1513#1514#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TaskLinkBag.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/nars/storage/TaskLinkBag.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="30" column="51" selection-start-line="30" selection-start-column="51" selection-end-line="30" selection-end-column="51" />
+              <folding>
+                <element signature="e#0#1515#0" expanded="false" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#1080#1081#0" expanded="false" />
+                <element signature="e#1109#1110#0" expanded="false" />
+                <element signature="e#1247#1248#0" expanded="false" />
+                <element signature="e#1299#1300#0" expanded="false" />
+                <element signature="e#1451#1452#0" expanded="false" />
+                <element signature="e#1510#1511#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TermLinkBag.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/nars/storage/TermLinkBag.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="714">
+              <caret line="68" column="45" selection-start-line="68" selection-start-column="45" selection-end-line="68" selection-end-column="45" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Reasoner.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/nars/main/Reasoner.java">
+      <file leaf-file-name="ConceptAtomic.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/nars/entity/ConceptAtomic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="71">
-              <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+            <state relative-caret-position="496">
+              <caret line="560" column="0" selection-start-line="560" selection-start-column="0" selection-end-line="560" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NARS.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/nars/main/NARS.java">
+      <file leaf-file-name="SyllogisticRules.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/nars/inference/SyllogisticRules.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="43" column="28" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="28" />
-              <folding />
+            <state relative-caret-position="701">
+              <caret line="461" column="12" selection-start-line="461" selection-start-column="12" selection-end-line="461" selection-end-column="12" />
+              <folding>
+                <element signature="e#0#20127#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NARSBatch.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/nars/main_nogui/NARSBatch.java">
+      <file leaf-file-name="SetInt.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/nars/language/SetInt.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1220">
-              <caret line="38" column="13" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
-              <folding />
+            <state relative-caret-position="-1169">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#3838#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#2090#2096#0" expanded="true" />
+                <element signature="e#2487#2493#0" expanded="true" />
+                <element signature="e#3001#3007#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ConceptWindow.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/old/nars/gui/ConceptWindow.java">
+      <file leaf-file-name="CompoundTerm.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/nars/language/CompoundTerm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="37" column="10" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="10" />
+            <state relative-caret-position="199">
+              <caret line="238" column="29" selection-start-line="238" selection-start-column="29" selection-end-line="238" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -487,27 +213,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BudgetValue.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/old/dist/javadoc/nars/entity/BudgetValue.html">
+      <file leaf-file-name="Task.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/nars/entity/Task.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2244">
-              <caret line="139" column="27" selection-start-line="139" selection-start-column="27" selection-end-line="139" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Stamp.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/nars/entity/Stamp.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
-              <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
+            <state relative-caret-position="119">
+              <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="ROOT_SYNC" value="DONT_SYNC" />
@@ -535,6 +258,19 @@
         <option value="$PROJECT_DIR$/src/main/java/nars/gui/BagWindow.java" />
         <option value="$PROJECT_DIR$/old/nars/gui/ConceptWindow.java" />
         <option value="$PROJECT_DIR$/old/dist/javadoc/nars/entity/BudgetValue.html" />
+        <option value="$PROJECT_DIR$/src/main/java/nars/entity/ItemHandle.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nars/entity/ItemAtomic.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nars/entity/TruthValueRefier.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nars/entity/TermLinkHandle.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nars/storage/NovelTaskBag.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nars/storage/ConceptBag.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nars/storage/TaskLinkBag.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nars/storage/Memory.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nars/storage/TermLinkBag.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nars/entity/ConceptAtomic.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nars/inference/SyllogisticRules.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nars/language/SetInt.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nars/language/CompoundTerm.java" />
       </list>
     </option>
   </component>
@@ -591,7 +327,7 @@
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="2" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
@@ -609,8 +345,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -963,36 +697,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="inference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="opennars" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="opennars" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nars" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="entity" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -1053,6 +757,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -1062,7 +768,7 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="options.lastSelected" value="vcs.Git" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/nars_core/pom.xml" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../concurrent-trees/pom.xml" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
@@ -1076,6 +782,9 @@
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RecentsManager">
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="nars.entity" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\jim\work\opennars\src\main\resources" />
       <recent name="C:\Users\jim\work\opennars\src\main\java\nars\gui" />
@@ -1569,47 +1278,55 @@
       <updated>1451739514340</updated>
       <workItem from="1451739515588" duration="1162000" />
       <workItem from="1451740694454" duration="1859000" />
-      <workItem from="1451744227839" duration="2000000" />
+      <workItem from="1451744227839" duration="5202000" />
+      <workItem from="1451773470568" duration="866000" />
     </task>
+    <task id="LOCAL-00001" summary="publics">
+      <created>1451747178367</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1451747178367</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5021000" />
+    <option name="totallyTimeSpent" value="9089000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33742005" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290461" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3411514" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3290461" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290461" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="ASM" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23773988" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="ASM" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39978564" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290461" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3290461" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290461" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290461" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290461" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1625,7 +1342,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ancient revival" />
-    <option name="LAST_COMMIT_MESSAGE" value="ancient revival" />
+    <MESSAGE value="publics" />
+    <option name="LAST_COMMIT_MESSAGE" value="publics" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1636,156 +1354,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/nars/entity/TaskLink.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-932">
-          <caret line="39" column="7" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nars/entity/package.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nars/entity/Concept.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="46" column="19" selection-start-line="46" selection-start-column="19" selection-end-line="46" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nars/entity/BudgetValue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nars/inference/UtilityFunctions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nars/gui/MainWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3876">
-          <caret line="255" column="16" selection-start-line="250" selection-start-column="14" selection-end-line="255" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nars/gui/ConceptWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2074">
-          <caret line="150" column="15" selection-start-line="150" selection-start-column="15" selection-end-line="150" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/nars/gui/BagWindow.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1037">
-          <caret line="61" column="20" selection-start-line="0" selection-start-column="0" selection-end-line="173" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nars/gui/NarsFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="28" column="22" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nars/gui/BagWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="84" column="44" selection-start-line="84" selection-start-column="44" selection-end-line="84" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/entity/Task.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-561">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#2090#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/parser/narsese/NarseseParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6270">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#16521#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/parser/loan/LoanParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/entity/TruthValue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-663">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#2568#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/inference/RuleTables.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3213">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#22284#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old/open-nars/src/JLex/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-714">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#204085#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old/open-nars/src/java_cup/runtime/virtual_parse_stack.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/old/open-nars/src/java_cup/runtime/Scanner.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1793,7 +1365,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1221">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1801,7 +1372,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1809,7 +1379,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1817,7 +1386,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1825,7 +1393,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1833,7 +1400,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1841,7 +1407,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1849,7 +1414,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1857,7 +1421,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="96" selection-start-line="9" selection-start-column="96" selection-end-line="9" selection-end-column="96" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1865,10 +1428,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#744#745#0" expanded="false" />
-            <element signature="e#790#791#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1876,7 +1435,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1884,10 +1442,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#718#719#0" expanded="false" />
-            <element signature="e#758#759#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1895,10 +1449,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#723#724#0" expanded="false" />
-            <element signature="e#763#764#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1906,7 +1456,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1914,10 +1463,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#779#780#0" expanded="false" />
-            <element signature="e#846#847#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1925,10 +1470,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#525#526#0" expanded="false" />
-            <element signature="e#544#545#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1936,7 +1477,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1944,10 +1484,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#856#857#0" expanded="false" />
-            <element signature="e#933#934#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1955,7 +1491,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1963,11 +1498,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#946#947#0" expanded="false" />
-            <element signature="e#973#974#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1975,9 +1505,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#1109#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1985,9 +1512,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#1739#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1995,9 +1519,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2005,9 +1526,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#4178#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2023,7 +1541,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="71">
           <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2031,7 +1548,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="43" column="28" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2047,9 +1563,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="237">
           <caret line="37" column="10" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2057,14 +1570,76 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2244">
           <caret line="139" column="27" selection-start-line="139" selection-start-column="27" selection-end-line="139" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nars/entity/StampHandle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nars/entity/Stamp.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/nars/entity/ItemAtomic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
+        <state relative-caret-position="-1122">
+          <caret line="28" column="22" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nars/storage/Bag.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-413">
+          <caret line="43" column="22" selection-start-line="43" selection-start-column="22" selection-end-line="43" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nars/storage/BagObserver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nars/entity/TruthValueRefier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nars/entity/TermLinkHandle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="39" column="39" selection-start-line="39" selection-start-column="39" selection-end-line="39" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nars/entity/ShortFloat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nars/entity/SentenceHandle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="31" column="20" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nars/entity/Sentence.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
           <folding />
         </state>
       </provider>
@@ -2077,11 +1652,120 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nars/entity/TruthValue.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/nars/entity/Task.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-272">
-          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+        <state relative-caret-position="119">
+          <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nars/storage/NovelTaskBag.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="30" column="48" selection-start-line="30" selection-start-column="48" selection-end-line="30" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#1496#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1066#1067#0" expanded="false" />
+            <element signature="e#1095#1096#0" expanded="false" />
+            <element signature="e#1234#1235#0" expanded="false" />
+            <element signature="e#1284#1285#0" expanded="false" />
+            <element signature="e#1432#1433#0" expanded="false" />
+            <element signature="e#1491#1492#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nars/storage/ConceptBag.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="30" column="50" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#1516#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1055#1056#0" expanded="false" />
+            <element signature="e#1084#1085#0" expanded="false" />
+            <element signature="e#1240#1241#0" expanded="false" />
+            <element signature="e#1290#1291#0" expanded="false" />
+            <element signature="e#1454#1455#0" expanded="false" />
+            <element signature="e#1513#1514#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nars/storage/TaskLinkBag.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="30" column="51" selection-start-line="30" selection-start-column="51" selection-end-line="30" selection-end-column="51" />
+          <folding>
+            <element signature="e#0#1515#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1080#1081#0" expanded="false" />
+            <element signature="e#1109#1110#0" expanded="false" />
+            <element signature="e#1247#1248#0" expanded="false" />
+            <element signature="e#1299#1300#0" expanded="false" />
+            <element signature="e#1451#1452#0" expanded="false" />
+            <element signature="e#1510#1511#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nars/storage/Memory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3315">
+          <caret line="237" column="42" selection-start-line="237" selection-start-column="42" selection-end-line="237" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nars/storage/TermLinkBag.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="68" column="45" selection-start-line="68" selection-start-column="45" selection-end-line="68" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nars/entity/ConceptAtomic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="496">
+          <caret line="560" column="0" selection-start-line="560" selection-start-column="0" selection-end-line="560" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nars/inference/SyllogisticRules.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="701">
+          <caret line="461" column="12" selection-start-line="461" selection-start-column="12" selection-end-line="461" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#20127#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nars/language/CompoundTerm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="238" column="29" selection-start-line="238" selection-start-column="29" selection-end-line="238" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nars/language/SetInt.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1169">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#3838#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#2090#2096#0" expanded="true" />
+            <element signature="e#2487#2493#0" expanded="true" />
+            <element signature="e#3001#3007#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

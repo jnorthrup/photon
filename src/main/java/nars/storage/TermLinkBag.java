@@ -26,7 +26,7 @@ import nars.main_nogui.Parameters;
 /**
  * Contains TermLinks to relevant (compound or component) Terms.
  */
-public class TermLinkBag extends Bag<TermLink> {
+public class TermLinkBag extends Bag<TermLinkHandle> {
 
     /** Constructor
      * @param memory The reference of memory
@@ -57,7 +57,7 @@ public class TermLinkBag extends Bag<TermLink> {
      * @param time The current time
      * @return The selected TermLink
      */
-    public TermLink takeOut(TaskLink taskLink, long time) {
+    public TermLink takeOut(TaskLinkHandle taskLink, long time) {
         for (int i = 0; i < Parameters.MAX_MATCHED_TERM_LINK; i++) {
             TermLink termLink = takeOut();
             if (termLink == null) {
@@ -66,7 +66,7 @@ public class TermLinkBag extends Bag<TermLink> {
             if (taskLink.novel(termLink, time)) {
                 return termLink;
             }
-            putBack(termLink);
+            putBack((TermLinkHandle) termLink);
         }
         return null;
     }

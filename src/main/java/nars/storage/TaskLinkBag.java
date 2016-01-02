@@ -22,12 +22,13 @@
 package nars.storage;
 
 import nars.entity.TaskLink;
+import nars.entity.TaskLinkHandle;
 import nars.main_nogui.Parameters;
 
 /**
  * TaskLinkBag contains links to tasks.
  */
-public class TaskLinkBag extends Bag<TaskLink> {
+public class TaskLinkBag extends Bag<TaskLinkHandle> {
 
     /** Constructor
      * @param memory The reference of memory

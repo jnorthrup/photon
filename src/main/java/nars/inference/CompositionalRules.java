@@ -60,9 +60,9 @@ public final class CompositionalRules {
         }
         TruthValue truthT = memory.currentTask.getSentence().getTruth();
         TruthValue truthB = memory.currentBelief.getTruth();
-        TruthValue truthOr = TruthFunctions.union(truthT, truthB);
-        TruthValue truthAnd = TruthFunctions.intersection(truthT, truthB);
-        TruthValue truthDif = null;
+        TruthValueRefier truthOr = TruthFunctions.union(truthT, truthB);
+        TruthValueRefier truthAnd = TruthFunctions.intersection(truthT, truthB);
+        TruthValueRefier truthDif = null;
         Term termOr = null;
         Term termAnd = null;
         Term termDif = null;
@@ -121,7 +121,7 @@ public final class CompositionalRules {
      * @param truth TruthValue of the contentInd
      * @param memory Reference to the memory
      */
-    public static void processComposed(Statement statement, Term subject, Term predicate, TruthValue truth, Memory memory) {
+    public static void processComposed(Statement statement, Term subject, Term predicate, TruthValueRefier truth, Memory memory) {
         if ((subject == null) || (predicate == null)) {
             return;
         }
@@ -129,7 +129,7 @@ public final class CompositionalRules {
         if ((content == null) || content.equals(statement) || content.equals(memory.currentBelief.getContent())) {
             return;
         }
-        BudgetValue budget = BudgetFunctions.compoundForward(truth, content, memory);
+        BudgetValueAtomic budget = BudgetFunctions.compoundForward(truth, content, memory);
         memory.doublePremiseTask(content, truth, budget);
     }
 
@@ -165,7 +165,7 @@ public final class CompositionalRules {
             v1 = belief.getTruth();
             v2 = sentence.getTruth();
         }
-        TruthValue truth = null;
+        TruthValueRefier truth = null;
         Term content;
         if (index == 0) {
             content = Statement.make(oldContent, term1, term2, memory);
@@ -225,7 +225,7 @@ public final class CompositionalRules {
             }
         }
         if (truth != null) {
-            BudgetValue budget = BudgetFunctions.compoundForward(truth, content, memory);
+            BudgetValueAtomic budget = BudgetFunctions.compoundForward(truth, content, memory);
             memory.doublePremiseTask(content, truth, budget);
         }
     }
@@ -257,19 +257,19 @@ public final class CompositionalRules {
             v1 = belief.getTruth();
             v2 = sentence.getTruth();
         }
-        TruthValue truth = null;
+        TruthValueRefier truth = null;
         if (compound instanceof Conjunction) {
-            if (sentence instanceof Sentence) {
+            if (sentence instanceof SentenceHandle) {
                 truth = TruthFunctions.reduceConjunction(v1, v2);
             }
         } else if (compound instanceof Disjunction) {
-            if (sentence instanceof Sentence) {
+            if (sentence instanceof SentenceHandle) {
                 truth = TruthFunctions.reduceDisjunction(v1, v2);
             }
         } else {
             return;
         }
-        BudgetValue budget = BudgetFunctions.compoundForward(truth, content, memory);
+        BudgetValueAtomic budget = BudgetFunctions.compoundForward(truth, content, memory);
         memory.doublePremiseTask(content, truth, budget);
     }
 
@@ -332,8 +332,8 @@ public final class CompositionalRules {
         Statement state1 = Inheritance.make(term11, term12, memory);
         Statement state2 = Inheritance.make(term21, term22, memory);
         Term content = Implication.make(state1, state2, memory);
-        TruthValue truth = TruthFunctions.induction(truthT, truthB);
-        BudgetValue budget = BudgetFunctions.compoundForward(truth, content, memory);
+        TruthValueRefier truth = TruthFunctions.induction(truthT, truthB);
+        BudgetValueAtomic budget = BudgetFunctions.compoundForward(truth, content, memory);
         memory.doublePremiseTask(content, truth, budget);
         content = Implication.make(state2, state1, memory);
         truth = TruthFunctions.induction(truthB, truthT);
@@ -394,8 +394,8 @@ public final class CompositionalRules {
         substitute.put(commonTerm1, new Variable("#varDep2"));
         CompoundTerm content = (CompoundTerm) Conjunction.make(premise1, oldCompound, memory);
         content.applySubstitute(substitute);
-        TruthValue truth = TruthFunctions.intersection(taskSentence.getTruth(), belief.getTruth());
-        BudgetValue budget = BudgetFunctions.forward(truth, memory);
+        TruthValueRefier truth = TruthFunctions.intersection(taskSentence.getTruth(), belief.getTruth());
+        BudgetValueAtomic budget = BudgetFunctions.forward(truth, memory);
         memory.doublePremiseTask(content, truth, budget, false);
         substitute.clear();
         substitute.put(commonTerm1, new Variable("$varInd1"));

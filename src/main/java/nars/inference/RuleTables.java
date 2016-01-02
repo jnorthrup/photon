@@ -44,8 +44,8 @@ public class RuleTables {
         Sentence taskSentence = task.getSentence();
         Term taskTerm = (Term) taskSentence.getContent().clone();         // cloning for substitution
         Term beliefTerm = (Term) bLink.getTarget().clone();       // cloning for substitution
-        Concept beliefConcept = memory.termToConcept(beliefTerm);
-        Sentence belief = null;
+        ConceptAtomic beliefConcept = memory.termToConcept(beliefTerm);
+        SentenceHandle belief = null;
         if (beliefConcept != null) {
             belief = beliefConcept.getBelief(task);
         }
@@ -59,31 +59,31 @@ public class RuleTables {
         short tIndex = tLink.getIndex(0);
         short bIndex = bLink.getIndex(0);
         switch (tLink.getType()) {          // dispatch first by TaskLink type
-            case TermLink.SELF:
+            case TermLinkHandle.SELF:
                 switch (bLink.getType()) {
-                    case TermLink.COMPONENT:
+                    case TermLinkHandle.COMPONENT:
                         compoundAndSelf((CompoundTerm) taskTerm, beliefTerm, true, memory);
                         break;
-                    case TermLink.COMPOUND:
+                    case TermLinkHandle.COMPOUND:
                         compoundAndSelf((CompoundTerm) beliefTerm, taskTerm, false, memory);
                         break;
-                    case TermLink.COMPONENT_STATEMENT:
+                    case TermLinkHandle.COMPONENT_STATEMENT:
                         if (belief != null) {
                             SyllogisticRules.detachment(task.getSentence(), belief, bIndex, memory);
                         }
                         break;
-                    case TermLink.COMPOUND_STATEMENT:
+                    case TermLinkHandle.COMPOUND_STATEMENT:
                         if (belief != null) {
                             SyllogisticRules.detachment(belief, task.getSentence(), bIndex, memory);
                         }
                         break;
-                    case TermLink.COMPONENT_CONDITION:
+                    case TermLinkHandle.COMPONENT_CONDITION:
                         if (belief != null) {
                             bIndex = bLink.getIndex(1);
                             SyllogisticRules.conditionalDedInd((Implication) taskTerm, bIndex, beliefTerm, tIndex, memory);
                         }
                         break;
-                    case TermLink.COMPOUND_CONDITION:
+                    case TermLinkHandle.COMPOUND_CONDITION:
                         if (belief != null) {
                             bIndex = bLink.getIndex(1);
                             SyllogisticRules.conditionalDedInd((Implication) beliefTerm, bIndex, taskTerm, tIndex, memory);
@@ -91,15 +91,15 @@ public class RuleTables {
                         break;
                 }
                 break;
-            case TermLink.COMPOUND:
+            case TermLinkHandle.COMPOUND:
                 switch (bLink.getType()) {
-                    case TermLink.COMPOUND:
+                    case TermLinkHandle.COMPOUND:
                         compoundAndCompound((CompoundTerm) taskTerm, (CompoundTerm) beliefTerm, memory);
                         break;
-                    case TermLink.COMPOUND_STATEMENT:
+                    case TermLinkHandle.COMPOUND_STATEMENT:
                         compoundAndStatement((CompoundTerm) taskTerm, tIndex, (Statement) beliefTerm, bIndex, beliefTerm, memory);
                         break;
-                    case TermLink.COMPOUND_CONDITION:
+                    case TermLinkHandle.COMPOUND_CONDITION:
                         if (belief != null) {
                             if (beliefTerm instanceof Implication) {
                                 SyllogisticRules.conditionalDedInd((Implication) beliefTerm, bIndex, taskTerm, -1, memory);
@@ -110,20 +110,20 @@ public class RuleTables {
                         break;
                 }
                 break;
-            case TermLink.COMPOUND_STATEMENT:
+            case TermLinkHandle.COMPOUND_STATEMENT:
                 switch (bLink.getType()) {
-                    case TermLink.COMPONENT:
+                    case TermLinkHandle.COMPONENT:
                         componentAndStatement((CompoundTerm) memory.currentTerm, bIndex, (Statement) taskTerm, tIndex, memory);
                         break;
-                    case TermLink.COMPOUND:
+                    case TermLinkHandle.COMPOUND:
                         compoundAndStatement((CompoundTerm) beliefTerm, bIndex, (Statement) taskTerm, tIndex, beliefTerm, memory);
                         break;
-                    case TermLink.COMPOUND_STATEMENT:
+                    case TermLinkHandle.COMPOUND_STATEMENT:
                         if (belief != null) {
                             syllogisms(tLink, bLink, taskTerm, beliefTerm, memory);
                         }
                         break;
-                    case TermLink.COMPOUND_CONDITION:
+                    case TermLinkHandle.COMPOUND_CONDITION:
                         if (belief != null) {
                             bIndex = bLink.getIndex(1);
                             if (beliefTerm instanceof Implication) {
@@ -133,9 +133,9 @@ public class RuleTables {
                         break;
                 }
                 break;
-            case TermLink.COMPOUND_CONDITION:
+            case TermLinkHandle.COMPOUND_CONDITION:
                 switch (bLink.getType()) {
-                    case TermLink.COMPOUND_STATEMENT:
+                    case TermLinkHandle.COMPOUND_STATEMENT:
                         if (belief != null) {
                             if (taskTerm instanceof Implication) // TODO maybe put instanceof test within conditionalDedIndWithVar()
                             {
@@ -160,8 +160,8 @@ public class RuleTables {
      * @param memory Reference to the memory
      */
     public static void syllogisms(TaskLink tLink, TermLink bLink, Term taskTerm, Term beliefTerm, Memory memory) {
-        Sentence taskSentence = memory.currentTask.getSentence();
-        Sentence belief = memory.currentBelief;
+        SentenceHandle taskSentence = memory.currentTask.getSentence();
+        SentenceHandle belief = memory.currentBelief;
         int figure;
         if (taskTerm instanceof Inheritance) {
             if (beliefTerm instanceof Inheritance) {
@@ -224,7 +224,7 @@ public class RuleTables {
      * @param figure The location of the shared term
      * @param memory Reference to the memory
      */
-    public static void asymmetricAsymmetric(Sentence sentence, Sentence belief, int figure, Memory memory) {
+    public static void asymmetricAsymmetric(SentenceHandle sentence, SentenceHandle belief, int figure, Memory memory) {
         Statement s1 = (Statement) sentence.cloneContent();
         Statement s2 = (Statement) belief.cloneContent();
         Term t1, t2;
@@ -295,7 +295,7 @@ public class RuleTables {
      * @param figure The location of the shared term
      * @param memory Reference to the memory
      */
-    public static void asymmetricSymmetric(Sentence asym, Sentence sym, int figure, Memory memory) {
+    public static void asymmetricSymmetric(SentenceHandle asym, SentenceHandle sym, int figure, Memory memory) {
         Statement asymSt = (Statement) asym.cloneContent();
         Statement symSt = (Statement) sym.cloneContent();
         Term t1, t2;
@@ -355,7 +355,7 @@ public class RuleTables {
      * @param figure The location of the shared term
      * @param memory Reference to the memory
      */
-    public static void symmetricSymmetric(Sentence belief, Sentence taskSentence, int figure, Memory memory) {
+    public static void symmetricSymmetric(SentenceHandle belief, SentenceHandle taskSentence, int figure, Memory memory) {
         Statement s1 = (Statement) belief.cloneContent();
         Statement s2 = (Statement) taskSentence.cloneContent();
         switch (figure) {
@@ -393,7 +393,7 @@ public class RuleTables {
      * @param index The location of the second premise in the first
      * @param memory Reference to the memory
      */
-    public static void detachmentWithVar(Sentence originalMainSentence, Sentence subSentence, int index, Memory memory) {
+    public static void detachmentWithVar(SentenceHandle originalMainSentence, Sentence subSentence, int index, Memory memory) {
         Sentence mainSentence = (Sentence) originalMainSentence.clone();   // for substitution
         Statement statement = (Statement) mainSentence.getContent();
         Term component = statement.componentAt(index);

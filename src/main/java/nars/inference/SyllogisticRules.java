@@ -48,9 +48,9 @@ public final class SyllogisticRules {
         }
         TruthValue value1 = sentence.getTruth();
         TruthValue value2 = belief.getTruth();
-        TruthValue truth1 = null;
-        TruthValue truth2 = null;
-        BudgetValue budget1, budget2;
+        TruthValueRefier truth1 = null;
+        TruthValueRefier truth2 = null;
+        BudgetValueAtomic budget1, budget2;
         if (sentence.isQuestion()) {
             budget1 = BudgetFunctions.backwardWeak(value2, memory);
             budget2 = BudgetFunctions.backwardWeak(value2, memory);
@@ -82,10 +82,10 @@ public final class SyllogisticRules {
             return;
         }
         Statement taskContent = (Statement) taskSentence.getContent();
-        TruthValue truth1 = null;
-        TruthValue truth2 = null;
-        TruthValue truth3 = null;
-        BudgetValue budget1, budget2, budget3;
+        TruthValueRefier truth1 = null;
+        TruthValueRefier truth2 = null;
+        TruthValueRefier truth3 = null;
+        BudgetValueAtomic budget1, budget2, budget3;
         TruthValue value1 = taskSentence.getTruth();
         TruthValue value2 = belief.getTruth();
         if (taskSentence.isQuestion()) {
@@ -123,8 +123,8 @@ public final class SyllogisticRules {
             return;
         }
         Statement st = (Statement) asym.getContent();
-        TruthValue truth = null;
-        BudgetValue budget;
+        TruthValueRefier truth = null;
+        BudgetValueAtomic budget;
         Sentence sentence = memory.currentTask.getSentence();
         CompoundTerm taskTerm = (CompoundTerm) sentence.getContent();
         if (sentence.isQuestion()) {
@@ -156,8 +156,8 @@ public final class SyllogisticRules {
             return;
         }
         Statement st = (Statement) belief.getContent();
-        TruthValue truth = null;
-        BudgetValue budget;
+        TruthValueRefier truth = null;
+        BudgetValueAtomic budget;
         if (sentence.isQuestion()) {
             budget = BudgetFunctions.backward(belief.getTruth(), memory);
         } else {
@@ -203,8 +203,8 @@ public final class SyllogisticRules {
         TruthValue beliefTruth = beliefSentence.getTruth();
         TruthValue truth1 = mainSentence.getTruth();
         TruthValue truth2 = subSentence.getTruth();
-        TruthValue truth = null;
-        BudgetValue budget;
+        TruthValueRefier truth = null;
+        BudgetValueAtomic budget;
         if (taskSentence.isQuestion()) {
             if (statement instanceof Equivalence) {
                 budget = BudgetFunctions.backward(beliefTruth, memory);
@@ -286,8 +286,8 @@ public final class SyllogisticRules {
         }
         TruthValue truth1 = taskSentence.getTruth();
         TruthValue truth2 = belief.getTruth();
-        TruthValue truth = null;
-        BudgetValue budget;
+        TruthValueRefier truth = null;
+        BudgetValueAtomic budget;
         if (taskSentence.isQuestion()) {
             budget = BudgetFunctions.backwardWeak(truth2, memory);
         } else {
@@ -355,8 +355,8 @@ public final class SyllogisticRules {
         }
         TruthValue truth1 = taskSentence.getTruth();
         TruthValue truth2 = belief.getTruth();
-        TruthValue truth = null;
-        BudgetValue budget;
+        TruthValueRefier truth = null;
+        BudgetValueAtomic budget;
         if (taskSentence.isQuestion()) {
             budget = BudgetFunctions.backwardWeak(truth2, memory);
         } else {
@@ -406,8 +406,8 @@ public final class SyllogisticRules {
         TruthValue value1 = sentence.getTruth();
         TruthValue value2 = belief.getTruth();
         Term content;
-        TruthValue truth = null;
-        BudgetValue budget;
+        TruthValueRefier truth = null;
+        BudgetValueAtomic budget;
         if (term1 != null) {
             if (term2 != null) {
                 content = Statement.make(st2, term2, term1, memory);
@@ -454,12 +454,12 @@ public final class SyllogisticRules {
         Sentence belief = memory.currentBelief;
         TruthValue v1 = sentence.getTruth();
         TruthValue v2 = belief.getTruth();
-        TruthValue truth = null;
-        BudgetValue budget;
+        TruthValueRefier truth = null;
+        BudgetValueAtomic budget;
         if (sentence.isQuestion()) {
             budget = (compoundTask ? BudgetFunctions.backward(v2, memory) : BudgetFunctions.backwardWeak(v2, memory));
         } else {
-            truth = (compoundTask ? TruthFunctions.anonymousAnalogy(v1, v2) : TruthFunctions.anonymousAnalogy(v2, v1));
+            truth = (TruthValueRefier) (compoundTask ? TruthFunctions.anonymousAnalogy(v1, v2) : TruthFunctions.anonymousAnalogy(v2, v1));
             budget = BudgetFunctions.compoundForward(truth, content, memory);
         }
         memory.doublePremiseTask(content, truth, budget);

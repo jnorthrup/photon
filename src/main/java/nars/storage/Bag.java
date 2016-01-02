@@ -23,7 +23,7 @@ package nars.storage;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import nars.entity.Item;
+import nars.entity.ItemAtomic;
 import nars.inference.BudgetFunctions;
 import nars.main_nogui.Parameters;
 
@@ -41,7 +41,7 @@ import nars.main_nogui.Parameters;
  *
  * @param <E> The type of the Item in the Bag
  */
-public abstract class Bag<E extends Item> {
+public abstract class Bag<E extends ItemAtomic> {
 
     /**
      * priority levels

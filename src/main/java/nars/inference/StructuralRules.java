@@ -88,8 +88,8 @@ public final class StructuralRules {
         }
         Task task = memory.currentTask;
         Sentence sentence = task.getSentence();
-        TruthValue truth = sentence.getTruth();
-        BudgetValue budget;
+        TruthValueRefier truth = sentence.getTruth();
+        BudgetValueAtomic budget;
         if (sentence.isQuestion()) {
             budget = BudgetFunctions.compoundBackwardWeak(content, memory);
         } else {
@@ -134,8 +134,8 @@ public final class StructuralRules {
         }
         Task task = memory.currentTask;
         Sentence sentence = task.getSentence();
-        TruthValue truth = sentence.getTruth();
-        BudgetValue budget;
+        TruthValueRefier truth = sentence.getTruth();
+        BudgetValueAtomic budget;
         if (sentence.isQuestion()) {
             budget = BudgetFunctions.compoundBackward(content, memory);
         } else {
@@ -176,8 +176,8 @@ public final class StructuralRules {
         Task task = memory.currentTask;
         Sentence sentence = task.getSentence();
         TruthValue truth = sentence.getTruth();
-        TruthValue truthDed = TruthFunctions.deduction(truth, RELIANCE);
-        TruthValue truthNDed = TruthFunctions.negation(TruthFunctions.deduction(truth, RELIANCE));
+        TruthValueRefier truthDed = TruthFunctions.deduction(truth, RELIANCE);
+        TruthValueRefier truthNDed = TruthFunctions.negation(TruthFunctions.deduction(truth, RELIANCE));
         Term subj = statement.getSubject();
         Term pred = statement.getPredicate();
         if (component.equals(subj)) {
@@ -222,8 +222,8 @@ public final class StructuralRules {
         Task task = memory.currentTask;
         Sentence sentence = task.getSentence();
         TruthValue truth = sentence.getTruth();
-        TruthValue truthDed = TruthFunctions.deduction(truth, RELIANCE);
-        TruthValue truthNDed = TruthFunctions.negation(TruthFunctions.deduction(truth, RELIANCE));
+        TruthValueRefier truthDed = TruthFunctions.deduction(truth, RELIANCE);
+        TruthValueRefier truthNDed = TruthFunctions.negation(TruthFunctions.deduction(truth, RELIANCE));
         Term subj = statement.getSubject();
         Term pred = statement.getPredicate();
         if (compound.equals(subj)) {
@@ -261,13 +261,13 @@ public final class StructuralRules {
      * @param truth The truth value of the new task
      * @param memory Reference to the memory
      */
-    public static void structuralStatement(Term subject, Term predicate, TruthValue truth, Memory memory) {
+    public static void structuralStatement(Term subject, Term predicate, TruthValueRefier truth, Memory memory) {
         Task task = memory.currentTask;
         Term oldContent = task.getContent();
         if (oldContent instanceof Statement) {
             Term content = Statement.make((Statement) oldContent, subject, predicate, memory);
             if (content != null) {
-                BudgetValue budget = BudgetFunctions.compoundForward(truth, content, memory);
+                BudgetValueAtomic budget = BudgetFunctions.compoundForward(truth, content, memory);
                 memory.singlePremiseTask(content, truth, budget);
             }
         }
@@ -305,8 +305,8 @@ public final class StructuralRules {
         }
         Task task = memory.currentTask;
         Sentence sentence = task.getSentence();
-        TruthValue truth = sentence.getTruth();
-        BudgetValue budget;
+        TruthValueRefier truth = sentence.getTruth();
+        BudgetValueAtomic budget;
         if (sentence.isQuestion()) {
             budget = BudgetFunctions.compoundBackward(content, memory);
         } else {
@@ -397,8 +397,8 @@ public final class StructuralRules {
             return;
         }
         Sentence sentence = memory.currentTask.getSentence();
-        TruthValue truth = sentence.getTruth();
-        BudgetValue budget;
+        TruthValueRefier truth = sentence.getTruth();
+        BudgetValueAtomic budget;
         if (sentence.isQuestion()) {
             budget = BudgetFunctions.compoundBackward(content, memory);
         } else {
@@ -417,8 +417,8 @@ public final class StructuralRules {
      * @param memory Reference to the memory
      */
     public static void transformSubjectPI(CompoundTerm subject, Term predicate, Memory memory) {
-        TruthValue truth = memory.currentTask.getSentence().getTruth();
-        BudgetValue budget;
+        TruthValueRefier truth = memory.currentTask.getSentence().getTruth();
+        BudgetValueAtomic budget;
         Inheritance inheritance;
         Term newSubj, newPred;
         if (subject instanceof Product) {
@@ -466,8 +466,8 @@ public final class StructuralRules {
      * @param memory Reference to the memory
      */
     public static void transformPredicatePI(Term subject, CompoundTerm predicate, Memory memory) {
-        TruthValue truth = memory.currentTask.getSentence().getTruth();
-        BudgetValue budget;
+        TruthValueRefier truth = memory.currentTask.getSentence().getTruth();
+        BudgetValueAtomic budget;
         Inheritance inheritance;
         Term newSubj, newPred;
         if (predicate instanceof Product) {
@@ -526,8 +526,8 @@ public final class StructuralRules {
 //            return;
 //        }
         Sentence sentence = task.getSentence();
-        TruthValue truth = sentence.getTruth();
-        BudgetValue budget;
+        TruthValueRefier truth = sentence.getTruth();
+        BudgetValueAtomic budget;
         if (sentence.isQuestion()) {
             budget = BudgetFunctions.compoundBackward(content, memory);
         } else {
@@ -550,11 +550,11 @@ public final class StructuralRules {
     public static void transformNegation(Term content, Memory memory) {
         Task task = memory.currentTask;
         Sentence sentence = task.getSentence();
-        TruthValue truth = sentence.getTruth();
+        TruthValueRefier truth = sentence.getTruth();
         if (sentence.isJudgment()) {
             truth = TruthFunctions.negation(truth);
         }
-        BudgetValue budget;
+        BudgetValueAtomic budget;
         if (sentence.isQuestion()) {
             budget = BudgetFunctions.compoundBackward(content, memory);
         } else {
@@ -574,8 +574,8 @@ public final class StructuralRules {
         Task task = memory.currentTask;
         Sentence sentence = task.getSentence();
         Term content = Statement.make(statement, Negation.make(pred, memory), Negation.make(subj, memory), memory);
-        TruthValue truth = sentence.getTruth();
-        BudgetValue budget;
+        TruthValueRefier truth = sentence.getTruth();
+        BudgetValueAtomic budget;
         if (sentence.isQuestion()) {
             if (content instanceof Implication) {
                 budget = BudgetFunctions.compoundBackwardWeak(content, memory);

@@ -1,9 +1,9 @@
 package nars.storage;
 
-import nars.entity.Item;
+import nars.entity.ItemAtomic;
 
 /** a {@link BagObserver} that does nothing (null design pattern) */
-public class NullBagObserver<BagType extends Item> implements BagObserver<BagType> {
+public class NullBagObserver<BagType extends ItemAtomic> implements BagObserver<BagType> {
 	@Override
 	public void setTitle(String title) {}
 	@Override

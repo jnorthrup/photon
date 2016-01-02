@@ -22,12 +22,13 @@
 package nars.storage;
 
 import nars.entity.Concept;
+import nars.entity.ConceptAtomic;
 import nars.main_nogui.Parameters;
 
 /**
  * Contains Concepts.
  */
-public class ConceptBag extends Bag<Concept> {
+public class ConceptBag extends Bag<ConceptAtomic> {
     /** Constructor
      * @param memory The reference of memory
      */

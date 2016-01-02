@@ -38,7 +38,7 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import nars.entity.Item;
+import nars.entity.ItemAtomic;
 import nars.main_nogui.Parameters;
 import nars.storage.Bag;
 import nars.storage.BagObserver;
@@ -46,7 +46,7 @@ import nars.storage.BagObserver;
 /**
  * JWindow display the priority distribution of items within a given bag
  */
-public class BagWindow<BagType extends Item> extends NarsFrame implements ActionListener, AdjustmentListener,
+public class BagWindow<BagType extends ItemAtomic> extends NarsFrame implements ActionListener, AdjustmentListener,
 		BagObserver<BagType> {
 
     /**

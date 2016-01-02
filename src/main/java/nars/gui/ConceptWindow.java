@@ -25,7 +25,7 @@ import java.awt.event.*;
 //import java.beans.PropertyChangeEvent;
 //import java.beans.PropertyChangeListener;
 
-import nars.entity.Concept;
+import nars.entity.ConceptAtomic;
 import nars.entity.EntityObserver;
 import nars.storage.BagObserver;
 
@@ -39,7 +39,7 @@ public class ConceptWindow extends NarsFrame implements ActionListener, EntityOb
     /** Display area */
     public TextArea text;
     /** The concept to be displayed */
-    public Concept concept;
+    public ConceptAtomic concept;
     /** Whether the content of the concept is being displayed */
     public boolean showing = false;
     /** Used to adjust the screen position */
@@ -49,7 +49,7 @@ public class ConceptWindow extends NarsFrame implements ActionListener, EntityOb
      * Constructor
      * @param concept The concept to be displayed
      */
-    public ConceptWindow(Concept concept) {
+    public ConceptWindow(ConceptAtomic concept) {
         super(concept.getKey());
         this.concept = concept;
         setBackground(MULTIPLE_WINDOW_COLOR);
@@ -152,7 +152,7 @@ public class ConceptWindow extends NarsFrame implements ActionListener, EntityOb
     }
 
 	@Override
-	public void startPlay(Concept concept, boolean showLinks) {
+	public void startPlay(ConceptAtomic concept, boolean showLinks) {
         if (this.isVisible()) {
             this.detachFromConcept();
         }

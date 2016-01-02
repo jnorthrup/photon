@@ -33,12 +33,12 @@ public final class TruthFunctions extends UtilityFunctions {
      * @param v1 Truth value of the premise
      * @return Truth value of the conclusion
      */
-    static TruthValue conversion(TruthValue v1) {
+    static TruthValueRefier conversion(TruthValue v1) {
         float f1 = v1.getFrequency();
         float c1 = v1.getConfidence();
         float w = and(f1, c1);
         float c = w2c(w);
-        return new TruthValue(1, c);
+        return new TruthValueRefier(1, c);
     }
 
     /* ----- Single argument functions, called in StructuralRules ----- */
@@ -47,10 +47,10 @@ public final class TruthFunctions extends UtilityFunctions {
      * @param v1 Truth value of the premise
      * @return Truth value of the conclusion
      */
-    static TruthValue negation(TruthValue v1) {
+    static TruthValueRefier negation(TruthValue v1) {
         float f = 1 - v1.getFrequency();
         float c = v1.getConfidence();
-        return new TruthValue(f, c);
+        return new TruthValueRefier(f, c);
     }
 
     /**
@@ -58,12 +58,12 @@ public final class TruthFunctions extends UtilityFunctions {
      * @param v1 Truth value of the premise
      * @return Truth value of the conclusion
      */
-    static TruthValue contraposition(TruthValue v1) {
+    static TruthValueRefier contraposition(TruthValue v1) {
         float f1 = v1.getFrequency();
         float c1 = v1.getConfidence();
         float w = and(1 - f1, c1);
         float c = w2c(w);
-        return new TruthValue(0, c);
+        return new TruthValueRefier(0, c);
     }
 
     /* ----- double argument functions, called in MatchingRules ----- */
@@ -73,7 +73,7 @@ public final class TruthFunctions extends UtilityFunctions {
      * @param v2 Truth value of the second premise
      * @return Truth value of the conclusion
      */
-    static TruthValue revision(TruthValue v1, TruthValue v2) {
+    static TruthValueRefier revision(TruthValue v1, TruthValue v2) {
         float f1 = v1.getFrequency();
         float f2 = v2.getFrequency();
         float c1 = v1.getConfidence();
@@ -83,7 +83,7 @@ public final class TruthFunctions extends UtilityFunctions {
         float w = w1 + w2;
         float f = (w1 * f1 + w2 * f2) / w;
         float c = w2c(w);
-        return new TruthValue(f, c);
+        return new TruthValueRefier(f, c);
     }
 
     /* ----- double argument functions, called in SyllogisticRules ----- */
@@ -93,14 +93,14 @@ public final class TruthFunctions extends UtilityFunctions {
      * @param v2 Truth value of the second premise
      * @return Truth value of the conclusion
      */
-    static TruthValue deduction(TruthValue v1, TruthValue v2) {
+    static TruthValueRefier deduction(TruthValue v1, TruthValue v2) {
         float f1 = v1.getFrequency();
         float f2 = v2.getFrequency();
         float c1 = v1.getConfidence();
         float c2 = v2.getConfidence();
         float f = and(f1, f2);
         float c = and(c1, c2, f);
-        return new TruthValue(f, c);
+        return new TruthValueRefier(f, c);
     }
 
     /**
@@ -109,11 +109,11 @@ public final class TruthFunctions extends UtilityFunctions {
      * @param reliance Confidence of the second (analytical) premise
      * @return Truth value of the conclusion
      */
-    static TruthValue deduction(TruthValue v1, float reliance) {
+    static TruthValueRefier deduction(TruthValue v1, float reliance) {
         float f1 = v1.getFrequency();
         float c1 = v1.getConfidence();
         float c = and(f1, c1, reliance);
-        return new TruthValue(f1, c, true);
+        return new TruthValueRefier(f1, c, true);
     }
 
     /**
@@ -122,14 +122,14 @@ public final class TruthFunctions extends UtilityFunctions {
      * @param v2 Truth value of the second premise
      * @return Truth value of the conclusion
      */
-    static TruthValue analogy(TruthValue v1, TruthValue v2) {
+    static TruthValueRefier analogy(TruthValue v1, TruthValue v2) {
         float f1 = v1.getFrequency();
         float f2 = v2.getFrequency();
         float c1 = v1.getConfidence();
         float c2 = v2.getConfidence();
         float f = and(f1, f2);
         float c = and(c1, c2, f2);
-        return new TruthValue(f, c);
+        return new TruthValueRefier(f, c);
     }
 
     /**
@@ -138,14 +138,14 @@ public final class TruthFunctions extends UtilityFunctions {
      * @param v2 Truth value of the second premise
      * @return Truth value of the conclusion
      */
-    static TruthValue resemblance(TruthValue v1, TruthValue v2) {
+    static TruthValueRefier resemblance(TruthValue v1, TruthValue v2) {
         float f1 = v1.getFrequency();
         float f2 = v2.getFrequency();
         float c1 = v1.getConfidence();
         float c2 = v2.getConfidence();
         float f = and(f1, f2);
         float c = and(c1, c2, or(f1, f2));
-        return new TruthValue(f, c);
+        return new TruthValueRefier(f, c);
     }
 
     /**
@@ -154,9 +154,9 @@ public final class TruthFunctions extends UtilityFunctions {
      * @param v2 Truth value of the second premise
      * @return Truth value of the conclusion
      */
-    static TruthValue abduction(TruthValue v1, TruthValue v2) {
+    static TruthValueRefier abduction(TruthValue v1, TruthValue v2) {
         if (v1.getAnalytic() || v2.getAnalytic()) {
-            return new TruthValue(0.5f, 0f);
+            return new TruthValueRefier(0.5f, 0f);
         }
         float f1 = v1.getFrequency();
         float f2 = v2.getFrequency();
@@ -164,7 +164,7 @@ public final class TruthFunctions extends UtilityFunctions {
         float c2 = v2.getConfidence();
         float w = and(f2, c1, c2);
         float c = w2c(w);
-        return new TruthValue(f1, c);
+        return new TruthValueRefier(f1, c);
     }
 
     /**
@@ -173,15 +173,15 @@ public final class TruthFunctions extends UtilityFunctions {
      * @param reliance Confidence of the second (analytical) premise
      * @return Truth value of the conclusion
      */
-    static TruthValue abduction(TruthValue v1, float reliance) {
+    static TruthValueRefier abduction(TruthValue v1, float reliance) {
         if (v1.getAnalytic()) {
-            return new TruthValue(0.5f, 0f);
+            return new TruthValueRefier(0.5f, 0f);
         }
         float f1 = v1.getFrequency();
         float c1 = v1.getConfidence();
         float w = and(c1, reliance);
         float c = w2c(w);
-        return new TruthValue(f1, c, true);
+        return new TruthValueRefier(f1, c, true);
     }
 
     /**
@@ -190,7 +190,7 @@ public final class TruthFunctions extends UtilityFunctions {
      * @param v2 Truth value of the second premise
      * @return Truth value of the conclusion
      */
-    static TruthValue induction(TruthValue v1, TruthValue v2) {
+    static TruthValueRefier induction(TruthValue v1, TruthValue v2) {
         return abduction(v2, v1);
     }
 
@@ -200,9 +200,9 @@ public final class TruthFunctions extends UtilityFunctions {
      * @param v2 Truth value of the second premise
      * @return Truth value of the conclusion
      */
-    static TruthValue exemplification(TruthValue v1, TruthValue v2) {
+    static TruthValueRefier exemplification(TruthValue v1, TruthValue v2) {
         if (v1.getAnalytic() || v2.getAnalytic()) {
-            return new TruthValue(0.5f, 0f);
+            return new TruthValueRefier(0.5f, 0f);
         }
         float f1 = v1.getFrequency();
         float f2 = v2.getFrequency();
@@ -210,7 +210,7 @@ public final class TruthFunctions extends UtilityFunctions {
         float c2 = v2.getConfidence();
         float w = and(f1, f2, c1, c2);
         float c = w2c(w);
-        return new TruthValue(1, c);
+        return new TruthValueRefier(1, c);
     }
 
     /**
@@ -219,7 +219,7 @@ public final class TruthFunctions extends UtilityFunctions {
      * @param v2 Truth value of the second premise
      * @return Truth value of the conclusion
      */
-    static TruthValue comparison(TruthValue v1, TruthValue v2) {
+    static TruthValueRefier comparison(TruthValue v1, TruthValue v2) {
         float f1 = v1.getFrequency();
         float f2 = v2.getFrequency();
         float c1 = v1.getConfidence();
@@ -228,7 +228,7 @@ public final class TruthFunctions extends UtilityFunctions {
         float f = (f0 == 0) ? 0 : (and(f1, f2) / f0);
         float w = and(f0, c1, c2);
         float c = w2c(w);
-        return new TruthValue(f, c);
+        return new TruthValueRefier(f, c);
     }
 
     /* ----- desire-value functions, called in SyllogisticRules ----- */
@@ -245,7 +245,7 @@ public final class TruthFunctions extends UtilityFunctions {
         float c2 = v2.getConfidence();
         float f = and(f1, f2);
         float c = and(c1, c2, f2);
-        return new TruthValue(f, c);
+        return new TruthValueRefier(f, c);
     }
 
     /**
@@ -261,7 +261,7 @@ public final class TruthFunctions extends UtilityFunctions {
         float c2 = v2.getConfidence();
         float f = and(f1, f2);
         float c = and(c1, c2, f2, w2c(1.0f));
-        return new TruthValue(f, c);
+        return new TruthValueRefier(f, c);
     }
 
     /**
@@ -277,7 +277,7 @@ public final class TruthFunctions extends UtilityFunctions {
         float c2 = v2.getConfidence();
         float f = and(f1, f2);
         float c = and(c1, c2);
-        return new TruthValue(f, c);
+        return new TruthValueRefier(f, c);
     }
 
     /**
@@ -293,7 +293,7 @@ public final class TruthFunctions extends UtilityFunctions {
         float c2 = v2.getConfidence();
         float w = and(f2, c1, c2);
         float c = w2c(w);
-        return new TruthValue(f1, c);
+        return new TruthValueRefier(f1, c);
     }
 
     /* ----- double argument functions, called in CompositionalRules ----- */
@@ -303,14 +303,14 @@ public final class TruthFunctions extends UtilityFunctions {
      * @param v2 Truth value of the second premise
      * @return Truth value of the conclusion
      */
-    static TruthValue union(TruthValue v1, TruthValue v2) {
+    static TruthValueRefier union(TruthValue v1, TruthValue v2) {
         float f1 = v1.getFrequency();
         float f2 = v2.getFrequency();
         float c1 = v1.getConfidence();
         float c2 = v2.getConfidence();
         float f = or(f1, f2);
         float c = and(c1, c2);
-        return new TruthValue(f, c);
+        return new TruthValueRefier(f, c);
     }
 
     /**
@@ -319,14 +319,14 @@ public final class TruthFunctions extends UtilityFunctions {
      * @param v2 Truth value of the second premise
      * @return Truth value of the conclusion
      */
-    static TruthValue intersection(TruthValue v1, TruthValue v2) {
+    static TruthValueRefier intersection(TruthValue v1, TruthValue v2) {
         float f1 = v1.getFrequency();
         float f2 = v2.getFrequency();
         float c1 = v1.getConfidence();
         float c2 = v2.getConfidence();
         float f = and(f1, f2);
         float c = and(c1, c2);
-        return new TruthValue(f, c);
+        return new TruthValueRefier(f, c);
     }
 
     /**
@@ -335,7 +335,7 @@ public final class TruthFunctions extends UtilityFunctions {
      * @param v2 Truth value of the second premise
      * @return Truth value of the conclusion
      */
-    static TruthValue reduceDisjunction(TruthValue v1, TruthValue v2) {
+    static TruthValueRefier reduceDisjunction(TruthValue v1, TruthValue v2) {
         TruthValue v0 = intersection(v1, negation(v2));
         return deduction(v0, 1f);
     }
@@ -346,7 +346,7 @@ public final class TruthFunctions extends UtilityFunctions {
      * @param v2 Truth value of the second premise
      * @return Truth value of the conclusion
      */
-    static TruthValue reduceConjunction(TruthValue v1, TruthValue v2) {
+    static TruthValueRefier reduceConjunction(TruthValue v1, TruthValue v2) {
         TruthValue v0 = intersection(negation(v1), v2);
         return negation(deduction(v0, 1f));
     }
@@ -357,7 +357,7 @@ public final class TruthFunctions extends UtilityFunctions {
      * @param v2 Truth value of the second premise
      * @return Truth value of the conclusion
      */
-    static TruthValue reduceConjunctionNeg(TruthValue v1, TruthValue v2) {
+    static TruthValueRefier reduceConjunctionNeg(TruthValue v1, TruthValue v2) {
         return reduceConjunction(v1, negation(v2));
     }
 
@@ -370,7 +370,7 @@ public final class TruthFunctions extends UtilityFunctions {
     static TruthValue anonymousAnalogy(TruthValue v1, TruthValue v2) {
         float f1 = v1.getFrequency();
         float c1 = v1.getConfidence();
-        TruthValue v0 = new TruthValue(f1, w2c(c1));
+        TruthValue v0 = new TruthValueRefier(f1, w2c(c1));
         return analogy(v2, v0);
     }
 }

@@ -47,7 +47,7 @@ public class LocalRules {
      * @param belief The belief
      * @param memory Reference to the memory
      */
-    public static void match(Task task, Sentence belief, Memory memory) {
+    public static void match(Task task, SentenceHandle belief, Memory memory) {
         Sentence sentence = (Sentence) task.getSentence().clone();
         if (sentence.isJudgment()) {
             if (revisible(sentence, belief)) {
@@ -82,8 +82,8 @@ public class LocalRules {
     public static void revision(Sentence newBelief, Sentence oldBelief, boolean feedbackToLinks, Memory memory) {
         TruthValue newTruth = newBelief.getTruth();
         TruthValue oldTruth = oldBelief.getTruth();
-        TruthValue truth = TruthFunctions.revision(newTruth, oldTruth);
-        BudgetValue budget = BudgetFunctions.revise(newTruth, oldTruth, truth, feedbackToLinks, memory);
+        TruthValueRefier truth = TruthFunctions.revision(newTruth, oldTruth);
+        BudgetValueAtomic budget = BudgetFunctions.revise(newTruth, oldTruth, truth, feedbackToLinks, memory);
         Term content = newBelief.getContent();
         memory.doublePremiseTask(content, truth, budget);
     }
@@ -95,8 +95,8 @@ public class LocalRules {
      * @param task The task to be processed
      * @param memory Reference to the memory
      */
-    public static void trySolution(Sentence belief, Task task, Memory memory) {
-        Sentence problem = task.getSentence();
+    public static void trySolution(SentenceHandle belief, Task task, Memory memory) {
+        SentenceHandle problem = task.getSentence();
         Sentence oldBest = task.getBestSolution();
         float newQ = solutionQuality(problem, belief);
         if (oldBest != null) {
@@ -109,7 +109,7 @@ public class LocalRules {
         if (task.isInput()) {    // moved from Sentence
             memory.report(belief, false);
         }
-        BudgetValue budget = BudgetFunctions.solutionEval(problem, belief, task, memory);
+        BudgetValueAtomic budget = BudgetFunctions.solutionEval(problem, belief, task, memory);
         if ((budget != null) && budget.aboveThreshold()) {
             memory.activatedTask(budget, belief, task.getParentBelief());
         }
@@ -122,7 +122,7 @@ public class LocalRules {
      * @param solution The solution to be evaluated
      * @return The quality of the judgment as the solution
      */
-    public static float solutionQuality(Sentence problem, Sentence solution) {
+    public static float solutionQuality(SentenceHandle problem, Sentence solution) {
         if (problem == null) {
             return solution.getTruth().getExpectation();
         }
@@ -188,8 +188,8 @@ public class LocalRules {
         }
         TruthValue value1 = judgment1.getTruth();
         TruthValue value2 = judgment2.getTruth();
-        TruthValue truth = TruthFunctions.intersection(value1, value2);
-        BudgetValue budget = BudgetFunctions.forward(truth, memory);
+        TruthValueRefier truth = TruthFunctions.intersection(value1, value2);
+        BudgetValueAtomic budget = BudgetFunctions.forward(truth, memory);
         memory.doublePremiseTask(content, truth, budget);
     }
 
@@ -206,8 +206,8 @@ public class LocalRules {
         Term sub = statement.getPredicate();
         Term pre = statement.getSubject();
         Statement content = Statement.make(statement, sub, pre, memory);
-        TruthValue truth = TruthFunctions.reduceConjunction(sym.getTruth(), asym.getTruth());
-        BudgetValue budget = BudgetFunctions.forward(truth, memory);
+        TruthValueRefier truth = TruthFunctions.reduceConjunction(sym.getTruth(), asym.getTruth());
+        BudgetValueAtomic budget = BudgetFunctions.forward(truth, memory);
         memory.doublePremiseTask(content, truth, budget);
     }
 
@@ -219,8 +219,8 @@ public class LocalRules {
      * @param memory Reference to the memory
      */
     public static void conversion(Memory memory) {
-        TruthValue truth = TruthFunctions.conversion(memory.currentBelief.getTruth());
-        BudgetValue budget = BudgetFunctions.forward(truth, memory);
+        TruthValueRefier truth = TruthFunctions.conversion(memory.currentBelief.getTruth());
+        BudgetValueAtomic budget = BudgetFunctions.forward(truth, memory);
         convertedJudgment(truth, budget, memory);
     }
 
@@ -231,13 +231,13 @@ public class LocalRules {
      * @param memory Reference to the memory
      */
     public static void convertRelation(Memory memory) {
-        TruthValue truth = memory.currentBelief.getTruth();
+        TruthValueRefier truth = memory.currentBelief.getTruth();
         if (((Statement) memory.currentTask.getContent()).isCommutative()) {
             truth = TruthFunctions.abduction(truth, 1.0f);
         } else {
             truth = TruthFunctions.deduction(truth, 1.0f);
         }
-        BudgetValue budget = BudgetFunctions.forward(truth, memory);
+        BudgetValueAtomic budget = BudgetFunctions.forward(truth, memory);
         convertedJudgment(truth, budget, memory);
     }
 
@@ -250,7 +250,7 @@ public class LocalRules {
      * @param truth The truth value of the new task
      * @param memory Reference to the memory
      */
-    public static void convertedJudgment(TruthValue newTruth, BudgetValue newBudget, Memory memory) {
+    public static void convertedJudgment(TruthValueRefier newTruth, BudgetValueAtomic newBudget, Memory memory) {
         Statement content = (Statement) memory.currentTask.getContent();
         Statement beliefContent = (Statement) memory.currentBelief.getContent();
         Term subjT = content.getSubject();

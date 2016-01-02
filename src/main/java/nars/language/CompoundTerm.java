@@ -638,7 +638,7 @@ public abstract class CompoundTerm extends Term {
      */
     public ArrayList<TermLink> prepareComponentLinks() {
         ArrayList<TermLink> componentLinks = new ArrayList<>();
-        short type = (this instanceof Statement) ? TermLink.COMPOUND_STATEMENT : TermLink.COMPOUND;   // default
+        short type = (this instanceof Statement) ? TermLinkHandle.COMPOUND_STATEMENT : TermLinkHandle.COMPOUND;   // default
         prepareComponentLinks(componentLinks, type, this);
         return componentLinks;
     }
@@ -657,32 +657,32 @@ public abstract class CompoundTerm extends Term {
         for (int i = 0; i < term.size(); i++) {     // first level components
             t1 = term.componentAt(i);
             if (t1.isConstant()) {
-                componentLinks.add(new TermLink(t1, type, i));
+                componentLinks.add(new TermLinkHandle(t1, type, i));
             }
             if ((t1 instanceof Conjunction) && ((this instanceof Equivalence) || ((this instanceof Implication) && (i == 0)))) {
-                ((CompoundTerm) t1).prepareComponentLinks(componentLinks, TermLink.COMPOUND_CONDITION, (CompoundTerm) t1);
+                ((CompoundTerm) t1).prepareComponentLinks(componentLinks, TermLinkHandle.COMPOUND_CONDITION, (CompoundTerm) t1);
             } else if (t1 instanceof CompoundTerm) {
                 for (int j = 0; j < ((CompoundTerm) t1).size(); j++) {  // second level components
                     t2 = ((CompoundTerm) t1).componentAt(j);
                     if (t2.isConstant()) {
                         if ((t1 instanceof Product) || (t1 instanceof ImageExt) || (t1 instanceof ImageInt)) {
-                            if (type == TermLink.COMPOUND_CONDITION) {
-                                componentLinks.add(new TermLink(t2, TermLink.TRANSFORM, 0, i, j));
+                            if (type == TermLinkHandle.COMPOUND_CONDITION) {
+                                componentLinks.add(new TermLinkHandle(t2, TermLinkHandle.TRANSFORM, 0, i, j));
                             } else {
-                                componentLinks.add(new TermLink(t2, TermLink.TRANSFORM, i, j));
+                                componentLinks.add(new TermLinkHandle(t2, TermLinkHandle.TRANSFORM, i, j));
                             }
                         } else {
-                            componentLinks.add(new TermLink(t2, type, i, j));
+                            componentLinks.add(new TermLinkHandle(t2, type, i, j));
                         }
                     }
                     if ((t2 instanceof Product) || (t2 instanceof ImageExt) || (t2 instanceof ImageInt)) {
                         for (int k = 0; k < ((CompoundTerm) t2).size(); k++) {
                             t3 = ((CompoundTerm) t2).componentAt(k);
                             if (t3.isConstant()) {                           // third level
-                                if (type == TermLink.COMPOUND_CONDITION) {
-                                    componentLinks.add(new TermLink(t3, TermLink.TRANSFORM, 0, i, j, k));
+                                if (type == TermLinkHandle.COMPOUND_CONDITION) {
+                                    componentLinks.add(new TermLinkHandle(t3, TermLinkHandle.TRANSFORM, 0, i, j, k));
                                 } else {
-                                    componentLinks.add(new TermLink(t3, TermLink.TRANSFORM, i, j, k));
+                                    componentLinks.add(new TermLinkHandle(t3, TermLinkHandle.TRANSFORM, i, j, k));
                                 }
                             }
                         }

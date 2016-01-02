@@ -3,7 +3,7 @@ package nars.main_nogui;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import nars.entity.Stamp;
+import nars.entity.StampHandle;
 import nars.entity.Task;
 import nars.gui.MainWindow;
 import nars.io.InputChannel;
@@ -73,7 +73,7 @@ public class ReasonerBatch {
         walkingSteps = 0;
         clock = 0;
         memory.init();
-        Stamp.init();
+        StampHandle.init();
 //	    timer = 0;
     }
 
@@ -98,7 +98,7 @@ public class ReasonerBatch {
     }
 
     /**
-     * Get the current time from the clock Called in {@link nars.entity.Stamp}
+     * Get the current time from the clock Called in {@link StampHandle}
      *
      * @return The current time
      */
