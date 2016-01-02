@@ -196,60 +196,60 @@ AT_DELAY
 	:	'@delay'
 	;
 
-protected    
+public
 INHERITANCE 
 	:	'-->';
 
-protected	
+public
 SIMILARITY
 	:	'<->';
 	
-protected
+public
 INSTANCE 
 	:	'}->'
 	;
 	
-protected
+public
 PROPERTY
 	:	'--['
 	;
 	
-protected
+public
 INSTANCE_PROPERTY 
 	:	'}-['
 	;
 	
-protected
+public
 IMPLICATION 
 	:	'==>'
 	;
 	
-protected
+public
 IMPLICATION_PRED 
 	:	'=/>'
 	;
 	
-protected
+public
 IMPLICATION_RETRO 
 	:	'=\\>'
 	;
 	
-protected
+public
 IMPLICATION_CONC
 	:	'=|>'
 	;
 	
-protected
+public
 EQUIVALENCE 
 	:	'<=>'
 	;
 	
-protected
+public
 EQUIVALENCE_PRED 
 	:	'</>'
 	;
 	
-protected
+public
 EQUIVALENCE_CONC 
 	:	'<|>'
 	;

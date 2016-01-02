@@ -28,8 +28,8 @@ import com.googlecode.opennars.main.Memory;
  * A task to be processed.
  */
 public class Task extends Item {
-    private Sentence sentence;
-    protected boolean structual = false;        // whether it is based on a structual rule
+    public Sentence sentence;
+    public boolean structual = false;        // whether it is based on a structual rule
            
     public Task(Sentence s, BudgetValue b, Memory memory) {
         super(b, memory);

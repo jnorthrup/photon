@@ -14,9 +14,9 @@ import scala.collection.JavaConversions._
 
 object TestReasoning {
 
-  private val IN_TXT = "-in.txt"
+  public val IN_TXT = "-in.txt"
 
-  private val OUT_TXT = "-out.txt"
+  public val OUT_TXT = "-out.txt"
 
   def main(args: Array[String]) {
     val testReasoning = new TestReasoning()
@@ -40,7 +40,7 @@ object TestReasoning {
  */
 class TestReasoning {
 
-  private var tmpDir: File = new File(tmpDir_, "nars_test")
+  public var tmpDir: File = new File(tmpDir_, "nars_test")
 
   val tmpDir_ = System.getProperty("java.io.tmpdir")
 
@@ -68,7 +68,7 @@ class TestReasoning {
   /**
    run reasoning and check results
    */
-  private def checkReasoning(file: File): Boolean = {
+  public def checkReasoning(file: File): Boolean = {
     try {
       val nars = new NARSBatch()
       val resultFile = new File(tmpDir, file.getName.replace(IN_TXT, OUT_TXT))
@@ -81,7 +81,7 @@ class TestReasoning {
     false
   }
 
-  private def compareResult(file: File, resultFile: File): Boolean = {
+  public def compareResult(file: File, resultFile: File): Boolean = {
     var comparison = true
     try {
       val referenceFile_ = file.getAbsolutePath.replace(IN_TXT, OUT_TXT)

@@ -14,11 +14,11 @@ class TaskLinkBag(memory: Memory) extends Bag[TaskLink](memory) {
    * Get the (constant) capacity of TaskLinkBag
    * @return The capacity of TaskLinkBag
    */
-  protected def capacity(): Int = Parameters.TASK_LINK_BAG_SIZE
+  public def capacity(): Int = Parameters.TASK_LINK_BAG_SIZE
 
   /**
    * Get the (adjustable) forget rate of TaskLinkBag
    * @return The forget rate of TaskLinkBag
    */
-  protected def forgetRate(): Int = memory.getMainWindow.forgetTW.value()
+  public def forgetRate(): Int = memory.getMainWindow.forgetTW.value()
 }

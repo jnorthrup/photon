@@ -36,8 +36,8 @@ import com.googlecode.opennars.storage.*;
  */
 public class Memory extends Observable {
 	
-	private Parameters parameters;
-	private RuleTables ruletables;
+	public Parameters parameters;
+	public RuleTables ruletables;
 	public BudgetFunctions budgetfunctions;
     
     /* ---------- all members have limited space ---------- */
@@ -45,24 +45,24 @@ public class Memory extends Observable {
     /**
      * Concept bag. Containing all Concepts of the system.
      */
-    private ConceptBag concepts;
+    public ConceptBag concepts;
     
     /**
      * Operators (built-in terms) table. Accessed by name.
      */
-    private HashMap<String, Operator> operators;
+    public HashMap<String, Operator> operators;
     
     // There is no global Term table, which may ask for unlimited space.
     
     /**
      * List of inference newTasks, to be processed in the next working cycle.
      */
-    private ArrayList<Task> newTasks;
+    public ArrayList<Task> newTasks;
     
     /**
      * New tasks to be processed in the near future.
      */
-    private TaskBag taskBuffer;
+    public TaskBag taskBuffer;
     
     /* ---------- global variables used to reduce method arguments ---------- */
     
@@ -110,7 +110,7 @@ public class Memory extends Observable {
     	init();
     }
     
-    private void init() {
+    public void init() {
     	concepts = new ConceptBag();         // initially empty
         newTasks = new ArrayList<Task>();     // initially empty
         taskBuffer = new TaskBag();       // initially empty
@@ -282,7 +282,7 @@ public class Memory extends Observable {
      * Derived task comes from the inference rules.
      * @param task the derived task
      */
-    private void derivedTask(Task task) {
+    public void derivedTask(Task task) {
         if (task.aboveThreshold()) {
             float budget = task.getBudget().singleValue();
             float minSilent = parameters.SILENT_LEVEL / 100.0f;
@@ -370,7 +370,7 @@ public class Memory extends Observable {
      * Process the newTasks accumulated in the previous cycle, accept input ones
      * and those that corresponding to existing concepts, plus one from the buffer.
      */
-    private void processTask() {
+    public void processTask() {
         Task task;
         int counter = newTasks.size();              // don't include new tasks produced in the current cycle
         while (counter-- > 0) {                     // process the newTasks of the previous cycle
@@ -388,7 +388,7 @@ public class Memory extends Observable {
     /**
      * Select a concept to fire.
      */
-    private void processConcept() {
+    public void processConcept() {
         Concept currentConcept = (Concept) concepts.takeOut();
         if (currentConcept != null) {
             currentTerm = currentConcept.getTerm();
@@ -403,7 +403,7 @@ public class Memory extends Observable {
      * Imediate processing of a new task
      * @param task the task to be accepted
      */
-    private void immediateProcess(Task task) {
+    public void immediateProcess(Task task) {
         Term content = task.getContent();
         if (content.isConstant()) {                        // does not creat concept for Query?
             Concept c = getConcept(content);
@@ -418,7 +418,7 @@ public class Memory extends Observable {
      * @param task The task to be linked
      * @param content The content of the task
      */
-    private void continuedProcess(Task task, Term content) {
+    public void continuedProcess(Task task, Term content) {
         TaskLink tLink;
         Concept c1 = null;                      // local Concept
         BudgetValue budget = task.getBudget();

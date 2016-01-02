@@ -19,7 +19,7 @@ public class parser extends java_cup.runtime.lr_parser {
   public parser(java_cup.runtime.Scanner s) {super(s);}
 
   /** Production table. */
-  protected static final short _production_table[][] = 
+  public static final short _production_table[][] =
     unpackFromStrings(new String[] {
     "\000\120\000\002\002\004\000\002\003\004\000\002\003" +
     "\003\000\002\004\005\000\002\005\002\000\002\005\004" +
@@ -51,7 +51,7 @@ public class parser extends java_cup.runtime.lr_parser {
   public short[][] production_table() {return _production_table;}
 
   /** Parse-action table. */
-  protected static final short[][] _action_table = 
+  public static final short[][] _action_table =
     unpackFromStrings(new String[] {
     "\000\230\000\060\002\ufffd\004\006\006\ufffd\007\ufffd\010" +
     "\ufffd\011\ufffd\012\ufffd\015\ufffd\045\ufffd\047\ufffd\051\ufffd" +
@@ -459,7 +459,7 @@ public class parser extends java_cup.runtime.lr_parser {
   public short[][] action_table() {return _action_table;}
 
   /** <code>reduce_goto</code> table. */
-  protected static final short[][] _reduce_table = 
+  public static final short[][] _reduce_table =
     unpackFromStrings(new String[] {
     "\000\230\000\010\003\004\004\003\005\006\001\001\000" +
     "\004\005\231\001\001\000\002\001\001\000\002\001\001" +
@@ -562,10 +562,10 @@ public class parser extends java_cup.runtime.lr_parser {
   public short[][] reduce_table() {return _reduce_table;}
 
   /** Instance of action encapsulation class. */
-  protected CUP$parser$actions action_obj;
+  public CUP$parser$actions action_obj;
 
   /** Action encapsulation object initializer. */
-  protected void init_actions()
+  public void init_actions()
     {
       action_obj = new CUP$parser$actions(this);
     }
@@ -618,7 +618,7 @@ public void unrecovered_syntax_error(java_cup.runtime.Symbol cur_token) throws j
 
 /** Cup generated class to encapsulate user supplied action code.*/
 class CUP$parser$actions {
-  private final parser parser;
+  public final parser parser;
 
   /** Constructor */
   CUP$parser$actions(parser parser) {

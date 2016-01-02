@@ -35,8 +35,8 @@ import com.googlecode.opennars.parser.*;
  */
 public class StructuralRules {
     
-	private Memory memory;
-	private BudgetFunctions budgetfunctions;
+	public Memory memory;
+	public BudgetFunctions budgetfunctions;
 	
 	public StructuralRules(Memory memory) {
 		this.memory = memory;
@@ -150,7 +150,7 @@ public class StructuralRules {
         this.memory.singlePremiseTask(budget, content, truth);
     }
     
-    private  boolean switchOrder(CompoundTerm compound, short index) {
+    public  boolean switchOrder(CompoundTerm compound, short index) {
         return ((((compound instanceof DifferenceExt) || (compound instanceof DifferenceInt)) && (index == 1)) ||
                 ((compound instanceof ImageExt) && (index != ((ImageExt) compound).getRelationIndex())) ||
                 ((compound instanceof ImageInt) && (index != ((ImageInt) compound).getRelationIndex())));
@@ -247,7 +247,7 @@ public class StructuralRules {
      * @param predicate The predicate of the new task
      * @param truth The truth value of the new task
      */
-    private  void structuralStatement(Term subject, Term predicate, TruthValue truth) { // Inheritance only?
+    public  void structuralStatement(Term subject, Term predicate, TruthValue truth) { // Inheritance only?
         Task task = this.memory.currentTask;
         Sentence sentence = task.getSentence();
         Term content = Statement.make((Statement) task.getContent(), subject, predicate, this.memory);

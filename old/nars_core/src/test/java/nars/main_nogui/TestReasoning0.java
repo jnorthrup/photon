@@ -21,9 +21,9 @@ import org.junit.Test;
  * */
 public class TestReasoning0 {
 
-	private static final String IN_TXT = "-in.txt";
-	private static final String OUT_TXT = "-out.txt";
-	private File tmpDir;
+	public static final String IN_TXT = "-in.txt";
+	public static final String OUT_TXT = "-out.txt";
+	public File tmpDir;
 
 	public static void main(String args[]) {
 		TestReasoning0 testReasoning = new TestReasoning0();
@@ -59,7 +59,7 @@ public class TestReasoning0 {
 	}
 
 	/** run reasoning and check results */
-	private boolean checkReasoning(File file) {
+	public boolean checkReasoning(File file) {
 		try {
 			NARSBatch nars = new NARSBatch();
 			File resultFile = new File( tmpDir, file.getName().replace( IN_TXT, OUT_TXT ) );
@@ -75,7 +75,7 @@ public class TestReasoning0 {
 		return false;
 	}
 	
-	private boolean compareResult(File file, File resultFile) {
+	public boolean compareResult(File file, File resultFile) {
 		boolean comparison = true;
 		try {
 			String referenceFile_ = file.getAbsolutePath().replace( IN_TXT, OUT_TXT);

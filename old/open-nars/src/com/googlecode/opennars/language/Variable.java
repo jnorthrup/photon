@@ -31,8 +31,8 @@ import com.googlecode.opennars.parser.Symbols;
 public class Variable extends Term {
     public enum VarType { INDEPENDENT, DEPENDENT, ANONYMOUS, QUERY }
     
-    private CompoundTerm scope;
-    private VarType type;
+    public CompoundTerm scope;
+    public VarType type;
     
     public Variable() {
         super();
@@ -54,7 +54,7 @@ public class Variable extends Term {
             type = VarType.INDEPENDENT;
     }
 
-    private Variable(String n, CompoundTerm s, VarType t) {
+    public Variable(String n, CompoundTerm s, VarType t) {
         name = n;
         scope = s;
         type = t;
@@ -173,7 +173,7 @@ public class Variable extends Term {
      * @param subs The substitution formed so far
      * @return The substitution that unifies the two Terms
      */
-    private static HashMap<String,Term> findSubstitute(VarType type, Term term1, Term term2, HashMap<String,Term> subs) {
+    public static HashMap<String,Term> findSubstitute(VarType type, Term term1, Term term2, HashMap<String,Term> subs) {
         Term oldValue, t1, t2;
         if (term1.equals(term2))    // for constant, also shortcut for variable and compound
             return subs;
@@ -208,7 +208,7 @@ public class Variable extends Term {
      * @param first If it is the first Term in unify
      * @return The substitution that unifies the two Terms, as "name-term" pairs
      */
-    private static HashMap<String,Term> findSubstituteVar(VarType type, Variable var, Term term, HashMap<String,Term> subs, boolean first) {
+    public static HashMap<String,Term> findSubstituteVar(VarType type, Variable var, Term term, HashMap<String,Term> subs, boolean first) {
         String name1 = var.getVarName(first);    // make a prefixed name for the avriable
         Term oldTerm = subs.get(name1);          // check if a mapping for that name exist
         if (oldTerm != null) {                  // processed variable

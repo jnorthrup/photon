@@ -34,7 +34,7 @@ public class Equivalence extends Statement {
      * Constructor with partial values, called by make
      * @param components The component list of the term
      */
-    protected Equivalence(ArrayList<Term> components) {
+    public Equivalence(ArrayList<Term> components) {
         super(components);
     }
 
@@ -45,7 +45,7 @@ public class Equivalence extends Statement {
      * @param constant Whether the statement contains open variable
      * @param complexity Syntactic complexity of the compound
      */
-    protected Equivalence(String n, ArrayList<Term> components, boolean constant, short complexity) {
+    public Equivalence(String n, ArrayList<Term> components, boolean constant, short complexity) {
         super(n, components, constant, complexity);
     }
 

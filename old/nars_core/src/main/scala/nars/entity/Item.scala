@@ -9,23 +9,23 @@ import scala.collection.JavaConversions._
  * <p>
  * It has a key and a budget. Cannot be cloned
  */
-abstract class Item protected () {
+abstract class Item public () {
 
   /**
    The key of the Item, unique in a Bag
    */
-  protected var key: String = _
+  public var key: String = _
 
   /**
    The budget of the Item, consisting of 3 numbers
    */
-  protected var budget: BudgetValue = _
+  public var budget: BudgetValue = _
 
   /**
    * Constructor with default budget
    * @param key The key value
    */
-  protected def this(key: String) {
+  public def this(key: String) {
     this()
     this.key = key
     this.budget = new BudgetValue()
@@ -36,7 +36,7 @@ abstract class Item protected () {
    * @param key The key value
    * @param budget The initial budget
    */
-  protected def this(key: String, budget: BudgetValue) {
+  public def this(key: String, budget: BudgetValue) {
     this()
     this.key = key
     this.budget = new BudgetValue(budget)
@@ -46,7 +46,7 @@ abstract class Item protected () {
    * Constructor with initial budget
    * @param budget The initial budget
    */
-  protected def setBudget(budget: BudgetValue) {
+  public def setBudget(budget: BudgetValue) {
     this.budget = budget
   }
 

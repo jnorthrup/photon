@@ -29,11 +29,11 @@ import com.googlecode.opennars.main.Parameters;
  */
 public class TaskLinkBag extends Bag<TaskLink> {
 
-    protected int capacity() {
+    public int capacity() {
         return Parameters.TASK_BAG_SIZE;
     }
     
-    protected int forgetRate() {
+    public int forgetRate() {
         return Parameters.TASK_DEFAULT_FORGETTING_CYCLE;
     }
 }

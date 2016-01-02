@@ -32,17 +32,17 @@ import nars.io.*;
 public class InferenceWindow extends NarsFrame implements ActionListener, ItemListener {
 
     /** Control buttons */
-    private Button playButton, stopButton, hideButton;
+    public Button playButton, stopButton, hideButton;
     /** Display area */
-    private TextArea text;
+    public TextArea text;
     /** String to be caught */
-    private TextField watchText;
+    public TextField watchText;
     /** Type of caught text */
-    private Choice watchType;
+    public Choice watchType;
     /** Type of caught text */
-    private String watched = "";
+    public String watched = "";
     /** Inference recorder */
-    private IInferenceRecorder recorder = new NullInferenceRecorder();
+    public IInferenceRecorder recorder = new NullInferenceRecorder();
 
     /**
      * Constructor
@@ -144,7 +144,7 @@ public class InferenceWindow extends NarsFrame implements ActionListener, ItemLi
         }
     }
 
-    private void close() {
+    public void close() {
         recorder.stop();
         dispose();
     }

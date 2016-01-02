@@ -40,11 +40,11 @@ class NARSBatch {
    */
   var reasoner: Reasoner = _
 
-  private var logging: Boolean = _
+  public var logging: Boolean = _
 
-  private var out: PrintStream = System.out
+  public var out: PrintStream = System.out
 
-  private var dumpLastState: Boolean = true
+  public var dumpLastState: Boolean = true
 
   /**
    non-static equivalent to {@link #main(String[])}
@@ -97,7 +97,7 @@ class NARSBatch {
     this.out = out
   }
 
-  private def log(mess: String) {
+  public def log(mess: String) {
     if (logging) println("/ " + mess)
   }
 }

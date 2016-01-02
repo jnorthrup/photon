@@ -30,8 +30,8 @@ import com.googlecode.opennars.parser.*;
 public class TruthValue { // implements Cloneable {
     public static final char DELIMITER = Symbols.TRUTH_VALUE_MARK;       // default
     public static final char SEPARATOR = Symbols.VALUE_SEPARATOR;    // default
-    protected ShortFloat frequency;
-    protected ShortFloat confidence;
+    public ShortFloat frequency;
+    public ShortFloat confidence;
         
     public TruthValue(float f, float c) {
         frequency = new ShortFloat(f);

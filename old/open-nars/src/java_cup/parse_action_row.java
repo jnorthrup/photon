@@ -31,7 +31,7 @@ public class parse_action_row {
   /*-----------------------------------------------------------*/
 
   /** Number of columns (terminals) in every row. */
-  protected static int _size = 0;
+  public static int _size = 0;
 
   /** Number of columns (terminals) in every row. */
   public static int size() {return _size;}
@@ -39,7 +39,7 @@ public class parse_action_row {
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** Table of reduction counts (reused by compute_default()). */
-  protected static int reduction_count[] = null;
+  public static int reduction_count[] = null;
 
   /*-----------------------------------------------------------*/
   /*--- (Access to) Instance Variables ------------------------*/

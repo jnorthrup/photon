@@ -53,7 +53,7 @@ object SetInt {
 /**
  * An intensionally defined set, which contains one or more instances defining the Term.
  */
-class SetInt private (arg: ArrayList[Term]) extends CompoundTerm(arg) {
+class SetInt public (arg: ArrayList[Term]) extends CompoundTerm(arg) {
 
   /**
    * constructor with full values, called by clone
@@ -62,7 +62,7 @@ class SetInt private (arg: ArrayList[Term]) extends CompoundTerm(arg) {
    * @param open Open variable list
    * @param i Syntactic complexity of the compound
    */
-  private def this(n: String, 
+  public def this(n: String,
       cs: ArrayList[Term], 
       con: Boolean, 
       i: Short) {

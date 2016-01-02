@@ -149,7 +149,7 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Field and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>protected <a href="../../nars/storage/Memory.html" title="class in nars.storage">Memory</a></code></td>
+<td class="colFirst"><code>public <a href="../../nars/storage/Memory.html" title="class in nars.storage">Memory</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../nars/storage/Bag.html#memory">memory</a></span></code>
 <div class="block">reference to memory</div>
 </td>
@@ -170,7 +170,7 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>protected </code></td>
+<td class="colFirst"><code>public </code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../nars/storage/Bag.html#Bag-nars.storage.Memory-">Bag</a></span>(<a href="../../nars/storage/Memory.html" title="class in nars.storage">Memory</a>&nbsp;memory)</code>
 <div class="block">constructor, called from subclasses</div>
 </td>
@@ -205,7 +205,7 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code>protected abstract int</code></td>
+<td class="colFirst"><code>public abstract int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../nars/storage/Bag.html#capacity--">capacity</a></span>()</code>
 <div class="block">To get the capacity of the concrete subclass</div>
 </td>
@@ -217,13 +217,13 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i4" class="altColor">
-<td class="colFirst"><code>protected boolean</code></td>
+<td class="colFirst"><code>public boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../nars/storage/Bag.html#emptyLevel-int-">emptyLevel</a></span>(int&nbsp;n)</code>
 <div class="block">Check whether a level is empty</div>
 </td>
 </tr>
 <tr id="i5" class="rowColor">
-<td class="colFirst"><code>protected abstract int</code></td>
+<td class="colFirst"><code>public abstract int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../nars/storage/Bag.html#forgetRate--">forgetRate</a></span>()</code>
 <div class="block">Get the item decay rate, which differs in difference subclass, and can be
  changed in run time by the user, so not a constant.</div>
@@ -240,7 +240,7 @@ extends java.lang.Object</pre>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../nars/storage/Bag.html#init--">init</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i8" class="altColor">
-<td class="colFirst"><code>protected void</code></td>
+<td class="colFirst"><code>public void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../nars/storage/Bag.html#outOfBase-E-">outOfBase</a></span>(<a href="../../nars/storage/Bag.html" title="type parameter in Bag">E</a>&nbsp;oldItem)</code>
 <div class="block">Remove an item from itemTable, then adjust mass</div>
 </td>
@@ -340,7 +340,7 @@ extends java.lang.Object</pre>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>memory</h4>
-<pre>protected&nbsp;<a href="../../nars/storage/Memory.html" title="class in nars.storage">Memory</a> memory</pre>
+<pre>public&nbsp;<a href="../../nars/storage/Memory.html" title="class in nars.storage">Memory</a> memory</pre>
 <div class="block">reference to memory</div>
 </li>
 </ul>
@@ -358,7 +358,7 @@ extends java.lang.Object</pre>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>Bag</h4>
-<pre>protected&nbsp;Bag(<a href="../../nars/storage/Memory.html" title="class in nars.storage">Memory</a>&nbsp;memory)</pre>
+<pre>public&nbsp;Bag(<a href="../../nars/storage/Memory.html" title="class in nars.storage">Memory</a>&nbsp;memory)</pre>
 <div class="block">constructor, called from subclasses</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -389,7 +389,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>capacity</h4>
-<pre>protected abstract&nbsp;int&nbsp;capacity()</pre>
+<pre>public abstract&nbsp;int&nbsp;capacity()</pre>
 <div class="block">To get the capacity of the concrete subclass</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -403,7 +403,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>forgetRate</h4>
-<pre>protected abstract&nbsp;int&nbsp;forgetRate()</pre>
+<pre>public abstract&nbsp;int&nbsp;forgetRate()</pre>
 <div class="block">Get the item decay rate, which differs in difference subclass, and can be
  changed in run time by the user, so not a constant.</div>
 <dl>
@@ -549,7 +549,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>emptyLevel</h4>
-<pre>protected&nbsp;boolean&nbsp;emptyLevel(int&nbsp;n)</pre>
+<pre>public&nbsp;boolean&nbsp;emptyLevel(int&nbsp;n)</pre>
 <div class="block">Check whether a level is empty</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -567,7 +567,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>outOfBase</h4>
-<pre>protected&nbsp;void&nbsp;outOfBase(<a href="../../nars/storage/Bag.html" title="type parameter in Bag">E</a>&nbsp;oldItem)</pre>
+<pre>public&nbsp;void&nbsp;outOfBase(<a href="../../nars/storage/Bag.html" title="type parameter in Bag">E</a>&nbsp;oldItem)</pre>
 <div class="block">Remove an item from itemTable, then adjust mass</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>

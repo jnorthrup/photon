@@ -32,7 +32,7 @@ public class reduce_action extends parse_action {
   /*-----------------------------------------------------------*/
   
   /** The production we reduce with. */
-  protected production _reduce_with;
+  public production _reduce_with;
 
   /** The production we reduce with. */
   public production reduce_with() {return _reduce_with;}

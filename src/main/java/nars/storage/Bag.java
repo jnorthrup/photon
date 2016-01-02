@@ -46,67 +46,67 @@ public abstract class Bag<E extends Item> {
     /**
      * priority levels
      */
-    private static final int TOTAL_LEVEL = Parameters.BAG_LEVEL;
+    public static final int TOTAL_LEVEL = Parameters.BAG_LEVEL;
     /**
      * firing threshold
      */
-    private static final int THRESHOLD = Parameters.BAG_THRESHOLD;
+    public static final int THRESHOLD = Parameters.BAG_THRESHOLD;
     /**
      * relative threshold, only calculate once
      */
-    private static final float RELATIVE_THRESHOLD = (float) THRESHOLD / (float) TOTAL_LEVEL;
+    public static final float RELATIVE_THRESHOLD = (float) THRESHOLD / (float) TOTAL_LEVEL;
     /**
      * hashtable load factor
      */
-    private static final float LOAD_FACTOR = Parameters.LOAD_FACTOR;       //
+    public static final float LOAD_FACTOR = Parameters.LOAD_FACTOR;       //
     /**
      * shared DISTRIBUTOR that produce the probability distribution
      */
-    private static final Distributor DISTRIBUTOR = new Distributor(TOTAL_LEVEL); //
+    public static final Distributor DISTRIBUTOR = new Distributor(TOTAL_LEVEL); //
     /**
      * mapping from key to item
      */
-    private HashMap<String, E> nameTable;
+    public HashMap<String, E> nameTable;
     /**
      * array of lists of items, for items on different level
      */
-    private ArrayList<ArrayList<E>> itemTable;
+    public ArrayList<ArrayList<E>> itemTable;
     /**
      * defined in different bags
      */
-    private final int capacity;
+    public final int capacity;
     /**
      * current sum of occupied level
      */
-    private int mass;
+    public int mass;
     /**
      * index to get next level, kept in individual objects
      */
-    private int levelIndex;
+    public int levelIndex;
     /**
      * current take out level
      */
-    private int currentLevel;
+    public int currentLevel;
     /**
      * maximum number of items to be taken out at current level
      */
-    private int currentCounter;
+    public int currentCounter;
     /**
      * reference to memory
      */
-    protected Memory memory;
-	private BagObserver<E> bagObserver = new NullBagObserver<E>();
+    public Memory memory;
+	public BagObserver<E> bagObserver = new NullBagObserver<E>();
     /**
      * The display level; initialized at lowest
      */
-    private int showLevel = Parameters.BAG_THRESHOLD;
+    public int showLevel = Parameters.BAG_THRESHOLD;
 
     /**
      * constructor, called from subclasses
      *
      * @param memory The reference to memory
      */
-    protected Bag(Memory memory) {
+    public Bag(Memory memory) {
         this.memory = memory;
 //        showing = false;
         capacity = capacity();
@@ -130,7 +130,7 @@ public abstract class Bag<E extends Item> {
      *
      * @return Bag capacity, in number of Items allowed
      */
-    protected abstract int capacity();
+    public abstract int capacity();
 
     /**
      * Get the item decay rate, which differs in difference subclass, and can be
@@ -138,7 +138,7 @@ public abstract class Bag<E extends Item> {
      *
      * @return The number of times for a decay factor to be fully applied
      */
-    protected abstract int forgetRate();
+    public abstract int forgetRate();
 
     /**
      * The number of items in the bag
@@ -272,7 +272,7 @@ public abstract class Bag<E extends Item> {
      * @param n The level index
      * @return Whether that level is empty
      */
-    protected boolean emptyLevel(int n) {
+    public boolean emptyLevel(int n) {
         return ((itemTable.get(n) == null) || itemTable.get(n).isEmpty());
     }
 
@@ -282,7 +282,7 @@ public abstract class Bag<E extends Item> {
      * @param item The Item to put in
      * @return The put-in level
      */
-    private int getLevel(E item) {
+    public int getLevel(E item) {
         float fl = item.getPriority() * TOTAL_LEVEL;
         int level = (int) Math.ceil(fl) - 1;
         return (level < 0) ? 0 : level;     // cannot be -1
@@ -294,7 +294,7 @@ public abstract class Bag<E extends Item> {
      * @param newItem The Item to put in
      * @return The overflow Item
      */
-    private E intoBase(E newItem) {
+    public E intoBase(E newItem) {
         E oldItem = null;
         int inLevel = getLevel(newItem);
         if (size() > capacity) {      // the bag is full
@@ -320,7 +320,7 @@ public abstract class Bag<E extends Item> {
      * @param level The current level
      * @return The first Item
      */
-    private E takeOutFirst(int level) {
+    public E takeOutFirst(int level) {
         E selected = itemTable.get(level).get(0);
         itemTable.get(level).remove(0);
         mass -= (level + 1);
@@ -333,7 +333,7 @@ public abstract class Bag<E extends Item> {
      *
      * @param oldItem The Item to be removed
      */
-    protected void outOfBase(E oldItem) {
+    public void outOfBase(E oldItem) {
         int level = getLevel(oldItem);
         itemTable.get(level).remove(oldItem);
         mass -= (level + 1);

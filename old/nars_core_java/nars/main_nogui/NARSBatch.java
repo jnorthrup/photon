@@ -42,13 +42,13 @@ public class NARSBatch {
      * The reasoner
      */
     ReasonerBatch reasoner;
-    private boolean logging;
-    private PrintStream out = System.out;
-    private boolean dumpLastState = true;
+    public boolean logging;
+    public PrintStream out = System.out;
+    public boolean dumpLastState = true;
     /**
      * Flag to distinguish the two running modes of the project.
      */
-    private static boolean standAlone = false;
+    public static boolean standAlone = false;
 
     /**
      * The entry point of the standalone application.
@@ -104,7 +104,7 @@ public class NARSBatch {
         run();
     }
 
-    private void init(BufferedReader r, BufferedWriter w) {
+    public void init(BufferedReader r, BufferedWriter w) {
         ExperienceReader experienceReader = new ExperienceReader(reasoner);
         experienceReader.setBufferedReader(r);
         reasoner.addOutputChannel(new ExperienceWriter(reasoner,
@@ -144,7 +144,7 @@ public class NARSBatch {
         this.out = out;
     }
 
-    private void log(String mess) {
+    public void log(String mess) {
         if (logging) {
             System.out.println("/ " + mess);
         }

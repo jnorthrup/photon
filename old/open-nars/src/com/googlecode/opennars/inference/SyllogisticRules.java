@@ -34,8 +34,8 @@ import com.googlecode.opennars.parser.*;
  */
 public class SyllogisticRules {
     
-	private Memory memory;
-	private BudgetFunctions budgetfunctions;
+	public Memory memory;
+	public BudgetFunctions budgetfunctions;
 	
 	public SyllogisticRules(Memory memory) {
 		this.memory = memory;
@@ -491,7 +491,7 @@ public class SyllogisticRules {
      * @param premise2 The second premise <M --> P>
      * @param figure The figure indicating the location of the shared term
      */
-    private Statement introVarInd(Statement temp, Statement premise1, Statement premise2, int figure) {
+    public Statement introVarInd(Statement temp, Statement premise1, Statement premise2, int figure) {
         Statement state1, state2;
         Variable v1 = new Variable(Symbols.VARIABLE_TAG + "0");
         Variable v2 = new Variable(Symbols.VARIABLE_TAG + "0");

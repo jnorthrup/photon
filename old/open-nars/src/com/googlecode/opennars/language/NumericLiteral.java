@@ -7,8 +7,8 @@ public class NumericLiteral extends Literal {
 		DOUBLE;
 	};
 	
-	private double num;
-	private TYPE type;
+	public double num;
+	public TYPE type;
 
 	public NumericLiteral(String name) {
 		super(name);

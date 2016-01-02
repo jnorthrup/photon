@@ -146,7 +146,7 @@ object LocalRules {
    * @param judgment2 The second premise
    * @param memory Reference to the memory
    */
-  private def inferToSym(judgment1: Sentence, judgment2: Sentence, memory: Memory) {
+  public def inferToSym(judgment1: Sentence, judgment2: Sentence, memory: Memory) {
     val s1 = judgment1.getContent.asInstanceOf[Statement]
     val t1 = s1.getSubject
     val t2 = s1.getPredicate
@@ -167,7 +167,7 @@ object LocalRules {
    * @param sym The symmetric premise
    * @param memory Reference to the memory
    */
-  private def inferToAsym(asym: Sentence, sym: Sentence, memory: Memory) {
+  public def inferToAsym(asym: Sentence, sym: Sentence, memory: Memory) {
     val statement = asym.getContent.asInstanceOf[Statement]
     val sub = statement.getPredicate
     val pre = statement.getSubject
@@ -182,7 +182,7 @@ object LocalRules {
    * Produce an Inheritance/Implication from a reversed Inheritance/Implication
    * @param memory Reference to the memory
    */
-  private def conversion(memory: Memory) {
+  public def conversion(memory: Memory) {
     val truth = TruthFunctions.conversion(memory.currentBelief.getTruth)
     val budget = BudgetFunctions.forward(truth, memory)
     convertedJudgment(truth, budget, memory)
@@ -194,7 +194,7 @@ object LocalRules {
    * Switch between Inheritance/Implication and Similarity/Equivalence
    * @param memory Reference to the memory
    */
-  private def convertRelation(memory: Memory) {
+  public def convertRelation(memory: Memory) {
     var truth = memory.currentBelief.getTruth
     truth = if (memory.currentTask.getContent.asInstanceOf[Statement]
       .isCommutative) TruthFunctions.abduction(truth, 1.0f) else TruthFunctions.deduction(truth, 1.0f)
@@ -210,7 +210,7 @@ object LocalRules {
    * @param truth The truth value of the new task
    * @param memory Reference to the memory
    */
-  private def convertedJudgment(newTruth: TruthValue, newBudget: BudgetValue, memory: Memory) {
+  public def convertedJudgment(newTruth: TruthValue, newBudget: BudgetValue, memory: Memory) {
     var content = memory.currentTask.getContent.asInstanceOf[Statement]
     val beliefContent = memory.currentBelief.getContent.asInstanceOf[Statement]
     val subjT = content.getSubject

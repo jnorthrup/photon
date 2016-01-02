@@ -72,8 +72,8 @@ public class terminal extends symbol {
   /*-------------------  Class Variables  ---------------------*/
   /*-----------------------------------------------------------*/
 
-  private int _precedence_num;
-  private int _precedence_side;
+  public int _precedence_num;
+  public int _precedence_side;
 
   /*-----------------------------------------------------------*/
   /*--- (Access to) Static (Class) Variables ------------------*/
@@ -82,7 +82,7 @@ public class terminal extends symbol {
   /** Table of all terminals.  Elements are stored using name strings as 
    *  the key 
    */
-  protected static Hashtable _all = new Hashtable();
+  public static Hashtable _all = new Hashtable();
 
   /** Access to all terminals. */
   public static Enumeration all() {return _all.elements();}
@@ -100,7 +100,7 @@ public class terminal extends symbol {
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** Table of all terminals indexed by their index number. */
-  protected static Hashtable _all_by_index = new Hashtable();
+  public static Hashtable _all_by_index = new Hashtable();
 
   /** Lookup a terminal by index. */
   public static terminal find(int indx)
@@ -118,7 +118,7 @@ public class terminal extends symbol {
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
  
   /** Static counter to assign unique index. */
-  protected static int next_index = 0;
+  public static int next_index = 0;
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 

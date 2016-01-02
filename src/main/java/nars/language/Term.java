@@ -33,12 +33,12 @@ public class Term implements Cloneable, Comparable<Term> {
      * A Term is identified uniquely by its name, a sequence of characters in a
      * given alphabet (ASCII or Unicode)
      */
-    protected String name;
+    public String name;
 
     /**
      * Default constructor that build an internal Term
      */
-    protected Term() {
+    public Term() {
     }
 
     /**

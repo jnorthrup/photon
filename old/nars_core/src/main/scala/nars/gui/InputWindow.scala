@@ -22,28 +22,28 @@ class InputWindow(var reasoner: Reasoner, title: String) extends NarsFrame(title
   /**
    Control buttons
    */
-  private var okButton: Button = new Button("OK")
+  public var okButton: Button = new Button("OK")
 
-  private var holdButton: Button = new Button("Hold")
+  public var holdButton: Button = new Button("Hold")
 
-  private var clearButton: Button = new Button("Clear")
+  public var clearButton: Button = new Button("Clear")
 
-  private var closeButton: Button = new Button("Hide")
+  public var closeButton: Button = new Button("Hide")
 
   /**
    Input area
    */
-  private var inputText: TextArea = new TextArea("")
+  public var inputText: TextArea = new TextArea("")
 
   /**
    Whether the window is ready to accept new input (in fact whether the Reasoner will read the content of {@link #inputText} )
    */
-  private var ready: Boolean = _
+  public var ready: Boolean = _
 
   /**
    number of cycles between experience lines
    */
-  private var timer: Int = _
+  public var timer: Int = _
 
 //  super(title + " - Input Window")
 
@@ -130,7 +130,7 @@ class InputWindow(var reasoner: Reasoner, title: String) extends NarsFrame(title
     }
   }
 
-  private def close() {
+  public def close() {
     setVisible(false)
   }
 

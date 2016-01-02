@@ -48,7 +48,7 @@ object Equivalence {
 /**
  * A Statement about an Equivalence relation.
  */
-class Equivalence protected (components: ArrayList[Term]) extends Statement(components) {
+class Equivalence public (components: ArrayList[Term]) extends Statement(components) {
 
   /**
    * Constructor with full values, called by clone
@@ -57,7 +57,7 @@ class Equivalence protected (components: ArrayList[Term]) extends Statement(comp
    * @param constant Whether the statement contains open variable
    * @param complexity Syntactic complexity of the compound
    */
-  protected def this( name: String, 
+  public def this( name: String,
       components: ArrayList[Term], 
       isConstant: Boolean, 
       complexity: Short ) {

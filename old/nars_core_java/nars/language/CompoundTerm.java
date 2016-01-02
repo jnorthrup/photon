@@ -38,16 +38,16 @@ public abstract class CompoundTerm extends Term {
     /**
      * list of (direct) components
      */
-    protected ArrayList<Term> components;
+    public ArrayList<Term> components;
     /**
      * syntactic complexity of the compound, the sum of those of its components
      * plus 1
      */
-    protected short complexity;
+    public short complexity;
     /**
      * Whether the term names a concept
      */
-    protected boolean isConstant = true;
+    public boolean isConstant = true;
 
     /* ----- abstract methods to be implemented in subclasses ----- */
     /**
@@ -74,7 +74,7 @@ public abstract class CompoundTerm extends Term {
      * @param isConstant Whether the term refers to a concept
      * @param complexity Complexity of the compound term
      */
-    protected CompoundTerm(String name, ArrayList<Term> components, boolean isConstant, short complexity) {
+    public CompoundTerm(String name, ArrayList<Term> components, boolean isConstant, short complexity) {
         super(name);
         this.components = components;
         this.isConstant = isConstant;
@@ -84,7 +84,7 @@ public abstract class CompoundTerm extends Term {
     /**
      * Default constructor
      */
-    protected CompoundTerm() {
+    public CompoundTerm() {
     }
 
     /**
@@ -92,7 +92,7 @@ public abstract class CompoundTerm extends Term {
      *
      * @param components Component list
      */
-    protected CompoundTerm(ArrayList<Term> components) {
+    public CompoundTerm(ArrayList<Term> components) {
         this.components = components;
         calcComplexity();
         name = makeName();
@@ -105,7 +105,7 @@ public abstract class CompoundTerm extends Term {
      * @param name Name of the compound
      * @param components Component list
      */
-    protected CompoundTerm(String name, ArrayList<Term> components) {
+    public CompoundTerm(String name, ArrayList<Term> components) {
         super(name);
         isConstant = !Variable.containVar(name);
         this.components = components;
@@ -117,14 +117,14 @@ public abstract class CompoundTerm extends Term {
      *
      * @param s The new oldName
      */
-    protected void setName(String s) {
+    public void setName(String s) {
         name = s;
     }
 
     /**
      * The complexity of the term is the sum of those of the components plus 1
      */
-    private void calcComplexity() {
+    public void calcComplexity() {
         complexity = 1;
         for (Term t : components) {
             complexity += t.getComplexity();
@@ -259,7 +259,7 @@ public abstract class CompoundTerm extends Term {
      * @param t2 the second component
      * @return the component list
      */
-    protected static ArrayList<Term> argumentsToList(Term t1, Term t2) {
+    public static ArrayList<Term> argumentsToList(Term t1, Term t2) {
         ArrayList<Term> list = new ArrayList<>(2);
         list.add(t1);
         list.add(t2);
@@ -273,7 +273,7 @@ public abstract class CompoundTerm extends Term {
      *
      * @return the oldName of the term
      */
-    protected String makeName() {
+    public String makeName() {
         return makeCompoundName(operator(), components);
     }
 
@@ -284,7 +284,7 @@ public abstract class CompoundTerm extends Term {
      * @param arg the list of components
      * @return the oldName of the term
      */
-    protected static String makeCompoundName(String op, ArrayList<Term> arg) {
+    public static String makeCompoundName(String op, ArrayList<Term> arg) {
         StringBuilder name = new StringBuilder();
         name.append(Symbols.COMPOUND_TERM_OPENER);
         name.append(op);
@@ -307,7 +307,7 @@ public abstract class CompoundTerm extends Term {
      * @param arg the list of components
      * @return the oldName of the term
      */
-    protected static String makeSetName(char opener, ArrayList<Term> arg, char closer) {
+    public static String makeSetName(char opener, ArrayList<Term> arg, char closer) {
         StringBuilder name = new StringBuilder();
         name.append(opener);
         name.append(arg.get(0).getName());
@@ -327,7 +327,7 @@ public abstract class CompoundTerm extends Term {
      * @param relationIndex the location of the place holder
      * @return the oldName of the term
      */
-    protected static String makeImageName(String op, ArrayList<Term> arg, int relationIndex) {
+    public static String makeImageName(String op, ArrayList<Term> arg, int relationIndex) {
         StringBuilder name = new StringBuilder();
         name.append(Symbols.COMPOUND_TERM_OPENER);
         name.append(op);
@@ -578,7 +578,7 @@ public abstract class CompoundTerm extends Term {
      *
      * @param map The substitution established so far
      */
-    private void renameVariables(HashMap<Variable, Variable> map) {
+    public void renameVariables(HashMap<Variable, Variable> map) {
         if (containVar()) {
             for (int i = 0; i < components.size(); i++) {
                 Term term = componentAt(i);
@@ -652,7 +652,7 @@ public abstract class CompoundTerm extends Term {
      * @param type The type of TermLink to be built
      * @param term The CompoundTerm for which the links are built
      */
-    private void prepareComponentLinks(ArrayList<TermLink> componentLinks, short type, CompoundTerm term) {
+    public void prepareComponentLinks(ArrayList<TermLink> componentLinks, short type, CompoundTerm term) {
         Term t1, t2, t3;                    // components at different levels
         for (int i = 0; i < term.size(); i++) {     // first level components
             t1 = term.componentAt(i);

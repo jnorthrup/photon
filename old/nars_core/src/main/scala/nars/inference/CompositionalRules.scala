@@ -98,7 +98,7 @@ object CompositionalRules {
    * @param truth TruthValue of the contentInd
    * @param memory Reference to the memory
    */
-  private def processComposed(statement: Statement, 
+  public def processComposed(statement: Statement,
       subject: Term, 
       predicate: Term, 
       truth: TruthValue, 
@@ -123,7 +123,7 @@ object CompositionalRules {
    * @param compoundTask Whether the implication comes from the task
    * @param memory Reference to the memory
    */
-  private def decomposeCompound(compound: CompoundTerm, 
+  public def decomposeCompound(compound: CompoundTerm,
       component: Term, 
       term1: Term, 
       index: Int, 
@@ -262,7 +262,7 @@ object CompositionalRules {
    * @param index The location of the shared term: 0 for subject, 1 for predicate
    * @param memory Reference to the memory
    */
-  private def introVarOuter(taskContent: Statement, 
+  public def introVarOuter(taskContent: Statement,
       beliefContent: Statement, 
       index: Int, 
       memory: Memory) {
@@ -398,7 +398,7 @@ object CompositionalRules {
    * @param term2 The second term
    * @param index The index of the terms in their statement
    */
-  private def secondCommonTerm(term1: Term, term2: Term, index: Int): Term = {
+  public def secondCommonTerm(term1: Term, term2: Term, index: Int): Term = {
     var commonTerm: Term = null
     if (index == 0) {
       if ((term1.isInstanceOf[ImageExt]) && (term2.isInstanceOf[ImageExt])) {

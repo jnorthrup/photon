@@ -43,7 +43,7 @@ object Product {
 /**
  * A Product is a sequence of terms.
  */
-class Product private (arg: ArrayList[Term]) extends CompoundTerm(arg) {
+class Product public (arg: ArrayList[Term]) extends CompoundTerm(arg) {
 
   /**
    * Constructor with full values, called by clone
@@ -52,7 +52,7 @@ class Product private (arg: ArrayList[Term]) extends CompoundTerm(arg) {
    * @param open Open variable list
    * @param complexity Syntactic complexity of the compound
    */
-  private def this(n: String, 
+  public def this(n: String,
       cs: ArrayList[Term], 
       con: Boolean, 
       complexity: Short) {

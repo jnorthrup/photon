@@ -47,9 +47,9 @@ public class TermLink extends Item {
     public static final short COMPOUND_CONDITION = 6;
     public static final short TRANSFORM = 7;            // TaskLink only
         
-    private Term target;
-    protected short type;
-    protected short[] index;
+    public Term target;
+    public short type;
+    public short[] index;
     
     public TermLink(Memory memory) {
     	super(memory);
@@ -91,7 +91,7 @@ public class TermLink extends Item {
         setKey();
     }
 
-    protected TermLink(BudgetValue v, Memory memory) {
+    public TermLink(BudgetValue v, Memory memory) {
         super(v, memory);
     }
     
@@ -106,7 +106,7 @@ public class TermLink extends Item {
         setKey();
     }
 
-    protected void setKey() {
+    public void setKey() {
         String at1, at2;
         if (toComponent()) {
             at1 = Symbols.LinkToComponent_at1;
@@ -152,7 +152,7 @@ public class TermLink extends Item {
             return -1;
     }
     
-    protected short reverse(short i) {
+    public short reverse(short i) {
         if ((i % 2) == 0)
             return (short) (i - 1);
         else

@@ -35,7 +35,7 @@ import nars.storage.Memory;
 public class ImageInt extends CompoundTerm {
 
     /** The index of relation in the component list */
-    private short relationIndex;
+    public short relationIndex;
 
     /**
      * constructor with partial values, called by make
@@ -43,7 +43,7 @@ public class ImageInt extends CompoundTerm {
      * @param arg The component list of the term
      * @param index The index of relation in the component list
      */
-    private ImageInt(String n, ArrayList<Term> arg, short index) {
+    public ImageInt(String n, ArrayList<Term> arg, short index) {
         super(n, arg);
         relationIndex = index;
     }
@@ -56,7 +56,7 @@ public class ImageInt extends CompoundTerm {
      * @param complexity Syntactic complexity of the compound
      * @param index The index of relation in the component list
      */
-    private ImageInt(String n, ArrayList<Term> cs, boolean con, short complexity, short index) {
+    public ImageInt(String n, ArrayList<Term> cs, boolean con, short complexity, short index) {
         super(n, cs, con, complexity);
         relationIndex = index;
     }

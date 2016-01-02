@@ -60,7 +60,7 @@ public class non_terminal extends symbol {
   /** Table of all non-terminals -- elements are stored using name strings 
    *  as the key 
    */
-  protected static Hashtable _all = new Hashtable();
+  public static Hashtable _all = new Hashtable();
 
   /** Access to all non-terminals. */
   public static Enumeration all() {return _all.elements();}
@@ -77,7 +77,7 @@ public class non_terminal extends symbol {
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** Table of all non terminals indexed by their index number. */
-  protected static Hashtable _all_by_index = new Hashtable();
+  public static Hashtable _all_by_index = new Hashtable();
 
   /** Lookup a non terminal by index. */
   public static non_terminal find(int indx)
@@ -95,12 +95,12 @@ public class non_terminal extends symbol {
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** Static counter to assign unique indexes. */
-  protected static int next_index = 0;
+  public static int next_index = 0;
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** Static counter for creating unique non-terminal names */
-  static protected int next_nt = 0;
+  static public int next_nt = 0;
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
@@ -224,7 +224,7 @@ public class non_terminal extends symbol {
   /*-----------------------------------------------------------*/
 
   /** Table of all productions with this non terminal on the LHS. */
-  protected Hashtable _productions = new Hashtable(11);
+  public Hashtable _productions = new Hashtable(11);
 
   /** Access to productions with this non terminal on the LHS. */
   public Enumeration productions() {return _productions.elements();}
@@ -251,7 +251,7 @@ public class non_terminal extends symbol {
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** Nullability of this non terminal. */
-  protected boolean _nullable;
+  public boolean _nullable;
 
   /** Nullability of this non terminal. */
   public boolean nullable() {return _nullable;}
@@ -259,7 +259,7 @@ public class non_terminal extends symbol {
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** First set for this non-terminal. */
-  protected terminal_set _first_set = new terminal_set();
+  public terminal_set _first_set = new terminal_set();
 
   /** First set for this non-terminal. */
   public terminal_set first_set() {return _first_set;}
@@ -277,7 +277,7 @@ public class non_terminal extends symbol {
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** Test to see if this non terminal currently looks nullable. */
-  protected boolean looks_nullable() throws internal_error
+  public boolean looks_nullable() throws internal_error
     {
       /* look and see if any of the productions now look nullable */
       for (Enumeration e = productions(); e.hasMoreElements(); )

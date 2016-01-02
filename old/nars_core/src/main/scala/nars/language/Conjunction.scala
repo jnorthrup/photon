@@ -27,7 +27,7 @@ object Conjunction {
    * @param memory Reference to the memory
    * @return the Term generated from the arguments
    */
-  private def make(set: TreeSet[Term], memory: Memory): Term = {
+  public def make(set: TreeSet[Term], memory: Memory): Term = {
     if (set.size == 0) {
       return null
     }
@@ -71,7 +71,7 @@ object Conjunction {
 /**
  * Conjunction of statements
  */
-class Conjunction protected (arg: ArrayList[Term]) extends CompoundTerm(arg) {
+class Conjunction public (arg: ArrayList[Term]) extends CompoundTerm(arg) {
 
   /**
    * Constructor with full values, called by clone
@@ -80,7 +80,7 @@ class Conjunction protected (arg: ArrayList[Term]) extends CompoundTerm(arg) {
    * @param con Whether the term is a constant
    * @param i Syntactic complexity of the compound
    */
-  private def this( name: String, 
+  public def this( name: String,
       components: ArrayList[Term], 
       isConstant: Boolean, 
       complexity: Short ) {

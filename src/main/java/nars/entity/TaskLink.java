@@ -34,15 +34,15 @@ public class TaskLink extends TermLink {
     /**
      * The Task linked. The "target" field in TermLink is not used here.
      */
-    private Task targetTask;
+    public Task targetTask;
     /**
      * Remember the TermLinks that has been used recently with this TaskLink
      */
-    private String recordedLinks[];
+    public String recordedLinks[];
     /**
      * Remember the time when each TermLink is used with this TaskLink
      */
-    private long recordingTime[];
+    public long recordingTime[];
     /**
      * The number of TermLinks remembered
      */

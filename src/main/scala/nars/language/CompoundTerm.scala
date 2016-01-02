@@ -107,7 +107,7 @@ object CompoundTerm {
    * @param t2 the second component
    * @return the component list
    */
-//  protected jmv
+//  public jmv
   def argumentsToList(t1: Term, t2: Term): ArrayList[Term] = {
     val list = new ArrayList[Term](2)
     list.add(t1)
@@ -121,7 +121,7 @@ object CompoundTerm {
    * @param arg the list of components
    * @return the oldName of the term
    */
-//  protected jmv
+//  public jmv
   def makeCompoundName(op: String, arg: ArrayList[Term]): String = {
     val name = new StringBuffer()
     name.append(Symbols.COMPOUND_TERM_OPENER)
@@ -144,7 +144,7 @@ object CompoundTerm {
    * @param arg the list of components
    * @return the oldName of the term
    */
-//  protected jmv 
+//  public jmv
   def makeSetName(opener: Char, arg: ArrayList[Term], closer: Char): String = {
     val name = new StringBuffer()
     name.append(opener)
@@ -164,7 +164,7 @@ object CompoundTerm {
    * @param relationIndex the location of the place holder
    * @return the oldName of the term
    */
-  // protected jmv
+  // public jmv
   def makeImageName(op: String, arg: ArrayList[Term], relationIndex: Int): String = {
     val name = new StringBuffer()
     name.append(Symbols.COMPOUND_TERM_OPENER)
@@ -265,22 +265,22 @@ object CompoundTerm {
  * <p>
  * This abstract class contains default methods for all CompoundTerms.
  */
-abstract class CompoundTerm protected (protected val components: ArrayList[Term]) extends Term {
+abstract class CompoundTerm public (public val components: ArrayList[Term]) extends Term {
 
   /**
    list of (direct) components
    */
-//  protected var components: ArrayList[Term] = _
+//  public var components: ArrayList[Term] = _
 	
   /**
    syntactic complexity of the compound, the sum of those of its components plus 1
    */
-  protected var complexity: Short = _
+  public var complexity: Short = _
 
   /**
    Whether the term names a concept
    */
-  protected var isConstant_ : Boolean = true
+  public var isConstant_ : Boolean = true
 
   /**
    * Abstract method to get the operator of the compound
@@ -298,7 +298,7 @@ abstract class CompoundTerm protected (protected val components: ArrayList[Term]
    * Constructor called from subclasses constructors to initialize the fields
    * @param components Component list
    */
-//  protected def this(components: ArrayList[Term]) {
+//  public def this(components: ArrayList[Term]) {
 //    this()
 //    this.components = components
     calcComplexity()
@@ -313,7 +313,7 @@ abstract class CompoundTerm protected (protected val components: ArrayList[Term]
    * @param isConstant Whether the term refers to a concept
    * @param complexity Complexity of the compound term
    */
-  protected def this(name: String, 
+  public def this(name: String,
       components: ArrayList[Term], 
       isConstant: Boolean, 
       complexity: Short) {
@@ -330,7 +330,7 @@ abstract class CompoundTerm protected (protected val components: ArrayList[Term]
    * @param name Name of the compound
    * @param components Component list
    */
-  protected def this(name: String, components: ArrayList[Term]) {
+  public def this(name: String, components: ArrayList[Term]) {
 //    super(name)
     this(components)
     setName(name);
@@ -343,14 +343,14 @@ abstract class CompoundTerm protected (protected val components: ArrayList[Term]
    * Change the oldName of a CompoundTerm, called after variable substitution
    * @param s The new oldName
    */
-  protected def setName(s: String) {
+  public def setName(s: String) {
     name = s
   }
 
   /**
    * The complexity of the term is the sum of those of the components plus 1
    */
-  private def calcComplexity() {
+  public def calcComplexity() {
     complexity = 1
     for (t <- components) {
       complexity = ( complexity + t.getComplexity ) . asInstanceOf[Short]
@@ -361,7 +361,7 @@ abstract class CompoundTerm protected (protected val components: ArrayList[Term]
    * default method to make the oldName of the current term from existing fields
    * @return the oldName of the term
    */
-//  protected jmv 
+//  public jmv
   def makeName(): String = {
     makeCompoundName(operator(), components)
   }
@@ -545,7 +545,7 @@ abstract class CompoundTerm protected (protected val components: ArrayList[Term]
    * @param type The type of TermLink to be built
    * @param term The CompoundTerm for which the links are built
    */
-  private def prepareComponentLinks(componentLinks: ArrayList[TermLink], `type`: Short, term: CompoundTerm) {
+  public def prepareComponentLinks(componentLinks: ArrayList[TermLink], `type`: Short, term: CompoundTerm) {
     var t1: Term = null
     var t2: Term = null
     var t3: Term = null

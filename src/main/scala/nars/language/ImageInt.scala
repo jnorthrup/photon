@@ -104,7 +104,7 @@ object ImageInt {
  * <p>
  * Internally, it is actually (\,A,P)_1, with an index.
  */
-class ImageInt private (n: String, arg: ArrayList[Term], @BeanProperty var relationIndex: Short)
+class ImageInt public (n: String, arg: ArrayList[Term], @BeanProperty var relationIndex: Short)
     extends CompoundTerm(n, arg) {
 
   /**
@@ -115,7 +115,7 @@ class ImageInt private (n: String, arg: ArrayList[Term], @BeanProperty var relat
    * @param complexity Syntactic complexity of the compound
    * @param index The index of relation in the component list
    */
-  private def this(n: String, 
+  public def this(n: String,
       cs: ArrayList[Term], 
       con: Boolean, 
       complexity: Short, 

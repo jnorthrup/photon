@@ -19,12 +19,12 @@ class Memory(var reasoner: Reasoner) {
   /**
    Concept bag. Containing all Concepts of the system
    */
-  private var concepts: ConceptBag = new ConceptBag(this)
+  public var concepts: ConceptBag = new ConceptBag(this)
 
   /**
    New tasks with novel composed terms, for delayed and selective processing
    */
-  private var novelTasks: NovelTaskBag = new NovelTaskBag(this)
+  public var novelTasks: NovelTaskBag = new NovelTaskBag(this)
 
   /**
    Inference record text to be written into a log file
@@ -35,7 +35,7 @@ class Memory(var reasoner: Reasoner) {
   /**
    List of new tasks accumulated in one cycle, to be processed in the next cycle
    */
-  private var newTasks: ArrayList[Task] = new ArrayList[Task]()
+  public var newTasks: ArrayList[Task] = new ArrayList[Task]()
 
   /**
    List of Strings or Tasks to be sent to the output channels
@@ -82,7 +82,7 @@ class Memory(var reasoner: Reasoner) {
    The substitution that unify the common term in the Task and the Belief
    * TODO unused
    */
-  protected var substitute: HashMap[Term, Term] = _
+  public var substitute: HashMap[Term, Term] = _
 
   def init() {
     concepts.init()
@@ -203,7 +203,7 @@ class Memory(var reasoner: Reasoner) {
    * Derived task comes from the inference rules.
    * @param task the derived task
    */
-  private def derivedTask(task: Task) {
+  public def derivedTask(task: Task) {
     if (task.getBudget.aboveThreshold()) {
       recorder.append("!!! Derived: " + task + "\n")
       val budget = task.getBudget.summary()
@@ -301,7 +301,7 @@ class Memory(var reasoner: Reasoner) {
    * Process the newTasks accumulated in the previous workCycle, accept input ones
    * and those that corresponding to existing concepts, plus one from the buffer.
    */
-  private def processNewTask() {
+  public def processNewTask() {
     var task: Task = null
     var counter = newTasks.size
     //    while (counter-- > 0) { // Java
@@ -328,7 +328,7 @@ class Memory(var reasoner: Reasoner) {
   /**
    * Select a novel task to process.
    */
-  private def processNovelTask() {
+  public def processNovelTask() {
     val task = novelTasks.takeOut()
     if (task != null) {
       immediateProcess(task)
@@ -338,7 +338,7 @@ class Memory(var reasoner: Reasoner) {
   /**
    * Select a concept to fire.
    */
-  private def processConcept() {
+  public def processConcept() {
     currentConcept = concepts.takeOut()
     if (currentConcept != null) {
       currentTerm = currentConcept.getTerm
@@ -353,7 +353,7 @@ class Memory(var reasoner: Reasoner) {
    * Local processing, in one concept only
    * @param task the task to be accepted
    */
-  private def immediateProcess(task: Task) {
+  public def immediateProcess(task: Task) {
     currentTask = task
     recorder.append("!!! Insert: " + task + "\n")
     currentTerm = task.getContent
@@ -407,15 +407,15 @@ class Memory(var reasoner: Reasoner) {
       toStringIfNotNull(currentBelief, "currentBelief")
   }
 
-  private def toStringLongIfNotNull(item: Bag[_], title: String): String = {
+  public def toStringLongIfNotNull(item: Bag[_], title: String): String = {
     if (item == null) "" else "\n " + title + ":\n" + item.toStringLong()
   }
 
-  private def toStringLongIfNotNull(item: Item, title: String): String = {
+  public def toStringLongIfNotNull(item: Item, title: String): String = {
     if (item == null) "" else "\n " + title + ":\n" + item.toStringLong()
   }
 
-  private def toStringIfNotNull(item: AnyRef, title: String): String = {
+  public def toStringIfNotNull(item: AnyRef, title: String): String = {
     if (item == null) "" else "\n " + title + ":\n" + item.toString
   }
 }

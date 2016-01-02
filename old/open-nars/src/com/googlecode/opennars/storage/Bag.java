@@ -42,26 +42,26 @@ import com.googlecode.opennars.main.Parameters;
  */
 public abstract class Bag<Type extends Item> {
     
-    protected static final int TOTAL_LEVEL = Parameters.BAG_LEVEL;          // priority levels
-    protected static final int THRESHOLD = Parameters.BAG_THRESHOLD;        // firing threshold
-    protected static final float RELATIVE_THRESHOLD = (float) THRESHOLD / (float) TOTAL_LEVEL;
-    protected static final float LOAD_FACTOR = Parameters.LOAD_FACTOR;       // hashtable parameter
-    protected static final Distributor DISTRIBUTOR = new Distributor(TOTAL_LEVEL); // only one instance
+    public static final int TOTAL_LEVEL = Parameters.BAG_LEVEL;          // priority levels
+    public static final int THRESHOLD = Parameters.BAG_THRESHOLD;        // firing threshold
+    public static final float RELATIVE_THRESHOLD = (float) THRESHOLD / (float) TOTAL_LEVEL;
+    public static final float LOAD_FACTOR = Parameters.LOAD_FACTOR;       // hashtable parameter
+    public static final Distributor DISTRIBUTOR = new Distributor(TOTAL_LEVEL); // only one instance
 
-    protected HashMap<String, Type> nameTable;    // from key to item
-    protected ArrayList<Type> itemTable[];        // array of lists of items, for items on different level
+    public HashMap<String, Type> nameTable;    // from key to item
+    public ArrayList<Type> itemTable[];        // array of lists of items, for items on different level
        
-    protected int capacity;         // defined in different bags
-    protected int mass;             // current sum of occupied level
-    protected int levelIndex;       // index to get next level, kept in individual objects
-    protected int currentLevel;     // current take out level
-    protected int currentCounter;   // maximum number of items to be taken out at current level
+    public int capacity;         // defined in different bags
+    public int mass;             // current sum of occupied level
+    public int levelIndex;       // index to get next level, kept in individual objects
+    public int currentLevel;     // current take out level
+    public int currentCounter;   // maximum number of items to be taken out at current level
     
     
     // ---------- constructor ---------- //
     
     // called from subclasses
-    protected Bag() {
+    public Bag() {
         capacity = capacity();
         levelIndex = capacity % TOTAL_LEVEL; // so that different bags start at different point
         currentLevel = TOTAL_LEVEL - 1;
@@ -71,11 +71,11 @@ public abstract class Bag<Type extends Item> {
     
     // --- property methods --- //
     
-    protected abstract int capacity();
+    public abstract int capacity();
     
     // the number of times for a decay factor to be fully applied
     // it can be changed in run time by the user, so not a constant
-    protected abstract int forgetRate();
+    public abstract int forgetRate();
     
     // --- Bag property --- //
     
@@ -158,10 +158,10 @@ public abstract class Bag<Type extends Item> {
         return picked;
     }
     
-    // ---------- private methods ---------- //
+    // ---------- public methods ---------- //
     
     // check whether a level is empty
-    private boolean emptyLevel(int n) {
+    public boolean emptyLevel(int n) {
         if (itemTable[n] == null)
             return true;
         else
@@ -169,14 +169,14 @@ public abstract class Bag<Type extends Item> {
     }
     
     // decide the in level according to priority
-    private int getLevel(Type item) {
+    public int getLevel(Type item) {
         float fl = item.getPriority() * TOTAL_LEVEL;
         int level = (int) Math.ceil(fl) - 1;
         return (level < 0) ? 0 : level;     // cannot be -1
     }
     
     // insert an item into the itemTable, and return the overflow
-    private Type intoBase(Type newItem) {
+    public Type intoBase(Type newItem) {
         Type oldItem = null;
         int inLevel = getLevel(newItem);
         if (nameTable.size() > capacity) {      // the bag is full
@@ -197,7 +197,7 @@ public abstract class Bag<Type extends Item> {
     }
     
     // take out the first or last Type in a level from the itemTable
-    private Type takeOutFirst(int level) {
+    public Type takeOutFirst(int level) {
         Type selected = itemTable[level].get(0);
         itemTable[level].remove(0);         // take the item out
         mass -= (level + 1);                    // decrease total mass
@@ -205,7 +205,7 @@ public abstract class Bag<Type extends Item> {
     }
     
     // remove an item from itemTable, then adjust mass
-    protected void outOfBase(Type oldItem) {
+    public void outOfBase(Type oldItem) {
         int level = getLevel(oldItem);
         itemTable[level].remove(oldItem);
         mass -= (level + 1);                    // decrease total mass

@@ -96,7 +96,7 @@ import java.util.Hashtable;
 
 action code {:
   /** helper routine to clone a new production part adding a given label */
-  protected production_part add_lab(production_part part, String lab)
+  public production_part add_lab(production_part part, String lab)
     throws internal_error
     {
       /* if there is no label, or this is an action, just return the original */
@@ -107,19 +107,19 @@ action code {:
     }
 
   /** max size of right hand side we will support */
-  protected final int MAX_RHS = 200;
+  public final int MAX_RHS = 200;
 
   /** array for accumulating right hand side parts */
-  protected production_part[] rhs_parts = new production_part[MAX_RHS];
+  public production_part[] rhs_parts = new production_part[MAX_RHS];
 
   /** where we are currently in building a right hand side */
-  protected int rhs_pos = 0;
+  public int rhs_pos = 0;
 
   /** start a new right hand side */
-  protected void new_rhs() {rhs_pos = 0; }
+  public void new_rhs() {rhs_pos = 0; }
 
   /** add a new right hand side part */
-  protected void add_rhs_part(production_part part) throws java.lang.Exception
+  public void add_rhs_part(production_part part) throws java.lang.Exception
     {
       if (rhs_pos >= MAX_RHS)
 	throw new Exception("Internal Error: Productions limited to " + 
@@ -130,10 +130,10 @@ action code {:
     }
 
   /** string to build up multiple part names */
-  protected String multipart_name = new String();
+  public String multipart_name = new String();
 
   /** append a new name segment to the accumulated multipart name */
-  protected void append_multipart(String name)
+  public void append_multipart(String name)
     {
       String dot = "";
 
@@ -144,16 +144,16 @@ action code {:
     }
 
   /** table of declared symbols -- contains production parts indexed by name */
-  protected Hashtable symbols = new Hashtable();
+  public Hashtable symbols = new Hashtable();
 
   /** table of just non terminals -- contains non_terminals indexed by name */
-  protected Hashtable non_terms = new Hashtable();
+  public Hashtable non_terms = new Hashtable();
 
   /** declared start non_terminal */
-  protected non_terminal start_nt = null;
+  public non_terminal start_nt = null;
 
   /** left hand side non terminal of the current production */
-  protected non_terminal lhs_nt;
+  public non_terminal lhs_nt;
 
   /** Current precedence number */
   int _cur_prec = 0;
@@ -162,12 +162,12 @@ action code {:
   int _cur_side = assoc.no_prec;
 
   /** update the precedences we are declaring */
-  protected void update_precedence(int p) {
+  public void update_precedence(int p) {
     _cur_side = p;
     _cur_prec++;
   }
   /** add relevant data to terminals */ 
-  protected void add_precedence(String term) {
+  public void add_precedence(String term) {
     if (term == null) {
       System.err.println("Unable to add precedence to nonexistent terminal");
     } else {

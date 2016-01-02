@@ -52,7 +52,7 @@ object DifferenceInt {
 /**
  * A compound term whose extension is the difference of the intensions of its components
  */
-class DifferenceInt private (arg: ArrayList[Term]) extends CompoundTerm(arg) {
+class DifferenceInt public (arg: ArrayList[Term]) extends CompoundTerm(arg) {
 
   /**
    * Constructor with full values, called by clone
@@ -61,7 +61,7 @@ class DifferenceInt private (arg: ArrayList[Term]) extends CompoundTerm(arg) {
    * @param open Open variable list
    * @param i Syntactic complexity of the compound
    */
-  private def this( name: String, 
+  public def this( name: String,
       components: ArrayList[Term], 
       isConstant: Boolean, 
       complexity: Short ) {

@@ -15,11 +15,11 @@ class ConceptBag(memory: Memory) extends Bag[Concept](memory) {
    * Get the (constant) capacity of ConceptBag
    * @return The capacity of ConceptBag
    */
-  protected def capacity(): Int = Parameters.CONCEPT_BAG_SIZE
+  public def capacity(): Int = Parameters.CONCEPT_BAG_SIZE
 
   /**
    * Get the (adjustable) forget rate of ConceptBag
    * @return The forget rate of ConceptBag
    */
-  protected def forgetRate(): Int = memory.getMainWindow.forgetCW.value()
+  public def forgetRate(): Int = memory.getMainWindow.forgetCW.value()
 }

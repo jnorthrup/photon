@@ -30,11 +30,11 @@ import com.googlecode.opennars.main.Memory;
  */
 public abstract class Tense extends CompoundTerm {
     
-    protected Tense(String n, ArrayList<Term> arg) {
+    public Tense(String n, ArrayList<Term> arg) {
         super(n, arg);
     }
 
-    protected Tense(String n, ArrayList<Term> cs, ArrayList<Variable> open, ArrayList<Variable> closed, short i) {
+    public Tense(String n, ArrayList<Term> cs, ArrayList<Variable> open, ArrayList<Variable> closed, short i) {
         super(n, cs, open, closed, i);
     }
 

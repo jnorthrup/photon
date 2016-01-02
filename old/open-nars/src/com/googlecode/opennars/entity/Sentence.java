@@ -31,14 +31,14 @@ import com.googlecode.opennars.parser.Symbols;
  * It is used as the premises and conclusions of all inference rules.
  */
 public abstract class Sentence {    
-    protected Term content;
-    protected char punctuation;
-    protected TruthValue truth = null;
-    protected Base base = null;
-    protected boolean input = false;            // whether it is an input sentence
-    protected Judgement bestSolution = null;       // for Question and Goal
-    protected Memory memory;					// to change things
-//    protected Object token;						// to track information through inferences
+    public Term content;
+    public char punctuation;
+    public TruthValue truth = null;
+    public Base base = null;
+    public boolean input = false;            // whether it is an input sentence
+    public Judgement bestSolution = null;       // for Question and Goal
+    public Memory memory;					// to change things
+//    public Object token;						// to track information through inferences
     
     /**
      * Make a Sentence from an input String. Called by StringParser.

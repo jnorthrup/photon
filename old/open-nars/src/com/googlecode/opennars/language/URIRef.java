@@ -4,7 +4,7 @@ import java.net.URI;
 
 public class URIRef extends Term {
 	
-	private URI uri;
+	public URI uri;
 
 	public URIRef(URI uri2) {
 		super(uri2.toString().trim());

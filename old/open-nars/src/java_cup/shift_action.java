@@ -32,7 +32,7 @@ public class shift_action extends parse_action {
   /*-----------------------------------------------------------*/
 
   /** The state we shift to. */
-  protected lalr_state _shift_to;
+  public lalr_state _shift_to;
 
   /** The state we shift to. */
   public lalr_state shift_to() {return _shift_to;}

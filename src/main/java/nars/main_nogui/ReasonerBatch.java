@@ -21,42 +21,42 @@ public class ReasonerBatch {
     /**
      * The name of the reasoner
      */
-    protected String name;
+    public String name;
     /**
      * The memory of the reasoner
      */
-    protected Memory memory;
+    public Memory memory;
     /**
      * The input channels of the reasoner
      */
-    protected ArrayList<InputChannel> inputChannels;
+    public ArrayList<InputChannel> inputChannels;
     /**
      * The output channels of the reasoner
      */
-    protected ArrayList<OutputChannel> outputChannels;
+    public ArrayList<OutputChannel> outputChannels;
     /**
      * System clock, relatively defined to guarantee the repeatability of
      * behaviors
      */
-    private long clock;
+    public long clock;
     /**
      * Flag for running continuously
      */
-    private boolean running;
+    public boolean running;
     /**
      * The remaining number of steps to be carried out (walk mode)
      */
-    private int walkingSteps;
+    public int walkingSteps;
     /**
      * determines the end of {@link NARSBatch} program (set but not accessed in
      * this class)
      */
-    private boolean finishedInputs;
+    public boolean finishedInputs;
     /**
      * System clock - number of cycles since last output
      */
-    private long timer;
-    private AtomicInteger silenceValue = new AtomicInteger(Parameters.SILENT_LEVEL);
+    public long timer;
+    public AtomicInteger silenceValue = new AtomicInteger(Parameters.SILENT_LEVEL);
 
     public ReasonerBatch() {
         memory = new Memory(this);
@@ -254,7 +254,7 @@ public class ReasonerBatch {
     }
 
     /** set System clock : number of cycles since last output */
-    private void setTimer(long timer) {
+    public void setTimer(long timer) {
         this.timer = timer;
     }
 }

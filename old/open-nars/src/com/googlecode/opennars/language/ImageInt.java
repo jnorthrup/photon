@@ -39,7 +39,7 @@ public class ImageInt extends CompoundTerm {
     /**
      * The index of relation in the component list.
      */
-    private short relationIndex;
+    public short relationIndex;
     
     /**
      * constructor with partial values, called by make
@@ -47,7 +47,7 @@ public class ImageInt extends CompoundTerm {
      * @param arg The component list of the term
      * @param index The index of relation in the component list
      */
-    private ImageInt(String n, ArrayList<Term> arg, short index) {
+    public ImageInt(String n, ArrayList<Term> arg, short index) {
         super(n, arg);
         relationIndex = index;
     }
@@ -61,7 +61,7 @@ public class ImageInt extends CompoundTerm {
      * @param n The name of the term
      * @param index The index of relation in the component list
      */
-    private ImageInt(String n, ArrayList<Term> cs, ArrayList<Variable> open, ArrayList<Variable> closed, short complexity, short index) {
+    public ImageInt(String n, ArrayList<Term> cs, ArrayList<Variable> open, ArrayList<Variable> closed, short complexity, short index) {
         super(n, cs, open, closed, complexity);
         relationIndex = index;
     }

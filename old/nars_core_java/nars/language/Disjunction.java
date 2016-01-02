@@ -35,7 +35,7 @@ public class Disjunction extends CompoundTerm {
      * @param n The name of the term
      * @param arg The component list of the term
      */
-    private Disjunction(ArrayList<Term> arg) {
+    public Disjunction(ArrayList<Term> arg) {
         super(arg);
     }
 
@@ -46,7 +46,7 @@ public class Disjunction extends CompoundTerm {
      * @param open Open variable list
      * @param i Syntactic complexity of the compound
      */
-    private Disjunction(String n, ArrayList<Term> cs, boolean con, short i) {
+    public Disjunction(String n, ArrayList<Term> cs, boolean con, short i) {
         super(n, cs, con, i);
     }
 

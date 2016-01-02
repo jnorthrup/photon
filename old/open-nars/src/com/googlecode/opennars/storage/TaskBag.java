@@ -30,11 +30,11 @@ import com.googlecode.opennars.main.*;
 public class TaskBag extends Bag<Task> {
     public static final int defaultForgetRate = Parameters.NEW_TASK_DEFAULT_FORGETTING_CYCLE;
     
-    protected int capacity() {
+    public int capacity() {
         return Parameters.TASK_BUFFER_SIZE;
     }
     
-    protected int forgetRate() {
+    public int forgetRate() {
         return Parameters.TASK_DEFAULT_FORGETTING_CYCLE;
     }
 

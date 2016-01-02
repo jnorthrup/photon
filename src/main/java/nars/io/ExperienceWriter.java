@@ -32,11 +32,11 @@ import nars.main_nogui.ReasonerBatch;
  */
 public class ExperienceWriter implements OutputChannel {
 
-    private ReasonerBatch reasoner;
+    public ReasonerBatch reasoner;
     /**
      * Input experience from a file
      */
-    private PrintWriter outExp;
+    public PrintWriter outExp;
 
     /**
      * Default constructor

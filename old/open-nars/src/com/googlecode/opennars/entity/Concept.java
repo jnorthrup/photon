@@ -39,16 +39,16 @@ import com.googlecode.opennars.storage.*;
  */
 public final class Concept extends Item {
     /* Constant term as the unique ID of the concept */
-    private Term term;
+    public Term term;
     /* Direct Task lists (they may never be used for a Term that is not used as a Statement) */
-    private ArrayList<Judgement> directBeliefs;      // Judgments with the same content
-    private ArrayList<Goal> directGoals;            // Goals that can be directly achieved
-    private Question directQuestion;                // Question that can be directly answered
-    private boolean revisible = true;               // truth value of judgments can be revised
+    public ArrayList<Judgement> directBeliefs;      // Judgments with the same content
+    public ArrayList<Goal> directGoals;            // Goals that can be directly achieved
+    public Question directQuestion;                // Question that can be directly answered
+    public boolean revisible = true;               // truth value of judgments can be revised
     /* Link bags for indirect processing (always used) */
-    private ArrayList<TermLink> linkTemplates;  // templates of TermLink, only in Concepts for CompoundTerms
-    private TaskLinkBag taskLinks;
-    private TermLinkBag termLinks;
+    public ArrayList<TermLink> linkTemplates;  // templates of TermLink, only in Concepts for CompoundTerms
+    public TaskLinkBag taskLinks;
+    public TermLinkBag termLinks;
     
     /* ---------- constructor ---------- */
     
@@ -71,7 +71,7 @@ public final class Concept extends Item {
         }
     }
     
-    private void checkRevisibility() {
+    public void checkRevisibility() {
         revisible = !(term instanceof Tense);                                   // no tense
         if (revisible)
             revisible = ((key.indexOf("()") < 0) && (key.indexOf("(#")) < 0);   // no dependent variable
@@ -99,7 +99,7 @@ public final class Concept extends Item {
      * New question to be directly answered by existing beliefs
      * @param task The task to be processed
      */
-    private void processQuestion(Task task) {
+    public void processQuestion(Task task) {
         if (directQuestion == null)
             directQuestion = (Question) task.getSentence();         // remember it
         for (int i = 0; i < directBeliefs.size(); i++) {
@@ -112,7 +112,7 @@ public final class Concept extends Item {
      * New judgment
      * @param task The task to be processed
      */
-    private void processJudgment(Task task) {
+    public void processJudgment(Task task) {
         Judgement judg = (Judgement) task.getSentence();
         if (revisible)
             reviseTable(task, directBeliefs);
@@ -133,7 +133,7 @@ public final class Concept extends Item {
      * New goal
      * @param task The task to be processed
      */
-    private void processGoal(Task task) {
+    public void processGoal(Task task) {
         Goal goal = (Goal) task.getSentence();
         if (revisible)
             reviseTable(task, directGoals);
@@ -149,7 +149,7 @@ public final class Concept extends Item {
         decisionMaking(task);
     }
     
-    private void decisionMaking(Task task) {    // add plausibility
+    public void decisionMaking(Task task) {    // add plausibility
         Goal goal = (Goal) task.getSentence();
         float desire = 2 * goal.getTruth().getExpectation() - 1;
         float quality = (desire < 0) ? 0 : desire;
@@ -157,7 +157,7 @@ public final class Concept extends Item {
     }
     
     // revise previous beliefs or goals
-    private void reviseTable(Task task, ArrayList table) {
+    public void reviseTable(Task task, ArrayList table) {
         Judgement belief;
         for (int i = 0; i < table.size(); i++) {    // call select()
             belief = (Judgement) table.get(i);
@@ -167,7 +167,7 @@ public final class Concept extends Item {
     }
     
     // to be rewritten
-    private void updateTable(Task task) {
+    public void updateTable(Task task) {
 //        Judgement belief;
 //        for (int i = 0; i < directBeliefs.size(); i++) {    // call select()
 //            belief = directBeliefs.get(i);
@@ -178,7 +178,7 @@ public final class Concept extends Item {
     
     // add the Task as a new direct Belief or Goal, remove redundant ones
     // table sorted by rank
-    private void addToTable(Judgement newJudgement, ArrayList table, int capacity) {
+    public void addToTable(Judgement newJudgement, ArrayList table, int capacity) {
         float rank1 = this.budgetfunctions.rankBelief(newJudgement);    // for the new belief
         Base base1 = newJudgement.getBase();
         Judgement judgement2;
@@ -229,7 +229,7 @@ public final class Concept extends Item {
             buildTermLinks(budget);
     }
     
-    private void buildTermLinks(BudgetValue budget) {
+    public void buildTermLinks(BudgetValue budget) {
         Term t;
         Concept c;
         TermLink cLink1, cLink2;

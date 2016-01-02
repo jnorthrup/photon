@@ -121,7 +121,7 @@ public final class CompositionalRules {
      * @param truth TruthValue of the contentInd
      * @param memory Reference to the memory
      */
-    private static void processComposed(Statement statement, Term subject, Term predicate, TruthValue truth, Memory memory) {
+    public static void processComposed(Statement statement, Term subject, Term predicate, TruthValue truth, Memory memory) {
         if ((subject == null) || (predicate == null)) {
             return;
         }
@@ -144,7 +144,7 @@ public final class CompositionalRules {
      * @param compoundTask Whether the implication comes from the task
      * @param memory Reference to the memory
      */
-    private static void decomposeCompound(CompoundTerm compound, Term component, Term term1, int index, boolean compoundTask, Memory memory) {
+    public static void decomposeCompound(CompoundTerm compound, Term component, Term term1, int index, boolean compoundTask, Memory memory) {
         if (compound instanceof Statement) {
             return;
         }
@@ -283,7 +283,7 @@ public final class CompositionalRules {
      * predicate
      * @param memory Reference to the memory
      */
-    private static void introVarOuter(Statement taskContent, Statement beliefContent, int index, Memory memory) {
+    public static void introVarOuter(Statement taskContent, Statement beliefContent, int index, Memory memory) {
         TruthValue truthT = memory.currentTask.getSentence().getTruth();
         TruthValue truthB = memory.currentBelief.getTruth();
         Variable varInd = new Variable("$varInd1");
@@ -421,7 +421,7 @@ public final class CompositionalRules {
      * @param term2 The second term
      * @param index The index of the terms in their statement
      */
-    private static Term secondCommonTerm(Term term1, Term term2, int index) {
+    public static Term secondCommonTerm(Term term1, Term term2, int index) {
         Term commonTerm = null;
         if (index == 0) {
             if ((term1 instanceof ImageExt) && (term2 instanceof ImageExt)) {

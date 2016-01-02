@@ -78,7 +78,7 @@ object IntersectionInt {
 /**
  * A compound term whose intension is the intersection of the extensions of its components
  */
-class IntersectionInt private (arg: ArrayList[Term]) extends CompoundTerm(arg) {
+class IntersectionInt public (arg: ArrayList[Term]) extends CompoundTerm(arg) {
 
   /**
    * Constructor with full values, called by clone
@@ -87,7 +87,7 @@ class IntersectionInt private (arg: ArrayList[Term]) extends CompoundTerm(arg) {
    * @param open Open variable list
    * @param i Syntactic complexity of the compound
    */
-  private def this(n: String, 
+  public def this(n: String,
       cs: ArrayList[Term], 
       con: Boolean, 
       i: Short) {

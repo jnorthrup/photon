@@ -35,15 +35,15 @@ import nars.storage.BagObserver;
 public class ConceptWindow extends NarsFrame implements ActionListener, EntityObserver {
 
     /** Control buttons */
-    private Button playButton, stopButton, playInNewWindowButton, closeButton;
+    public Button playButton, stopButton, playInNewWindowButton, closeButton;
     /** Display area */
-    private TextArea text;
+    public TextArea text;
     /** The concept to be displayed */
-    private Concept concept;
+    public Concept concept;
     /** Whether the content of the concept is being displayed */
-    private boolean showing = false;
+    public boolean showing = false;
     /** Used to adjust the screen position */
-    private static int instanceCount = 0;
+    public static int instanceCount = 0;
 
     /**
      * Constructor
@@ -135,7 +135,7 @@ public class ConceptWindow extends NarsFrame implements ActionListener, EntityOb
         }
     }
 
-    private void close() {
+    public void close() {
         concept.stop();
         dispose();
     }

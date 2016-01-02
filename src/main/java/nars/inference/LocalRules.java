@@ -176,7 +176,7 @@ public class LocalRules {
      * @param judgment2 The second premise
      * @param memory Reference to the memory
      */
-    private static void inferToSym(Sentence judgment1, Sentence judgment2, Memory memory) {
+    public static void inferToSym(Sentence judgment1, Sentence judgment2, Memory memory) {
         Statement s1 = (Statement) judgment1.getContent();
         Term t1 = s1.getSubject();
         Term t2 = s1.getPredicate();
@@ -201,7 +201,7 @@ public class LocalRules {
      * @param sym The symmetric premise
      * @param memory Reference to the memory
      */
-    private static void inferToAsym(Sentence asym, Sentence sym, Memory memory) {
+    public static void inferToAsym(Sentence asym, Sentence sym, Memory memory) {
         Statement statement = (Statement) asym.getContent();
         Term sub = statement.getPredicate();
         Term pre = statement.getSubject();
@@ -218,7 +218,7 @@ public class LocalRules {
      *
      * @param memory Reference to the memory
      */
-    private static void conversion(Memory memory) {
+    public static void conversion(Memory memory) {
         TruthValue truth = TruthFunctions.conversion(memory.currentBelief.getTruth());
         BudgetValue budget = BudgetFunctions.forward(truth, memory);
         convertedJudgment(truth, budget, memory);
@@ -230,7 +230,7 @@ public class LocalRules {
      *
      * @param memory Reference to the memory
      */
-    private static void convertRelation(Memory memory) {
+    public static void convertRelation(Memory memory) {
         TruthValue truth = memory.currentBelief.getTruth();
         if (((Statement) memory.currentTask.getContent()).isCommutative()) {
             truth = TruthFunctions.abduction(truth, 1.0f);
@@ -250,7 +250,7 @@ public class LocalRules {
      * @param truth The truth value of the new task
      * @param memory Reference to the memory
      */
-    private static void convertedJudgment(TruthValue newTruth, BudgetValue newBudget, Memory memory) {
+    public static void convertedJudgment(TruthValue newTruth, BudgetValue newBudget, Memory memory) {
         Statement content = (Statement) memory.currentTask.getContent();
         Statement beliefContent = (Statement) memory.currentBelief.getContent();
         Term subjT = content.getSubject();

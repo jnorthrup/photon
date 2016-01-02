@@ -53,11 +53,11 @@ public class TermLink extends Item {
     /** At C, point to <(*, C, B) --> A>; TaskLink only */
     public static final short TRANSFORM = 8;
     /** The linked Term */
-    private Term target;
+    public Term target;
     /** The type of link, one of the above */
-    protected short type;
+    public short type;
     /** The index of the component in the component list of the compound, may have up to 4 levels */
-    protected short[] index;
+    public short[] index;
 
     /**
      * Constructor for TermLink template
@@ -89,7 +89,7 @@ public class TermLink extends Item {
      * @param s The key of the TaskLink
      * @param v The budget value of the TaskLink
      */
-    protected TermLink(String s, BudgetValue v) {
+    public TermLink(String s, BudgetValue v) {
         super(s, v);
     }
 
@@ -115,7 +115,7 @@ public class TermLink extends Item {
     /**
      * Set the key of the link
      */
-    protected final void setKey() {
+    public final void setKey() {
         String at1, at2;
         if ((type % 2) == 1) {  // to component
             at1 = Symbols.TO_COMPONENT_1;

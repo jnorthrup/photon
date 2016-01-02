@@ -33,7 +33,7 @@ import nars.main_nogui.Parameters;
  */
 public final class StructuralRules {
 
-    private static final float RELIANCE = Parameters.RELIANCE;
+    public static final float RELIANCE = Parameters.RELIANCE;
 
     /* -------------------- transform between compounds and components -------------------- */
     /**
@@ -155,7 +155,7 @@ public final class StructuralRules {
      * @param index The location of focus in the compound
      * @return Whether the direction of inheritance should be revised
      */
-    private static boolean switchOrder(CompoundTerm compound, short index) {
+    public static boolean switchOrder(CompoundTerm compound, short index) {
         return ((((compound instanceof DifferenceExt) || (compound instanceof DifferenceInt)) && (index == 1))
                 || ((compound instanceof ImageExt) && (index != ((ImageExt) compound).getRelationIndex()))
                 || ((compound instanceof ImageInt) && (index != ((ImageInt) compound).getRelationIndex())));
@@ -261,7 +261,7 @@ public final class StructuralRules {
      * @param truth The truth value of the new task
      * @param memory Reference to the memory
      */
-    private static void structuralStatement(Term subject, Term predicate, TruthValue truth, Memory memory) {
+    public static void structuralStatement(Term subject, Term predicate, TruthValue truth, Memory memory) {
         Task task = memory.currentTask;
         Term oldContent = task.getContent();
         if (oldContent instanceof Statement) {
@@ -416,7 +416,7 @@ public final class StructuralRules {
      * @param predicate The predicate term
      * @param memory Reference to the memory
      */
-    private static void transformSubjectPI(CompoundTerm subject, Term predicate, Memory memory) {
+    public static void transformSubjectPI(CompoundTerm subject, Term predicate, Memory memory) {
         TruthValue truth = memory.currentTask.getSentence().getTruth();
         BudgetValue budget;
         Inheritance inheritance;
@@ -465,7 +465,7 @@ public final class StructuralRules {
      * @param predicate The predicate term
      * @param memory Reference to the memory
      */
-    private static void transformPredicatePI(Term subject, CompoundTerm predicate, Memory memory) {
+    public static void transformPredicatePI(Term subject, CompoundTerm predicate, Memory memory) {
         TruthValue truth = memory.currentTask.getSentence().getTruth();
         BudgetValue budget;
         Inheritance inheritance;

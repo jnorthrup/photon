@@ -14,11 +14,11 @@ class NovelTaskBag(memory: Memory) extends Bag[Task](memory) {
    * Get the (constant) capacity of NovelTaskBag
    * @return The capacity of NovelTaskBag
    */
-  protected def capacity(): Int = Parameters.TASK_BUFFER_SIZE
+  public def capacity(): Int = Parameters.TASK_BUFFER_SIZE
 
   /**
    * Get the (constant) forget rate in NovelTaskBag
    * @return The forget rate in NovelTaskBag
    */
-  protected def forgetRate(): Int = Parameters.NEW_TASK_FORGETTING_CYCLE
+  public def forgetRate(): Int = Parameters.NEW_TASK_FORGETTING_CYCLE
 }

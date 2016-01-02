@@ -31,12 +31,12 @@ import com.googlecode.opennars.main.Parameters;
  */
 public class ConceptBag extends Bag<Concept> {
     
-    protected int capacity() {
+    public int capacity() {
         return Parameters.CONCEPT_BAG_SIZE;
     }
     
     // this is for active concept only
-    protected int forgetRate() {
+    public int forgetRate() {
         return Parameters.CONCEPT_DEFAULT_FORGETTING_CYCLE;
     }
 

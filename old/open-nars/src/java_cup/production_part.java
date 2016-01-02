@@ -29,7 +29,7 @@ public abstract class production_part {
   /** Optional label for referring to the part within an action (null for 
    *  no label). 
    */
-  protected String _label;
+  public String _label;
 
   /** Optional label for referring to the part within an action (null for 
    *  no label). 

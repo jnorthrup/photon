@@ -36,27 +36,27 @@ import nars.storage.Memory;
 public class MainWindow extends NarsFrame implements ActionListener, OutputChannel {
 
     /** Reference to the reasoner */
-    private ReasonerBatch reasoner;
+    public ReasonerBatch reasoner;
     /** Reference to the memory */
-    private Memory memory;
+    public Memory memory;
     /** Reference to the inference recorder */
-    private IInferenceRecorder record;
+    public IInferenceRecorder record;
     /** Reference to the experience reader */
-    private ExperienceReader experienceReader;
+    public ExperienceReader experienceReader;
     /** Reference to the experience writer */
-    private ExperienceWriter experienceWriter;
+    public ExperienceWriter experienceWriter;
     /** Experience display area */
-    private TextArea ioText;
+    public TextArea ioText;
     /** Control buttons */
-    private Button stopButton, walkButton, runButton, exitButton;
+    public Button stopButton, walkButton, runButton, exitButton;
     /** Clock display field */
-    private TextField timerText;
+    public TextField timerText;
     /** Label of the clock */
-    private Label timerLabel;
+    public Label timerLabel;
     /** System clock - number of cycles since last output */
-    private long timer;
+    public long timer;
     /** Whether the experience is saving into a file */
-    private boolean savingExp = false;
+    public boolean savingExp = false;
     /** Input experience window */
     public InputWindow inputWindow;
     /** Window to accept a Term to be looked into */
@@ -281,7 +281,7 @@ public class MainWindow extends NarsFrame implements ActionListener, OutputChann
     /**
      * Close the whole system
      */
-    private void close() {
+    public void close() {
         setVisible(false);
         System.exit(0);
     }

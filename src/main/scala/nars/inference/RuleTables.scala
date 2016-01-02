@@ -108,7 +108,7 @@ object RuleTables {
    * @param beliefTerm The content of belief
    * @param memory Reference to the memory
    */
-  private def syllogisms(tLink: TaskLink, 
+  public def syllogisms(tLink: TaskLink,
       bLink: TermLink, 
       taskTerm: Term, 
       beliefTerm: Term, 
@@ -165,7 +165,7 @@ object RuleTables {
    * @param link2 The link to the second premise
    * @return The figure of the syllogism, one of the four: 11, 12, 21, or 22
    */
-  private def indexToFigure(link1: TermLink, link2: TermLink): Int = {
+  public def indexToFigure(link1: TermLink, link2: TermLink): Int = {
     (link1.getIndex(0) + 1) * 10 + (link2.getIndex(0) + 1)
   }
 
@@ -177,7 +177,7 @@ object RuleTables {
    * @param figure The location of the shared term
    * @param memory Reference to the memory
    */
-  private def asymmetricAsymmetric(sentence: Sentence, 
+  public def asymmetricAsymmetric(sentence: Sentence,
       belief: Sentence, 
       figure: Int, 
       memory: Memory) {
@@ -243,7 +243,7 @@ object RuleTables {
    * @param figure The location of the shared term
    * @param memory Reference to the memory
    */
-  private def asymmetricSymmetric(asym: Sentence, 
+  public def asymmetricSymmetric(asym: Sentence,
       sym: Sentence, 
       figure: Int, 
       memory: Memory) {
@@ -303,7 +303,7 @@ object RuleTables {
    * @param figure The location of the shared term
    * @param memory Reference to the memory
    */
-  private def symmetricSymmetric(belief: Sentence, 
+  public def symmetricSymmetric(belief: Sentence,
       taskSentence: Sentence, 
       figure: Int, 
       memory: Memory) {
@@ -336,7 +336,7 @@ object RuleTables {
    * @param index The location of the second premise in the first
    * @param memory Reference to the memory
    */
-  private def detachmentWithVar(originalMainSentence: Sentence, 
+  public def detachmentWithVar(originalMainSentence: Sentence,
       subSentence: Sentence, 
       index: Int, 
       memory: Memory) {
@@ -369,7 +369,7 @@ object RuleTables {
    * @param side The location of the shared term in the statement
    * @param memory Reference to the memory
    */
-  private def conditionalDedIndWithVar(conditional: Implication, 
+  public def conditionalDedIndWithVar(conditional: Implication,
       index: Short, 
       statement: Statement, 
       side: Short, 
@@ -398,7 +398,7 @@ object RuleTables {
    * @param compoundTask Whether the compound comes from the task
    * @param memory Reference to the memory
    */
-  private def compoundAndSelf(compound: CompoundTerm, 
+  public def compoundAndSelf(compound: CompoundTerm,
       component: Term, 
       compoundTask: Boolean, 
       memory: Memory) {
@@ -424,7 +424,7 @@ object RuleTables {
    * @param beliefTerm The compound from the belief
    * @param memory Reference to the memory
    */
-  private def compoundAndCompound(taskTerm: CompoundTerm, beliefTerm: CompoundTerm, memory: Memory) {
+  public def compoundAndCompound(taskTerm: CompoundTerm, beliefTerm: CompoundTerm, memory: Memory) {
     if (taskTerm.getClass == beliefTerm.getClass) {
       if (taskTerm.size > beliefTerm.size) {
         compoundAndSelf(taskTerm, beliefTerm, true, memory)
@@ -444,7 +444,7 @@ object RuleTables {
    * @param beliefTerm The content of the belief
    * @param memory Reference to the memory
    */
-  private def compoundAndStatement(compound: CompoundTerm, 
+  public def compoundAndStatement(compound: CompoundTerm,
       index: Short, 
       statement: Statement, 
       side: Short, 
@@ -484,7 +484,7 @@ object RuleTables {
    * @param side The location of the current term in the statement
    * @param memory Reference to the memory
    */
-  private def componentAndStatement(compound: CompoundTerm, 
+  public def componentAndStatement(compound: CompoundTerm,
       index: Short, 
       statement: Statement, 
       side: Short, 

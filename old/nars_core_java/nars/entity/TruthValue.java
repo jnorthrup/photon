@@ -30,23 +30,23 @@ public class TruthValue implements Cloneable { // implements Cloneable {
     /**
      * The character that marks the two ends of a truth value
      */
-    private static final char DELIMITER = Symbols.TRUTH_VALUE_MARK;
+    public static final char DELIMITER = Symbols.TRUTH_VALUE_MARK;
     /**
      * The character that separates the factors in a truth value
      */
-    private static final char SEPARATOR = Symbols.VALUE_SEPARATOR;
+    public static final char SEPARATOR = Symbols.VALUE_SEPARATOR;
     /**
      * The frequency factor of the truth value
      */
-    private ShortFloat frequency;
+    public ShortFloat frequency;
     /**
      * The confidence factor of the truth value
      */
-    private ShortFloat confidence;
+    public ShortFloat confidence;
     /**
      * Whether the truth value is derived from a definition
      */
-    private boolean isAnalytic = false;
+    public boolean isAnalytic = false;
 
     /**
      * Constructor with two ShortFloats

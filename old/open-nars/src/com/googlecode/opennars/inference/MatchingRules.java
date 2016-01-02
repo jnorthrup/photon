@@ -31,8 +31,8 @@ import com.googlecode.opennars.parser.*;
  */
 public class MatchingRules {
 	
-	private Memory memory;
-	private BudgetFunctions budgetfunctions;
+	public Memory memory;
+	public BudgetFunctions budgetfunctions;
 	
 	public MatchingRules(Memory memory) {
 		this.memory = memory;
@@ -98,7 +98,7 @@ public class MatchingRules {
     }
     
     // s1 is a better answer to q than s2 is
-    private  boolean betterSolution(Judgement newSol, Judgement oldSol, Sentence problem) {
+    public  boolean betterSolution(Judgement newSol, Judgement oldSol, Sentence problem) {
         if (oldSol == null)
             return true;
         else
@@ -145,7 +145,7 @@ public class MatchingRules {
      * @param judgement1 The first premise
      * @param judgement2 The second premise
      */
-    private  void inferToSym(Judgement judgement1, Judgement judgement2) {
+    public  void inferToSym(Judgement judgement1, Judgement judgement2) {
         Statement s1 = (Statement) judgement1.getContent();
         Statement s2 = (Statement) judgement2.getContent();
         Term t1 = s1.getSubject();
@@ -171,7 +171,7 @@ public class MatchingRules {
      * @param asym The asymmetric premise
      * @param sym The symmetric premise
      */
-    private  void inferToAsym(Judgement asym, Judgement sym, CompoundTerm.TemporalOrder order) {
+    public  void inferToAsym(Judgement asym, Judgement sym, CompoundTerm.TemporalOrder order) {
         Statement statement = (Statement) asym.getContent();
         Term sub = statement.getPredicate();
         Term pre = statement.getSubject();
@@ -186,14 +186,14 @@ public class MatchingRules {
     /**
      * Produce an Inheritance/Implication from a reversed Inheritance/Implication
      */
-    private  void conversion() {
+    public  void conversion() {
         TruthValue truth = TruthFunctions.conversion(this.memory.currentBelief.getTruth());
         BudgetValue budget = this.budgetfunctions.forward(truth);
         this.memory.singlePremiseTask(truth, budget);
     }
     
     // switch between Inheritance/Implication and Similarity/Equivalence
-    private  void convertRelation() {
+    public  void convertRelation() {
         TruthValue truth = this.memory.currentBelief.getTruth();
         if (((Statement) this.memory.currentTask.getContent()).isCommutative())
             truth = TruthFunctions.implied(truth);

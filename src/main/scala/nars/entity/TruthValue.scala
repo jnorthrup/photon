@@ -10,12 +10,12 @@ object TruthValue {
   /**
    The charactor that marks the two ends of a truth value
    */
-  private val DELIMITER = Symbols.TRUTH_VALUE_MARK
+  public val DELIMITER = Symbols.TRUTH_VALUE_MARK
 
   /**
    The charactor that separates the factors in a truth value
    */
-  private val SEPARATOR = Symbols.VALUE_SEPARATOR
+  public val SEPARATOR = Symbols.VALUE_SEPARATOR
 }
 
 /**
@@ -26,12 +26,12 @@ class TruthValue(f: Float, c: Float) extends Cloneable {
   /**
    The frequency factor of the truth value
    */
-  private var frequency: ShortFloat = new ShortFloat(f)
+  public var frequency: ShortFloat = new ShortFloat(f)
 
   /**
    The confidence factor of the truth value
    */
-  private var confidence: ShortFloat = if ((c < 1)) new ShortFloat(c) else new ShortFloat(0.9999f)
+  public var confidence: ShortFloat = if ((c < 1)) new ShortFloat(c) else new ShortFloat(0.9999f)
 
   /**
    * Constructor with a TruthValue to clone

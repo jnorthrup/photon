@@ -13,15 +13,15 @@ public class scanner implements java_cup.runtime.Scanner {
   public scanner() throws java.io.IOException { this(System.in); }
 
   /* single lookahead character */
-  protected int next_char = -2;
+  public int next_char = -2;
 
   /* advance input by one character */
-  protected void advance()
+  public void advance()
     throws java.io.IOException
     { next_char = instream.read(); }
 
   /* initialize the scanner */
-  private void init()
+  public void init()
     throws java.io.IOException
     { advance(); }
 

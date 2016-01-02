@@ -27,7 +27,7 @@ public class ShortFloat implements Cloneable {
 
     /** To save space, the values are stored as short integers (-32768 to 32767, only 0 to 10000 used),
     but used as float */
-    private short value;
+    public short value;
 
     /**
      * Constructor
@@ -57,7 +57,7 @@ public class ShortFloat implements Cloneable {
      * To access the value as short
      * @return The current value in short
      */
-    private short getShortValue() {
+    public short getShortValue() {
         return value;
     }
 

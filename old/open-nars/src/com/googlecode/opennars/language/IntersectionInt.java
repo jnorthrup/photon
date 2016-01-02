@@ -37,7 +37,7 @@ public class IntersectionInt extends CompoundTerm {
      * @param n The name of the term
      * @param arg The component list of the term
      */
-    private IntersectionInt(String n, ArrayList<Term> arg) {
+    public IntersectionInt(String n, ArrayList<Term> arg) {
         super(n, arg);
     }
     
@@ -49,7 +49,7 @@ public class IntersectionInt extends CompoundTerm {
      * @param i syntactic complexity of the compound
      * @param n The name of the term
      */
-    private IntersectionInt(String n, ArrayList<Term> cs, ArrayList<Variable> open, ArrayList<Variable> closed, short i) {
+    public IntersectionInt(String n, ArrayList<Term> cs, ArrayList<Variable> open, ArrayList<Variable> closed, short i) {
         super(n, cs, open, closed, i);
     }
     

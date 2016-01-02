@@ -46,29 +46,29 @@ public class lexer {
   /*--- Constructor(s) ----------------------------------------*/
   /*-----------------------------------------------------------*/
 
-  /** The only constructor is private, so no instances can be created. */
-  private lexer() { }
+  /** The only constructor is public, so no instances can be created. */
+  public lexer() { }
 
   /*-----------------------------------------------------------*/
   /*--- Static (Class) Variables ------------------------------*/
   /*-----------------------------------------------------------*/
 
   /** First character of lookahead. */
-  protected static int next_char; 
+  public static int next_char;
 
   /** Second character of lookahead. */
-  protected static int next_char2;
+  public static int next_char2;
 
   /** Second character of lookahead. */
-  protected static int next_char3;
+  public static int next_char3;
 
   /** Second character of lookahead. */
-  protected static int next_char4;
+  public static int next_char4;
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** EOF constant. */
-  protected static final int EOF_CHAR = -1;
+  public static final int EOF_CHAR = -1;
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
@@ -77,7 +77,7 @@ public class lexer {
    *  they match one of the keywords.  The string of the name is the key here,
    *  which indexes Integer objects holding the symbol number. 
    */
-  protected static Hashtable keywords = new Hashtable(23);
+  public static Hashtable keywords = new Hashtable(23);
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
@@ -87,22 +87,22 @@ public class lexer {
    *  appropriate char (currently Character objects have a bug which precludes
    *  their use in tables).
    */
-  protected static Hashtable char_symbols = new Hashtable(11);
+  public static Hashtable char_symbols = new Hashtable(11);
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** Current line number for use in error messages. */
-  protected static int current_line = 1;
+  public static int current_line = 1;
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** Character position in current line. */
-  protected static int current_position = 1;
+  public static int current_position = 1;
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** Character position in current line. */
-  protected static int absolute_position = 1;
+  public static int absolute_position = 1;
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
@@ -177,7 +177,7 @@ public class lexer {
   /** Advance the scanner one character in the input stream.  This moves
    * next_char2 to next_char and then reads a new next_char2.  
    */
-  protected static void advance() throws java.io.IOException
+  public static void advance() throws java.io.IOException
     {
       int old_char;
 
@@ -245,7 +245,7 @@ public class lexer {
   /** Determine if a character is ok to start an id. 
    * @param ch the character in question.
    */
-  protected static boolean id_start_char(int ch)
+  public static boolean id_start_char(int ch)
     {
       /* allow for % in identifiers.  a hack to allow my
 	 %prec in.  Should eventually make lex spec for this 
@@ -261,7 +261,7 @@ public class lexer {
   /** Determine if a character is ok for the middle of an id.
    * @param ch the character in question. 
    */
-  protected static boolean id_char(int ch)
+  public static boolean id_char(int ch)
     {
       return id_start_char(ch) || (ch >= '0' && ch <= '9');
     }
@@ -271,7 +271,7 @@ public class lexer {
   /** Try to look up a single character symbol, returns -1 for not found. 
    * @param ch the character in question.
    */
-  protected static int find_single_char(int ch)
+  public static int find_single_char(int ch)
     {
       Integer result;
 
@@ -287,7 +287,7 @@ public class lexer {
   /** Handle swallowing up a comment.  Both old style C and new style C++
    *  comments are handled.
    */
-  protected static void swallow_comment() throws java.io.IOException
+  public static void swallow_comment() throws java.io.IOException
     {
       /* next_char == '/' at this point */
 
@@ -347,7 +347,7 @@ public class lexer {
       include ":}" inside a code string).  The routine returns a String
       object suitable for return by the scanner.
    */
-  protected static Symbol do_code_string() throws java.io.IOException
+  public static Symbol do_code_string() throws java.io.IOException
     {
       StringBuffer result = new StringBuffer();
 
@@ -381,7 +381,7 @@ public class lexer {
    *  underscores or dollar signs.  This routine returns a String suitable
    *  for return by the scanner.
    */
-  protected static Symbol do_id() throws java.io.IOException
+  public static Symbol do_id() throws java.io.IOException
     {
       StringBuffer result = new StringBuffer();
       String       result_str;
@@ -446,7 +446,7 @@ public class lexer {
    *  next_token(), but for debugging purposes can be called indirectly from
    *  debug_next_token(). 
    */
-  protected static Symbol real_next_token() throws java.io.IOException
+  public static Symbol real_next_token() throws java.io.IOException
     {
       int sym_num;
 

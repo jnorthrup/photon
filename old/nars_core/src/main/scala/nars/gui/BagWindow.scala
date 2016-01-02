@@ -14,7 +14,7 @@ object BagWindow {
   /**
    The location of the display area, shifted according to the number of windows opened
    */
-  private var counter: Int = _
+  public var counter: Int = _
 }
 
 /**
@@ -30,26 +30,26 @@ class BagWindow(var bag: Bag[_], title: String) extends NarsFrame(title) with Ac
   /**
    Control buttons
    */
-  private var playButton: Button = new Button("Play")
+  public var playButton: Button = new Button("Play")
 
-  private var stopButton: Button = new Button("Stop")
+  public var stopButton: Button = new Button("Stop")
 
-  private var closeButton: Button = new Button("Close")
+  public var closeButton: Button = new Button("Close")
 
   /**
    Display area
    */
-  private var text: TextArea = new TextArea("")
+  public var text: TextArea = new TextArea("")
 
   /**
    Display label
    */
-  private var valueLabel: Label = new Label(String.valueOf(showLevel), Label.RIGHT)
+  public var valueLabel: Label = new Label(String.valueOf(showLevel), Label.RIGHT)
 
   /**
    Adjustable display level
    */
-  private var valueBar: Scrollbar = new Scrollbar(Scrollbar.HORIZONTAL, showLevel, 0, 1, Parameters.BAG_LEVEL)
+  public var valueBar: Scrollbar = new Scrollbar(Scrollbar.HORIZONTAL, showLevel, 0, 1, Parameters.BAG_LEVEL)
 
 //  super(title)
 
@@ -147,7 +147,7 @@ class BagWindow(var bag: Bag[_], title: String) extends NarsFrame(title) with Ac
   /**
    * Close the window
    */
-  private def close() {
+  public def close() {
     bag.stop()
     dispose()
     counter -= 1

@@ -53,7 +53,7 @@ object SetExt {
 /**
  * An extensionally defined set, which contains one or more instances.
  */
-class SetExt private (arg: ArrayList[Term]) extends CompoundTerm(arg) {
+class SetExt public (arg: ArrayList[Term]) extends CompoundTerm(arg) {
 
   /**
    * Constructor with full values, called by clone
@@ -62,7 +62,7 @@ class SetExt private (arg: ArrayList[Term]) extends CompoundTerm(arg) {
    * @param open Open variable list
    * @param i Syntactic complexity of the compound
    */
-  private def this(n: String, 
+  public def this(n: String,
       cs: ArrayList[Term], 
       con: Boolean, 
       i: Short) {

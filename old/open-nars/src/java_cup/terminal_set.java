@@ -44,7 +44,7 @@ public class terminal_set {
   /*-----------------------------------------------------------*/
 
   /** Bitset to implement the actual set. */
-  protected BitSet _elements;
+  public BitSet _elements;
 
   /*-----------------------------------------------------------*/
   /*--- General Methods ----------------------------------------*/
@@ -54,7 +54,7 @@ public class terminal_set {
    *  one is found. 
    * @param obj the object we are testing.
    */
-  protected void not_null(Object obj) throws internal_error
+  public void not_null(Object obj) throws internal_error
     {
       if (obj == null) 
 	throw new internal_error("Null object used in set operation");

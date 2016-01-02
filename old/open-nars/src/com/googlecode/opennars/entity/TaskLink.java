@@ -32,9 +32,9 @@ import com.googlecode.opennars.main.*;
  * The reason to separate a Task and a TaskLink is that a Task can be linked from multiple Concepts, with different BudgetValue.
  */
 public class TaskLink extends TermLink {
-    private static final int RECORD_LENGTH = Parameters.TASK_INFERENCE_RECORD_LENGTH;
-    private Task targetTask;        // now "target" means a term !!!
-    private ArrayList<String> record; // remember the CompositionLinks that has been used recently
+    public static final int RECORD_LENGTH = Parameters.TASK_INFERENCE_RECORD_LENGTH;
+    public Task targetTask;        // now "target" means a term !!!
+    public ArrayList<String> record; // remember the CompositionLinks that has been used recently
     
     public TaskLink(Task t, TermLink template, BudgetValue v, Memory memory) {
         super(v, memory);

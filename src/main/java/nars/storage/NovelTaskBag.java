@@ -39,7 +39,7 @@ public class NovelTaskBag extends Bag<Task> {
      * Get the (constant) capacity of NovelTaskBag
      * @return The capacity of NovelTaskBag
      */
-    protected int capacity() {
+    public int capacity() {
         return Parameters.TASK_BUFFER_SIZE;
     }
 
@@ -47,7 +47,7 @@ public class NovelTaskBag extends Bag<Task> {
      * Get the (constant) forget rate in NovelTaskBag
      * @return The forget rate in NovelTaskBag
      */
-    protected int forgetRate() {
+    public int forgetRate() {
         return Parameters.NEW_TASK_FORGETTING_CYCLE;
     }
 }

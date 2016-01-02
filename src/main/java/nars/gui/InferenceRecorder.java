@@ -32,11 +32,11 @@ import nars.io.IInferenceRecorder;
 public class InferenceRecorder implements IInferenceRecorder {
 
     /** the display window */
-    private InferenceWindow window = new InferenceWindow(this);
+    public InferenceWindow window = new InferenceWindow(this);
     /** whether to display */
-    private boolean isReporting = false;
+    public boolean isReporting = false;
     /** the log file */
-    private PrintWriter logFile = null;
+    public PrintWriter logFile = null;
 
     @Override
 	public void init() {

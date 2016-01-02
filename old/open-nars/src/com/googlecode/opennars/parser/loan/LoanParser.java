@@ -144,7 +144,7 @@ public class LoanParser extends Parser {
 		 * @param o the object to (potentially) wrap
 		 * @return the wrapped object
 		 */
-		private Stm wrapTerm(Object o) {
+		public Stm wrapTerm(Object o) {
 			if(o instanceof com.googlecode.opennars.parser.loan.Loan.Absyn.Term) {
 				return new StmTrm((com.googlecode.opennars.parser.loan.Loan.Absyn.Term) o);
 			}
@@ -157,7 +157,7 @@ public class LoanParser extends Parser {
 		 * @param o the object to (potentially) wrap
 		 * @return the wrapped object
 		 */
-		private com.googlecode.opennars.parser.loan.Loan.Absyn.Term wrapStatement(Object o) {
+		public com.googlecode.opennars.parser.loan.Loan.Absyn.Term wrapStatement(Object o) {
 			if(o instanceof com.googlecode.opennars.parser.loan.Loan.Absyn.Stm) {
 				return new TrmStm((com.googlecode.opennars.parser.loan.Loan.Absyn.Stm) o);
 			}
@@ -1360,9 +1360,9 @@ public class LoanParser extends Parser {
 
 	}
 
-	private Map<String,URI> namespaces = new HashMap<String,URI>();
-	private URI baseURI = null;
-	private Memory memory = null;
+	public Map<String,URI> namespaces = new HashMap<String,URI>();
+	public URI baseURI = null;
+	public Memory memory = null;
 	
 	@Override
 	public Task parseTask(String input, Memory memory)

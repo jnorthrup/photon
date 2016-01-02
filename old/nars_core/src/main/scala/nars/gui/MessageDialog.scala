@@ -10,9 +10,9 @@ import scala.collection.JavaConversions._
  */
 class MessageDialog(parent: Frame, message: String) extends Dialog(parent, "Message", false) with ActionListener with WindowListener {
 
-  protected var button: Button = new Button(" OK ")
+  public var button: Button = new Button(" OK ")
 
-  protected var text: TextArea = new TextArea(message)
+  public var text: TextArea = new TextArea(message)
 
 //  super(parent, "Message", false)
 
@@ -54,7 +54,7 @@ class MessageDialog(parent: Frame, message: String) extends Dialog(parent, "Mess
     }
   }
 
-  private def close() {
+  public def close() {
     this.setVisible(false)
     this.dispose()
   }

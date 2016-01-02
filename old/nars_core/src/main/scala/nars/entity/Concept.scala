@@ -30,12 +30,12 @@ class Concept(@BeanProperty var term: Term, var memory: Memory) extends Item(ter
   /**
    Task links for indirect processing
    */
-  private var taskLinks: TaskLinkBag = new TaskLinkBag(memory)
+  public var taskLinks: TaskLinkBag = new TaskLinkBag(memory)
 
   /**
    Term links between the term and its components and compounds
    */
-  private var termLinks: TermLinkBag = new TermLinkBag(memory)
+  public var termLinks: TermLinkBag = new TermLinkBag(memory)
 
   /**
    Link templates of TermLink, only in concepts with CompoundTerm
@@ -47,22 +47,22 @@ class Concept(@BeanProperty var term: Term, var memory: Memory) extends Item(ter
   /**
    Question directly asked about the term
    */
-  private var questions: ArrayList[Task] = new ArrayList[Task]()
+  public var questions: ArrayList[Task] = new ArrayList[Task]()
 
   /**
    Sentences directly made about the term, with non-future tense
    */
-  private var beliefs: ArrayList[Sentence] = new ArrayList[Sentence]()
+  public var beliefs: ArrayList[Sentence] = new ArrayList[Sentence]()
 
   /**
    Whether the content of the concept is being displayed
    */
-  private var showing: Boolean = false
+  public var showing: Boolean = false
 
   /**
    The display window
    */
-  private var window: ConceptWindow = null
+  public var window: ConceptWindow = null
 
 //  super(tm.getName)
 
@@ -98,7 +98,7 @@ class Concept(@BeanProperty var term: Term, var memory: Memory) extends Item(ter
    * @param task The task to be processed
    * @return Whether to continue the processing of the task
    */
-  private def processJudgment(task: Task) {
+  public def processJudgment(task: Task) {
     val judg = task.getSentence
     val oldBelief = evaluation(judg, beliefs)
     if (oldBelief != null) {
@@ -164,7 +164,7 @@ class Concept(@BeanProperty var term: Term, var memory: Memory) extends Item(ter
    * @param task The task to be linked
    * @param content The content of the task
    */
-  private def linkToTask(task: Task) {
+  public def linkToTask(task: Task) {
     val taskBudget = task.getBudget
     var taskLink = new TaskLink(task, null, taskBudget)
     insertTaskLink(taskLink)
@@ -195,7 +195,7 @@ class Concept(@BeanProperty var term: Term, var memory: Memory) extends Item(ter
    * @param table The table to be revised
    * @param capacity The capacity of the table
    */
-  private def addToTable(newSentence: Sentence, table: ArrayList[Sentence], capacity: Int) {
+  public def addToTable(newSentence: Sentence, table: ArrayList[Sentence], capacity: Int) {
     val rank1 = BudgetFunctions.rankBelief(newSentence)
     var judgment2: Sentence = null
     var rank2: Float = 0
@@ -227,7 +227,7 @@ class Concept(@BeanProperty var term: Term, var memory: Memory) extends Item(ter
    * @param list The list of beliefs to be used
    * @return The best candidate belief selected
    */
-  private def evaluation(query: Sentence, list: ArrayList[Sentence]): Sentence = {
+  public def evaluation(query: Sentence, list: ArrayList[Sentence]): Sentence = {
     if (list == null) {
       return null
     }
@@ -323,7 +323,7 @@ class Concept(@BeanProperty var term: Term, var memory: Memory) extends Item(ter
     res
   }
 
-  private def toStringIfNotNull(item: AnyRef, title: String): String = {
+  public def toStringIfNotNull(item: AnyRef, title: String): String = {
     if (item == null) "" else "\n " + title + ":" + item.toString
   }
 

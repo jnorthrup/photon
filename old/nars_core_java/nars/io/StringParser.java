@@ -39,7 +39,7 @@ public abstract class StringParser extends Symbols {
     /**
      * All kinds of invalid input lines
      */
-    private static class InvalidInputException extends Exception {
+    public static class InvalidInputException extends Exception {
 
         /**
          * An invalid input line.
@@ -125,7 +125,7 @@ public abstract class StringParser extends Symbols {
      * @throws nars.io.StringParser.InvalidInputException if the input cannot be
      * parsed into a BudgetValue
      */
-    private static String getBudgetString(StringBuffer s) throws InvalidInputException {
+    public static String getBudgetString(StringBuffer s) throws InvalidInputException {
         if (s.charAt(0) != BUDGET_VALUE_MARK) {
             return null;
         }
@@ -149,7 +149,7 @@ public abstract class StringParser extends Symbols {
      * @throws nars.io.StringParser.InvalidInputException if the input cannot be
      * parsed into a TruthValue
      */
-    private static String getTruthString(StringBuffer s) throws InvalidInputException {
+    public static String getTruthString(StringBuffer s) throws InvalidInputException {
         int last = s.length() - 1;
         if (s.charAt(last) != TRUTH_VALUE_MARK) {       // use default
             return null;
@@ -174,7 +174,7 @@ public abstract class StringParser extends Symbols {
      * @param type Task type
      * @return the input TruthValue
      */
-    private static TruthValue parseTruth(String s, char type) {
+    public static TruthValue parseTruth(String s, char type) {
         if (type == QUESTION_MARK) {
             return null;
         }
@@ -202,7 +202,7 @@ public abstract class StringParser extends Symbols {
      * @throws nars.io.StringParser.InvalidInputException If the String cannot
      * be parsed into a BudgetValue
      */
-    private static BudgetValue parseBudget(String s, char punctuation, TruthValue truth) throws InvalidInputException {
+    public static BudgetValue parseBudget(String s, char punctuation, TruthValue truth) throws InvalidInputException {
         float priority, durability;
         switch (punctuation) {
             case JUDGMENT_MARK:
@@ -292,7 +292,7 @@ public abstract class StringParser extends Symbols {
         return null;
     }
 
-//    private static void showWarning(String message) {
+//    public static void showWarning(String message) {
 //		new TemporaryFrame( message + "\n( the faulty line has been kept in the input window )",
 //				40000, TemporaryFrame.WARNING );
 //    }
@@ -306,7 +306,7 @@ public abstract class StringParser extends Symbols {
      * parsed into a Term
      * @return the Term generated from the String
      */
-    private static Term parseAtomicTerm(String s0) throws InvalidInputException {
+    public static Term parseAtomicTerm(String s0) throws InvalidInputException {
         String s = s0.trim();
         if (s.length() == 0) {
             throw new InvalidInputException("missing term");
@@ -330,7 +330,7 @@ public abstract class StringParser extends Symbols {
      * @throws nars.io.StringParser.InvalidInputException the String cannot be
      * parsed into a Term
      */
-    private static Statement parseStatement(String s0, Memory memory) throws InvalidInputException {
+    public static Statement parseStatement(String s0, Memory memory) throws InvalidInputException {
         String s = s0.trim();
         int i = topRelation(s);
         if (i < 0) {
@@ -354,7 +354,7 @@ public abstract class StringParser extends Symbols {
      * @throws nars.io.StringParser.InvalidInputException the String cannot be
      * parsed into a Term
      */
-    private static Term parseCompoundTerm(String s0, Memory memory) throws InvalidInputException {
+    public static Term parseCompoundTerm(String s0, Memory memory) throws InvalidInputException {
         String s = s0.trim();
         int firstSeparator = s.indexOf(ARGUMENT_SEPARATOR);
         String op = s.substring(0, firstSeparator).trim();
@@ -377,7 +377,7 @@ public abstract class StringParser extends Symbols {
      * @throws nars.io.StringParser.InvalidInputException the String cannot be
      * parsed into an argument get
      */
-    private static ArrayList<Term> parseArguments(String s0, Memory memory) throws InvalidInputException {
+    public static ArrayList<Term> parseArguments(String s0, Memory memory) throws InvalidInputException {
         String s = s0.trim();
         ArrayList<Term> list = new ArrayList<>();
         int start = 0;
@@ -403,7 +403,7 @@ public abstract class StringParser extends Symbols {
      * @param s The String to be parsed
      * @param first The starting index
      */
-    private static int nextSeparator(String s, int first) {
+    public static int nextSeparator(String s, int first) {
         int levelCounter = 0;
         int i = first;
         while (i < s.length() - 1) {
@@ -427,7 +427,7 @@ public abstract class StringParser extends Symbols {
      * @return the index of the top-level relation
      * @param s The String to be parsed
      */
-    private static int topRelation(String s) {      // need efficiency improvement
+    public static int topRelation(String s) {      // need efficiency improvement
         int levelCounter = 0;
         int i = 0;
         while (i < s.length() - 3) {    // don't need to check the last 3 characters
@@ -452,7 +452,7 @@ public abstract class StringParser extends Symbols {
      * @param s The String to be checked
      * @param i The starting index
      */
-    private static boolean isOpener(String s, int i) {
+    public static boolean isOpener(String s, int i) {
         char c = s.charAt(i);
         boolean b = (c == COMPOUND_TERM_OPENER)
                 || (c == SET_EXT_OPENER)
@@ -474,7 +474,7 @@ public abstract class StringParser extends Symbols {
      * @param s The String to be checked
      * @param i The starting index
      */
-    private static boolean isCloser(String s, int i) {
+    public static boolean isCloser(String s, int i) {
         char c = s.charAt(i);
         boolean b = (c == COMPOUND_TERM_CLOSER)
                 || (c == SET_EXT_CLOSER)

@@ -11,12 +11,12 @@ class Distributor(range: Int) {
     /**
    Capacity of the array
    */
-  private var capacity: Int = (range * (range + 1)) / 2
+  public var capacity: Int = (range * (range + 1)) / 2
   
   /**
    Shuffled sequence of index numbers
    */
-  private var order = new Array[Int](capacity)
+  public var order = new Array[Int](capacity)
 
   var index: Int = _
   var rank: Int = _

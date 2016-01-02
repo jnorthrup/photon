@@ -37,7 +37,7 @@ public class Product extends CompoundTerm {
      * @param n The name of the term
      * @param arg The component list of the term
      */
-    private Product(String n, ArrayList<Term> arg) {
+    public Product(String n, ArrayList<Term> arg) {
         super(n, arg);
     }
     
@@ -49,7 +49,7 @@ public class Product extends CompoundTerm {
      * @param complexity syntactic complexity of the compound
      * @param n The name of the term
      */
-    private Product(String n, ArrayList<Term> cs, ArrayList<Variable> open, ArrayList<Variable> closed, short complexity) {
+    public Product(String n, ArrayList<Term> cs, ArrayList<Variable> open, ArrayList<Variable> closed, short complexity) {
         super(n, cs, open, closed, complexity);
     }
     

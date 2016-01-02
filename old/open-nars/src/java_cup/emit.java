@@ -101,8 +101,8 @@ public class emit {
   /*--- Constructor(s) ----------------------------------------*/
   /*-----------------------------------------------------------*/
 
-  /** Only constructor is private so no instances can be created. */
-  private emit() { }
+  /** Only constructor is public so no instances can be created. */
+  public emit() { }
 
   /*-----------------------------------------------------------*/
   /*--- Static (Class) Variables ------------------------------*/
@@ -204,11 +204,11 @@ public class emit {
   public static long goto_table_time       = 0;
 
   /* frankf 6/18/96 */
-  protected static boolean _lr_values;
+  public static boolean _lr_values;
 
   /** whether or not to emit code for left and right values */
   public static boolean lr_values() {return _lr_values;}
-  protected static void set_lr_values(boolean b) { _lr_values = b;}
+  public static void set_lr_values(boolean b) { _lr_values = b;}
 
   /*-----------------------------------------------------------*/
   /*--- General Methods ---------------------------------------*/
@@ -217,7 +217,7 @@ public class emit {
   /** Build a string with the standard prefix. 
    * @param str string to prefix.
    */
-  protected static String pre(String str) {
+  public static String pre(String str) {
     return prefix + parser_class_name + "$" + str;
   }
 
@@ -226,7 +226,7 @@ public class emit {
   /** Emit a package spec if the user wants one. 
    * @param out stream to produce output on.
    */
-  protected static void emit_package(PrintWriter out)
+  public static void emit_package(PrintWriter out)
     {
       /* generate a package spec if we have a name for one */
       if (package_name != null) {
@@ -309,7 +309,7 @@ public class emit {
    * @param out        stream to produce output on.
    * @param start_prod the start production of the grammar.
    */
-  protected static void emit_action_code(PrintWriter out, production start_prod)
+  public static void emit_action_code(PrintWriter out, production start_prod)
     throws internal_error
     {
       production prod;
@@ -331,7 +331,7 @@ public class emit {
 	}
 
       /* field for parser object */
-      out.println("  private final "+parser_class_name+" parser;");
+      out.println("  public final "+parser_class_name+" parser;");
 
       /* constructor */
       out.println();
@@ -483,7 +483,7 @@ public class emit {
   /** Emit the production table. 
    * @param out stream to produce output on.
    */
-  protected static void emit_production_table(PrintWriter out)
+  public static void emit_production_table(PrintWriter out)
     {
       production all_prods[];
       production prod;
@@ -510,7 +510,7 @@ public class emit {
       /* do the top of the table */
       out.println();
       out.println("  /** Production table. */");
-      out.println("  protected static final short _production_table[][] = ");
+      out.println("  public static final short _production_table[][] = ");
       out.print  ("    unpackFromStrings(");
       do_table_as_string(out, prod_table);
       out.println(");");
@@ -531,7 +531,7 @@ public class emit {
    * @param act_tab         the internal representation of the action table.
    * @param compact_reduces do we use the most frequent reduce as default?
    */
-  protected static void do_action_table(
+  public static void do_action_table(
     PrintWriter        out, 
     parse_action_table act_tab,
     boolean            compact_reduces)
@@ -617,7 +617,7 @@ public class emit {
       /* finish off the init of the table */
       out.println();
       out.println("  /** Parse-action table. */");
-      out.println("  protected static final short[][] _action_table = "); 
+      out.println("  public static final short[][] _action_table = ");
       out.print  ("    unpackFromStrings(");
       do_table_as_string(out, action_table);
       out.println(");");
@@ -636,7 +636,7 @@ public class emit {
    * @param out     stream to produce output on.
    * @param red_tab the internal representation of the reduce-goto table.
    */
-  protected static void do_reduce_table(
+  public static void do_reduce_table(
     PrintWriter out, 
     parse_reduce_table red_tab)
     {
@@ -679,7 +679,7 @@ public class emit {
       /* emit the table. */
       out.println();
       out.println("  /** <code>reduce_goto</code> table. */");
-      out.println("  protected static final short[][] _reduce_table = "); 
+      out.println("  public static final short[][] _reduce_table = ");
       out.print  ("    unpackFromStrings(");
       do_table_as_string(out, reduce_goto_table);
       out.println(");");
@@ -694,7 +694,7 @@ public class emit {
     }
 
   // print a string array encoding the given short[][] array.
-  protected static void do_table_as_string(PrintWriter out, short[][] sa) {
+  public static void do_table_as_string(PrintWriter out, short[][] sa) {
     out.println("new String[] {");
     out.print("    \"");
     int nchar=0, nbytes=0;
@@ -717,14 +717,14 @@ public class emit {
     out.print("\" }");
   }
   // split string if it is very long; start new line occasionally for neatness
-  protected static int do_newline(PrintWriter out, int nchar, int nbytes) {
+  public static int do_newline(PrintWriter out, int nchar, int nbytes) {
     if (nbytes > 65500)  { out.println("\", "); out.print("    \""); }
     else if (nchar > 11) { out.println("\" +"); out.print("    \""); }
     else return nchar+1;
     return 0;
   }
   // output an escape sequence for the given character code.
-  protected static int do_escaped(PrintWriter out, char c) {
+  public static int do_escaped(PrintWriter out, char c) {
     StringBuffer escape = new StringBuffer();
     if (c <= 0xFF) {
       escape.append(Integer.toOctalString(c));
@@ -807,12 +807,12 @@ public class emit {
 
       /* instance of the action encapsulation class */
       out.println("  /** Instance of action encapsulation class. */");
-      out.println("  protected " + pre("actions") + " action_obj;");
+      out.println("  public " + pre("actions") + " action_obj;");
       out.println();
 
       /* action object initializer */
       out.println("  /** Action encapsulation object initializer. */");
-      out.println("  protected void init_actions()");
+      out.println("  public void init_actions()");
       out.println("    {");
       out.println("      action_obj = new " + pre("actions") + "(this);");
       out.println("    }");

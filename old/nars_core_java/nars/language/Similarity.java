@@ -35,7 +35,7 @@ public class Similarity extends Statement {
      * @param n The name of the term
      * @param arg The component list of the term
      */
-    private Similarity(ArrayList<Term> arg) {
+    public Similarity(ArrayList<Term> arg) {
         super(arg);
     }
 
@@ -46,7 +46,7 @@ public class Similarity extends Statement {
      * @param open Open variable list
      * @param i Syntactic complexity of the compound
      */
-    private Similarity(String n, ArrayList<Term> cs, boolean con, short i) {
+    public Similarity(String n, ArrayList<Term> cs, boolean con, short i) {
         super(n, cs, con, i);
     }
 

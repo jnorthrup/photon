@@ -36,7 +36,7 @@ public class Reasoner extends ReasonerBatch {
 	/** The unique main window */
     MainWindow mainWindow;
     /** Input experience from a window */
-    private InputWindow inputWindow;
+    public InputWindow inputWindow;
     /**
      * Start the initial windows and memory. Called from NARS only.
      * @param name The name of the reasoner

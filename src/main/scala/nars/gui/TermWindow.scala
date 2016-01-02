@@ -15,19 +15,19 @@ class TermWindow(var memory: Memory) extends NarsFrame("Term Window") with Actio
   /**
    Display label
    */
-  private var termLabel: Label = new Label("Term:", Label.RIGHT)
+  public var termLabel: Label = new Label("Term:", Label.RIGHT)
 
   /**
    Input field for term name
    */
-  private var termField: TextField = new TextField("")
+  public var termField: TextField = new TextField("")
 
   /**
    Control buttons
    */
-  private var playButton: Button = new Button("Show")
+  public var playButton: Button = new Button("Show")
 
-  private var hideButton: Button = new Button("Hide")
+  public var hideButton: Button = new Button("Hide")
 
 //  super("Term Window")
 
@@ -97,7 +97,7 @@ class TermWindow(var memory: Memory) extends NarsFrame("Term Window") with Actio
     }
   }
 
-  private def close() {
+  public def close() {
     setVisible(false)
   }
 

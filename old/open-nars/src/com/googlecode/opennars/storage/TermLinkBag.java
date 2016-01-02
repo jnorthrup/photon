@@ -29,13 +29,13 @@ import com.googlecode.opennars.main.Parameters;
  */
 public class TermLinkBag extends Bag<TermLink> {
 
-    private static final int maxTakeOut = Parameters.MAX_TAKE_OUT_K_LINK;
+    public static final int maxTakeOut = Parameters.MAX_TAKE_OUT_K_LINK;
     
-    protected int capacity() {
+    public int capacity() {
         return Parameters.BELIEF_BAG_SIZE;
     }
     
-    protected int forgetRate() {
+    public int forgetRate() {
         return Parameters.BELIEF_DEFAULT_FORGETTING_CYCLE;
     }
     

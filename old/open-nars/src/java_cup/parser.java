@@ -21,7 +21,7 @@ public class parser extends java_cup.runtime.lr_parser {
   public parser(java_cup.runtime.Scanner s) {super(s);}
 
   /** Production table. */
-  protected static final short _production_table[][] = 
+  public static final short _production_table[][] =
     unpackFromStrings(new String[] {
     "\000\153\000\002\002\004\000\002\055\002\000\002\003" +
     "\012\000\002\003\007\000\002\056\002\000\002\004\006" +
@@ -62,7 +62,7 @@ public class parser extends java_cup.runtime.lr_parser {
   public short[][] production_table() {return _production_table;}
 
   /** Parse-action table. */
-  protected static final short[][] _action_table = 
+  public static final short[][] _action_table =
     unpackFromStrings(new String[] {
     "\000\247\000\026\003\006\004\000\005\000\007\000\010" +
     "\000\011\000\012\000\013\000\014\000\035\000\001\002" +
@@ -248,7 +248,7 @@ public class parser extends java_cup.runtime.lr_parser {
   public short[][] action_table() {return _action_table;}
 
   /** <code>reduce_goto</code> table. */
-  protected static final short[][] _reduce_table = 
+  public static final short[][] _reduce_table =
     unpackFromStrings(new String[] {
     "\000\247\000\006\003\003\055\004\001\001\000\002\001" +
     "\001\000\006\004\176\037\175\001\001\000\010\012\012" +
@@ -326,10 +326,10 @@ public class parser extends java_cup.runtime.lr_parser {
   public short[][] reduce_table() {return _reduce_table;}
 
   /** Instance of action encapsulation class. */
-  protected CUP$parser$actions action_obj;
+  public CUP$parser$actions action_obj;
 
   /** Action encapsulation object initializer. */
-  protected void init_actions()
+  public void init_actions()
     {
       action_obj = new CUP$parser$actions(this);
     }
@@ -397,7 +397,7 @@ class CUP$parser$actions {
 
 
   /** helper routine to clone a new production part adding a given label */
-  protected production_part add_lab(production_part part, String lab)
+  public production_part add_lab(production_part part, String lab)
     throws internal_error
     {
       /* if there is no label, or this is an action, just return the original */
@@ -408,19 +408,19 @@ class CUP$parser$actions {
     }
 
   /** max size of right hand side we will support */
-  protected final int MAX_RHS = 200;
+  public final int MAX_RHS = 200;
 
   /** array for accumulating right hand side parts */
-  protected production_part[] rhs_parts = new production_part[MAX_RHS];
+  public production_part[] rhs_parts = new production_part[MAX_RHS];
 
   /** where we are currently in building a right hand side */
-  protected int rhs_pos = 0;
+  public int rhs_pos = 0;
 
   /** start a new right hand side */
-  protected void new_rhs() {rhs_pos = 0; }
+  public void new_rhs() {rhs_pos = 0; }
 
   /** add a new right hand side part */
-  protected void add_rhs_part(production_part part) throws java.lang.Exception
+  public void add_rhs_part(production_part part) throws java.lang.Exception
     {
       if (rhs_pos >= MAX_RHS)
 	throw new Exception("Internal Error: Productions limited to " + 
@@ -431,10 +431,10 @@ class CUP$parser$actions {
     }
 
   /** string to build up multiple part names */
-  protected String multipart_name = new String();
+  public String multipart_name = new String();
 
   /** append a new name segment to the accumulated multipart name */
-  protected void append_multipart(String name)
+  public void append_multipart(String name)
     {
       String dot = "";
 
@@ -445,16 +445,16 @@ class CUP$parser$actions {
     }
 
   /** table of declared symbols -- contains production parts indexed by name */
-  protected Hashtable symbols = new Hashtable();
+  public Hashtable symbols = new Hashtable();
 
   /** table of just non terminals -- contains non_terminals indexed by name */
-  protected Hashtable non_terms = new Hashtable();
+  public Hashtable non_terms = new Hashtable();
 
   /** declared start non_terminal */
-  protected non_terminal start_nt = null;
+  public non_terminal start_nt = null;
 
   /** left hand side non terminal of the current production */
-  protected non_terminal lhs_nt;
+  public non_terminal lhs_nt;
 
   /** Current precedence number */
   int _cur_prec = 0;
@@ -463,12 +463,12 @@ class CUP$parser$actions {
   int _cur_side = assoc.no_prec;
 
   /** update the precedences we are declaring */
-  protected void update_precedence(int p) {
+  public void update_precedence(int p) {
     _cur_side = p;
     _cur_prec++;
   }
   /** add relevant data to terminals */ 
-  protected void add_precedence(String term) {
+  public void add_precedence(String term) {
     if (term == null) {
       System.err.println("Unable to add precedence to nonexistent terminal");
     } else {
@@ -484,7 +484,7 @@ class CUP$parser$actions {
     }
   }
 
-  private final parser parser;
+  public final parser parser;
 
   /** Constructor */
   CUP$parser$actions(parser parser) {

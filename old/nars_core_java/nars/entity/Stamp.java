@@ -38,13 +38,13 @@ public class Stamp implements Cloneable {
     /** serial number, for the whole system 
      * TODO : should it really be static?
      * or a Stamp be a field in {@link ReasonerBatch} ? */
-    private static long currentSerial = 0;
+    public static long currentSerial = 0;
     /** serial numbers */
-    private long[] evidentialBase;
+    public long[] evidentialBase;
     /** evidentialBase baseLength */
-    private int baseLength;
+    public int baseLength;
     /** creation time of the stamp */
-    private long creationTime;
+    public long creationTime;
 
     /**
      * Generate a new stamp, with a new serial number, for a new Task
@@ -62,7 +62,7 @@ public class Stamp implements Cloneable {
      * Generate a new stamp identical with a given one
      * @param old The stamp to be cloned
      */
-    private Stamp(Stamp old) {
+    public Stamp(Stamp old) {
         baseLength = old.length();
         evidentialBase = old.getBase();
         creationTime = old.getCreationTime();
@@ -87,7 +87,7 @@ public class Stamp implements Cloneable {
      * @param first The first Stamp
      * @param second The second Stamp
      */
-    private Stamp(Stamp first, Stamp second, long time) {
+    public Stamp(Stamp first, Stamp second, long time) {
         int i1, i2, j;
         i1 = i2 = j = 0;
         baseLength = Math.min(first.length() + second.length(), Parameters.MAXIMUM_STAMP_LENGTH);
@@ -169,7 +169,7 @@ public class Stamp implements Cloneable {
      * Get the evidentialBase, called in this class only
      * @return The evidentialBase of numbers
      */
-    private long[] getBase() {
+    public long[] getBase() {
         return evidentialBase;
     }
 
@@ -177,7 +177,7 @@ public class Stamp implements Cloneable {
      * Convert the evidentialBase into a set
      * @return The TreeSet representation of the evidential base
      */
-    private TreeSet<Long> toSet() {
+    public TreeSet<Long> toSet() {
         TreeSet<Long> set = new TreeSet<>();
         for (int i = 0; i < baseLength; i++) {
             set.add(evidentialBase[i]);

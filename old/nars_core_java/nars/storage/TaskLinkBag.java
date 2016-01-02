@@ -40,7 +40,7 @@ public class TaskLinkBag extends Bag<TaskLink> {
      * Get the (constant) capacity of TaskLinkBag
      * @return The capacity of TaskLinkBag
      */
-    protected int capacity() {
+    public int capacity() {
         return Parameters.TASK_LINK_BAG_SIZE;
     }
     
@@ -48,7 +48,7 @@ public class TaskLinkBag extends Bag<TaskLink> {
      * Get the (adjustable) forget rate of TaskLinkBag
      * @return The forget rate of TaskLinkBag
      */
-    protected int forgetRate() {
+    public int forgetRate() {
         return memory.getTaskForgettingRate().get();
     }
 }

@@ -26,7 +26,7 @@ public class parse_reduce_row {
   /*-----------------------------------------------------------*/
 
   /** Number of columns (non terminals) in every row. */
-  protected static int _size = 0;
+  public static int _size = 0;
 
   /** Number of columns (non terminals) in every row. */
   public static int size() {return _size;}

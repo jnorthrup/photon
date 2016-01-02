@@ -30,18 +30,18 @@ import com.googlecode.opennars.parser.Symbols;
  * The derived sentences inherits from its parents.
  */
 public class Base implements Cloneable {            // make it part of TruthValue?
-    private static final int MAXLENGTH = Parameters.MAXMUM_LABEL_RECORD_LENGTH;
-    private static final String opener = Symbols.Base_opener;
-    private static final String closer = Symbols.Base_closer;
-    private static final String separator = Symbols.Base_separator;
-    private static final String separator0 = Symbols.Base_separator0;
+    public static final int MAXLENGTH = Parameters.MAXMUM_LABEL_RECORD_LENGTH;
+    public static final String opener = Symbols.Base_opener;
+    public static final String closer = Symbols.Base_closer;
+    public static final String separator = Symbols.Base_separator;
+    public static final String separator0 = Symbols.Base_separator0;
     
     // for each base
-    private int length;
-    private long list[] = new long[MAXLENGTH];
+    public int length;
+    public long list[] = new long[MAXLENGTH];
     
     // sequential number, for the whole system
-    private static long current = 0;
+    public static long current = 0;
     
     // generate a new number --- serial number or generation time?
     // called in StringParser
@@ -52,7 +52,7 @@ public class Base implements Cloneable {            // make it part of TruthValu
     }
     
     // the first one is no shorter than the second
-    private Base(Base first, Base second) {
+    public Base(Base first, Base second) {
         int i1, i2, j;
         i1 = i2 = j = 0;
         while (i2 < second.length() && j < MAXLENGTH) {

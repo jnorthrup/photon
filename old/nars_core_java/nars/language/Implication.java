@@ -34,7 +34,7 @@ public class Implication extends Statement {
      * Constructor with partial values, called by make
      * @param arg The component list of the term
      */
-    protected Implication(ArrayList<Term> arg) {
+    public Implication(ArrayList<Term> arg) {
         super(arg);
     }
 
@@ -45,7 +45,7 @@ public class Implication extends Statement {
      * @param con Whether it is a constant term
      * @param i Syntactic complexity of the compound
      */
-    protected Implication(String n, ArrayList<Term> cs, boolean con, short i) {
+    public Implication(String n, ArrayList<Term> cs, boolean con, short i) {
         super(n, cs, con, i);
     }
 

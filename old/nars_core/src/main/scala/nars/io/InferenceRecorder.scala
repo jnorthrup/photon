@@ -15,17 +15,17 @@ class InferenceRecorder {
   /**
    the display window
    */
-  private var window: InferenceWindow = new InferenceWindow(this)
+  public var window: InferenceWindow = new InferenceWindow(this)
 
   /**
    whether to display
    */
-  private var isReporting: Boolean = false
+  public var isReporting: Boolean = false
 
   /**
    the log file
    */
-  private var logFile: PrintWriter = null
+  public var logFile: PrintWriter = null
 
   /**
    * Initialize the window and the file

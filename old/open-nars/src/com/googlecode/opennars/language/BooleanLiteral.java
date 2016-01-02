@@ -2,7 +2,7 @@ package com.googlecode.opennars.language;
 
 public class BooleanLiteral extends Literal {
 
-	private boolean truthval;
+	public boolean truthval;
 
 	public BooleanLiteral(String name) {
 		super(name);

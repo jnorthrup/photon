@@ -35,7 +35,7 @@ public class Conjunction extends CompoundTerm {
      *
      * @param arg The component list of the term
      */
-    protected Conjunction(ArrayList<Term> arg) {
+    public Conjunction(ArrayList<Term> arg) {
         super(arg);
     }
 
@@ -47,7 +47,7 @@ public class Conjunction extends CompoundTerm {
      * @param con Whether the term is a constant
      * @param i Syntactic complexity of the compound
      */
-    private Conjunction(String n, ArrayList<Term> cs, boolean con, short i) {
+    public Conjunction(String n, ArrayList<Term> cs, boolean con, short i) {
         super(n, cs, con, i);
     }
 
@@ -102,7 +102,7 @@ public class Conjunction extends CompoundTerm {
      * @param memory Reference to the memory
      * @return the Term generated from the arguments
      */
-    private static Term make(TreeSet<Term> set, Memory memory) {
+    public static Term make(TreeSet<Term> set, Memory memory) {
         if (set.isEmpty()) {
             return null;
         }                         // special case: single component

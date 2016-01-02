@@ -18,12 +18,12 @@ class TaskLink(@BeanProperty var targetTask: Task, template: TermLink, v: Budget
   /**
    Remember the TermLinks that has been used recently with this TaskLink
    */
-  private var recordedLinks = new Array[String](Parameters.TERM_LINK_RECORD_LENGTH)
+  public var recordedLinks = new Array[String](Parameters.TERM_LINK_RECORD_LENGTH)
 
   /**
    Remember the time when each TermLink is used with this TaskLink
    */
-  private var recordingTime = new Array[Long](Parameters.TERM_LINK_RECORD_LENGTH)
+  public var recordingTime = new Array[Long](Parameters.TERM_LINK_RECORD_LENGTH)
 
   /**
    The number of TermLinks remembered

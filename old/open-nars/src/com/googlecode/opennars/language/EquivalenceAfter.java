@@ -48,7 +48,7 @@ public class EquivalenceAfter extends Equivalence {
      * @param i syntactic complexity of the compound
      * @param n The name of the term
      */
-    private EquivalenceAfter(String n, ArrayList<Term> cs, ArrayList<Variable> open, ArrayList<Variable> closed, short i) {
+    public EquivalenceAfter(String n, ArrayList<Term> cs, ArrayList<Variable> open, ArrayList<Variable> closed, short i) {
         super(n, cs, open, closed, i);
     }
     

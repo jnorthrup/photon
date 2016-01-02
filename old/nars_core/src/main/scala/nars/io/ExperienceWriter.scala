@@ -15,7 +15,7 @@ class ExperienceWriter(var reasoner: Reasoner) extends OutputChannel {
   /**
    Input experience from a file
    */
-  private var outExp: PrintWriter = _
+  public var outExp: PrintWriter = _
 
   def this(reasoner: Reasoner, outExp: PrintWriter) {
     this(reasoner)

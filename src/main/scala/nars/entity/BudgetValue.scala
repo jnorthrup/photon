@@ -12,12 +12,12 @@ object BudgetValue {
   /**
    The character that marks the two ends of a budget value
    */
-  private val MARK = Symbols.BUDGET_VALUE_MARK
+  public val MARK = Symbols.BUDGET_VALUE_MARK
 
   /**
    The character that separates the factors in a budget value
    */
-  private val SEPARATOR = Symbols.VALUE_SEPARATOR
+  public val SEPARATOR = Symbols.VALUE_SEPARATOR
 }
 
 /**
@@ -28,17 +28,17 @@ class BudgetValue extends Cloneable {
   /**
    The relative share of time resource to be allocated
    */
-  protected var priority: ShortFloat = new ShortFloat(0.01f)
+  public var priority: ShortFloat = new ShortFloat(0.01f)
 
   /**
    The percent of priority to be kept in a constant period
    */
-  protected var durability: ShortFloat = new ShortFloat(0.01f)
+  public var durability: ShortFloat = new ShortFloat(0.01f)
 
   /**
    The overall (context-independent) evaluation
    */
-  protected var quality: ShortFloat = new ShortFloat(0.01f)
+  public var quality: ShortFloat = new ShortFloat(0.01f)
 
   /**
    * Constructor with initialization

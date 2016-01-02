@@ -52,7 +52,7 @@ public class lalr_transition {
   /*-----------------------------------------------------------*/
 
   /** The symbol we make the transition on. */
-  protected symbol _on_symbol;
+  public symbol _on_symbol;
 
   /** The symbol we make the transition on. */
   public symbol on_symbol() {return _on_symbol;}
@@ -60,7 +60,7 @@ public class lalr_transition {
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** The state we transition to. */
-  protected lalr_state _to_state;
+  public lalr_state _to_state;
 
   /** The state we transition to. */
   public lalr_state to_state() {return _to_state;}
@@ -68,7 +68,7 @@ public class lalr_transition {
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** Next transition in linked list of transitions out of a state */
-  protected lalr_transition _next;
+  public lalr_transition _next;
 
   /** Next transition in linked list of transitions out of a state */
   public lalr_transition next() {return _next;}

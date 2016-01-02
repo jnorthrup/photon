@@ -18,58 +18,58 @@ class MainWindow(var reasoner: Reasoner, title: String) extends NarsFrame(title)
   /**
    Reference to the memory
    */
-  private var memory: Memory = reasoner.getMemory
+  public var memory: Memory = reasoner.getMemory
 
   /**
    Reference to the inference recorder
    */
-  private var record: InferenceRecorder = memory.getRecorder
+  public var record: InferenceRecorder = memory.getRecorder
 
   /**
    Reference to the experience reader
    */
-  private var experienceReader: ExperienceReader = _
+  public var experienceReader: ExperienceReader = _
 
   /**
    Reference to the experience writer
    */
-  private var experienceWriter: ExperienceWriter = new ExperienceWriter(reasoner)
+  public var experienceWriter: ExperienceWriter = new ExperienceWriter(reasoner)
 
   /**
    Experience display area
    */
-  private var ioText: TextArea = new TextArea("")
+  public var ioText: TextArea = new TextArea("")
 
   /**
    Control buttons
    */
-  private var stopButton: Button = new Button(" Stop ")
+  public var stopButton: Button = new Button(" Stop ")
 
-  private var walkButton: Button = new Button(" Walk ")
+  public var walkButton: Button = new Button(" Walk ")
 
-  private var runButton: Button = new Button(" Run ")
+  public var runButton: Button = new Button(" Run ")
 
-  private var exitButton: Button = new Button(" Exit ")
+  public var exitButton: Button = new Button(" Exit ")
 
   /**
    Clock display field
    */
-  private var timerText: TextField = new TextField("")
+  public var timerText: TextField = new TextField("")
 
   /**
    Label of the clock
    */
-  private var timerLabel: Label = new Label("Clock:", Label.RIGHT)
+  public var timerLabel: Label = new Label("Clock:", Label.RIGHT)
 
   /**
    System clock
    */
-  private var timer: Long = _
+  public var timer: Long = _
 
   /**
    Whether the experience is saving into a file
    */
-  private var savingExp: Boolean = false
+  public var savingExp: Boolean = false
 
   /**
    Input experience window
@@ -343,7 +343,7 @@ class MainWindow(var reasoner: Reasoner, title: String) extends NarsFrame(title)
   /**
    * Close the whole system
    */
-  private def close() {
+  public def close() {
     setVisible(false)
     System.exit(0)
   }

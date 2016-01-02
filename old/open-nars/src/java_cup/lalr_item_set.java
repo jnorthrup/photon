@@ -46,7 +46,7 @@ public class lalr_item_set {
   /** A hash table to implement the set.  We store the items using themselves
    *  as keys. 
    */
-  protected Hashtable _all = new Hashtable(11);
+  public Hashtable _all = new Hashtable(11);
 
   /** Access to all elements of the set. */
   public Enumeration all() {return _all.elements();}
@@ -54,7 +54,7 @@ public class lalr_item_set {
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** Cached hashcode for this set. */
-  protected Integer hashcode_cache = null;
+  public Integer hashcode_cache = null;
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
@@ -212,7 +212,7 @@ public class lalr_item_set {
    *  parameter is null.
    *  @param obj the object we are testing.
    */
-  protected void not_null(Object obj) throws internal_error
+  public void not_null(Object obj) throws internal_error
     {
       if (obj == null) 
 	throw new internal_error("Null object used in set operation");

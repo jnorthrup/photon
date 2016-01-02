@@ -49,7 +49,7 @@ public abstract class symbol {
    /*-----------------------------------------------------------*/
 
    /** String for the human readable name of the symbol. */
-   protected String _name; 
+   public String _name;
  
    /** String for the human readable name of the symbol. */
    public String name() {return _name;}
@@ -57,7 +57,7 @@ public abstract class symbol {
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
    /** String for the type of object used for the symbol on the parse stack. */
-   protected String _stack_type;
+   public String _stack_type;
 
    /** String for the type of object used for the symbol on the parse stack. */
    public String stack_type() {return _stack_type;}
@@ -65,7 +65,7 @@ public abstract class symbol {
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
    /** Count of how many times the symbol appears in productions. */
-   protected int _use_count = 0;
+   public int _use_count = 0;
 
    /** Count of how many times the symbol appears in productions. */
    public int use_count() {return _use_count;}
@@ -79,7 +79,7 @@ public abstract class symbol {
    *  Note: indexes are unique among terminals and unique among non terminals,
    *  however, a terminal may have the same index as a non-terminal, etc. 
    */
-   protected int _index;
+   public int _index;
  
   /** Index of this symbol (terminal or non terminal) in the parse tables.
    *  Note: indexes are unique among terminals and unique among non terminals,

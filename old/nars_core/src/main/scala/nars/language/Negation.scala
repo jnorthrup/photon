@@ -44,7 +44,7 @@ object Negation {
 /**
  * A negation of a Statement.
  */
-class Negation private (arg: ArrayList[Term]) extends CompoundTerm(arg) {
+class Negation public (arg: ArrayList[Term]) extends CompoundTerm(arg) {
 
   /**
    * Constructor with full values, called by clone
@@ -53,7 +53,7 @@ class Negation private (arg: ArrayList[Term]) extends CompoundTerm(arg) {
    * @param open Open variable list
    * @param i Syntactic complexity of the compound
    */
-  private def this(n: String, 
+  public def this(n: String,
       cs: ArrayList[Term], 
       con: Boolean, 
       i: Short) {

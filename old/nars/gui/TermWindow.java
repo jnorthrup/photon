@@ -34,13 +34,13 @@ import nars.storage.Memory;
 public class TermWindow extends NarsFrame implements ActionListener {
 
     /** Display label */
-    private Label termLabel;
+    public Label termLabel;
     /** Input field for term name */
-    private TextField termField;
+    public TextField termField;
     /** Control buttons */
-    private Button playButton, hideButton;
+    public Button playButton, hideButton;
     /** Reference to the memory */
-    private Memory memory;
+    public Memory memory;
 
     /**
      * Constructor
@@ -102,7 +102,7 @@ public class TermWindow extends NarsFrame implements ActionListener {
         }
     }
 
-    private void close() {
+    public void close() {
         setVisible(false);
     }
 

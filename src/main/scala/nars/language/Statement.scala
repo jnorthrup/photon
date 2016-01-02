@@ -9,7 +9,7 @@ import scala.collection.JavaConversions._
 
 object Statement {
 //
-//    protected def Statement( name: String, 
+//    public def Statement( name: String,
 //      components: ArrayList[Term], 
 //      isConstant: Boolean, 
 //      complexity: Short ) :Statement = {
@@ -129,7 +129,7 @@ object Statement {
    * @param relation The relation operator
    * @return The nameStr of the term
    */
-//  protected jmv
+//  public jmv
   def makeStatementName(subject: Term, relation: String, predicate: Term): String = {
     val nameStr = new StringBuffer()
     nameStr.append(Symbols.STATEMENT_OPENER)
@@ -179,13 +179,13 @@ object Statement {
  * A statement is a compound term, consisting of a subject, a predicate,
  * and a relation symbol in between. It can be of either first-order or higher-order.
  */
-abstract class Statement protected (components: ArrayList[Term]) extends CompoundTerm(components) {
+abstract class Statement public (components: ArrayList[Term]) extends CompoundTerm(components) {
 
   /**
    * Constructor with partial values, called by make
    * @param arg The component list of the term
    */
-//  protected def this(arg: ArrayList[Term]) {
+//  public def this(arg: ArrayList[Term]) {
 ////    super(arg) 
 //    this()
 //    this.components = arg
@@ -198,7 +198,7 @@ abstract class Statement protected (components: ArrayList[Term]) extends Compoun
    * @param con Constant indicator
    * @param i Syntactic complexity of the compound
    */
-//  protected def this(n: String, 
+//  public def this(n: String,
 //      cs: ArrayList[Term], 
 //      con: Boolean, 
 //      i: Short) {

@@ -14,27 +14,27 @@ object Bag {
   /**
    priority levels
    */
-  private val TOTAL_LEVEL = Parameters.BAG_LEVEL
+  public val TOTAL_LEVEL = Parameters.BAG_LEVEL
 
   /**
    firing threshold
    */
-  private val THRESHOLD = Parameters.BAG_THRESHOLD
+  public val THRESHOLD = Parameters.BAG_THRESHOLD
 
   /**
    relative threshold, only calculate once
    */
-  private val RELATIVE_THRESHOLD = THRESHOLD.toFloat / TOTAL_LEVEL.toFloat
+  public val RELATIVE_THRESHOLD = THRESHOLD.toFloat / TOTAL_LEVEL.toFloat
 
   /**
    hashtable load factor
    */
-  private val LOAD_FACTOR = Parameters.LOAD_FACTOR
+  public val LOAD_FACTOR = Parameters.LOAD_FACTOR
 
   /**
    shared DISTRIBUTOR that produce the probability distribution
    */
-  private val DISTRIBUTOR = new Distributor(TOTAL_LEVEL)
+  public val DISTRIBUTOR = new Distributor(TOTAL_LEVEL)
 }
 
 /**
@@ -50,17 +50,17 @@ object Bag {
  * Differences: (1) level selection vs. item selection, (2) decay rate
  * @param <Type>  The type of the Item in the Bag
  */
-abstract class Bag[Type <: Item] protected (protected var memory: Memory) {
+abstract class Bag[Type <: Item] public (public var memory: Memory) {
 
   /**
    mapping from key to item
    */
-  private var nameTable: HashMap[String, Type] = _
+  public var nameTable: HashMap[String, Type] = _
 
   /**
    array of lists of items, for items on different level
    */
-  private var itemTable: ArrayList[ArrayList[Type]] = _
+  public var itemTable: ArrayList[ArrayList[Type]] = _
 
   /**
    defined in different bags
@@ -70,32 +70,32 @@ abstract class Bag[Type <: Item] protected (protected var memory: Memory) {
   /**
    current sum of occupied level
    */
-  private var mass: Int = _
+  public var mass: Int = _
 
   /**
    index to get next level, kept in individual objects
    */
-  private var levelIndex: Int = _
+  public var levelIndex: Int = _
 
   /**
    current take out level
    */
-  private var currentLevel: Int = _
+  public var currentLevel: Int = _
 
   /**
    maximum number of items to be taken out at current level
    */
-  private var currentCounter: Int = _
+  public var currentCounter: Int = _
 
   /**
    whether this bag has an active window
    */
-  private var showing: Boolean = false
+  public var showing: Boolean = false
 
   /**
    display window TODO : remove GUI dependency
    */
-  private var window: BagWindow = _
+  public var window: BagWindow = _
 
   init()
 
@@ -115,14 +115,14 @@ abstract class Bag[Type <: Item] protected (protected var memory: Memory) {
      * To get the capacity of the concrete subclass
      * @return Bag capacity, in number of Items allowed
      */
-    protected def capacity(): Int
+    public def capacity(): Int
     
   /**
    * Get the item decay rate, which differs in difference subclass, and can be
    * changed in run time by the user, so not a constant.
    * @return The number of times for a decay factor to be fully applied
    */
-  protected def forgetRate(): Int
+  public def forgetRate(): Int
 
   /**
    * Get the average priority of Items
@@ -230,7 +230,7 @@ abstract class Bag[Type <: Item] protected (protected var memory: Memory) {
    * @param n The level index
    * @return Whether that level is empty
    */
-  protected def emptyLevel(n: Int): Boolean = {
+  public def emptyLevel(n: Int): Boolean = {
     ((itemTable.get(n) == null) || itemTable.get(n).isEmpty)
   }
 
@@ -239,7 +239,7 @@ abstract class Bag[Type <: Item] protected (protected var memory: Memory) {
    * @param item The Item to put in
    * @return The put-in level
    */
-  private def getLevel(item: Type): Int = {
+  public def getLevel(item: Type): Int = {
     val fl = item.getPriority * TOTAL_LEVEL
     val level = Math.ceil(fl).toInt - 1
     if ((level < 0)) 0 else level
@@ -250,7 +250,7 @@ abstract class Bag[Type <: Item] protected (protected var memory: Memory) {
    * @param newItem The Item to put in
    * @return The overflow Item
    */
-  private def intoBase(newItem: Type): Type = {
+  public def intoBase(newItem: Type): Type = {
     var oldItem: Type = null.asInstanceOf[Type]
     val inLevel = getLevel(newItem)
     if (nameTable.size > capacity_) {
@@ -275,7 +275,7 @@ abstract class Bag[Type <: Item] protected (protected var memory: Memory) {
    * @param level The current level
    * @return The first Item
    */
-  private def takeOutFirst(level: Int): Type = {
+  public def takeOutFirst(level: Int): Type = {
     val selected = itemTable.get(level).get(0)
     itemTable.get(level).remove(0)
     mass -= (level + 1)
@@ -287,7 +287,7 @@ abstract class Bag[Type <: Item] protected (protected var memory: Memory) {
    * Remove an item from itemTable, then adjust mass
    * @param oldItem The Item to be removed
    */
-  protected def outOfBase(oldItem: Type) {
+  public def outOfBase(oldItem: Type) {
     val level = getLevel(oldItem)
     itemTable.get(level).remove(oldItem)
     mass -= (level + 1)

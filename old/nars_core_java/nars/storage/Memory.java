@@ -47,35 +47,35 @@ public class Memory {
     /**
      * Backward pointer to the reasoner
      */
-    private final ReasonerBatch reasoner;
+    public final ReasonerBatch reasoner;
 
     /* ---------- Long-term storage for multiple cycles ---------- */
     /**
      * Concept bag. Containing all Concepts of the system
      */
-    private final ConceptBag concepts;
+    public final ConceptBag concepts;
     /**
      * New tasks with novel composed terms, for delayed and selective processing
      */
-    private final NovelTaskBag novelTasks;
+    public final NovelTaskBag novelTasks;
     /**
      * Inference record text to be written into a log file
      */
-    private IInferenceRecorder recorder;
-    private final AtomicInteger beliefForgettingRate = new AtomicInteger(Parameters.TERM_LINK_FORGETTING_CYCLE);
-    private final AtomicInteger taskForgettingRate = new AtomicInteger(Parameters.TASK_LINK_FORGETTING_CYCLE);
-    private final AtomicInteger conceptForgettingRate = new AtomicInteger(Parameters.CONCEPT_FORGETTING_CYCLE);
+    public IInferenceRecorder recorder;
+    public final AtomicInteger beliefForgettingRate = new AtomicInteger(Parameters.TERM_LINK_FORGETTING_CYCLE);
+    public final AtomicInteger taskForgettingRate = new AtomicInteger(Parameters.TASK_LINK_FORGETTING_CYCLE);
+    public final AtomicInteger conceptForgettingRate = new AtomicInteger(Parameters.CONCEPT_FORGETTING_CYCLE);
 
     /* ---------- Short-term workspace for a single cycle ---------- */
     /**
      * List of new tasks accumulated in one cycle, to be processed in the next
      * cycle
      */
-    private final ArrayList<Task> newTasks;
+    public final ArrayList<Task> newTasks;
     /**
      * List of Strings or Tasks to be sent to the output channels
      */
-    private final ArrayList<String> exportStrings;
+    public final ArrayList<String> exportStrings;
     /**
      * The selected Term
      */
@@ -108,7 +108,7 @@ public class Memory {
      * The substitution that unify the common term in the Task and the Belief
      * TODO unused
      */
-    protected HashMap<Term, Term> substitute;
+    public HashMap<Term, Term> substitute;
 
 
     /* ---------- Constructor ---------- */
@@ -296,7 +296,7 @@ public class Memory {
      *
      * @param task the derived task
      */
-    private void derivedTask(Task task) {
+    public void derivedTask(Task task) {
         if (task.getBudget().aboveThreshold()) {
             recorder.append("!!! Derived: " + task + "\n");
             float budget = task.getBudget().summary();
@@ -407,7 +407,7 @@ public class Memory {
      * ones and those that corresponding to existing concepts, plus one from the
      * buffer.
      */
-    private void processNewTask() {
+    public void processNewTask() {
         Task task;
         int counter = newTasks.size();  // don't include new tasks produced in the current workCycle
         while (counter-- > 0) {
@@ -431,7 +431,7 @@ public class Memory {
     /**
      * Select a novel task to process.
      */
-    private void processNovelTask() {
+    public void processNovelTask() {
         Task task = novelTasks.takeOut();       // select a task from novelTasks
         if (task != null) {
             immediateProcess(task);
@@ -441,7 +441,7 @@ public class Memory {
     /**
      * Select a concept to fire.
      */
-    private void processConcept() {
+    public void processConcept() {
         currentConcept = concepts.takeOut();
         if (currentConcept != null) {
             currentTerm = currentConcept.getTerm();
@@ -458,7 +458,7 @@ public class Memory {
      *
      * @param task the task to be accepted
      */
-    private void immediateProcess(Task task) {
+    public void immediateProcess(Task task) {
         currentTask = task; // one of the two places where this variable is set
         recorder.append("!!! Insert: " + task + "\n");
         currentTerm = task.getContent();
@@ -545,17 +545,17 @@ public class Memory {
                 + toStringIfNotNull(currentBelief, "currentBelief");
     }
 
-    private String toStringLongIfNotNull(Bag<?> item, String title) {
+    public String toStringLongIfNotNull(Bag<?> item, String title) {
         return item == null ? "" : "\n " + title + ":\n"
                 + item.toStringLong();
     }
 
-    private String toStringLongIfNotNull(Item item, String title) {
+    public String toStringLongIfNotNull(Item item, String title) {
         return item == null ? "" : "\n " + title + ":\n"
                 + item.toStringLong();
     }
 
-    private String toStringIfNotNull(Object item, String title) {
+    public String toStringIfNotNull(Object item, String title) {
         return item == null ? "" : "\n " + title + ":\n"
                 + item.toString();
     }

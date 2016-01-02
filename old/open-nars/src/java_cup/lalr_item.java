@@ -75,7 +75,7 @@ public class lalr_item extends lr_item_core {
   /*-----------------------------------------------------------*/
 
   /** The lookahead symbols of the item. */
-  protected terminal_set _lookahead;
+  public terminal_set _lookahead;
 
   /** The lookahead symbols of the item. */
   public terminal_set lookahead() {return _lookahead;}
@@ -83,7 +83,7 @@ public class lalr_item extends lr_item_core {
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** Links to items that the lookahead needs to be propagated to. */
-  protected Stack _propagate_items; 
+  public Stack _propagate_items;
 
   /** Links to items that the lookahead needs to be propagated to */
   public Stack propagate_items() {return _propagate_items;}
@@ -93,7 +93,7 @@ public class lalr_item extends lr_item_core {
   /** Flag to indicate that this item needs to propagate its lookahead 
    *  (whether it has changed or not). 
    */
-  protected boolean needs_propagation;
+  public boolean needs_propagation;
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 

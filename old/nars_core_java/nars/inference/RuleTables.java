@@ -159,7 +159,7 @@ public class RuleTables {
      * @param beliefTerm The content of belief
      * @param memory Reference to the memory
      */
-    private static void syllogisms(TaskLink tLink, TermLink bLink, Term taskTerm, Term beliefTerm, Memory memory) {
+    public static void syllogisms(TaskLink tLink, TermLink bLink, Term taskTerm, Term beliefTerm, Memory memory) {
         Sentence taskSentence = memory.currentTask.getSentence();
         Sentence belief = memory.currentBelief;
         int figure;
@@ -212,7 +212,7 @@ public class RuleTables {
      * @param link2 The link to the second premise
      * @return The figure of the syllogism, one of the four: 11, 12, 21, or 22
      */
-    private static int indexToFigure(TermLink link1, TermLink link2) {
+    public static int indexToFigure(TermLink link1, TermLink link2) {
         return (link1.getIndex(0) + 1) * 10 + (link2.getIndex(0) + 1);
     }
 
@@ -224,7 +224,7 @@ public class RuleTables {
      * @param figure The location of the shared term
      * @param memory Reference to the memory
      */
-    private static void asymmetricAsymmetric(Sentence sentence, Sentence belief, int figure, Memory memory) {
+    public static void asymmetricAsymmetric(Sentence sentence, Sentence belief, int figure, Memory memory) {
         Statement s1 = (Statement) sentence.cloneContent();
         Statement s2 = (Statement) belief.cloneContent();
         Term t1, t2;
@@ -295,7 +295,7 @@ public class RuleTables {
      * @param figure The location of the shared term
      * @param memory Reference to the memory
      */
-    private static void asymmetricSymmetric(Sentence asym, Sentence sym, int figure, Memory memory) {
+    public static void asymmetricSymmetric(Sentence asym, Sentence sym, int figure, Memory memory) {
         Statement asymSt = (Statement) asym.cloneContent();
         Statement symSt = (Statement) sym.cloneContent();
         Term t1, t2;
@@ -355,7 +355,7 @@ public class RuleTables {
      * @param figure The location of the shared term
      * @param memory Reference to the memory
      */
-    private static void symmetricSymmetric(Sentence belief, Sentence taskSentence, int figure, Memory memory) {
+    public static void symmetricSymmetric(Sentence belief, Sentence taskSentence, int figure, Memory memory) {
         Statement s1 = (Statement) belief.cloneContent();
         Statement s2 = (Statement) taskSentence.cloneContent();
         switch (figure) {
@@ -393,7 +393,7 @@ public class RuleTables {
      * @param index The location of the second premise in the first
      * @param memory Reference to the memory
      */
-    private static void detachmentWithVar(Sentence originalMainSentence, Sentence subSentence, int index, Memory memory) {
+    public static void detachmentWithVar(Sentence originalMainSentence, Sentence subSentence, int index, Memory memory) {
         Sentence mainSentence = (Sentence) originalMainSentence.clone();   // for substitution
         Statement statement = (Statement) mainSentence.getContent();
         Term component = statement.componentAt(index);
@@ -422,7 +422,7 @@ public class RuleTables {
      * @param side The location of the shared term in the statement
      * @param memory Reference to the memory
      */
-    private static void conditionalDedIndWithVar(Implication conditional, short index, Statement statement, short side, Memory memory) {
+    public static void conditionalDedIndWithVar(Implication conditional, short index, Statement statement, short side, Memory memory) {
         CompoundTerm condition = (CompoundTerm) conditional.getSubject();
         Term component = condition.componentAt(index);
         Term component2 = null;
@@ -446,7 +446,7 @@ public class RuleTables {
      * @param compoundTask Whether the compound comes from the task
      * @param memory Reference to the memory
      */
-    private static void compoundAndSelf(CompoundTerm compound, Term component, boolean compoundTask, Memory memory) {
+    public static void compoundAndSelf(CompoundTerm compound, Term component, boolean compoundTask, Memory memory) {
         if ((compound instanceof Conjunction) || (compound instanceof Disjunction)) {
             if (memory.currentBelief != null) {
                 CompositionalRules.decomposeStatement(compound, component, compoundTask, memory);
@@ -470,7 +470,7 @@ public class RuleTables {
      * @param beliefTerm The compound from the belief
      * @param memory Reference to the memory
      */
-    private static void compoundAndCompound(CompoundTerm taskTerm, CompoundTerm beliefTerm, Memory memory) {
+    public static void compoundAndCompound(CompoundTerm taskTerm, CompoundTerm beliefTerm, Memory memory) {
         if (taskTerm.getClass() == beliefTerm.getClass()) {
             if (taskTerm.size() > beliefTerm.size()) {
                 compoundAndSelf(taskTerm, beliefTerm, true, memory);
@@ -490,7 +490,7 @@ public class RuleTables {
      * @param beliefTerm The content of the belief
      * @param memory Reference to the memory
      */
-    private static void compoundAndStatement(CompoundTerm compound, short index, Statement statement, short side, Term beliefTerm, Memory memory) {
+    public static void compoundAndStatement(CompoundTerm compound, short index, Statement statement, short side, Term beliefTerm, Memory memory) {
         Term component = compound.componentAt(index);
         Task task = memory.currentTask;
         if (component.getClass() == statement.getClass()) {
@@ -526,7 +526,7 @@ public class RuleTables {
      * @param side The location of the current term in the statement
      * @param memory Reference to the memory
      */
-    private static void componentAndStatement(CompoundTerm compound, short index, Statement statement, short side, Memory memory) {
+    public static void componentAndStatement(CompoundTerm compound, short index, Statement statement, short side, Memory memory) {
 //        if (!memory.currentTask.isStructural()) {
         if (statement instanceof Inheritance) {
             StructuralRules.structuralDecompose1(compound, index, statement, memory);

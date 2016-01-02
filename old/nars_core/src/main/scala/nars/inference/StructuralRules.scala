@@ -10,7 +10,7 @@ import scala.collection.JavaConversions._
 
 object StructuralRules {
 
-  private val RELIANCE = Parameters.RELIANCE
+  public val RELIANCE = Parameters.RELIANCE
 
   /**
    * {<S --> P>, S@(S&T)} |- <(S&T) --> (P&T)>
@@ -141,7 +141,7 @@ object StructuralRules {
    * @param index The location of focus in the compound
    * @return Whether the direction of inheritance should be revised
    */
-  private def switchOrder(compound: CompoundTerm, index: Short): Boolean = {
+  public def switchOrder(compound: CompoundTerm, index: Short): Boolean = {
     ((((compound.isInstanceOf[DifferenceExt]) || (compound.isInstanceOf[DifferenceInt])) && 
       (index == 1)) || 
       ((compound.isInstanceOf[ImageExt]) && 
@@ -263,7 +263,7 @@ object StructuralRules {
    * @param truth The truth value of the new task
    * @param memory Reference to the memory
    */
-  private def structuralStatement(subject: Term, 
+  public def structuralStatement(subject: Term,
       predicate: Term, 
       truth: TruthValue, 
       memory: Memory) {
@@ -415,7 +415,7 @@ object StructuralRules {
    * @param predicate The predicate term
    * @param memory Reference to the memory
    */
-  private def transformSubjectPI(subject: CompoundTerm, predicate: Term, memory: Memory) {
+  public def transformSubjectPI(subject: CompoundTerm, predicate: Term, memory: Memory) {
     val truth = memory.currentTask.getSentence.getTruth
     var budget: BudgetValue = null
     var inheritance: Inheritance = null
@@ -459,7 +459,7 @@ object StructuralRules {
    * @param predicate The predicate term
    * @param memory Reference to the memory
    */
-  private def transformPredicatePI(subject: Term, predicate: CompoundTerm, memory: Memory) {
+  public def transformPredicatePI(subject: Term, predicate: CompoundTerm, memory: Memory) {
     val truth = memory.currentTask.getSentence.getTruth
     var budget: BudgetValue = null
     var inheritance: Inheritance = null

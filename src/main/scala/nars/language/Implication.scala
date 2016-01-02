@@ -55,7 +55,7 @@ object Implication {
 /**
  * A Statement about an Inheritance relation.
  */
-class Implication protected (arg: ArrayList[Term]) extends Statement(arg) {
+class Implication public (arg: ArrayList[Term]) extends Statement(arg) {
 
   /**
    * Constructor with full values, called by clone
@@ -64,7 +64,7 @@ class Implication protected (arg: ArrayList[Term]) extends Statement(arg) {
    * @param con Whether it is a constant term
    * @param i Syntactic complexity of the compound
    */
-  protected def this(n: String, 
+  public def this(n: String,
       cs: ArrayList[Term], 
       con: Boolean, 
       i: Short) {

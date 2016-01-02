@@ -52,7 +52,7 @@ object DifferenceExt {
 /**
  * A compound term whose extension is the difference of the extensions of its components
  */
-class DifferenceExt private (arg: ArrayList[Term]) extends CompoundTerm(arg) {
+class DifferenceExt public (arg: ArrayList[Term]) extends CompoundTerm(arg) {
 
   /**
    * Constructor with full values, called by clone
@@ -61,7 +61,7 @@ class DifferenceExt private (arg: ArrayList[Term]) extends CompoundTerm(arg) {
    * @param open Open variable list
    * @param i Syntactic complexity of the compound
    */
-  private def this( name: String, 
+  public def this( name: String,
       components: ArrayList[Term], 
       isConstant: Boolean, 
       complexity: Short ) {

@@ -33,10 +33,10 @@ import com.martiansoftware.jsap.UnflaggedOption;
 
 public class Actuary implements Observer {
 
-	private SimpleJSAP jsap;
-	private Parser parser;
-	private Reasoner reasoner;
-	private int verbosity;
+	public SimpleJSAP jsap;
+	public Parser parser;
+	public Reasoner reasoner;
+	public int verbosity;
 	
 	public Actuary() {
 		try {

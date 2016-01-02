@@ -38,7 +38,7 @@ object Similarity {
 /**
  * A Statement about a Similarity relation.
  */
-class Similarity private (arg: ArrayList[Term]) extends Statement(arg) {
+class Similarity public (arg: ArrayList[Term]) extends Statement(arg) {
 
   /**
    * Constructor with full values, called by clone
@@ -47,7 +47,7 @@ class Similarity private (arg: ArrayList[Term]) extends Statement(arg) {
    * @param open Open variable list
    * @param i Syntactic complexity of the compound
    */
-  private def this(n: String, 
+  public def this(n: String,
       cs: ArrayList[Term], 
       con: Boolean, 
       i: Short) {

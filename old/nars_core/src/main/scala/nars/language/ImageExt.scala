@@ -101,7 +101,7 @@ object ImageExt {
  * <p>
  * Internally, it is actually (/,A,P)_1, with an index.
  */
-class ImageExt private (n: String, arg: ArrayList[Term], @BeanProperty var relationIndex: Short)
+class ImageExt public (n: String, arg: ArrayList[Term], @BeanProperty var relationIndex: Short)
     extends CompoundTerm(n, arg) {
 
   /**
@@ -112,7 +112,7 @@ class ImageExt private (n: String, arg: ArrayList[Term], @BeanProperty var relat
    * @param complexity Syntactic complexity of the compound
    * @param index The index of relation in the component list
    */
-  private def this( name: String, 
+  public def this( name: String,
       components : ArrayList[Term], 
       isConstant : Boolean, 
       complexity: Short, 

@@ -31,12 +31,12 @@ import com.googlecode.opennars.main.Memory;
  */
 public class RuleTables {
     
-	private Memory memory;
+	public Memory memory;
 	
-	private SyllogisticRules syllogisticrules;
-	private StructuralRules structuralrules;
-	private MatchingRules matchingrules;
-	private CompositionalRules compositionalrules;
+	public SyllogisticRules syllogisticrules;
+	public StructuralRules structuralrules;
+	public MatchingRules matchingrules;
+	public CompositionalRules compositionalrules;
 	
 	public RuleTables(Memory memory) {
 		this.memory = memory;
@@ -142,7 +142,7 @@ public class RuleTables {
     /**
      * Meta-table of syllogistic rules, indexed by the content classes of the sentence and the belief
      */
-    private  void syllogisms(TaskLink tLink, TermLink bLink, Term taskTerm, Term beliefTerm) {
+    public  void syllogisms(TaskLink tLink, TermLink bLink, Term taskTerm, Term beliefTerm) {
         Sentence sentence = memory.currentTask.getSentence();
         Judgement belief = memory.currentBelief;
         int figure;
@@ -185,14 +185,14 @@ public class RuleTables {
         }
     }
     
-    private  int indexToFigure(TermLink link1, TermLink link2) {
+    public  int indexToFigure(TermLink link1, TermLink link2) {
         return (link1.getIndex(0) + 1) * 10 + (link2.getIndex(0) + 1);    // valid value: 11, 12, 21, 22
     }
     
     /**
      * Syllogistic rules whose both premises are on the same asymmetric relation
      */
-    private  void asymmetricAsymmetric(Sentence sentence, Judgement belief, int figure) {
+    public  void asymmetricAsymmetric(Sentence sentence, Judgement belief, int figure) {
         Statement s1 = (Statement) sentence.cloneContent();
         Statement s2 = (Statement) belief.cloneContent();
         Term t1, t2;
@@ -242,7 +242,7 @@ public class RuleTables {
     /**
      * Syllogistic rules whose first premise is on an asymmetric relation, and the second on a symmetric relation
      */
-    private  void asymmetricSymmetric(Sentence asym, Sentence sym, int figure) {
+    public  void asymmetricSymmetric(Sentence asym, Sentence sym, int figure) {
         Statement asymSt = (Statement) asym.cloneContent();
         Statement symSt = (Statement) sym.cloneContent();
         Term t1, t2;
@@ -293,7 +293,7 @@ public class RuleTables {
     /**
      * Syllogistic rules whose both premises are on the same symmetric relation
      */
-    private  void symmetricSymmetric(Judgement belief, Sentence sentence, int figure) {
+    public  void symmetricSymmetric(Judgement belief, Sentence sentence, int figure) {
         Statement s1 = (Statement) belief.cloneContent();
         Statement s2 = (Statement) sentence.cloneContent();
         switch (figure) {
@@ -318,7 +318,7 @@ public class RuleTables {
     
     /* ----- conditional inferences ----- */
     
-    private  void detachmentWithVar(Statement statement, boolean compoundTask, int index, CompoundTerm compound, Sentence belief) {
+    public  void detachmentWithVar(Statement statement, boolean compoundTask, int index, CompoundTerm compound, Sentence belief) {
         Term component = statement.componentAt(index);
         Term inh = (compound instanceof Tense) ? compound.componentAt(0) : compound;
         if ((component instanceof Inheritance) && (belief != null)) {
@@ -333,7 +333,7 @@ public class RuleTables {
         }
     }
     
-    private  void conditionalDedIndWithVar(Implication conditional, short index, Statement statement, short side) {
+    public  void conditionalDedIndWithVar(Implication conditional, short index, Statement statement, short side) {
         CompoundTerm condition = (CompoundTerm) conditional.getSubject();
         Term component = condition.componentAt(index);
         Term component2 = null;
@@ -347,7 +347,7 @@ public class RuleTables {
     
     /* ----- structural inferences ----- */
     
-    private  void compoundAndSelf(CompoundTerm compound, Term component, boolean compoundTask) {
+    public  void compoundAndSelf(CompoundTerm compound, Term component, boolean compoundTask) {
         if ((compound instanceof Conjunction) || (compound instanceof Disjunction)) {
             if (memory.currentBelief != null)
                 compositionalrules.decomposeStatement(compound, component, compoundTask);
@@ -361,7 +361,7 @@ public class RuleTables {
         }
     }
     
-    private  void compoundAndCompound(CompoundTerm taskTerm, int tIndex, CompoundTerm beliefTerm, int bIndex) {
+    public  void compoundAndCompound(CompoundTerm taskTerm, int tIndex, CompoundTerm beliefTerm, int bIndex) {
         if (taskTerm.getClass() == beliefTerm.getClass()) {
             if (taskTerm.size() > beliefTerm.size())
                 compoundAndSelf(taskTerm, beliefTerm, true);
@@ -370,7 +370,7 @@ public class RuleTables {
         }
     }
     
-    private  void compoundAndStatement(CompoundTerm compound, short index, Statement statement, short side, Term beliefTerm) {
+    public  void compoundAndStatement(CompoundTerm compound, short index, Statement statement, short side, Term beliefTerm) {
         Term component = compound.componentAt(index);
         Task task = memory.currentTask;
         if (component.getClass() ==  statement.getClass()) {
@@ -402,7 +402,7 @@ public class RuleTables {
         }
     }
     
-    private  void componentAndStatement(CompoundTerm compound, short index, Statement statement, short side) {
+    public  void componentAndStatement(CompoundTerm compound, short index, Statement statement, short side) {
         if (!memory.currentTask.isStructual()) {
             if (statement instanceof Inheritance) {
                 structuralrules.structuralDecompose1(compound, index, statement, side);

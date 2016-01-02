@@ -30,7 +30,7 @@ import com.googlecode.opennars.main.*;
  */
 public class BudgetFunctions extends UtilityFunctions {    
     
-	private Memory memory;
+	public Memory memory;
 	
 	public BudgetFunctions(Memory memory) {
 		this.memory = memory;
@@ -223,7 +223,7 @@ public class BudgetFunctions extends UtilityFunctions {
 
     /* ----- common function for all inference ----- */
     
-    private  BudgetValue budgetInference(float qual, int complexity) {
+    public  BudgetValue budgetInference(float qual, int complexity) {
         TaskLink tLink = memory.currentTaskLink;
         TermLink bLink = memory.currentBeliefLink;
         float priority = tLink.getPriority();

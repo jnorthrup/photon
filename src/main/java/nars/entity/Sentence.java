@@ -34,24 +34,24 @@ public class Sentence implements Cloneable {
     /**
      * The content of a Sentence is a Term
      */
-    private Term content;
+    public Term content;
     /**
      * The punctuation also indicates the type of the Sentence: Judgment,
      * Question, or Goal
      */
-    private char punctuation;
+    public char punctuation;
     /**
      * The truth value of Judgment
      */
-    private TruthValue truth;
+    public TruthValue truth;
     /**
      * Partial record of the derivation path
      */
-    private Stamp stamp;
+    public Stamp stamp;
     /**
      * Whether the sentence can be revised
      */
-    private boolean revisible;
+    public boolean revisible;
 
     /**
      * Create a Sentence with the given fields

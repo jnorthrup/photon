@@ -26,12 +26,12 @@ class Reasoner(var name: String) {
   /**
    The input channels of the reasoner
    */
-  private var inputChannels: ArrayList[InputChannel] = new ArrayList[InputChannel]()
+  public var inputChannels: ArrayList[InputChannel] = new ArrayList[InputChannel]()
 
   /**
    The output channels of the reasoner
    */
-  private var outputChannels: ArrayList[OutputChannel] = new ArrayList[OutputChannel]()
+  public var outputChannels: ArrayList[OutputChannel] = new ArrayList[OutputChannel]()
 
   /**
    The unique main window
@@ -48,17 +48,17 @@ class Reasoner(var name: String) {
   /**
    System clock, relatively defined to guarantee the repeatability of behaviors
    */
-  private var clock: Long = _
+  public var clock: Long = _
 
   /**
    Flag for running continuously
    */
-  private var running: Boolean = _
+  public var running: Boolean = _
 
   /**
    The number of steps to be carried out
    */
-  private var walkingSteps: Int = _
+  public var walkingSteps: Int = _
 
   @BooleanBeanProperty
   var finishedInputs: Boolean = _

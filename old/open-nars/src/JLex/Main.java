@@ -82,7 +82,7 @@
    exceeding 64K method size limit. Now the assignment
    is handled by unpacking a string encoding of integer array.
    To achieve that, added
-   "private int [][] unpackFromString(int size1, int size2, String st)"
+   "public int [][] unpackFromString(int size1, int size2, String st)"
    function and coded the yy_nxt[][] values into a string
    by printing integers into a string and representing
    integer sequences as "value:length" pairs.
@@ -98,7 +98,7 @@
      the improvements in the JDK 1.1 concerning InputStreams. As a
      consequence, changed yy_buffer from byte[] to char[].
      The lexer can now be initialized with either an InputStream
-     or a Reader. A third, private constructor is called by the other
+     or a Reader. A third, public constructor is called by the other
      two to execute user specified constructor code.
 
   Version 1.2.1, 9/15/97 [A. Appel]
@@ -330,7 +330,7 @@ class CSpec
     };
 
   /* Lexical Generator. */
-  private CLexGen m_lexGen;
+  public CLexGen m_lexGen;
 
   /***************************************************************
     Constants
@@ -426,21 +426,21 @@ class CEmit
   /***************************************************************
     Member Variables
     **************************************************************/
-  private CSpec m_spec;
-  private java.io.PrintWriter m_outstream;
+  public CSpec m_spec;
+  public java.io.PrintWriter m_outstream;
 
   /***************************************************************
     Constants: Anchor Types
     **************************************************************/
-  private final int START = 1;
-  private final int END = 2;
-  private final int NONE = 4;
+  public final int START = 1;
+  public final int END = 2;
+  public final int NONE = 4;
 
   /***************************************************************
     Constants
     **************************************************************/
-  private final boolean EDBG = true;
-  private final boolean NOT_EDBG = false;
+  public final boolean EDBG = true;
+  public final boolean NOT_EDBG = false;
 
   /***************************************************************
     Function: CEmit
@@ -457,7 +457,7 @@ class CEmit
     Function: reset
     Description: Clears member variables.
     **************************************************************/
-  private void reset
+  public void reset
     (
      )
       {
@@ -469,7 +469,7 @@ class CEmit
     Function: set
     Description: Initializes member variables.
     **************************************************************/
-  private void set
+  public void set
     (
      CSpec spec,
      java.io.PrintWriter outstream
@@ -517,7 +517,7 @@ class CEmit
     Function: print_details
     Description: Debugging output.
     **************************************************************/
-  private void print_details
+  public void print_details
     (
      )
       {
@@ -631,7 +631,7 @@ class CEmit
     Description: Emits constructor, member variables,
     and constants.
     **************************************************************/
-  private void emit_construct
+  public void emit_construct
     (
      )
       throws java.io.IOException
@@ -643,19 +643,19 @@ class CEmit
 	  }
 	  
 	  /* Constants */
-	  m_outstream.println("\tprivate final int YY_BUFFER_SIZE = 512;");
+	  m_outstream.println("\tpublic final int YY_BUFFER_SIZE = 512;");
 
-	  m_outstream.println("\tprivate final int YY_F = -1;");
-	  m_outstream.println("\tprivate final int YY_NO_STATE = -1;");
+	  m_outstream.println("\tpublic final int YY_F = -1;");
+	  m_outstream.println("\tpublic final int YY_NO_STATE = -1;");
 
-	  m_outstream.println("\tprivate final int YY_NOT_ACCEPT = 0;");
-	  m_outstream.println("\tprivate final int YY_START = 1;");
-	  m_outstream.println("\tprivate final int YY_END = 2;");
-	  m_outstream.println("\tprivate final int YY_NO_ANCHOR = 4;");
+	  m_outstream.println("\tpublic final int YY_NOT_ACCEPT = 0;");
+	  m_outstream.println("\tpublic final int YY_START = 1;");
+	  m_outstream.println("\tpublic final int YY_END = 2;");
+	  m_outstream.println("\tpublic final int YY_NO_ANCHOR = 4;");
 
 	  // internal
-	  m_outstream.println("\tprivate final int YY_BOL = "+m_spec.BOL+";");
-	  m_outstream.println("\tprivate final int YY_EOF = "+m_spec.EOF+";");
+	  m_outstream.println("\tpublic final int YY_BOL = "+m_spec.BOL+";");
+	  m_outstream.println("\tpublic final int YY_EOF = "+m_spec.EOF+";");
 	  // external
 	  if (m_spec.m_integer_type || true == m_spec.m_yyeof)
 	    m_outstream.println("\tpublic final int YYEOF = -1;");
@@ -668,25 +668,25 @@ class CEmit
 	    }
 
 	  /* Member Variables */
-	  m_outstream.println("\tprivate java.io.BufferedReader yy_reader;");
-	  m_outstream.println("\tprivate int yy_buffer_index;");
-	  m_outstream.println("\tprivate int yy_buffer_read;");
-	  m_outstream.println("\tprivate int yy_buffer_start;");
-	  m_outstream.println("\tprivate int yy_buffer_end;");
-	  m_outstream.println("\tprivate char yy_buffer[];");
+	  m_outstream.println("\tpublic java.io.BufferedReader yy_reader;");
+	  m_outstream.println("\tpublic int yy_buffer_index;");
+	  m_outstream.println("\tpublic int yy_buffer_read;");
+	  m_outstream.println("\tpublic int yy_buffer_start;");
+	  m_outstream.println("\tpublic int yy_buffer_end;");
+	  m_outstream.println("\tpublic char yy_buffer[];");
 	  if (m_spec.m_count_chars)
 	    {
-	      m_outstream.println("\tprivate int yychar;");
+	      m_outstream.println("\tpublic int yychar;");
 	    }
 	  if (m_spec.m_count_lines)
 	    {
-	      m_outstream.println("\tprivate int yyline;");
+	      m_outstream.println("\tpublic int yyline;");
 	    }
-	  m_outstream.println("\tprivate boolean yy_at_bol;");
-	  m_outstream.println("\tprivate int yy_lexical_state;");
+	  m_outstream.println("\tpublic boolean yy_at_bol;");
+	  m_outstream.println("\tpublic int yy_lexical_state;");
 	  /*if (m_spec.m_count_lines || true == m_spec.m_count_chars)
 	    {
-	      m_outstream.println("\tprivate int yy_buffer_prev_start;");
+	      m_outstream.println("\tpublic int yy_buffer_prev_start;");
 	    }*/
 	  m_outstream.println();
 
@@ -754,8 +754,8 @@ class CEmit
 	  m_outstream.println();
 
 
-	  /* Function: third, private constructor - only for internal use */
-	  m_outstream.print("\tprivate ");
+	  /* Function: third, public constructor - only for internal use */
+	  m_outstream.print("\tpublic ");
           m_outstream.print(new String(m_spec.m_class_name));
 	  m_outstream.print(" ()");
 	  
@@ -809,7 +809,7 @@ class CEmit
     Description: Emits constants that serve as lexical states,
     including YYINITIAL.
     **************************************************************/
-  private void emit_states
+  public void emit_states
     (
      )
       throws java.io.IOException
@@ -829,7 +829,7 @@ class CEmit
 		  CUtility.ASSERT(null != state);
 		}
 	      
-	      m_outstream.println("\tprivate final int " 
+	      m_outstream.println("\tpublic final int "
 				     + state 
 				     + " = " 
 				     + (m_spec.m_states.get(state)).toString() 
@@ -837,7 +837,7 @@ class CEmit
 	      /*++index;*/
 	    }
 
-	  m_outstream.println("\tprivate final int yy_state_dtrans[] = {");
+	  m_outstream.println("\tpublic final int yy_state_dtrans[] = {");
 	  for (index = 0; index < m_spec.m_state_dtrans.length; ++index)
 	    {
 	      m_outstream.print("\t\t" + m_spec.m_state_dtrans[index]);
@@ -858,7 +858,7 @@ class CEmit
     Description: Emits helper functions, particularly 
     error handling and input buffering.
     **************************************************************/
-  private void emit_helpers
+  public void emit_helpers
     (
      )
       throws java.io.IOException
@@ -870,10 +870,10 @@ class CEmit
 	  }
 
 	/* Function: yy_do_eof */
-	m_outstream.println("\tprivate boolean yy_eof_done = false;");
+	m_outstream.println("\tpublic boolean yy_eof_done = false;");
 	if (null != m_spec.m_eof_code)
 	  {
-	    m_outstream.print("\tprivate void yy_do_eof ()");
+	    m_outstream.print("\tpublic void yy_do_eof ()");
 
 	    if (null != m_spec.m_eof_throw_code)
 	      {
@@ -899,17 +899,17 @@ class CEmit
 	emit_states();
 	
 	/* Function: yybegin */
-	m_outstream.println("\tprivate void yybegin (int state) {");
+	m_outstream.println("\tpublic void yybegin (int state) {");
 	m_outstream.println("\t\tyy_lexical_state = state;");
 	m_outstream.println("\t}");
 
 	/* Function: yy_initial_dtrans */
-	/*m_outstream.println("\tprivate int yy_initial_dtrans (int state) {");
+	/*m_outstream.println("\tpublic int yy_initial_dtrans (int state) {");
 	m_outstream.println("\t\treturn yy_state_dtrans[state];");
 	m_outstream.println("\t}");*/
 
 	/* Function: yy_advance */
-	m_outstream.println("\tprivate int yy_advance ()");
+	m_outstream.println("\tpublic int yy_advance ()");
 	m_outstream.println("\t\tthrows java.io.IOException {");
 	/*m_outstream.println("\t\t{");*/
 	m_outstream.println("\t\tint next_read;");
@@ -962,7 +962,7 @@ class CEmit
 	m_outstream.println("\t}");
 	
 	/* Function: yy_move_end */
-	m_outstream.println("\tprivate void yy_move_end () {");
+	m_outstream.println("\tpublic void yy_move_end () {");
 	m_outstream.println("\t\tif (yy_buffer_end > yy_buffer_start &&");
 	m_outstream.println("\t\t    '\\n' == yy_buffer[yy_buffer_end-1])");
 	m_outstream.println("\t\t\tyy_buffer_end--;");
@@ -972,8 +972,8 @@ class CEmit
 	m_outstream.println("\t}");
 
 	/* Function: yy_mark_start */
-	m_outstream.println("\tprivate boolean yy_last_was_cr=false;");
-	m_outstream.println("\tprivate void yy_mark_start () {");
+	m_outstream.println("\tpublic boolean yy_last_was_cr=false;");
+	m_outstream.println("\tpublic void yy_mark_start () {");
 	if (m_spec.m_count_lines || true == m_spec.m_count_chars)
 	  {
 	    if (m_spec.m_count_lines)
@@ -1000,12 +1000,12 @@ class CEmit
 	m_outstream.println("\t}");
 
 	/* Function: yy_mark_end */
-	m_outstream.println("\tprivate void yy_mark_end () {");
+	m_outstream.println("\tpublic void yy_mark_end () {");
 	m_outstream.println("\t\tyy_buffer_end = yy_buffer_index;");
 	m_outstream.println("\t}");
 
 	/* Function: yy_to_mark */
-	m_outstream.println("\tprivate void yy_to_mark () {");
+	m_outstream.println("\tpublic void yy_to_mark () {");
 	m_outstream.println("\t\tyy_buffer_index = yy_buffer_end;");
 	m_outstream.println("\t\tyy_at_bol = "+
 			    "(yy_buffer_end > yy_buffer_start) &&");
@@ -1020,19 +1020,19 @@ class CEmit
 	m_outstream.println("\t}");
 
 	/* Function: yytext */
-	m_outstream.println("\tprivate java.lang.String yytext () {");
+	m_outstream.println("\tpublic java.lang.String yytext () {");
 	m_outstream.println("\t\treturn (new java.lang.String(yy_buffer,");
 	m_outstream.println("\t\t\tyy_buffer_start,");
 	m_outstream.println("\t\t\tyy_buffer_end - yy_buffer_start));");
 	m_outstream.println("\t}");
 
 	/* Function: yylength */
-	m_outstream.println("\tprivate int yylength () {");
+	m_outstream.println("\tpublic int yylength () {");
 	m_outstream.println("\t\treturn yy_buffer_end - yy_buffer_start;");
 	m_outstream.println("\t}");
 
 	/* Function: yy_double */
-	m_outstream.println("\tprivate char[] yy_double (char buf[]) {");
+	m_outstream.println("\tpublic char[] yy_double (char buf[]) {");
 	m_outstream.println("\t\tint i;");
 	m_outstream.println("\t\tchar newbuf[];");
 	m_outstream.println("\t\tnewbuf = new char[2*buf.length];");
@@ -1043,13 +1043,13 @@ class CEmit
 	m_outstream.println("\t}");
 
 	/* Function: yy_error */
-	m_outstream.println("\tprivate final int YY_E_INTERNAL = 0;");
-	m_outstream.println("\tprivate final int YY_E_MATCH = 1;");
-	m_outstream.println("\tprivate java.lang.String yy_error_string[] = {");
+	m_outstream.println("\tpublic final int YY_E_INTERNAL = 0;");
+	m_outstream.println("\tpublic final int YY_E_MATCH = 1;");
+	m_outstream.println("\tpublic java.lang.String yy_error_string[] = {");
 	m_outstream.println("\t\t\"Error: Internal error.\\n\",");
 	m_outstream.println("\t\t\"Error: Unmatched input.\\n\"");
 	m_outstream.println("\t};");
-	m_outstream.println("\tprivate void yy_error (int code,boolean fatal) {");
+	m_outstream.println("\tpublic void yy_error (int code,boolean fatal) {");
 	m_outstream.println("\t\tjava.lang.System.out.print(yy_error_string[code]);");
 	m_outstream.println("\t\tjava.lang.System.out.flush();");
 	m_outstream.println("\t\tif (fatal) {");
@@ -1058,21 +1058,21 @@ class CEmit
 	m_outstream.println("\t}");
 
 	/* Function: yy_next */
-	/*m_outstream.println("\tprivate int yy_next (int current,char lookahead) {");
+	/*m_outstream.println("\tpublic int yy_next (int current,char lookahead) {");
 	m_outstream.println("\t\treturn yy_nxt[yy_rmap[current]][yy_cmap[lookahead]];");
 	m_outstream.println("\t}");*/
 
 	/* Function: yy_accept */
-	/*m_outstream.println("\tprivate int yy_accept (int current) {");
+	/*m_outstream.println("\tpublic int yy_accept (int current) {");
 	m_outstream.println("\t\treturn yy_acpt[current];");
 	m_outstream.println("\t}");*/
 
 
-	// Function: private int [][] unpackFromString(int size1, int size2, String st)
+	// Function: public int [][] unpackFromString(int size1, int size2, String st)
 	// Added 6/24/98 Raimondas Lencevicius
 	// May be made more efficient by replacing String operations
 	// Assumes correctly formed input String. Performs no error checking
-	m_outstream.println("\tprivate int[][] unpackFromString"+
+	m_outstream.println("\tpublic int[][] unpackFromString"+
 			    "(int size1, int size2, String st) {");
 	m_outstream.println("\t\tint colonIndex = -1;");
 	m_outstream.println("\t\tString lengthString;");
@@ -1119,7 +1119,7 @@ class CEmit
     Function: emit_header
     Description: Emits class header.
     **************************************************************/
-  private void emit_header
+  public void emit_header
     (
      )
       throws java.io.IOException
@@ -1150,7 +1150,7 @@ class CEmit
     Function: emit_table
     Description: Emits transition table.
     **************************************************************/
-  private void emit_table
+  public void emit_table
     (
      )
       throws java.io.IOException
@@ -1169,7 +1169,7 @@ class CEmit
 	    CUtility.ASSERT(null != m_outstream);
 	  }
 
-	m_outstream.println("\tprivate int yy_acpt[] = {");
+	m_outstream.println("\tpublic int yy_acpt[] = {");
 	size = m_spec.m_accept_vector.size();
 	for (elem = 0; elem < size; ++elem)
 	  {
@@ -1216,13 +1216,13 @@ class CEmit
 	int[] yy_cmap = new int[m_spec.m_ccls_map.length];
 	for (i = 0; i < m_spec.m_ccls_map.length; ++i)
 	    yy_cmap[i] = m_spec.m_col_map[m_spec.m_ccls_map[i]];
-	m_outstream.print("\tprivate int yy_cmap[] = unpackFromString(");
+	m_outstream.print("\tpublic int yy_cmap[] = unpackFromString(");
 	emit_table_as_string(new int[][] { yy_cmap });
 	m_outstream.println(")[0];");
 	m_outstream.println();
 
 	// CSA: modified yy_rmap to use string packing 9-Aug-1999
-	m_outstream.print("\tprivate int yy_rmap[] = unpackFromString(");
+	m_outstream.print("\tpublic int yy_rmap[] = unpackFromString(");
 	emit_table_as_string(new int[][] { m_spec.m_row_map });
 	m_outstream.println(")[0];");
 	m_outstream.println();
@@ -1238,7 +1238,7 @@ class CEmit
 	    yy_nxt[elem] = dtrans.m_dtrans;
 	}
 	m_outstream.print
-	  ("\tprivate int yy_nxt[][] = unpackFromString(");
+	  ("\tpublic int yy_nxt[][] = unpackFromString(");
 	emit_table_as_string(yy_nxt);
 	m_outstream.println(");");
 	m_outstream.println();
@@ -1253,7 +1253,7 @@ class CEmit
 	   by printing integers and representing
 	   integer sequences as "value:length" pairs.
     **************************************************************/
-  private void emit_table_as_string(int[][] ia) {
+  public void emit_table_as_string(int[][] ia) {
 	int sequenceLength = 0; // RL - length of the number sequence
 	boolean sequenceStarted = false; // RL - has number sequence started?
 	int previousInt = -20; // RL - Bogus -20 state.
@@ -1334,7 +1334,7 @@ class CEmit
     Function: emit_driver
     Description: 
     **************************************************************/
-  private void emit_driver
+  public void emit_driver
     (
      )
       throws java.io.IOException
@@ -1551,7 +1551,7 @@ class CEmit
     Function: emit_actions
     Description:     
     **************************************************************/
-  private void emit_actions 
+  public void emit_actions
     (
      String tabs
      )
@@ -1592,7 +1592,7 @@ class CEmit
     Function: emit_footer
     Description:     
     **************************************************************/
-  private void emit_footer
+  public void emit_footer
     (
      )
       throws java.io.IOException
@@ -1645,9 +1645,9 @@ class CMakeNfa
   /***************************************************************
     Member Variables
     **************************************************************/
-  private CSpec m_spec;
-  private CLexGen m_lexGen;
-  private CInput m_input;
+  public CSpec m_spec;
+  public CLexGen m_lexGen;
+  public CInput m_input;
 
   /***************************************************************
     Function: CMakeNfa
@@ -1664,7 +1664,7 @@ class CMakeNfa
     Function: reset
     Description: Resets CMakeNfa member variables.
     **************************************************************/
-  private void reset
+  public void reset
     (
      )
       {
@@ -1677,7 +1677,7 @@ class CMakeNfa
     Function: set
     Description: Sets CMakeNfa member variables.
     **************************************************************/
-  private void set
+  public void set
     (
      CLexGen lexGen,
      CSpec spec,
@@ -1775,7 +1775,7 @@ class CMakeNfa
     Function: discardCNfa
     Description: 
     **************************************************************/
-  private void discardCNfa
+  public void discardCNfa
     (
      CNfa nfa
      )
@@ -1787,7 +1787,7 @@ class CMakeNfa
     Function: processStates
     Description:
     **************************************************************/
-  private void processStates
+  public void processStates
     (
      SparseBitSet states,
      CNfa current
@@ -1810,7 +1810,7 @@ class CMakeNfa
     Function: machine
     Description: Recursive descent regular expression parser.
     **************************************************************/
-  private CNfa machine
+  public CNfa machine
     (
      )
       throws java.io.IOException 
@@ -1890,7 +1890,7 @@ class CMakeNfa
     Function: rule
     Description: Recursive descent regular expression parser.
     **************************************************************/
-  private CNfa rule
+  public CNfa rule
     (
      )
       throws java.io.IOException 
@@ -1965,7 +1965,7 @@ class CMakeNfa
     Function: expr
     Description: Recursive descent regular expression parser.
     **************************************************************/
-  private void expr
+  public void expr
     (
      CNfaPair pair
      )
@@ -2014,7 +2014,7 @@ class CMakeNfa
     Function: cat_expr
     Description: Recursive descent regular expression parser.
     **************************************************************/
-  private void cat_expr
+  public void cat_expr
     (
      CNfaPair pair
      )
@@ -2060,7 +2060,7 @@ class CMakeNfa
     Function: first_in_cat
     Description: Recursive descent regular expression parser.
     **************************************************************/
-  private boolean first_in_cat
+  public boolean first_in_cat
     (
      int token
      )
@@ -2098,7 +2098,7 @@ class CMakeNfa
     Function: factor
     Description: Recursive descent regular expression parser.
     **************************************************************/
-  private void factor
+  public void factor
     (
      CNfaPair pair
      )
@@ -2151,7 +2151,7 @@ class CMakeNfa
     Function: term
     Description: Recursive descent regular expression parser.
     **************************************************************/
-  private void term
+  public void term
     (
      CNfaPair pair
      )
@@ -2263,7 +2263,7 @@ class CMakeNfa
     Function: dodash
     Description: Recursive descent regular expression parser.
     **************************************************************/
-  private void dodash
+  public void dodash
     (
      CSet set
      )
@@ -2323,9 +2323,9 @@ class CMakeNfa
  */
 class CSimplifyNfa
 {
-  private int[] ccls; // character class mapping.
-  private int original_charset_size; // original charset size
-  private int mapped_charset_size; // reduced charset size
+  public int[] ccls; // character class mapping.
+  public int original_charset_size; // original charset size
+  public int mapped_charset_size; // reduced charset size
 
   void simplify(CSpec m_spec) {
     computeClasses(m_spec); // initialize fields.
@@ -2353,7 +2353,7 @@ class CSimplifyNfa
    *  a single character class, and then incrementally split classes
    *  as we see edges that require discrimination between characters in
    *  the class. [CSA, 25-Jul-1999] */
-  private void computeClasses(CSpec m_spec) {
+  public void computeClasses(CSpec m_spec) {
     this.original_charset_size = m_spec.m_dtrans_ncols;
     this.ccls = new int[original_charset_size]; // initially all zero.
 
@@ -2423,7 +2423,7 @@ class CMinimize
     Function: reset
     Description: Resets member variables.
     **************************************************************/
-  private void reset
+  public void reset
     (
      )
       {
@@ -2436,7 +2436,7 @@ class CMinimize
     Function: set
     Description: Sets member variables.
     **************************************************************/
-  private void set
+  public void set
     (
      CSpec spec
      )
@@ -2476,7 +2476,7 @@ class CMinimize
     Function: col_copy
     Description: Copies source column into destination column.
     **************************************************************/
-  private void col_copy
+  public void col_copy
     (
      int dest,
      int src
@@ -2498,7 +2498,7 @@ class CMinimize
     Function: trunc_col
     Description: Truncates each column to the 'correct' length.
     **************************************************************/
-  private void trunc_col
+  public void trunc_col
     (
      )
       {
@@ -2519,7 +2519,7 @@ class CMinimize
     Function: row_copy
     Description: Copies source row into destination row.
     **************************************************************/
-  private void row_copy
+  public void row_copy
     (
      int dest,
      int src
@@ -2535,7 +2535,7 @@ class CMinimize
     Function: col_equiv
     Description: 
     **************************************************************/
-  private boolean col_equiv
+  public boolean col_equiv
     (
      int col1,
      int col2
@@ -2562,7 +2562,7 @@ class CMinimize
     Function: row_equiv
     Description: 
     **************************************************************/
-  private boolean row_equiv
+  public boolean row_equiv
     (
      int row1,
      int row2
@@ -2590,7 +2590,7 @@ class CMinimize
     Function: reduce
     Description: 
     **************************************************************/
-  private void reduce
+  public void reduce
     (
      )
       {
@@ -2794,7 +2794,7 @@ class CMinimize
     Description: Updates CDTrans table after minimization 
     using groups, removing redundant transition table states.
     **************************************************************/
-  private void fix_dtrans
+  public void fix_dtrans
     (
      )
       {
@@ -2840,7 +2840,7 @@ class CMinimize
     Function: minimize
     Description: Removes redundant transition table states.
     **************************************************************/
-  private void minimize
+  public void minimize
     (
      )
       {
@@ -2961,7 +2961,7 @@ class CMinimize
     Function: init_groups
     Description:
     **************************************************************/
-  private void init_groups
+  public void init_groups
     (
      )
       {
@@ -3058,7 +3058,7 @@ class CMinimize
   /***************************************************************
     Function: pset
     **************************************************************/
-  private void pset
+  public void pset
     (
      Vector dtrans_group
      )
@@ -3078,7 +3078,7 @@ class CMinimize
   /***************************************************************
     Function: pgroups
     **************************************************************/
-  private void pgroups
+  public void pgroups
     (
      )
       {
@@ -3114,14 +3114,14 @@ class CNfa2Dfa
   /***************************************************************
     Member Variables
     **************************************************************/
-  private CSpec m_spec;
-  private int m_unmarked_dfa;
-  private CLexGen m_lexGen;
+  public CSpec m_spec;
+  public int m_unmarked_dfa;
+  public CLexGen m_lexGen;
 
   /***************************************************************
     Constants
     **************************************************************/
-  private static final int NOT_IN_DSTATES = -1;
+  public static final int NOT_IN_DSTATES = -1;
 
   /***************************************************************
     Function: CNfa2Dfa
@@ -3137,7 +3137,7 @@ class CNfa2Dfa
     Function: set 
     Description: 
     **************************************************************/
-  private void set
+  public void set
     (
      CLexGen lexGen,
      CSpec spec
@@ -3152,7 +3152,7 @@ class CNfa2Dfa
     Function: reset 
     Description: 
     **************************************************************/
-  private void reset
+  public void reset
     (
      )
       {
@@ -3192,7 +3192,7 @@ class CNfa2Dfa
     Function: make_dtrans
     Description: Creates uncompressed CDTrans transition table.
     **************************************************************/
-  private void make_dtrans
+  public void make_dtrans
     (
      )
      /* throws java.lang.CloneNotSupportedException*/
@@ -3335,7 +3335,7 @@ class CNfa2Dfa
   /***************************************************************
     Function: free_dfa_states
     **************************************************************/  
-  private void free_dfa_states
+  public void free_dfa_states
     (
      )
       {
@@ -3346,7 +3346,7 @@ class CNfa2Dfa
   /***************************************************************
     Function: free_nfa_states
     **************************************************************/  
-  private void free_nfa_states
+  public void free_nfa_states
     (
      )
       {
@@ -3362,7 +3362,7 @@ class CNfa2Dfa
     Function: e_closure
     Description: Alters and returns input set.
     **************************************************************/
-  private void e_closure
+  public void e_closure
     (
      CBunch bunch
      )
@@ -3548,7 +3548,7 @@ class CNfa2Dfa
   /***************************************************************
     Function: sortStates
     **************************************************************/
-  private void sortStates
+  public void sortStates
     (
      Vector nfa_set
      )
@@ -3606,7 +3606,7 @@ class CNfa2Dfa
     Function: get_unmarked
     Description: Returns next unmarked DFA state.
     **************************************************************/
-  private CDfa get_unmarked
+  public CDfa get_unmarked
     (
      )
       {
@@ -3655,7 +3655,7 @@ class CNfa2Dfa
     with the information in the CBunch.
     3) Returns index of new dfa.
     **************************************************************/
-  private int add_to_dstates
+  public int add_to_dstates
     (
      CBunch bunch
      )
@@ -3697,7 +3697,7 @@ class CNfa2Dfa
   /***************************************************************
     Function: in_dstates
     **************************************************************/
-  private int in_dstates
+  public int in_dstates
     (
      CBunch bunch
      )
@@ -4056,7 +4056,7 @@ class CInput
   /***************************************************************
     Member Variables
     **************************************************************/
-  private java.io.BufferedReader m_input; /* JLex specification file. */
+  public java.io.BufferedReader m_input; /* JLex specification file. */
 
   boolean m_eof_reached; /* Whether EOF has been encountered. */
   boolean m_pushback_line; 
@@ -4589,8 +4589,8 @@ class CSet
   /********************************************************
     Member Variables
     *******************************************************/
-  private SparseBitSet m_set;
-  private boolean m_complement;
+  public SparseBitSet m_set;
+  public boolean m_complement;
 
   /********************************************************
     Function: CSet
@@ -4797,34 +4797,34 @@ class CLexGen
   /***************************************************************
     Member Variables
     **************************************************************/
-  private java.io.Reader m_instream; /* JLex specification file. */
-  private java.io.PrintWriter m_outstream; /* Lexical analyzer source file. */
+  public java.io.Reader m_instream; /* JLex specification file. */
+  public java.io.PrintWriter m_outstream; /* Lexical analyzer source file. */
 
-  private CInput m_input; /* Input buffer class. */
+  public CInput m_input; /* Input buffer class. */
 
-  private Hashtable m_tokens; /* Hashtable that maps characters to their 
+  public Hashtable m_tokens; /* Hashtable that maps characters to their
 				 corresponding lexical code for
 				 the internal lexical analyzer. */
-  private CSpec m_spec; /* Spec class holds information
+  public CSpec m_spec; /* Spec class holds information
 			   about the generated lexer. */
-  private boolean m_init_flag; /* Flag set to true only upon 
+  public boolean m_init_flag; /* Flag set to true only upon
 				  successful initialization. */
 
-  private CMakeNfa m_makeNfa; /* NFA machine generator module. */
-  private CNfa2Dfa m_nfa2dfa; /* NFA to DFA machine (transition table) 
+  public CMakeNfa m_makeNfa; /* NFA machine generator module. */
+  public CNfa2Dfa m_nfa2dfa; /* NFA to DFA machine (transition table)
 				 conversion module. */
-  private CMinimize m_minimize; /* Transition table compressor. */
-  private CSimplifyNfa m_simplifyNfa; /* NFA simplifier using char classes */
-  private CEmit m_emit; /* Output module that emits source code
+  public CMinimize m_minimize; /* Transition table compressor. */
+  public CSimplifyNfa m_simplifyNfa; /* NFA simplifier using char classes */
+  public CEmit m_emit; /* Output module that emits source code
 			   into the generated lexer file. */
 
 
   /********************************************************
     Constants
     *******************************************************/
-  private static final boolean ERROR = false;
-  private static final boolean NOT_ERROR = true;
-  private static final int BUFFER_SIZE = 1024;
+  public static final boolean ERROR = false;
+  public static final boolean NOT_ERROR = true;
+  public static final int BUFFER_SIZE = 1024;
 
   /********************************************************
     Constants: Token Types
@@ -4990,7 +4990,7 @@ class CLexGen
     Description: Process first section of specification,
     echoing it into output file.
     **************************************************************/
-  private void userCode
+  public void userCode
     (
      )
       throws java.io.IOException
@@ -5041,7 +5041,7 @@ class CLexGen
   /***************************************************************
     Function: getName
     **************************************************************/
-  private char[] getName
+  public char[] getName
     (
      )
       {
@@ -5085,19 +5085,19 @@ class CLexGen
 	return buffer;
       }
 
-  private final int CLASS_CODE = 0;
-  private final int INIT_CODE = 1;
-  private final int EOF_CODE = 2;
-  private final int INIT_THROW_CODE = 3;
-  private final int YYLEX_THROW_CODE = 4;
-  private final int EOF_THROW_CODE = 5;
-  private final int EOF_VALUE_CODE = 6;
+  public final int CLASS_CODE = 0;
+  public final int INIT_CODE = 1;
+  public final int EOF_CODE = 2;
+  public final int INIT_THROW_CODE = 3;
+  public final int YYLEX_THROW_CODE = 4;
+  public final int EOF_THROW_CODE = 5;
+  public final int EOF_VALUE_CODE = 6;
 
   /***************************************************************
     Function: packCode
     Description:
     **************************************************************/
-  private char[] packCode
+  public char[] packCode
     (
      char start_dir[],
      char end_dir[],
@@ -5212,82 +5212,82 @@ class CLexGen
   /***************************************************************
     Member Variables: JLex directives.
     **************************************************************/
-  private char m_state_dir[] = { 
+  public char m_state_dir[] = {
     '%', 's', 't', 
     'a', 't', 'e',
     '\0'
     };
   
-  private char m_char_dir[] = { 
+  public char m_char_dir[] = {
     '%', 'c', 'h',
     'a', 'r',
     '\0'
     };
 
-  private char m_line_dir[] = { 
+  public char m_line_dir[] = {
     '%', 'l', 'i',
     'n', 'e',
     '\0'
     };
 
-  private char m_cup_dir[] = { 
+  public char m_cup_dir[] = {
     '%', 'c', 'u',
     'p', 
     '\0'
     };
 
-  private char m_class_dir[] = { 
+  public char m_class_dir[] = {
     '%', 'c', 'l', 
     'a', 's', 's',
     '\0'
     };
 
-  private char m_implements_dir[] = { 
+  public char m_implements_dir[] = {
     '%', 'i', 'm', 'p', 'l', 'e', 'm', 'e', 'n', 't', 's', 
     '\0'
     };
 
-  private char m_function_dir[] = { 
+  public char m_function_dir[] = {
     '%', 'f', 'u',
     'n', 'c', 't',
     'i', 'o', 'n',
     '\0'
     };
 
-  private char m_type_dir[] = { 
+  public char m_type_dir[] = {
     '%', 't', 'y',
     'p', 'e',
     '\0'
     };
 
-  private char m_integer_dir[] = { 
+  public char m_integer_dir[] = {
     '%', 'i', 'n',
     't', 'e', 'g', 
     'e', 'r',
     '\0'
     };
 
-  private char m_intwrap_dir[] = { 
+  public char m_intwrap_dir[] = {
     '%', 'i', 'n',
     't', 'w', 'r', 
     'a', 'p',
     '\0'
     };
 
-  private char m_full_dir[] = { 
+  public char m_full_dir[] = {
     '%', 'f', 'u', 
     'l', 'l',
     '\0'
     };
 
-  private char m_unicode_dir[] = { 
+  public char m_unicode_dir[] = {
     '%', 'u', 'n', 
     'i', 'c', 'o',
     'd', 'e',
     '\0'
     };
 
-  private char m_ignorecase_dir[] = {
+  public char m_ignorecase_dir[] = {
     '%', 'i', 'g',
     'n', 'o', 'r',
     'e', 'c', 'a', 
@@ -5295,26 +5295,26 @@ class CLexGen
     '\0'
     };
 
-  private char m_notunix_dir[] = { 
+  public char m_notunix_dir[] = {
     '%', 'n', 'o',
     't', 'u', 'n', 
     'i', 'x',
     '\0'
     };
 
-  private char m_init_code_dir[] = { 
+  public char m_init_code_dir[] = {
     '%', 'i', 'n', 
     'i', 't', '{',
     '\0'
     };
 
-  private char m_init_code_end_dir[] = { 
+  public char m_init_code_end_dir[] = {
     '%', 'i', 'n', 
     'i', 't', '}',
     '\0'
     };
 
-  private char m_init_throw_code_dir[] = { 
+  public char m_init_throw_code_dir[] = {
     '%', 'i', 'n', 
     'i', 't', 't',
     'h', 'r', 'o',
@@ -5322,7 +5322,7 @@ class CLexGen
     '\0'
     };
 
-  private char m_init_throw_code_end_dir[] = { 
+  public char m_init_throw_code_end_dir[] = {
     '%', 'i', 'n', 
     'i', 't', 't',
     'h', 'r', 'o',
@@ -5330,7 +5330,7 @@ class CLexGen
     '\0'
     };
 
-  private char m_yylex_throw_code_dir[] = { 
+  public char m_yylex_throw_code_dir[] = {
     '%', 'y', 'y', 'l', 
     'e', 'x', 't',
     'h', 'r', 'o',
@@ -5338,7 +5338,7 @@ class CLexGen
     '\0'
     };
 
-  private char m_yylex_throw_code_end_dir[] = { 
+  public char m_yylex_throw_code_end_dir[] = {
     '%', 'y', 'y', 'l', 
     'e', 'x', 't',
     'h', 'r', 'o',
@@ -5346,33 +5346,33 @@ class CLexGen
     '\0'
     };
 
-  private char m_eof_code_dir[] = { 
+  public char m_eof_code_dir[] = {
     '%', 'e', 'o', 
     'f', '{',
     '\0'
     };
 
-  private char m_eof_code_end_dir[] = { 
+  public char m_eof_code_end_dir[] = {
     '%', 'e', 'o', 
     'f', '}',
     '\0'
     };
 
-  private char m_eof_value_code_dir[] = { 
+  public char m_eof_value_code_dir[] = {
     '%', 'e', 'o', 
     'f', 'v', 'a', 
     'l', '{',
     '\0'
     };
 
-  private char m_eof_value_code_end_dir[] = { 
+  public char m_eof_value_code_end_dir[] = {
     '%', 'e', 'o', 
     'f', 'v', 'a',
     'l', '}',
     '\0'
     };
 
-  private char m_eof_throw_code_dir[] = { 
+  public char m_eof_throw_code_dir[] = {
     '%', 'e', 'o', 
     'f', 't', 'h',
     'r', 'o', 'w',
@@ -5380,7 +5380,7 @@ class CLexGen
     '\0'
     };
 
-  private char m_eof_throw_code_end_dir[] = { 
+  public char m_eof_throw_code_end_dir[] = {
     '%', 'e', 'o', 
     'f', 't', 'h',
     'r', 'o', 'w',
@@ -5388,23 +5388,23 @@ class CLexGen
     '\0'
     };
 
-  private char m_class_code_dir[] = { 
+  public char m_class_code_dir[] = {
     '%', '{',
     '\0'
     };
 
-  private char m_class_code_end_dir[] = { 
+  public char m_class_code_end_dir[] = {
     '%', '}',
     '\0'
     };
 
-  private char m_yyeof_dir[] = { 
+  public char m_yyeof_dir[] = {
     '%', 'y', 'y',
     'e', 'o', 'f',
     '\0'
     };
   
-  private char m_public_dir[] = { 
+  public char m_public_dir[] = {
     '%', 'p', 'u',
     'b', 'l', 'i', 
     'c', '\0'
@@ -5414,7 +5414,7 @@ class CLexGen
     Function: userDeclare
     Description:
     **************************************************************/
-  private void userDeclare
+  public void userDeclare
     (
      )
       throws java.io.IOException
@@ -5859,7 +5859,7 @@ class CLexGen
     Description: Processes third section of JLex 
     specification and creates minimized transition table.
     **************************************************************/
-  private void userRules
+  public void userRules
     (
      )
       throws java.io.IOException
@@ -5920,7 +5920,7 @@ class CLexGen
     Description: Debugging routine that outputs readable form
     of character class.
     **************************************************************/
-  private void printccl
+  public void printccl
     (
      CSet set
      )
@@ -5942,7 +5942,7 @@ class CLexGen
     Function: plab
     Description:
     **************************************************************/
-  private String plab
+  public String plab
     (
      CNfa state
      )
@@ -5963,7 +5963,7 @@ class CLexGen
     Function: interp_int
     Description:
     **************************************************************/
-  private String interp_int
+  public String interp_int
     (
      int i
      )
@@ -6108,7 +6108,7 @@ class CLexGen
     Special Notes: This function treats commas as optional
     and permits states to be spread over multiple lines.
     **************************************************************/
-  private SparseBitSet all_states = null;
+  public SparseBitSet all_states = null;
   SparseBitSet getStates
     (
      )
@@ -6259,7 +6259,7 @@ class CLexGen
     Function: expandMacro
     Description: Returns false on error, true otherwise. 
     *******************************************************/
-  private boolean expandMacro
+  public boolean expandMacro
     (
      )
       {
@@ -6402,7 +6402,7 @@ class CLexGen
     Description: Saves macro definition of form:
     macro_name = macro_definition
     **************************************************************/
-  private void saveMacro
+  public void saveMacro
     (
      )
       {
@@ -6574,7 +6574,7 @@ class CLexGen
     (But commas are actually optional as long as there is 
     white space in between them.)
     **************************************************************/
-  private void saveStates
+  public void saveStates
     (
      )
       {
@@ -6677,7 +6677,7 @@ class CLexGen
     Description: Takes escape sequence and returns
     corresponding character code.
     *******************************************************/
-  private char expandEscape
+  public char expandEscape
     (
      )
       {
@@ -6935,7 +6935,7 @@ class CLexGen
     Function: advance
     Description: Returns code for next token.
     *******************************************************/
-  private boolean m_advance_stop = false;
+  public boolean m_advance_stop = false;
   int advance
     (
      )
@@ -7136,7 +7136,7 @@ class CLexGen
     Function: details
     Description: High level debugging routine.
     **************************************************************/
-  private void details
+  public void details
     (
      )
       {
@@ -7301,7 +7301,7 @@ class CLexGen
    /***************************************************************
      Function: print_header
      **************************************************************/
-  private void print_header
+  public void print_header
     (
      )
       {
@@ -7460,11 +7460,11 @@ final class SparseBitSet implements Cloneable {
     /** Number of blocks currently in use. */
     int size;
     /** log base 2 of BITS, for the identity: x/BITS == x >> LG_BITS */
-    static final private int LG_BITS = 6;
+    static final public int LG_BITS = 6;
     /** Number of bits in a block. */
-    static final private int BITS = 1<<LG_BITS;
+    static final public int BITS = 1<<LG_BITS;
     /** BITS-1, using the identity: x % BITS == x & (BITS-1) */
-    static final private int BITS_M1 = BITS-1;
+    static final public int BITS_M1 = BITS-1;
 
     /**
      * Creates an empty set.
@@ -7492,10 +7492,10 @@ final class SparseBitSet implements Cloneable {
 	size = 0;
     }
 
-    private void new_block(int bnum) {
+    public void new_block(int bnum) {
 	new_block(bsearch(bnum), bnum);
     }
-    private void new_block(int idx, int bnum) {
+    public void new_block(int idx, int bnum) {
 	if (size==bits.length) { // resize
 	    long[] nbits = new long[size*3];
 	    int [] noffs = new int [size*3];
@@ -7507,7 +7507,7 @@ final class SparseBitSet implements Cloneable {
 	CUtility.ASSERT(size<bits.length);
 	insert_block(idx, bnum);
     }
-    private void insert_block(int idx, int bnum) {
+    public void insert_block(int idx, int bnum) {
 	CUtility.ASSERT(idx<=size);
 	CUtility.ASSERT(idx==size || offs[idx]!=bnum);
 	System.arraycopy(bits, idx, bits, idx+1, size-idx);
@@ -7516,7 +7516,7 @@ final class SparseBitSet implements Cloneable {
 	bits[idx]=0; //clear them bits.
 	size++;
     }
-    private int bsearch(int bnum) {
+    public int bsearch(int bnum) {
 	int l=0, r=size; // search interval is [l, r)
 	while (l<r) {
 	    int p = (l+r)/2;
@@ -7596,19 +7596,19 @@ final class SparseBitSet implements Cloneable {
     }
 
     // BINARY OPERATION MACHINERY
-    private static interface BinOp {
+    public static interface BinOp {
 	public long op(long a, long b);
     }
-    private static final BinOp AND = new BinOp() {
+    public static final BinOp AND = new BinOp() {
 	public final long op(long a, long b) { return a & b; }
     };
-    private static final BinOp OR = new BinOp() {
+    public static final BinOp OR = new BinOp() {
 	public final long op(long a, long b) { return a | b; }
     };
-    private static final BinOp XOR = new BinOp() {
+    public static final BinOp XOR = new BinOp() {
 	public final long op(long a, long b) { return a ^ b; }
     };
-    private static final void binop(SparseBitSet a, SparseBitSet b, BinOp op) {
+    public static final void binop(SparseBitSet a, SparseBitSet b, BinOp op) {
 	int  nsize = a.size + b.size;
 	long[] nbits; 
 	int [] noffs;
@@ -7728,7 +7728,7 @@ final class SparseBitSet implements Cloneable {
 		advance();
 		return new Integer(r);
 	    }
-	    private void advance() {
+	    public void advance() {
 		while (idx<size) {
 		    while (++bit<BITS)
 			if (0!=(bits[idx] & (1L<<bit)))
@@ -7753,7 +7753,7 @@ final class SparseBitSet implements Cloneable {
     }
 
     /** Check validity. */
-    private boolean isValid() {
+    public boolean isValid() {
 	if (bits.length!=offs.length) return false;
 	if (size>bits.length) return false;
 	if (size!=0 && 0<=offs[0]) return false;

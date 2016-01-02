@@ -37,7 +37,7 @@ public class ImplicationWhen extends Implication {
      * @param n The name of the term
      * @param arg The component list of the term
      */
-    protected ImplicationWhen(String n, ArrayList<Term> arg) {
+    public ImplicationWhen(String n, ArrayList<Term> arg) {
         super(n, arg);
     }
 
@@ -49,7 +49,7 @@ public class ImplicationWhen extends Implication {
      * @param i syntactic complexity of the compound
      * @param n The name of the term
      */
-    protected ImplicationWhen(String n, ArrayList<Term> cs, ArrayList<Variable> open, ArrayList<Variable> closed, short i) {
+    public ImplicationWhen(String n, ArrayList<Term> cs, ArrayList<Variable> open, ArrayList<Variable> closed, short i) {
         super(n, cs, open, closed, i);
     }
     

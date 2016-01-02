@@ -39,22 +39,22 @@ public abstract class CompoundTerm extends Term {
     /**
      * list of (direct) components
      */
-    protected ArrayList<Term> components;
+    public ArrayList<Term> components;
     
     /**
      * list of open variables in the compound
      */
-    protected ArrayList<Variable> openVariables;    // always necessary?
+    public ArrayList<Variable> openVariables;    // always necessary?
     
     /**
      * list of closed variables in the compound
      */
-    protected ArrayList<Variable> closedVariables;    // remove???
+    public ArrayList<Variable> closedVariables;    // remove???
     
     /**
      * syntactic complexity of the compound, which is the sum of those of its components plus 1
      */
-    protected short complexity;
+    public short complexity;
     
     
     // abstract methods
@@ -71,7 +71,7 @@ public abstract class CompoundTerm extends Term {
     /**
      * constructor called from subclasses constructors to clone the fields
      */
-    protected CompoundTerm(String n, ArrayList<Term> cs, ArrayList<Variable> open, ArrayList<Variable> closed, short i) {
+    public CompoundTerm(String n, ArrayList<Term> cs, ArrayList<Variable> open, ArrayList<Variable> closed, short i) {
         name = n;
         components = cs;
         openVariables = open;
@@ -82,7 +82,7 @@ public abstract class CompoundTerm extends Term {
     /**
      * constructor called from subclasses constructors to initialize the fields
      */
-    protected CompoundTerm(String n, ArrayList<Term> arg) {
+    public CompoundTerm(String n, ArrayList<Term> arg) {
         components = arg;
         calcComplexity();
         markVariables();    // set in components, not in this
@@ -92,7 +92,7 @@ public abstract class CompoundTerm extends Term {
     /**
      * the complexity of the term is the sum of those of the components plus 1
      */
-    private void calcComplexity() {
+    public void calcComplexity() {
         Term t;
         complexity = 1;
         for (int i = 0; i < components.size(); i++) {
@@ -176,7 +176,7 @@ public abstract class CompoundTerm extends Term {
      * @return if the given String is an operator name
      * @param s The String to be checked
      */
-    private static boolean isBuiltInOperator(String s, Memory memory) {
+    public static boolean isBuiltInOperator(String s, Memory memory) {
         return (s.charAt(0) == Symbols.OPERATOR_TAG) && (memory.nameToOperator(s) != null);
     }
     
@@ -216,7 +216,7 @@ public abstract class CompoundTerm extends Term {
      * default method to make the name of the current term from existing fields
      * @return the name of the term
      */
-    protected String makeName() {
+    public String makeName() {
         return makeCompoundName(operator(), components);
     }
     
@@ -226,7 +226,7 @@ public abstract class CompoundTerm extends Term {
      * @param arg the list of components
      * @return the name of the term
      */
-    protected static String makeCompoundName(String op, ArrayList<Term> arg) {
+    public static String makeCompoundName(String op, ArrayList<Term> arg) {
         StringBuffer name = new StringBuffer();
         name.append(Symbols.COMPOUND_TERM_OPENER);      // also show closed variables???
         name.append(op);
@@ -245,7 +245,7 @@ public abstract class CompoundTerm extends Term {
      * @param arg the list of components
      * @return the name of the term
      */
-    protected static String makeSetName(char opener, ArrayList<Term> arg, char closer) {
+    public static String makeSetName(char opener, ArrayList<Term> arg, char closer) {
         StringBuffer name = new StringBuffer();
         name.append(opener);
         name.append(arg.get(0).toString());
@@ -264,7 +264,7 @@ public abstract class CompoundTerm extends Term {
      * @param relationIndex the location of the place holder
      * @return the name of the term
      */
-    protected static String makeImageName(String op, ArrayList<Term> arg, int relationIndex) {
+    public static String makeImageName(String op, ArrayList<Term> arg, int relationIndex) {
         StringBuffer name = new StringBuffer();
         name.append(Symbols.COMPOUND_TERM_OPENER);
         name.append(op);
@@ -334,7 +334,7 @@ public abstract class CompoundTerm extends Term {
      * @param t2 the second component
      * @return the component list
      */
-    protected static ArrayList<Term> argumentsToList(Term t1, Term t2) {
+    public static ArrayList<Term> argumentsToList(Term t1, Term t2) {
         ArrayList<Term> list = new ArrayList<Term>(2);
         list.add(t1);
         list.add(t2);
@@ -451,7 +451,7 @@ public abstract class CompoundTerm extends Term {
      * <p>
      * an open variable only appears in one components, while a closed variable appears in multiple components
      */
-    private void markVariables() {  // not recursive
+    public void markVariables() {  // not recursive
         openVariables = new ArrayList<Variable>();
         ArrayList<Variable> closedVariables = new ArrayList<Variable>();  // local variable
         ArrayList<Variable> list;
@@ -493,7 +493,7 @@ public abstract class CompoundTerm extends Term {
      * Since each occurance of a variable is processed exactly ones, there will be no confusion between new names and old names.
      * @param varMap the mapping built so far
      */
-    protected void renameVariables(HashMap<String, String> varMap) {
+    public void renameVariables(HashMap<String, String> varMap) {
         String oldName, newName;
         for (Term t : components) {
             if ((t instanceof Variable) && (((Variable) t).getType() != Variable.VarType.ANONYMOUS)) {
@@ -518,7 +518,7 @@ public abstract class CompoundTerm extends Term {
      * @param v the variable to be renamed
      * @return a new variable name
      */
-    private String makeVarName(int size, Variable v) {
+    public String makeVarName(int size, Variable v) {
         StringBuffer s = new StringBuffer();
         Variable.VarType type = v.getType();
         if (type == Variable.VarType.QUERY)
@@ -562,7 +562,7 @@ public abstract class CompoundTerm extends Term {
         return componentLinks;
     }
     
-    protected void prepareComponentLinks(ArrayList<TermLink> componentLinks, short type, CompoundTerm term, Memory memory) {
+    public void prepareComponentLinks(ArrayList<TermLink> componentLinks, short type, CompoundTerm term, Memory memory) {
         Term t1, t2, t3;
         for (int i = 0; i < term.size(); i++) {     // first level components
             t1 = term.componentAt(i);

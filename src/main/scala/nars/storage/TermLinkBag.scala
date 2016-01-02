@@ -14,13 +14,13 @@ class TermLinkBag(memory: Memory) extends Bag[TermLink](memory) {
    * Get the (constant) capacity of TermLinkBag
    * @return The capacity of TermLinkBag
    */
-  protected def capacity(): Int = Parameters.TERM_LINK_BAG_SIZE
+  public def capacity(): Int = Parameters.TERM_LINK_BAG_SIZE
 
   /**
    * Get the (adjustable) forget rate of TermLinkBag
    * @return The forget rate of TermLinkBag
    */
-  protected def forgetRate(): Int = memory.getMainWindow.forgetBW.value()
+  public def forgetRate(): Int = memory.getMainWindow.forgetBW.value()
 
   /**
    * Replace defualt to prevent repeated inference, by checking TaskLink

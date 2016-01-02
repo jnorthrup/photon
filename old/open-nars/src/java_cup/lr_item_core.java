@@ -74,7 +74,7 @@ public class lr_item_core {
   /*-----------------------------------------------------------*/
 
   /** The production for the item. */
-  protected production _the_production;
+  public production _the_production;
 
   /** The production for the item. */
   public production the_production() {return _the_production;}
@@ -85,7 +85,7 @@ public class lr_item_core {
    *  that the marker is before, so 0 indicates a dot at the beginning of 
    *  the RHS.
    */
-  protected int _dot_pos;
+  public int _dot_pos;
 
   /** The position of the "dot" -- this indicates the part of the production 
    *  that the marker is before, so 0 indicates a dot at the beginning of 
@@ -96,12 +96,12 @@ public class lr_item_core {
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** Cache of the hash code. */
-  protected int _core_hash_cache;
+  public int _core_hash_cache;
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** Cache of symbol after the dot. */
-  protected symbol _symbol_after_dot = null;
+  public symbol _symbol_after_dot = null;
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
@@ -203,7 +203,7 @@ public class lr_item_core {
   /** Return the hash code that object would have provided for us so we have 
    *  a (nearly) unique id for debugging.
    */
-  protected int obj_hash()
+  public int obj_hash()
     {
       return super.hashCode();
     }

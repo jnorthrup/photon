@@ -23,10 +23,10 @@ import com.googlecode.opennars.parser.narsese.NarseseParser;
  */
 public class Reasoner extends Observable implements Observer, Runnable {
 	
-	private Thread thread;
-	private Memory memory;
-	private Parser parser;
-	private ArrayList<Task> inputQueue;
+	public Thread thread;
+	public Memory memory;
+	public Parser parser;
+	public ArrayList<Task> inputQueue;
 	
 	/**
 	 * Create a new reasoner using default settings
@@ -140,7 +140,7 @@ public class Reasoner extends Observable implements Observer, Runnable {
 		inputQueue.add(task);
 	}
 
-	private synchronized Task getTask() {
+	public synchronized Task getTask() {
 		try {
 			return inputQueue.remove(0);
 		}

@@ -49,28 +49,28 @@ public final class Concept extends Item {
     /**
      * The term is the unique ID of the concept
      */
-    private final Term term;
+    public final Term term;
     /**
      * Task links for indirect processing
      */
-    private final TaskLinkBag taskLinks;
+    public final TaskLinkBag taskLinks;
     /**
      * Term links between the term and its components and compounds
      */
-    private final TermLinkBag termLinks;
+    public final TermLinkBag termLinks;
     /**
      * Link templates of TermLink, only in concepts with CompoundTerm jmv TODO
      * explain more
      */
-    private ArrayList<TermLink> termLinkTemplates;
+    public ArrayList<TermLink> termLinkTemplates;
     /**
      * Question directly asked about the term
      */
-    private final ArrayList<Task> questions;
+    public final ArrayList<Task> questions;
     /**
      * Sentences directly made about the term, with non-future tense
      */
-    private final ArrayList<Sentence> beliefs;
+    public final ArrayList<Sentence> beliefs;
     /**
      * Reference to the memory
      */
@@ -78,7 +78,7 @@ public final class Concept extends Item {
     /**
      * The display window
      */
-    private EntityObserver entityObserver = new NullEntityObserver();
+    public EntityObserver entityObserver = new NullEntityObserver();
 
 
     /* ---------- constructor and initialization ---------- */
@@ -131,7 +131,7 @@ public final class Concept extends Item {
      * @param task The task to be processed
      * @return Whether to continue the processing of the task
      */
-    private void processJudgment(Task task) {
+    public void processJudgment(Task task) {
         Sentence judg = task.getSentence();
         Sentence oldBelief = evaluation(judg, beliefs);
         if (oldBelief != null) {
@@ -203,7 +203,7 @@ public final class Concept extends Item {
      * @param task The task to be linked
      * @param content The content of the task
      */
-    private void linkToTask(Task task) {
+    public void linkToTask(Task task) {
         BudgetValue taskBudget = task.getBudget();
         TaskLink taskLink = new TaskLink(task, null, taskBudget);   // link type: SELF
         insertTaskLink(taskLink);
@@ -237,7 +237,7 @@ public final class Concept extends Item {
      * @param table The table to be revised
      * @param capacity The capacity of the table
      */
-    private void addToTable(Sentence newSentence, ArrayList<Sentence> table, int capacity) {
+    public void addToTable(Sentence newSentence, ArrayList<Sentence> table, int capacity) {
         float rank1 = BudgetFunctions.rankBelief(newSentence);    // for the new isBelief
         Sentence judgment2;
         float rank2;
@@ -269,7 +269,7 @@ public final class Concept extends Item {
      * @param list The list of beliefs to be used
      * @return The best candidate belief selected
      */
-    private Sentence evaluation(Sentence query, ArrayList<Sentence> list) {
+    public Sentence evaluation(Sentence query, ArrayList<Sentence> list) {
         if (list == null) {
             return null;
         }
@@ -384,7 +384,7 @@ public final class Concept extends Item {
         return res;
     }
 
-    private String toStringIfNotNull(Object item, String title) {
+    public String toStringIfNotNull(Object item, String title) {
         return item == null ? "" : "\n " + title + ":" + item.toString();
     }
 

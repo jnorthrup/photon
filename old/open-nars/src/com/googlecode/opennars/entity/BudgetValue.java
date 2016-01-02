@@ -31,11 +31,11 @@ import com.googlecode.opennars.parser.*;
 public class BudgetValue implements Cloneable {
     public static final char mark = Symbols.BUDGET_VALUE_MARK;       // default
     public static final char separator = Symbols.VALUE_SEPARATOR;    // default
-    protected ShortFloat priority;      // short-term, first-order
-    protected ShortFloat durability;    // short-term, second-order
-    protected ShortFloat quality;       // long-term
-	private Memory memory;
-	protected BudgetFunctions budgetfunctions;
+    public ShortFloat priority;      // short-term, first-order
+    public ShortFloat durability;    // short-term, second-order
+    public ShortFloat quality;       // long-term
+	public Memory memory;
+	public BudgetFunctions budgetfunctions;
     
     /* ----- constructors ----- */
     

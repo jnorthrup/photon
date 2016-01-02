@@ -26,9 +26,9 @@ package nars.storage;
 class Distributor {
 
     /** Shuffled sequence of index numbers */
-    private int order[];
+    public int order[];
     /** Capacity of the array */
-    private int capacity;
+    public int capacity;
 
     /**
      * For any number N < range, there is N+1 copies of it in the array, distributed as evenly as possible

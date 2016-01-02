@@ -137,14 +137,14 @@ public abstract class lr_parser {
   /** The default number of Symbols after an error we much match to consider 
    *  it recovered from. 
    */
-  protected final static int _error_sync_size = 3;
+  public final static int _error_sync_size = 3;
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** The number of Symbols after an error we much match to consider it 
    *  recovered from. 
    */
-  protected int error_sync_size() {return _error_sync_size; }
+  public int error_sync_size() {return _error_sync_size; }
 
   /*-----------------------------------------------------------*/
   /*--- (Access to) Instance Variables ------------------------*/
@@ -219,7 +219,7 @@ public abstract class lr_parser {
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** Internal flag to indicate when parser should quit. */
-  protected boolean _done_parsing = false;
+  public boolean _done_parsing = false;
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
@@ -238,39 +238,39 @@ public abstract class lr_parser {
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** Indication of the index for top of stack (for use by actions). */
-  protected int tos;
+  public int tos;
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** The current lookahead Symbol. */
-  protected Symbol cur_token;
+  public Symbol cur_token;
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** The parse stack itself. */
-  protected Stack stack = new Stack();
+  public Stack stack = new Stack();
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** Direct reference to the production table. */ 
-  protected short[][] production_tab;
+  public short[][] production_tab;
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** Direct reference to the action table. */
-  protected short[][] action_tab;
+  public short[][] action_tab;
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** Direct reference to the reduce-goto table. */
-  protected short[][] reduce_tab;
+  public short[][] reduce_tab;
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** This is the scanner object used by the default implementation
    *  of scan() to get Symbols.  To avoid name conflicts with existing
-   *  code, this field is private. [CSA/davidm] */
-  private Scanner _scanner;
+   *  code, this field is public. [CSA/davidm] */
+  public Scanner _scanner;
 
   /**
    * Simple accessor method to set the default scanner.
@@ -319,7 +319,7 @@ public abstract class lr_parser {
    *  any parse actions. This is filled in by generated code to create
    *  an object that encapsulates all action code. 
    */ 
-  protected abstract void init_actions() throws java.lang.Exception;
+  public abstract void init_actions() throws java.lang.Exception;
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
@@ -421,7 +421,7 @@ public abstract class lr_parser {
    * @param state the state index of the action being accessed.
    * @param sym   the Symbol index of the action being accessed.
    */
-  protected final short get_action(int state, int sym)
+  public final short get_action(int state, int sym)
     {
       short tag;
       int first, last, probe;
@@ -476,7 +476,7 @@ public abstract class lr_parser {
    * @param state the state index of the entry being accessed.
    * @param sym   the Symbol index of the entry being accessed.
    */
-  protected final short get_reduce(int state, int sym)
+  public final short get_reduce(int state, int sym)
     {
       short tag;
       short[] row = reduce_tab[state];
@@ -836,7 +836,7 @@ public abstract class lr_parser {
    *
    * @param debug should we produce debugging messages as we parse.
    */
-  protected boolean error_recovery(boolean debug)
+  public boolean error_recovery(boolean debug)
     throws java.lang.Exception
     {
       if (debug) debug_message("# Attempting error recovery");
@@ -895,7 +895,7 @@ public abstract class lr_parser {
   /** Determine if we can shift under the special error Symbol out of the 
    *  state currently on the top of the (real) parse stack. 
    */
-  protected boolean shift_under_error()
+  public boolean shift_under_error()
     {
       /* is there a shift under error Symbol */
       return get_action(((Symbol)stack.peek()).parse_state, error_sym()) > 0;
@@ -910,7 +910,7 @@ public abstract class lr_parser {
    *
    * @param debug should we produce debugging messages as we parse.
    */
-  protected boolean find_recovery_config(boolean debug)
+  public boolean find_recovery_config(boolean debug)
     {
       Symbol error_token;
       int act;
@@ -961,17 +961,17 @@ public abstract class lr_parser {
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** Lookahead Symbols used for attempting error recovery "parse aheads". */
-  protected Symbol lookahead[];
+  public Symbol lookahead[];
 
   /** Position in lookahead input buffer used for "parse ahead". */
-  protected int lookahead_pos;
+  public int lookahead_pos;
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** Read from input to establish our buffer of "parse ahead" lookahead 
    *  Symbols. 
    */
-  protected void read_lookahead() throws java.lang.Exception
+  public void read_lookahead() throws java.lang.Exception
     {
       /* create the lookahead array */
       lookahead = new Symbol[error_sync_size()];
@@ -990,14 +990,14 @@ public abstract class lr_parser {
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** Return the current lookahead in our error "parse ahead" buffer. */
-  protected Symbol cur_err_token() { return lookahead[lookahead_pos]; }
+  public Symbol cur_err_token() { return lookahead[lookahead_pos]; }
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** Advance to next "parse ahead" input Symbol. Return true if we have 
    *  input to advance to, false otherwise. 
    */
-  protected boolean advance_lookahead()
+  public boolean advance_lookahead()
     {
       /* advance the input location */
       lookahead_pos++;
@@ -1011,7 +1011,7 @@ public abstract class lr_parser {
   /** Reset the parse ahead input to one Symbol past where we started error 
    *  recovery (this consumes one new Symbol from the real input). 
    */
-  protected void restart_lookahead() throws java.lang.Exception
+  public void restart_lookahead() throws java.lang.Exception
     {
       /* move all the existing input over */
       for (int i = 1; i < error_sync_size(); i++)
@@ -1040,7 +1040,7 @@ public abstract class lr_parser {
    *
    * @param debug should we produce debugging messages as we parse.
    */
-  protected boolean try_parse_ahead(boolean debug)
+  public boolean try_parse_ahead(boolean debug)
     throws java.lang.Exception
     {
       int act;
@@ -1111,7 +1111,7 @@ public abstract class lr_parser {
    *
    * @param debug should we produce debugging messages as we parse.
    */
-  protected void parse_lookahead(boolean debug)
+  public void parse_lookahead(boolean debug)
     throws java.lang.Exception
     {
       /* the current action code */
@@ -1217,7 +1217,7 @@ public abstract class lr_parser {
   /*-----------------------------------------------------------*/
 
   /** Utility function: unpacks parse tables from strings */
-  protected static short[][] unpackFromStrings(String[] sa)
+  public static short[][] unpackFromStrings(String[] sa)
     {
       // Concatanate initialization strings.
       StringBuffer sb = new StringBuffer(sa[0]);

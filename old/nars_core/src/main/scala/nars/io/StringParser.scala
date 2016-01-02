@@ -16,7 +16,7 @@ object StringParser {
   /**
    * All kinds of invalid input lines
    */
-  private class InvalidInputException(s: String) extends Exception(s)
+  public class InvalidInputException(s: String) extends Exception(s)
 
   /**
    * Parse a line of input experience
@@ -82,7 +82,7 @@ object StringParser {
    * @return a String containing a BudgetValue
    * @throws nars.io.StringParser.InvalidInputException if the input cannot be parsed into a BudgetValue
    */
-  private def getBudgetString(s: StringBuffer): String = {
+  public def getBudgetString(s: StringBuffer): String = {
     if (s.charAt(0) != BUDGET_VALUE_MARK) {
       return null
     }
@@ -104,7 +104,7 @@ object StringParser {
    * @param s the input in a StringBuffer
    * @throws nars.io.StringParser.InvalidInputException if the input cannot be parsed into a TruthValue
    */
-  private def getTruthString(s: StringBuffer): String = {
+  public def getTruthString(s: StringBuffer): String = {
     val last = s.length - 1
     if (s.charAt(last) != TRUTH_VALUE_MARK) {
       return null
@@ -128,7 +128,7 @@ object StringParser {
    * @param type Task type
    * @return the input TruthValue
    */
-  private def parseTruth(s: String, `type`: Char): TruthValue = {
+  public def parseTruth(s: String, `type`: Char): TruthValue = {
     if (`type` == QUESTION_MARK) {
       return null
     }
@@ -155,7 +155,7 @@ object StringParser {
    * @return the input BudgetValue
    * @throws nars.io.StringParser.InvalidInputException If the String cannot be parsed into a BudgetValue
    */
-  private def parseBudget(s: String, punctuation: Char, truth: TruthValue): BudgetValue = {
+  public def parseBudget(s: String, punctuation: Char, truth: TruthValue): BudgetValue = {
     var priority: Float = 0
     var durability: Float = 0
     punctuation match {
@@ -245,7 +245,7 @@ object StringParser {
    * @throws nars.io.StringParser.InvalidInputException the String cannot be parsed into a Term
    * @return the Term generated from the String
    */
-  private def parseAtomicTerm(s0: String): Term = {
+  public def parseAtomicTerm(s0: String): Term = {
     val s = s0.trim()
     if (s.length == 0) {
       throw new InvalidInputException("missing term")
@@ -266,7 +266,7 @@ object StringParser {
    * @param s0 The input String to be parsed
    * @throws nars.io.StringParser.InvalidInputException the String cannot be parsed into a Term
    */
-  private def parseStatement(s0: String, memory: Memory): Statement = {
+  public def parseStatement(s0: String, memory: Memory): Statement = {
     val s = s0.trim()
     val i = topRelation(s)
     if (i < 0) {
@@ -288,7 +288,7 @@ object StringParser {
    * @param s0 The String to be parsed
    * @throws nars.io.StringParser.InvalidInputException the String cannot be parsed into a Term
    */
-  private def parseCompoundTerm(s0: String, memory: Memory): Term = {
+  public def parseCompoundTerm(s0: String, memory: Memory): Term = {
     val s = s0.trim()
     val firstSeparator = s.indexOf(ARGUMENT_SEPARATOR)
     val op = s.substring(0, firstSeparator).trim()
@@ -309,7 +309,7 @@ object StringParser {
    * @param s0 The String to be parsed
    * @throws nars.io.StringParser.InvalidInputException the String cannot be parsed into an argument get
    */
-  private def parseArguments(s0: String, memory: Memory): ArrayList[Term] = {
+  public def parseArguments(s0: String, memory: Memory): ArrayList[Term] = {
     val s = s0.trim()
     val list = new ArrayList[Term]()
     var start = 0
@@ -332,7 +332,7 @@ object StringParser {
    * @param s The String to be parsed
    * @param first The starting index
    */
-  private def nextSeparator(s: String, first: Int): Int = {
+  public def nextSeparator(s: String, first: Int): Int = {
     var levelCounter = 0
     var i = first
     while (i < s.length - 1) {
@@ -355,7 +355,7 @@ object StringParser {
    * @return the index of the top-level relation
    * @param s The String to be parsed
    */
-  private def topRelation(s: String): Int = {
+  public def topRelation(s: String): Int = {
     var levelCounter = 0
     var i = 0
     while (i < s.length - 3) {
@@ -378,7 +378,7 @@ object StringParser {
    * @param s The String to be checked
    * @param i The starting index
    */
-  private def isOpener(s: String, i: Int): Boolean = {
+  public def isOpener(s: String, i: Int): Boolean = {
     val c = s.charAt(i)
     val b = (c == COMPOUND_TERM_OPENER) || (c == SET_EXT_OPENER) || 
       (c == SET_INT_OPENER) || 
@@ -398,7 +398,7 @@ object StringParser {
    * @param s The String to be checked
    * @param i The starting index
    */
-  private def isCloser(s: String, i: Int): Boolean = {
+  public def isCloser(s: String, i: Int): Boolean = {
     val c = s.charAt(i)
     val b = (c == COMPOUND_TERM_CLOSER) || (c == SET_EXT_CLOSER) || 
       (c == SET_INT_CLOSER) || 

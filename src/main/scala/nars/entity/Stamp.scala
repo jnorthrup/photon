@@ -13,7 +13,7 @@ object Stamp {
   /**
    serial number, for the whole system
    */
-  private var currentSerial: Long = 0
+  public var currentSerial: Long = 0
 
   /**
    * Try to merge two Stamps, return null if have overlap
@@ -53,10 +53,10 @@ object Stamp {
 class Stamp(@BeanProperty var creationTime: Long) extends Cloneable {
 
     /** evidentialBase baseLength */
-  private var baseLength: Int = 1
+  public var baseLength: Int = 1
   
   /** serial numbers */
-  private var evidentialBase: Array[Long] = new Array[Long](baseLength)
+  public var evidentialBase: Array[Long] = new Array[Long](baseLength)
 
   currentSerial += 1
   evidentialBase(0) = currentSerial
@@ -65,7 +65,7 @@ class Stamp(@BeanProperty var creationTime: Long) extends Cloneable {
    * Generate a new stamp identical with a given one
    * @param old The stamp to be cloned
    */
-  private def this(old: Stamp) {
+  public def this(old: Stamp) {
     this(old.getCreationTime)
     baseLength = old.length
     evidentialBase = old.getBase
@@ -91,7 +91,7 @@ class Stamp(@BeanProperty var creationTime: Long) extends Cloneable {
    * @param first The first Stamp
    * @param second The second Stamp
    */
-  private def this(first: Stamp, second: Stamp, time: Long) {
+  public def this(first: Stamp, second: Stamp, time: Long) {
     this(time)
     var i1: Int = 0
     var i2: Int = 0
@@ -137,13 +137,13 @@ class Stamp(@BeanProperty var creationTime: Long) extends Cloneable {
    * Get the evidentialBase, called in this class only
    * @return The evidentialBase of numbers
    */
-  private def getBase(): Array[Long] = evidentialBase
+  public def getBase(): Array[Long] = evidentialBase
 
   /**
    * Convert the evidentialBase into a set
    * @return The TreeSet representation of the evidential base
    */
-  private def toSet(): TreeSet[Long] = {
+  public def toSet(): TreeSet[Long] = {
     val set = new TreeSet[Long]()
     for (i <- 0 until baseLength) {
       set.add(evidentialBase(i))

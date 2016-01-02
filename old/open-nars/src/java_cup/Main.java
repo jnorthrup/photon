@@ -69,76 +69,76 @@ public class Main {
   /*-----------------------------------------------------------*/
   /*--- Constructor(s) ----------------------------------------*/
   /*-----------------------------------------------------------*/
-  /** Only constructor is private, so we do not allocate any instances of this
+  /** Only constructor is public, so we do not allocate any instances of this
       class. */
-  private Main() { }
+  public Main() { }
 
   /*-------------------------*/
   /* Options set by the user */
   /*-------------------------*/
   /** User option -- do we print progress messages. */
-  protected static boolean print_progress   = true;
+  public static boolean print_progress   = true;
   /** User option -- do we produce a dump of the state machine */
-  protected static boolean opt_dump_states  = false;
+  public static boolean opt_dump_states  = false;
   /** User option -- do we produce a dump of the parse tables */
-  protected static boolean opt_dump_tables  = false;
+  public static boolean opt_dump_tables  = false;
   /** User option -- do we produce a dump of the grammar */
-  protected static boolean opt_dump_grammar = false;
+  public static boolean opt_dump_grammar = false;
   /** User option -- do we show timing information as a part of the summary */
-  protected static boolean opt_show_timing  = false;
+  public static boolean opt_show_timing  = false;
   /** User option -- do we run produce extra debugging messages */
-  protected static boolean opt_do_debug     = false;
+  public static boolean opt_do_debug     = false;
   /** User option -- do we compact tables by making most common reduce the 
       default action */
-  protected static boolean opt_compact_red  = false;
+  public static boolean opt_compact_red  = false;
   /** User option -- should we include non terminal symbol numbers in the 
       symbol constant class. */
-  protected static boolean include_non_terms = false;
+  public static boolean include_non_terms = false;
   /** User option -- do not print a summary. */
-  protected static boolean no_summary = false;
+  public static boolean no_summary = false;
   /** User option -- number of conflicts to expect */
-  protected static int expect_conflicts = 0;
+  public static int expect_conflicts = 0;
 
   /* frankf added this 6/18/96 */
   /** User option -- should generator generate code for left/right values? */
-  protected static boolean lr_values = true;
+  public static boolean lr_values = true;
 
   /** User option -- should symbols be put in a class or an interface? [CSA]*/
-  protected static boolean sym_interface = false;
+  public static boolean sym_interface = false;
 
   /** User option -- should generator suppress references to
    *  java_cup.runtime.Scanner for compatibility with old runtimes? */
-  protected static boolean suppress_scanner = false;
+  public static boolean suppress_scanner = false;
 
   /*----------------------------------------------------------------------*/
   /* Timing data (not all of these time intervals are mutually exclusive) */
   /*----------------------------------------------------------------------*/
   /** Timing data -- when did we start */
-  protected static long start_time       = 0;
+  public static long start_time       = 0;
   /** Timing data -- when did we end preliminaries */
-  protected static long prelim_end       = 0;
+  public static long prelim_end       = 0;
   /** Timing data -- when did we end parsing */
-  protected static long parse_end        = 0;
+  public static long parse_end        = 0;
   /** Timing data -- when did we end checking */
-  protected static long check_end        = 0;
+  public static long check_end        = 0;
   /** Timing data -- when did we end dumping */
-  protected static long dump_end         = 0;
+  public static long dump_end         = 0;
   /** Timing data -- when did we end state and table building */
-  protected static long build_end        = 0;
+  public static long build_end        = 0;
   /** Timing data -- when did we end nullability calculation */
-  protected static long nullability_end  = 0;
+  public static long nullability_end  = 0;
   /** Timing data -- when did we end first set calculation */
-  protected static long first_end        = 0;
+  public static long first_end        = 0;
   /** Timing data -- when did we end state machine construction */
-  protected static long machine_end      = 0;
+  public static long machine_end      = 0;
   /** Timing data -- when did we end table construction */
-  protected static long table_end        = 0;
+  public static long table_end        = 0;
   /** Timing data -- when did we end checking for non-reduced productions */
-  protected static long reduce_check_end = 0;
+  public static long reduce_check_end = 0;
   /** Timing data -- when did we finish emitting code */
-  protected static long emit_end         = 0;
+  public static long emit_end         = 0;
   /** Timing data -- when were we completely done */
-  protected static long final_time       = 0;
+  public static long final_time       = 0;
 
   /* Additional timing information is also collected in emit */
 
@@ -231,7 +231,7 @@ public class Main {
    *  then exit.
    * @param message a specific error message to preface the usage message by.
    */
-  protected static void usage(String message)
+  public static void usage(String message)
     {
       System.err.println();
       System.err.println(message);
@@ -268,7 +268,7 @@ public class Main {
    *  flags and variables. 
    * @param argv the command line arguments to be parsed.
    */
-  protected static void parse_args(String argv[])
+  public static void parse_args(String argv[])
     {
       int len = argv.length;
       int i;
@@ -370,18 +370,18 @@ public class Main {
   /*-------*/
 
   /** Input file.  This is a buffered version of System.in. */
-  protected static BufferedInputStream input_file;
+  public static BufferedInputStream input_file;
 
   /** Output file for the parser class. */
-  protected static PrintWriter parser_class_file;
+  public static PrintWriter parser_class_file;
 
   /** Output file for the symbol constant class. */
-  protected static PrintWriter symbol_class_file;
+  public static PrintWriter symbol_class_file;
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** Open various files used by the system. */
-  protected static void open_files()
+  public static void open_files()
     {
       File fil;
       String out_name;
@@ -414,7 +414,7 @@ public class Main {
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** Close various files used by the system. */
-  protected static void close_files() throws java.io.IOException
+  public static void close_files() throws java.io.IOException
     {
       if (input_file != null) input_file.close();
       if (parser_class_file != null) parser_class_file.close();
@@ -429,7 +429,7 @@ public class Main {
    *  of various variables (mostly in the emit class) for small user supplied
    *  items such as the code to scan with.
    */
-  protected static void parse_grammar_spec() throws java.lang.Exception
+  public static void parse_grammar_spec() throws java.lang.Exception
     {
       parser parser_obj;
 
@@ -454,7 +454,7 @@ public class Main {
   /** Check for unused symbols.  Unreduced productions get checked when
    *  tables are created.
    */
-  protected static void check_unused()
+  public static void check_unused()
     {
       terminal term;
       non_terminal nt;
@@ -510,13 +510,13 @@ public class Main {
   /* . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** Start state in the overall state machine. */
-  protected static lalr_state start_state;
+  public static lalr_state start_state;
 
   /** Resulting parse action table. */
-  protected static parse_action_table action_table;
+  public static parse_action_table action_table;
 
   /** Resulting reduce-goto table. */
-  protected static parse_reduce_table reduce_table;
+  public static parse_reduce_table reduce_table;
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
@@ -529,7 +529,7 @@ public class Main {
    *    <li> Checking for unreduced productions.
    *  </ul>
    */
-  protected static void build_parser() throws internal_error
+  public static void build_parser() throws internal_error
     {
       /* compute nullability of all non terminals */
       if (opt_do_debug || print_progress) 
@@ -586,7 +586,7 @@ public class Main {
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** Call the emit routines necessary to write out the generated parser. */
-  protected static void emit_parser() throws internal_error
+  public static void emit_parser() throws internal_error
     {
       emit.symbols(symbol_class_file, include_non_terms, sym_interface);
       emit.parser(parser_class_file, action_table, reduce_table, 
@@ -599,7 +599,7 @@ public class Main {
   /** Helper routine to optionally return a plural or non-plural ending. 
    * @param val the numerical value determining plurality.
    */
-  protected static String plural(int val)
+  public static String plural(int val)
     {
       if (val == 1)
 	return "";
@@ -615,7 +615,7 @@ public class Main {
    *  summary is also produced if it was requested by the user.
    * @param output_produced did the system get far enough to generate code.
    */
-  protected static void emit_summary(boolean output_produced)
+  public static void emit_summary(boolean output_produced)
     {
       final_time = System.currentTimeMillis();
 
@@ -671,7 +671,7 @@ public class Main {
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** Produce the optional timing summary as part of an overall summary. */
-  protected static void show_times()
+  public static void show_times()
     {
       long total_time = final_time - start_time;
 
@@ -739,7 +739,7 @@ public class Main {
    * @param time_val   the value being formatted (in ms).
    * @param total_time total time percentages are calculated against (in ms).
    */
-  protected static String timestr(long time_val, long total_time)
+  public static String timestr(long time_val, long total_time)
     {
       boolean neg;
       long    ms = 0;

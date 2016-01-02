@@ -220,7 +220,7 @@ public class production {
   /** Table of all productions.  Elements are stored using their index as 
    *  the key.
    */
-  protected static Hashtable _all = new Hashtable();
+  public static Hashtable _all = new Hashtable();
  
   /** Access to all productions. */
   public static Enumeration all() {return _all.elements();}
@@ -236,22 +236,22 @@ public class production {
   public static int number() {return _all.size();}
 
   /** Static counter for assigning unique index numbers. */
-  protected static int next_index;
+  public static int next_index;
 
   /*-----------------------------------------------------------*/
   /*--- (Access to) Instance Variables ------------------------*/
   /*-----------------------------------------------------------*/
 
   /** The left hand side non-terminal. */
-  protected symbol_part _lhs;
+  public symbol_part _lhs;
 
   /** The left hand side non-terminal. */
   public symbol_part lhs() {return _lhs;}
 
 
   /** The precedence of the rule */
-  protected int _rhs_prec = -1;
-  protected int _rhs_assoc = -1;
+  public int _rhs_prec = -1;
+  public int _rhs_assoc = -1;
 
   /** Access to the precedence of the rule */
   public int precedence_num() { return _rhs_prec; }
@@ -268,7 +268,7 @@ public class production {
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** A collection of parts for the right hand side. */
-  protected production_part _rhs[];
+  public production_part _rhs[];
 
   /** Access to the collection of parts for the right hand side. */
   public production_part rhs(int indx) throws internal_error
@@ -283,7 +283,7 @@ public class production {
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** How much of the right hand side array we are presently using. */
-  protected int _rhs_length;
+  public int _rhs_length;
 
   /** How much of the right hand side array we are presently using. */
   public int rhs_length() {return _rhs_length;}
@@ -293,7 +293,7 @@ public class production {
   /** An action_part containing code for the action to be performed when we 
    *  reduce with this production. 
    */
-  protected action_part _action;
+  public action_part _action;
 
   /** An action_part containing code for the action to be performed when we 
    *  reduce with this production. 
@@ -303,7 +303,7 @@ public class production {
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** Index number of the production. */
-  protected int _index;
+  public int _index;
 
   /** Index number of the production. */
   public int index() {return _index;}
@@ -311,7 +311,7 @@ public class production {
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** Count of number of reductions using this production. */
-  protected int _num_reductions = 0;
+  public int _num_reductions = 0;
 
   /** Count of number of reductions using this production. */
   public int num_reductions() {return _num_reductions;}
@@ -322,7 +322,7 @@ public class production {
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** Is the nullability of the production known or unknown? */
-  protected boolean _nullable_known = false;
+  public boolean _nullable_known = false;
 
   /** Is the nullability of the production known or unknown? */
   public boolean nullable_known() {return _nullable_known;}
@@ -330,7 +330,7 @@ public class production {
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** Nullability of the production (can it derive the empty string). */
-  protected boolean _nullable = false;
+  public boolean _nullable = false;
 
   /** Nullability of the production (can it derive the empty string). */
   public boolean nullable() {return _nullable;}
@@ -340,7 +340,7 @@ public class production {
   /** First set of the production.  This is the set of terminals that 
    *  could appear at the front of some string derived from this production.
    */
-  protected terminal_set _first_set = new terminal_set();
+  public terminal_set _first_set = new terminal_set();
 
   /** First set of the production.  This is the set of terminals that 
    *  could appear at the front of some string derived from this production.
@@ -354,7 +354,7 @@ public class production {
   /** Determine if a given character can be a label id starter. 
    * @param c the character in question. 
    */
-  protected static boolean is_id_start(char c)
+  public static boolean is_id_start(char c)
     {
       return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c == '_');
 
@@ -366,7 +366,7 @@ public class production {
   /** Determine if a character can be in a label id. 
    * @param c the character in question.
    */
-  protected static boolean is_id_char(char c)
+  public static boolean is_id_char(char c)
     {
       return is_id_start(c) || (c >= '0' && c <= '9');
     }
@@ -381,7 +381,7 @@ public class production {
    * @param stack_type   the stack type of label?
    * @author frankf
    */ 
-  protected String make_declaration(
+  public String make_declaration(
 				    String  labelname,
 				    String  stack_type,
 				    int     offset)
@@ -412,7 +412,7 @@ public class production {
    * @param final_action the final action string of the production. 
    * @param lhs_type     the object type associated with the LHS symbol.
    */ 
-  protected String declare_labels(
+  public String declare_labels(
     production_part  rhs[], 
     int              rhs_len, 
     String           final_action)
@@ -451,7 +451,7 @@ public class production {
    * @param len       amount of that array that is valid.
    * @return          remaining valid length.
    */
-  protected int merge_adjacent_actions(production_part rhs_parts[], int len)
+  public int merge_adjacent_actions(production_part rhs_parts[], int len)
     {
       int from_loc, to_loc, merge_cnt;
 
@@ -505,7 +505,7 @@ public class production {
    * @param len       how many of those are valid.
    * @return          the removed action part.
    */
-  protected action_part strip_trailing_action(
+  public action_part strip_trailing_action(
     production_part rhs_parts[],
     int             len)
     {
@@ -545,7 +545,7 @@ public class production {
      as they should be perfectly valid in this code string, since it
      was originally a code string in the parent, not on its own.
      frank 6/20/96 */
-  protected void remove_embedded_actions(
+  public void remove_embedded_actions(
 	   
             ) throws internal_error
     {

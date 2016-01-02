@@ -35,14 +35,14 @@ public abstract class Statement extends CompoundTerm {
     /**
      * default constructor
      */
-    protected Statement() {}
+    public Statement() {}
     
     /**
      * constructor with partial values, called by make
      * @param n The name of the term
      * @param arg The component list of the term
      */
-    protected Statement(String n, ArrayList<Term> arg) {
+    public Statement(String n, ArrayList<Term> arg) {
         super(n, arg);
     }
     
@@ -54,7 +54,7 @@ public abstract class Statement extends CompoundTerm {
      * @param i syntactic complexity of the compound
      * @param n The name of the term
      */
-    protected Statement(String n, ArrayList<Term> cs, ArrayList<Variable> open, ArrayList<Variable> closed, short i) {
+    public Statement(String n, ArrayList<Term> cs, ArrayList<Variable> open, ArrayList<Variable> closed, short i) {
         super(n, cs, open, closed, i);
     }
     
@@ -224,7 +224,7 @@ public abstract class Statement extends CompoundTerm {
      * override the default in making the name of the current term from existing fields
      * @return the name of the term
      */
-    protected String makeName() {
+    public String makeName() {
         return makeStatementName(getSubject(), operator(), getPredicate());
     }
     
@@ -235,7 +235,7 @@ public abstract class Statement extends CompoundTerm {
      * @param relation the relation operator
      * @return the name of the term
      */
-    protected static String makeStatementName(Term subject, String relation, Term predicate) {
+    public static String makeStatementName(Term subject, String relation, Term predicate) {
         StringBuffer name = new StringBuffer();
         name.append(Symbols.STATEMENT_OPENER);
         name.append(subject.getName());

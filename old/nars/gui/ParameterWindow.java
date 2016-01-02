@@ -30,13 +30,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class ParameterWindow extends NarsFrame implements ActionListener, AdjustmentListener {
 
     /** Display label */
-    private Label valueLabel;
+    public Label valueLabel;
     /** Control buttons */
-    private Button hideButton, undoButton, defaultButton;
+    public Button hideButton, undoButton, defaultButton;
     /** Adjusting bar */
-    private Scrollbar valueBar;
+    public Scrollbar valueBar;
     /** parameter values */
-    private int defaultValue, previousValue; // , currentValue;
+    public int defaultValue, previousValue; // , currentValue;
     AtomicInteger currentValue;
     
     /**
@@ -107,7 +107,7 @@ public class ParameterWindow extends NarsFrame implements ActionListener, Adjust
         }
     }
 
-    private void close() {
+    public void close() {
         previousValue = currentValue.get();
         setVisible(false);
     }

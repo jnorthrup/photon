@@ -172,7 +172,7 @@ public class Variable extends Term {
      * @param map2 The substitution for term2 formed so far
      * @return Whether there is a substitution that unifies the two Terms
      */
-    private static boolean findSubstitute(char type, Term term1, Term term2,
+    public static boolean findSubstitute(char type, Term term1, Term term2,
             HashMap<Term, Term> map1, HashMap<Term, Term> map2) {
         Term t;
         if (term1 instanceof Variable) {
@@ -246,7 +246,7 @@ public class Variable extends Term {
      * @param term The term to be processed 
      * @param suffix The suffix that distinguish the variables in one premise from those from the other
      */
-    private static void renameVar(HashMap<Term, Term> map, Term term, String suffix) {
+    public static void renameVar(HashMap<Term, Term> map, Term term, String suffix) {
         if (term instanceof Variable) {
             Term t = map.get(term);
             if (t == null) {    // new mapped yet

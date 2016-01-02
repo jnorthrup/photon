@@ -35,7 +35,7 @@ public class Inheritance extends Statement {
      * @param n The name of the term
      * @param arg The component list of the term
      */
-    private Inheritance(ArrayList<Term> arg) {
+    public Inheritance(ArrayList<Term> arg) {
         super(arg);
     }
 
@@ -46,7 +46,7 @@ public class Inheritance extends Statement {
      * @param open Open variable list
      * @param i Syntactic complexity of the compound
      */
-    private Inheritance(String n, ArrayList<Term> cs, boolean con, short i) {
+    public Inheritance(String n, ArrayList<Term> cs, boolean con, short i) {
         super(n, cs, con, i);
     }
 

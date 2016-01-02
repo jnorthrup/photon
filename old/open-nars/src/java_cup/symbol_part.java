@@ -43,7 +43,7 @@ public class symbol_part extends production_part {
   /*-----------------------------------------------------------*/
 
   /** The symbol that this part is made up of. */
-  protected symbol _the_symbol;
+  public symbol _the_symbol;
 
   /** The symbol that this part is made up of. */
   public symbol the_symbol() {return _the_symbol;}

@@ -28,7 +28,7 @@ public class ShortFloat implements Cloneable {
     
     // the values are saved as short integers (-32768 to 32767, only 0 to 10000 used),
     // but used as float
-    private short value;
+    public short value;
     
     public ShortFloat(float v) {
         setValue(v);

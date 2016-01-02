@@ -14,28 +14,28 @@ class ParameterWindow(title: String, var defaultValue: Int) extends NarsFrame(ti
   /**
    Display label
    */
-  private var valueLabel: Label = new Label(String.valueOf(defaultValue), Label.CENTER)
+  public var valueLabel: Label = new Label(String.valueOf(defaultValue), Label.CENTER)
 
   /**
    Control buttons
    */
-  private var hideButton: Button = new Button("Hide")
+  public var hideButton: Button = new Button("Hide")
 
-  private var undoButton: Button = new Button("Undo")
+  public var undoButton: Button = new Button("Undo")
 
-  private var defaultButton: Button = new Button("Default")
+  public var defaultButton: Button = new Button("Default")
 
   /**
    Adjusting bar
    */
-  private var valueBar: Scrollbar = new Scrollbar(Scrollbar.HORIZONTAL, defaultValue, 0, 0, 101)
+  public var valueBar: Scrollbar = new Scrollbar(Scrollbar.HORIZONTAL, defaultValue, 0, 0, 101)
 
   /**
    parameter values
    */
-  private var previousValue: Int = _
+  public var previousValue: Int = _
 
-  private var currentValue: Int = _
+  public var currentValue: Int = _
 
 //  super(title)
 
@@ -106,7 +106,7 @@ class ParameterWindow(title: String, var defaultValue: Int) extends NarsFrame(ti
     }
   }
 
-  private def close() {
+  public def close() {
     previousValue = currentValue
     setVisible(false)
   }

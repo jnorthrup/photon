@@ -33,8 +33,8 @@ import com.googlecode.opennars.parser.*;
  */
 public class CompositionalRules {
 	
-	private Memory memory;
-	private BudgetFunctions budgetfunctions;
+	public Memory memory;
+	public BudgetFunctions budgetfunctions;
 	
 	public CompositionalRules(Memory memory) {
 		this.memory = memory;
@@ -122,7 +122,7 @@ public class CompositionalRules {
      * @param predicate Predicate of content
      * @param truth TruthValue of the content
      */
-    private  void processComposed(Statement statement, Term subject, Term predicate, TruthValue truth) {
+    public  void processComposed(Statement statement, Term subject, Term predicate, TruthValue truth) {
         if ((subject == null) || (predicate == null)) 
             return;
         Term content = Statement.make(statement, subject, predicate, this.memory);
@@ -140,7 +140,7 @@ public class CompositionalRules {
      * @param index The location of the shared term: 0 for subject, 1 for predicate
      * @param compoundTask Whether the compound comes from the task
      */
-    private  void decomposeCompound(CompoundTerm compound, Term component, Term term1, int index, boolean compoundTask) {
+    public  void decomposeCompound(CompoundTerm compound, Term component, Term term1, int index, boolean compoundTask) {
         Term term2 = CompoundTerm.reduceComponents(compound, component, this.memory);
         if (term2 == null)
             return;
@@ -271,7 +271,7 @@ public class CompositionalRules {
      * @param premise2 The second premise <M --> P>
      * @param index The location of the shared term: 0 for subject, 1 for predicate
      */
-    private  Conjunction introVarDep(Statement premise1, Statement premise2, int index) {
+    public  Conjunction introVarDep(Statement premise1, Statement premise2, int index) {
         Statement state1, state2;
         Variable v1 = new Variable(Symbols.VARIABLE_TAG + "0()");
         Variable v2 = new Variable(Symbols.VARIABLE_TAG + "0()");
@@ -292,7 +292,7 @@ public class CompositionalRules {
      * @param premise2 The second premise <M --> P>
      * @param index The location of the shared term: 0 for subject, 1 for predicate
      */
-    private  void introVarDepOuter(Statement premise1, Statement premise2, int index) {
+    public  void introVarDepOuter(Statement premise1, Statement premise2, int index) {
         Term content = introVarDep(premise1, premise2, index);
         TruthValue v1 = this.memory.currentTask.getSentence().getTruth();
         TruthValue v2 = this.memory.currentBelief.getTruth();

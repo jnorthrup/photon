@@ -30,20 +30,20 @@ import nars.main_nogui.Parameters;
 public class BudgetValue implements Cloneable {
 
     /** The character that marks the two ends of a budget value */
-    private static final char MARK = Symbols.BUDGET_VALUE_MARK;
+    public static final char MARK = Symbols.BUDGET_VALUE_MARK;
     /** The character that separates the factors in a budget value */
-    private static final char SEPARATOR = Symbols.VALUE_SEPARATOR;
+    public static final char SEPARATOR = Symbols.VALUE_SEPARATOR;
     /** The relative share of time resource to be allocated */
-    protected ShortFloat priority;
+    public ShortFloat priority;
 	/**
 	 * The percent of priority to be kept in a constant period; All priority
 	 * values “decay” over time, though at different rates. Each item is given a
 	 * “durability” factor in (0, 1) to specify the percentage of priority level
 	 * left after each reevaluation
 	 */
-    protected ShortFloat durability;
+    public ShortFloat durability;
     /** The overall (context-independent) evaluation */
-    protected ShortFloat quality;
+    public ShortFloat quality;
 
     /** 
      * Default constructor

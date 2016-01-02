@@ -10,13 +10,13 @@ import scala.collection.JavaConversions._
  * is not linked in the Term, because a Concept may be forgot while the Term exists.
  * Multiple objects may represent the same Term.
  */
-class Term protected () extends Cloneable with Comparable[Term] {
+class Term public () extends Cloneable with Comparable[Term] {
 
   /**
    * A Term is identified uniquely by its name, a sequence of characters in a
    * given alphabet (ASCII or Unicode)
    */
-  protected var name: String = _
+  public var name: String = _
 
   /**
    * Constructor with a given name

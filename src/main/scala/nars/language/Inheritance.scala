@@ -35,7 +35,7 @@ object Inheritance {
 /**
  * A Statement about an Inheritance relation.
  */
-class Inheritance private (arg: ArrayList[Term]) extends Statement(arg) {
+class Inheritance public (arg: ArrayList[Term]) extends Statement(arg) {
   
   /**
    * Constructor with full values, called by clone
@@ -44,7 +44,7 @@ class Inheritance private (arg: ArrayList[Term]) extends Statement(arg) {
    * @param open Open variable list
    * @param i Syntactic complexity of the compound
    */
-  private def this(n: String, 
+  public def this(n: String,
       cs: ArrayList[Term], 
       con: Boolean, 
       i: Short) {

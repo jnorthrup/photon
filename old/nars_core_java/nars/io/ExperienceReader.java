@@ -35,15 +35,15 @@ public class ExperienceReader implements InputChannel {
     /**
      * Reference to the reasoner
      */
-    private ReasonerBatch reasoner;
+    public ReasonerBatch reasoner;
     /**
      * Input experience from a file
      */
-    private BufferedReader inExp;
+    public BufferedReader inExp;
     /**
      * Remaining working cycles before reading the next line
      */
-    private int timer;
+    public int timer;
 
     /**
      * Default constructor

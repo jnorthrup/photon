@@ -32,7 +32,7 @@ public class action_part extends production_part {
   /*-----------------------------------------------------------*/
 
   /** String containing code for the action in question. */
-  protected String _code_string;
+  public String _code_string;
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 

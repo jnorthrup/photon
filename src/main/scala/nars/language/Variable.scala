@@ -83,7 +83,7 @@ object Variable {
    * @param subs The substitution formed so far
    * @return The substitution that unifies the two Terms
    */
-  private def findSubstitute(`type`: Char, 
+  public def findSubstitute(`type`: Char,
       term1: Term, 
       term2: Term, 
       map1: HashMap[Term, Term], 

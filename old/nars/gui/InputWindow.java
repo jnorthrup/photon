@@ -37,15 +37,15 @@ import nars.main_nogui.ReasonerBatch;
  * Input window, accepting user tasks
  */
 public class InputWindow extends NarsFrame implements ActionListener, InputChannel {
-    private ReasonerBatch reasoner;
+    public ReasonerBatch reasoner;
     /** Control buttons */
-    private Button okButton, holdButton, clearButton, closeButton;
+    public Button okButton, holdButton, clearButton, closeButton;
     /** Input area */
-    private TextArea inputText;
+    public TextArea inputText;
     /** Whether the window is ready to accept new input (in fact whether the Reasoner will read the content of {@link #inputText} ) */
-    private boolean ready;
+    public boolean ready;
     /** number of cycles between experience lines */
-    private int timer;
+    public int timer;
 
     /**
      * Constructor
@@ -117,7 +117,7 @@ public class InputWindow extends NarsFrame implements ActionListener, InputChann
         }
     }
 
-    private void close() {
+    public void close() {
         setVisible(false);
     }
 

@@ -12,7 +12,7 @@ object ConceptWindow {
   /**
    Used to adjust the screen position
    */
-  private var instanceCount: Int = 0
+  public var instanceCount: Int = 0
 }
 
 /**
@@ -23,18 +23,18 @@ class ConceptWindow(var concept: Concept) extends NarsFrame(concept.getKey) with
   /**
    Control buttons
    */
-  private var playButton: Button = new Button("Play")
+  public var playButton: Button = new Button("Play")
 
-  private var stopButton: Button = new Button("Stop")
+  public var stopButton: Button = new Button("Stop")
 
-  private var playInNewWindowButton: Button = new Button("Play in New Window")
+  public var playInNewWindowButton: Button = new Button("Play in New Window")
 
-  private var closeButton: Button = new Button("Close")
+  public var closeButton: Button = new Button("Close")
 
   /**
    Display area
    */
-  private var text: TextArea = new TextArea("")
+  public var text: TextArea = new TextArea("")
 
 //  super(concept.getKey)
 
@@ -136,7 +136,7 @@ class ConceptWindow(var concept: Concept) extends NarsFrame(concept.getKey) with
     }
   }
 
-  private def close() {
+  public def close() {
     concept.stop()
     dispose()
   }

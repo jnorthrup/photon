@@ -39,7 +39,7 @@ public class parse_reduce_table {
   /*-----------------------------------------------------------*/
 
   /** How many rows/states in the machine/table. */
-  protected int _num_states;
+  public int _num_states;
 
   /** How many rows/states in the machine/table. */
   public int num_states() {return _num_states;}

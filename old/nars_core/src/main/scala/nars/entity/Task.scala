@@ -13,7 +13,7 @@ class Task(@BeanProperty var sentence: Sentence, b: BudgetValue) extends Item(se
   /**
    Task from which the Task is derived, or null if input
    */
-  private var parentTask: Task = _
+  public var parentTask: Task = _
 
   /**
    Belief from which the Task is derived, or null if derived from a theorem

@@ -244,7 +244,7 @@ object BudgetFunctions {
    * @param memory Reference to the memory
    * @return Budget of the conclusion task
    */
-  private def budgetInference(qual: Float, complexity: Int, memory: Memory): BudgetValue = {
+  public def budgetInference(qual: Float, complexity: Int, memory: Memory): BudgetValue = {
     var t:Item = memory.currentTaskLink
     if (t == null) t = memory.currentTask
     var priority = t.getPriority

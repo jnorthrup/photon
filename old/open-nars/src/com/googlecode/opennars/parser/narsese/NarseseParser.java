@@ -200,7 +200,7 @@ public class NarseseParser extends Parser {
      * @throws com.googlecode.opennars.parser.NarseseParser.InvalidInputException the String cannot be parsed into a Term
      * @return the Term generated from the String
      */
-    private static Term parseSimpleTerm(String s0) throws InvalidInputException {
+    public static Term parseSimpleTerm(String s0) throws InvalidInputException {
         String s = s0.trim();
         if (s.length() == 0)
             throw new InvalidInputException("missing term");
@@ -222,7 +222,7 @@ public class NarseseParser extends Parser {
      * @param memory the memory object being inserted into
      * @throws com.googlecode.opennars.parser.NarseseParser.InvalidInputException the String cannot be parsed into a Term
      */
-    private static Statement parseStatement(String s0, Memory memory) throws InvalidInputException {
+    public static Statement parseStatement(String s0, Memory memory) throws InvalidInputException {
         String s = s0.trim();
         int i = topRelation(s);
         if (i < 0)
@@ -243,7 +243,7 @@ public class NarseseParser extends Parser {
      * @param memory the memory object being inserted into
      * @throws com.googlecode.opennars.parser.NarseseParser.InvalidInputException the String cannot be parsed into a Term
      */
-    private static Term parseCompoundTerm(String s0, Memory memory) throws InvalidInputException {
+    public static Term parseCompoundTerm(String s0, Memory memory) throws InvalidInputException {
         String s = s0.trim();
         int firstSeparator = s.indexOf(ARGUMENT_SEPARATOR);
         String op = s.substring(0, firstSeparator).trim();
@@ -263,7 +263,7 @@ public class NarseseParser extends Parser {
      * @param memory the memory object being inserted into
      * @throws com.googlecode.opennars.parser.NarseseParser.InvalidInputException the String cannot be parsed into an argument list
      */
-    private static ArrayList<Term> parseArguments(String s0, Memory memory) throws InvalidInputException {
+    public static ArrayList<Term> parseArguments(String s0, Memory memory) throws InvalidInputException {
         String s = s0.trim();
         ArrayList<Term> list = new ArrayList<Term>();
         int start = 0;
@@ -288,7 +288,7 @@ public class NarseseParser extends Parser {
      * @param s The String to be parsed
      * @param first The starting index
      */
-    private static int nextSeparator(String s, int first) {
+    public static int nextSeparator(String s, int first) {
         int levelCounter = 0;
         int i = first;
         while (i < s.length()-1) {
@@ -309,7 +309,7 @@ public class NarseseParser extends Parser {
      * @return the index of the top-level relation
      * @param s The String to be parsed
      */
-    private static int topRelation(String s) {      // need efficiency improvement
+    public static int topRelation(String s) {      // need efficiency improvement
         int levelCounter = 0;
         int i = 0;
         while (i < s.length()-3) {    // don't need to check the last 3 characters
@@ -332,7 +332,7 @@ public class NarseseParser extends Parser {
      * @param s The String to be checked
      * @param i The starting index
      */
-    private static boolean isOpener(String s, int i) {
+    public static boolean isOpener(String s, int i) {
         char c = s.charAt(i);
         boolean b = (c == COMPOUND_TERM_OPENER) ||
                 (c == SET_EXT_OPENER) ||
@@ -351,7 +351,7 @@ public class NarseseParser extends Parser {
      * @param s The String to be checked
      * @param i The starting index
      */
-    private static boolean isCloser(String s, int i) {
+    public static boolean isCloser(String s, int i) {
         char c = s.charAt(i);
         boolean b = (c == COMPOUND_TERM_CLOSER) ||
                 (c == SET_EXT_CLOSER) ||

@@ -52,32 +52,32 @@ public class BagWindow<BagType extends Item> extends NarsFrame implements Action
     /**
      * The bag to be displayed
      */
-    private Bag<?> bag;
+    public Bag<?> bag;
     /**
      * Control buttons
      */
-    private final JButton playButton, stopButton, closeButton;
+    public final JButton playButton, stopButton, closeButton;
     /**
      * Display area
      */
-    private final JTextArea text;
+    public final JTextArea text;
     /**
      * Display label
      */
-    private final JLabel valueLabel;
+    public final JLabel valueLabel;
     /**
      * Adjustable display level
      */
-    private final JScrollBar valueBar;
+    public final JScrollBar valueBar;
     /**
      * The location of the display area, shifted according to the number of
      * windows opened
      */
-    private static int counter;
+    public static int counter;
     /**
      * whether this bag window is active
      */
-    private boolean showing;
+    public boolean showing;
 
     public BagWindow() {
         /* The lowest level displayed */
@@ -106,7 +106,7 @@ public class BagWindow<BagType extends Item> extends NarsFrame implements Action
         setVisible(true);
     }
 
-	private void applyBorderLayout(JScrollPane textScrollPane) {
+	public void applyBorderLayout(JScrollPane textScrollPane) {
 		setLayout(new BorderLayout());
         add(textScrollPane, BorderLayout.CENTER );
         JPanel bottomPanel = new JPanel();
@@ -118,7 +118,7 @@ public class BagWindow<BagType extends Item> extends NarsFrame implements Action
         bottomPanel.add(closeButton );
 	}
 
-    private void adjustLabelAndCursor(int showLevel) {
+    public void adjustLabelAndCursor(int showLevel) {
         String valueText = String.valueOf(showLevel);
         // always occupy 3 characters (padding):
         valueText = showLevel> 9 ? "0" + valueText : "00" + valueText;
@@ -153,7 +153,7 @@ public class BagWindow<BagType extends Item> extends NarsFrame implements Action
     /**
      * Close the window
      */
-    private void close() {
+    public void close() {
         bag.stop();
         dispose();
         counter--;
@@ -197,7 +197,7 @@ public class BagWindow<BagType extends Item> extends NarsFrame implements Action
     }
 
 	@SuppressWarnings("unused")
-	private void applyGridBagLayout(JScrollPane textScrollPane) {
+	public void applyGridBagLayout(JScrollPane textScrollPane) {
 		GridBagLayout gridbag = new GridBagLayout();
 	    GridBagConstraints c = new GridBagConstraints();
 	    setLayout(gridbag);

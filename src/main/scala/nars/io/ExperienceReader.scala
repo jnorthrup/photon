@@ -15,12 +15,12 @@ class ExperienceReader(var reasoner: Reasoner) extends InputChannel {
   /**
    Input experience from a file
    */
-  private var inExp: BufferedReader = null
+  public var inExp: BufferedReader = null
 
   /**
    Remaining working cycles before reading the next line
    */
-  private var timer: Int = _
+  public var timer: Int = _
 
   /**
    Open an input experience file with a FileDialog

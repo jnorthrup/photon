@@ -30,19 +30,19 @@ public class Task extends Item {
     /**
      * The sentence of the Task
      */
-    private Sentence sentence;
+    public Sentence sentence;
     /**
      * Task from which the Task is derived, or null if input
      */
-    private Task parentTask;
+    public Task parentTask;
     /**
      * Belief from which the Task is derived, or null if derived from a theorem
      */
-    private Sentence parentBelief;
+    public Sentence parentBelief;
     /**
      * For Question and Goal: best solution found so far
      */
-    private Sentence bestSolution;
+    public Sentence bestSolution;
 
     /**
      * Constructor for input task

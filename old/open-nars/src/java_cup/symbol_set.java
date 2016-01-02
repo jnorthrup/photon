@@ -35,7 +35,7 @@ public class symbol_set {
 
   /** A hash table to hold the set. Symbols are keyed using their name string. 
    */
-  protected Hashtable _all = new Hashtable(11);
+  public Hashtable _all = new Hashtable(11);
 
   /** Access to all elements of the set. */
   public Enumeration all() {return _all.elements();}
@@ -51,7 +51,7 @@ public class symbol_set {
    *  if one is found.
    * @param obj the object we are testing.
    */
-  protected void not_null(Object obj) throws internal_error
+  public void not_null(Object obj) throws internal_error
     {
       if (obj == null) 
 	throw new internal_error("Null object used in set operation");

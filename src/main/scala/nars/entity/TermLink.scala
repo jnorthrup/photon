@@ -62,13 +62,13 @@ object TermLink {
  * <p>
  * This class is mainly used in inference.RuleTable to dispatch premises to inference rules
  */
-class TermLink(@BeanProperty var target: Term, protected var `type`: Short, indices: Int*)
+class TermLink(@BeanProperty var target: Term, public var `type`: Short, indices: Int*)
     extends Item {
 
   /**
    The index of the component in the component list of the compound, may have up to 4 levels
    */
-  protected var index: Array[Short] = _
+  public var index: Array[Short] = _
 
   assert (`type` % 2 == 0)
 
@@ -90,7 +90,7 @@ class TermLink(@BeanProperty var target: Term, protected var `type`: Short, indi
    * @param s The key of the TaskLink
    * @param v The budget value of the TaskLink
    */
-  protected def this(s: String, v: BudgetValue) {
+  public def this(s: String, v: BudgetValue) {
 //    super(s, v)
     // jmv : have to write this, as this is what the Java code really does :(
     // cf http://stackoverflow.com/questions/1438762/how-can-scala-receive-multiple-parameters-in-a-method-definition
@@ -124,7 +124,7 @@ class TermLink(@BeanProperty var target: Term, protected var `type`: Short, indi
   /**
    * Set the key of the link
    */
-  protected def setKey() {
+  public def setKey() {
     var at1: String = ""
     var at2: String = ""
     if ((`type` % 2) == 1) {

@@ -49,7 +49,7 @@ public class virtual_parse_stack {
    *  the bottom of the virtual portion of the stack, but is always left
    *  unmodified.
    */
-  protected Stack real_stack;
+  public Stack real_stack;
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
@@ -57,7 +57,7 @@ public class virtual_parse_stack {
    *  This is measured from top of stack, so 0 would indicate that no
    *  elements have been "moved" from the real to virtual stack. 
    */
-  protected int real_next;
+  public int real_next;
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
@@ -67,7 +67,7 @@ public class virtual_parse_stack {
    *  on the virtual stack).  When this portion of the stack becomes empty we 
    *  transfer elements from the underlying stack onto this stack. 
    */
-  protected Stack vstack;
+  public Stack vstack;
 
   /*-----------------------------------------------------------*/
   /*--- General Methods ---------------------------------------*/
@@ -76,7 +76,7 @@ public class virtual_parse_stack {
   /** Transfer an element from the real to the virtual stack.  This assumes 
    *  that the virtual stack is currently empty.  
    */
-  protected void get_from_real()
+  public void get_from_real()
     {
       Symbol stack_sym;
 

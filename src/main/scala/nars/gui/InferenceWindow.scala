@@ -15,31 +15,31 @@ class InferenceWindow(var recorder: InferenceRecorder) extends NarsFrame("Infere
   /**
    Control buttons
    */
-  private var playButton: Button = new Button("Play")
+  public var playButton: Button = new Button("Play")
 
-  private var stopButton: Button = new Button("Stop")
+  public var stopButton: Button = new Button("Stop")
 
-  private var hideButton: Button = new Button("Hide")
+  public var hideButton: Button = new Button("Hide")
 
   /**
    Display area
    */
-  private var text: TextArea = new TextArea("")
+  public var text: TextArea = new TextArea("")
 
   /**
    String to be caught
    */
-  private var watchText: TextField = new TextField(20)
+  public var watchText: TextField = new TextField(20)
 
   /**
    Type of caught text
    */
-  private var watchType: Choice = new Choice()
+  public var watchType: Choice = new Choice()
 
   /**
    Type of caught text
    */
-  private var watched: String = ""
+  public var watched: String = ""
 
 //  super("Inference log")
 
@@ -153,7 +153,7 @@ class InferenceWindow(var recorder: InferenceRecorder) extends NarsFrame("Infere
     }
   }
 
-  private def close() {
+  public def close() {
     recorder.stop()
     dispose()
   }

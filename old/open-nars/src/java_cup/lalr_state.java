@@ -83,7 +83,7 @@ public class lalr_state {
   /*-----------------------------------------------------------*/
 
   /** Collection of all states. */
-  protected static Hashtable _all = new Hashtable();
+  public static Hashtable _all = new Hashtable();
 
   /** Collection of all states. */
   public static Enumeration all() {return _all.elements();}
@@ -99,7 +99,7 @@ public class lalr_state {
    *  unclosed, set of items -- which uniquely define the state).  This table 
    *  stores state objects using (a copy of) their kernel item sets as keys. 
    */
-  protected static Hashtable _all_kernels = new Hashtable();
+  public static Hashtable _all_kernels = new Hashtable();
 
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
@@ -121,14 +121,14 @@ public class lalr_state {
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** Static counter for assigning unique state indexes. */
-  protected static int next_index = 0;
+  public static int next_index = 0;
 
   /*-----------------------------------------------------------*/
   /*--- (Access to) Instance Variables ------------------------*/
   /*-----------------------------------------------------------*/
 
   /** The item set for this state. */
-  protected lalr_item_set _items;
+  public lalr_item_set _items;
 
   /** The item set for this state. */
   public lalr_item_set items() {return _items;}
@@ -136,7 +136,7 @@ public class lalr_state {
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** List of transitions out of this state. */
-  protected lalr_transition _transitions = null;
+  public lalr_transition _transitions = null;
 
   /** List of transitions out of this state. */
   public lalr_transition transitions() {return _transitions;}
@@ -144,7 +144,7 @@ public class lalr_state {
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** Index of this state in the parse tables */
-  protected int _index;
+  public int _index;
 
   /** Index of this state in the parse tables */
   public int index() {return _index;}
@@ -156,7 +156,7 @@ public class lalr_state {
   /** Helper routine for debugging -- produces a dump of the given state
     * onto System.out.
     */
-  protected static void dump_state(lalr_state st) throws internal_error
+  public static void dump_state(lalr_state st) throws internal_error
     {
       lalr_item_set itms;
       lalr_item itm;
@@ -200,7 +200,7 @@ public class lalr_state {
       to the lookahead of one item to be included in other items that it 
       was used to directly or indirectly create.
    */
-  protected static void propagate_all_lookaheads() throws internal_error
+  public static void propagate_all_lookaheads() throws internal_error
     {
       /* iterate across all states */
       for (Enumeration st = all(); st.hasMoreElements(); )
@@ -418,7 +418,7 @@ public class lalr_state {
    *  propagates to all items that have propagation links from some item 
    *  in this state. 
    */
-  protected void propagate_lookaheads() throws internal_error
+  public void propagate_lookaheads() throws internal_error
     {
       /* recursively propagate out from each item in the state */
       for (Enumeration itm = items().all(); itm.hasMoreElements(); )
@@ -581,7 +581,7 @@ public class lalr_state {
    *  @param act         the rule in conflict with the table entry
    */
 
-    protected boolean fix_with_precedence(
+    public boolean fix_with_precedence(
 		        production       p,
 			int              term_index,
 			parse_action_row table_row,
@@ -657,7 +657,7 @@ public class lalr_state {
       to be fixed 
      
   */
-    protected parse_action insert_action(
+    public parse_action insert_action(
 					parse_action a1,
 					parse_action a2,
 					int act_type) 
@@ -675,7 +675,7 @@ public class lalr_state {
     }
 
     /* find the shift in the two actions */
-    protected parse_action insert_shift(
+    public parse_action insert_shift(
 					parse_action a1,
 					parse_action a2) 
       throws internal_error  
@@ -684,7 +684,7 @@ public class lalr_state {
     }
 
     /* find the reduce in the two actions */
-    protected parse_action insert_reduce(
+    public parse_action insert_reduce(
 					parse_action a1,
 					parse_action a2) 
       throws internal_error
@@ -695,7 +695,7 @@ public class lalr_state {
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** Produce warning messages for all conflicts found in this state.  */
-  protected void report_conflicts(terminal_set conflict_set)
+  public void report_conflicts(terminal_set conflict_set)
     throws internal_error
     {
       lalr_item    itm, compare;
@@ -754,7 +754,7 @@ public class lalr_state {
    * @param itm1 first item in conflict.
    * @param itm2 second item in conflict.
    */
-  protected void report_reduce_reduce(lalr_item itm1, lalr_item itm2)
+  public void report_reduce_reduce(lalr_item itm1, lalr_item itm2)
     throws internal_error
     {
       boolean comma_flag = false;
@@ -792,7 +792,7 @@ public class lalr_state {
    * @param red_itm      the item with the reduce.
    * @param conflict_sym the index of the symbol conflict occurs under.
    */
-  protected void report_shift_reduce(
+  public void report_shift_reduce(
     lalr_item red_itm, 
     int       conflict_sym)
     throws internal_error

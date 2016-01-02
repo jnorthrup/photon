@@ -36,7 +36,7 @@ public class TensePresent extends Tense {
      * @param n The name of the term
      * @param arg The component list of the term
      */
-    private TensePresent(String n, ArrayList<Term> arg) {
+    public TensePresent(String n, ArrayList<Term> arg) {
         super(n, arg);
     }
     
@@ -48,7 +48,7 @@ public class TensePresent extends Tense {
      * @param i syntactic complexity of the compound
      * @param n The name of the term
      */
-    private TensePresent(String n, ArrayList<Term> cs, ArrayList<Variable> open, ArrayList<Variable> closed, short i) {
+    public TensePresent(String n, ArrayList<Term> cs, ArrayList<Variable> open, ArrayList<Variable> closed, short i) {
         super(n, cs, open, closed, i);
     }
     

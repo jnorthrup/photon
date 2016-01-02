@@ -35,7 +35,7 @@ class ShortFloat(var value: Short) extends Cloneable {
    * To access the value as short
    * @return The current value in short
    */
-  private def getShortValue(): Short = value
+  public def getShortValue(): Short = value
 
   /**
    * Set new value, rounded, with validity checking

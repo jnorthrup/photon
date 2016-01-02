@@ -4,14 +4,14 @@ import com.googlecode.opennars.parser.loan.Loan.Absyn.*;
 public class PrettyPrinter
 {
   //For certain applications increasing the initial size of the buffer may improve performance.
-  private static final int INITIAL_BUFFER_SIZE = 128;
+  public static final int INITIAL_BUFFER_SIZE = 128;
   //You may wish to change the parentheses used in precedence.
-  private static final String _L_PAREN = new String("(");
-  private static final String _R_PAREN = new String(")");
+  public static final String _L_PAREN = new String("(");
+  public static final String _R_PAREN = new String(")");
   
-  private static boolean inAtRule = false;
+  public static boolean inAtRule = false;
   //You may wish to change render
-  private static void render(String s)
+  public static void render(String s)
   {
     if (s.equals("{"))
     {
@@ -293,7 +293,7 @@ public class PrettyPrinter
   }
   /***   You shouldn't need to change anything beyond this point.   ***/
 
-  private static void pp(com.googlecode.opennars.parser.loan.Loan.Absyn.Document foo, int _i_)
+  public static void pp(com.googlecode.opennars.parser.loan.Loan.Absyn.Document foo, int _i_)
   {
     if (foo instanceof com.googlecode.opennars.parser.loan.Loan.Absyn.DocBR)
     {
@@ -312,7 +312,7 @@ public class PrettyPrinter
     }
   }
 
-  private static void pp(com.googlecode.opennars.parser.loan.Loan.Absyn.BaseRule foo, int _i_)
+  public static void pp(com.googlecode.opennars.parser.loan.Loan.Absyn.BaseRule foo, int _i_)
   {
     if (foo instanceof com.googlecode.opennars.parser.loan.Loan.Absyn.BaseR)
     {
@@ -325,7 +325,7 @@ public class PrettyPrinter
     }
   }
 
-  private static void pp(com.googlecode.opennars.parser.loan.Loan.Absyn.ListSentence foo, int _i_)
+  public static void pp(com.googlecode.opennars.parser.loan.Loan.Absyn.ListSentence foo, int _i_)
   {
      for (java.util.Iterator<Sentence> it = foo.iterator(); it.hasNext();)
      {
@@ -338,7 +338,7 @@ public class PrettyPrinter
      }
   }
 
-  private static void pp(com.googlecode.opennars.parser.loan.Loan.Absyn.Sentence foo, int _i_)
+  public static void pp(com.googlecode.opennars.parser.loan.Loan.Absyn.Sentence foo, int _i_)
   {
     if (foo instanceof com.googlecode.opennars.parser.loan.Loan.Absyn.SentPrefix)
     {
@@ -408,7 +408,7 @@ public class PrettyPrinter
     }
   }
 
-  private static void pp(com.googlecode.opennars.parser.loan.Loan.Absyn.Budget foo, int _i_)
+  public static void pp(com.googlecode.opennars.parser.loan.Loan.Absyn.Budget foo, int _i_)
   {
     if (foo instanceof com.googlecode.opennars.parser.loan.Loan.Absyn.BudgetE)
     {
@@ -440,7 +440,7 @@ public class PrettyPrinter
     }
   }
 
-  private static void pp(com.googlecode.opennars.parser.loan.Loan.Absyn.Stm foo, int _i_)
+  public static void pp(com.googlecode.opennars.parser.loan.Loan.Absyn.Stm foo, int _i_)
   {
     if (foo instanceof com.googlecode.opennars.parser.loan.Loan.Absyn.StmImpl)
     {
@@ -637,7 +637,7 @@ public class PrettyPrinter
     }
   }
 
-  private static void pp(com.googlecode.opennars.parser.loan.Loan.Absyn.Term foo, int _i_)
+  public static void pp(com.googlecode.opennars.parser.loan.Loan.Absyn.Term foo, int _i_)
   {
     if (foo instanceof com.googlecode.opennars.parser.loan.Loan.Absyn.TrmExInt)
     {
@@ -744,7 +744,7 @@ public class PrettyPrinter
     }
   }
 
-  private static void pp(com.googlecode.opennars.parser.loan.Loan.Absyn.ListTerm foo, int _i_)
+  public static void pp(com.googlecode.opennars.parser.loan.Loan.Absyn.ListTerm foo, int _i_)
   {
      for (java.util.Iterator<Term> it = foo.iterator(); it.hasNext();)
      {
@@ -757,7 +757,7 @@ public class PrettyPrinter
      }
   }
 
-  private static void pp(com.googlecode.opennars.parser.loan.Loan.Absyn.ListIdent foo, int _i_)
+  public static void pp(com.googlecode.opennars.parser.loan.Loan.Absyn.ListIdent foo, int _i_)
   {
      for (java.util.Iterator<String> it = foo.iterator(); it.hasNext();)
      {
@@ -770,7 +770,7 @@ public class PrettyPrinter
      }
   }
 
-  private static void pp(com.googlecode.opennars.parser.loan.Loan.Absyn.URIRef foo, int _i_)
+  public static void pp(com.googlecode.opennars.parser.loan.Loan.Absyn.URIRef foo, int _i_)
   {
     if (foo instanceof com.googlecode.opennars.parser.loan.Loan.Absyn.URIFul)
     {
@@ -789,7 +789,7 @@ public class PrettyPrinter
     }
   }
 
-  private static void pp(com.googlecode.opennars.parser.loan.Loan.Absyn.Literal foo, int _i_)
+  public static void pp(com.googlecode.opennars.parser.loan.Loan.Absyn.Literal foo, int _i_)
   {
     if (foo instanceof com.googlecode.opennars.parser.loan.Loan.Absyn.LitQVar)
     {
@@ -869,7 +869,7 @@ public class PrettyPrinter
     }
   }
 
-  private static void pp(com.googlecode.opennars.parser.loan.Loan.Absyn.NSPrefix foo, int _i_)
+  public static void pp(com.googlecode.opennars.parser.loan.Loan.Absyn.NSPrefix foo, int _i_)
   {
     if (foo instanceof com.googlecode.opennars.parser.loan.Loan.Absyn.NSPrefix1)
     {
@@ -888,7 +888,7 @@ public class PrettyPrinter
     }
   }
 
-  private static void pp(com.googlecode.opennars.parser.loan.Loan.Absyn.TruthValue foo, int _i_)
+  public static void pp(com.googlecode.opennars.parser.loan.Loan.Absyn.TruthValue foo, int _i_)
   {
     if (foo instanceof com.googlecode.opennars.parser.loan.Loan.Absyn.TruthE)
     {
@@ -919,7 +919,7 @@ public class PrettyPrinter
   }
 
 
-  private static void sh(com.googlecode.opennars.parser.loan.Loan.Absyn.Document foo)
+  public static void sh(com.googlecode.opennars.parser.loan.Loan.Absyn.Document foo)
   {
     if (foo instanceof com.googlecode.opennars.parser.loan.Loan.Absyn.DocBR)
     {
@@ -944,7 +944,7 @@ public class PrettyPrinter
     }
   }
 
-  private static void sh(com.googlecode.opennars.parser.loan.Loan.Absyn.BaseRule foo)
+  public static void sh(com.googlecode.opennars.parser.loan.Loan.Absyn.BaseRule foo)
   {
     if (foo instanceof com.googlecode.opennars.parser.loan.Loan.Absyn.BaseR)
     {
@@ -956,7 +956,7 @@ public class PrettyPrinter
     }
   }
 
-  private static void sh(com.googlecode.opennars.parser.loan.Loan.Absyn.ListSentence foo)
+  public static void sh(com.googlecode.opennars.parser.loan.Loan.Absyn.ListSentence foo)
   {
      for (java.util.Iterator<Sentence> it = foo.iterator(); it.hasNext();)
      {
@@ -966,7 +966,7 @@ public class PrettyPrinter
      }
   }
 
-  private static void sh(com.googlecode.opennars.parser.loan.Loan.Absyn.Sentence foo)
+  public static void sh(com.googlecode.opennars.parser.loan.Loan.Absyn.Sentence foo)
   {
     if (foo instanceof com.googlecode.opennars.parser.loan.Loan.Absyn.SentPrefix)
     {
@@ -1032,7 +1032,7 @@ public class PrettyPrinter
     }
   }
 
-  private static void sh(com.googlecode.opennars.parser.loan.Loan.Absyn.Budget foo)
+  public static void sh(com.googlecode.opennars.parser.loan.Loan.Absyn.Budget foo)
   {
     if (foo instanceof com.googlecode.opennars.parser.loan.Loan.Absyn.BudgetE)
     {
@@ -1058,7 +1058,7 @@ public class PrettyPrinter
     }
   }
 
-  private static void sh(com.googlecode.opennars.parser.loan.Loan.Absyn.Stm foo)
+  public static void sh(com.googlecode.opennars.parser.loan.Loan.Absyn.Stm foo)
   {
     if (foo instanceof com.googlecode.opennars.parser.loan.Loan.Absyn.StmImpl)
     {
@@ -1257,7 +1257,7 @@ public class PrettyPrinter
     }
   }
 
-  private static void sh(com.googlecode.opennars.parser.loan.Loan.Absyn.Term foo)
+  public static void sh(com.googlecode.opennars.parser.loan.Loan.Absyn.Term foo)
   {
     if (foo instanceof com.googlecode.opennars.parser.loan.Loan.Absyn.TrmExInt)
     {
@@ -1371,7 +1371,7 @@ public class PrettyPrinter
     }
   }
 
-  private static void sh(com.googlecode.opennars.parser.loan.Loan.Absyn.ListTerm foo)
+  public static void sh(com.googlecode.opennars.parser.loan.Loan.Absyn.ListTerm foo)
   {
      for (java.util.Iterator<Term> it = foo.iterator(); it.hasNext();)
      {
@@ -1381,7 +1381,7 @@ public class PrettyPrinter
      }
   }
 
-  private static void sh(com.googlecode.opennars.parser.loan.Loan.Absyn.ListIdent foo)
+  public static void sh(com.googlecode.opennars.parser.loan.Loan.Absyn.ListIdent foo)
   {
      for (java.util.Iterator<String> it = foo.iterator(); it.hasNext();)
      {
@@ -1391,7 +1391,7 @@ public class PrettyPrinter
      }
   }
 
-  private static void sh(com.googlecode.opennars.parser.loan.Loan.Absyn.URIRef foo)
+  public static void sh(com.googlecode.opennars.parser.loan.Loan.Absyn.URIRef foo)
   {
     if (foo instanceof com.googlecode.opennars.parser.loan.Loan.Absyn.URIFul)
     {
@@ -1412,7 +1412,7 @@ public class PrettyPrinter
     }
   }
 
-  private static void sh(com.googlecode.opennars.parser.loan.Loan.Absyn.Literal foo)
+  public static void sh(com.googlecode.opennars.parser.loan.Loan.Absyn.Literal foo)
   {
     if (foo instanceof com.googlecode.opennars.parser.loan.Loan.Absyn.LitQVar)
     {
@@ -1490,7 +1490,7 @@ public class PrettyPrinter
     }
   }
 
-  private static void sh(com.googlecode.opennars.parser.loan.Loan.Absyn.NSPrefix foo)
+  public static void sh(com.googlecode.opennars.parser.loan.Loan.Absyn.NSPrefix foo)
   {
     if (foo instanceof com.googlecode.opennars.parser.loan.Loan.Absyn.NSPrefix1)
     {
@@ -1507,7 +1507,7 @@ public class PrettyPrinter
     }
   }
 
-  private static void sh(com.googlecode.opennars.parser.loan.Loan.Absyn.TruthValue foo)
+  public static void sh(com.googlecode.opennars.parser.loan.Loan.Absyn.TruthValue foo)
   {
     if (foo instanceof com.googlecode.opennars.parser.loan.Loan.Absyn.TruthE)
     {
@@ -1534,16 +1534,16 @@ public class PrettyPrinter
   }
 
 
-  private static void pp(Integer n, int _i_) { buf_.append(n); buf_.append(" "); }
-  private static void pp(Double d, int _i_) { buf_.append(d); buf_.append(" "); }
-  private static void pp(String s, int _i_) { buf_.append(s); buf_.append(" "); }
-  private static void pp(Character c, int _i_) { buf_.append("'" + c.toString() + "'"); buf_.append(" "); }
-  private static void sh(Integer n) { render(n.toString()); }
-  private static void sh(Double d) { render(d.toString()); }
-  private static void sh(Character c) { render(c.toString()); }
-  private static void sh(String s) { printQuoted(s); }
-  private static void printQuoted(String s) { render("\"" + s + "\""); }
-  private static void indent()
+  public static void pp(Integer n, int _i_) { buf_.append(n); buf_.append(" "); }
+  public static void pp(Double d, int _i_) { buf_.append(d); buf_.append(" "); }
+  public static void pp(String s, int _i_) { buf_.append(s); buf_.append(" "); }
+  public static void pp(Character c, int _i_) { buf_.append("'" + c.toString() + "'"); buf_.append(" "); }
+  public static void sh(Integer n) { render(n.toString()); }
+  public static void sh(Double d) { render(d.toString()); }
+  public static void sh(Character c) { render(c.toString()); }
+  public static void sh(String s) { printQuoted(s); }
+  public static void printQuoted(String s) { render("\"" + s + "\""); }
+  public static void indent()
   {
     int n = _n_;
     while (n > 0)
@@ -1552,20 +1552,20 @@ public class PrettyPrinter
       n--;
     }
   }
-  private static void backup()
+  public static void backup()
   {
      if (buf_.charAt(buf_.length() - 1) == ' ') {
       buf_.setLength(buf_.length() - 1);
     }
   }
-  private static void trim()
+  public static void trim()
   {
      while (buf_.length() > 0 && buf_.charAt(0) == ' ')
         buf_.deleteCharAt(0); 
     while (buf_.length() > 0 && buf_.charAt(buf_.length()-1) == ' ')
         buf_.deleteCharAt(buf_.length()-1);
   }
-  private static int _n_ = 0;
-  private static StringBuilder buf_ = new StringBuilder(INITIAL_BUFFER_SIZE);
+  public static int _n_ = 0;
+  public static StringBuilder buf_ = new StringBuilder(INITIAL_BUFFER_SIZE);
 }
 

@@ -28,8 +28,8 @@ import java.awt.event.*;
  */
 public class MessageDialog extends Dialog implements ActionListener, WindowListener {
 
-    protected Button button;
-    protected TextArea text;
+    public Button button;
+    public TextArea text;
 
     /**
      * Constructor
@@ -66,7 +66,7 @@ public class MessageDialog extends Dialog implements ActionListener, WindowListe
         }
     }
 
-    private void close() {
+    public void close() {
         this.setVisible(false);
         this.dispose();
     }

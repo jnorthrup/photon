@@ -32,7 +32,7 @@ public class action_production extends production {
   /*. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .*/
 
   /** The production we were taken out of. */
-  protected production _base_production;
+  public production _base_production;
 
   /** The production we were taken out of. */
   public production base_production() {return _base_production;}
