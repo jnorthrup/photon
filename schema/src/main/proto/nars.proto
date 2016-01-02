@@ -1,0 +1,91 @@
+package nars.data;
+
+
+option java_package = "nars.data";
+
+option java_outer_classname = "NarsData";
+
+message Atom {
+    required string lit = 1;
+}
+message TermStruct {
+    required string name = 1;
+}
+message BudgetStruct{
+    required float priority=100;
+    required float quality=200;
+    required float durability=300;
+
+}
+message ItemStruct{
+    required float priority=100;
+    required float quality=200;
+    required float durability=300;
+
+}
+
+message StampStruct{
+required int64 creationTime=1;
+repeated int64 evidentialBase=1000;
+}
+
+
+message TruthHandle{
+required float frequency=100;
+required float confidence =200;
+ }
+message TaskStruct{
+    required bool input=1;
+    required bool structural=2;
+    required int64 creationTime=100;
+    required TermStruct content=1000;
+    }
+message TermLinkStruct{
+required int32 type=1;
+required TermStruct term=100;
+repeated int32 index=1000;
+}
+message SentenceStruct{
+
+required	bool  question= 2   ;
+required	bool  revisible= 3  ;
+required	int32  punctuation= 100  ;
+required	TruthHandle truth=1000  ;
+required	StampStruct stamp=2000  ;
+required	TermStruct content=3000 ;
+
+}
+message TaskLinkStruct{
+required    int32 counter=1;
+     required TaskStruct targetTask=100;
+       repeated string  recordedLinks = 1000;
+        repeated int64 recordingTime=2000;
+ }
+
+
+message CompoundTermStruct{
+    required bool constant=1;
+    repeated TermStruct components=1000;
+}
+message Model{
+message ModelInfo {
+message ModelInfoResponse { //
+            required bool compactRunning = 1;
+            required string dbName = 2;
+            required string diskFormat_version = 3;
+            required int64 diskSize = 4;
+            required int64 docCount = 5;
+            required int64 docDel_count = 6;
+            required int64 instanceStart_time = 7;
+            required int64 purgeSeq = 8;
+            required int64 updateSeq = 9;
+        }
+        required string db = 1;
+    }
+    repeated Atom atoms= 1100;
+    repeated TermStruct terms=1200;
+    repeated BudgetStruct budg=1300;
+    repeated ItemStruct items=1400;
+    repeated StampStruct stamps=1500;
+
+}

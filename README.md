@@ -1,0 +1,1 @@
+pattern recognition and encoding gateway for higher level languages   
