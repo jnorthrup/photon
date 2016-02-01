@@ -53,7 +53,6 @@ required	int32  punctuation= 100  ;
 required	TruthHandle truth=1000  ;
 required	StampStruct stamp=2000  ;
 required	TermStruct content=3000 ;
-
 }
 message TaskLinkStruct{
 required    int32 counter=1;

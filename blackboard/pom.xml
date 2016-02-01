@@ -17,8 +17,8 @@
   </properties>
   <dependencies>
     <dependency>
-      <groupId>anars</groupId>
-      <artifactId>anars_data</artifactId>
+      <groupId>photon</groupId>
+      <artifactId>schema</artifactId>
     </dependency>
     <dependency>
       <groupId>com.google.web.bindery</groupId>
