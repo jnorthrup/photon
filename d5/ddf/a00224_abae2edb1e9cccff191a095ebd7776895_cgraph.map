@@ -1,0 +1,16 @@
+<map id="nars.entity.Task.merge" name="nars.entity.Task.merge">
+<area shape="rect" id="node2" href="$dc/d31/a00208.html#a54fc0a370b847dd77c0a698c765e6e55" title="The budget of the Item, consisting of 3 numbers. " alt="" coords="498,173,674,199"/>
+<area shape="rect" id="node3" href="$d5/ddf/a00224.html#a1f643668b958d700afee3616f0baf93f" title="Directly get the creation time of the sentence. " alt="" coords="209,85,425,111"/>
+<area shape="rect" id="node7" href="$dc/d31/a00208.html#a75638f93f001719a532326adabca171c" title="Merge with another Item with identical key. " alt="" coords="241,211,394,238"/>
+<area shape="rect" id="node4" href="$d6/d43/a00216.html#acb0b161e2d2fb0cbfb33b44ec2a29075" title="creation time of the stamp " alt="" coords="473,71,699,98"/>
+<area shape="rect" id="node5" href="$d5/ddf/a00224.html#ab140cb553a6cf40b07093d1df283567f" title="The sentence of the Task. " alt="" coords="489,122,683,149"/>
+<area shape="rect" id="node6" href="$dd/dc1/a00212.html#ac0ed749c50e55120d5b63219ed7eb082" title="Partial record of the derivation path. " alt="" coords="504,5,668,47"/>
+<area shape="rect" id="node8" href="$dd/da2/a00192.html#a4fdeae08389c60a4d89bc0b85a92848f" title="Merge one BudgetValue into another. " alt="" coords="485,223,687,250"/>
+<area shape="rect" id="node9" href="$d9/d21/a00240.html#a64bec0b466ef31bc3150de23f0623309" title="Merge an item into another one in a bag, when the two are identical except in budget values..." alt="" coords="747,223,993,250"/>
+<area shape="rect" id="node10" href="$dd/da2/a00192.html#a088e64163126211239b6afd25a9cdca3" title="Increase priority value by a percentage of the remaining range. " alt="" coords="1041,85,1224,127"/>
+<area shape="rect" id="node12" href="$dd/da2/a00192.html#ab72bce41fd8a1512fc8baa07ed93fc1b" title="Change durability value. " alt="" coords="1041,151,1224,192"/>
+<area shape="rect" id="node13" href="$dd/da2/a00192.html#ab0e0dc2172d3fab6390670acb68da1a6" title="Get durability value. " alt="" coords="1041,216,1224,257"/>
+<area shape="rect" id="node14" href="$dd/da2/a00192.html#ab134287bfbdfe703501697c5f9eac50b" title="Change quality value. " alt="" coords="1041,281,1224,323"/>
+<area shape="rect" id="node15" href="$dd/da2/a00192.html#ae48fee1252f685c6ce2033bb855d13e1" title="Get quality value. " alt="" coords="1041,347,1224,388"/>
+<area shape="rect" id="node11" href="$db/d12/a00268.html#acaa4ebc080bc00d0e03be32d51d29e40" title="A function where the output is disjunctively determined by the inputs. " alt="" coords="1272,93,1487,119"/>
+</map>

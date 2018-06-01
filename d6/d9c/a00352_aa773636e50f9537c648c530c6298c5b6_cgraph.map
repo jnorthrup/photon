@@ -1,0 +1,8 @@
+<map id="nars.language.SetInt.make" name="nars.language.SetInt.make">
+<area shape="rect" id="node2" href="$d8/d17/a00304.html#a97f8c7c396de480e7a650b0afe4829a4" title="make the oldName of an ExtensionSet or IntensionSet " alt="" coords="232,5,468,47"/>
+<area shape="rect" id="node3" href="$d4/d27/a00392.html#ac7c5d438820208253d1a2ee59bf80ddc" title="Get a Term for a given name of a Concept or Operator. " alt="" coords="259,71,441,112"/>
+<area shape="rect" id="node7" href="$d6/d9c/a00352.html#a92f205fbfd06f0744128155b3f39a3c5" title="Constructor with partial values, called by make. " alt="" coords="259,137,441,163"/>
+<area shape="rect" id="node4" href="$d4/d27/a00392.html#a33af7b3d806d32c85390563fec3c6d27" title="Concept bag. " alt="" coords="516,27,739,54"/>
+<area shape="rect" id="node5" href="$d6/db8/a00376.html#a011b37fc683db7fb7b41e33712a37d92" title="Get an Item by key. " alt="" coords="556,78,699,105"/>
+<area shape="rect" id="node6" href="$d7/ded/a00196.html#afcd1217b7680b073fa51f0d0f159dcea" title="The term is the unique ID of the concept. " alt="" coords="533,129,721,155"/>
+</map>

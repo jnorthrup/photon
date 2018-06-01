@@ -1,0 +1,6 @@
+<map id="nars.inference.LocalRules.solutionQuality" name="nars.inference.LocalRules.solutionQuality">
+<area shape="rect" id="node2" href="$dd/dc1/a00212.html#a244c4fd3b9cb81b8882e7e4c962188ec" title="nars.entity.Sentence.contain\lQueryVar" alt="" coords="276,5,464,47"/>
+<area shape="rect" id="node3" href="$d7/d40/a00236.html#a68ca7d92e9ea20d2a9a9f578ad7b681c" title="The confidence factor of the truth value. " alt="" coords="512,64,684,105"/>
+<area shape="rect" id="node4" href="$d7/d40/a00236.html#aa5ffcde3ae611b087ba7fdd4cd67b216" title="Calculate the expectation value of the truth value. " alt="" coords="284,123,456,164"/>
+<area shape="rect" id="node5" href="$d7/d40/a00236.html#a9eac33f2495441c77911a8581a5bbe61" title="Get the frequency value. " alt="" coords="512,129,684,171"/>
+</map>

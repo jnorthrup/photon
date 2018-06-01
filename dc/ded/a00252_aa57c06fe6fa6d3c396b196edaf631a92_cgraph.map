@@ -1,0 +1,57 @@
+<map id="nars.inference.RuleTables.functionBeggingToBeAsync" name="nars.inference.RuleTables.functionBeggingToBeAsync">
+<area shape="rect" id="node2" href="$d3/dcc/a00264.html#a0584fe68d00cebcf3e2d6c22ba356c52" title="{&lt;S ==&gt; M&gt;, " alt="" coords="300,367,555,393"/>
+<area shape="rect" id="node6" href="$d3/dcc/a00264.html#a924b3cc3835f75df63afb5d35ce71693" title="{&lt;S ==&gt; M&gt;, &lt;M &lt;=&gt; P&gt;} |&#45; &lt;S ==&gt; P&gt; " alt="" coords="631,5,875,32"/>
+<area shape="rect" id="node7" href="$d9/d21/a00240.html#a837063b568fd1d183a802ae03102693a" title="Backward inference result and adjustment, stronger case. " alt="" coords="294,600,561,627"/>
+<area shape="rect" id="node23" href="$d9/d21/a00240.html#a977c61dd8a64c4128052c6d5f69f47d3" title="Backward inference result and adjustment, weaker case. " alt="" coords="277,492,577,519"/>
+<area shape="rect" id="node24" href="$d3/dcc/a00264.html#a8f6892d4f41dfa39a4868e5bc65540ce" title="{&lt;S ==&gt; M&gt;, &lt;M ==&gt; P&gt;} |&#45; &lt;S ==&gt; P&gt; " alt="" coords="625,56,880,83"/>
+<area shape="rect" id="node25" href="$d4/d27/a00392.html#aef985ce01b98005b7fa3065b834ded7e" title="Shared final operations by all double&#45;premise rules, called from the rules except StructuralRules..." alt="" coords="334,1121,521,1162"/>
+<area shape="rect" id="node26" href="$d4/d27/a00392.html#a26eda4f00b333b706b4e3d069fdf1508" title="The selected Task. " alt="" coords="633,859,872,885"/>
+<area shape="rect" id="node27" href="$d5/ddf/a00224.html#ab140cb553a6cf40b07093d1df283567f" title="The sentence of the Task. " alt="" coords="955,1212,1148,1239"/>
+<area shape="rect" id="node30" href="$d4/d27/a00392.html#aae366ea198c2340fef786120d5c2163b" title="The selected belief. " alt="" coords="647,1299,858,1341"/>
+<area shape="rect" id="node51" href="$dd/dc1/a00212.html#a9f69b4fef64c81abad21404946cd41f9" title="The truth value of Judgment. " alt="" coords="1829,1390,1993,1431"/>
+<area shape="rect" id="node55" href="$d9/d21/a00240.html#a2db9aa6bf208e45b225924b2ba1769da" title="Forward inference result and adjustment. " alt="" coords="301,549,554,576"/>
+<area shape="rect" id="node56" href="$dd/dc1/a00212.html#acb98b40c8990dbe5e15061f0759c60ee" title="Distinguish Question from Quest (&quot;instanceof Question&quot; doesn&#39;t work) " alt="" coords="323,1335,531,1361"/>
+<area shape="rect" id="node3" href="$d7/d40/a00236.html#a9eac33f2495441c77911a8581a5bbe61" title="Get the frequency value. " alt="" coords="2064,99,2236,141"/>
+<area shape="rect" id="node4" href="$db/d12/a00268.html#a46d2f048b6ba77afc60dcf49734f23c7" title="A function where the output is conjunctively determined by the inputs. " alt="" coords="939,107,1163,133"/>
+<area shape="rect" id="node5" href="$db/d12/a00268.html#a957a91e3b91d4a4043c3959838c370f2" title="A function to convert weight to confidence. " alt="" coords="639,377,866,404"/>
+<area shape="rect" id="node8" href="$d9/d21/a00240.html#a6c45e643d143a28d7514f3487fbfa494" title="Common processing for all inference step. " alt="" coords="628,470,877,511"/>
+<area shape="rect" id="node21" href="$d9/d21/a00240.html#a1cabe922021909c7226988e5aa00ea95" title="Determine the quality of a judgment by its truth value alone. " alt="" coords="635,557,871,598"/>
+<area shape="rect" id="node9" href="$d9/d21/a00240.html#a5df1e2954d5ce62f08cbd4be287ddaba" title="A function where the output is the arithmetic average the inputs. " alt="" coords="928,309,1175,336"/>
+<area shape="rect" id="node10" href="$dc/d31/a00208.html#a54fc0a370b847dd77c0a698c765e6e55" title="The budget of the Item, consisting of 3 numbers. " alt="" coords="1254,557,1430,584"/>
+<area shape="rect" id="node11" href="$d9/dd5/a00432.html#a672e3b935dca6df8c7e47c6c69e0fc66" title="nars.storage.WorkSpace.get\lCurrentBeliefLink" alt="" coords="957,361,1145,402"/>
+<area shape="rect" id="node12" href="$d9/dd5/a00432.html#aefcc9dfcebdc79cd7e099afd4553b083" title="nars.storage.WorkSpace.get\lCurrentTask" alt="" coords="957,426,1145,467"/>
+<area shape="rect" id="node13" href="$d9/dd5/a00432.html#a585409e59ebb973c820683bc556ebe37" title="nars.storage.WorkSpace.get\lCurrentTaskLink" alt="" coords="957,491,1145,533"/>
+<area shape="rect" id="node14" href="$dc/d31/a00208.html#adbb21c1891722e30c1d6cfaf5fee18ee" title="Get durability value. " alt="" coords="956,608,1147,635"/>
+<area shape="rect" id="node16" href="$dc/d31/a00208.html#a97b35888ceaad90e7a428701051c51d7" title="Get priority value. " alt="" coords="963,259,1139,285"/>
+<area shape="rect" id="node18" href="$dc/d31/a00208.html#a786a1e14b3904092f4a3b2fa4faa08a7" title="Increase priority value. " alt="" coords="964,208,1139,235"/>
+<area shape="rect" id="node15" href="$dd/da2/a00192.html#ab0e0dc2172d3fab6390670acb68da1a6" title="Get durability value. " alt="" coords="1251,609,1433,650"/>
+<area shape="rect" id="node17" href="$dd/da2/a00192.html#a1e7b6826531f03f792f3516ce0e97ac3" title="Get priority value. " alt="" coords="1251,274,1433,315"/>
+<area shape="rect" id="node19" href="$dd/da2/a00192.html#a088e64163126211239b6afd25a9cdca3" title="Increase priority value by a percentage of the remaining range. " alt="" coords="1251,209,1433,250"/>
+<area shape="rect" id="node20" href="$db/d12/a00268.html#acaa4ebc080bc00d0e03be32d51d29e40" title="A function where the output is disjunctively determined by the inputs. " alt="" coords="1526,216,1741,243"/>
+<area shape="rect" id="node22" href="$db/d12/a00268.html#ae9f34c27ee5675fa2b97f2def9e1fb99" title="A function where the output is the geometric average the inputs. " alt="" coords="1509,745,1757,772"/>
+<area shape="rect" id="node28" href="$dd/dc1/a00212.html#a68b153a51a5db6a4127b66158227697f" title="The punctuation also indicates the type of the Sentence: Judgment, Question, or Goal. " alt="" coords="1829,1307,1993,1349"/>
+<area shape="rect" id="node29" href="$d4/d27/a00392.html#a09af34150e8562d5c93170388c8804b7" title="The new Stamp. " alt="" coords="655,1121,850,1162"/>
+<area shape="rect" id="node31" href="$d4/d27/a00392.html#a831fc87d7e6d1f11df73b38bdd628b9b" title="Derived task comes from the inference rules. " alt="" coords="643,993,863,1020"/>
+<area shape="rect" id="node32" href="$dd/da2/a00192.html#ae83b822f3bab4c1831e94d72fc770f58" title="Whether the budget should get any processing at all. " alt="" coords="951,927,1151,969"/>
+<area shape="rect" id="node33" href="$dd/da2/a00192.html#af414899759992288edbba78d7457c534" title="To summarize a BudgetValue into a single number in [0, 1]. " alt="" coords="1233,781,1451,808"/>
+<area shape="rect" id="node34" href="$d4/d27/a00392.html#aa4c7e1f5823d0404c0cab49b617968f1" title="Inference record text to be written into a log file. " alt="" coords="941,760,1161,787"/>
+<area shape="rect" id="node35" href="$d0/dcd/a00280.html#acb473be6e5d774c10781bc8e74453459" title="Add new text to display. " alt="" coords="940,811,1163,837"/>
+<area shape="rect" id="node36" href="$df/d15/a00416.html#a240088fef0488e21e2f3953c92302541" title="Report Silence Level. " alt="" coords="946,862,1157,903"/>
+<area shape="rect" id="node37" href="$d4/d27/a00392.html#a076ad9a0e872386bca3f2d17fa7cb2d4" title="Backward pointer to the reasoner. " alt="" coords="1231,832,1453,859"/>
+<area shape="rect" id="node38" href="$d4/d27/a00392.html#ad89bc0ba08c0b5bfbddf247cdab5eaa9" title="Display input/output sentence in the output channels. " alt="" coords="960,1161,1143,1188"/>
+<area shape="rect" id="node54" href="$d4/d27/a00392.html#a8c50bdf4f2750032f24965e12e9fb59c" title="List of new tasks accumulated in one cycle, to be processed in the next cycle. " alt="" coords="954,1045,1149,1086"/>
+<area shape="rect" id="node39" href="$df/d15/a00416.html#a55398625fb088534ef3fce8c38f95423" title="global DEBUG print switch " alt="" coords="1241,1249,1443,1290"/>
+<area shape="rect" id="node40" href="$df/d15/a00416.html#aeb34e5ff1c0a1f220e7b8715cee2d9d3" title="Get the current time from the clock Called in nars.entity.Stamp. " alt="" coords="1223,949,1461,976"/>
+<area shape="rect" id="node41" href="$df/d15/a00416.html#ae7cc80bb901b1e8008537fe24e5d1bb2" title="System clock, relatively defined to guarantee the repeatability of behaviors. " alt="" coords="1237,1001,1447,1042"/>
+<area shape="rect" id="node42" href="$df/d15/a00416.html#a64586e56057f3a2d498dc7fd98c4f773" title="System clock &#45; number of cycles since last output. " alt="" coords="1528,1037,1739,1078"/>
+<area shape="rect" id="node43" href="$d4/d27/a00392.html#a1a17565c7b06ca4ecc1ed57c3fce973f" title="List of Strings or Tasks to be sent to the output channels. " alt="" coords="1239,1066,1445,1107"/>
+<area shape="rect" id="node44" href="$df/d15/a00416.html#a84cc1236020f7c170bfcee70c861ce20" title="To get the timer value and then to reset it. " alt="" coords="1227,883,1457,925"/>
+<area shape="rect" id="node47" href="$dd/dc1/a00212.html#aea2f809b2d4c375f3c4ec3d0328d8787" title="Get a String representation of the sentence, with 2&#45;digit accuracy. " alt="" coords="1247,1183,1437,1225"/>
+<area shape="rect" id="node45" href="$df/d15/a00416.html#aa243bca18963b74438535cd125039740" title="nars.storage.ReasonerBatch.init\lTimer" alt="" coords="1529,883,1738,925"/>
+<area shape="rect" id="node46" href="$df/d15/a00416.html#ac3e769632e8a90ddc85970d3fee28e5f" title="nars.storage.ReasonerBatch.set\lTimer" alt="" coords="1805,883,2016,925"/>
+<area shape="rect" id="node48" href="$dd/dc1/a00212.html#ac0ed749c50e55120d5b63219ed7eb082" title="Partial record of the derivation path. " alt="" coords="1551,1242,1715,1283"/>
+<area shape="rect" id="node49" href="$dd/dc1/a00212.html#a8b6d9355c0211d37f881ec6717a6b636" title="Get a String representation of the sentence for key of Task and TaskLink. " alt="" coords="1543,1191,1723,1217"/>
+<area shape="rect" id="node50" href="$dd/dc1/a00212.html#ad1ded9a02cae3557948d05530cd4d37e" title="The content of a Sentence is a Term. " alt="" coords="1829,1118,1993,1159"/>
+<area shape="rect" id="node52" href="$d7/d40/a00236.html#a5af8b2fe37987ba1e8396ec1aad38e90" title="A simplified String representation of a TruthValue, where each factor is accruate to 1%..." alt="" coords="1828,1183,1993,1225"/>
+<area shape="rect" id="node53" href="$d7/d40/a00236.html#a68ca7d92e9ea20d2a9a9f578ad7b681c" title="The confidence factor of the truth value. " alt="" coords="2064,1183,2236,1225"/>
+</map>

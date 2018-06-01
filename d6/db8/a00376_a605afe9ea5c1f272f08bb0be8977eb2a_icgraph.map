@@ -1,0 +1,5 @@
+<map id="nars.storage.Bag.capacity" name="nars.storage.Bag.capacity">
+<area shape="rect" id="node2" href="$d6/db8/a00376.html#a89da8cb76f7c36fdd926a436273ddf10" title="constructor, called from subclasses " alt="" coords="228,5,411,47"/>
+<area shape="rect" id="node3" href="$d6/db8/a00376.html#a4f481c434a5a4ac0004138ba81fd426f" title="nars.storage.Bag\&lt; Concept\l \&gt;::init" alt="" coords="228,71,411,112"/>
+<area shape="rect" id="node4" href="$d6/db8/a00376.html#a405137ac9b2c5e0b6fb836a7ecf5c1e6" title="Insert an item into the itemTable, and return the overflow. " alt="" coords="228,136,411,177"/>
+</map>

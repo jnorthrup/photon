@@ -1,0 +1,50 @@
+<map id="nars.inference.StructuralRules.transformProductImage" name="nars.inference.StructuralRules.transformProductImage">
+<area shape="rect" id="node2" href="$d8/d17/a00304.html#a5a2d25a17f77d898268e1637a3aa9c4d" title="Clone the component list. " alt="" coords="250,5,485,47"/>
+<area shape="rect" id="node5" href="$d8/d17/a00304.html#acedae916705e9fa1669391a7d728b840" title="get a component by index " alt="" coords="533,274,815,301"/>
+<area shape="rect" id="node6" href="$dc/d59/a00364.html#ad85f45a7858737445d5158801774ff5f" title="Equal terms have identical name, though not necessarily the same reference. " alt="" coords="1490,1410,1669,1437"/>
+<area shape="rect" id="node8" href="$d4/d27/a00392.html#a26eda4f00b333b706b4e3d069fdf1508" title="The selected Task. " alt="" coords="863,227,1101,254"/>
+<area shape="rect" id="node9" href="$d0/d65/a00360.html#ababe6155e2f78e769f76493317e118e0" title="Return the second component of the statement. " alt="" coords="1485,1527,1674,1568"/>
+<area shape="rect" id="node11" href="$d5/ddf/a00224.html#ab140cb553a6cf40b07093d1df283567f" title="The sentence of the Task. " alt="" coords="885,306,1079,333"/>
+<area shape="rect" id="node12" href="$d0/d65/a00360.html#ace4f80751d303c613e467163913bebf5" title="Return the first component of the statement. " alt="" coords="1485,1461,1674,1503"/>
+<area shape="rect" id="node13" href="$dd/dc1/a00212.html#a9f69b4fef64c81abad21404946cd41f9" title="The truth value of Judgment. " alt="" coords="592,559,756,600"/>
+<area shape="rect" id="node14" href="$dd/dc1/a00212.html#acb98b40c8990dbe5e15061f0759c60ee" title="Distinguish Question from Quest (&quot;instanceof Question&quot; doesn&#39;t work) " alt="" coords="263,1021,471,1047"/>
+<area shape="rect" id="node16" href="$d3/db8/a00316.html#a5ccaf18d33e722f438944debb2757b34" title="Try to make a new compound from two components. " alt="" coords="879,1146,1085,1173"/>
+<area shape="rect" id="node27" href="$df/df1/a00340.html#a9b9a5a7e04b70b76d4656f9f00cd2244" title="Try to make a new compound. " alt="" coords="580,726,768,753"/>
+<area shape="rect" id="node31" href="$d0/d65/a00360.html#a4e4c29fc305a6741da88ce55fbf11e4a" title="Make a Statement from String, called by StringParser. " alt="" coords="266,1249,469,1275"/>
+<area shape="rect" id="node40" href="$d5/d0f/a00308.html#afb24af5cc6c098ad3f5d837fa383e69c" title="Try to make a new ImageExt. " alt="" coords="575,894,773,921"/>
+<area shape="rect" id="node41" href="$d7/df2/a00312.html#ad05e4231ed31d78ad4c8b4fefbc964fa" title="Try to make a new ImageExt. " alt="" coords="577,945,771,971"/>
+<area shape="rect" id="node42" href="$d8/d17/a00304.html#ac5f82b4dd2c0f4aa60e1e97600526d21" title="Try to make a compound term from a template and a list of components. " alt="" coords="249,894,485,921"/>
+<area shape="rect" id="node44" href="$d4/d27/a00392.html#a52ef2f1fedc72d6b0bfe3a6bd000bda3" title="Shared final operations by all single&#45;premise rules, called in StructuralRules. " alt="" coords="583,325,765,367"/>
+<area shape="rect" id="node45" href="$d0/def/a00256.html#ad34f61108459aea34b27a7547ac4ba48" title="Equivalent transformation between products and images when the predicate is a compound {&lt;(*..." alt="" coords="276,484,459,525"/>
+<area shape="rect" id="node48" href="$d0/def/a00256.html#a45ae086cf44c9f32cbe9a729f2419594" title="Equivalent transformation between products and images when the subject is a compound {&lt;(*..." alt="" coords="281,675,453,716"/>
+<area shape="rect" id="node3" href="$d8/d17/a00304.html#a9cb7736a3f6b220d75366ab146488773" title="Deep clone an array list of terms. " alt="" coords="546,13,802,39"/>
+<area shape="rect" id="node4" href="$d8/d17/a00304.html#a963e8aef1163f4ed8c364b5e448deaff" title="Abstract clone method. " alt="" coords="865,13,1099,39"/>
+<area shape="rect" id="node7" href="$dc/d59/a00364.html#a3aad4654016b8615fd4fa8a26668e1db" title="Reporting the name of the current Term. " alt="" coords="1753,1394,1947,1421"/>
+<area shape="rect" id="node10" href="$d8/d17/a00304.html#a9778c35f9b602bee6ccac6a06809e546" title="list of (direct) components " alt="" coords="1739,1477,1961,1519"/>
+<area shape="rect" id="node15" href="$dd/dc1/a00212.html#a68b153a51a5db6a4127b66158227697f" title="The punctuation also indicates the type of the Sentence: Judgment, Question, or Goal. " alt="" coords="900,495,1064,536"/>
+<area shape="rect" id="node17" href="$d0/d65/a00360.html#a96d4bf7bb99f48b6496cdb7457bc0e50" title="Check the validity of a potential Statement. " alt="" coords="1181,1385,1389,1427"/>
+<area shape="rect" id="node20" href="$d0/d65/a00360.html#a7123aba1c8c566f291e2c9b9d147557d" title="Default method to make the nameStr of an image term from given fields. " alt="" coords="1183,1137,1386,1179"/>
+<area shape="rect" id="node21" href="$d4/d27/a00392.html#ac7c5d438820208253d1a2ee59bf80ddc" title="Get a Term for a given name of a Concept or Operator. " alt="" coords="1194,1007,1375,1048"/>
+<area shape="rect" id="node25" href="$d3/db8/a00316.html#a20635d9d55f73d39b29a07653cde6bc6" title="Constructor with partial values, called by make. " alt="" coords="1197,1072,1372,1113"/>
+<area shape="rect" id="node26" href="$d8/d17/a00304.html#a9aacee8d6903ff6eb186d37f78569353" title="build a component list from two terms " alt="" coords="1152,1203,1417,1244"/>
+<area shape="rect" id="node18" href="$d8/d17/a00304.html#a89000afae8017231889aaa549292d1e0" title="Default constructor. " alt="" coords="1477,1165,1681,1207"/>
+<area shape="rect" id="node19" href="$d0/d65/a00360.html#ac56b558891dd2088e0b66b437780c7b7" title="Default constructor. " alt="" coords="1494,1344,1665,1385"/>
+<area shape="rect" id="node22" href="$d4/d27/a00392.html#a33af7b3d806d32c85390563fec3c6d27" title="Concept bag. " alt="" coords="1468,963,1691,990"/>
+<area shape="rect" id="node23" href="$d6/db8/a00376.html#a011b37fc683db7fb7b41e33712a37d92" title="Get an Item by key. " alt="" coords="1508,1014,1651,1041"/>
+<area shape="rect" id="node24" href="$d7/ded/a00196.html#afcd1217b7680b073fa51f0d0f159dcea" title="The term is the unique ID of the concept. " alt="" coords="1485,1065,1673,1091"/>
+<area shape="rect" id="node28" href="$d8/d17/a00304.html#a8d1e610c509fa096c6b52eb5fe06d59b" title="default method to make the oldName of a compound term from given fields " alt="" coords="864,820,1100,861"/>
+<area shape="rect" id="node30" href="$df/df1/a00340.html#a3fbcbfd961b20193e9c47309107e692b" title="Constructor with partial values, called by make. " alt="" coords="881,726,1083,753"/>
+<area shape="rect" id="node29" href="$d8/d17/a00304.html#aa26a304f6249c185836d8fde8b8f17a8" title="default method to make the oldName of the current term from existing fields " alt="" coords="1149,853,1420,879"/>
+<area shape="rect" id="node32" href="$d6/de1/a00356.html#ae72436d78c25d4735b4201d773dd1901" title="Try to make a new compound from two components. " alt="" coords="883,1249,1081,1275"/>
+<area shape="rect" id="node35" href="$dd/de2/a00320.html#a94badab1e9fc19ebe33b06fcbb169453" title="Try to make a new compound from two components. " alt="" coords="577,1299,771,1326"/>
+<area shape="rect" id="node37" href="$d8/d8e/a00344.html#a808d99e39dfc525841db6b645d118979" title="Try to make a new compound from two components. " alt="" coords="578,1198,770,1225"/>
+<area shape="rect" id="node39" href="$d4/d8f/a00324.html#a429b8b61ed41ea338c8fc668fb8304f7" title="Try to make a new compound from two components. " alt="" coords="553,1350,795,1377"/>
+<area shape="rect" id="node33" href="$dc/d59/a00364.html#ab9bc1c9cc779c07b09983b41ed8491e1" title="Check the relative order of two Terms. " alt="" coords="1181,1269,1388,1295"/>
+<area shape="rect" id="node34" href="$d6/de1/a00356.html#a5d3eff893c9406991d1c3e81737a408b" title="Constructor with partial values, called by make. " alt="" coords="1202,1320,1367,1361"/>
+<area shape="rect" id="node36" href="$df/d03/a00348.html#aa8f6526a59c3d7e578dd76a0eab75a0e" title="Try to make a new set from one component. " alt="" coords="891,1350,1073,1377"/>
+<area shape="rect" id="node38" href="$d6/d9c/a00352.html#aaea0f2cc2ca804779d1bf346beb58fa1" title="Try to make a new set from one component. " alt="" coords="893,1299,1071,1326"/>
+<area shape="rect" id="node43" href="$d8/d17/a00304.html#a786848bcf438b17b9aa566b9b0c04e5f" title="Abstract method to get the operator of the compound. " alt="" coords="549,995,799,1022"/>
+<area shape="rect" id="node46" href="$d5/d0f/a00308.html#a52a40e43bd7a74ef9461cbb658f86a62" title="get the index of the relation in the component list " alt="" coords="581,391,767,432"/>
+<area shape="rect" id="node47" href="$d8/d17/a00304.html#ac81c5851f664320ddec435641f198b03" title="get the number of components " alt="" coords="560,507,788,534"/>
+<area shape="rect" id="node49" href="$d7/df2/a00312.html#a4aa7841fe7d6622f6ad2e39c74b5854d" title="get the index of the relation in the component list " alt="" coords="584,828,764,869"/>
+</map>

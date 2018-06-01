@@ -1,0 +1,28 @@
+var a00396 =
+[
+    [ "NARSBatch", "d9/da1/a00396.html#acbaf7780981f7c7f84d6faee5eda9f0a", null ],
+    [ "getOut", "d9/da1/a00396.html#a281765cc33f1d413127265f026d66157", null ],
+    [ "getReasoner", "d9/da1/a00396.html#a71519643111668ed86c892c66af6ca38", null ],
+    [ "init", "d9/da1/a00396.html#a084e3f56fc018f145bc73c5e91067467", null ],
+    [ "init", "d9/da1/a00396.html#a47532d1a2928384645c6ca097ea7a21e", null ],
+    [ "init", "d9/da1/a00396.html#a2df12eb07a4cbc28b125594e53e40580", null ],
+    [ "isDumpLastState", "d9/da1/a00396.html#a3c57f44624b86afbe6d866ca6c0d4c16", null ],
+    [ "isLogging", "d9/da1/a00396.html#a144ba876be55473f97e3807038e4102c", null ],
+    [ "isStandAlone", "d9/da1/a00396.html#a6465682a30caffa43d1c79f697fcf6e5", null ],
+    [ "log", "d9/da1/a00396.html#acb1312846312e316284bc8dda833085e", null ],
+    [ "main", "d9/da1/a00396.html#abafc597289bc2f6453b5cd0dd6634e54", null ],
+    [ "run", "d9/da1/a00396.html#a5d9cfe517bcfbe41e5251910bcd119c1", null ],
+    [ "runInference", "d9/da1/a00396.html#a7c307c6b842f82664de6b0e52bdf8efc", null ],
+    [ "runInference", "d9/da1/a00396.html#a913de3132889c6ab5294b887b8713f9c", null ],
+    [ "setDumpLastState", "d9/da1/a00396.html#a116e500fc844c2f51099f4574d612629", null ],
+    [ "setLogging", "d9/da1/a00396.html#aa587e061e3349d46daa0679ff8c981e3", null ],
+    [ "setOut", "d9/da1/a00396.html#a86d74e02a30dc11bdb4eddeed4ada722", null ],
+    [ "setPrintStream", "d9/da1/a00396.html#a6329d74c4aaa77547a44dcd8c52a8613", null ],
+    [ "setReasoner", "d9/da1/a00396.html#aaf6ecfcfff6ce23ed950c874a900a404", null ],
+    [ "setStandAlone", "d9/da1/a00396.html#a1c3d76eada4e9f147eafaf276a163e2a", null ],
+    [ "dumpLastState", "d9/da1/a00396.html#a418881dfab4d3ab3fd1e9f9bc1796f5d", null ],
+    [ "logging", "d9/da1/a00396.html#a5696653473d2827e4fbd7bee8f987bfb", null ],
+    [ "out", "d9/da1/a00396.html#abf42b9994a59f2259dddf6d7e6aeb446", null ],
+    [ "reasoner", "d9/da1/a00396.html#ad9e1e05a3a5150f3ddf77f48f1725f34", null ],
+    [ "standAlone", "d9/da1/a00396.html#a4d9f4eaeb521c085358912a15cac66b1", null ]
+];

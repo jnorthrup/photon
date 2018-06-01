@@ -1,0 +1,7 @@
+<map id="nars.entity.TruthValue.clone" name="nars.entity.TruthValue.clone">
+<area shape="rect" id="node2" href="$d7/d40/a00236.html#a68ca7d92e9ea20d2a9a9f578ad7b681c" title="The confidence factor of the truth value. " alt="" coords="245,5,417,47"/>
+<area shape="rect" id="node3" href="$d7/d40/a00236.html#a9eac33f2495441c77911a8581a5bbe61" title="Get the frequency value. " alt="" coords="245,71,417,112"/>
+<area shape="rect" id="node4" href="$d7/d40/a00236.html#a1ad29ea07268c08f81698731432c88b3" title="Constructor with two ShortFloats. " alt="" coords="239,136,423,177"/>
+<area shape="rect" id="node5" href="$d7/d40/a00236.html#af1ddfd8d64812966379f934fb635a2af" title="nars.entity.TruthValue.set\lConfidence" alt="" coords="471,103,643,144"/>
+<area shape="rect" id="node6" href="$d7/d40/a00236.html#ab5b8f4d9d15d096431644af38450bab0" title="nars.entity.TruthValue.set\lFrequency" alt="" coords="471,168,643,209"/>
+</map>

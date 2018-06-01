@@ -1,0 +1,11 @@
+<map id="nars.entity.TaskLink.TaskLink" name="nars.entity.TaskLink.TaskLink">
+<area shape="rect" id="node2" href="$d0/d53/a00232.html#a3fc10480b3cf18d6d9c748a7daa612c3" title="The index of the component in the component list of the compound, may have up to 4 levels..." alt="" coords="265,5,428,47"/>
+<area shape="rect" id="node3" href="$dc/d31/a00208.html#ab5c9fbb171f325844966b496010acf60" title="The key of the Item, unique in a Bag. " alt="" coords="491,189,649,215"/>
+<area shape="rect" id="node4" href="$d0/d53/a00232.html#acecded390882e3c782ed3152cb46bc2c" title="Get the link type. " alt="" coords="251,122,443,149"/>
+<area shape="rect" id="node5" href="$de/dc2/a00228.html#a4dc71072f6d6660fc7499fcdbeeceee6" title="nars.entity.TaskLink.set\lCounter" alt="" coords="265,173,428,215"/>
+<area shape="rect" id="node6" href="$d0/d53/a00232.html#a807c24a5c7654fafa714b1a5aa43ccfa" title="nars.entity.TermLink.set\lIndex" alt="" coords="265,239,428,280"/>
+<area shape="rect" id="node7" href="$d0/d53/a00232.html#ad19e927a3e2e339682081d8e462fe73b" title="Set the key of the link. " alt="" coords="253,305,440,331"/>
+<area shape="rect" id="node8" href="$de/dc2/a00228.html#a1bd5d9e8fc4adfd130ec93b9cb4f1828" title="nars.entity.TaskLink.set\lRecordingTime" alt="" coords="265,356,428,397"/>
+<area shape="rect" id="node9" href="$de/dc2/a00228.html#a3beccd8c6215db72c94e36131a673a9d" title="nars.entity.TaskLink.set\lTargetTask" alt="" coords="265,421,428,463"/>
+<area shape="rect" id="node10" href="$d0/d53/a00232.html#a38c105501a79e2f5f3036e7a8700607b" title="nars.entity.TermLink.setType" alt="" coords="251,487,443,514"/>
+</map>

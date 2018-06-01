@@ -1,0 +1,28 @@
+<map id="nars.entity.TruthValue.getExpectation" name="nars.entity.TruthValue.getExpectation">
+<area shape="rect" id="node2" href="$d7/d40/a00236.html#a8a6a2fc1c28f3294d243dce4d3c3e968" title="The hash code of a TruthValue. " alt="" coords="230,5,443,32"/>
+<area shape="rect" id="node4" href="$d7/d40/a00236.html#a8c09ccfe49ea3a31754c7975276fcf68" title="Calculate the absolute difference of the expectation value and that of a given truth value..." alt="" coords="255,129,419,170"/>
+<area shape="rect" id="node11" href="$d4/d27/a00392.html#ae43b86074c0d8f6a324696f69faa54b3" title="Process the newTasks accumulated in the previous workCycle, accept input ones and those that correspo..." alt="" coords="1848,177,2043,218"/>
+<area shape="rect" id="node23" href="$d7/ded/a00196.html#a3900248991e7adb57e82231312337f8f" title="To answer a question by existing beliefs. " alt="" coords="1077,294,1264,335"/>
+<area shape="rect" id="node24" href="$dd/dd7/a00248.html#abe52d51e24e841a754e3d6c0aa3c24da" title="Evaluate the quality of the judgment as a solution to a problem. " alt="" coords="225,234,448,275"/>
+<area shape="rect" id="node3" href="$dd/dc1/a00212.html#aa46486d7029fadbdfd9110ba7c9272ed" title="To produce the hashcode of a sentence. " alt="" coords="518,5,723,32"/>
+<area shape="rect" id="node5" href="$d9/d21/a00240.html#ac61e534f9a09e5584eb90c0e915e72ff" title="Update a belief. " alt="" coords="496,107,745,133"/>
+<area shape="rect" id="node6" href="$dd/dd7/a00248.html#a3943c9b8c0f16170dbf552a0c96ec97e" title="Evaluate the quality of a revision, then de&#45;prioritize the premises. " alt="" coords="515,157,727,184"/>
+<area shape="rect" id="node7" href="$dd/dd7/a00248.html#afcdec4a07d241f98cd54ef706781c3cb" title="Belief revision. " alt="" coords="793,171,1016,197"/>
+<area shape="rect" id="node8" href="$d7/ded/a00196.html#a40cddcc82ee28a1cf5b1f4bc14e2b078" title="To accept a new judgment as isBelief, and check for revisions and solutions. " alt="" coords="1077,229,1264,270"/>
+<area shape="rect" id="node19" href="$dd/dd7/a00248.html#aac1c92950f50edd04d12229a8c992987" title="The task and belief have the same content. " alt="" coords="1064,171,1277,197"/>
+<area shape="rect" id="node9" href="$d7/ded/a00196.html#a9ea7c3154932d7a736c105eb55daeb5c" title="Directly process a new task. " alt="" coords="1348,229,1520,270"/>
+<area shape="rect" id="node10" href="$d4/d27/a00392.html#af8d07412d21a441a5c7005a477b06468" title="Immediate processing of a new task, in constant time Local processing, in one concept only..." alt="" coords="1591,229,1800,270"/>
+<area shape="rect" id="node18" href="$d4/d27/a00392.html#a5061708f88897cfdf4e0671c846762ca" title="Select a novel task to process. " alt="" coords="1848,242,2043,283"/>
+<area shape="rect" id="node12" href="$d4/d27/a00392.html#a59ae339d666409988d90d29be4f73a91" title="An atomic working workCycle of the system: process new Tasks, then fireFromProcessConcept a concept..." alt="" coords="2091,177,2268,218"/>
+<area shape="rect" id="node13" href="$df/d15/a00416.html#a0d5c797dc17d9e8d0998852915e0f303" title="nars.storage.ReasonerBatch.doTick" alt="" coords="2316,184,2547,211"/>
+<area shape="rect" id="node14" href="$df/d15/a00416.html#a3468aa0f99edcd66412f27922dddb880" title="A clock tick. " alt="" coords="2595,184,2808,211"/>
+<area shape="rect" id="node15" href="$d9/da1/a00396.html#a5d9cfe517bcfbe41e5251910bcd119c1" title="Run to completion: repeatedly execute NARS working cycle, until Inputs are Finished, or 1000 steps. " alt="" coords="2856,184,3048,211"/>
+<area shape="rect" id="node16" href="$d9/da1/a00396.html#a7c307c6b842f82664de6b0e52bdf8efc" title="non&#45;static equivalent to main(String[]) : run to completion from an input file " alt="" coords="3096,177,3288,218"/>
+<area shape="rect" id="node17" href="$d9/da1/a00396.html#abafc597289bc2f6453b5cd0dd6634e54" title="The entry point of the standalone application. " alt="" coords="3336,184,3539,211"/>
+<area shape="rect" id="node20" href="$dc/ded/a00252.html#ac2d01dfdc40bdd47c757cb549217e6e3" title="Entry point of the inference engine. " alt="" coords="1325,149,1543,176"/>
+<area shape="rect" id="node21" href="$d7/ded/a00196.html#ad6fb91dda799c3092ecb186ef24ca92a" title="An atomic step in a concept, only called in Memory# processConcept. " alt="" coords="1616,125,1775,166"/>
+<area shape="rect" id="node22" href="$d4/d27/a00392.html#a0acc4adbf6a2462245da46bcb529746c" title="Select a concept to fireFromProcessConcept. " alt="" coords="1848,111,2043,153"/>
+<area shape="rect" id="node25" href="$d7/ded/a00196.html#a71914b2b9086bbc4e73d928ab3f9617d" title="Evaluate a query against beliefs (and desires in the future) " alt="" coords="805,301,1004,328"/>
+<area shape="rect" id="node26" href="$dd/dd7/a00248.html#a3ecf859c238ad7f0c44c45e3e5df0081" title="Check if a Sentence provide a better answer to a Question or Goal. " alt="" coords="809,229,1001,270"/>
+<area shape="rect" id="node27" href="$dd/dd7/a00248.html#a47cb028f5b51be6eb77e3e619fccfc7c" title="Evaluate the quality of a belief as a solution to a problem, then reward the belief and de&#45;prioritize..." alt="" coords="497,259,745,285"/>
+</map>

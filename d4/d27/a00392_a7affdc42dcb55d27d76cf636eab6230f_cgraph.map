@@ -1,0 +1,25 @@
+<map id="nars.storage.Memory.activateConcept" name="nars.storage.Memory.activateConcept">
+<area shape="rect" id="node2" href="$d9/d21/a00240.html#aabac530761ea7ac0f43f0d1ea8d085c8" title="Activate a concept by an incoming TaskLink. " alt="" coords="248,231,504,258"/>
+<area shape="rect" id="node21" href="$d4/d27/a00392.html#a33af7b3d806d32c85390563fec3c6d27" title="Concept bag. " alt="" coords="265,282,487,309"/>
+<area shape="rect" id="node22" href="$dc/d31/a00208.html#ab5c9fbb171f325844966b496010acf60" title="The key of the Item, unique in a Bag. " alt="" coords="297,333,455,359"/>
+<area shape="rect" id="node23" href="$d6/db8/a00376.html#ac72ca10afde302a1c190a185947781e3" title="Pick an item by key, then remove it from the bag. " alt="" coords="291,383,461,410"/>
+<area shape="rect" id="node24" href="$d6/db8/a00376.html#a64b0b75c54e6882a28702d7810094656" title="Put an item back into the itemTable. " alt="" coords="289,434,463,461"/>
+<area shape="rect" id="node3" href="$d9/d21/a00240.html#a5df1e2954d5ce62f08cbd4be287ddaba" title="A function where the output is the arithmetic average the inputs. " alt="" coords="552,54,799,81"/>
+<area shape="rect" id="node4" href="$dc/d31/a00208.html#adbb21c1891722e30c1d6cfaf5fee18ee" title="Get durability value. " alt="" coords="580,155,771,182"/>
+<area shape="rect" id="node7" href="$dc/d31/a00208.html#a97b35888ceaad90e7a428701051c51d7" title="Get priority value. " alt="" coords="587,105,763,131"/>
+<area shape="rect" id="node9" href="$d7/ded/a00196.html#acf3c7af84e64586a6b1d549f02bfeead" title="Recalculate the quality of the concept [to be refined to show extension/intension balance]..." alt="" coords="576,486,775,513"/>
+<area shape="rect" id="node14" href="$db/d12/a00268.html#acaa4ebc080bc00d0e03be32d51d29e40" title="A function where the output is disjunctively determined by the inputs. " alt="" coords="852,617,1067,643"/>
+<area shape="rect" id="node15" href="$dc/d31/a00208.html#a0f27e5a39dc50b5f108732f59199db22" title="Set durability value. " alt="" coords="580,206,771,233"/>
+<area shape="rect" id="node17" href="$dc/d31/a00208.html#aeda0763b2c90f6fef3f23b9b4d3d68f0" title="Set priority value. " alt="" coords="587,257,763,283"/>
+<area shape="rect" id="node19" href="$dc/d31/a00208.html#a686c257308a15eba9458a438cc60227a" title="Set quality value. " alt="" coords="587,307,763,334"/>
+<area shape="rect" id="node5" href="$dc/d31/a00208.html#a54fc0a370b847dd77c0a698c765e6e55" title="The budget of the Item, consisting of 3 numbers. " alt="" coords="871,202,1047,229"/>
+<area shape="rect" id="node6" href="$dd/da2/a00192.html#ab0e0dc2172d3fab6390670acb68da1a6" title="Get durability value. " alt="" coords="868,71,1051,112"/>
+<area shape="rect" id="node8" href="$dd/da2/a00192.html#a1e7b6826531f03f792f3516ce0e97ac3" title="Get priority value. " alt="" coords="868,5,1051,47"/>
+<area shape="rect" id="node10" href="$d6/db8/a00376.html#a5ff587f448a7a832732b4d86eb9a7642" title="Get the average priority of Items. " alt="" coords="874,449,1045,491"/>
+<area shape="rect" id="node11" href="$dc/d59/a00364.html#ae14632d1d25bcde8d6698ea0b58eb19a" title="The syntactic complexity, for constant automic Term, is 1. " alt="" coords="847,515,1072,542"/>
+<area shape="rect" id="node12" href="$d7/ded/a00196.html#afcd1217b7680b073fa51f0d0f159dcea" title="The term is the unique ID of the concept. " alt="" coords="865,566,1053,593"/>
+<area shape="rect" id="node13" href="$d7/ded/a00196.html#a9f031bcf593e4c6f27e82d2b97a2d83d" title="Term links between the term and its components and compounds. " alt="" coords="865,384,1053,425"/>
+<area shape="rect" id="node16" href="$dd/da2/a00192.html#ab72bce41fd8a1512fc8baa07ed93fc1b" title="Change durability value. " alt="" coords="868,136,1051,177"/>
+<area shape="rect" id="node18" href="$dd/da2/a00192.html#ac2cb3449a15125e5f0e4165aeee0befb" title="Change priority value. " alt="" coords="868,253,1051,295"/>
+<area shape="rect" id="node20" href="$dd/da2/a00192.html#ab134287bfbdfe703501697c5f9eac50b" title="Change quality value. " alt="" coords="868,319,1051,360"/>
+</map>

@@ -1,0 +1,23 @@
+var searchData=
+[
+  ['self',['SELF',['../d0/d53/a00232.html#abc9e35e4d0450f422fc03e2e53394e6a',1,'nars::entity::TermLink']]],
+  ['sentence',['sentence',['../d5/ddf/a00224.html#a392be691911c98df74f7d33c22c6d978',1,'nars::entity::Task']]],
+  ['separator',['SEPARATOR',['../dd/da2/a00192.html#a6bbd9df3140acd87389ada4b0c4fea2b',1,'nars.entity.BudgetValue.SEPARATOR()'],['../d7/d40/a00236.html#ae51f6289a490fd2000b550e5b555e4bd',1,'nars.entity.TruthValue.SEPARATOR()']]],
+  ['set_5fext_5fcloser',['SET_EXT_CLOSER',['../db/da2/a00300.html#aed850ddff0dd1a47065099f5fccd5dfe',1,'nars::io::Symbols']]],
+  ['set_5fext_5fopener',['SET_EXT_OPENER',['../db/da2/a00300.html#a3bc6ba8295af16e7dc108ea61af132c4',1,'nars::io::Symbols']]],
+  ['set_5fint_5fcloser',['SET_INT_CLOSER',['../db/da2/a00300.html#aea87151443aa0d48255ee040f32bd1d0',1,'nars::io::Symbols']]],
+  ['set_5fint_5fopener',['SET_INT_OPENER',['../db/da2/a00300.html#a54fee577660cb416592b3ee290e6a7c5',1,'nars::io::Symbols']]],
+  ['showlevel',['showLevel',['../d6/db8/a00376.html#a8bd35d28d93ef17c7c1d1dbbea46abd1',1,'nars::storage::Bag']]],
+  ['silencevalue',['silenceValue',['../df/d15/a00416.html#a32d4c18d677e76bcaa98da32dc0246f3',1,'nars::storage::ReasonerBatch']]],
+  ['silent_5flevel',['SILENT_LEVEL',['../d9/d72/a00412.html#adb01ac6fb16767a87a91e6d4ee7b17e3',1,'nars::storage::Parameters']]],
+  ['similarity_5frelation',['SIMILARITY_RELATION',['../db/da2/a00300.html#a9c0ff8bd5617739c2c93951e58049eab',1,'nars::io::Symbols']]],
+  ['stamp',['stamp',['../dd/dc1/a00212.html#a652c806bcc1aa1585b2b8779c12ed351',1,'nars::entity::Sentence']]],
+  ['stamp_5fcloser',['STAMP_CLOSER',['../db/da2/a00300.html#a773509e7bc6cbf7b365c90fc2e48dc6b',1,'nars::io::Symbols']]],
+  ['stamp_5fopener',['STAMP_OPENER',['../db/da2/a00300.html#a8543cf41a20f45b3e2ece8b7969ed15b',1,'nars::io::Symbols']]],
+  ['stamp_5fseparator',['STAMP_SEPARATOR',['../db/da2/a00300.html#a6cad38feaf42bcf66200d6f94d6b64d9',1,'nars::io::Symbols']]],
+  ['stamp_5fstarter',['STAMP_STARTER',['../db/da2/a00300.html#a1e0854a68bd5d3c6a4162e53e77a2c8e',1,'nars::io::Symbols']]],
+  ['standalone',['standAlone',['../d9/da1/a00396.html#a4d9f4eaeb521c085358912a15cac66b1',1,'nars::storage::NARSBatch']]],
+  ['statement_5fcloser',['STATEMENT_CLOSER',['../db/da2/a00300.html#a3c16442588a8be88035d635e13c8c486',1,'nars::io::Symbols']]],
+  ['statement_5fopener',['STATEMENT_OPENER',['../db/da2/a00300.html#abc6f38df6d7517b21ecf27b34da1a2ea',1,'nars::io::Symbols']]],
+  ['substitute',['substitute',['../d4/d27/a00392.html#a4abe8c5f25a7c7221d8a3a2f0c547617',1,'nars::storage::Memory']]]
+];

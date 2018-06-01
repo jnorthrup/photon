@@ -1,0 +1,5 @@
+<map id="nars.io.StringParser.nextSeparator" name="nars.io.StringParser.nextSeparator">
+<area shape="rect" id="node2" href="$d8/d0a/a00292.html#aa579e2d90aa176b8fa99af6fda484bf7" title="Check CompoundTerm closer symbol. " alt="" coords="222,5,411,32"/>
+<area shape="rect" id="node4" href="$d8/d0a/a00292.html#ae9b91054186389c3930bc2aaecd4aee8" title="Check CompoundTerm opener symbol. " alt="" coords="220,56,413,83"/>
+<area shape="rect" id="node3" href="$d8/d0a/a00292.html#ae4e1b531a416aaa35056fd3798713098" title="Check Statement relation symbol, called in StringPaser. " alt="" coords="461,31,660,57"/>
+</map>

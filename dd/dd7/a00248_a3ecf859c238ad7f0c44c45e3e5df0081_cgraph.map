@@ -1,0 +1,56 @@
+<map id="nars.inference.LocalRules.trySolution" name="nars.inference.LocalRules.trySolution">
+<area shape="rect" id="node2" href="$dd/da2/a00192.html#ae83b822f3bab4c1831e94d72fc770f58" title="Whether the budget should get any processing at all. " alt="" coords="269,107,469,149"/>
+<area shape="rect" id="node5" href="$d4/d27/a00392.html#a74e689f6e3be2a74a0bf5f82e25de9f7" title="Activated task called in MatchingRules.trySolution and Concept.processGoal. " alt="" coords="254,311,485,337"/>
+<area shape="rect" id="node14" href="$d4/d27/a00392.html#ad89bc0ba08c0b5bfbddf247cdab5eaa9" title="Display input/output sentence in the output channels. " alt="" coords="569,508,752,535"/>
+<area shape="rect" id="node31" href="$d5/ddf/a00224.html#ab140cb553a6cf40b07093d1df283567f" title="The sentence of the Task. " alt="" coords="564,609,757,636"/>
+<area shape="rect" id="node33" href="$d5/ddf/a00224.html#a63d100ab04dafaea220b3c1125b782e6" title="For Question and Goal: best solution found so far. " alt="" coords="287,711,452,753"/>
+<area shape="rect" id="node34" href="$d5/ddf/a00224.html#ae0fc96866e544c3dda5a87ea5c806fc3" title="Belief from which the Task is derived, or null if derived from a theorem. " alt="" coords="281,777,457,818"/>
+<area shape="rect" id="node35" href="$d5/ddf/a00224.html#a0dfdf9a597e57b5cf70d88f954ac7a3f" title="Check if a Task is a direct input. " alt="" coords="290,660,449,687"/>
+<area shape="rect" id="node37" href="$d5/ddf/a00224.html#a7d956def715a678d75b113f4bf5efa1d" title="Set the best&#45;so&#45;far solution for a Question or Goal, and report answer for input question. " alt="" coords="287,894,452,935"/>
+<area shape="rect" id="node38" href="$dd/dd7/a00248.html#a47cb028f5b51be6eb77e3e619fccfc7c" title="Evaluate the quality of a belief as a solution to a problem, then reward the belief and de&#45;prioritize..." alt="" coords="245,960,493,987"/>
+<area shape="rect" id="node52" href="$dd/dd7/a00248.html#abe52d51e24e841a754e3d6c0aa3c24da" title="Evaluate the quality of the judgment as a solution to a problem. " alt="" coords="1124,911,1347,953"/>
+<area shape="rect" id="node3" href="$dd/da2/a00192.html#af414899759992288edbba78d7457c534" title="To summarize a BudgetValue into a single number in [0, 1]. " alt="" coords="551,5,770,32"/>
+<area shape="rect" id="node4" href="$db/d12/a00268.html#ae9f34c27ee5675fa2b97f2def9e1fb99" title="A function where the output is the geometric average the inputs. " alt="" coords="828,111,1076,137"/>
+<area shape="rect" id="node6" href="$d4/d27/a00392.html#a26eda4f00b333b706b4e3d069fdf1508" title="The selected Task. " alt="" coords="541,56,780,83"/>
+<area shape="rect" id="node7" href="$d4/d27/a00392.html#aa4c7e1f5823d0404c0cab49b617968f1" title="Inference record text to be written into a log file. " alt="" coords="551,107,771,133"/>
+<area shape="rect" id="node8" href="$d0/dcd/a00280.html#acb473be6e5d774c10781bc8e74453459" title="Add new text to display. " alt="" coords="549,157,772,184"/>
+<area shape="rect" id="node9" href="$dd/dc1/a00212.html#acb98b40c8990dbe5e15061f0759c60ee" title="Distinguish Question from Quest (&quot;instanceof Question&quot; doesn&#39;t work) " alt="" coords="1131,597,1339,624"/>
+<area shape="rect" id="node11" href="$dc/d31/a00208.html#a54fc0a370b847dd77c0a698c765e6e55" title="The budget of the Item, consisting of 3 numbers. " alt="" coords="864,1036,1040,1063"/>
+<area shape="rect" id="node12" href="$df/d15/a00416.html#a240088fef0488e21e2f3953c92302541" title="Report Silence Level. " alt="" coords="555,209,766,250"/>
+<area shape="rect" id="node13" href="$d4/d27/a00392.html#a076ad9a0e872386bca3f2d17fa7cb2d4" title="Backward pointer to the reasoner. " alt="" coords="841,384,1063,411"/>
+<area shape="rect" id="node32" href="$d4/d27/a00392.html#a8c50bdf4f2750032f24965e12e9fb59c" title="List of new tasks accumulated in one cycle, to be processed in the next cycle. " alt="" coords="563,274,758,315"/>
+<area shape="rect" id="node10" href="$dd/dc1/a00212.html#a68b153a51a5db6a4127b66158227697f" title="The punctuation also indicates the type of the Sentence: Judgment, Question, or Goal. " alt="" coords="1418,633,1582,674"/>
+<area shape="rect" id="node15" href="$df/d15/a00416.html#a55398625fb088534ef3fce8c38f95423" title="global DEBUG print switch " alt="" coords="851,618,1053,659"/>
+<area shape="rect" id="node16" href="$df/d15/a00416.html#aeb34e5ff1c0a1f220e7b8715cee2d9d3" title="Get the current time from the clock Called in nars.entity.Stamp. " alt="" coords="833,684,1071,711"/>
+<area shape="rect" id="node17" href="$df/d15/a00416.html#ae7cc80bb901b1e8008537fe24e5d1bb2" title="System clock, relatively defined to guarantee the repeatability of behaviors. " alt="" coords="847,435,1057,477"/>
+<area shape="rect" id="node18" href="$df/d15/a00416.html#a64586e56057f3a2d498dc7fd98c4f773" title="System clock &#45; number of cycles since last output. " alt="" coords="1130,654,1341,695"/>
+<area shape="rect" id="node19" href="$d4/d27/a00392.html#a1a17565c7b06ca4ecc1ed57c3fce973f" title="List of Strings or Tasks to be sent to the output channels. " alt="" coords="849,501,1055,542"/>
+<area shape="rect" id="node20" href="$df/d15/a00416.html#a84cc1236020f7c170bfcee70c861ce20" title="To get the timer value and then to reset it. " alt="" coords="837,735,1067,777"/>
+<area shape="rect" id="node23" href="$dd/dc1/a00212.html#aea2f809b2d4c375f3c4ec3d0328d8787" title="Get a String representation of the sentence, with 2&#45;digit accuracy. " alt="" coords="857,267,1047,309"/>
+<area shape="rect" id="node21" href="$df/d15/a00416.html#aa243bca18963b74438535cd125039740" title="nars.storage.ReasonerBatch.init\lTimer" alt="" coords="1131,731,1340,773"/>
+<area shape="rect" id="node22" href="$df/d15/a00416.html#ac3e769632e8a90ddc85970d3fee28e5f" title="nars.storage.ReasonerBatch.set\lTimer" alt="" coords="1395,730,1605,771"/>
+<area shape="rect" id="node24" href="$dd/dc1/a00212.html#ac0ed749c50e55120d5b63219ed7eb082" title="Partial record of the derivation path. " alt="" coords="1153,529,1317,570"/>
+<area shape="rect" id="node25" href="$dd/dc1/a00212.html#a8b6d9355c0211d37f881ec6717a6b636" title="Get a String representation of the sentence for key of Task and TaskLink. " alt="" coords="1145,477,1325,504"/>
+<area shape="rect" id="node26" href="$dd/dc1/a00212.html#ad1ded9a02cae3557948d05530cd4d37e" title="The content of a Sentence is a Term. " alt="" coords="1418,421,1582,462"/>
+<area shape="rect" id="node27" href="$dd/dc1/a00212.html#a9f69b4fef64c81abad21404946cd41f9" title="The truth value of Judgment. " alt="" coords="1418,486,1582,527"/>
+<area shape="rect" id="node28" href="$d7/d40/a00236.html#a5af8b2fe37987ba1e8396ec1aad38e90" title="A simplified String representation of a TruthValue, where each factor is accruate to 1%..." alt="" coords="1417,567,1583,609"/>
+<area shape="rect" id="node29" href="$d7/d40/a00236.html#a68ca7d92e9ea20d2a9a9f578ad7b681c" title="The confidence factor of the truth value. " alt="" coords="1653,795,1825,837"/>
+<area shape="rect" id="node30" href="$d7/d40/a00236.html#a9eac33f2495441c77911a8581a5bbe61" title="Get the frequency value. " alt="" coords="1653,649,1825,690"/>
+<area shape="rect" id="node36" href="$d5/ddf/a00224.html#a1d9cd3ae889c6822469217154e4dcf4f" title="Task from which the Task is derived, or null if input. " alt="" coords="558,660,763,687"/>
+<area shape="rect" id="node39" href="$d9/dd5/a00432.html#a672e3b935dca6df8c7e47c6c69e0fc66" title="nars.storage.WorkSpace.get\lCurrentBeliefLink" alt="" coords="567,1062,755,1103"/>
+<area shape="rect" id="node40" href="$d9/dd5/a00432.html#aefcc9dfcebdc79cd7e099afd4553b083" title="nars.storage.WorkSpace.get\lCurrentTask" alt="" coords="567,1127,755,1169"/>
+<area shape="rect" id="node41" href="$d9/dd5/a00432.html#a585409e59ebb973c820683bc556ebe37" title="nars.storage.WorkSpace.get\lCurrentTaskLink" alt="" coords="567,1245,755,1286"/>
+<area shape="rect" id="node42" href="$dc/d31/a00208.html#adbb21c1891722e30c1d6cfaf5fee18ee" title="Get durability value. " alt="" coords="565,1311,756,1337"/>
+<area shape="rect" id="node44" href="$dc/d31/a00208.html#a97b35888ceaad90e7a428701051c51d7" title="Get priority value. " alt="" coords="573,960,749,987"/>
+<area shape="rect" id="node46" href="$dc/d31/a00208.html#a786a1e14b3904092f4a3b2fa4faa08a7" title="Increase priority value. " alt="" coords="573,859,748,885"/>
+<area shape="rect" id="node49" href="$dd/dc1/a00212.html#a7d95d60caaf4c895559182a7eb2ff71e" title="Distinguish Judgment from Goal (&quot;instanceof Judgment&quot; doesn&#39;t work) " alt="" coords="1129,800,1342,827"/>
+<area shape="rect" id="node50" href="$dc/d31/a00208.html#aeda0763b2c90f6fef3f23b9b4d3d68f0" title="Set priority value. " alt="" coords="573,1193,749,1220"/>
+<area shape="rect" id="node55" href="$d9/d21/a00240.html#a1cabe922021909c7226988e5aa00ea95" title="Determine the quality of a judgment by its truth value alone. " alt="" coords="543,442,779,483"/>
+<area shape="rect" id="node43" href="$dd/da2/a00192.html#ab0e0dc2172d3fab6390670acb68da1a6" title="Get durability value. " alt="" coords="861,1295,1043,1337"/>
+<area shape="rect" id="node45" href="$dd/da2/a00192.html#a1e7b6826531f03f792f3516ce0e97ac3" title="Get priority value. " alt="" coords="861,970,1043,1011"/>
+<area shape="rect" id="node47" href="$dd/da2/a00192.html#a088e64163126211239b6afd25a9cdca3" title="Increase priority value by a percentage of the remaining range. " alt="" coords="861,853,1043,894"/>
+<area shape="rect" id="node48" href="$db/d12/a00268.html#acaa4ebc080bc00d0e03be32d51d29e40" title="A function where the output is disjunctively determined by the inputs. " alt="" coords="1128,860,1343,887"/>
+<area shape="rect" id="node51" href="$dd/da2/a00192.html#ac2cb3449a15125e5f0e4165aeee0befb" title="Change priority value. " alt="" coords="861,1186,1043,1227"/>
+<area shape="rect" id="node53" href="$dd/dc1/a00212.html#a244c4fd3b9cb81b8882e7e4c962188ec" title="nars.entity.Sentence.contain\lQueryVar" alt="" coords="1406,913,1594,954"/>
+<area shape="rect" id="node54" href="$d7/d40/a00236.html#aa5ffcde3ae611b087ba7fdd4cd67b216" title="Calculate the expectation value of the truth value. " alt="" coords="1414,795,1586,837"/>
+</map>

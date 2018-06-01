@@ -1,0 +1,6 @@
+<map id="nars.inference.TruthFunctions.induction" name="nars.inference.TruthFunctions.induction">
+<area shape="rect" id="node2" href="$d3/dcc/a00264.html#a0584fe68d00cebcf3e2d6c22ba356c52" title="{&lt;S ==&gt; M&gt;, " alt="" coords="304,64,559,91"/>
+<area shape="rect" id="node3" href="$db/d12/a00268.html#a46d2f048b6ba77afc60dcf49734f23c7" title="A function where the output is conjunctively determined by the inputs. " alt="" coords="608,5,832,32"/>
+<area shape="rect" id="node4" href="$d7/d40/a00236.html#a9eac33f2495441c77911a8581a5bbe61" title="Get the frequency value. " alt="" coords="634,57,806,98"/>
+<area shape="rect" id="node5" href="$db/d12/a00268.html#a957a91e3b91d4a4043c3959838c370f2" title="A function to convert weight to confidence. " alt="" coords="607,123,833,149"/>
+</map>

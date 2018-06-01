@@ -1,0 +1,7 @@
+<map id="nars.entity.Concept.evaluation" name="nars.entity.Concept.evaluation">
+<area shape="rect" id="node2" href="$dd/dd7/a00248.html#abe52d51e24e841a754e3d6c0aa3c24da" title="Evaluate the quality of the judgment as a solution to a problem. " alt="" coords="252,64,475,105"/>
+<area shape="rect" id="node3" href="$d7/d40/a00236.html#aa5ffcde3ae611b087ba7fdd4cd67b216" title="Calculate the expectation value of the truth value. " alt="" coords="531,64,703,105"/>
+<area shape="rect" id="node4" href="$d7/d40/a00236.html#a68ca7d92e9ea20d2a9a9f578ad7b681c" title="The confidence factor of the truth value. " alt="" coords="759,5,931,47"/>
+<area shape="rect" id="node6" href="$dd/dc1/a00212.html#a244c4fd3b9cb81b8882e7e4c962188ec" title="nars.entity.Sentence.contain\lQueryVar" alt="" coords="523,129,711,171"/>
+<area shape="rect" id="node5" href="$d7/d40/a00236.html#a9eac33f2495441c77911a8581a5bbe61" title="Get the frequency value. " alt="" coords="759,71,931,112"/>
+</map>

@@ -1,0 +1,25 @@
+var a00432 =
+[
+    [ "getBeliefForgettingRate", "d9/dd5/a00432.html#aa75bf9c529e7b7791d10e302f3f057ec", null ],
+    [ "getConceptForgettingRate", "d9/dd5/a00432.html#a0d42e2cc87b2f14a42014d7496eb3ee7", null ],
+    [ "getCurrentBelief", "d9/dd5/a00432.html#ab2d9d37b3b68823f92069d1fd2106c95", null ],
+    [ "getCurrentBeliefLink", "d9/dd5/a00432.html#a672e3b935dca6df8c7e47c6c69e0fc66", null ],
+    [ "getCurrentTask", "d9/dd5/a00432.html#aefcc9dfcebdc79cd7e099afd4553b083", null ],
+    [ "getCurrentTaskLink", "d9/dd5/a00432.html#a585409e59ebb973c820683bc556ebe37", null ],
+    [ "getCurrentTerm", "d9/dd5/a00432.html#a0f3a453ba11e504e9e2471df0c76dcf2", null ],
+    [ "getExportStrings", "d9/dd5/a00432.html#ae107f0a25a321fdd093797791f8d7e0e", null ],
+    [ "getNewStamp", "d9/dd5/a00432.html#ac0c90002cb82145aa61aaeec948f2236", null ],
+    [ "getNewTasks", "d9/dd5/a00432.html#ad9d5d51fe843752b9e4ebcfb6ee37111", null ],
+    [ "getTaskForgettingRate", "d9/dd5/a00432.html#a6203b72340814e8e56ea0a09561cc869", null ],
+    [ "setBeliefForgettingRate", "d9/dd5/a00432.html#af4f6a16286f4af4fc239e138727db7cf", null ],
+    [ "setConceptForgettingRate", "d9/dd5/a00432.html#a84d3a6ce68307e4942866b8c17f80d52", null ],
+    [ "setCurrentBelief", "d9/dd5/a00432.html#ada78efe0c59f373042a93c922dde2e6c", null ],
+    [ "setCurrentBeliefLink", "d9/dd5/a00432.html#a83ecbf771a2cdecd527c11cccbeb27e0", null ],
+    [ "setCurrentTask", "d9/dd5/a00432.html#aa2e9612bec3931966b2526be90f1f528", null ],
+    [ "setCurrentTaskLink", "d9/dd5/a00432.html#abc59323489aa9a61083bd50d1507d6be", null ],
+    [ "setCurrentTerm", "d9/dd5/a00432.html#a54f643c178a28d52b3dd205968738623", null ],
+    [ "setExportStrings", "d9/dd5/a00432.html#afe4b2ee3bdd4c83817b00503a419940a", null ],
+    [ "setNewStamp", "d9/dd5/a00432.html#a5f5e2acefca5462103963855aad20851", null ],
+    [ "setNewTasks", "d9/dd5/a00432.html#ab0f6391d1094d8c6cebf95dcf97ccdc0", null ],
+    [ "setTaskForgettingRate", "d9/dd5/a00432.html#a3155705610016e3a885769139c9f60c0", null ]
+];

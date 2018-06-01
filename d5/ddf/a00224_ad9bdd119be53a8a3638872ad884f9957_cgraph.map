@@ -1,0 +1,12 @@
+<map id="nars.entity.Task.Task" name="nars.entity.Task.Task">
+<area shape="rect" id="node2" href="$d5/ddf/a00224.html#ab140cb553a6cf40b07093d1df283567f" title="The sentence of the Task. " alt="" coords="203,5,396,32"/>
+<area shape="rect" id="node3" href="$dc/d31/a00208.html#a6a858abef99551c6b8fab17125e012e7" title="nars.entity.Item.setKey" alt="" coords="220,56,379,83"/>
+<area shape="rect" id="node4" href="$d5/ddf/a00224.html#a76f4a7ebe8e2456a2f01d3a25e409ddb" title="nars.entity.Task.setSentence" alt="" coords="203,107,396,133"/>
+<area shape="rect" id="node5" href="$dd/dc1/a00212.html#a8b6d9355c0211d37f881ec6717a6b636" title="Get a String representation of the sentence for key of Task and TaskLink. " alt="" coords="209,157,389,184"/>
+<area shape="rect" id="node6" href="$dd/dc1/a00212.html#ad1ded9a02cae3557948d05530cd4d37e" title="The content of a Sentence is a Term. " alt="" coords="445,51,609,93"/>
+<area shape="rect" id="node7" href="$dd/dc1/a00212.html#a68b153a51a5db6a4127b66158227697f" title="The punctuation also indicates the type of the Sentence: Judgment, Question, or Goal. " alt="" coords="445,117,609,158"/>
+<area shape="rect" id="node8" href="$dd/dc1/a00212.html#a9f69b4fef64c81abad21404946cd41f9" title="The truth value of Judgment. " alt="" coords="445,182,609,223"/>
+<area shape="rect" id="node9" href="$d7/d40/a00236.html#a5af8b2fe37987ba1e8396ec1aad38e90" title="A simplified String representation of a TruthValue, where each factor is accruate to 1%..." alt="" coords="444,247,609,289"/>
+<area shape="rect" id="node10" href="$d7/d40/a00236.html#a9eac33f2495441c77911a8581a5bbe61" title="Get the frequency value. " alt="" coords="657,214,829,255"/>
+<area shape="rect" id="node11" href="$d7/d40/a00236.html#a68ca7d92e9ea20d2a9a9f578ad7b681c" title="The confidence factor of the truth value. " alt="" coords="657,279,829,321"/>
+</map>

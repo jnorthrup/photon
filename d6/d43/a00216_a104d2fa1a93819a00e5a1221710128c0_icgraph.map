@@ -1,0 +1,5 @@
+<map id="nars.entity.Stamp.init" name="nars.entity.Stamp.init">
+<area shape="rect" id="node2" href="$df/d15/a00416.html#ab89758e9f42673fedcc4a895a2f4a928" title="Reset the system with an empty memory and reset clock. " alt="" coords="200,13,421,39"/>
+<area shape="rect" id="node3" href="$df/d15/a00416.html#a1823f1575021b1ca67e6174923923fbb" title="To process a line of input text. " alt="" coords="469,5,684,47"/>
+<area shape="rect" id="node4" href="$d9/dd6/a00272.html#a1a4b66a6e6cf89d5c2ea7a5923195247" title="Process the next chunk of input data TODO duplicated code with InputWindow#nextInput(). " alt="" coords="732,5,933,47"/>
+</map>

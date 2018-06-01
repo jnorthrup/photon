@@ -1,0 +1,5 @@
+<map id="nars.entity.Concept.toString" name="nars.entity.Concept.toString">
+<area shape="rect" id="node2" href="$dc/d31/a00208.html#a54fc0a370b847dd77c0a698c765e6e55" title="The budget of the Item, consisting of 3 numbers. " alt="" coords="243,5,419,32"/>
+<area shape="rect" id="node3" href="$dc/d31/a00208.html#ab5c9fbb171f325844966b496010acf60" title="The key of the Item, unique in a Bag. " alt="" coords="251,56,410,83"/>
+<area shape="rect" id="node4" href="$d9/da1/a00396.html#a6465682a30caffa43d1c79f697fcf6e5" title="Flag to distinguish the two running modes of the project. " alt="" coords="239,107,423,149"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="nars.io.StringParser.getBudgetString" name="nars.io.StringParser.getBudgetString">
+<area shape="rect" id="node2" href="$d8/d0a/a00292.html#a75b446999d71c676a9915ecc75077a7d" title="Enter a new Task in String into the memory, called from InputWindow or locally. " alt="" coords="212,13,415,39"/>
+<area shape="rect" id="node3" href="$df/d15/a00416.html#a4766dfcaabdf586d60b9ac9827e41cad" title="Parse a line of input experience. " alt="" coords="463,5,687,47"/>
+<area shape="rect" id="node4" href="$df/d15/a00416.html#a1823f1575021b1ca67e6174923923fbb" title="To process a line of input text. " alt="" coords="735,5,949,47"/>
+<area shape="rect" id="node5" href="$d9/dd6/a00272.html#a1a4b66a6e6cf89d5c2ea7a5923195247" title="Process the next chunk of input data TODO duplicated code with InputWindow#nextInput(). " alt="" coords="997,5,1199,47"/>
+</map>

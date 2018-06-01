@@ -1,0 +1,97 @@
+<map id="nars.storage.ReasonerBatch.textInputLine" name="nars.storage.ReasonerBatch.textInputLine">
+<area shape="rect" id="node2" href="$df/d15/a00416.html#ae7cc80bb901b1e8008537fe24e5d1bb2" title="System clock, relatively defined to guarantee the repeatability of behaviors. " alt="" coords="813,1144,1023,1185"/>
+<area shape="rect" id="node3" href="$d4/d27/a00392.html#a1a17565c7b06ca4ecc1ed57c3fce973f" title="List of Strings or Tasks to be sent to the output channels. " alt="" coords="815,1560,1021,1601"/>
+<area shape="rect" id="node4" href="$df/d15/a00416.html#a1c93db9a070b48a9a5729cc23e56f1c2" title="The memory of the reasoner. " alt="" coords="540,1779,751,1820"/>
+<area shape="rect" id="node5" href="$d4/d27/a00392.html#aa35448d01b9f72402aa8623dc75c8209" title="Input task processing. " alt="" coords="277,1575,483,1602"/>
+<area shape="rect" id="node31" href="$df/d15/a00416.html#a4766dfcaabdf586d60b9ac9827e41cad" title="Parse a line of input experience. " alt="" coords="268,1019,492,1060"/>
+<area shape="rect" id="node88" href="$df/d15/a00416.html#ab89758e9f42673fedcc4a895a2f4a928" title="Reset the system with an empty memory and reset clock. " alt="" coords="269,1903,491,1930"/>
+<area shape="rect" id="node96" href="$df/d15/a00416.html#a272d5a8ac28418fdc9f1b0c8fba98ff2" title="Will carry the inference process for a certain number of steps. " alt="" coords="271,2019,489,2046"/>
+<area shape="rect" id="node6" href="$dd/da2/a00192.html#ae83b822f3bab4c1831e94d72fc770f58" title="Whether the budget should get any processing at all. " alt="" coords="545,1459,745,1500"/>
+<area shape="rect" id="node9" href="$d0/dcd/a00280.html#acb473be6e5d774c10781bc8e74453459" title="Add new text to display. " alt="" coords="807,1677,1029,1703"/>
+<area shape="rect" id="node10" href="$dc/d31/a00208.html#a54fc0a370b847dd77c0a698c765e6e55" title="The budget of the Item, consisting of 3 numbers. " alt="" coords="557,1525,733,1551"/>
+<area shape="rect" id="node11" href="$d4/d27/a00392.html#a8c50bdf4f2750032f24965e12e9fb59c" title="List of new tasks accumulated in one cycle, to be processed in the next cycle. " alt="" coords="821,1728,1015,1769"/>
+<area shape="rect" id="node12" href="$d4/d27/a00392.html#aa4c7e1f5823d0404c0cab49b617968f1" title="Inference record text to be written into a log file. " alt="" coords="808,1794,1028,1821"/>
+<area shape="rect" id="node13" href="$d5/ddf/a00224.html#ab140cb553a6cf40b07093d1df283567f" title="The sentence of the Task. " alt="" coords="549,1677,742,1703"/>
+<area shape="rect" id="node14" href="$d4/d27/a00392.html#ad89bc0ba08c0b5bfbddf247cdab5eaa9" title="Display input/output sentence in the output channels. " alt="" coords="554,1357,737,1383"/>
+<area shape="rect" id="node7" href="$dd/da2/a00192.html#af414899759992288edbba78d7457c534" title="To summarize a BudgetValue into a single number in [0, 1]. " alt="" coords="1094,1585,1313,1611"/>
+<area shape="rect" id="node8" href="$db/d12/a00268.html#ae9f34c27ee5675fa2b97f2def9e1fb99" title="A function where the output is the geometric average the inputs. " alt="" coords="1369,1542,1617,1569"/>
+<area shape="rect" id="node15" href="$d4/d27/a00392.html#a076ad9a0e872386bca3f2d17fa7cb2d4" title="Backward pointer to the reasoner. " alt="" coords="807,1509,1029,1535"/>
+<area shape="rect" id="node16" href="$df/d15/a00416.html#aeb34e5ff1c0a1f220e7b8715cee2d9d3" title="Get the current time from the clock Called in nars.entity.Stamp. " alt="" coords="799,1261,1037,1287"/>
+<area shape="rect" id="node17" href="$df/d15/a00416.html#a64586e56057f3a2d498dc7fd98c4f773" title="System clock &#45; number of cycles since last output. " alt="" coords="1098,1292,1309,1333"/>
+<area shape="rect" id="node18" href="$df/d15/a00416.html#a55398625fb088534ef3fce8c38f95423" title="global DEBUG print switch " alt="" coords="817,1312,1019,1353"/>
+<area shape="rect" id="node19" href="$dd/dc1/a00212.html#aea2f809b2d4c375f3c4ec3d0328d8787" title="Get a String representation of the sentence, with 2&#45;digit accuracy. " alt="" coords="823,1377,1013,1419"/>
+<area shape="rect" id="node28" href="$df/d15/a00416.html#a84cc1236020f7c170bfcee70c861ce20" title="To get the timer value and then to reset it. " alt="" coords="803,1443,1033,1484"/>
+<area shape="rect" id="node20" href="$dd/dc1/a00212.html#ac0ed749c50e55120d5b63219ed7eb082" title="Partial record of the derivation path. " alt="" coords="1121,1377,1285,1419"/>
+<area shape="rect" id="node21" href="$dd/dc1/a00212.html#a8b6d9355c0211d37f881ec6717a6b636" title="Get a String representation of the sentence for key of Task and TaskLink. " alt="" coords="1113,1885,1293,1911"/>
+<area shape="rect" id="node22" href="$dd/dc1/a00212.html#ad1ded9a02cae3557948d05530cd4d37e" title="The content of a Sentence is a Term. " alt="" coords="1411,1867,1575,1908"/>
+<area shape="rect" id="node23" href="$dd/dc1/a00212.html#a68b153a51a5db6a4127b66158227697f" title="The punctuation also indicates the type of the Sentence: Judgment, Question, or Goal. " alt="" coords="1411,1932,1575,1973"/>
+<area shape="rect" id="node24" href="$dd/dc1/a00212.html#a9f69b4fef64c81abad21404946cd41f9" title="The truth value of Judgment. " alt="" coords="1411,1801,1575,1843"/>
+<area shape="rect" id="node25" href="$d7/d40/a00236.html#a5af8b2fe37987ba1e8396ec1aad38e90" title="A simplified String representation of a TruthValue, where each factor is accruate to 1%..." alt="" coords="1411,1736,1576,1777"/>
+<area shape="rect" id="node26" href="$d7/d40/a00236.html#a68ca7d92e9ea20d2a9a9f578ad7b681c" title="The confidence factor of the truth value. " alt="" coords="1705,1704,1877,1745"/>
+<area shape="rect" id="node27" href="$d7/d40/a00236.html#a9eac33f2495441c77911a8581a5bbe61" title="Get the frequency value. " alt="" coords="1705,1769,1877,1811"/>
+<area shape="rect" id="node29" href="$df/d15/a00416.html#aa243bca18963b74438535cd125039740" title="nars.storage.ReasonerBatch.init\lTimer" alt="" coords="1099,1955,1308,1996"/>
+<area shape="rect" id="node30" href="$df/d15/a00416.html#ac3e769632e8a90ddc85970d3fee28e5f" title="nars.storage.ReasonerBatch.set\lTimer" alt="" coords="1388,1997,1599,2039"/>
+<area shape="rect" id="node32" href="$d8/d0a/a00292.html#a75b446999d71c676a9915ecc75077a7d" title="Enter a new Task in String into the memory, called from InputWindow or locally. " alt="" coords="544,882,747,909"/>
+<area shape="rect" id="node33" href="$d8/d21/a00368.html#a3a7ee29b5a23255edf3dbca5f85f7b44" title="Check whether a string represent a name of a term that contains a dependent variable. " alt="" coords="1691,704,1891,745"/>
+<area shape="rect" id="node34" href="$d6/d43/a00216.html#af05719e3d17bb1afa429fa6f9bc5bdd3" title="nars.entity.Stamp.create\lStamp" alt="" coords="835,1013,1001,1055"/>
+<area shape="rect" id="node39" href="$d8/d0a/a00292.html#a26d10b6f39341c34897a5e4c66112bd9" title="Return the prefex of a task string that contains a BudgetValue. " alt="" coords="839,612,997,653"/>
+<area shape="rect" id="node40" href="$dc/d59/a00364.html#a3aad4654016b8615fd4fa8a26668e1db" title="Reporting the name of the current Term. " alt="" coords="2817,318,3011,345"/>
+<area shape="rect" id="node41" href="$d8/d0a/a00292.html#a2f7d01638f8e9c5e2e1e1500689b5fc8" title="Return the postfix of a task string that contains a TruthValue. " alt="" coords="839,780,997,821"/>
+<area shape="rect" id="node42" href="$d8/d0a/a00292.html#a5cf18d3d67e719f808d84e6ae495a2a8" title="parse the input String into a BudgetValue " alt="" coords="831,1079,1005,1120"/>
+<area shape="rect" id="node44" href="$d8/d0a/a00292.html#a5c31494d6f7862dcf15a4d5716b6200e" title="Top&#45;level method that parse a Term in general, which may recursively call itself. ..." alt="" coords="817,678,1019,705"/>
+<area shape="rect" id="node86" href="$d8/d0a/a00292.html#a4fc8012616d44d8e7670044f9a0d2976" title="nars.io.StringParser.show\lWarning" alt="" coords="1117,896,1289,937"/>
+<area shape="rect" id="node87" href="$d8/d0a/a00292.html#a49d3b8184f455de9685937d0aa2f6a93" title="parse the input String into a TruthValue (or DesireValue) " alt="" coords="831,845,1005,887"/>
+<area shape="rect" id="node35" href="$d6/d43/a00216.html#a959f21fb20f72cfd277d994332e862c3" title="Generate a new stamp, with a new serial number, for a new Task. " alt="" coords="1120,1161,1287,1187"/>
+<area shape="rect" id="node36" href="$d6/d43/a00216.html#a7c3a7c21f049a6dfe9dbc088caae4abf" title="serial number, for the whole system TODO : should it really be static? or a Stamp be a field in Reaso..." alt="" coords="1398,1124,1589,1165"/>
+<area shape="rect" id="node37" href="$d6/d43/a00216.html#ac84c7f26ab8e0740bab4335f33396e2c" title="serial numbers " alt="" coords="1376,1190,1611,1217"/>
+<area shape="rect" id="node38" href="$d6/d43/a00216.html#a8b3fd059e38dcb039a01ab991ec6614f" title="nars.entity.Stamp.setCurrent\lSerial" alt="" coords="1398,1320,1589,1361"/>
+<area shape="rect" id="node43" href="$d9/d21/a00240.html#a1cabe922021909c7226988e5aa00ea95" title="Determine the quality of a judgment by its truth value alone. " alt="" coords="1085,1217,1321,1259"/>
+<area shape="rect" id="node45" href="$d6/d9c/a00352.html#aaea0f2cc2ca804779d1bf346beb58fa1" title="Try to make a new set from one component. " alt="" coords="1978,253,2157,279"/>
+<area shape="rect" id="node46" href="$df/d03/a00348.html#aa8f6526a59c3d7e578dd76a0eab75a0e" title="Try to make a new set from one component. " alt="" coords="1976,405,2159,431"/>
+<area shape="rect" id="node47" href="$d4/d27/a00392.html#ac7c5d438820208253d1a2ee59bf80ddc" title="Get a Term for a given name of a Concept or Operator. " alt="" coords="2261,384,2442,425"/>
+<area shape="rect" id="node51" href="$d8/d0a/a00292.html#a9b9bc5f94ac6aaa86c3d9c2bcd21c332" title="Parse a String into the argument get of a CompoundTerm. " alt="" coords="1407,713,1580,755"/>
+<area shape="rect" id="node56" href="$d8/d0a/a00292.html#a4521720744de2b8638667be01b4be64a" title="Parse a Term that has no internal structure. " alt="" coords="1117,587,1290,628"/>
+<area shape="rect" id="node60" href="$d8/d0a/a00292.html#a944bb677dff9f232ce6b896c853e24e0" title="Parse a String to create a CompoundTerm. " alt="" coords="1117,779,1290,820"/>
+<area shape="rect" id="node66" href="$d8/d0a/a00292.html#a7c129938c8d721e3db0a9804988f0588" title="Parse a String to create a Statement. " alt="" coords="1117,504,1290,545"/>
+<area shape="rect" id="node48" href="$d6/db8/a00376.html#a011b37fc683db7fb7b41e33712a37d92" title="Get an Item by key. " alt="" coords="2572,381,2715,407"/>
+<area shape="rect" id="node49" href="$d4/d27/a00392.html#a33af7b3d806d32c85390563fec3c6d27" title="Concept bag. " alt="" coords="2532,735,2755,762"/>
+<area shape="rect" id="node50" href="$d7/ded/a00196.html#afcd1217b7680b073fa51f0d0f159dcea" title="The term is the unique ID of the concept. " alt="" coords="2549,431,2737,458"/>
+<area shape="rect" id="node52" href="$d8/d0a/a00292.html#aa197c4c362373f0e74165794ba7b033a" title="Locate the first top&#45;level separator in a CompoundTerm. " alt="" coords="1707,769,1874,811"/>
+<area shape="rect" id="node53" href="$d8/d0a/a00292.html#aa579e2d90aa176b8fa99af6fda484bf7" title="Check CompoundTerm closer symbol. " alt="" coords="1973,515,2162,542"/>
+<area shape="rect" id="node55" href="$d8/d0a/a00292.html#ae9b91054186389c3930bc2aaecd4aee8" title="Check CompoundTerm opener symbol. " alt="" coords="1971,566,2164,593"/>
+<area shape="rect" id="node54" href="$d8/d0a/a00292.html#ae4e1b531a416aaa35056fd3798713098" title="Check Statement relation symbol, called in StringPaser. " alt="" coords="2252,515,2451,542"/>
+<area shape="rect" id="node57" href="$d8/d21/a00368.html#a2c36e85a56295a27aba7a4ee162f5850" title="Check whether a string represent a name of a term that contains a variable. " alt="" coords="1383,594,1603,621"/>
+<area shape="rect" id="node58" href="$d8/d21/a00368.html#a9caa9f23d798ce1913cfca744ddd1c15" title="Check whether a string represent a name of a term that contains an independent variable. " alt="" coords="1691,587,1891,628"/>
+<area shape="rect" id="node59" href="$d8/d21/a00368.html#a25dcc4d5882131d679903f93d41420c9" title="Check whether a string represent a name of a term that contains a query variable. ..." alt="" coords="1691,521,1891,563"/>
+<area shape="rect" id="node61" href="$d8/d0a/a00292.html#a3ac70603f33f8d2d9475ed7ce42e873b" title="Check CompoundTerm operator symbol. " alt="" coords="1393,786,1594,813"/>
+<area shape="rect" id="node62" href="$d8/d17/a00304.html#ac5f82b4dd2c0f4aa60e1e97600526d21" title="Try to make a compound term from a template and a list of components. " alt="" coords="1375,937,1611,963"/>
+<area shape="rect" id="node63" href="$d5/d0f/a00308.html#afb24af5cc6c098ad3f5d837fa383e69c" title="Try to make a new ImageExt. " alt="" coords="1691,937,1890,963"/>
+<area shape="rect" id="node64" href="$d7/df2/a00312.html#ad05e4231ed31d78ad4c8b4fefbc964fa" title="Try to make a new ImageExt. " alt="" coords="1693,835,1888,862"/>
+<area shape="rect" id="node65" href="$d8/d17/a00304.html#a786848bcf438b17b9aa566b9b0c04e5f" title="Abstract method to get the operator of the compound. " alt="" coords="1665,886,1916,913"/>
+<area shape="rect" id="node67" href="$d0/d65/a00360.html#a4e4c29fc305a6741da88ce55fbf11e4a" title="Make a Statement from String, called by StringParser. " alt="" coords="1392,303,1595,330"/>
+<area shape="rect" id="node85" href="$d8/d0a/a00292.html#a841830a5d2348da4024f4db083b37c2a" title="locate the top&#45;level relation in a statement " alt="" coords="1711,456,1870,497"/>
+<area shape="rect" id="node68" href="$d0/d65/a00360.html#a96d4bf7bb99f48b6496cdb7457bc0e50" title="Check the validity of a potential Statement. " alt="" coords="2247,136,2455,177"/>
+<area shape="rect" id="node75" href="$dd/de2/a00320.html#a94badab1e9fc19ebe33b06fcbb169453" title="Try to make a new compound from two components. " alt="" coords="1694,405,1887,431"/>
+<area shape="rect" id="node76" href="$d3/db8/a00316.html#a5ccaf18d33e722f438944debb2757b34" title="Try to make a new compound from two components. " alt="" coords="1964,326,2171,353"/>
+<area shape="rect" id="node80" href="$d8/d8e/a00344.html#a808d99e39dfc525841db6b645d118979" title="Try to make a new compound from two components. " alt="" coords="1695,253,1887,279"/>
+<area shape="rect" id="node81" href="$d4/d8f/a00324.html#a429b8b61ed41ea338c8fc668fb8304f7" title="Try to make a new compound from two components. " alt="" coords="1669,354,1912,381"/>
+<area shape="rect" id="node82" href="$d6/de1/a00356.html#ae72436d78c25d4735b4201d773dd1901" title="Try to make a new compound from two components. " alt="" coords="1969,202,2166,229"/>
+<area shape="rect" id="node69" href="$d8/d17/a00304.html#a89000afae8017231889aaa549292d1e0" title="Default constructor. " alt="" coords="2541,5,2745,47"/>
+<area shape="rect" id="node70" href="$dc/d59/a00364.html#ad85f45a7858737445d5158801774ff5f" title="Equal terms have identical name, though not necessarily the same reference. " alt="" coords="2554,267,2733,294"/>
+<area shape="rect" id="node71" href="$d0/d65/a00360.html#ababe6155e2f78e769f76493317e118e0" title="Return the second component of the statement. " alt="" coords="2549,201,2738,243"/>
+<area shape="rect" id="node73" href="$d0/d65/a00360.html#ace4f80751d303c613e467163913bebf5" title="Return the first component of the statement. " alt="" coords="2549,71,2738,112"/>
+<area shape="rect" id="node74" href="$d0/d65/a00360.html#ac56b558891dd2088e0b66b437780c7b7" title="Default constructor. " alt="" coords="2558,136,2729,177"/>
+<area shape="rect" id="node72" href="$d8/d17/a00304.html#a9778c35f9b602bee6ccac6a06809e546" title="list of (direct) components " alt="" coords="2803,136,3025,177"/>
+<area shape="rect" id="node77" href="$d8/d17/a00304.html#a9aacee8d6903ff6eb186d37f78569353" title="build a component list from two terms " alt="" coords="2219,319,2484,360"/>
+<area shape="rect" id="node78" href="$d3/db8/a00316.html#a20635d9d55f73d39b29a07653cde6bc6" title="Constructor with partial values, called by make. " alt="" coords="2264,449,2439,491"/>
+<area shape="rect" id="node79" href="$d0/d65/a00360.html#a7123aba1c8c566f291e2c9b9d147557d" title="Default method to make the nameStr of an image term from given fields. " alt="" coords="2250,253,2453,295"/>
+<area shape="rect" id="node83" href="$dc/d59/a00364.html#ab9bc1c9cc779c07b09983b41ed8491e1" title="Check the relative order of two Terms. " alt="" coords="2248,202,2455,229"/>
+<area shape="rect" id="node84" href="$d6/de1/a00356.html#a5d3eff893c9406991d1c3e81737a408b" title="Constructor with partial values, called by make. " alt="" coords="2269,71,2434,112"/>
+<area shape="rect" id="node89" href="$d4/d27/a00392.html#a4b342885c51299f76ad698b629f7515c" title="nars.storage.Memory.init" alt="" coords="562,1962,729,1989"/>
+<area shape="rect" id="node92" href="$d6/d43/a00216.html#a104d2fa1a93819a00e5a1221710128c0" title="Initialize the stamp mechanism of the system, called in Reasoner. " alt="" coords="572,1845,719,1871"/>
+<area shape="rect" id="node93" href="$df/d15/a00416.html#a61362ee89ccac63056cc99c657cd5e2c" title="nars.storage.ReasonerBatch.set\lClock" alt="" coords="540,2013,751,2055"/>
+<area shape="rect" id="node94" href="$df/d15/a00416.html#a9bab9537e3481b983f82cea004140b93" title="nars.storage.ReasonerBatch.set\lRunning" alt="" coords="540,1896,751,1937"/>
+<area shape="rect" id="node95" href="$df/d15/a00416.html#ac135d5a43979238ab2c051fe29bb7c99" title="nars.storage.ReasonerBatch.set\lWalkingSteps" alt="" coords="540,2079,751,2120"/>
+<area shape="rect" id="node90" href="$d4/d27/a00392.html#aa15a4cd104018dc9b98ceaa12d54255d" title="New tasks with novel composed terms, for delayed and selective processing. " alt="" coords="817,1896,1019,1937"/>
+<area shape="rect" id="node91" href="$d6/db8/a00376.html#a4f481c434a5a4ac0004138ba81fd426f" title="nars.storage.Bag.init" alt="" coords="847,2013,989,2039"/>
+</map>

@@ -1,0 +1,29 @@
+<map id="nars.entity.Item.getKey" name="nars.entity.Item.getKey">
+<area shape="rect" id="node2" href="$d4/d27/a00392.html#a7affdc42dcb55d27d76cf636eab6230f" title="Adjust the activation level of a Concept. " alt="" coords="221,68,416,109"/>
+<area shape="rect" id="node15" href="$de/dc2/a00228.html#afea026df0afd74986f940d10a7875a2f" title="To check whether a TaskLink should use a TermLink, return false if they interacted recently..." alt="" coords="485,134,660,161"/>
+<area shape="rect" id="node19" href="$d0/d53/a00232.html#ad19e927a3e2e339682081d8e462fe73b" title="Set the key of the link. " alt="" coords="225,235,412,262"/>
+<area shape="rect" id="node20" href="$de/dc2/a00228.html#a647f7a582b860db9ec62907a8b50e99c" title="Constructor. " alt="" coords="474,185,671,211"/>
+<area shape="rect" id="node22" href="$dc/d31/a00208.html#aa09cfb045062f89cbea45a6975e6a2f2" title="Return a String representation of the Item. " alt="" coords="237,286,400,313"/>
+<area shape="rect" id="node26" href="$d5/ddf/a00224.html#a73b96cd17fd93eeab0cc94bd36f25e66" title="Get a String representation of the Task. " alt="" coords="236,337,401,363"/>
+<area shape="rect" id="node27" href="$d7/ded/a00196.html#a0884554b92012100e88cb32d8b24412f" title="Return a string representation of the concept, called in ConceptBag only. " alt="" coords="226,387,411,414"/>
+<area shape="rect" id="node28" href="$d7/ded/a00196.html#a121514592016f7350b5a741db6465798" title="called from NARSBatch " alt="" coords="212,438,425,465"/>
+<area shape="rect" id="node3" href="$d7/ded/a00196.html#aef21f5ae7bef5194bd37ae526302843d" title="Insert a TaskLink into the TaskLink bag. " alt="" coords="487,68,659,109"/>
+<area shape="rect" id="node4" href="$d7/ded/a00196.html#a501121a11fc046eea4b69720cb622d84" title="Link to a new task from all relevant concepts for continued processing in the near future for unspeci..." alt="" coords="753,67,913,108"/>
+<area shape="rect" id="node5" href="$d7/ded/a00196.html#a9ea7c3154932d7a736c105eb55daeb5c" title="Directly process a new task. " alt="" coords="993,64,1165,105"/>
+<area shape="rect" id="node6" href="$d4/d27/a00392.html#af8d07412d21a441a5c7005a477b06468" title="Immediate processing of a new task, in constant time Local processing, in one concept only..." alt="" coords="1213,64,1423,105"/>
+<area shape="rect" id="node7" href="$d4/d27/a00392.html#ae43b86074c0d8f6a324696f69faa54b3" title="Process the newTasks accumulated in the previous workCycle, accept input ones and those that correspo..." alt="" coords="1471,5,1665,47"/>
+<area shape="rect" id="node14" href="$d4/d27/a00392.html#a5061708f88897cfdf4e0671c846762ca" title="Select a novel task to process. " alt="" coords="1471,71,1665,112"/>
+<area shape="rect" id="node8" href="$d4/d27/a00392.html#a59ae339d666409988d90d29be4f73a91" title="An atomic working workCycle of the system: process new Tasks, then fireFromProcessConcept a concept..." alt="" coords="1713,71,1891,112"/>
+<area shape="rect" id="node9" href="$df/d15/a00416.html#a0d5c797dc17d9e8d0998852915e0f303" title="nars.storage.ReasonerBatch.doTick" alt="" coords="1939,78,2169,105"/>
+<area shape="rect" id="node10" href="$df/d15/a00416.html#a3468aa0f99edcd66412f27922dddb880" title="A clock tick. " alt="" coords="2217,78,2431,105"/>
+<area shape="rect" id="node11" href="$d9/da1/a00396.html#a5d9cfe517bcfbe41e5251910bcd119c1" title="Run to completion: repeatedly execute NARS working cycle, until Inputs are Finished, or 1000 steps. " alt="" coords="2479,78,2671,105"/>
+<area shape="rect" id="node12" href="$d9/da1/a00396.html#a7c307c6b842f82664de6b0e52bdf8efc" title="non&#45;static equivalent to main(String[]) : run to completion from an input file " alt="" coords="2719,71,2911,112"/>
+<area shape="rect" id="node13" href="$d9/da1/a00396.html#abafc597289bc2f6453b5cd0dd6634e54" title="The entry point of the standalone application. " alt="" coords="2959,78,3161,105"/>
+<area shape="rect" id="node16" href="$d4/dd3/a00428.html#a2f98120a5db1a3c065d3dc5712562d71" title="Replace default to prevent repeated inference, by checking TaskLink. " alt="" coords="720,135,945,162"/>
+<area shape="rect" id="node17" href="$d7/ded/a00196.html#ad6fb91dda799c3092ecb186ef24ca92a" title="An atomic step in a concept, only called in Memory# processConcept. " alt="" coords="1000,129,1159,171"/>
+<area shape="rect" id="node18" href="$d4/d27/a00392.html#a0acc4adbf6a2462245da46bcb529746c" title="Select a concept to fireFromProcessConcept. " alt="" coords="1221,129,1415,171"/>
+<area shape="rect" id="node21" href="$d0/d53/a00232.html#a7efe1a85c0739a0fd0dc3f03dbd679a9" title="Constructor to make actual TermLink from a template. " alt="" coords="473,235,672,262"/>
+<area shape="rect" id="node23" href="$dc/d31/a00208.html#a7adee9838f91c397f4b747351ead9f75" title="nars.entity.Item.toStringLong" alt="" coords="477,286,668,313"/>
+<area shape="rect" id="node24" href="$d6/db8/a00376.html#adff1bdb7ded17b66dc84068e49571ba7" title="TODO bad paste from preceding. " alt="" coords="741,245,924,287"/>
+<area shape="rect" id="node25" href="$d4/d27/a00392.html#af2a2377d1c59d2b966ddc553809b9eab" title="nars.storage.Memory.toString\lLongIfNotNull" alt="" coords="735,311,930,352"/>
+</map>

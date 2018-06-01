@@ -1,0 +1,5 @@
+<map id="nars.storage.Bag.addBagObserver" name="nars.storage.Bag.addBagObserver">
+<area shape="rect" id="node2" href="$d4/d27/a00392.html#aa064c9d05692b825fb768f59b81cc878" title="Display active concepts, called from MainWindow. " alt="" coords="276,5,479,47"/>
+<area shape="rect" id="node3" href="$d7/ded/a00196.html#a5a010290c8c42603dd13387f415abf43" title="Start displaying contents and links, called from ConceptWindow, TermWindow or Memory.processTask only. " alt="" coords="281,71,473,98"/>
+<area shape="rect" id="node4" href="$d4/d27/a00392.html#a7f2f79bf2e3013e5eebabeca37ffe2c8" title="Display new tasks, called from MainWindow. " alt="" coords="290,123,465,164"/>
+</map>

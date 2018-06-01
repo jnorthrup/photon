@@ -1,0 +1,4 @@
+<map id="nars.storage.ReasonerBatch.parseExperience" name="nars.storage.ReasonerBatch.parseExperience">
+<area shape="rect" id="node2" href="$df/d15/a00416.html#a1823f1575021b1ca67e6174923923fbb" title="To process a line of input text. " alt="" coords="277,5,492,47"/>
+<area shape="rect" id="node3" href="$d9/dd6/a00272.html#a1a4b66a6e6cf89d5c2ea7a5923195247" title="Process the next chunk of input data TODO duplicated code with InputWindow#nextInput(). " alt="" coords="540,5,741,47"/>
+</map>

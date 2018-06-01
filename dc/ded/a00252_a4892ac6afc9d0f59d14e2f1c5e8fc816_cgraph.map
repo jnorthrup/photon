@@ -1,0 +1,11 @@
+<map id="nars.inference.RuleTables.transformNegation" name="nars.inference.RuleTables.transformNegation">
+<area shape="rect" id="node2" href="$d4/d27/a00392.html#a26eda4f00b333b706b4e3d069fdf1508" title="The selected Task. " alt="" coords="583,5,821,32"/>
+<area shape="rect" id="node3" href="$d5/ddf/a00224.html#ab140cb553a6cf40b07093d1df283567f" title="The sentence of the Task. " alt="" coords="605,71,799,97"/>
+<area shape="rect" id="node4" href="$dd/dc1/a00212.html#a9f69b4fef64c81abad21404946cd41f9" title="The truth value of Judgment. " alt="" coords="329,261,493,302"/>
+<area shape="rect" id="node5" href="$dd/dc1/a00212.html#a7d95d60caaf4c895559182a7eb2ff71e" title="Distinguish Judgment from Goal (&quot;instanceof Judgment&quot; doesn&#39;t work) " alt="" coords="304,209,517,236"/>
+<area shape="rect" id="node7" href="$dd/dc1/a00212.html#acb98b40c8990dbe5e15061f0759c60ee" title="Distinguish Question from Quest (&quot;instanceof Question&quot; doesn&#39;t work) " alt="" coords="307,159,515,185"/>
+<area shape="rect" id="node8" href="$d3/dcc/a00264.html#aa0c9dd82960dbc5aa4875fec1c4bd1c6" title="{A} |&#45; (–A) " alt="" coords="287,327,535,353"/>
+<area shape="rect" id="node10" href="$d4/d27/a00392.html#a52ef2f1fedc72d6b0bfe3a6bd000bda3" title="Shared final operations by all single&#45;premise rules, called in StructuralRules. " alt="" coords="319,93,502,134"/>
+<area shape="rect" id="node6" href="$dd/dc1/a00212.html#a68b153a51a5db6a4127b66158227697f" title="The punctuation also indicates the type of the Sentence: Judgment, Question, or Goal. " alt="" coords="620,151,784,193"/>
+<area shape="rect" id="node9" href="$d7/d40/a00236.html#a9eac33f2495441c77911a8581a5bbe61" title="Get the frequency value. " alt="" coords="616,319,788,361"/>
+</map>

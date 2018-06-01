@@ -1,0 +1,10 @@
+<map id="nars.io.StringParser.nextSeparator" name="nars.io.StringParser.nextSeparator">
+<area shape="rect" id="node2" href="$d8/d0a/a00292.html#a9b9bc5f94ac6aaa86c3d9c2bcd21c332" title="Parse a String into the argument get of a CompoundTerm. " alt="" coords="220,64,393,105"/>
+<area shape="rect" id="node3" href="$d8/d0a/a00292.html#a5c31494d6f7862dcf15a4d5716b6200e" title="Top&#45;level method that parse a Term in general, which may recursively call itself. ..." alt="" coords="663,71,865,98"/>
+<area shape="rect" id="node9" href="$d8/d0a/a00292.html#a944bb677dff9f232ce6b896c853e24e0" title="Parse a String to create a CompoundTerm. " alt="" coords="441,135,615,176"/>
+<area shape="rect" id="node4" href="$d8/d0a/a00292.html#a75b446999d71c676a9915ecc75077a7d" title="Enter a new Task in String into the memory, called from InputWindow or locally. " alt="" coords="913,13,1116,39"/>
+<area shape="rect" id="node8" href="$d8/d0a/a00292.html#a7c129938c8d721e3db0a9804988f0588" title="Parse a String to create a Statement. " alt="" coords="928,64,1101,105"/>
+<area shape="rect" id="node5" href="$df/d15/a00416.html#a4766dfcaabdf586d60b9ac9827e41cad" title="Parse a line of input experience. " alt="" coords="1164,5,1388,47"/>
+<area shape="rect" id="node6" href="$df/d15/a00416.html#a1823f1575021b1ca67e6174923923fbb" title="To process a line of input text. " alt="" coords="1436,5,1651,47"/>
+<area shape="rect" id="node7" href="$d9/dd6/a00272.html#a1a4b66a6e6cf89d5c2ea7a5923195247" title="Process the next chunk of input data TODO duplicated code with InputWindow#nextInput(). " alt="" coords="1699,5,1900,47"/>
+</map>

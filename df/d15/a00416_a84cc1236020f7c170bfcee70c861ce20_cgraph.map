@@ -1,0 +1,5 @@
+<map id="nars.storage.ReasonerBatch.updateTimer" name="nars.storage.ReasonerBatch.updateTimer">
+<area shape="rect" id="node2" href="$df/d15/a00416.html#a64586e56057f3a2d498dc7fd98c4f773" title="System clock &#45; number of cycles since last output. " alt="" coords="284,5,495,47"/>
+<area shape="rect" id="node3" href="$df/d15/a00416.html#aa243bca18963b74438535cd125039740" title="nars.storage.ReasonerBatch.init\lTimer" alt="" coords="285,71,494,112"/>
+<area shape="rect" id="node4" href="$df/d15/a00416.html#ac3e769632e8a90ddc85970d3fee28e5f" title="nars.storage.ReasonerBatch.set\lTimer" alt="" coords="543,71,753,112"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="nars.entity.Stamp.createStamp" name="nars.entity.Stamp.createStamp">
+<area shape="rect" id="node2" href="$d8/d0a/a00292.html#a75b446999d71c676a9915ecc75077a7d" title="Enter a new Task in String into the memory, called from InputWindow or locally. " alt="" coords="219,13,421,39"/>
+<area shape="rect" id="node6" href="$d4/d27/a00392.html#aa0bc5b42c9b4999df3f43a546c5c8dfe" title="Shared final operations by all single&#45;premise rules, called in StructuralRules. " alt="" coords="229,64,411,105"/>
+<area shape="rect" id="node3" href="$df/d15/a00416.html#a4766dfcaabdf586d60b9ac9827e41cad" title="Parse a line of input experience. " alt="" coords="469,5,693,47"/>
+<area shape="rect" id="node4" href="$df/d15/a00416.html#a1823f1575021b1ca67e6174923923fbb" title="To process a line of input text. " alt="" coords="741,5,956,47"/>
+<area shape="rect" id="node5" href="$d9/dd6/a00272.html#a1a4b66a6e6cf89d5c2ea7a5923195247" title="Process the next chunk of input data TODO duplicated code with InputWindow#nextInput(). " alt="" coords="1004,5,1205,47"/>
+</map>

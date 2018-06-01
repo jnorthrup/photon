@@ -1,0 +1,26 @@
+<map id="nars.language.Statement.make" name="nars.language.Statement.make">
+<area shape="rect" id="node2" href="$d0/d65/a00360.html#a96d4bf7bb99f48b6496cdb7457bc0e50" title="Check the validity of a potential Statement. " alt="" coords="830,201,1038,243"/>
+<area shape="rect" id="node10" href="$dd/de2/a00320.html#a94badab1e9fc19ebe33b06fcbb169453" title="Try to make a new compound from two components. " alt="" coords="281,217,474,243"/>
+<area shape="rect" id="node11" href="$d3/db8/a00316.html#a5ccaf18d33e722f438944debb2757b34" title="Try to make a new compound from two components. " alt="" coords="547,278,753,305"/>
+<area shape="rect" id="node20" href="$d8/d8e/a00344.html#a808d99e39dfc525841db6b645d118979" title="Try to make a new compound from two components. " alt="" coords="281,369,473,395"/>
+<area shape="rect" id="node22" href="$d4/d8f/a00324.html#a429b8b61ed41ea338c8fc668fb8304f7" title="Try to make a new compound from two components. " alt="" coords="256,267,499,294"/>
+<area shape="rect" id="node23" href="$d6/de1/a00356.html#ae72436d78c25d4735b4201d773dd1901" title="Try to make a new compound from two components. " alt="" coords="551,409,749,435"/>
+<area shape="rect" id="node3" href="$d8/d17/a00304.html#a89000afae8017231889aaa549292d1e0" title="Default constructor. " alt="" coords="1124,71,1328,112"/>
+<area shape="rect" id="node4" href="$dc/d59/a00364.html#ad85f45a7858737445d5158801774ff5f" title="Equal terms have identical name, though not necessarily the same reference. " alt="" coords="1137,267,1315,294"/>
+<area shape="rect" id="node6" href="$d0/d65/a00360.html#ababe6155e2f78e769f76493317e118e0" title="Return the second component of the statement. " alt="" coords="1131,201,1321,243"/>
+<area shape="rect" id="node8" href="$d0/d65/a00360.html#ace4f80751d303c613e467163913bebf5" title="Return the first component of the statement. " alt="" coords="1131,136,1321,177"/>
+<area shape="rect" id="node9" href="$d0/d65/a00360.html#ac56b558891dd2088e0b66b437780c7b7" title="Default constructor. " alt="" coords="1141,5,1311,47"/>
+<area shape="rect" id="node5" href="$dc/d59/a00364.html#a3aad4654016b8615fd4fa8a26668e1db" title="Reporting the name of the current Term. " alt="" coords="1399,369,1594,395"/>
+<area shape="rect" id="node7" href="$d8/d17/a00304.html#a9778c35f9b602bee6ccac6a06809e546" title="list of (direct) components " alt="" coords="1385,169,1608,211"/>
+<area shape="rect" id="node19" href="$df/d03/a00348.html#aa8f6526a59c3d7e578dd76a0eab75a0e" title="Try to make a new set from one component. " alt="" coords="559,222,741,249"/>
+<area shape="rect" id="node12" href="$d8/d17/a00304.html#a9aacee8d6903ff6eb186d37f78569353" title="build a component list from two terms " alt="" coords="801,401,1067,443"/>
+<area shape="rect" id="node13" href="$d3/db8/a00316.html#a20635d9d55f73d39b29a07653cde6bc6" title="Constructor with partial values, called by make. " alt="" coords="847,136,1021,177"/>
+<area shape="rect" id="node14" href="$d0/d65/a00360.html#a7123aba1c8c566f291e2c9b9d147557d" title="Default method to make the nameStr of an image term from given fields. " alt="" coords="833,271,1035,312"/>
+<area shape="rect" id="node15" href="$d4/d27/a00392.html#ac7c5d438820208253d1a2ee59bf80ddc" title="Get a Term for a given name of a Concept or Operator. " alt="" coords="843,336,1025,377"/>
+<area shape="rect" id="node16" href="$d4/d27/a00392.html#a33af7b3d806d32c85390563fec3c6d27" title="Concept bag. " alt="" coords="1115,318,1337,345"/>
+<area shape="rect" id="node17" href="$d6/db8/a00376.html#a011b37fc683db7fb7b41e33712a37d92" title="Get an Item by key. " alt="" coords="1155,369,1297,395"/>
+<area shape="rect" id="node18" href="$d7/ded/a00196.html#afcd1217b7680b073fa51f0d0f159dcea" title="The term is the unique ID of the concept. " alt="" coords="1132,419,1320,446"/>
+<area shape="rect" id="node21" href="$d6/d9c/a00352.html#aaea0f2cc2ca804779d1bf346beb58fa1" title="Try to make a new set from one component. " alt="" coords="561,343,739,370"/>
+<area shape="rect" id="node24" href="$dc/d59/a00364.html#ab9bc1c9cc779c07b09983b41ed8491e1" title="Check the relative order of two Terms. " alt="" coords="831,467,1037,494"/>
+<area shape="rect" id="node25" href="$d6/de1/a00356.html#a5d3eff893c9406991d1c3e81737a408b" title="Constructor with partial values, called by make. " alt="" coords="851,519,1017,560"/>
+</map>

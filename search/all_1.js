@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['abdindcom',['abdIndCom',['../dc/ded/a00252.html#ab124c9151308789ed5f1e5562adeef96',1,'nars::inference::RuleTables']]],
+  ['abduction',['abduction',['../d3/dcc/a00264.html#a0584fe68d00cebcf3e2d6c22ba356c52',1,'nars.inference.TruthFunctions.abduction(TruthHandle v1, TruthHandle v2)'],['../d3/dcc/a00264.html#aae8f32258177ec8061db994ec1b87d49',1,'nars.inference.TruthFunctions.abduction(TruthHandle v1, float reliance)']]],
+  ['abovethreshold',['aboveThreshold',['../dd/da2/a00192.html#ae83b822f3bab4c1831e94d72fc770f58',1,'nars::entity::BudgetValue']]],
+  ['activate',['activate',['../d9/d21/a00240.html#aabac530761ea7ac0f43f0d1ea8d085c8',1,'nars::inference::BudgetFunctions']]],
+  ['activateconcept',['activateConcept',['../d4/d27/a00392.html#a7affdc42dcb55d27d76cf636eab6230f',1,'nars::storage::Memory']]],
+  ['activatedtask',['activatedTask',['../d4/d27/a00392.html#a74e689f6e3be2a74a0bf5f82e25de9f7',1,'nars::storage::Memory']]],
+  ['addbagobserver',['addBagObserver',['../d6/db8/a00376.html#a73a559e1b77e6bc3a7db686816accef2',1,'nars::storage::Bag']]],
+  ['addcomponents',['addComponents',['../d8/d17/a00304.html#afa61c8aa9aac1ad79977ca20c2922cd7',1,'nars::language::CompoundTerm']]],
+  ['addinputchannel',['addInputChannel',['../df/d15/a00416.html#a6d6880a1d58b7aaf23d7c388d270936d',1,'nars::storage::ReasonerBatch']]],
+  ['addoutputchannel',['addOutputChannel',['../df/d15/a00416.html#af0d8bb4c094b539b353d3294cff244fd',1,'nars::storage::ReasonerBatch']]],
+  ['addtotable',['addToTable',['../d7/ded/a00196.html#ad2ad743f666efee084cf306a42f8bf04',1,'nars::entity::Concept']]],
+  ['analogy',['analogy',['../dd/dd7/a00260.html#a50197adbc4f3cd1f109fe4d3629cdf6c',1,'nars.inference.SyllogisticRules.analogy()'],['../d3/dcc/a00264.html#a924b3cc3835f75df63afb5d35ce71693',1,'nars.inference.TruthFunctions.analogy()']]],
+  ['and',['and',['../db/d12/a00268.html#a46d2f048b6ba77afc60dcf49734f23c7',1,'nars::inference::UtilityFunctions']]],
+  ['anonymousanalogy',['anonymousAnalogy',['../dc/ded/a00252.html#a36c5edea4555540aa0bec9a54824654a',1,'nars::inference::RuleTables']]],
+  ['append',['append',['../d0/dcd/a00280.html#acb473be6e5d774c10781bc8e74453459',1,'nars.io.IInferenceRecorder.append()'],['../dd/dea/a00408.html#ab5c0e3056cd7515c1f49900201eea8c1',1,'nars.storage.NullInferenceRecorder.append()']]],
+  ['applysubstitute',['applySubstitute',['../d8/d17/a00304.html#a82aa08a45653fbb88523fe2497469434',1,'nars::language::CompoundTerm']]],
+  ['argument_5fseparator',['ARGUMENT_SEPARATOR',['../db/da2/a00300.html#ab78cb07d148cc233baf7f43ee8d302e9',1,'nars::io::Symbols']]],
+  ['argumentstolist',['argumentsToList',['../d8/d17/a00304.html#a9aacee8d6903ff6eb186d37f78569353',1,'nars::language::CompoundTerm']]],
+  ['asstring',['asString',['../dd/dc1/a00212.html#a7d3ab0677cec75517965f3907fb85792',1,'nars.entity.Sentence.asString()'],['../df/d15/a00416.html#ab08b1d98b8efca20e2a96b48681a39f2',1,'nars.storage.ReasonerBatch.asString()']]],
+  ['asymmetricasymmetric',['asymmetricAsymmetric',['../dc/ded/a00252.html#a34927349efcf87db97d23c60983b115b',1,'nars::inference::RuleTables']]],
+  ['asymmetricsymmetric',['asymmetricSymmetric',['../dc/ded/a00252.html#a4f61a7c2dc75c9da475030894eac0735',1,'nars::inference::RuleTables']]],
+  ['aveari',['aveAri',['../d9/d21/a00240.html#a5df1e2954d5ce62f08cbd4be287ddaba',1,'nars::inference::BudgetFunctions']]],
+  ['avegeo',['aveGeo',['../db/d12/a00268.html#ae9f34c27ee5675fa2b97f2def9e1fb99',1,'nars::inference::UtilityFunctions']]],
+  ['averagepriority',['averagePriority',['../d6/db8/a00376.html#a5ff587f448a7a832732b4d86eb9a7642',1,'nars::storage::Bag']]]
+];

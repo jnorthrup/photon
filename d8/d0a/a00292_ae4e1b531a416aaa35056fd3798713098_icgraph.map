@@ -1,0 +1,14 @@
+<map id="nars.io.StringParser.isRelation" name="nars.io.StringParser.isRelation">
+<area shape="rect" id="node2" href="$d8/d0a/a00292.html#aa579e2d90aa176b8fa99af6fda484bf7" title="Check CompoundTerm closer symbol. " alt="" coords="254,89,443,115"/>
+<area shape="rect" id="node12" href="$d8/d0a/a00292.html#a841830a5d2348da4024f4db083b37c2a" title="locate the top&#45;level relation in a statement " alt="" coords="497,115,656,156"/>
+<area shape="rect" id="node13" href="$d8/d0a/a00292.html#ae9b91054186389c3930bc2aaecd4aee8" title="Check CompoundTerm opener symbol. " alt="" coords="252,38,445,65"/>
+<area shape="rect" id="node3" href="$d8/d0a/a00292.html#aa197c4c362373f0e74165794ba7b033a" title="Locate the first top&#45;level separator in a CompoundTerm. " alt="" coords="493,31,660,72"/>
+<area shape="rect" id="node4" href="$d8/d0a/a00292.html#a9b9bc5f94ac6aaa86c3d9c2bcd21c332" title="Parse a String into the argument get of a CompoundTerm. " alt="" coords="708,15,881,56"/>
+<area shape="rect" id="node5" href="$d8/d0a/a00292.html#a5c31494d6f7862dcf15a4d5716b6200e" title="Top&#45;level method that parse a Term in general, which may recursively call itself. ..." alt="" coords="1151,42,1353,69"/>
+<area shape="rect" id="node11" href="$d8/d0a/a00292.html#a944bb677dff9f232ce6b896c853e24e0" title="Parse a String to create a CompoundTerm. " alt="" coords="929,69,1103,111"/>
+<area shape="rect" id="node6" href="$d8/d0a/a00292.html#a75b446999d71c676a9915ecc75077a7d" title="Enter a new Task in String into the memory, called from InputWindow or locally. " alt="" coords="1401,13,1604,39"/>
+<area shape="rect" id="node10" href="$d8/d0a/a00292.html#a7c129938c8d721e3db0a9804988f0588" title="Parse a String to create a Statement. " alt="" coords="1416,64,1589,105"/>
+<area shape="rect" id="node7" href="$df/d15/a00416.html#a4766dfcaabdf586d60b9ac9827e41cad" title="Parse a line of input experience. " alt="" coords="1652,5,1876,47"/>
+<area shape="rect" id="node8" href="$df/d15/a00416.html#a1823f1575021b1ca67e6174923923fbb" title="To process a line of input text. " alt="" coords="1924,5,2139,47"/>
+<area shape="rect" id="node9" href="$d9/dd6/a00272.html#a1a4b66a6e6cf89d5c2ea7a5923195247" title="Process the next chunk of input data TODO duplicated code with InputWindow#nextInput(). " alt="" coords="2187,5,2388,47"/>
+</map>

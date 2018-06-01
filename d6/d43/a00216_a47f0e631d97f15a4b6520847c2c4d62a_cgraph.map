@@ -1,0 +1,8 @@
+<map id="nars.entity.Stamp.make" name="nars.entity.Stamp.make">
+<area shape="rect" id="node2" href="$d6/d43/a00216.html#a546d6921dc3e1e4a9d1b80bf7f0356b4" title="Get a number from the evidentialBase by index, called in this class only. " alt="" coords="230,5,377,32"/>
+<area shape="rect" id="node4" href="$d6/d43/a00216.html#ab6efde6c34037b63fc165d1bf95277a2" title="evidentialBase baseLength " alt="" coords="215,57,392,98"/>
+<area shape="rect" id="node5" href="$d6/d43/a00216.html#a959f21fb20f72cfd277d994332e862c3" title="Generate a new stamp, with a new serial number, for a new Task. " alt="" coords="220,123,387,149"/>
+<area shape="rect" id="node3" href="$d6/d43/a00216.html#ac84c7f26ab8e0740bab4335f33396e2c" title="serial numbers " alt="" coords="440,35,675,61"/>
+<area shape="rect" id="node6" href="$d6/d43/a00216.html#a7c3a7c21f049a6dfe9dbc088caae4abf" title="serial number, for the whole system TODO : should it really be static? or a Stamp be a field in Reaso..." alt="" coords="462,101,653,142"/>
+<area shape="rect" id="node7" href="$d6/d43/a00216.html#a8b3fd059e38dcb039a01ab991ec6614f" title="nars.entity.Stamp.setCurrent\lSerial" alt="" coords="462,166,653,207"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="nars.inference.TruthFunctions.reduceConjunction" name="nars.inference.TruthFunctions.reduceConjunction">
+<area shape="rect" id="node2" href="$d3/dcc/a00264.html#a8f6892d4f41dfa39a4868e5bc65540ce" title="{&lt;S ==&gt; M&gt;, &lt;M ==&gt; P&gt;} |&#45; &lt;S ==&gt; P&gt; " alt="" coords="298,56,553,83"/>
+<area shape="rect" id="node5" href="$d3/dcc/a00264.html#a633b7e5cc37d6e4890e50e522ffd5b00" title="{&lt;M &#45;&#45;&gt; S&gt;, &lt;M &lt;&#45;&gt; P&gt;} |&#45; &lt;M &#45;&#45;&gt; (S&amp;P)&gt; " alt="" coords="292,5,559,32"/>
+<area shape="rect" id="node6" href="$d3/dcc/a00264.html#aa0c9dd82960dbc5aa4875fec1c4bd1c6" title="{A} |&#45; (–A) " alt="" coords="301,107,549,133"/>
+<area shape="rect" id="node3" href="$db/d12/a00268.html#a46d2f048b6ba77afc60dcf49734f23c7" title="A function where the output is conjunctively determined by the inputs. " alt="" coords="607,5,831,32"/>
+<area shape="rect" id="node4" href="$d7/d40/a00236.html#a9eac33f2495441c77911a8581a5bbe61" title="Get the frequency value. " alt="" coords="633,57,805,98"/>
+</map>

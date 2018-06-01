@@ -1,0 +1,5 @@
+<map id="nars.inference.TruthFunctions.conversion" name="nars.inference.TruthFunctions.conversion">
+<area shape="rect" id="node2" href="$db/d12/a00268.html#a46d2f048b6ba77afc60dcf49734f23c7" title="A function where the output is conjunctively determined by the inputs. " alt="" coords="317,5,541,32"/>
+<area shape="rect" id="node3" href="$d7/d40/a00236.html#a9eac33f2495441c77911a8581a5bbe61" title="Get the frequency value. " alt="" coords="343,57,515,98"/>
+<area shape="rect" id="node4" href="$db/d12/a00268.html#a957a91e3b91d4a4043c3959838c370f2" title="A function to convert weight to confidence. " alt="" coords="316,123,543,149"/>
+</map>

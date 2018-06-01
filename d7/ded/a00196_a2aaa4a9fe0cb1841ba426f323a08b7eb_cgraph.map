@@ -1,0 +1,10 @@
+<map id="nars.entity.Concept.Concept" name="nars.entity.Concept.Concept">
+<area shape="rect" id="node2" href="$dc/d59/a00364.html#a3aad4654016b8615fd4fa8a26668e1db" title="Reporting the name of the current Term. " alt="" coords="254,5,449,32"/>
+<area shape="rect" id="node3" href="$d7/ded/a00196.html#a7b53e7a133346ec712f8cf21ae7d32e3" title="nars.entity.Concept.setBeliefs" alt="" coords="252,56,451,83"/>
+<area shape="rect" id="node4" href="$d7/ded/a00196.html#ab59fb876194e6c9e57e2aa057ad32d45" title="nars.entity.Concept.setMemory" alt="" coords="249,107,454,133"/>
+<area shape="rect" id="node5" href="$d7/ded/a00196.html#a0ace4936957a47743a736723c6aba81c" title="nars.entity.Concept.setQuestions" alt="" coords="243,157,460,184"/>
+<area shape="rect" id="node6" href="$d7/ded/a00196.html#a515800190f2b1251dcbb4b08e41a68c6" title="nars.entity.Concept.setTask\lLinks" alt="" coords="258,209,445,250"/>
+<area shape="rect" id="node7" href="$d7/ded/a00196.html#a6318f8e6f949682047046409edba34db" title="nars.entity.Concept.setTerm" alt="" coords="257,275,445,301"/>
+<area shape="rect" id="node8" href="$d7/ded/a00196.html#a33217e91794c971fa7414df245db2819" title="nars.entity.Concept.setTerm\lLinks" alt="" coords="257,326,445,367"/>
+<area shape="rect" id="node9" href="$d7/ded/a00196.html#a2f8ecbb4d2c3bd7551128899f6e70a0a" title="nars.entity.Concept.setTerm\lLinkTemplates" alt="" coords="257,391,445,433"/>
+</map>

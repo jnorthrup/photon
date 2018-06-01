@@ -1,0 +1,17 @@
+<map id="nars.inference.BudgetFunctions.compoundBackward" name="nars.inference.BudgetFunctions.compoundBackward">
+<area shape="rect" id="node2" href="$d9/d21/a00240.html#a6c45e643d143a28d7514f3487fbfa494" title="Common processing for all inference step. " alt="" coords="324,223,573,265"/>
+<area shape="rect" id="node16" href="$dc/d59/a00364.html#ae14632d1d25bcde8d6698ea0b58eb19a" title="The syntactic complexity, for constant automic Term, is 1. " alt="" coords="336,289,561,316"/>
+<area shape="rect" id="node3" href="$db/d12/a00268.html#a46d2f048b6ba77afc60dcf49734f23c7" title="A function where the output is conjunctively determined by the inputs. " alt="" coords="633,5,857,32"/>
+<area shape="rect" id="node4" href="$d9/d21/a00240.html#a5df1e2954d5ce62f08cbd4be287ddaba" title="A function where the output is the arithmetic average the inputs. " alt="" coords="621,56,868,83"/>
+<area shape="rect" id="node5" href="$dc/d31/a00208.html#a54fc0a370b847dd77c0a698c765e6e55" title="The budget of the Item, consisting of 3 numbers. " alt="" coords="919,347,1095,373"/>
+<area shape="rect" id="node6" href="$d9/dd5/a00432.html#a672e3b935dca6df8c7e47c6c69e0fc66" title="nars.storage.WorkSpace.get\lCurrentBeliefLink" alt="" coords="651,158,839,199"/>
+<area shape="rect" id="node7" href="$d9/dd5/a00432.html#aefcc9dfcebdc79cd7e099afd4553b083" title="nars.storage.WorkSpace.get\lCurrentTask" alt="" coords="651,223,839,265"/>
+<area shape="rect" id="node8" href="$d9/dd5/a00432.html#a585409e59ebb973c820683bc556ebe37" title="nars.storage.WorkSpace.get\lCurrentTaskLink" alt="" coords="651,289,839,330"/>
+<area shape="rect" id="node9" href="$dc/d31/a00208.html#adbb21c1891722e30c1d6cfaf5fee18ee" title="Get durability value. " alt="" coords="649,107,840,133"/>
+<area shape="rect" id="node11" href="$dc/d31/a00208.html#a97b35888ceaad90e7a428701051c51d7" title="Get priority value. " alt="" coords="657,405,833,432"/>
+<area shape="rect" id="node13" href="$dc/d31/a00208.html#a786a1e14b3904092f4a3b2fa4faa08a7" title="Increase priority value. " alt="" coords="657,463,832,489"/>
+<area shape="rect" id="node10" href="$dd/da2/a00192.html#ab0e0dc2172d3fab6390670acb68da1a6" title="Get durability value. " alt="" coords="916,99,1099,141"/>
+<area shape="rect" id="node12" href="$dd/da2/a00192.html#a1e7b6826531f03f792f3516ce0e97ac3" title="Get priority value. " alt="" coords="916,398,1099,439"/>
+<area shape="rect" id="node14" href="$dd/da2/a00192.html#a088e64163126211239b6afd25a9cdca3" title="Increase priority value by a percentage of the remaining range. " alt="" coords="916,463,1099,505"/>
+<area shape="rect" id="node15" href="$db/d12/a00268.html#acaa4ebc080bc00d0e03be32d51d29e40" title="A function where the output is disjunctively determined by the inputs. " alt="" coords="1147,471,1361,497"/>
+</map>

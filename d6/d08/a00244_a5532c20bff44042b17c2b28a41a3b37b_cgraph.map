@@ -1,0 +1,8 @@
+<map id="nars.inference.CompositionalRules.reduceConjunctionNeg" name="nars.inference.CompositionalRules.reduceConjunctionNeg">
+<area shape="rect" id="node2" href="$d3/dcc/a00264.html#aa0c9dd82960dbc5aa4875fec1c4bd1c6" title="{A} |&#45; (–A) " alt="" coords="541,5,789,32"/>
+<area shape="rect" id="node4" href="$d3/dcc/a00264.html#a2d096577f005400d0c78d9a7818396f6" title="{(–, (&amp;&amp;, A, B)), B} |&#45; (–, A) " alt="" coords="245,53,484,94"/>
+<area shape="rect" id="node3" href="$d7/d40/a00236.html#a9eac33f2495441c77911a8581a5bbe61" title="Get the frequency value. " alt="" coords="873,41,1045,82"/>
+<area shape="rect" id="node5" href="$d3/dcc/a00264.html#a633b7e5cc37d6e4890e50e522ffd5b00" title="{&lt;M &#45;&#45;&gt; S&gt;, &lt;M &lt;&#45;&gt; P&gt;} |&#45; &lt;M &#45;&#45;&gt; (S&amp;P)&gt; " alt="" coords="532,56,799,83"/>
+<area shape="rect" id="node7" href="$d3/dcc/a00264.html#a8f6892d4f41dfa39a4868e5bc65540ce" title="{&lt;S ==&gt; M&gt;, &lt;M ==&gt; P&gt;} |&#45; &lt;S ==&gt; P&gt; " alt="" coords="538,107,793,133"/>
+<area shape="rect" id="node6" href="$db/d12/a00268.html#a46d2f048b6ba77afc60dcf49734f23c7" title="A function where the output is conjunctively determined by the inputs. " alt="" coords="847,107,1071,133"/>
+</map>

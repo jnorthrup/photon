@@ -1,0 +1,14 @@
+<map id="nars.storage.TermLinkBag.takeOut" name="nars.storage.TermLinkBag.takeOut">
+<area shape="rect" id="node2" href="$de/dc2/a00228.html#afea026df0afd74986f940d10a7875a2f" title="To check whether a TaskLink should use a TermLink, return false if they interacted recently..." alt="" coords="285,213,459,240"/>
+<area shape="rect" id="node12" href="$d6/db8/a00376.html#a64b0b75c54e6882a28702d7810094656" title="Put an item back into the itemTable. " alt="" coords="279,265,465,306"/>
+<area shape="rect" id="node13" href="$d6/db8/a00376.html#a775c0537431b865015facac73e698891" title="Choose an Item according to priority distribution and take it out of the Bag. " alt="" coords="279,330,465,371"/>
+<area shape="rect" id="node3" href="$dc/d59/a00364.html#ad85f45a7858737445d5158801774ff5f" title="Equal terms have identical name, though not necessarily the same reference. " alt="" coords="521,5,699,32"/>
+<area shape="rect" id="node5" href="$de/dc2/a00228.html#a301ad3bfcca225e7c8122bc6d21c4a25" title="The number of TermLinks remembered. " alt="" coords="529,57,691,98"/>
+<area shape="rect" id="node6" href="$dc/d31/a00208.html#ab5c9fbb171f325844966b496010acf60" title="The key of the Item, unique in a Bag. " alt="" coords="531,123,689,149"/>
+<area shape="rect" id="node7" href="$de/dc2/a00228.html#a2f2761c77d12d0bec9201f92fb4c3e08" title="Remember the TermLinks that has been used recently with this TaskLink. " alt="" coords="529,174,691,215"/>
+<area shape="rect" id="node8" href="$de/dc2/a00228.html#a7e80b0f649c974b8a563c5b34cf47ecf" title="Remember the time when each TermLink is used with this TaskLink. " alt="" coords="529,239,691,281"/>
+<area shape="rect" id="node9" href="$de/dc2/a00228.html#a60ac6941518e78c1f0049b90437b9053" title="The Task linked. " alt="" coords="529,305,691,346"/>
+<area shape="rect" id="node10" href="$d0/d53/a00232.html#af9a7e48ccb971558fafc001029463cf0" title="The linked Term. " alt="" coords="513,371,707,397"/>
+<area shape="rect" id="node11" href="$de/dc2/a00228.html#a4dc71072f6d6660fc7499fcdbeeceee6" title="nars.entity.TaskLink.set\lCounter" alt="" coords="529,422,691,463"/>
+<area shape="rect" id="node4" href="$dc/d59/a00364.html#a3aad4654016b8615fd4fa8a26668e1db" title="Reporting the name of the current Term. " alt="" coords="755,5,949,32"/>
+</map>

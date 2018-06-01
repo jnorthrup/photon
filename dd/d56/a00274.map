@@ -1,0 +1,29 @@
+<map id="nars.io.ExperienceWriter" name="nars.io.ExperienceWriter">
+<area shape="rect" id="node2" href="$da/ddc/a00288.html" title="An interface to be implemented in all output channel. " alt="" coords="1935,119,2087,145"/>
+<area shape="rect" id="node3" href="$df/d15/a00416.html" title="Created by jim on 1/12/16. " alt="" coords="1917,308,2105,335"/>
+<area shape="rect" id="node5" href="$d4/d27/a00392.html" title="The memory of the system. " alt="" coords="2343,679,2488,705"/>
+<area shape="rect" id="node44" href="$d7/ded/a00196.html" title="A concept contains information associated with a term, including directly and indirectly related task..." alt="" coords="2644,1001,2780,1028"/>
+<area shape="rect" id="node6" href="$d9/dd5/a00432.html" title="Created by jim on 1/14/16. " alt="" coords="671,792,837,819"/>
+<area shape="rect" id="node23" href="$d6/db8/a00376.html" title="A Bag is a storage with a constant capacity and maintains an internal priority distribution for retri..." alt="" coords="1076,1185,1239,1226"/>
+<area shape="rect" id="node7" href="$d0/d53/a00232.html" title="A link between a compound term and a component term. " alt="" coords="1087,1047,1228,1073"/>
+<area shape="rect" id="node42" href="$de/dc2/a00228.html" title="Reference to a Task. " alt="" coords="1941,892,2081,919"/>
+<area shape="rect" id="node8" href="$dc/d31/a00208.html" title="An item is an object that can be put into a Bag, to participate in the resource competition of the sy..." alt="" coords="697,1248,811,1275"/>
+<area shape="rect" id="node32" href="$d5/ddf/a00224.html" title="A task to be processed, consists of a Sentence and a BudgetValue. " alt="" coords="1525,795,1641,821"/>
+<area shape="rect" id="node10" href="$dd/da2/a00192.html" title="A triple of priority (current), durability (decay), and quality (long&#45;term average). " alt="" coords="285,1276,447,1303"/>
+<area shape="rect" id="node15" href="$dc/d59/a00364.html" title="Term is the basic component of Narsese, and the object of processing in NARS. " alt="" coords="685,739,823,765"/>
+<area shape="rect" id="node34" href="$dd/dc1/a00212.html" title="A Sentence is an abstract class, mainly containing a Term, a TruthValue, and a Stamp. " alt="" coords="1086,565,1229,592"/>
+<area shape="rect" id="node36" href="$d7/d40/a00236.html" title="Frequency and confidence. " alt="" coords="679,560,829,587"/>
+<area shape="rect" id="node38" href="$d6/d43/a00216.html" title="Each Sentence has a time stamp, consisting the following components: (1) The creation time of the sen..." alt="" coords="691,509,817,536"/>
+<area shape="rect" id="node21" href="$d2/d56/a00384.html" title="Contains Concepts. " alt="" coords="1926,1007,2097,1033"/>
+<area shape="rect" id="node22" href="$d6/db8/a00376.html" title="nars.storage.Bag\&lt; Concept \&gt;" alt="" coords="1486,1149,1681,1176"/>
+<area shape="rect" id="node31" href="$d6/db8/a00376.html" title="nars.storage.Bag\&lt; Task \&gt;" alt="" coords="1496,1200,1671,1227"/>
+<area shape="rect" id="node47" href="$d6/db8/a00376.html" title="nars.storage.Bag\&lt; TaskLink \&gt;" alt="" coords="1484,1251,1683,1277"/>
+<area shape="rect" id="node50" href="$d6/db8/a00376.html" title="nars.storage.Bag\&lt; TermLink \&gt;" alt="" coords="1484,1301,1683,1328"/>
+<area shape="rect" id="node25" href="$d8/ddd/a00380.html" title="nars.storage.BagObserver" alt="" coords="667,1133,841,1160"/>
+<area shape="rect" id="node26" href="$d9/dc1/a00388.html" title="A pseudo&#45;random number generator, used in Bag. " alt="" coords="675,1299,833,1325"/>
+<area shape="rect" id="node29" href="$d0/dcd/a00280.html" title="nars.io.IInferenceRecorder" alt="" coords="1923,409,2099,436"/>
+<area shape="rect" id="node30" href="$d9/d95/a00400.html" title="New tasks that contain new Term. " alt="" coords="1919,1155,2103,1181"/>
+<area shape="rect" id="node46" href="$dc/df3/a00424.html" title="TaskLinkBag contains links to tasks. " alt="" coords="2129,1232,2304,1259"/>
+<area shape="rect" id="node49" href="$d4/dd3/a00428.html" title="Contains TermLinks to relevant (compound or component) Terms. " alt="" coords="2129,1280,2304,1307"/>
+<area shape="rect" id="node51" href="$d1/d72/a00204.html" title="nars.entity.EntityObserver" alt="" coords="2328,1403,2503,1429"/>
+</map>

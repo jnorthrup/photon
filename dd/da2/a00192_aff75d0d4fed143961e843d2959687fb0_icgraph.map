@@ -1,0 +1,6 @@
+<map id="nars.entity.BudgetValue.toStringBrief" name="nars.entity.BudgetValue.toStringBrief">
+<area shape="rect" id="node2" href="$dc/d31/a00208.html#a0560704e74c1856af8e98e862d55d626" title="Return a String representation of the Item after simplification. " alt="" coords="229,49,392,90"/>
+<area shape="rect" id="node3" href="$d7/ded/a00196.html#a121514592016f7350b5a741db6465798" title="called from NARSBatch " alt="" coords="440,5,653,32"/>
+<area shape="rect" id="node4" href="$d5/ddf/a00224.html#a73b96cd17fd93eeab0cc94bd36f25e66" title="Get a String representation of the Task. " alt="" coords="464,56,629,83"/>
+<area shape="rect" id="node5" href="$d6/db8/a00376.html#a4106abcc906c5ae1ce6828b0a88a1cca" title="Collect Bag content into a String for display. " alt="" coords="455,107,638,149"/>
+</map>

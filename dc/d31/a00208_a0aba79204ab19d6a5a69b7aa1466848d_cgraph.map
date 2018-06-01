@@ -1,0 +1,4 @@
+<map id="nars.entity.Item.incDurability" name="nars.entity.Item.incDurability">
+<area shape="rect" id="node2" href="$dd/da2/a00192.html#a0ea64f8c378c0573d61182538137e21c" title="Increase durability value by a percentage of the remaining range. " alt="" coords="243,5,425,47"/>
+<area shape="rect" id="node3" href="$db/d12/a00268.html#acaa4ebc080bc00d0e03be32d51d29e40" title="A function where the output is disjunctively determined by the inputs. " alt="" coords="473,13,688,39"/>
+</map>

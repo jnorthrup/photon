@@ -1,0 +1,8 @@
+<map id="nars.entity.Sentence.toKey" name="nars.entity.Sentence.toKey">
+<area shape="rect" id="node2" href="$dd/dc1/a00212.html#ad1ded9a02cae3557948d05530cd4d37e" title="The content of a Sentence is a Term. " alt="" coords="234,5,398,47"/>
+<area shape="rect" id="node3" href="$dd/dc1/a00212.html#a68b153a51a5db6a4127b66158227697f" title="The punctuation also indicates the type of the Sentence: Judgment, Question, or Goal. " alt="" coords="234,71,398,112"/>
+<area shape="rect" id="node4" href="$dd/dc1/a00212.html#a9f69b4fef64c81abad21404946cd41f9" title="The truth value of Judgment. " alt="" coords="234,136,398,177"/>
+<area shape="rect" id="node5" href="$d7/d40/a00236.html#a5af8b2fe37987ba1e8396ec1aad38e90" title="A simplified String representation of a TruthValue, where each factor is accruate to 1%..." alt="" coords="233,201,399,243"/>
+<area shape="rect" id="node6" href="$d7/d40/a00236.html#a9eac33f2495441c77911a8581a5bbe61" title="Get the frequency value. " alt="" coords="447,168,619,209"/>
+<area shape="rect" id="node7" href="$d7/d40/a00236.html#a68ca7d92e9ea20d2a9a9f578ad7b681c" title="The confidence factor of the truth value. " alt="" coords="447,233,619,275"/>
+</map>

@@ -1,0 +1,27 @@
+<map id="nars.entity.Concept" name="nars.entity.Concept">
+<area shape="rect" id="node6" href="$d4/d27/a00392.html" title="The memory of the system. " alt="" coords="2535,623,2680,649"/>
+<area shape="rect" id="node2" href="$dc/d31/a00208.html" title="An item is an object that can be put into a Bag, to participate in the resource competition of the sy..." alt="" coords="551,948,664,975"/>
+<area shape="rect" id="node9" href="$d0/d53/a00232.html" title="A link between a compound term and a component term. " alt="" coords="1355,271,1497,297"/>
+<area shape="rect" id="node21" href="$d6/db8/a00376.html" title="A Bag is a storage with a constant capacity and maintains an internal priority distribution for retri..." alt="" coords="929,1178,1092,1219"/>
+<area shape="rect" id="node30" href="$d5/ddf/a00224.html" title="A task to be processed, consists of a Sentence and a BudgetValue. " alt="" coords="1800,777,1916,804"/>
+<area shape="rect" id="node4" href="$dd/da2/a00192.html" title="A triple of priority (current), durability (decay), and quality (long&#45;term average). " alt="" coords="153,975,315,1001"/>
+<area shape="rect" id="node40" href="$df/d15/a00416.html" title="Created by jim on 1/12/16. " alt="" coords="2783,120,2971,147"/>
+<area shape="rect" id="node7" href="$d9/dd5/a00432.html" title="Created by jim on 1/14/16. " alt="" coords="524,1311,691,1337"/>
+<area shape="rect" id="node43" href="$de/dc2/a00228.html" title="Reference to a Task. " alt="" coords="2195,391,2335,417"/>
+<area shape="rect" id="node13" href="$dc/d59/a00364.html" title="Term is the basic component of Narsese, and the object of processing in NARS. " alt="" coords="942,613,1079,640"/>
+<area shape="rect" id="node32" href="$dd/dc1/a00212.html" title="A Sentence is an abstract class, mainly containing a Term, a TruthValue, and a Stamp. " alt="" coords="1355,693,1497,720"/>
+<area shape="rect" id="node34" href="$d7/d40/a00236.html" title="Frequency and confidence. " alt="" coords="935,687,1086,713"/>
+<area shape="rect" id="node36" href="$d6/d43/a00216.html" title="Each Sentence has a time stamp, consisting the following components: (1) The creation time of the sen..." alt="" coords="948,289,1073,316"/>
+<area shape="rect" id="node19" href="$d2/d56/a00384.html" title="Contains Concepts. " alt="" coords="1976,1269,2147,1296"/>
+<area shape="rect" id="node20" href="$d6/db8/a00376.html" title="nars.storage.Bag\&lt; Concept \&gt;" alt="" coords="1329,1273,1523,1300"/>
+<area shape="rect" id="node29" href="$d6/db8/a00376.html" title="nars.storage.Bag\&lt; Task \&gt;" alt="" coords="1339,1223,1513,1249"/>
+<area shape="rect" id="node47" href="$d6/db8/a00376.html" title="nars.storage.Bag\&lt; TaskLink \&gt;" alt="" coords="1327,1121,1525,1148"/>
+<area shape="rect" id="node50" href="$d6/db8/a00376.html" title="nars.storage.Bag\&lt; TermLink \&gt;" alt="" coords="1327,1172,1525,1199"/>
+<area shape="rect" id="node23" href="$d8/ddd/a00380.html" title="nars.storage.BagObserver" alt="" coords="520,1244,695,1271"/>
+<area shape="rect" id="node24" href="$d9/dc1/a00388.html" title="A pseudo&#45;random number generator, used in Bag. " alt="" coords="528,1143,687,1169"/>
+<area shape="rect" id="node27" href="$d0/dcd/a00280.html" title="nars.io.IInferenceRecorder" alt="" coords="2177,1208,2353,1235"/>
+<area shape="rect" id="node28" href="$d9/d95/a00400.html" title="New tasks that contain new Term. " alt="" coords="1969,1183,2153,1209"/>
+<area shape="rect" id="node46" href="$dc/df3/a00424.html" title="TaskLinkBag contains links to tasks. " alt="" coords="1771,1043,1945,1069"/>
+<area shape="rect" id="node49" href="$d4/dd3/a00428.html" title="Contains TermLinks to relevant (compound or component) Terms. " alt="" coords="1771,1164,1945,1191"/>
+<area shape="rect" id="node51" href="$d1/d72/a00204.html" title="nars.entity.EntityObserver" alt="" coords="1771,828,1945,855"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="nars.entity.Concept.play" name="nars.entity.Concept.play">
+<area shape="rect" id="node2" href="$d7/ded/a00196.html#a2b2088a51d2519fe76c791b6c6945409" title="Collect direct isBelief, questions, and goals for display. " alt="" coords="228,23,409,65"/>
+<area shape="rect" id="node5" href="$d7/ded/a00196.html#a50573f138f707ce99b5b06635dc6d425" title="The display window. " alt="" coords="223,89,415,130"/>
+<area shape="rect" id="node6" href="$d1/d72/a00204.html#ac62aeea4d8b2ba99f935a2380b8e9407" title="Display the content of the concept. " alt="" coords="217,155,420,181"/>
+<area shape="rect" id="node3" href="$d7/ded/a00196.html#a2f4b33640b909073b53b6b0323d30146" title="Sentences directly made about the term, with non&#45;future tense. " alt="" coords="477,5,676,32"/>
+<area shape="rect" id="node4" href="$d7/ded/a00196.html#abf2fe7f5a84583c67322faa6bdfb9f7d" title="Question directly asked about the term. " alt="" coords="468,56,685,83"/>
+</map>

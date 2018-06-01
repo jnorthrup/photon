@@ -1,0 +1,98 @@
+<map id="nars.inference.RuleTables.detachmentWithVar" name="nars.inference.RuleTables.detachmentWithVar">
+<area shape="rect" id="node2" href="$dd/dc1/a00212.html#a721f626ab83f34dc2e6858a4eede7102" title="Clone the Sentence. " alt="" coords="1869,358,2047,385"/>
+<area shape="rect" id="node3" href="$dd/dc1/a00212.html#ad1ded9a02cae3557948d05530cd4d37e" title="The content of a Sentence is a Term. " alt="" coords="2445,400,2609,441"/>
+<area shape="rect" id="node15" href="$d8/d17/a00304.html#acedae916705e9fa1669391a7d728b840" title="get a component by index " alt="" coords="1215,459,1496,486"/>
+<area shape="rect" id="node16" href="$dc/ded/a00252.html#acacd7cd6f866a576bfad37e0003df853" title="{&lt;&lt;M &#45;&#45;&gt; S&gt; ==&gt; &lt;M &#45;&#45;&gt; P&gt;&gt;, &lt;M &#45;&#45;&gt; S&gt;} |&#45; &lt;M &#45;&#45;&gt; P&gt; {&lt;&lt;M &#45;&#45;&gt; S&gt; ==&gt; &lt;M &#45;&#45;&gt; P&gt;&gt;, &lt;M &#45;&#45;&gt; P&gt;} |&#45; &lt;M &#45;&#45;&gt; ..." alt="" coords="300,2246,547,2273"/>
+<area shape="rect" id="node18" href="$d4/d27/a00392.html#a26eda4f00b333b706b4e3d069fdf1508" title="The selected Task. " alt="" coords="1236,881,1475,907"/>
+<area shape="rect" id="node19" href="$d5/ddf/a00224.html#ab140cb553a6cf40b07093d1df283567f" title="The sentence of the Task. " alt="" coords="1571,1017,1764,1043"/>
+<area shape="rect" id="node20" href="$d4/d27/a00392.html#aae366ea198c2340fef786120d5c2163b" title="The selected belief. " alt="" coords="1250,1236,1461,1277"/>
+<area shape="rect" id="node69" href="$d0/d65/a00360.html#ababe6155e2f78e769f76493317e118e0" title="Return the second component of the statement. " alt="" coords="1261,2508,1450,2549"/>
+<area shape="rect" id="node71" href="$d0/d65/a00360.html#ace4f80751d303c613e467163913bebf5" title="Return the first component of the statement. " alt="" coords="1261,2287,1450,2328"/>
+<area shape="rect" id="node74" href="$dc/d59/a00364.html#ad85f45a7858737445d5158801774ff5f" title="Equal terms have identical name, though not necessarily the same reference. " alt="" coords="1266,2585,1445,2611"/>
+<area shape="rect" id="node78" href="$d6/d08/a00244.html#ae7906cfca35e9c7568ace240aba808a0" title="{&lt;M &#45;&#45;&gt; S&gt;, &lt;C ==&gt; &lt;M &#45;&#45;&gt; P&gt;&gt;} |&#45; &lt;(&amp;&amp;, &lt;#x &#45;&#45;&gt; S&gt;, C) ==&gt; &lt;#x &#45;&#45;&gt; P&gt;&gt; {&lt;M &#45;&#45;&gt; S&gt;, (&amp;&amp;, C, &lt;M &#45;&#45;&gt; P&gt;)} |&#45; (&amp;&amp;, C, &lt;&lt;#x &#45;&#45;&gt; S&gt; ==&gt; &lt;#x &#45;&#45;&gt; P&gt;&gt;) " alt="" coords="611,1353,802,1395"/>
+<area shape="rect" id="node89" href="$dd/dc1/a00212.html#a7d95d60caaf4c895559182a7eb2ff71e" title="Distinguish Judgment from Goal (&quot;instanceof Judgment&quot; doesn&#39;t work) " alt="" coords="910,1419,1123,1446"/>
+<area shape="rect" id="node96" href="$dc/d59/a00364.html#a88297bdbbfb5f3e292783647b14f0c70" title="Check whether the current Term can name a Concept. " alt="" coords="321,2718,525,2745"/>
+<area shape="rect" id="node97" href="$d8/d21/a00368.html#a406d05d0fb48984cd673b499ece31245" title="To unify two terms. " alt="" coords="330,2769,517,2795"/>
+<area shape="rect" id="node4" href="$dd/dc1/a00212.html#a68b153a51a5db6a4127b66158227697f" title="The punctuation also indicates the type of the Sentence: Judgment, Question, or Goal. " alt="" coords="2445,1513,2609,1555"/>
+<area shape="rect" id="node5" href="$dd/dc1/a00212.html#ac0ed749c50e55120d5b63219ed7eb082" title="Partial record of the derivation path. " alt="" coords="2167,995,2331,1036"/>
+<area shape="rect" id="node6" href="$dd/dc1/a00212.html#a9f69b4fef64c81abad21404946cd41f9" title="The truth value of Judgment. " alt="" coords="2445,895,2609,936"/>
+<area shape="rect" id="node7" href="$dd/dc1/a00212.html#ad311dfc622208e9811db9965c35518b2" title="Whether the sentence can be revised. " alt="" coords="2144,307,2355,334"/>
+<area shape="rect" id="node8" href="$dd/dc1/a00212.html#a425abbc0f0805ef792317b13b17c6219" title="Create a Sentence with the given fields. " alt="" coords="2149,206,2350,233"/>
+<area shape="rect" id="node9" href="$dc/d59/a00364.html#a6ad164dd053a9cc808bcd6a2d741a775" title="Blank method to be override in CompoundTerm. " alt="" coords="2435,5,2619,47"/>
+<area shape="rect" id="node10" href="$dd/dc1/a00212.html#aaed0a9d288098b451c156ed4db487264" title="Set the content Term of the Sentence. " alt="" coords="2445,71,2609,112"/>
+<area shape="rect" id="node11" href="$dd/dc1/a00212.html#a5459cf8e06a471e64167d1c3048159bd" title="nars.entity.Sentence.set\lPunctuation" alt="" coords="2445,136,2609,177"/>
+<area shape="rect" id="node12" href="$dd/dc1/a00212.html#a97aee434b02405a38c1796bf8e27180b" title="nars.entity.Sentence.set\lRevisible" alt="" coords="2445,201,2609,243"/>
+<area shape="rect" id="node13" href="$dd/dc1/a00212.html#a426601431d037084a09a8ba13ed4560c" title="nars.entity.Sentence.set\lStamp" alt="" coords="2445,267,2609,308"/>
+<area shape="rect" id="node14" href="$dd/dc1/a00212.html#a040fcf061a9ec8757c249af714ae4c42" title="nars.entity.Sentence.set\lTruth" alt="" coords="2445,332,2609,373"/>
+<area shape="rect" id="node17" href="$dc/ded/a00252.html#aa57c06fe6fa6d3c396b196edaf631a92" title="nars.inference.RuleTables.function\lBeggingToBeAsync" alt="" coords="595,1767,819,1808"/>
+<area shape="rect" id="node72" href="$d0/d65/a00360.html#a2e096047bde22ee7445fdc8087e9678e" title="Check the validity of a potential Statement. " alt="" coords="603,2326,811,2353"/>
+<area shape="rect" id="node21" href="$dd/dc1/a00212.html#acb98b40c8990dbe5e15061f0759c60ee" title="Distinguish Question from Quest (&quot;instanceof Question&quot; doesn&#39;t work) " alt="" coords="2145,1698,2353,1725"/>
+<area shape="rect" id="node22" href="$d9/d21/a00240.html#a837063b568fd1d183a802ae03102693a" title="Backward inference result and adjustment, stronger case. " alt="" coords="883,1926,1150,1953"/>
+<area shape="rect" id="node39" href="$d9/d21/a00240.html#a977c61dd8a64c4128052c6d5f69f47d3" title="Backward inference result and adjustment, weaker case. " alt="" coords="867,1825,1167,1851"/>
+<area shape="rect" id="node41" href="$d9/d21/a00240.html#a2db9aa6bf208e45b225924b2ba1769da" title="Forward inference result and adjustment. " alt="" coords="890,1875,1143,1902"/>
+<area shape="rect" id="node42" href="$d3/dcc/a00264.html#a8f6892d4f41dfa39a4868e5bc65540ce" title="{&lt;S ==&gt; M&gt;, &lt;M ==&gt; P&gt;} |&#45; &lt;S ==&gt; P&gt; " alt="" coords="1228,2170,1483,2197"/>
+<area shape="rect" id="node44" href="$d3/dcc/a00264.html#a0584fe68d00cebcf3e2d6c22ba356c52" title="{&lt;S ==&gt; M&gt;, " alt="" coords="1228,1817,1483,1843"/>
+<area shape="rect" id="node45" href="$d3/dcc/a00264.html#a924b3cc3835f75df63afb5d35ce71693" title="{&lt;S ==&gt; M&gt;, &lt;M &lt;=&gt; P&gt;} |&#45; &lt;S ==&gt; P&gt; " alt="" coords="1233,2027,1477,2054"/>
+<area shape="rect" id="node46" href="$d4/d27/a00392.html#aef985ce01b98005b7fa3065b834ded7e" title="Shared final operations by all double&#45;premise rules, called from the rules except StructuralRules..." alt="" coords="923,1353,1110,1395"/>
+<area shape="rect" id="node23" href="$d9/d21/a00240.html#a6c45e643d143a28d7514f3487fbfa494" title="Common processing for all inference step. " alt="" coords="1231,2104,1480,2145"/>
+<area shape="rect" id="node37" href="$d9/d21/a00240.html#a1cabe922021909c7226988e5aa00ea95" title="Determine the quality of a judgment by its truth value alone. " alt="" coords="1237,1919,1473,1960"/>
+<area shape="rect" id="node24" href="$db/d12/a00268.html#a46d2f048b6ba77afc60dcf49734f23c7" title="A function where the output is conjunctively determined by the inputs. " alt="" coords="1555,2027,1779,2054"/>
+<area shape="rect" id="node25" href="$d9/d21/a00240.html#a5df1e2954d5ce62f08cbd4be287ddaba" title="A function where the output is the arithmetic average the inputs. " alt="" coords="1544,2261,1791,2287"/>
+<area shape="rect" id="node26" href="$dc/d31/a00208.html#a54fc0a370b847dd77c0a698c765e6e55" title="The budget of the Item, consisting of 3 numbers. " alt="" coords="1870,2309,2046,2335"/>
+<area shape="rect" id="node27" href="$d9/dd5/a00432.html#a672e3b935dca6df8c7e47c6c69e0fc66" title="nars.storage.WorkSpace.get\lCurrentBeliefLink" alt="" coords="1573,2312,1761,2353"/>
+<area shape="rect" id="node28" href="$d9/dd5/a00432.html#aefcc9dfcebdc79cd7e099afd4553b083" title="nars.storage.WorkSpace.get\lCurrentTask" alt="" coords="1573,2079,1761,2120"/>
+<area shape="rect" id="node29" href="$d9/dd5/a00432.html#a585409e59ebb973c820683bc556ebe37" title="nars.storage.WorkSpace.get\lCurrentTaskLink" alt="" coords="1573,2144,1761,2185"/>
+<area shape="rect" id="node30" href="$dc/d31/a00208.html#adbb21c1891722e30c1d6cfaf5fee18ee" title="Get durability value. " alt="" coords="1572,2210,1763,2237"/>
+<area shape="rect" id="node32" href="$dc/d31/a00208.html#a97b35888ceaad90e7a428701051c51d7" title="Get priority value. " alt="" coords="1579,2429,1755,2455"/>
+<area shape="rect" id="node34" href="$dc/d31/a00208.html#a786a1e14b3904092f4a3b2fa4faa08a7" title="Increase priority value. " alt="" coords="1580,2479,1755,2506"/>
+<area shape="rect" id="node31" href="$dd/da2/a00192.html#ab0e0dc2172d3fab6390670acb68da1a6" title="Get durability value. " alt="" coords="1867,2203,2049,2244"/>
+<area shape="rect" id="node33" href="$dd/da2/a00192.html#a1e7b6826531f03f792f3516ce0e97ac3" title="Get priority value. " alt="" coords="1867,2399,2049,2440"/>
+<area shape="rect" id="node35" href="$dd/da2/a00192.html#a088e64163126211239b6afd25a9cdca3" title="Increase priority value by a percentage of the remaining range. " alt="" coords="1867,2464,2049,2505"/>
+<area shape="rect" id="node36" href="$db/d12/a00268.html#acaa4ebc080bc00d0e03be32d51d29e40" title="A function where the output is disjunctively determined by the inputs. " alt="" coords="2142,2471,2357,2498"/>
+<area shape="rect" id="node38" href="$db/d12/a00268.html#ae9f34c27ee5675fa2b97f2def9e1fb99" title="A function where the output is the geometric average the inputs. " alt="" coords="2125,1571,2373,1598"/>
+<area shape="rect" id="node40" href="$db/d12/a00268.html#a957a91e3b91d4a4043c3959838c370f2" title="A function to convert weight to confidence. " alt="" coords="1554,1875,1781,1902"/>
+<area shape="rect" id="node43" href="$d7/d40/a00236.html#a9eac33f2495441c77911a8581a5bbe61" title="Get the frequency value. " alt="" coords="2680,1817,2852,1859"/>
+<area shape="rect" id="node47" href="$d4/d27/a00392.html#a09af34150e8562d5c93170388c8804b7" title="The new Stamp. " alt="" coords="1258,1353,1453,1395"/>
+<area shape="rect" id="node48" href="$d4/d27/a00392.html#a831fc87d7e6d1f11df73b38bdd628b9b" title="Derived task comes from the inference rules. " alt="" coords="1245,1521,1465,1547"/>
+<area shape="rect" id="node49" href="$dd/da2/a00192.html#ae83b822f3bab4c1831e94d72fc770f58" title="Whether the budget should get any processing at all. " alt="" coords="1567,1505,1767,1547"/>
+<area shape="rect" id="node50" href="$dd/da2/a00192.html#af414899759992288edbba78d7457c534" title="To summarize a BudgetValue into a single number in [0, 1]. " alt="" coords="1849,1513,2067,1539"/>
+<area shape="rect" id="node51" href="$d4/d27/a00392.html#aa4c7e1f5823d0404c0cab49b617968f1" title="Inference record text to be written into a log file. " alt="" coords="1557,1235,1777,1262"/>
+<area shape="rect" id="node52" href="$d0/dcd/a00280.html#acb473be6e5d774c10781bc8e74453459" title="Add new text to display. " alt="" coords="1556,1286,1779,1313"/>
+<area shape="rect" id="node53" href="$df/d15/a00416.html#a240088fef0488e21e2f3953c92302541" title="Report Silence Level. " alt="" coords="1562,1337,1773,1379"/>
+<area shape="rect" id="node54" href="$d4/d27/a00392.html#a076ad9a0e872386bca3f2d17fa7cb2d4" title="Backward pointer to the reasoner. " alt="" coords="1847,1426,2069,1453"/>
+<area shape="rect" id="node55" href="$d4/d27/a00392.html#ad89bc0ba08c0b5bfbddf247cdab5eaa9" title="Display input/output sentence in the output channels. " alt="" coords="1576,1185,1759,1211"/>
+<area shape="rect" id="node68" href="$d4/d27/a00392.html#a8c50bdf4f2750032f24965e12e9fb59c" title="List of new tasks accumulated in one cycle, to be processed in the next cycle. " alt="" coords="1570,1119,1765,1160"/>
+<area shape="rect" id="node56" href="$df/d15/a00416.html#a55398625fb088534ef3fce8c38f95423" title="global DEBUG print switch " alt="" coords="1857,1060,2059,1101"/>
+<area shape="rect" id="node57" href="$df/d15/a00416.html#aeb34e5ff1c0a1f220e7b8715cee2d9d3" title="Get the current time from the clock Called in nars.entity.Stamp. " alt="" coords="1839,1126,2077,1153"/>
+<area shape="rect" id="node58" href="$df/d15/a00416.html#ae7cc80bb901b1e8008537fe24e5d1bb2" title="System clock, relatively defined to guarantee the repeatability of behaviors. " alt="" coords="1853,1177,2063,1219"/>
+<area shape="rect" id="node59" href="$df/d15/a00416.html#a64586e56057f3a2d498dc7fd98c4f773" title="System clock &#45; number of cycles since last output. " alt="" coords="2144,1265,2355,1307"/>
+<area shape="rect" id="node60" href="$d4/d27/a00392.html#a1a17565c7b06ca4ecc1ed57c3fce973f" title="List of Strings or Tasks to be sent to the output channels. " alt="" coords="1855,1295,2061,1336"/>
+<area shape="rect" id="node61" href="$df/d15/a00416.html#a84cc1236020f7c170bfcee70c861ce20" title="To get the timer value and then to reset it. " alt="" coords="1843,1360,2073,1401"/>
+<area shape="rect" id="node64" href="$dd/dc1/a00212.html#aea2f809b2d4c375f3c4ec3d0328d8787" title="Get a String representation of the sentence, with 2&#45;digit accuracy. " alt="" coords="1863,995,2053,1036"/>
+<area shape="rect" id="node62" href="$df/d15/a00416.html#aa243bca18963b74438535cd125039740" title="nars.storage.ReasonerBatch.init\lTimer" alt="" coords="2145,1360,2354,1401"/>
+<area shape="rect" id="node63" href="$df/d15/a00416.html#ac3e769632e8a90ddc85970d3fee28e5f" title="nars.storage.ReasonerBatch.set\lTimer" alt="" coords="2421,1360,2632,1401"/>
+<area shape="rect" id="node65" href="$dd/dc1/a00212.html#a8b6d9355c0211d37f881ec6717a6b636" title="Get a String representation of the sentence for key of Task and TaskLink. " alt="" coords="2159,1061,2339,1087"/>
+<area shape="rect" id="node66" href="$d7/d40/a00236.html#a5af8b2fe37987ba1e8396ec1aad38e90" title="A simplified String representation of a TruthValue, where each factor is accruate to 1%..." alt="" coords="2444,1175,2609,1216"/>
+<area shape="rect" id="node67" href="$d7/d40/a00236.html#a68ca7d92e9ea20d2a9a9f578ad7b681c" title="The confidence factor of the truth value. " alt="" coords="2680,1175,2852,1216"/>
+<area shape="rect" id="node70" href="$d8/d17/a00304.html#a9778c35f9b602bee6ccac6a06809e546" title="list of (direct) components " alt="" coords="1556,2581,1779,2623"/>
+<area shape="rect" id="node73" href="$d0/d65/a00360.html#a96d4bf7bb99f48b6496cdb7457bc0e50" title="Check the validity of a potential Statement. " alt="" coords="913,2348,1121,2389"/>
+<area shape="rect" id="node76" href="$d8/d17/a00304.html#a89000afae8017231889aaa549292d1e0" title="Default constructor. " alt="" coords="1856,663,2060,704"/>
+<area shape="rect" id="node77" href="$d0/d65/a00360.html#ac56b558891dd2088e0b66b437780c7b7" title="Default constructor. " alt="" coords="1270,2352,1441,2393"/>
+<area shape="rect" id="node75" href="$dc/d59/a00364.html#a3aad4654016b8615fd4fa8a26668e1db" title="Reporting the name of the current Term. " alt="" coords="1570,2647,1765,2674"/>
+<area shape="rect" id="node79" href="$d8/d17/a00304.html#a82aa08a45653fbb88523fe2497469434" title="Recursively apply a substitute to the current CompoundTerm. " alt="" coords="899,655,1134,696"/>
+<area shape="rect" id="node86" href="$d8/d17/a00304.html#ad637ccaf9aecf41f3961d095900f2d5e" title="Check whether the compound contains a certain component. " alt="" coords="893,1185,1140,1227"/>
+<area shape="rect" id="node87" href="$d3/dcc/a00264.html#acf5ba535f909fc354c46d17ca6c16f08" title="{&lt;M ==&gt; S&gt;, &lt;M ==&gt; P&gt;} |&#45; &lt;S ==&gt; P&gt; " alt="" coords="891,1723,1142,1750"/>
+<area shape="rect" id="node88" href="$d3/dcc/a00264.html#a633b7e5cc37d6e4890e50e522ffd5b00" title="{&lt;M &#45;&#45;&gt; S&gt;, &lt;M &lt;&#45;&gt; P&gt;} |&#45; &lt;M &#45;&#45;&gt; (S&amp;P)&gt; " alt="" coords="1222,1723,1489,1750"/>
+<area shape="rect" id="node90" href="$d8/d17/a00304.html#ac5f82b4dd2c0f4aa60e1e97600526d21" title="Try to make a compound term from a template and a list of components. " alt="" coords="899,1033,1135,1059"/>
+<area shape="rect" id="node94" href="$d6/d08/a00244.html#aa7c0e5bc9c22ccb810b8a638dd0a93ab" title="Introduce a second independent variable into two terms with a common component. " alt="" coords="921,1977,1112,2019"/>
+<area shape="rect" id="node80" href="$d8/d17/a00304.html#ac81c5851f664320ddec435641f198b03" title="get the number of components " alt="" coords="1241,779,1469,806"/>
+<area shape="rect" id="node81" href="$dc/d59/a00364.html#ae2dba162b71bb9b806f54832249a260c" title="Make a new Term with the same name. " alt="" coords="1269,611,1441,638"/>
+<area shape="rect" id="node83" href="$d8/d17/a00304.html#a43c073fe9f5a36241c475a2bc8736800" title="Check if the order of the components matters. " alt="" coords="1248,713,1463,755"/>
+<area shape="rect" id="node84" href="$d8/d17/a00304.html#aa26a304f6249c185836d8fde8b8f17a8" title="default method to make the oldName of the current term from existing fields " alt="" coords="1220,662,1491,689"/>
+<area shape="rect" id="node82" href="$dc/d59/a00364.html#a2d9973aada6190dd60b48a34448094c9" title="Default constructor that build an internal Term. " alt="" coords="1582,611,1753,638"/>
+<area shape="rect" id="node85" href="$d8/d17/a00304.html#a8d1e610c509fa096c6b52eb5fe06d59b" title="default method to make the oldName of a compound term from given fields " alt="" coords="1549,663,1785,704"/>
+<area shape="rect" id="node91" href="$d5/d0f/a00308.html#afb24af5cc6c098ad3f5d837fa383e69c" title="Try to make a new ImageExt. " alt="" coords="1256,931,1455,958"/>
+<area shape="rect" id="node92" href="$d7/df2/a00312.html#ad05e4231ed31d78ad4c8b4fefbc964fa" title="Try to make a new ImageExt. " alt="" coords="1258,982,1453,1009"/>
+<area shape="rect" id="node93" href="$d8/d17/a00304.html#a786848bcf438b17b9aa566b9b0c04e5f" title="Abstract method to get the operator of the compound. " alt="" coords="1230,1033,1481,1059"/>
+<area shape="rect" id="node95" href="$d7/df2/a00312.html#a721633abbded2aa858fba35994f08c92" title="Get the other term in the Image. " alt="" coords="1265,2221,1445,2263"/>
+</map>

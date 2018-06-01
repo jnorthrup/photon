@@ -1,0 +1,5 @@
+<map id="nars.storage.NovelTaskBag" name="nars.storage.NovelTaskBag">
+<area shape="rect" id="node2" href="$d6/db8/a00376.html" title="nars.storage.Bag\&lt; Task \&gt;" alt="" coords="10,275,185,301"/>
+<area shape="rect" id="node3" href="$d6/db8/a00376.html" title="A Bag is a storage with a constant capacity and maintains an internal priority distribution for retri..." alt="" coords="16,171,179,212"/>
+<area shape="rect" id="node4" href="$dc/d31/a00208.html" title="An item is an object that can be put into a Bag, to participate in the resource competition of the sy..." alt="" coords="41,81,154,108"/>
+</map>

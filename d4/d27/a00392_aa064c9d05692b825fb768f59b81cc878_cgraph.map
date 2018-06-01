@@ -1,0 +1,5 @@
+<map id="nars.storage.Memory.conceptsStartPlay" name="nars.storage.Memory.conceptsStartPlay">
+<area shape="rect" id="node2" href="$d6/db8/a00376.html#a73a559e1b77e6bc3a7db686816accef2" title="To start displaying the Bag in a BagWindow. " alt="" coords="256,5,479,32"/>
+<area shape="rect" id="node3" href="$d4/d27/a00392.html#a33af7b3d806d32c85390563fec3c6d27" title="Concept bag. " alt="" coords="256,56,479,83"/>
+<area shape="rect" id="node4" href="$d8/ddd/a00380.html#ae0455b8e5d7053bd0a868d1c45616bfd" title="nars.storage.BagObserver.setBag" alt="" coords="258,107,477,133"/>
+</map>

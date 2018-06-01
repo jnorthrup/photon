@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['backward',['backward',['../d9/d21/a00240.html#a837063b568fd1d183a802ae03102693a',1,'nars::inference::BudgetFunctions']]],
+  ['backwardweak',['backwardWeak',['../d9/d21/a00240.html#a977c61dd8a64c4128052c6d5f69f47d3',1,'nars::inference::BudgetFunctions']]],
+  ['bag',['Bag',['../d6/db8/a00376.html',1,'nars.storage.Bag&lt; Type extends Item &gt;'],['../d6/db8/a00376.html#a89da8cb76f7c36fdd926a436273ddf10',1,'nars.storage.Bag.Bag()']]],
+  ['bag_2ejava',['Bag.java',['../d7/d06/a00131.html',1,'']]],
+  ['bag_3c_20concept_20_3e',['Bag&lt; Concept &gt;',['../d6/db8/a00376.html',1,'nars::storage']]],
+  ['bag_3c_20task_20_3e',['Bag&lt; Task &gt;',['../d6/db8/a00376.html',1,'nars::storage']]],
+  ['bag_3c_20tasklink_20_3e',['Bag&lt; TaskLink &gt;',['../d6/db8/a00376.html',1,'nars::storage']]],
+  ['bag_3c_20termlink_20_3e',['Bag&lt; TermLink &gt;',['../d6/db8/a00376.html',1,'nars::storage']]],
+  ['bag_5flevel',['BAG_LEVEL',['../d9/d72/a00412.html#ad3e93a946f62fa2d1b9800b9811a1727',1,'nars::storage::Parameters']]],
+  ['bag_5fthreshold',['BAG_THRESHOLD',['../d9/d72/a00412.html#a7934324e3aed56b61e271924d4a8fdfe',1,'nars::storage::Parameters']]],
+  ['bagobserver',['BagObserver',['../d8/ddd/a00380.html',1,'nars.storage.BagObserver'],['../d6/db8/a00376.html#a8fe67894f51948b0e93f16226822e638',1,'nars.storage.Bag.bagObserver()']]],
+  ['bagobserver_2ejava',['BagObserver.java',['../de/d76/a00134.html',1,'']]],
+  ['baselength',['baseLength',['../d6/d43/a00216.html#a19ce9e7a9d0aa2e2cdfa421724caaba1',1,'nars::entity::Stamp']]],
+  ['beliefforgettingrate',['beliefForgettingRate',['../d4/d27/a00392.html#a6452df8d65ea0ab8ab26d76bccd3eb80',1,'nars::storage::Memory']]],
+  ['beliefs',['beliefs',['../d7/ded/a00196.html#aefd350677e67c06e60a714ccb73b7a00',1,'nars::entity::Concept']]],
+  ['bestsolution',['bestSolution',['../d5/ddf/a00224.html#a75a4f6bedf20c55345ee33ddf02b87fe',1,'nars::entity::Task']]],
+  ['budget',['budget',['../dc/d31/a00208.html#a5c9d56b016786f871e1777c7056c74d9',1,'nars::entity::Item']]],
+  ['budget_5fthreshold',['BUDGET_THRESHOLD',['../d9/d72/a00412.html#a57e2cfd9a9f1c5d186d74ff2016797fb',1,'nars::storage::Parameters']]],
+  ['budget_5fvalue_5fmark',['BUDGET_VALUE_MARK',['../db/da2/a00300.html#a42009f5202d1b120b098593f7b48dbad',1,'nars::io::Symbols']]],
+  ['budgetfunctions',['BudgetFunctions',['../d9/d21/a00240.html',1,'nars::inference']]],
+  ['budgetfunctions_2ejava',['BudgetFunctions.java',['../dc/d87/a00032.html',1,'']]],
+  ['budgetinference',['budgetInference',['../d9/d21/a00240.html#a6c45e643d143a28d7514f3487fbfa494',1,'nars::inference::BudgetFunctions']]],
+  ['budgetvalue',['BudgetValue',['../dd/da2/a00192.html',1,'nars.entity.BudgetValue'],['../dd/da2/a00192.html#a9522c73cb54d65b0d81a27b07ee4b4b0',1,'nars.entity.BudgetValue.BudgetValue()'],['../dd/da2/a00192.html#a949b9dc84ec11f6d00dfb23f27599f85',1,'nars.entity.BudgetValue.BudgetValue(float p, float d, float q)'],['../dd/da2/a00192.html#a268fa1fabe6e71de9b9bb07bb5d506ee',1,'nars.entity.BudgetValue.BudgetValue(BudgetStruct v)']]],
+  ['budgetvalue_2ejava',['BudgetValue.java',['../d7/d46/a00002.html',1,'']]],
+  ['buildtermlinks',['buildTermLinks',['../d7/ded/a00196.html#a3f3f026223e459e041fbdd8c0f49f7c6',1,'nars::entity::Concept']]]
+];

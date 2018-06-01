@@ -1,0 +1,44 @@
+<map id="nars.storage.Memory.singlePremiseTask" name="nars.storage.Memory.singlePremiseTask">
+<area shape="rect" id="node2" href="$d6/d43/a00216.html#af05719e3d17bb1afa429fa6f9bc5bdd3" title="nars.entity.Stamp.create\lStamp" alt="" coords="273,203,438,244"/>
+<area shape="rect" id="node7" href="$d4/d27/a00392.html#a831fc87d7e6d1f11df73b38bdd628b9b" title="Derived task comes from the inference rules. " alt="" coords="245,407,465,434"/>
+<area shape="rect" id="node16" href="$d5/ddf/a00224.html#ab140cb553a6cf40b07093d1df283567f" title="The sentence of the Task. " alt="" coords="537,626,731,653"/>
+<area shape="rect" id="node25" href="$dd/dc1/a00212.html#ac0ed749c50e55120d5b63219ed7eb082" title="Partial record of the derivation path. " alt="" coords="1122,527,1286,568"/>
+<area shape="rect" id="node36" href="$d4/d27/a00392.html#aae366ea198c2340fef786120d5c2163b" title="The selected belief. " alt="" coords="250,829,461,871"/>
+<area shape="rect" id="node37" href="$d4/d27/a00392.html#a26eda4f00b333b706b4e3d069fdf1508" title="The selected Task. " alt="" coords="236,895,475,922"/>
+<area shape="rect" id="node38" href="$d4/d27/a00392.html#a09af34150e8562d5c93170388c8804b7" title="The new Stamp. " alt="" coords="258,947,453,988"/>
+<area shape="rect" id="node39" href="$dd/dc1/a00212.html#ae57a195c3623dc9b8245d977adc94b4d" title="nars.entity.Sentence.get\lRevisible" alt="" coords="273,1012,437,1053"/>
+<area shape="rect" id="node41" href="$d4/d27/a00392.html#a4da7a24a86f5b88aa458fcb661cfdbbb" title="nars.storage.Memory.getTime" alt="" coords="536,677,732,703"/>
+<area shape="rect" id="node42" href="$dd/dc1/a00212.html#a7d95d60caaf4c895559182a7eb2ff71e" title="Distinguish Judgment from Goal (&quot;instanceof Judgment&quot; doesn&#39;t work) " alt="" coords="1097,751,1311,778"/>
+<area shape="rect" id="node43" href="$d4/d27/a00392.html#aa8d87fbd9fbd6229e88184fd23553778" title="nars.storage.Memory.setNew\lStamp" alt="" coords="258,1077,453,1119"/>
+<area shape="rect" id="node3" href="$d6/d43/a00216.html#a959f21fb20f72cfd277d994332e862c3" title="Generate a new stamp, with a new serial number, for a new Task. " alt="" coords="551,71,717,98"/>
+<area shape="rect" id="node4" href="$d6/d43/a00216.html#a7c3a7c21f049a6dfe9dbc088caae4abf" title="serial number, for the whole system TODO : should it really be static? or a Stamp be a field in Reaso..." alt="" coords="817,5,1008,47"/>
+<area shape="rect" id="node5" href="$d6/d43/a00216.html#ac84c7f26ab8e0740bab4335f33396e2c" title="serial numbers " alt="" coords="795,71,1030,98"/>
+<area shape="rect" id="node6" href="$d6/d43/a00216.html#a8b3fd059e38dcb039a01ab991ec6614f" title="nars.entity.Stamp.setCurrent\lSerial" alt="" coords="817,123,1008,164"/>
+<area shape="rect" id="node8" href="$dd/da2/a00192.html#ae83b822f3bab4c1831e94d72fc770f58" title="Whether the budget should get any processing at all. " alt="" coords="534,173,734,215"/>
+<area shape="rect" id="node9" href="$dd/da2/a00192.html#af414899759992288edbba78d7457c534" title="To summarize a BudgetValue into a single number in [0, 1]. " alt="" coords="803,189,1022,215"/>
+<area shape="rect" id="node11" href="$d0/dcd/a00280.html#acb473be6e5d774c10781bc8e74453459" title="Add new text to display. " alt="" coords="523,122,745,149"/>
+<area shape="rect" id="node12" href="$dc/d31/a00208.html#a54fc0a370b847dd77c0a698c765e6e55" title="The budget of the Item, consisting of 3 numbers. " alt="" coords="546,290,722,317"/>
+<area shape="rect" id="node13" href="$d4/d27/a00392.html#a8c50bdf4f2750032f24965e12e9fb59c" title="List of new tasks accumulated in one cycle, to be processed in the next cycle. " alt="" coords="537,341,731,383"/>
+<area shape="rect" id="node14" href="$d4/d27/a00392.html#a076ad9a0e872386bca3f2d17fa7cb2d4" title="Backward pointer to the reasoner. " alt="" coords="801,677,1024,703"/>
+<area shape="rect" id="node15" href="$d4/d27/a00392.html#aa4c7e1f5823d0404c0cab49b617968f1" title="Inference record text to be written into a log file. " alt="" coords="524,509,744,535"/>
+<area shape="rect" id="node17" href="$df/d15/a00416.html#a240088fef0488e21e2f3953c92302541" title="Report Silence Level. " alt="" coords="529,560,739,601"/>
+<area shape="rect" id="node18" href="$d4/d27/a00392.html#ad89bc0ba08c0b5bfbddf247cdab5eaa9" title="Display input/output sentence in the output channels. " alt="" coords="543,407,725,434"/>
+<area shape="rect" id="node10" href="$db/d12/a00268.html#ae9f34c27ee5675fa2b97f2def9e1fb99" title="A function where the output is the geometric average the inputs. " alt="" coords="1080,189,1328,215"/>
+<area shape="rect" id="node19" href="$df/d15/a00416.html#ae7cc80bb901b1e8008537fe24e5d1bb2" title="System clock, relatively defined to guarantee the repeatability of behaviors. " alt="" coords="807,560,1018,601"/>
+<area shape="rect" id="node20" href="$d4/d27/a00392.html#a1a17565c7b06ca4ecc1ed57c3fce973f" title="List of Strings or Tasks to be sent to the output channels. " alt="" coords="810,495,1015,536"/>
+<area shape="rect" id="node21" href="$df/d15/a00416.html#aeb34e5ff1c0a1f220e7b8715cee2d9d3" title="Get the current time from the clock Called in nars.entity.Stamp. " alt="" coords="793,626,1032,653"/>
+<area shape="rect" id="node22" href="$df/d15/a00416.html#a64586e56057f3a2d498dc7fd98c4f773" title="System clock &#45; number of cycles since last output. " alt="" coords="1099,240,1309,281"/>
+<area shape="rect" id="node23" href="$df/d15/a00416.html#a55398625fb088534ef3fce8c38f95423" title="global DEBUG print switch " alt="" coords="811,364,1014,405"/>
+<area shape="rect" id="node24" href="$dd/dc1/a00212.html#aea2f809b2d4c375f3c4ec3d0328d8787" title="Get a String representation of the sentence, with 2&#45;digit accuracy. " alt="" coords="817,429,1008,471"/>
+<area shape="rect" id="node33" href="$df/d15/a00416.html#a84cc1236020f7c170bfcee70c861ce20" title="To get the timer value and then to reset it. " alt="" coords="797,299,1028,340"/>
+<area shape="rect" id="node26" href="$dd/dc1/a00212.html#a8b6d9355c0211d37f881ec6717a6b636" title="Get a String representation of the sentence for key of Task and TaskLink. " alt="" coords="1114,469,1294,495"/>
+<area shape="rect" id="node27" href="$dd/dc1/a00212.html#ad1ded9a02cae3557948d05530cd4d37e" title="The content of a Sentence is a Term. " alt="" coords="1399,527,1563,568"/>
+<area shape="rect" id="node28" href="$dd/dc1/a00212.html#a68b153a51a5db6a4127b66158227697f" title="The punctuation also indicates the type of the Sentence: Judgment, Question, or Goal. " alt="" coords="1399,643,1563,684"/>
+<area shape="rect" id="node29" href="$dd/dc1/a00212.html#a9f69b4fef64c81abad21404946cd41f9" title="The truth value of Judgment. " alt="" coords="1399,396,1563,437"/>
+<area shape="rect" id="node30" href="$d7/d40/a00236.html#a5af8b2fe37987ba1e8396ec1aad38e90" title="A simplified String representation of a TruthValue, where each factor is accruate to 1%..." alt="" coords="1399,461,1564,503"/>
+<area shape="rect" id="node31" href="$d7/d40/a00236.html#a68ca7d92e9ea20d2a9a9f578ad7b681c" title="The confidence factor of the truth value. " alt="" coords="1635,428,1807,469"/>
+<area shape="rect" id="node32" href="$d7/d40/a00236.html#a9eac33f2495441c77911a8581a5bbe61" title="Get the frequency value. " alt="" coords="1635,493,1807,535"/>
+<area shape="rect" id="node34" href="$df/d15/a00416.html#aa243bca18963b74438535cd125039740" title="nars.storage.ReasonerBatch.init\lTimer" alt="" coords="1099,305,1309,347"/>
+<area shape="rect" id="node35" href="$df/d15/a00416.html#ac3e769632e8a90ddc85970d3fee28e5f" title="nars.storage.ReasonerBatch.set\lTimer" alt="" coords="1376,305,1587,347"/>
+<area shape="rect" id="node40" href="$dd/dc1/a00212.html#ad311dfc622208e9811db9965c35518b2" title="Whether the sentence can be revised. " alt="" coords="529,1019,739,1046"/>
+</map>

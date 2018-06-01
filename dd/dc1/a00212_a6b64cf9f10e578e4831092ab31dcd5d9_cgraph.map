@@ -1,0 +1,25 @@
+<map id="nars.entity.Sentence.equals" name="nars.entity.Sentence.equals">
+<area shape="rect" id="node2" href="$dc/d59/a00364.html#ad85f45a7858737445d5158801774ff5f" title="Equal terms have identical name, though not necessarily the same reference. " alt="" coords="249,43,427,69"/>
+<area shape="rect" id="node4" href="$d7/d40/a00236.html#a6c90107ab2c878d9527d4330f08ecac8" title="Compare two truth values. " alt="" coords="242,129,434,156"/>
+<area shape="rect" id="node7" href="$d6/d43/a00216.html#adb33cdf9f13e1a919f7220cb622e7446" title="Check if two stamps contains the same content. " alt="" coords="255,191,421,217"/>
+<area shape="rect" id="node14" href="$dd/dc1/a00212.html#ad1ded9a02cae3557948d05530cd4d37e" title="The content of a Sentence is a Term. " alt="" coords="502,290,666,331"/>
+<area shape="rect" id="node15" href="$dd/dc1/a00212.html#a68b153a51a5db6a4127b66158227697f" title="The punctuation also indicates the type of the Sentence: Judgment, Question, or Goal. " alt="" coords="256,293,420,334"/>
+<area shape="rect" id="node16" href="$dd/dc1/a00212.html#ac0ed749c50e55120d5b63219ed7eb082" title="Partial record of the derivation path. " alt="" coords="256,358,420,399"/>
+<area shape="rect" id="node17" href="$dd/dc1/a00212.html#a9f69b4fef64c81abad21404946cd41f9" title="The truth value of Judgment. " alt="" coords="256,423,420,465"/>
+<area shape="rect" id="node18" href="$dd/dc1/a00212.html#a425abbc0f0805ef792317b13b17c6219" title="Create a Sentence with the given fields. " alt="" coords="237,492,439,519"/>
+<area shape="rect" id="node3" href="$dc/d59/a00364.html#a3aad4654016b8615fd4fa8a26668e1db" title="Reporting the name of the current Term. " alt="" coords="487,5,681,32"/>
+<area shape="rect" id="node5" href="$d7/d40/a00236.html#a9eac33f2495441c77911a8581a5bbe61" title="Get the frequency value. " alt="" coords="498,57,670,98"/>
+<area shape="rect" id="node6" href="$d7/d40/a00236.html#a68ca7d92e9ea20d2a9a9f578ad7b681c" title="The confidence factor of the truth value. " alt="" coords="498,122,670,163"/>
+<area shape="rect" id="node8" href="$d6/d43/a00216.html#a7b5d3afaab9fc48e2d4d571b8508970d" title="Convert the evidentialBase into a set. " alt="" coords="504,188,664,215"/>
+<area shape="rect" id="node11" href="$d6/d43/a00216.html#a959f21fb20f72cfd277d994332e862c3" title="Generate a new stamp, with a new serial number, for a new Task. " alt="" coords="501,239,667,265"/>
+<area shape="rect" id="node9" href="$d6/d43/a00216.html#ab6efde6c34037b63fc165d1bf95277a2" title="evidentialBase baseLength " alt="" coords="758,122,935,163"/>
+<area shape="rect" id="node10" href="$d6/d43/a00216.html#ac84c7f26ab8e0740bab4335f33396e2c" title="serial numbers " alt="" coords="729,188,964,215"/>
+<area shape="rect" id="node12" href="$d6/d43/a00216.html#a8b3fd059e38dcb039a01ab991ec6614f" title="nars.entity.Stamp.setCurrent\lSerial" alt="" coords="751,239,942,281"/>
+<area shape="rect" id="node13" href="$d6/d43/a00216.html#a7c3a7c21f049a6dfe9dbc088caae4abf" title="serial number, for the whole system TODO : should it really be static? or a Stamp be a field in Reaso..." alt="" coords="751,305,942,346"/>
+<area shape="rect" id="node19" href="$dc/d59/a00364.html#a6ad164dd053a9cc808bcd6a2d741a775" title="Blank method to be override in CompoundTerm. " alt="" coords="492,355,676,397"/>
+<area shape="rect" id="node20" href="$dd/dc1/a00212.html#aaed0a9d288098b451c156ed4db487264" title="Set the content Term of the Sentence. " alt="" coords="502,421,666,462"/>
+<area shape="rect" id="node21" href="$dd/dc1/a00212.html#a5459cf8e06a471e64167d1c3048159bd" title="nars.entity.Sentence.set\lPunctuation" alt="" coords="502,486,666,527"/>
+<area shape="rect" id="node22" href="$dd/dc1/a00212.html#a97aee434b02405a38c1796bf8e27180b" title="nars.entity.Sentence.set\lRevisible" alt="" coords="502,551,666,593"/>
+<area shape="rect" id="node23" href="$dd/dc1/a00212.html#a426601431d037084a09a8ba13ed4560c" title="nars.entity.Sentence.set\lStamp" alt="" coords="502,617,666,658"/>
+<area shape="rect" id="node24" href="$dd/dc1/a00212.html#a040fcf061a9ec8757c249af714ae4c42" title="nars.entity.Sentence.set\lTruth" alt="" coords="502,682,666,723"/>
+</map>

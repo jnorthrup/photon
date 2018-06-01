@@ -1,0 +1,8 @@
+<map id="nars.language.ImageInt.make" name="nars.language.ImageInt.make">
+<area shape="rect" id="node2" href="$d7/df2/a00312.html#a1b4d49365ad0892c4be8159b44440bf6" title="constructor with partial values, called by make " alt="" coords="259,5,473,32"/>
+<area shape="rect" id="node3" href="$d8/d17/a00304.html#adf2b3d71c10b80f512455c952137b200" title="default method to make the oldName of an image term from given fields " alt="" coords="248,57,484,98"/>
+<area shape="rect" id="node4" href="$d4/d27/a00392.html#ac7c5d438820208253d1a2ee59bf80ddc" title="Get a Term for a given name of a Concept or Operator. " alt="" coords="275,122,457,163"/>
+<area shape="rect" id="node5" href="$d4/d27/a00392.html#a33af7b3d806d32c85390563fec3c6d27" title="Concept bag. " alt="" coords="532,79,755,105"/>
+<area shape="rect" id="node6" href="$d6/db8/a00376.html#a011b37fc683db7fb7b41e33712a37d92" title="Get an Item by key. " alt="" coords="572,129,715,156"/>
+<area shape="rect" id="node7" href="$d7/ded/a00196.html#afcd1217b7680b073fa51f0d0f159dcea" title="The term is the unique ID of the concept. " alt="" coords="549,180,737,207"/>
+</map>

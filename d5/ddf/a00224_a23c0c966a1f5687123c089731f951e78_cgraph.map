@@ -1,0 +1,4 @@
+<map id="nars.entity.Task.isStructural" name="nars.entity.Task.isStructural">
+<area shape="rect" id="node2" href="$d5/ddf/a00224.html#ae0fc96866e544c3dda5a87ea5c806fc3" title="Belief from which the Task is derived, or null if derived from a theorem. " alt="" coords="255,5,431,47"/>
+<area shape="rect" id="node3" href="$d5/ddf/a00224.html#a1d9cd3ae889c6822469217154e4dcf4f" title="Task from which the Task is derived, or null if input. " alt="" coords="240,71,445,98"/>
+</map>

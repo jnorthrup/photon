@@ -1,0 +1,32 @@
+<map id="nars.inference.StructuralRules.structuralCompound" name="nars.inference.StructuralRules.structuralCompound">
+<area shape="rect" id="node2" href="$d3/dcc/a00264.html#a8f6892d4f41dfa39a4868e5bc65540ce" title="{&lt;S ==&gt; M&gt;, &lt;M ==&gt; P&gt;} |&#45; &lt;S ==&gt; P&gt; " alt="" coords="231,93,485,120"/>
+<area shape="rect" id="node5" href="$d9/d21/a00240.html#a2db9aa6bf208e45b225924b2ba1769da" title="Forward inference result and adjustment. " alt="" coords="231,253,485,280"/>
+<area shape="rect" id="node21" href="$d4/d27/a00392.html#a26eda4f00b333b706b4e3d069fdf1508" title="The selected Task. " alt="" coords="539,363,777,389"/>
+<area shape="rect" id="node22" href="$d5/ddf/a00224.html#ab140cb553a6cf40b07093d1df283567f" title="The sentence of the Task. " alt="" coords="561,413,755,440"/>
+<area shape="rect" id="node23" href="$dd/dc1/a00212.html#a9f69b4fef64c81abad21404946cd41f9" title="The truth value of Judgment. " alt="" coords="276,574,440,615"/>
+<area shape="rect" id="node24" href="$dc/d59/a00364.html#a88297bdbbfb5f3e292783647b14f0c70" title="Check whether the current Term can name a Concept. " alt="" coords="256,640,460,667"/>
+<area shape="rect" id="node25" href="$dd/dc1/a00212.html#a7d95d60caaf4c895559182a7eb2ff71e" title="Distinguish Judgment from Goal (&quot;instanceof Judgment&quot; doesn&#39;t work) " alt="" coords="251,472,465,499"/>
+<area shape="rect" id="node27" href="$dd/dc1/a00212.html#acb98b40c8990dbe5e15061f0759c60ee" title="Distinguish Question from Quest (&quot;instanceof Question&quot; doesn&#39;t work) " alt="" coords="254,523,462,549"/>
+<area shape="rect" id="node28" href="$d5/ddf/a00224.html#a23c0c966a1f5687123c089731f951e78" title="Check if a Task is derived by a StructuralRule. " alt="" coords="265,691,451,717"/>
+<area shape="rect" id="node31" href="$d4/d27/a00392.html#a52ef2f1fedc72d6b0bfe3a6bd000bda3" title="Shared final operations by all single&#45;premise rules, called in StructuralRules. " alt="" coords="267,406,449,447"/>
+<area shape="rect" id="node3" href="$d7/d40/a00236.html#a9eac33f2495441c77911a8581a5bbe61" title="Get the frequency value. " alt="" coords="572,27,744,69"/>
+<area shape="rect" id="node4" href="$db/d12/a00268.html#a46d2f048b6ba77afc60dcf49734f23c7" title="A function where the output is conjunctively determined by the inputs. " alt="" coords="843,5,1067,32"/>
+<area shape="rect" id="node6" href="$d9/d21/a00240.html#a6c45e643d143a28d7514f3487fbfa494" title="Common processing for all inference step. " alt="" coords="533,231,783,273"/>
+<area shape="rect" id="node19" href="$d9/d21/a00240.html#a1cabe922021909c7226988e5aa00ea95" title="Determine the quality of a judgment by its truth value alone. " alt="" coords="540,297,776,338"/>
+<area shape="rect" id="node7" href="$d9/d21/a00240.html#a5df1e2954d5ce62f08cbd4be287ddaba" title="A function where the output is the arithmetic average the inputs. " alt="" coords="831,239,1078,265"/>
+<area shape="rect" id="node8" href="$dc/d31/a00208.html#a54fc0a370b847dd77c0a698c765e6e55" title="The budget of the Item, consisting of 3 numbers. " alt="" coords="1130,340,1306,367"/>
+<area shape="rect" id="node9" href="$d9/dd5/a00432.html#a672e3b935dca6df8c7e47c6c69e0fc66" title="nars.storage.WorkSpace.get\lCurrentBeliefLink" alt="" coords="861,442,1049,483"/>
+<area shape="rect" id="node10" href="$d9/dd5/a00432.html#aefcc9dfcebdc79cd7e099afd4553b083" title="nars.storage.WorkSpace.get\lCurrentTask" alt="" coords="861,57,1049,98"/>
+<area shape="rect" id="node11" href="$d9/dd5/a00432.html#a585409e59ebb973c820683bc556ebe37" title="nars.storage.WorkSpace.get\lCurrentTaskLink" alt="" coords="861,122,1049,163"/>
+<area shape="rect" id="node12" href="$dc/d31/a00208.html#adbb21c1891722e30c1d6cfaf5fee18ee" title="Get durability value. " alt="" coords="859,289,1050,316"/>
+<area shape="rect" id="node14" href="$dc/d31/a00208.html#a97b35888ceaad90e7a428701051c51d7" title="Get priority value. " alt="" coords="867,391,1043,417"/>
+<area shape="rect" id="node16" href="$dc/d31/a00208.html#a786a1e14b3904092f4a3b2fa4faa08a7" title="Increase priority value. " alt="" coords="867,188,1042,215"/>
+<area shape="rect" id="node13" href="$dd/da2/a00192.html#ab0e0dc2172d3fab6390670acb68da1a6" title="Get durability value. " alt="" coords="1127,274,1309,315"/>
+<area shape="rect" id="node15" href="$dd/da2/a00192.html#a1e7b6826531f03f792f3516ce0e97ac3" title="Get priority value. " alt="" coords="1127,391,1309,433"/>
+<area shape="rect" id="node17" href="$dd/da2/a00192.html#a088e64163126211239b6afd25a9cdca3" title="Increase priority value by a percentage of the remaining range. " alt="" coords="1127,181,1309,222"/>
+<area shape="rect" id="node18" href="$db/d12/a00268.html#acaa4ebc080bc00d0e03be32d51d29e40" title="A function where the output is disjunctively determined by the inputs. " alt="" coords="1357,188,1572,215"/>
+<area shape="rect" id="node20" href="$db/d12/a00268.html#ae9f34c27ee5675fa2b97f2def9e1fb99" title="A function where the output is the geometric average the inputs. " alt="" coords="831,508,1079,535"/>
+<area shape="rect" id="node26" href="$dd/dc1/a00212.html#a68b153a51a5db6a4127b66158227697f" title="The punctuation also indicates the type of the Sentence: Judgment, Question, or Goal. " alt="" coords="576,465,740,506"/>
+<area shape="rect" id="node29" href="$d5/ddf/a00224.html#ae0fc96866e544c3dda5a87ea5c806fc3" title="Belief from which the Task is derived, or null if derived from a theorem. " alt="" coords="570,654,746,695"/>
+<area shape="rect" id="node30" href="$d5/ddf/a00224.html#a1d9cd3ae889c6822469217154e4dcf4f" title="Task from which the Task is derived, or null if input. " alt="" coords="555,720,761,747"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="nars.storage.NovelTaskBag" name="nars.storage.NovelTaskBag">
+<area shape="rect" id="node2" href="$d6/db8/a00376.html" title="nars.storage.Bag\&lt; Task \&gt;" alt="" coords="1084,132,1259,159"/>
+<area shape="rect" id="node3" href="$d6/db8/a00376.html" title="A Bag is a storage with a constant capacity and maintains an internal priority distribution for retri..." alt="" coords="816,125,979,166"/>
+<area shape="rect" id="node6" href="$d8/ddd/a00380.html" title="nars.storage.BagObserver" alt="" coords="496,57,671,84"/>
+<area shape="rect" id="node7" href="$d9/dc1/a00388.html" title="A pseudo&#45;random number generator, used in Bag. " alt="" coords="504,108,663,135"/>
+<area shape="rect" id="node10" href="$d9/dd5/a00432.html" title="Created by jim on 1/14/16. " alt="" coords="500,209,667,236"/>
+<area shape="rect" id="node11" href="$dc/d31/a00208.html" title="An item is an object that can be put into a Bag, to participate in the resource competition of the sy..." alt="" coords="527,260,640,287"/>
+<area shape="rect" id="node13" href="$dd/da2/a00192.html" title="A triple of priority (current), durability (decay), and quality (long&#45;term average). " alt="" coords="153,268,315,295"/>
+</map>

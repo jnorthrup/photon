@@ -1,0 +1,17 @@
+<map id="nars.language.Inheritance.make" name="nars.language.Inheritance.make">
+<area shape="rect" id="node2" href="$d8/d17/a00304.html#a9aacee8d6903ff6eb186d37f78569353" title="build a component list from two terms " alt="" coords="260,25,525,66"/>
+<area shape="rect" id="node3" href="$d3/db8/a00316.html#a20635d9d55f73d39b29a07653cde6bc6" title="Constructor with partial values, called by make. " alt="" coords="305,90,480,131"/>
+<area shape="rect" id="node4" href="$d0/d65/a00360.html#a96d4bf7bb99f48b6496cdb7457bc0e50" title="Check the validity of a potential Statement. " alt="" coords="289,155,497,197"/>
+<area shape="rect" id="node12" href="$d0/d65/a00360.html#a7123aba1c8c566f291e2c9b9d147557d" title="Default method to make the nameStr of an image term from given fields. " alt="" coords="291,221,494,262"/>
+<area shape="rect" id="node13" href="$d4/d27/a00392.html#ac7c5d438820208253d1a2ee59bf80ddc" title="Get a Term for a given name of a Concept or Operator. " alt="" coords="302,337,483,378"/>
+<area shape="rect" id="node5" href="$dc/d59/a00364.html#ad85f45a7858737445d5158801774ff5f" title="Equal terms have identical name, though not necessarily the same reference. " alt="" coords="595,5,774,32"/>
+<area shape="rect" id="node7" href="$d8/d17/a00304.html#a89000afae8017231889aaa549292d1e0" title="Default constructor. " alt="" coords="583,57,787,98"/>
+<area shape="rect" id="node8" href="$d0/d65/a00360.html#ac56b558891dd2088e0b66b437780c7b7" title="Default constructor. " alt="" coords="599,122,770,163"/>
+<area shape="rect" id="node9" href="$d0/d65/a00360.html#ace4f80751d303c613e467163913bebf5" title="Return the first component of the statement. " alt="" coords="590,187,779,229"/>
+<area shape="rect" id="node11" href="$d0/d65/a00360.html#ababe6155e2f78e769f76493317e118e0" title="Return the second component of the statement. " alt="" coords="590,253,779,294"/>
+<area shape="rect" id="node6" href="$dc/d59/a00364.html#a3aad4654016b8615fd4fa8a26668e1db" title="Reporting the name of the current Term. " alt="" coords="858,5,1053,32"/>
+<area shape="rect" id="node10" href="$d8/d17/a00304.html#a9778c35f9b602bee6ccac6a06809e546" title="list of (direct) components " alt="" coords="844,219,1067,261"/>
+<area shape="rect" id="node14" href="$d4/d27/a00392.html#a33af7b3d806d32c85390563fec3c6d27" title="Concept bag. " alt="" coords="573,319,796,345"/>
+<area shape="rect" id="node15" href="$d6/db8/a00376.html#a011b37fc683db7fb7b41e33712a37d92" title="Get an Item by key. " alt="" coords="613,369,756,396"/>
+<area shape="rect" id="node16" href="$d7/ded/a00196.html#afcd1217b7680b073fa51f0d0f159dcea" title="The term is the unique ID of the concept. " alt="" coords="591,420,779,447"/>
+</map>

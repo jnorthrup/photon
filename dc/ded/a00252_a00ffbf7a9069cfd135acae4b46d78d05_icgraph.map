@@ -1,0 +1,12 @@
+<map id="nars.inference.RuleTables.compoundAndSelf" name="nars.inference.RuleTables.compoundAndSelf">
+<area shape="rect" id="node2" href="$dc/ded/a00252.html#a764dbc9ccccf406df45e09fbfeda928f" title="Inference between two compound terms. " alt="" coords="292,5,531,47"/>
+<area shape="rect" id="node3" href="$dc/ded/a00252.html#ac2d01dfdc40bdd47c757cb549217e6e3" title="Entry point of the inference engine. " alt="" coords="579,42,796,69"/>
+<area shape="rect" id="node4" href="$d7/ded/a00196.html#ad6fb91dda799c3092ecb186ef24ca92a" title="An atomic step in a concept, only called in Memory# processConcept. " alt="" coords="844,35,1003,76"/>
+<area shape="rect" id="node5" href="$d4/d27/a00392.html#a0acc4adbf6a2462245da46bcb529746c" title="Select a concept to fireFromProcessConcept. " alt="" coords="1051,35,1245,76"/>
+<area shape="rect" id="node6" href="$d4/d27/a00392.html#a59ae339d666409988d90d29be4f73a91" title="An atomic working workCycle of the system: process new Tasks, then fireFromProcessConcept a concept..." alt="" coords="1293,35,1471,76"/>
+<area shape="rect" id="node7" href="$df/d15/a00416.html#a0d5c797dc17d9e8d0998852915e0f303" title="nars.storage.ReasonerBatch.doTick" alt="" coords="1519,42,1749,69"/>
+<area shape="rect" id="node8" href="$df/d15/a00416.html#a3468aa0f99edcd66412f27922dddb880" title="A clock tick. " alt="" coords="1797,42,2011,69"/>
+<area shape="rect" id="node9" href="$d9/da1/a00396.html#a5d9cfe517bcfbe41e5251910bcd119c1" title="Run to completion: repeatedly execute NARS working cycle, until Inputs are Finished, or 1000 steps. " alt="" coords="2059,42,2251,69"/>
+<area shape="rect" id="node10" href="$d9/da1/a00396.html#a7c307c6b842f82664de6b0e52bdf8efc" title="non&#45;static equivalent to main(String[]) : run to completion from an input file " alt="" coords="2299,35,2491,76"/>
+<area shape="rect" id="node11" href="$d9/da1/a00396.html#abafc597289bc2f6453b5cd0dd6634e54" title="The entry point of the standalone application. " alt="" coords="2539,42,2741,69"/>
+</map>

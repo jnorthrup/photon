@@ -1,0 +1,7 @@
+<map id="nars.storage.ReasonerBatch.isFinishedInputs" name="nars.storage.ReasonerBatch.isFinishedInputs">
+<area shape="rect" id="node2" href="$df/d15/a00416.html#a0d5c797dc17d9e8d0998852915e0f303" title="nars.storage.ReasonerBatch.doTick" alt="" coords="256,5,487,32"/>
+<area shape="rect" id="node4" href="$d9/da1/a00396.html#a5d9cfe517bcfbe41e5251910bcd119c1" title="Run to completion: repeatedly execute NARS working cycle, until Inputs are Finished, or 1000 steps. " alt="" coords="796,31,988,57"/>
+<area shape="rect" id="node3" href="$df/d15/a00416.html#a3468aa0f99edcd66412f27922dddb880" title="A clock tick. " alt="" coords="535,5,748,32"/>
+<area shape="rect" id="node5" href="$d9/da1/a00396.html#a7c307c6b842f82664de6b0e52bdf8efc" title="non&#45;static equivalent to main(String[]) : run to completion from an input file " alt="" coords="1036,23,1228,65"/>
+<area shape="rect" id="node6" href="$d9/da1/a00396.html#abafc597289bc2f6453b5cd0dd6634e54" title="The entry point of the standalone application. " alt="" coords="1276,31,1479,57"/>
+</map>

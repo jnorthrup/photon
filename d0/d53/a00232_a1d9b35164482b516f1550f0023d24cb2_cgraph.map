@@ -1,0 +1,5 @@
+<map id="nars.entity.TermLink.TermLink" name="nars.entity.TermLink.TermLink">
+<area shape="rect" id="node2" href="$d0/d53/a00232.html#a807c24a5c7654fafa714b1a5aa43ccfa" title="nars.entity.TermLink.set\lIndex" alt="" coords="267,5,430,47"/>
+<area shape="rect" id="node3" href="$d0/d53/a00232.html#a0660f7b949881a67b88f428cc15d3caf" title="The type of link, one of the above. " alt="" coords="252,71,445,98"/>
+<area shape="rect" id="node4" href="$d0/d53/a00232.html#a38c105501a79e2f5f3036e7a8700607b" title="nars.entity.TermLink.setType" alt="" coords="253,122,445,149"/>
+</map>

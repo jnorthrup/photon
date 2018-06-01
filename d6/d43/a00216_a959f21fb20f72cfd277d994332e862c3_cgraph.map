@@ -1,0 +1,5 @@
+<map id="nars.entity.Stamp.Stamp" name="nars.entity.Stamp.Stamp">
+<area shape="rect" id="node2" href="$d6/d43/a00216.html#a7c3a7c21f049a6dfe9dbc088caae4abf" title="serial number, for the whole system TODO : should it really be static? or a Stamp be a field in Reaso..." alt="" coords="242,5,433,47"/>
+<area shape="rect" id="node3" href="$d6/d43/a00216.html#ac84c7f26ab8e0740bab4335f33396e2c" title="serial numbers " alt="" coords="220,71,455,98"/>
+<area shape="rect" id="node4" href="$d6/d43/a00216.html#a8b3fd059e38dcb039a01ab991ec6614f" title="nars.entity.Stamp.setCurrent\lSerial" alt="" coords="242,123,433,164"/>
+</map>

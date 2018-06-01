@@ -1,0 +1,5 @@
+<map id="nars.io.StringParser.parseTask" name="nars.io.StringParser.parseTask">
+<area shape="rect" id="node2" href="$df/d15/a00416.html#a4766dfcaabdf586d60b9ac9827e41cad" title="Parse a line of input experience. " alt="" coords="256,5,480,47"/>
+<area shape="rect" id="node3" href="$df/d15/a00416.html#a1823f1575021b1ca67e6174923923fbb" title="To process a line of input text. " alt="" coords="528,5,743,47"/>
+<area shape="rect" id="node4" href="$d9/dd6/a00272.html#a1a4b66a6e6cf89d5c2ea7a5923195247" title="Process the next chunk of input data TODO duplicated code with InputWindow#nextInput(). " alt="" coords="791,5,992,47"/>
+</map>

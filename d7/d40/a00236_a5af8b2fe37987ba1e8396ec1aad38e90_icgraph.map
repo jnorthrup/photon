@@ -1,0 +1,61 @@
+<map id="nars.entity.TruthValue.toStringBrief" name="nars.entity.TruthValue.toStringBrief">
+<area shape="rect" id="node2" href="$dd/dc1/a00212.html#a8b6d9355c0211d37f881ec6717a6b636" title="Get a String representation of the sentence for key of Task and TaskLink. " alt="" coords="219,197,399,223"/>
+<area shape="rect" id="node3" href="$d5/ddf/a00224.html#ad9bdd119be53a8a3638872ad884f9957" title="Constructor for input task. " alt="" coords="467,167,617,194"/>
+<area shape="rect" id="node4" href="$dd/dc1/a00212.html#aea2f809b2d4c375f3c4ec3d0328d8787" title="Get a String representation of the sentence, with 2&#45;digit accuracy. " alt="" coords="447,219,637,260"/>
+<area shape="rect" id="node5" href="$d4/d27/a00392.html#ad89bc0ba08c0b5bfbddf247cdab5eaa9" title="Display input/output sentence in the output channels. " alt="" coords="685,201,868,227"/>
+<area shape="rect" id="node60" href="$d5/ddf/a00224.html#a73b96cd17fd93eeab0cc94bd36f25e66" title="Get a String representation of the Task. " alt="" coords="694,251,859,278"/>
+<area shape="rect" id="node6" href="$dd/dd7/a00248.html#a3ecf859c238ad7f0c44c45e3e5df0081" title="Check if a Sentence provide a better answer to a Question or Goal. " alt="" coords="1484,12,1676,53"/>
+<area shape="rect" id="node23" href="$d4/d27/a00392.html#aa35448d01b9f72402aa8623dc75c8209" title="Input task processing. " alt="" coords="928,570,1135,597"/>
+<area shape="rect" id="node26" href="$d4/d27/a00392.html#a74e689f6e3be2a74a0bf5f82e25de9f7" title="Activated task called in MatchingRules.trySolution and Concept.processGoal. " alt="" coords="916,63,1147,90"/>
+<area shape="rect" id="node27" href="$d4/d27/a00392.html#a831fc87d7e6d1f11df73b38bdd628b9b" title="Derived task comes from the inference rules. " alt="" coords="921,274,1141,301"/>
+<area shape="rect" id="node7" href="$d7/ded/a00196.html#a40cddcc82ee28a1cf5b1f4bc14e2b078" title="To accept a new judgment as isBelief, and check for revisions and solutions. " alt="" coords="1789,71,1975,112"/>
+<area shape="rect" id="node18" href="$d7/ded/a00196.html#a3900248991e7adb57e82231312337f8f" title="To answer a question by existing beliefs. " alt="" coords="1789,5,1975,47"/>
+<area shape="rect" id="node19" href="$dd/dd7/a00248.html#aac1c92950f50edd04d12229a8c992987" title="The task and belief have the same content. " alt="" coords="1775,137,1989,163"/>
+<area shape="rect" id="node8" href="$d7/ded/a00196.html#a9ea7c3154932d7a736c105eb55daeb5c" title="Directly process a new task. " alt="" coords="2099,71,2271,112"/>
+<area shape="rect" id="node9" href="$d4/d27/a00392.html#af8d07412d21a441a5c7005a477b06468" title="Immediate processing of a new task, in constant time Local processing, in one concept only..." alt="" coords="2932,145,3141,187"/>
+<area shape="rect" id="node10" href="$d4/d27/a00392.html#ae43b86074c0d8f6a324696f69faa54b3" title="Process the newTasks accumulated in the previous workCycle, accept input ones and those that correspo..." alt="" coords="3189,211,3384,252"/>
+<area shape="rect" id="node17" href="$d4/d27/a00392.html#a5061708f88897cfdf4e0671c846762ca" title="Select a novel task to process. " alt="" coords="3189,145,3384,187"/>
+<area shape="rect" id="node11" href="$d4/d27/a00392.html#a59ae339d666409988d90d29be4f73a91" title="An atomic working workCycle of the system: process new Tasks, then fireFromProcessConcept a concept..." alt="" coords="3432,211,3609,252"/>
+<area shape="rect" id="node12" href="$df/d15/a00416.html#a0d5c797dc17d9e8d0998852915e0f303" title="nars.storage.ReasonerBatch.doTick" alt="" coords="3657,218,3888,245"/>
+<area shape="rect" id="node13" href="$df/d15/a00416.html#a3468aa0f99edcd66412f27922dddb880" title="A clock tick. " alt="" coords="3936,218,4149,245"/>
+<area shape="rect" id="node14" href="$d9/da1/a00396.html#a5d9cfe517bcfbe41e5251910bcd119c1" title="Run to completion: repeatedly execute NARS working cycle, until Inputs are Finished, or 1000 steps. " alt="" coords="4197,218,4389,245"/>
+<area shape="rect" id="node15" href="$d9/da1/a00396.html#a7c307c6b842f82664de6b0e52bdf8efc" title="non&#45;static equivalent to main(String[]) : run to completion from an input file " alt="" coords="4437,211,4629,252"/>
+<area shape="rect" id="node16" href="$d9/da1/a00396.html#abafc597289bc2f6453b5cd0dd6634e54" title="The entry point of the standalone application. " alt="" coords="4677,218,4880,245"/>
+<area shape="rect" id="node20" href="$dc/ded/a00252.html#ac2d01dfdc40bdd47c757cb549217e6e3" title="Entry point of the inference engine. " alt="" coords="2667,821,2884,847"/>
+<area shape="rect" id="node21" href="$d7/ded/a00196.html#ad6fb91dda799c3092ecb186ef24ca92a" title="An atomic step in a concept, only called in Memory# processConcept. " alt="" coords="2957,507,3116,548"/>
+<area shape="rect" id="node22" href="$d4/d27/a00392.html#a0acc4adbf6a2462245da46bcb529746c" title="Select a concept to fireFromProcessConcept. " alt="" coords="3189,429,3384,471"/>
+<area shape="rect" id="node24" href="$df/d15/a00416.html#a1823f1575021b1ca67e6174923923fbb" title="To process a line of input text. " alt="" coords="1195,809,1409,851"/>
+<area shape="rect" id="node25" href="$d9/dd6/a00272.html#a1a4b66a6e6cf89d5c2ea7a5923195247" title="Process the next chunk of input data TODO duplicated code with InputWindow#nextInput(). " alt="" coords="1479,1076,1681,1117"/>
+<area shape="rect" id="node28" href="$d4/d27/a00392.html#aef985ce01b98005b7fa3065b834ded7e" title="Shared final operations by all double&#45;premise rules, called from the rules except StructuralRules..." alt="" coords="1209,507,1395,548"/>
+<area shape="rect" id="node59" href="$d4/d27/a00392.html#aa0bc5b42c9b4999df3f43a546c5c8dfe" title="Shared final operations by all single&#45;premise rules, called in StructuralRules. " alt="" coords="1211,267,1393,308"/>
+<area shape="rect" id="node29" href="$d6/d08/a00244.html#a06a7361732a36328f25d2b1de5825558" title="Finish composing implication term. " alt="" coords="1485,281,1675,323"/>
+<area shape="rect" id="node33" href="$d6/d08/a00244.html#a4479c479bb3ceeb78130e03ce5e3f293" title="{&lt;(S|P) ==&gt; M&gt;, " alt="" coords="1485,347,1675,388"/>
+<area shape="rect" id="node34" href="$d6/d08/a00244.html#a4e01a00f3a024ecdbd3949fefb803dae" title="Introduce a dependent variable in an outer&#45;layer conjunction. " alt="" coords="1485,412,1675,453"/>
+<area shape="rect" id="node35" href="$d6/d08/a00244.html#ae7906cfca35e9c7568ace240aba808a0" title="{&lt;M &#45;&#45;&gt; S&gt;, &lt;C ==&gt; &lt;M &#45;&#45;&gt; P&gt;&gt;} |&#45; &lt;(&amp;&amp;, &lt;#x &#45;&#45;&gt; S&gt;, C) ==&gt; &lt;#x &#45;&#45;&gt; P&gt;&gt; {&lt;M &#45;&#45;&gt; S&gt;, (&amp;&amp;, C, &lt;M &#45;&#45;&gt; P&gt;)} |&#45; (&amp;&amp;, C, &lt;&lt;#x &#45;&#45;&gt; S&gt; ==&gt; &lt;#x &#45;&#45;&gt; P&gt;&gt;) " alt="" coords="1485,712,1675,753"/>
+<area shape="rect" id="node38" href="$dd/dd7/a00248.html#afcdec4a07d241f98cd54ef706781c3cb" title="Belief revision. " alt="" coords="1469,78,1691,105"/>
+<area shape="rect" id="node39" href="$dd/dd7/a00248.html#aa28c13b04b498c8937bca7b1f6eb20d1" title="{&lt;S &#45;&#45;&gt; P&gt;, " alt="" coords="1479,477,1681,519"/>
+<area shape="rect" id="node41" href="$dd/dd7/a00248.html#abde426effec7b2e378751a9fa8769356" title="{&lt;S &lt;&#45;&gt; P&gt;, " alt="" coords="1479,595,1681,636"/>
+<area shape="rect" id="node44" href="$dc/ded/a00252.html#af34ec4e0da91e9422e25afd45af26559" title="{(&amp;&amp;, &lt;#x() &#45;&#45;&gt; S&gt;, &lt;#x() &#45;&#45;&gt; P&gt;&gt;, &lt;M &#45;&#45;&gt; P&gt;} |&#45; &lt;M &#45;&#45;&gt; S&gt; " alt="" coords="1477,843,1683,884"/>
+<area shape="rect" id="node45" href="$dc/ded/a00252.html#ae7ff6eab9dca18af37064bc609eaf63c" title="{&lt;(&amp;&amp;, S2, S3) ==&gt; P&gt;, &lt;(&amp;&amp;, S1, S3) ==&gt; P&gt;} |&#45; &lt;S1 ==&gt; S2&gt; " alt="" coords="1751,517,2013,543"/>
+<area shape="rect" id="node46" href="$dc/ded/a00252.html#aac2b267fcfa9bb34e03d44a410bfd92b" title="{&lt;(&amp;&amp;, S1, S2) &lt;=&gt; P&gt;, (&amp;&amp;, S1, S2)} |&#45; P " alt="" coords="2356,959,2619,986"/>
+<area shape="rect" id="node47" href="$dc/ded/a00252.html#a52bb3626302eb9f10567c24ec5dbc934" title="{&lt;(&amp;&amp;, S1, S2, S3) ==&gt; P&gt;, S1} |&#45; &lt;(&amp;&amp;, S2, S3) ==&gt; P&gt; {&lt;(&amp;&amp;, S2, S3) ==&gt; P&gt;, &lt;S1 ==&gt; S2&gt;} |&#45; &lt;(&amp;&amp;..." alt="" coords="2065,893,2305,935"/>
+<area shape="rect" id="node49" href="$dc/ded/a00252.html#aa57c06fe6fa6d3c396b196edaf631a92" title="nars.inference.RuleTables.function\lBeggingToBeAsync" alt="" coords="1468,777,1692,819"/>
+<area shape="rect" id="node51" href="$dc/ded/a00252.html#ab124c9151308789ed5f1e5562adeef96" title="{&lt;M ==&gt; S&gt;, &lt;M ==&gt; P&gt;} |&#45; {&lt;S ==&gt; P&gt;, " alt="" coords="1783,253,1981,295"/>
+<area shape="rect" id="node52" href="$dc/ded/a00252.html#a25eeb7e192fb51fb7c1471e9af6489f4" title="nars.inference.RuleTables.dedExe" alt="" coords="1469,230,1691,257"/>
+<area shape="rect" id="node53" href="$dc/ded/a00252.html#a000d25cc642aeb730ec57f80fcddd16d" title="{(||, S, P), P} |&#45; S {(&amp;&amp;, S, P), P} |&#45; S " alt="" coords="1457,1011,1703,1052"/>
+<area shape="rect" id="node56" href="$dd/dd7/a00260.html#a50197adbc4f3cd1f109fe4d3629cdf6c" title="{&lt;S ==&gt; P&gt;, &lt;M &lt;=&gt; P&gt;} |&#45; &lt;S ==&gt; P&gt; " alt="" coords="1798,636,1966,677"/>
+<area shape="rect" id="node57" href="$dd/dd7/a00260.html#a16bc93d2dcbcc4d92d2fb066d60e9e5f" title="{&lt;S &lt;=&gt; M&gt;, &lt;M &lt;=&gt; P&gt;} |&#45; &lt;S &lt;=&gt; P&gt; " alt="" coords="1798,188,1966,229"/>
+<area shape="rect" id="node30" href="$d6/d08/a00244.html#a53f7edf7bfe7433da42e8fcf36fd6604" title="{&lt;S ==&gt; M&gt;, " alt="" coords="1787,384,1977,425"/>
+<area shape="rect" id="node31" href="$dc/ded/a00252.html#a34927349efcf87db97d23c60983b115b" title="Syllogistic rules whose both premises are on the same asymmetric relation. " alt="" coords="2061,427,2308,468"/>
+<area shape="rect" id="node32" href="$dc/ded/a00252.html#a8628d400a8ceda7fea05039ddfea319b" title="Meta&#45;table of syllogistic rules, indexed by the content classes of the taskSentence and the belief..." alt="" coords="2367,603,2607,630"/>
+<area shape="rect" id="node36" href="$dc/ded/a00252.html#af6c973743270b2739d4ad25f16975da1" title="The detachment rule, with variable unification. " alt="" coords="2061,675,2308,716"/>
+<area shape="rect" id="node37" href="$dc/ded/a00252.html#a54a7ceba4f123db5035e3b85063c91f1" title="Inference between a compound term and a statement. " alt="" coords="1763,804,2001,845"/>
+<area shape="rect" id="node40" href="$dd/dd7/a00248.html#a93af32adec92cf57671c32e9ccc2dffc" title="The task and belief match reversely. " alt="" coords="1775,449,1989,491"/>
+<area shape="rect" id="node42" href="$dd/dd7/a00248.html#a901b20a8e57ac01ce97b4d1302224e39" title="Inheritance/Implication matches Similarity/Equivalence. " alt="" coords="1775,571,1989,612"/>
+<area shape="rect" id="node43" href="$dc/ded/a00252.html#a4f61a7c2dc75c9da475030894eac0735" title="Syllogistic rules whose first premise is on an asymmetric relation, and the second on a symmetric rel..." alt="" coords="2061,596,2308,637"/>
+<area shape="rect" id="node48" href="$dc/ded/a00252.html#aa167c7cb73f540ded591dc584ae623c1" title="Conditional deduction or induction, with variable unification. " alt="" coords="2367,843,2607,884"/>
+<area shape="rect" id="node50" href="$dc/ded/a00252.html#acacd7cd6f866a576bfad37e0003df853" title="{&lt;&lt;M &#45;&#45;&gt; S&gt; ==&gt; &lt;M &#45;&#45;&gt; P&gt;&gt;, &lt;M &#45;&#45;&gt; S&gt;} |&#45; &lt;M &#45;&#45;&gt; P&gt; {&lt;&lt;M &#45;&#45;&gt; S&gt; ==&gt; &lt;M &#45;&#45;&gt; P&gt;&gt;, &lt;M &#45;&#45;&gt; P&gt;} |&#45; &lt;M &#45;&#45;&gt; ..." alt="" coords="1759,753,2005,779"/>
+<area shape="rect" id="node54" href="$dc/ded/a00252.html#a00ffbf7a9069cfd135acae4b46d78d05" title="Inference between a compound term and a component of it. " alt="" coords="2065,1011,2304,1052"/>
+<area shape="rect" id="node55" href="$dc/ded/a00252.html#a764dbc9ccccf406df45e09fbfeda928f" title="Inference between two compound terms. " alt="" coords="2368,1011,2607,1052"/>
+<area shape="rect" id="node58" href="$dc/ded/a00252.html#ab64fca3ebda3499b831c2b93df736530" title="Syllogistic rules whose both premises are on the same symmetric relation. " alt="" coords="2065,325,2304,367"/>
+</map>

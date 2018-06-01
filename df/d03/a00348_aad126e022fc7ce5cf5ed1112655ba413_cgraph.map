@@ -1,0 +1,8 @@
+<map id="nars.language.SetExt.clone" name="nars.language.SetExt.clone">
+<area shape="rect" id="node2" href="$d8/d17/a00304.html#a9cb7736a3f6b220d75366ab146488773" title="Deep clone an array list of terms. " alt="" coords="236,5,492,32"/>
+<area shape="rect" id="node4" href="$d8/d17/a00304.html#a4f04fa1bc71ade41d35e664ff4df5475" title="syntactic complexity of the compound, the sum of those of its components plus 1 " alt="" coords="253,57,475,98"/>
+<area shape="rect" id="node5" href="$d8/d17/a00304.html#a9778c35f9b602bee6ccac6a06809e546" title="list of (direct) components " alt="" coords="253,122,475,163"/>
+<area shape="rect" id="node6" href="$d8/d17/a00304.html#aee0ef6fd533b58caf22bee2a98eef67d" title="Whether the term names a concept. " alt="" coords="257,187,471,229"/>
+<area shape="rect" id="node7" href="$df/d03/a00348.html#a1b35b984a7856625024ee52dec5fbf3d" title="Constructor with partial values, called by make. " alt="" coords="269,253,459,280"/>
+<area shape="rect" id="node3" href="$d8/d17/a00304.html#a963e8aef1163f4ed8c364b5e448deaff" title="Abstract clone method. " alt="" coords="540,5,775,32"/>
+</map>

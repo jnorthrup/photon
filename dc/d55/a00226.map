@@ -1,0 +1,10 @@
+<map id="nars.entity.TaskLink" name="nars.entity.TaskLink">
+<area shape="rect" id="node2" href="$d0/d53/a00232.html" title="A link between a compound term and a component term. " alt="" coords="1053,347,1195,373"/>
+<area shape="rect" id="node3" href="$dc/d31/a00208.html" title="An item is an object that can be put into a Bag, to participate in the resource competition of the sy..." alt="" coords="792,208,905,235"/>
+<area shape="rect" id="node17" href="$d5/ddf/a00224.html" title="A task to be processed, consists of a Sentence and a BudgetValue. " alt="" coords="1066,208,1182,235"/>
+<area shape="rect" id="node5" href="$dd/da2/a00192.html" title="A triple of priority (current), durability (decay), and quality (long&#45;term average). " alt="" coords="467,141,628,168"/>
+<area shape="rect" id="node10" href="$dc/d59/a00364.html" title="Term is the basic component of Narsese, and the object of processing in NARS. " alt="" coords="479,496,616,523"/>
+<area shape="rect" id="node19" href="$dd/dc1/a00212.html" title="A Sentence is an abstract class, mainly containing a Term, a TruthValue, and a Stamp. " alt="" coords="777,340,920,367"/>
+<area shape="rect" id="node21" href="$d7/d40/a00236.html" title="Frequency and confidence. " alt="" coords="472,344,623,371"/>
+<area shape="rect" id="node23" href="$d6/d43/a00216.html" title="Each Sentence has a time stamp, consisting the following components: (1) The creation time of the sen..." alt="" coords="485,293,610,320"/>
+</map>

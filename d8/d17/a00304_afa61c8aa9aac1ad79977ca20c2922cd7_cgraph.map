@@ -1,0 +1,10 @@
+<map id="nars.language.CompoundTerm.addComponents" name="nars.language.CompoundTerm.addComponents">
+<area shape="rect" id="node2" href="$d8/d17/a00304.html#a5a2d25a17f77d898268e1637a3aa9c4d" title="Clone the component list. " alt="" coords="279,5,514,47"/>
+<area shape="rect" id="node5" href="$d8/d17/a00304.html#a9778c35f9b602bee6ccac6a06809e546" title="list of (direct) components " alt="" coords="285,71,508,112"/>
+<area shape="rect" id="node6" href="$d8/d17/a00304.html#ac5f82b4dd2c0f4aa60e1e97600526d21" title="Try to make a compound term from a template and a list of components. " alt="" coords="279,137,515,163"/>
+<area shape="rect" id="node3" href="$d8/d17/a00304.html#a9cb7736a3f6b220d75366ab146488773" title="Deep clone an array list of terms. " alt="" coords="563,13,819,39"/>
+<area shape="rect" id="node4" href="$d8/d17/a00304.html#a963e8aef1163f4ed8c364b5e448deaff" title="Abstract clone method. " alt="" coords="867,13,1101,39"/>
+<area shape="rect" id="node7" href="$d5/d0f/a00308.html#afb24af5cc6c098ad3f5d837fa383e69c" title="Try to make a new ImageExt. " alt="" coords="591,86,790,113"/>
+<area shape="rect" id="node8" href="$d7/df2/a00312.html#ad05e4231ed31d78ad4c8b4fefbc964fa" title="Try to make a new ImageExt. " alt="" coords="593,137,788,163"/>
+<area shape="rect" id="node9" href="$d8/d17/a00304.html#a786848bcf438b17b9aa566b9b0c04e5f" title="Abstract method to get the operator of the compound. " alt="" coords="565,187,816,214"/>
+</map>

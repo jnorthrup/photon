@@ -1,0 +1,11 @@
+<map id="nars.language.IntersectionExt.make" name="nars.language.IntersectionExt.make">
+<area shape="rect" id="node2" href="$d4/db5/a00328.html#a84dcdd3c63e7219e8c3da43e163f2d78" title="Try to make a new compound from two components. " alt="" coords="228,122,403,163"/>
+<area shape="rect" id="node3" href="$dc/d59/a00364.html#ae2dba162b71bb9b806f54832249a260c" title="Make a new Term with the same name. " alt="" coords="482,5,654,32"/>
+<area shape="rect" id="node5" href="$d8/d17/a00304.html#a5a2d25a17f77d898268e1637a3aa9c4d" title="Clone the component list. " alt="" coords="451,57,685,98"/>
+<area shape="rect" id="node8" href="$d8/d17/a00304.html#a89000afae8017231889aaa549292d1e0" title="Default constructor. " alt="" coords="466,122,670,163"/>
+<area shape="rect" id="node9" href="$d6/d9c/a00352.html#aaea0f2cc2ca804779d1bf346beb58fa1" title="Try to make a new set from one component. " alt="" coords="479,188,657,215"/>
+<area shape="rect" id="node10" href="$df/d03/a00348.html#aa8f6526a59c3d7e578dd76a0eab75a0e" title="Try to make a new set from one component. " alt="" coords="477,239,659,265"/>
+<area shape="rect" id="node4" href="$dc/d59/a00364.html#a2d9973aada6190dd60b48a34448094c9" title="Default constructor that build an internal Term. " alt="" coords="776,5,947,32"/>
+<area shape="rect" id="node6" href="$d8/d17/a00304.html#a9cb7736a3f6b220d75366ab146488773" title="Deep clone an array list of terms. " alt="" coords="733,64,989,91"/>
+<area shape="rect" id="node7" href="$d8/d17/a00304.html#a963e8aef1163f4ed8c364b5e448deaff" title="Abstract clone method. " alt="" coords="1037,64,1272,91"/>
+</map>

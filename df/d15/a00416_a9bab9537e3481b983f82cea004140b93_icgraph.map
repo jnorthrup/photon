@@ -1,0 +1,7 @@
+<map id="nars.storage.ReasonerBatch.setRunning" name="nars.storage.ReasonerBatch.setRunning">
+<area shape="rect" id="node2" href="$df/d15/a00416.html#ab89758e9f42673fedcc4a895a2f4a928" title="Reset the system with an empty memory and reset clock. " alt="" coords="264,13,485,39"/>
+<area shape="rect" id="node5" href="$df/d15/a00416.html#a63672a01ec4794f8e91c2fa73a2d86a9" title="Start the inference process. " alt="" coords="269,63,480,90"/>
+<area shape="rect" id="node6" href="$df/d15/a00416.html#a4e7ed20dbd3be897504e54a8305e3576" title="Stop the inference process. " alt="" coords="266,114,483,141"/>
+<area shape="rect" id="node3" href="$df/d15/a00416.html#a1823f1575021b1ca67e6174923923fbb" title="To process a line of input text. " alt="" coords="533,5,748,47"/>
+<area shape="rect" id="node4" href="$d9/dd6/a00272.html#a1a4b66a6e6cf89d5c2ea7a5923195247" title="Process the next chunk of input data TODO duplicated code with InputWindow#nextInput(). " alt="" coords="796,5,997,47"/>
+</map>

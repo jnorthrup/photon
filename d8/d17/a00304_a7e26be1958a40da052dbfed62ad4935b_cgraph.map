@@ -1,0 +1,23 @@
+<map id="nars.language.CompoundTerm.make" name="nars.language.CompoundTerm.make">
+<area shape="rect" id="node2" href="$d6/d9c/a00352.html#aaea0f2cc2ca804779d1bf346beb58fa1" title="Try to make a new set from one component. " alt="" coords="565,257,743,284"/>
+<area shape="rect" id="node3" href="$dd/d1d/a00336.html#a8c1310db584c5aebf595b305a41ad359" title="Try to make a Negation of one component. " alt="" coords="291,483,486,509"/>
+<area shape="rect" id="node4" href="$df/df1/a00340.html#a9b9a5a7e04b70b76d4656f9f00cd2244" title="Try to make a new compound. " alt="" coords="295,127,483,153"/>
+<area shape="rect" id="node13" href="$df/d03/a00348.html#aa8f6526a59c3d7e578dd76a0eab75a0e" title="Try to make a new set from one component. " alt="" coords="563,476,745,503"/>
+<area shape="rect" id="node14" href="$dc/d50/a00332.html#acc3bb6e31a10d204254e827435391988" title="Try to make a new compound from two components. " alt="" coords="301,366,476,407"/>
+<area shape="rect" id="node20" href="$d4/db5/a00328.html#a84dcdd3c63e7219e8c3da43e163f2d78" title="Try to make a new compound from two components. " alt="" coords="301,301,476,342"/>
+<area shape="rect" id="node21" href="$d5/d0f/a00308.html#afb24af5cc6c098ad3f5d837fa383e69c" title="Try to make a new ImageExt. " alt="" coords="289,533,488,560"/>
+<area shape="rect" id="node22" href="$d7/df2/a00312.html#ad05e4231ed31d78ad4c8b4fefbc964fa" title="Try to make a new ImageExt. " alt="" coords="291,584,486,611"/>
+<area shape="rect" id="node5" href="$d8/d17/a00304.html#a8d1e610c509fa096c6b52eb5fe06d59b" title="default method to make the oldName of a compound term from given fields " alt="" coords="536,15,772,57"/>
+<area shape="rect" id="node8" href="$d4/d27/a00392.html#ac7c5d438820208253d1a2ee59bf80ddc" title="Get a Term for a given name of a Concept or Operator. " alt="" coords="563,90,745,131"/>
+<area shape="rect" id="node12" href="$df/df1/a00340.html#a3fbcbfd961b20193e9c47309107e692b" title="Constructor with partial values, called by make. " alt="" coords="553,156,755,183"/>
+<area shape="rect" id="node6" href="$d8/d17/a00304.html#a89000afae8017231889aaa549292d1e0" title="Default constructor. " alt="" coords="853,209,1057,250"/>
+<area shape="rect" id="node7" href="$d8/d17/a00304.html#aa26a304f6249c185836d8fde8b8f17a8" title="default method to make the oldName of the current term from existing fields " alt="" coords="820,5,1091,32"/>
+<area shape="rect" id="node9" href="$d4/d27/a00392.html#a33af7b3d806d32c85390563fec3c6d27" title="Concept bag. " alt="" coords="844,56,1067,83"/>
+<area shape="rect" id="node10" href="$d6/db8/a00376.html#a011b37fc683db7fb7b41e33712a37d92" title="Get an Item by key. " alt="" coords="884,107,1027,133"/>
+<area shape="rect" id="node11" href="$d7/ded/a00196.html#afcd1217b7680b073fa51f0d0f159dcea" title="The term is the unique ID of the concept. " alt="" coords="861,157,1049,184"/>
+<area shape="rect" id="node15" href="$d8/d17/a00304.html#a5a2d25a17f77d898268e1637a3aa9c4d" title="Clone the component list. " alt="" coords="537,359,771,401"/>
+<area shape="rect" id="node18" href="$dc/d59/a00364.html#ae2dba162b71bb9b806f54832249a260c" title="Make a new Term with the same name. " alt="" coords="568,308,740,335"/>
+<area shape="rect" id="node16" href="$d8/d17/a00304.html#a9cb7736a3f6b220d75366ab146488773" title="Deep clone an array list of terms. " alt="" coords="827,367,1083,393"/>
+<area shape="rect" id="node17" href="$d8/d17/a00304.html#a963e8aef1163f4ed8c364b5e448deaff" title="Abstract clone method. " alt="" coords="1139,367,1373,393"/>
+<area shape="rect" id="node19" href="$dc/d59/a00364.html#a2d9973aada6190dd60b48a34448094c9" title="Default constructor that build an internal Term. " alt="" coords="870,308,1041,335"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="nars.entity.Stamp.getCreationTime" name="nars.entity.Stamp.getCreationTime">
+<area shape="rect" id="node2" href="$d5/ddf/a00224.html#a1f643668b958d700afee3616f0baf93f" title="Directly get the creation time of the sentence. " alt="" coords="279,5,495,32"/>
+<area shape="rect" id="node4" href="$d6/d43/a00216.html#ace10b17e33839430469efd8af6da5135" title="Generate a new stamp identical with a given one. " alt="" coords="303,56,470,83"/>
+<area shape="rect" id="node5" href="$d6/d43/a00216.html#ad1aee19cfc0bb8ca9232bad251f74ffc" title="Get a String form of the Stamp for display Format: {creationTime [: eventTime] : evidentialBase}. " alt="" coords="299,107,474,133"/>
+<area shape="rect" id="node3" href="$d5/ddf/a00224.html#abae2edb1e9cccff191a095ebd7776895" title="Merge one Task into another. " alt="" coords="559,5,715,32"/>
+<area shape="rect" id="node6" href="$d6/d43/a00216.html#ab52baff17f87c3737f0bc0216f66ac3f" title="The hash code of Stamp. " alt="" coords="543,107,731,133"/>
+<area shape="rect" id="node7" href="$dd/dc1/a00212.html#aa46486d7029fadbdfd9110ba7c9272ed" title="To produce the hashcode of a sentence. " alt="" coords="779,107,984,133"/>
+</map>

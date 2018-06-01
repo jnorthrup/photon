@@ -1,0 +1,4 @@
+<map id="nars.entity.Item.decDurability" name="nars.entity.Item.decDurability">
+<area shape="rect" id="node2" href="$dd/da2/a00192.html#af94675e7515bd0efd94b5ee787eebc4a" title="Decrease durability value by a percentage of the remaining range. " alt="" coords="247,5,433,47"/>
+<area shape="rect" id="node3" href="$db/d12/a00268.html#a46d2f048b6ba77afc60dcf49734f23c7" title="A function where the output is conjunctively determined by the inputs. " alt="" coords="481,13,705,39"/>
+</map>

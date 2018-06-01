@@ -1,0 +1,10 @@
+<map id="nars.entity.Concept.toStringLong" name="nars.entity.Concept.toStringLong">
+<area shape="rect" id="node2" href="$dc/d31/a00208.html#a54fc0a370b847dd77c0a698c765e6e55" title="The budget of the Item, consisting of 3 numbers. " alt="" coords="287,5,463,32"/>
+<area shape="rect" id="node3" href="$dc/d31/a00208.html#ab5c9fbb171f325844966b496010acf60" title="The key of the Item, unique in a Bag. " alt="" coords="296,56,455,83"/>
+<area shape="rect" id="node4" href="$d7/ded/a00196.html#abf2fe7f5a84583c67322faa6bdfb9f7d" title="Question directly asked about the term. " alt="" coords="267,107,484,133"/>
+<area shape="rect" id="node5" href="$d7/ded/a00196.html#acef3f846ea7bced858519c03e134498e" title="Task links for indirect processing. " alt="" coords="282,158,469,199"/>
+<area shape="rect" id="node6" href="$d7/ded/a00196.html#a9f031bcf593e4c6f27e82d2b97a2d83d" title="Term links between the term and its components and compounds. " alt="" coords="281,223,469,265"/>
+<area shape="rect" id="node7" href="$dc/d31/a00208.html#a0560704e74c1856af8e98e862d55d626" title="Return a String representation of the Item after simplification. " alt="" coords="294,289,457,330"/>
+<area shape="rect" id="node9" href="$d7/ded/a00196.html#aac600930fc4554812f4804457edf2146" title="nars.entity.Concept.toString\lIfNotNull" alt="" coords="283,354,468,395"/>
+<area shape="rect" id="node8" href="$dd/da2/a00192.html#aff75d0d4fed143961e843d2959687fb0" title="Briefly display the BudgetValue. " alt="" coords="532,289,708,330"/>
+</map>

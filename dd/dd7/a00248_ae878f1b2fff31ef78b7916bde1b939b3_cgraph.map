@@ -1,0 +1,58 @@
+<map id="nars.inference.LocalRules.convertRelation" name="nars.inference.LocalRules.convertRelation">
+<area shape="rect" id="node2" href="$d3/dcc/a00264.html#a0584fe68d00cebcf3e2d6c22ba356c52" title="{&lt;S ==&gt; M&gt;, " alt="" coords="273,161,528,188"/>
+<area shape="rect" id="node6" href="$dd/dd7/a00248.html#a19ea934d3f2b6eb6a01f09db55afb4f0" title="Convert jusgment into different relation. " alt="" coords="283,1089,518,1130"/>
+<area shape="rect" id="node10" href="$d5/ddf/a00224.html#a091f9ec3bdacfd6741f767cb62b14c0f" title="Directly get the content of the sentence. " alt="" coords="609,1187,793,1213"/>
+<area shape="rect" id="node13" href="$d4/d27/a00392.html#aae366ea198c2340fef786120d5c2163b" title="The selected belief. " alt="" coords="595,1355,806,1397"/>
+<area shape="rect" id="node14" href="$d4/d27/a00392.html#a26eda4f00b333b706b4e3d069fdf1508" title="The selected Task. " alt="" coords="878,1320,1117,1347"/>
+<area shape="rect" id="node40" href="$d3/dcc/a00264.html#a8f6892d4f41dfa39a4868e5bc65540ce" title="{&lt;S ==&gt; M&gt;, &lt;M ==&gt; P&gt;} |&#45; &lt;S ==&gt; P&gt; " alt="" coords="273,77,528,104"/>
+<area shape="rect" id="node41" href="$d9/d21/a00240.html#a2db9aa6bf208e45b225924b2ba1769da" title="Forward inference result and adjustment. " alt="" coords="274,433,527,460"/>
+<area shape="rect" id="node57" href="$dd/dc1/a00212.html#a9f69b4fef64c81abad21404946cd41f9" title="The truth value of Judgment. " alt="" coords="319,1473,483,1514"/>
+<area shape="rect" id="node3" href="$d7/d40/a00236.html#a9eac33f2495441c77911a8581a5bbe61" title="Get the frequency value. " alt="" coords="615,70,787,111"/>
+<area shape="rect" id="node4" href="$db/d12/a00268.html#a46d2f048b6ba77afc60dcf49734f23c7" title="A function where the output is conjunctively determined by the inputs. " alt="" coords="885,5,1109,32"/>
+<area shape="rect" id="node5" href="$db/d12/a00268.html#a957a91e3b91d4a4043c3959838c370f2" title="A function to convert weight to confidence. " alt="" coords="587,187,814,213"/>
+<area shape="rect" id="node7" href="$d8/d21/a00368.html#a25dcc4d5882131d679903f93d41420c9" title="Check whether a string represent a name of a term that contains a query variable. ..." alt="" coords="601,491,801,533"/>
+<area shape="rect" id="node8" href="$dc/d59/a00364.html#ad85f45a7858737445d5158801774ff5f" title="Equal terms have identical name, though not necessarily the same reference. " alt="" coords="1759,968,1938,995"/>
+<area shape="rect" id="node9" href="$dc/d59/a00364.html#a3aad4654016b8615fd4fa8a26668e1db" title="Reporting the name of the current Term. " alt="" coords="2022,785,2217,812"/>
+<area shape="rect" id="node11" href="$dd/dc1/a00212.html#ad1ded9a02cae3557948d05530cd4d37e" title="The content of a Sentence is a Term. " alt="" coords="915,1137,1079,1178"/>
+<area shape="rect" id="node15" href="$d0/d65/a00360.html#ababe6155e2f78e769f76493317e118e0" title="Return the second component of the statement. " alt="" coords="1754,1019,1943,1061"/>
+<area shape="rect" id="node17" href="$d0/d65/a00360.html#ace4f80751d303c613e467163913bebf5" title="Return the first component of the statement. " alt="" coords="1754,1085,1943,1126"/>
+<area shape="rect" id="node18" href="$d0/d65/a00360.html#a4e4c29fc305a6741da88ce55fbf11e4a" title="Make a Statement from String, called by StringParser. " alt="" coords="599,789,802,816"/>
+<area shape="rect" id="node38" href="$d4/d27/a00392.html#a52ef2f1fedc72d6b0bfe3a6bd000bda3" title="Shared final operations by all single&#45;premise rules, called in StructuralRules. " alt="" coords="609,1238,792,1279"/>
+<area shape="rect" id="node12" href="$d5/ddf/a00224.html#ab140cb553a6cf40b07093d1df283567f" title="The sentence of the Task. " alt="" coords="901,1203,1094,1229"/>
+<area shape="rect" id="node16" href="$d8/d17/a00304.html#a9778c35f9b602bee6ccac6a06809e546" title="list of (direct) components " alt="" coords="2008,1051,2231,1093"/>
+<area shape="rect" id="node19" href="$d0/d65/a00360.html#a96d4bf7bb99f48b6496cdb7457bc0e50" title="Check the validity of a potential Statement. " alt="" coords="1453,918,1661,959"/>
+<area shape="rect" id="node22" href="$d3/db8/a00316.html#a5ccaf18d33e722f438944debb2757b34" title="Try to make a new compound from two components. " alt="" coords="1169,688,1376,715"/>
+<area shape="rect" id="node30" href="$d6/de1/a00356.html#ae72436d78c25d4735b4201d773dd1901" title="Try to make a new compound from two components. " alt="" coords="1174,801,1371,828"/>
+<area shape="rect" id="node33" href="$dd/de2/a00320.html#a94badab1e9fc19ebe33b06fcbb169453" title="Try to make a new compound from two components. " alt="" coords="901,637,1094,664"/>
+<area shape="rect" id="node35" href="$d8/d8e/a00344.html#a808d99e39dfc525841db6b645d118979" title="Try to make a new compound from two components. " alt="" coords="901,789,1093,816"/>
+<area shape="rect" id="node37" href="$d4/d8f/a00324.html#a429b8b61ed41ea338c8fc668fb8304f7" title="Try to make a new compound from two components. " alt="" coords="876,739,1119,765"/>
+<area shape="rect" id="node20" href="$d8/d17/a00304.html#a89000afae8017231889aaa549292d1e0" title="Default constructor. " alt="" coords="1747,837,1951,878"/>
+<area shape="rect" id="node21" href="$d0/d65/a00360.html#ac56b558891dd2088e0b66b437780c7b7" title="Default constructor. " alt="" coords="1763,902,1934,943"/>
+<area shape="rect" id="node23" href="$d0/d65/a00360.html#a7123aba1c8c566f291e2c9b9d147557d" title="Default method to make the nameStr of an image term from given fields. " alt="" coords="1455,670,1658,711"/>
+<area shape="rect" id="node24" href="$d4/d27/a00392.html#ac7c5d438820208253d1a2ee59bf80ddc" title="Get a Term for a given name of a Concept or Operator. " alt="" coords="1466,605,1647,646"/>
+<area shape="rect" id="node28" href="$d3/db8/a00316.html#a20635d9d55f73d39b29a07653cde6bc6" title="Constructor with partial values, called by make. " alt="" coords="1469,539,1644,581"/>
+<area shape="rect" id="node29" href="$d8/d17/a00304.html#a9aacee8d6903ff6eb186d37f78569353" title="build a component list from two terms " alt="" coords="1424,735,1689,777"/>
+<area shape="rect" id="node25" href="$d4/d27/a00392.html#a33af7b3d806d32c85390563fec3c6d27" title="Concept bag. " alt="" coords="1737,663,1960,689"/>
+<area shape="rect" id="node26" href="$d6/db8/a00376.html#a011b37fc683db7fb7b41e33712a37d92" title="Get an Item by key. " alt="" coords="1777,561,1920,588"/>
+<area shape="rect" id="node27" href="$d7/ded/a00196.html#afcd1217b7680b073fa51f0d0f159dcea" title="The term is the unique ID of the concept. " alt="" coords="1755,612,1943,639"/>
+<area shape="rect" id="node31" href="$dc/d59/a00364.html#ab9bc1c9cc779c07b09983b41ed8491e1" title="Check the relative order of two Terms. " alt="" coords="1453,801,1660,828"/>
+<area shape="rect" id="node32" href="$d6/de1/a00356.html#a5d3eff893c9406991d1c3e81737a408b" title="Constructor with partial values, called by make. " alt="" coords="1474,853,1639,894"/>
+<area shape="rect" id="node34" href="$df/d03/a00348.html#aa8f6526a59c3d7e578dd76a0eab75a0e" title="Try to make a new set from one component. " alt="" coords="1181,637,1364,664"/>
+<area shape="rect" id="node36" href="$d6/d9c/a00352.html#aaea0f2cc2ca804779d1bf346beb58fa1" title="Try to make a new set from one component. " alt="" coords="1183,747,1362,773"/>
+<area shape="rect" id="node39" href="$dd/dc1/a00212.html#a68b153a51a5db6a4127b66158227697f" title="The punctuation also indicates the type of the Sentence: Judgment, Question, or Goal. " alt="" coords="915,1254,1079,1295"/>
+<area shape="rect" id="node42" href="$d9/d21/a00240.html#a6c45e643d143a28d7514f3487fbfa494" title="Common processing for all inference step. " alt="" coords="576,255,825,297"/>
+<area shape="rect" id="node55" href="$d9/d21/a00240.html#a1cabe922021909c7226988e5aa00ea95" title="Determine the quality of a judgment by its truth value alone. " alt="" coords="583,426,819,467"/>
+<area shape="rect" id="node43" href="$d9/d21/a00240.html#a5df1e2954d5ce62f08cbd4be287ddaba" title="A function where the output is the arithmetic average the inputs. " alt="" coords="874,56,1121,83"/>
+<area shape="rect" id="node44" href="$dc/d31/a00208.html#a54fc0a370b847dd77c0a698c765e6e55" title="The budget of the Item, consisting of 3 numbers. " alt="" coords="1185,157,1361,184"/>
+<area shape="rect" id="node45" href="$d9/dd5/a00432.html#a672e3b935dca6df8c7e47c6c69e0fc66" title="nars.storage.WorkSpace.get\lCurrentBeliefLink" alt="" coords="903,259,1091,301"/>
+<area shape="rect" id="node46" href="$d9/dd5/a00432.html#aefcc9dfcebdc79cd7e099afd4553b083" title="nars.storage.WorkSpace.get\lCurrentTask" alt="" coords="903,325,1091,366"/>
+<area shape="rect" id="node47" href="$d9/dd5/a00432.html#a585409e59ebb973c820683bc556ebe37" title="nars.storage.WorkSpace.get\lCurrentTaskLink" alt="" coords="903,390,1091,431"/>
+<area shape="rect" id="node48" href="$dc/d31/a00208.html#adbb21c1891722e30c1d6cfaf5fee18ee" title="Get durability value. " alt="" coords="902,107,1093,133"/>
+<area shape="rect" id="node50" href="$dc/d31/a00208.html#a97b35888ceaad90e7a428701051c51d7" title="Get priority value. " alt="" coords="909,208,1085,235"/>
+<area shape="rect" id="node52" href="$dc/d31/a00208.html#a786a1e14b3904092f4a3b2fa4faa08a7" title="Increase priority value. " alt="" coords="910,456,1085,483"/>
+<area shape="rect" id="node49" href="$dd/da2/a00192.html#ab0e0dc2172d3fab6390670acb68da1a6" title="Get durability value. " alt="" coords="1181,91,1364,133"/>
+<area shape="rect" id="node51" href="$dd/da2/a00192.html#a1e7b6826531f03f792f3516ce0e97ac3" title="Get priority value. " alt="" coords="1181,209,1364,250"/>
+<area shape="rect" id="node53" href="$dd/da2/a00192.html#a088e64163126211239b6afd25a9cdca3" title="Increase priority value by a percentage of the remaining range. " alt="" coords="1181,445,1364,486"/>
+<area shape="rect" id="node54" href="$db/d12/a00268.html#acaa4ebc080bc00d0e03be32d51d29e40" title="A function where the output is disjunctively determined by the inputs. " alt="" coords="1449,437,1664,464"/>
+<area shape="rect" id="node56" href="$db/d12/a00268.html#ae9f34c27ee5675fa2b97f2def9e1fb99" title="A function where the output is the geometric average the inputs. " alt="" coords="873,507,1121,533"/>
+</map>

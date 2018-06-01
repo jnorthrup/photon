@@ -1,0 +1,5 @@
+<map id="nars.storage.Memory.termToConcept" name="nars.storage.Memory.termToConcept">
+<area shape="rect" id="node2" href="$d4/d27/a00392.html#aefb0045c246b7d95cdb56a7ec9010cad" title="Get an existing Concept for a given name. " alt="" coords="228,23,409,65"/>
+<area shape="rect" id="node3" href="$d6/db8/a00376.html#a011b37fc683db7fb7b41e33712a37d92" title="Get an Item by key. " alt="" coords="497,5,640,32"/>
+<area shape="rect" id="node4" href="$d4/d27/a00392.html#a33af7b3d806d32c85390563fec3c6d27" title="Concept bag. " alt="" coords="457,56,680,83"/>
+</map>

@@ -1,0 +1,22 @@
+<map id="nars.inference.LocalRules.revise" name="nars.inference.LocalRules.revise">
+<area shape="rect" id="node2" href="$dc/d31/a00208.html#a193d5dd98fdf80522ff15bb85bc7b519" title="Decrease durability value. " alt="" coords="287,19,480,46"/>
+<area shape="rect" id="node5" href="$dc/d31/a00208.html#a6c51b21cab6ce92fc11453a506b9d19d" title="Decrease priority value. " alt="" coords="294,82,473,109"/>
+<area shape="rect" id="node7" href="$dc/d31/a00208.html#a54fc0a370b847dd77c0a698c765e6e55" title="The budget of the Item, consisting of 3 numbers. " alt="" coords="585,423,761,450"/>
+<area shape="rect" id="node8" href="$d7/d40/a00236.html#a68ca7d92e9ea20d2a9a9f578ad7b681c" title="The confidence factor of the truth value. " alt="" coords="871,269,1043,311"/>
+<area shape="rect" id="node9" href="$d9/dd5/a00432.html#a672e3b935dca6df8c7e47c6c69e0fc66" title="nars.storage.WorkSpace.get\lCurrentBeliefLink" alt="" coords="289,239,477,280"/>
+<area shape="rect" id="node10" href="$d9/dd5/a00432.html#aefcc9dfcebdc79cd7e099afd4553b083" title="nars.storage.WorkSpace.get\lCurrentTask" alt="" coords="289,304,477,345"/>
+<area shape="rect" id="node11" href="$d9/dd5/a00432.html#a585409e59ebb973c820683bc556ebe37" title="nars.storage.WorkSpace.get\lCurrentTaskLink" alt="" coords="289,369,477,411"/>
+<area shape="rect" id="node12" href="$dc/d31/a00208.html#adbb21c1891722e30c1d6cfaf5fee18ee" title="Get durability value. " alt="" coords="288,187,479,214"/>
+<area shape="rect" id="node14" href="$dc/d31/a00208.html#a97b35888ceaad90e7a428701051c51d7" title="Get priority value. " alt="" coords="295,486,471,513"/>
+<area shape="rect" id="node16" href="$d7/d40/a00236.html#a8c09ccfe49ea3a31754c7975276fcf68" title="Calculate the absolute difference of the expectation value and that of a given truth value..." alt="" coords="301,537,465,579"/>
+<area shape="rect" id="node19" href="$db/d12/a00268.html#acaa4ebc080bc00d0e03be32d51d29e40" title="A function where the output is disjunctively determined by the inputs. " alt="" coords="276,603,491,630"/>
+<area shape="rect" id="node20" href="$d9/d21/a00240.html#a1cabe922021909c7226988e5aa00ea95" title="Determine the quality of a judgment by its truth value alone. " alt="" coords="265,655,501,696"/>
+<area shape="rect" id="node3" href="$dd/da2/a00192.html#af94675e7515bd0efd94b5ee787eebc4a" title="Decrease durability value by a percentage of the remaining range. " alt="" coords="580,5,767,47"/>
+<area shape="rect" id="node4" href="$db/d12/a00268.html#a46d2f048b6ba77afc60dcf49734f23c7" title="A function where the output is conjunctively determined by the inputs. " alt="" coords="845,46,1069,73"/>
+<area shape="rect" id="node6" href="$dd/da2/a00192.html#a27f92b156f0a25520e38a489ec6fc214" title="Decrease priority value by a percentage of the remaining range. " alt="" coords="580,71,767,112"/>
+<area shape="rect" id="node13" href="$dd/da2/a00192.html#ab0e0dc2172d3fab6390670acb68da1a6" title="Get durability value. " alt="" coords="582,188,765,229"/>
+<area shape="rect" id="node15" href="$dd/da2/a00192.html#a1e7b6826531f03f792f3516ce0e97ac3" title="Get priority value. " alt="" coords="582,475,765,516"/>
+<area shape="rect" id="node17" href="$d7/d40/a00236.html#aa5ffcde3ae611b087ba7fdd4cd67b216" title="Calculate the expectation value of the truth value. " alt="" coords="587,540,759,581"/>
+<area shape="rect" id="node18" href="$d7/d40/a00236.html#a9eac33f2495441c77911a8581a5bbe61" title="Get the frequency value. " alt="" coords="871,540,1043,581"/>
+<area shape="rect" id="node21" href="$db/d12/a00268.html#ae9f34c27ee5675fa2b97f2def9e1fb99" title="A function where the output is the geometric average the inputs. " alt="" coords="549,662,797,689"/>
+</map>

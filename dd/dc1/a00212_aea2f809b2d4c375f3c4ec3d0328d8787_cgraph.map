@@ -1,0 +1,10 @@
+<map id="nars.entity.Sentence.toStringBrief" name="nars.entity.Sentence.toStringBrief">
+<area shape="rect" id="node2" href="$dd/dc1/a00212.html#ac0ed749c50e55120d5b63219ed7eb082" title="Partial record of the derivation path. " alt="" coords="252,45,416,87"/>
+<area shape="rect" id="node3" href="$dd/dc1/a00212.html#a8b6d9355c0211d37f881ec6717a6b636" title="Get a String representation of the sentence for key of Task and TaskLink. " alt="" coords="244,111,424,138"/>
+<area shape="rect" id="node4" href="$dd/dc1/a00212.html#ad1ded9a02cae3557948d05530cd4d37e" title="The content of a Sentence is a Term. " alt="" coords="473,5,637,47"/>
+<area shape="rect" id="node5" href="$dd/dc1/a00212.html#a68b153a51a5db6a4127b66158227697f" title="The punctuation also indicates the type of the Sentence: Judgment, Question, or Goal. " alt="" coords="473,71,637,112"/>
+<area shape="rect" id="node6" href="$dd/dc1/a00212.html#a9f69b4fef64c81abad21404946cd41f9" title="The truth value of Judgment. " alt="" coords="473,136,637,177"/>
+<area shape="rect" id="node7" href="$d7/d40/a00236.html#a5af8b2fe37987ba1e8396ec1aad38e90" title="A simplified String representation of a TruthValue, where each factor is accruate to 1%..." alt="" coords="472,201,637,243"/>
+<area shape="rect" id="node8" href="$d7/d40/a00236.html#a9eac33f2495441c77911a8581a5bbe61" title="Get the frequency value. " alt="" coords="685,168,857,209"/>
+<area shape="rect" id="node9" href="$d7/d40/a00236.html#a68ca7d92e9ea20d2a9a9f578ad7b681c" title="The confidence factor of the truth value. " alt="" coords="685,233,857,275"/>
+</map>

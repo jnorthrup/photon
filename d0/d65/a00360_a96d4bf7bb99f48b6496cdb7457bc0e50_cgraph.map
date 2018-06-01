@@ -1,0 +1,9 @@
+<map id="nars.language.Statement.invalidStatement" name="nars.language.Statement.invalidStatement">
+<area shape="rect" id="node2" href="$d8/d17/a00304.html#a89000afae8017231889aaa549292d1e0" title="Default constructor. " alt="" coords="261,5,465,47"/>
+<area shape="rect" id="node3" href="$dc/d59/a00364.html#ad85f45a7858737445d5158801774ff5f" title="Equal terms have identical name, though not necessarily the same reference. " alt="" coords="274,71,453,98"/>
+<area shape="rect" id="node5" href="$d0/d65/a00360.html#ababe6155e2f78e769f76493317e118e0" title="Return the second component of the statement. " alt="" coords="269,123,458,164"/>
+<area shape="rect" id="node7" href="$d0/d65/a00360.html#ace4f80751d303c613e467163913bebf5" title="Return the first component of the statement. " alt="" coords="269,188,458,229"/>
+<area shape="rect" id="node8" href="$d0/d65/a00360.html#ac56b558891dd2088e0b66b437780c7b7" title="Default constructor. " alt="" coords="278,253,449,295"/>
+<area shape="rect" id="node4" href="$dc/d59/a00364.html#a3aad4654016b8615fd4fa8a26668e1db" title="Reporting the name of the current Term. " alt="" coords="527,71,722,98"/>
+<area shape="rect" id="node6" href="$d8/d17/a00304.html#a9778c35f9b602bee6ccac6a06809e546" title="list of (direct) components " alt="" coords="513,155,736,196"/>
+</map>

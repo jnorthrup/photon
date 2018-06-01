@@ -1,0 +1,27 @@
+<map id="nars.storage.Memory" name="nars.storage.Memory">
+<area shape="rect" id="node39" href="$df/d15/a00416.html" title="Created by jim on 1/12/16. " alt="" coords="2691,120,2879,147"/>
+<area shape="rect" id="node44" href="$d7/ded/a00196.html" title="A concept contains information associated with a term, including directly and indirectly related task..." alt="" coords="2717,771,2853,797"/>
+<area shape="rect" id="node2" href="$d9/dd5/a00432.html" title="Created by jim on 1/14/16. " alt="" coords="709,911,876,937"/>
+<area shape="rect" id="node20" href="$d6/db8/a00376.html" title="A Bag is a storage with a constant capacity and maintains an internal priority distribution for retri..." alt="" coords="1115,1071,1277,1113"/>
+<area shape="rect" id="node4" href="$d0/d53/a00232.html" title="A link between a compound term and a component term. " alt="" coords="1125,829,1267,856"/>
+<area shape="rect" id="node42" href="$de/dc2/a00228.html" title="Reference to a Task. " alt="" coords="1990,824,2130,851"/>
+<area shape="rect" id="node5" href="$dc/d31/a00208.html" title="An item is an object that can be put into a Bag, to participate in the resource competition of the sy..." alt="" coords="736,1196,849,1223"/>
+<area shape="rect" id="node29" href="$d5/ddf/a00224.html" title="A task to be processed, consists of a Sentence and a BudgetValue. " alt="" coords="1564,1005,1680,1032"/>
+<area shape="rect" id="node7" href="$dd/da2/a00192.html" title="A triple of priority (current), durability (decay), and quality (long&#45;term average). " alt="" coords="309,1308,471,1335"/>
+<area shape="rect" id="node12" href="$dc/d59/a00364.html" title="Term is the basic component of Narsese, and the object of processing in NARS. " alt="" coords="724,337,861,364"/>
+<area shape="rect" id="node31" href="$dd/dc1/a00212.html" title="A Sentence is an abstract class, mainly containing a Term, a TruthValue, and a Stamp. " alt="" coords="1125,528,1267,555"/>
+<area shape="rect" id="node33" href="$d7/d40/a00236.html" title="Frequency and confidence. " alt="" coords="717,583,868,609"/>
+<area shape="rect" id="node35" href="$d6/d43/a00216.html" title="Each Sentence has a time stamp, consisting the following components: (1) The creation time of the sen..." alt="" coords="730,431,855,457"/>
+<area shape="rect" id="node18" href="$d2/d56/a00384.html" title="Contains Concepts. " alt="" coords="1975,1065,2145,1092"/>
+<area shape="rect" id="node19" href="$d6/db8/a00376.html" title="nars.storage.Bag\&lt; Concept \&gt;" alt="" coords="1525,1107,1719,1133"/>
+<area shape="rect" id="node28" href="$d6/db8/a00376.html" title="nars.storage.Bag\&lt; Task \&gt;" alt="" coords="1535,1056,1709,1083"/>
+<area shape="rect" id="node47" href="$d6/db8/a00376.html" title="nars.storage.Bag\&lt; TaskLink \&gt;" alt="" coords="1523,1227,1721,1253"/>
+<area shape="rect" id="node50" href="$d6/db8/a00376.html" title="nars.storage.Bag\&lt; TermLink \&gt;" alt="" coords="1745,1163,1944,1189"/>
+<area shape="rect" id="node22" href="$d8/ddd/a00380.html" title="nars.storage.BagObserver" alt="" coords="705,1075,880,1101"/>
+<area shape="rect" id="node23" href="$d9/dc1/a00388.html" title="A pseudo&#45;random number generator, used in Bag. " alt="" coords="713,1125,872,1152"/>
+<area shape="rect" id="node26" href="$d0/dcd/a00280.html" title="nars.io.IInferenceRecorder" alt="" coords="1972,1116,2148,1143"/>
+<area shape="rect" id="node27" href="$d9/d95/a00400.html" title="New tasks that contain new Term. " alt="" coords="1968,1015,2152,1041"/>
+<area shape="rect" id="node46" href="$dc/df3/a00424.html" title="TaskLinkBag contains links to tasks. " alt="" coords="2176,1221,2351,1248"/>
+<area shape="rect" id="node49" href="$d4/dd3/a00428.html" title="Contains TermLinks to relevant (compound or component) Terms. " alt="" coords="2176,1164,2351,1191"/>
+<area shape="rect" id="node51" href="$d1/d72/a00204.html" title="nars.entity.EntityObserver" alt="" coords="2375,853,2549,880"/>
+</map>

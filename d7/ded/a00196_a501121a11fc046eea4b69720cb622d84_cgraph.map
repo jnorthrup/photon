@@ -1,0 +1,41 @@
+<map id="nars.entity.Concept.linkToTask" name="nars.entity.Concept.linkToTask">
+<area shape="rect" id="node2" href="$dd/da2/a00192.html#ae83b822f3bab4c1831e94d72fc770f58" title="Whether the budget should get any processing at all. " alt="" coords="441,54,641,95"/>
+<area shape="rect" id="node5" href="$d7/ded/a00196.html#a3f3f026223e459e041fbdd8c0f49f7c6" title="Recursively build TermLinks between a compound and its components. " alt="" coords="216,239,383,280"/>
+<area shape="rect" id="node6" href="$d7/ded/a00196.html#a2f26314b930446bede4492667d799bc4" title="Distribute the budget of a task among the links to it. " alt="" coords="445,119,638,160"/>
+<area shape="rect" id="node7" href="$d4/d27/a00392.html#aca4bbc5804f617906c8c18c3d4d81a6c" title="Get the Concept associated to a Term, or create it. " alt="" coords="433,368,649,394"/>
+<area shape="rect" id="node13" href="$d7/ded/a00196.html#af183e45bae19d651cbc05e609617b726" title="Reference to the memory. " alt="" coords="439,418,644,445"/>
+<area shape="rect" id="node14" href="$d7/ded/a00196.html#afcd1217b7680b073fa51f0d0f159dcea" title="The term is the unique ID of the concept. " alt="" coords="1316,169,1504,196"/>
+<area shape="rect" id="node15" href="$d7/ded/a00196.html#a4ca0670094e7a1e098fb17388bf8353c" title="Link templates of TermLink, only in concepts with CompoundTerm jmv TODO explain more. " alt="" coords="447,302,635,343"/>
+<area shape="rect" id="node18" href="$dc/d31/a00208.html#a54fc0a370b847dd77c0a698c765e6e55" title="The budget of the Item, consisting of 3 numbers. " alt="" coords="1322,678,1498,705"/>
+<area shape="rect" id="node19" href="$d7/ded/a00196.html#aef21f5ae7bef5194bd37ae526302843d" title="Insert a TaskLink into the TaskLink bag. " alt="" coords="213,495,385,536"/>
+<area shape="rect" id="node3" href="$dd/da2/a00192.html#af414899759992288edbba78d7457c534" title="To summarize a BudgetValue into a single number in [0, 1]. " alt="" coords="716,61,935,88"/>
+<area shape="rect" id="node4" href="$db/d12/a00268.html#ae9f34c27ee5675fa2b97f2def9e1fb99" title="A function where the output is the geometric average the inputs. " alt="" coords="1001,61,1249,88"/>
+<area shape="rect" id="node16" href="$d7/ded/a00196.html#a3c69b71b1987ca4066c9b3d2a7973dd1" title="Insert a TermLink into the TermLink bag. " alt="" coords="455,236,627,278"/>
+<area shape="rect" id="node8" href="$dc/d59/a00364.html#a88297bdbbfb5f3e292783647b14f0c70" title="Check whether the current Term can name a Concept. " alt="" coords="723,321,927,348"/>
+<area shape="rect" id="node9" href="$d4/d27/a00392.html#a33af7b3d806d32c85390563fec3c6d27" title="Concept bag. " alt="" coords="714,473,937,500"/>
+<area shape="rect" id="node10" href="$d6/db8/a00376.html#a011b37fc683db7fb7b41e33712a37d92" title="Get an Item by key. " alt="" coords="754,372,897,398"/>
+<area shape="rect" id="node11" href="$dc/d59/a00364.html#a3aad4654016b8615fd4fa8a26668e1db" title="Reporting the name of the current Term. " alt="" coords="728,270,923,297"/>
+<area shape="rect" id="node12" href="$d6/db8/a00376.html#a9d42fa45681a07796750a350e08d095b" title="Add a new Item into the Bag. " alt="" coords="748,422,903,449"/>
+<area shape="rect" id="node17" href="$d7/ded/a00196.html#a9f031bcf593e4c6f27e82d2b97a2d83d" title="Term links between the term and its components and compounds. " alt="" coords="1316,222,1504,263"/>
+<area shape="rect" id="node20" href="$d4/d27/a00392.html#a7affdc42dcb55d27d76cf636eab6230f" title="Adjust the activation level of a Concept. " alt="" coords="444,520,639,562"/>
+<area shape="rect" id="node40" href="$d7/ded/a00196.html#acef3f846ea7bced858519c03e134498e" title="Task links for indirect processing. " alt="" coords="448,586,635,627"/>
+<area shape="rect" id="node21" href="$d6/db8/a00376.html#ac72ca10afde302a1c190a185947781e3" title="Pick an item by key, then remove it from the bag. " alt="" coords="740,574,911,601"/>
+<area shape="rect" id="node22" href="$dc/d31/a00208.html#ab5c9fbb171f325844966b496010acf60" title="The key of the Item, unique in a Bag. " alt="" coords="746,676,905,702"/>
+<area shape="rect" id="node23" href="$d9/d21/a00240.html#aabac530761ea7ac0f43f0d1ea8d085c8" title="Activate a concept by an incoming TaskLink. " alt="" coords="697,625,953,652"/>
+<area shape="rect" id="node39" href="$d6/db8/a00376.html#a64b0b75c54e6882a28702d7810094656" title="Put an item back into the itemTable. " alt="" coords="739,524,912,550"/>
+<area shape="rect" id="node24" href="$dc/d31/a00208.html#a97b35888ceaad90e7a428701051c51d7" title="Get priority value. " alt="" coords="1037,573,1213,600"/>
+<area shape="rect" id="node26" href="$db/d12/a00268.html#acaa4ebc080bc00d0e03be32d51d29e40" title="A function where the output is disjunctively determined by the inputs. " alt="" coords="1303,412,1517,438"/>
+<area shape="rect" id="node27" href="$d9/d21/a00240.html#a5df1e2954d5ce62f08cbd4be287ddaba" title="A function where the output is the arithmetic average the inputs. " alt="" coords="1002,472,1249,498"/>
+<area shape="rect" id="node28" href="$dc/d31/a00208.html#adbb21c1891722e30c1d6cfaf5fee18ee" title="Get durability value. " alt="" coords="1030,725,1221,752"/>
+<area shape="rect" id="node30" href="$d7/ded/a00196.html#acf3c7af84e64586a6b1d549f02bfeead" title="Recalculate the quality of the concept [to be refined to show extension/intension balance]..." alt="" coords="1026,326,1225,353"/>
+<area shape="rect" id="node33" href="$dc/d31/a00208.html#aeda0763b2c90f6fef3f23b9b4d3d68f0" title="Set priority value. " alt="" coords="1037,624,1213,650"/>
+<area shape="rect" id="node35" href="$dc/d31/a00208.html#a0f27e5a39dc50b5f108732f59199db22" title="Set durability value. " alt="" coords="1030,522,1221,549"/>
+<area shape="rect" id="node37" href="$dc/d31/a00208.html#a686c257308a15eba9458a438cc60227a" title="Set quality value. " alt="" coords="1037,674,1213,701"/>
+<area shape="rect" id="node25" href="$dd/da2/a00192.html#a1e7b6826531f03f792f3516ce0e97ac3" title="Get priority value. " alt="" coords="1319,547,1501,588"/>
+<area shape="rect" id="node29" href="$dd/da2/a00192.html#ab0e0dc2172d3fab6390670acb68da1a6" title="Get durability value. " alt="" coords="1319,795,1501,836"/>
+<area shape="rect" id="node31" href="$d6/db8/a00376.html#a5ff587f448a7a832732b4d86eb9a7642" title="Get the average priority of Items. " alt="" coords="1325,290,1495,331"/>
+<area shape="rect" id="node32" href="$dc/d59/a00364.html#ae14632d1d25bcde8d6698ea0b58eb19a" title="The syntactic complexity, for constant automic Term, is 1. " alt="" coords="1297,356,1523,382"/>
+<area shape="rect" id="node34" href="$dd/da2/a00192.html#ac2cb3449a15125e5f0e4165aeee0befb" title="Change priority value. " alt="" coords="1319,612,1501,654"/>
+<area shape="rect" id="node36" href="$dd/da2/a00192.html#ab72bce41fd8a1512fc8baa07ed93fc1b" title="Change durability value. " alt="" coords="1319,482,1501,523"/>
+<area shape="rect" id="node38" href="$dd/da2/a00192.html#ab134287bfbdfe703501697c5f9eac50b" title="Change quality value. " alt="" coords="1319,730,1501,771"/>
+</map>

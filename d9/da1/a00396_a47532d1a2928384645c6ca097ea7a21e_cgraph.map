@@ -1,0 +1,7 @@
+<map id="nars.storage.NARSBatch.init" name="nars.storage.NARSBatch.init">
+<area shape="rect" id="node2" href="$df/d15/a00416.html#af0d8bb4c094b539b353d3294cff244fd" title="nars.storage.ReasonerBatch.add\lOutputChannel" alt="" coords="244,5,457,47"/>
+<area shape="rect" id="node4" href="$d9/dd6/a00272.html#a1e4529d4f692ecfc7becd9d8e367b3d6" title="nars.io.ExperienceReader.set\lBufferedReader" alt="" coords="253,71,448,112"/>
+<area shape="rect" id="node3" href="$df/d15/a00416.html#a8fe5b5d05200c4c4af03c606a64a034f" title="The output channels of the reasoner. " alt="" coords="507,5,717,47"/>
+<area shape="rect" id="node5" href="$df/d15/a00416.html#a6d6880a1d58b7aaf23d7c388d270936d" title="nars.storage.ReasonerBatch.add\lInputChannel" alt="" coords="505,71,719,112"/>
+<area shape="rect" id="node6" href="$df/d15/a00416.html#a0e6a1e2c71cbf880623f3c1017fd02dc" title="The input channels of the reasoner. " alt="" coords="767,71,977,112"/>
+</map>

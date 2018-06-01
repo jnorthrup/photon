@@ -1,0 +1,51 @@
+<map id="nars.inference.RuleTables.contraposition" name="nars.inference.RuleTables.contraposition">
+<area shape="rect" id="node2" href="$d9/d21/a00240.html#a046cb01831a139bfd4d9bd25f27f1bee" title="Backward inference with CompoundTerm conclusion, weaker case. " alt="" coords="312,249,583,291"/>
+<area shape="rect" id="node19" href="$d4/d27/a00392.html#a26eda4f00b333b706b4e3d069fdf1508" title="The selected Task. " alt="" coords="636,625,875,651"/>
+<area shape="rect" id="node20" href="$d0/d65/a00360.html#ababe6155e2f78e769f76493317e118e0" title="Return the second component of the statement. " alt="" coords="1553,591,1742,632"/>
+<area shape="rect" id="node22" href="$d5/ddf/a00224.html#ab140cb553a6cf40b07093d1df283567f" title="The sentence of the Task. " alt="" coords="659,694,852,721"/>
+<area shape="rect" id="node23" href="$d0/d65/a00360.html#ace4f80751d303c613e467163913bebf5" title="Return the first component of the statement. " alt="" coords="1553,656,1742,697"/>
+<area shape="rect" id="node24" href="$dd/dc1/a00212.html#a9f69b4fef64c81abad21404946cd41f9" title="The truth value of Judgment. " alt="" coords="365,717,529,759"/>
+<area shape="rect" id="node25" href="$dd/dc1/a00212.html#acb98b40c8990dbe5e15061f0759c60ee" title="Distinguish Question from Quest (&quot;instanceof Question&quot; doesn&#39;t work) " alt="" coords="343,899,551,926"/>
+<area shape="rect" id="node27" href="$dd/d1d/a00336.html#a8c1310db584c5aebf595b305a41ad359" title="Try to make a Negation of one component. " alt="" coords="350,849,545,875"/>
+<area shape="rect" id="node28" href="$d0/d65/a00360.html#a4e4c29fc305a6741da88ce55fbf11e4a" title="Make a Statement from String, called by StringParser. " alt="" coords="346,974,549,1001"/>
+<area shape="rect" id="node50" href="$d4/d27/a00392.html#a52ef2f1fedc72d6b0bfe3a6bd000bda3" title="Shared final operations by all single&#45;premise rules, called in StructuralRules. " alt="" coords="356,783,539,824"/>
+<area shape="rect" id="node3" href="$d9/d21/a00240.html#a6c45e643d143a28d7514f3487fbfa494" title="Common processing for all inference step. " alt="" coords="631,279,880,320"/>
+<area shape="rect" id="node17" href="$dc/d59/a00364.html#ae14632d1d25bcde8d6698ea0b58eb19a" title="The syntactic complexity, for constant automic Term, is 1. " alt="" coords="643,177,868,203"/>
+<area shape="rect" id="node18" href="$db/d12/a00268.html#a957a91e3b91d4a4043c3959838c370f2" title="A function to convert weight to confidence. " alt="" coords="642,227,869,254"/>
+<area shape="rect" id="node4" href="$db/d12/a00268.html#a46d2f048b6ba77afc60dcf49734f23c7" title="A function where the output is conjunctively determined by the inputs. " alt="" coords="939,413,1163,439"/>
+<area shape="rect" id="node5" href="$d9/d21/a00240.html#a5df1e2954d5ce62f08cbd4be287ddaba" title="A function where the output is the arithmetic average the inputs. " alt="" coords="928,463,1175,490"/>
+<area shape="rect" id="node6" href="$dc/d31/a00208.html#a54fc0a370b847dd77c0a698c765e6e55" title="The budget of the Item, consisting of 3 numbers. " alt="" coords="1267,253,1443,279"/>
+<area shape="rect" id="node7" href="$d9/dd5/a00432.html#a672e3b935dca6df8c7e47c6c69e0fc66" title="nars.storage.WorkSpace.get\lCurrentBeliefLink" alt="" coords="957,64,1145,105"/>
+<area shape="rect" id="node8" href="$d9/dd5/a00432.html#aefcc9dfcebdc79cd7e099afd4553b083" title="nars.storage.WorkSpace.get\lCurrentTask" alt="" coords="957,129,1145,171"/>
+<area shape="rect" id="node9" href="$d9/dd5/a00432.html#a585409e59ebb973c820683bc556ebe37" title="nars.storage.WorkSpace.get\lCurrentTaskLink" alt="" coords="957,195,1145,236"/>
+<area shape="rect" id="node10" href="$dc/d31/a00208.html#adbb21c1891722e30c1d6cfaf5fee18ee" title="Get durability value. " alt="" coords="956,13,1147,39"/>
+<area shape="rect" id="node12" href="$dc/d31/a00208.html#a97b35888ceaad90e7a428701051c51d7" title="Get priority value. " alt="" coords="963,311,1139,338"/>
+<area shape="rect" id="node14" href="$dc/d31/a00208.html#a786a1e14b3904092f4a3b2fa4faa08a7" title="Increase priority value. " alt="" coords="964,362,1139,389"/>
+<area shape="rect" id="node11" href="$dd/da2/a00192.html#ab0e0dc2172d3fab6390670acb68da1a6" title="Get durability value. " alt="" coords="1264,5,1447,47"/>
+<area shape="rect" id="node13" href="$dd/da2/a00192.html#a1e7b6826531f03f792f3516ce0e97ac3" title="Get priority value. " alt="" coords="1264,304,1447,345"/>
+<area shape="rect" id="node15" href="$dd/da2/a00192.html#a088e64163126211239b6afd25a9cdca3" title="Increase priority value by a percentage of the remaining range. " alt="" coords="1264,369,1447,411"/>
+<area shape="rect" id="node16" href="$db/d12/a00268.html#acaa4ebc080bc00d0e03be32d51d29e40" title="A function where the output is disjunctively determined by the inputs. " alt="" coords="1540,377,1755,403"/>
+<area shape="rect" id="node21" href="$d8/d17/a00304.html#a9778c35f9b602bee6ccac6a06809e546" title="list of (direct) components " alt="" coords="1807,624,2029,665"/>
+<area shape="rect" id="node26" href="$dd/dc1/a00212.html#a68b153a51a5db6a4127b66158227697f" title="The punctuation also indicates the type of the Sentence: Judgment, Question, or Goal. " alt="" coords="673,769,837,811"/>
+<area shape="rect" id="node29" href="$d0/d65/a00360.html#a96d4bf7bb99f48b6496cdb7457bc0e50" title="Check the validity of a potential Statement. " alt="" coords="1251,815,1459,856"/>
+<area shape="rect" id="node34" href="$d3/db8/a00316.html#a5ccaf18d33e722f438944debb2757b34" title="Try to make a new compound from two components. " alt="" coords="948,953,1155,979"/>
+<area shape="rect" id="node42" href="$d6/de1/a00356.html#ae72436d78c25d4735b4201d773dd1901" title="Try to make a new compound from two components. " alt="" coords="953,1083,1150,1110"/>
+<area shape="rect" id="node45" href="$dd/de2/a00320.html#a94badab1e9fc19ebe33b06fcbb169453" title="Try to make a new compound from two components. " alt="" coords="659,1038,852,1065"/>
+<area shape="rect" id="node47" href="$d8/d8e/a00344.html#a808d99e39dfc525841db6b645d118979" title="Try to make a new compound from two components. " alt="" coords="659,886,851,913"/>
+<area shape="rect" id="node49" href="$d4/d8f/a00324.html#a429b8b61ed41ea338c8fc668fb8304f7" title="Try to make a new compound from two components. " alt="" coords="634,937,877,963"/>
+<area shape="rect" id="node30" href="$dc/d59/a00364.html#ad85f45a7858737445d5158801774ff5f" title="Equal terms have identical name, though not necessarily the same reference. " alt="" coords="1558,851,1737,878"/>
+<area shape="rect" id="node32" href="$d8/d17/a00304.html#a89000afae8017231889aaa549292d1e0" title="Default constructor. " alt="" coords="1545,903,1749,944"/>
+<area shape="rect" id="node33" href="$d0/d65/a00360.html#ac56b558891dd2088e0b66b437780c7b7" title="Default constructor. " alt="" coords="1562,785,1733,827"/>
+<area shape="rect" id="node31" href="$dc/d59/a00364.html#a3aad4654016b8615fd4fa8a26668e1db" title="Reporting the name of the current Term. " alt="" coords="1821,1023,2015,1050"/>
+<area shape="rect" id="node35" href="$d0/d65/a00360.html#a7123aba1c8c566f291e2c9b9d147557d" title="Default method to make the nameStr of an image term from given fields. " alt="" coords="1254,1011,1457,1052"/>
+<area shape="rect" id="node36" href="$d4/d27/a00392.html#ac7c5d438820208253d1a2ee59bf80ddc" title="Get a Term for a given name of a Concept or Operator. " alt="" coords="1265,1076,1446,1117"/>
+<area shape="rect" id="node40" href="$d3/db8/a00316.html#a20635d9d55f73d39b29a07653cde6bc6" title="Constructor with partial values, called by make. " alt="" coords="1268,880,1443,921"/>
+<area shape="rect" id="node41" href="$d8/d17/a00304.html#a9aacee8d6903ff6eb186d37f78569353" title="build a component list from two terms " alt="" coords="1223,945,1488,987"/>
+<area shape="rect" id="node37" href="$d4/d27/a00392.html#a33af7b3d806d32c85390563fec3c6d27" title="Concept bag. " alt="" coords="1536,1083,1759,1110"/>
+<area shape="rect" id="node38" href="$d6/db8/a00376.html#a011b37fc683db7fb7b41e33712a37d92" title="Get an Item by key. " alt="" coords="1576,1134,1719,1161"/>
+<area shape="rect" id="node39" href="$d7/ded/a00196.html#afcd1217b7680b073fa51f0d0f159dcea" title="The term is the unique ID of the concept. " alt="" coords="1553,1033,1741,1059"/>
+<area shape="rect" id="node43" href="$dc/d59/a00364.html#ab9bc1c9cc779c07b09983b41ed8491e1" title="Check the relative order of two Terms. " alt="" coords="1544,1195,1751,1222"/>
+<area shape="rect" id="node44" href="$d6/de1/a00356.html#a5d3eff893c9406991d1c3e81737a408b" title="Constructor with partial values, called by make. " alt="" coords="1273,1141,1438,1183"/>
+<area shape="rect" id="node46" href="$df/d03/a00348.html#aa8f6526a59c3d7e578dd76a0eab75a0e" title="Try to make a new set from one component. " alt="" coords="960,1018,1143,1045"/>
+<area shape="rect" id="node48" href="$d6/d9c/a00352.html#aaea0f2cc2ca804779d1bf346beb58fa1" title="Try to make a new set from one component. " alt="" coords="962,891,1141,918"/>
+</map>

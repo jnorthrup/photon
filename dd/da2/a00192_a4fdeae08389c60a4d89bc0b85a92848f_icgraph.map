@@ -1,0 +1,5 @@
+<map id="nars.entity.BudgetValue.merge" name="nars.entity.BudgetValue.merge">
+<area shape="rect" id="node2" href="$dc/d31/a00208.html#a75638f93f001719a532326adabca171c" title="Merge with another Item with identical key. " alt="" coords="255,35,408,61"/>
+<area shape="rect" id="node3" href="$d5/ddf/a00224.html#abae2edb1e9cccff191a095ebd7776895" title="Merge one Task into another. " alt="" coords="469,5,625,32"/>
+<area shape="rect" id="node4" href="$d6/db8/a00376.html#a9d42fa45681a07796750a350e08d095b" title="Add a new Item into the Bag. " alt="" coords="456,57,639,98"/>
+</map>

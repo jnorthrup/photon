@@ -1,0 +1,11 @@
+<map id="nars.entity.TaskLink.novel" name="nars.entity.TaskLink.novel">
+<area shape="rect" id="node2" href="$dc/d59/a00364.html#ad85f45a7858737445d5158801774ff5f" title="Equal terms have identical name, though not necessarily the same reference. " alt="" coords="235,5,414,32"/>
+<area shape="rect" id="node4" href="$de/dc2/a00228.html#a301ad3bfcca225e7c8122bc6d21c4a25" title="The number of TermLinks remembered. " alt="" coords="243,57,406,98"/>
+<area shape="rect" id="node5" href="$dc/d31/a00208.html#ab5c9fbb171f325844966b496010acf60" title="The key of the Item, unique in a Bag. " alt="" coords="245,123,404,149"/>
+<area shape="rect" id="node6" href="$de/dc2/a00228.html#a2f2761c77d12d0bec9201f92fb4c3e08" title="Remember the TermLinks that has been used recently with this TaskLink. " alt="" coords="243,174,406,215"/>
+<area shape="rect" id="node7" href="$de/dc2/a00228.html#a7e80b0f649c974b8a563c5b34cf47ecf" title="Remember the time when each TermLink is used with this TaskLink. " alt="" coords="243,239,406,281"/>
+<area shape="rect" id="node8" href="$de/dc2/a00228.html#a60ac6941518e78c1f0049b90437b9053" title="The Task linked. " alt="" coords="243,305,406,346"/>
+<area shape="rect" id="node9" href="$d0/d53/a00232.html#af9a7e48ccb971558fafc001029463cf0" title="The linked Term. " alt="" coords="228,371,421,397"/>
+<area shape="rect" id="node10" href="$de/dc2/a00228.html#a4dc71072f6d6660fc7499fcdbeeceee6" title="nars.entity.TaskLink.set\lCounter" alt="" coords="243,422,406,463"/>
+<area shape="rect" id="node3" href="$dc/d59/a00364.html#a3aad4654016b8615fd4fa8a26668e1db" title="Reporting the name of the current Term. " alt="" coords="469,5,664,32"/>
+</map>

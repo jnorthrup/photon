@@ -1,0 +1,5 @@
+<map id="nars.entity.Item.toStringBrief" name="nars.entity.Item.toStringBrief">
+<area shape="rect" id="node2" href="$d5/ddf/a00224.html#a73b96cd17fd93eeab0cc94bd36f25e66" title="Get a String representation of the Task. " alt="" coords="240,5,405,32"/>
+<area shape="rect" id="node3" href="$d6/db8/a00376.html#a4106abcc906c5ae1ce6828b0a88a1cca" title="Collect Bag content into a String for display. " alt="" coords="231,57,414,98"/>
+<area shape="rect" id="node4" href="$d7/ded/a00196.html#a121514592016f7350b5a741db6465798" title="called from NARSBatch " alt="" coords="216,123,429,149"/>
+</map>

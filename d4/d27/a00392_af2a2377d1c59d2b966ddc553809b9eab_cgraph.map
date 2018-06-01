@@ -1,0 +1,6 @@
+<map id="nars.storage.Memory.toStringLongIfNotNull" name="nars.storage.Memory.toStringLongIfNotNull">
+<area shape="rect" id="node2" href="$dc/d31/a00208.html#a7adee9838f91c397f4b747351ead9f75" title="nars.entity.Item.toStringLong" alt="" coords="248,31,439,57"/>
+<area shape="rect" id="node3" href="$dc/d31/a00208.html#aa09cfb045062f89cbea45a6975e6a2f2" title="Return a String representation of the Item. " alt="" coords="487,31,649,57"/>
+<area shape="rect" id="node4" href="$dc/d31/a00208.html#a54fc0a370b847dd77c0a698c765e6e55" title="The budget of the Item, consisting of 3 numbers. " alt="" coords="697,5,873,32"/>
+<area shape="rect" id="node5" href="$dc/d31/a00208.html#ab5c9fbb171f325844966b496010acf60" title="The key of the Item, unique in a Bag. " alt="" coords="706,56,865,83"/>
+</map>

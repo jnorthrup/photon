@@ -1,0 +1,4 @@
+<map id="nars.entity.Item.setDurability" name="nars.entity.Item.setDurability">
+<area shape="rect" id="node2" href="$dc/d31/a00208.html#a54fc0a370b847dd77c0a698c765e6e55" title="The budget of the Item, consisting of 3 numbers. " alt="" coords="247,5,423,32"/>
+<area shape="rect" id="node3" href="$dd/da2/a00192.html#ab72bce41fd8a1512fc8baa07ed93fc1b" title="Change durability value. " alt="" coords="244,57,427,98"/>
+</map>

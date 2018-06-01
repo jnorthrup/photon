@@ -1,0 +1,7 @@
+<map id="nars.language.ImageExt.make" name="nars.language.ImageExt.make">
+<area shape="rect" id="node2" href="$d8/d17/a00304.html#a5a2d25a17f77d898268e1637a3aa9c4d" title="Clone the component list. " alt="" coords="252,5,487,47"/>
+<area shape="rect" id="node5" href="$d5/d0f/a00308.html#a52a40e43bd7a74ef9461cbb658f86a62" title="get the index of the relation in the component list " alt="" coords="277,71,462,112"/>
+<area shape="rect" id="node6" href="$d5/d0f/a00308.html#afb24af5cc6c098ad3f5d837fa383e69c" title="Try to make a new ImageExt. " alt="" coords="270,137,469,163"/>
+<area shape="rect" id="node3" href="$d8/d17/a00304.html#a9cb7736a3f6b220d75366ab146488773" title="Deep clone an array list of terms. " alt="" coords="535,13,791,39"/>
+<area shape="rect" id="node4" href="$d8/d17/a00304.html#a963e8aef1163f4ed8c364b5e448deaff" title="Abstract clone method. " alt="" coords="839,13,1073,39"/>
+</map>

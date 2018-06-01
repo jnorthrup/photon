@@ -1,0 +1,5 @@
+<map id="nars.storage.ReasonerBatch.addInputChannel" name="nars.storage.ReasonerBatch.addInputChannel">
+<area shape="rect" id="node2" href="$d9/dd6/a00272.html#a9f50480e5784c1ecb2d9295c851c2af7" title="Open an input experience file from given file Path. " alt="" coords="267,5,471,47"/>
+<area shape="rect" id="node3" href="$d9/dd6/a00272.html#a1e4529d4f692ecfc7becd9d8e367b3d6" title="nars.io.ExperienceReader.set\lBufferedReader" alt="" coords="271,71,466,112"/>
+<area shape="rect" id="node4" href="$d9/da1/a00396.html#a47532d1a2928384645c6ca097ea7a21e" title="nars.storage.NARSBatch.init" alt="" coords="519,78,709,105"/>
+</map>

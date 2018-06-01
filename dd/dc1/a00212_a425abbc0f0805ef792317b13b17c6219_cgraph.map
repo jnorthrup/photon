@@ -1,0 +1,9 @@
+<map id="nars.entity.Sentence.Sentence" name="nars.entity.Sentence.Sentence">
+<area shape="rect" id="node2" href="$dd/dc1/a00212.html#ad1ded9a02cae3557948d05530cd4d37e" title="The content of a Sentence is a Term. " alt="" coords="265,5,429,47"/>
+<area shape="rect" id="node3" href="$dc/d59/a00364.html#a6ad164dd053a9cc808bcd6a2d741a775" title="Blank method to be override in CompoundTerm. " alt="" coords="255,71,439,112"/>
+<area shape="rect" id="node4" href="$dd/dc1/a00212.html#aaed0a9d288098b451c156ed4db487264" title="Set the content Term of the Sentence. " alt="" coords="265,136,429,177"/>
+<area shape="rect" id="node5" href="$dd/dc1/a00212.html#a5459cf8e06a471e64167d1c3048159bd" title="nars.entity.Sentence.set\lPunctuation" alt="" coords="265,201,429,243"/>
+<area shape="rect" id="node6" href="$dd/dc1/a00212.html#a97aee434b02405a38c1796bf8e27180b" title="nars.entity.Sentence.set\lRevisible" alt="" coords="265,267,429,308"/>
+<area shape="rect" id="node7" href="$dd/dc1/a00212.html#a426601431d037084a09a8ba13ed4560c" title="nars.entity.Sentence.set\lStamp" alt="" coords="265,332,429,373"/>
+<area shape="rect" id="node8" href="$dd/dc1/a00212.html#a040fcf061a9ec8757c249af714ae4c42" title="nars.entity.Sentence.set\lTruth" alt="" coords="265,397,429,439"/>
+</map>

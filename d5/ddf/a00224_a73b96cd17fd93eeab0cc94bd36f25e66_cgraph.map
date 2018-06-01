@@ -1,0 +1,19 @@
+<map id="nars.entity.Task.toString" name="nars.entity.Task.toString">
+<area shape="rect" id="node2" href="$d5/ddf/a00224.html#a63d100ab04dafaea220b3c1125b782e6" title="For Question and Goal: best solution found so far. " alt="" coords="239,5,404,47"/>
+<area shape="rect" id="node3" href="$dc/d31/a00208.html#a54fc0a370b847dd77c0a698c765e6e55" title="The budget of the Item, consisting of 3 numbers. " alt="" coords="233,71,409,98"/>
+<area shape="rect" id="node4" href="$dc/d31/a00208.html#ab5c9fbb171f325844966b496010acf60" title="The key of the Item, unique in a Bag. " alt="" coords="242,122,401,149"/>
+<area shape="rect" id="node5" href="$d5/ddf/a00224.html#ae0fc96866e544c3dda5a87ea5c806fc3" title="Belief from which the Task is derived, or null if derived from a theorem. " alt="" coords="233,173,409,215"/>
+<area shape="rect" id="node6" href="$d5/ddf/a00224.html#a1d9cd3ae889c6822469217154e4dcf4f" title="Task from which the Task is derived, or null if input. " alt="" coords="219,239,424,266"/>
+<area shape="rect" id="node7" href="$d5/ddf/a00224.html#ab140cb553a6cf40b07093d1df283567f" title="The sentence of the Task. " alt="" coords="225,290,418,317"/>
+<area shape="rect" id="node8" href="$dc/d31/a00208.html#a0560704e74c1856af8e98e862d55d626" title="Return a String representation of the Item after simplification. " alt="" coords="240,341,403,383"/>
+<area shape="rect" id="node10" href="$dd/dc1/a00212.html#aea2f809b2d4c375f3c4ec3d0328d8787" title="Get a String representation of the sentence, with 2&#45;digit accuracy. " alt="" coords="226,407,417,448"/>
+<area shape="rect" id="node9" href="$dd/da2/a00192.html#aff75d0d4fed143961e843d2959687fb0" title="Briefly display the BudgetValue. " alt="" coords="474,341,650,383"/>
+<area shape="rect" id="node11" href="$dd/dc1/a00212.html#ac0ed749c50e55120d5b63219ed7eb082" title="Partial record of the derivation path. " alt="" coords="480,407,644,448"/>
+<area shape="rect" id="node12" href="$dd/dc1/a00212.html#a8b6d9355c0211d37f881ec6717a6b636" title="Get a String representation of the sentence for key of Task and TaskLink. " alt="" coords="472,473,652,499"/>
+<area shape="rect" id="node13" href="$dd/dc1/a00212.html#ad1ded9a02cae3557948d05530cd4d37e" title="The content of a Sentence is a Term. " alt="" coords="701,367,865,408"/>
+<area shape="rect" id="node14" href="$dd/dc1/a00212.html#a68b153a51a5db6a4127b66158227697f" title="The punctuation also indicates the type of the Sentence: Judgment, Question, or Goal. " alt="" coords="701,432,865,473"/>
+<area shape="rect" id="node15" href="$dd/dc1/a00212.html#a9f69b4fef64c81abad21404946cd41f9" title="The truth value of Judgment. " alt="" coords="701,497,865,539"/>
+<area shape="rect" id="node16" href="$d7/d40/a00236.html#a5af8b2fe37987ba1e8396ec1aad38e90" title="A simplified String representation of a TruthValue, where each factor is accruate to 1%..." alt="" coords="700,563,865,604"/>
+<area shape="rect" id="node17" href="$d7/d40/a00236.html#a9eac33f2495441c77911a8581a5bbe61" title="Get the frequency value. " alt="" coords="913,529,1085,571"/>
+<area shape="rect" id="node18" href="$d7/d40/a00236.html#a68ca7d92e9ea20d2a9a9f578ad7b681c" title="The confidence factor of the truth value. " alt="" coords="913,595,1085,636"/>
+</map>

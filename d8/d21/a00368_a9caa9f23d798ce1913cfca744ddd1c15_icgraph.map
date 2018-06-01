@@ -1,0 +1,15 @@
+<map id="nars.language.Variable.containVarIndep" name="nars.language.Variable.containVarIndep">
+<area shape="rect" id="node2" href="$d8/d21/a00368.html#a2c36e85a56295a27aba7a4ee162f5850" title="Check whether a string represent a name of a term that contains a variable. " alt="" coords="253,71,473,98"/>
+<area shape="rect" id="node3" href="$d8/d17/a00304.html#ab2f1e2119f6824f9c97e2f8d0d75483e" title="Constructor called from subclasses constructors to initialize the fields. " alt="" coords="553,5,757,47"/>
+<area shape="rect" id="node4" href="$d8/d17/a00304.html#a18e066f782a0070b137132a6a2d732d6" title="Whether this compound term contains any variable term. " alt="" coords="521,71,788,98"/>
+<area shape="rect" id="node6" href="$d8/d0a/a00292.html#a4521720744de2b8638667be01b4be64a" title="Parse a Term that has no internal structure. " alt="" coords="568,123,741,164"/>
+<area shape="rect" id="node5" href="$d8/d17/a00304.html#ac19f90fbe8b8ebe78462fa13e7ebca74" title="Rename the variables in the compound. " alt="" coords="836,64,1083,105"/>
+<area shape="rect" id="node7" href="$d8/d0a/a00292.html#a5c31494d6f7862dcf15a4d5716b6200e" title="Top&#45;level method that parse a Term in general, which may recursively call itself. ..." alt="" coords="858,130,1061,157"/>
+<area shape="rect" id="node8" href="$d8/d0a/a00292.html#a9b9bc5f94ac6aaa86c3d9c2bcd21c332" title="Parse a String into the argument get of a CompoundTerm. " alt="" coords="1145,57,1319,99"/>
+<area shape="rect" id="node10" href="$d8/d0a/a00292.html#a7c129938c8d721e3db0a9804988f0588" title="Parse a String to create a Statement. " alt="" coords="1145,123,1319,164"/>
+<area shape="rect" id="node11" href="$d8/d0a/a00292.html#a75b446999d71c676a9915ecc75077a7d" title="Enter a new Task in String into the memory, called from InputWindow or locally. " alt="" coords="1131,239,1333,266"/>
+<area shape="rect" id="node9" href="$d8/d0a/a00292.html#a944bb677dff9f232ce6b896c853e24e0" title="Parse a String to create a CompoundTerm. " alt="" coords="1407,112,1580,153"/>
+<area shape="rect" id="node12" href="$df/d15/a00416.html#a4766dfcaabdf586d60b9ac9827e41cad" title="Parse a line of input experience. " alt="" coords="1381,232,1605,273"/>
+<area shape="rect" id="node13" href="$df/d15/a00416.html#a1823f1575021b1ca67e6174923923fbb" title="To process a line of input text. " alt="" coords="1653,232,1868,273"/>
+<area shape="rect" id="node14" href="$d9/dd6/a00272.html#a1a4b66a6e6cf89d5c2ea7a5923195247" title="Process the next chunk of input data TODO duplicated code with InputWindow#nextInput(). " alt="" coords="1916,232,2117,273"/>
+</map>

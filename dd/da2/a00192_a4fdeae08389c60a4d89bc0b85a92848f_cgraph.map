@@ -1,0 +1,9 @@
+<map id="nars.entity.BudgetValue.merge" name="nars.entity.BudgetValue.merge">
+<area shape="rect" id="node2" href="$d9/d21/a00240.html#a64bec0b466ef31bc3150de23f0623309" title="Merge an item into another one in a bag, when the two are identical except in budget values..." alt="" coords="255,143,501,170"/>
+<area shape="rect" id="node3" href="$dd/da2/a00192.html#a088e64163126211239b6afd25a9cdca3" title="Increase priority value by a percentage of the remaining range. " alt="" coords="549,5,732,47"/>
+<area shape="rect" id="node5" href="$dd/da2/a00192.html#ab72bce41fd8a1512fc8baa07ed93fc1b" title="Change durability value. " alt="" coords="549,71,732,112"/>
+<area shape="rect" id="node6" href="$dd/da2/a00192.html#ab0e0dc2172d3fab6390670acb68da1a6" title="Get durability value. " alt="" coords="549,136,732,177"/>
+<area shape="rect" id="node7" href="$dd/da2/a00192.html#ab134287bfbdfe703501697c5f9eac50b" title="Change quality value. " alt="" coords="549,201,732,243"/>
+<area shape="rect" id="node8" href="$dd/da2/a00192.html#ae48fee1252f685c6ce2033bb855d13e1" title="Get quality value. " alt="" coords="549,267,732,308"/>
+<area shape="rect" id="node4" href="$db/d12/a00268.html#acaa4ebc080bc00d0e03be32d51d29e40" title="A function where the output is disjunctively determined by the inputs. " alt="" coords="780,13,995,39"/>
+</map>

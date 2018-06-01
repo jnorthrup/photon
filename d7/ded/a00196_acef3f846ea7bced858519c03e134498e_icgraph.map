@@ -1,0 +1,17 @@
+<map id="nars.entity.Concept.getTaskLinks" name="nars.entity.Concept.getTaskLinks">
+<area shape="rect" id="node2" href="$d7/ded/a00196.html#aef21f5ae7bef5194bd37ae526302843d" title="Insert a TaskLink into the TaskLink bag. " alt="" coords="261,67,433,108"/>
+<area shape="rect" id="node14" href="$d4/d27/a00392.html#a0acc4adbf6a2462245da46bcb529746c" title="Select a concept to fireFromProcessConcept. " alt="" coords="501,129,696,171"/>
+<area shape="rect" id="node15" href="$d7/ded/a00196.html#a5a010290c8c42603dd13387f415abf43" title="Start displaying contents and links, called from ConceptWindow, TermWindow or Memory.processTask only. " alt="" coords="251,185,443,211"/>
+<area shape="rect" id="node16" href="$d7/ded/a00196.html#a121514592016f7350b5a741db6465798" title="called from NARSBatch " alt="" coords="240,235,453,262"/>
+<area shape="rect" id="node3" href="$d7/ded/a00196.html#a501121a11fc046eea4b69720cb622d84" title="Link to a new task from all relevant concepts for continued processing in the near future for unspeci..." alt="" coords="519,64,679,105"/>
+<area shape="rect" id="node4" href="$d7/ded/a00196.html#a9ea7c3154932d7a736c105eb55daeb5c" title="Directly process a new task. " alt="" coords="744,64,916,105"/>
+<area shape="rect" id="node5" href="$d4/d27/a00392.html#af8d07412d21a441a5c7005a477b06468" title="Immediate processing of a new task, in constant time Local processing, in one concept only..." alt="" coords="964,64,1173,105"/>
+<area shape="rect" id="node6" href="$d4/d27/a00392.html#ae43b86074c0d8f6a324696f69faa54b3" title="Process the newTasks accumulated in the previous workCycle, accept input ones and those that correspo..." alt="" coords="1221,5,1416,47"/>
+<area shape="rect" id="node13" href="$d4/d27/a00392.html#a5061708f88897cfdf4e0671c846762ca" title="Select a novel task to process. " alt="" coords="1221,71,1416,112"/>
+<area shape="rect" id="node7" href="$d4/d27/a00392.html#a59ae339d666409988d90d29be4f73a91" title="An atomic working workCycle of the system: process new Tasks, then fireFromProcessConcept a concept..." alt="" coords="1464,71,1641,112"/>
+<area shape="rect" id="node8" href="$df/d15/a00416.html#a0d5c797dc17d9e8d0998852915e0f303" title="nars.storage.ReasonerBatch.doTick" alt="" coords="1689,78,1920,105"/>
+<area shape="rect" id="node9" href="$df/d15/a00416.html#a3468aa0f99edcd66412f27922dddb880" title="A clock tick. " alt="" coords="1968,78,2181,105"/>
+<area shape="rect" id="node10" href="$d9/da1/a00396.html#a5d9cfe517bcfbe41e5251910bcd119c1" title="Run to completion: repeatedly execute NARS working cycle, until Inputs are Finished, or 1000 steps. " alt="" coords="2229,78,2421,105"/>
+<area shape="rect" id="node11" href="$d9/da1/a00396.html#a7c307c6b842f82664de6b0e52bdf8efc" title="non&#45;static equivalent to main(String[]) : run to completion from an input file " alt="" coords="2469,71,2661,112"/>
+<area shape="rect" id="node12" href="$d9/da1/a00396.html#abafc597289bc2f6453b5cd0dd6634e54" title="The entry point of the standalone application. " alt="" coords="2709,78,2912,105"/>
+</map>

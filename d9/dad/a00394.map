@@ -1,0 +1,28 @@
+<map id="nars.storage.NARSBatch" name="nars.storage.NARSBatch">
+<area shape="rect" id="node2" href="$df/d15/a00416.html" title="Created by jim on 1/12/16. " alt="" coords="1917,305,2105,332"/>
+<area shape="rect" id="node4" href="$d4/d27/a00392.html" title="The memory of the system. " alt="" coords="2343,704,2488,731"/>
+<area shape="rect" id="node43" href="$d7/ded/a00196.html" title="A concept contains information associated with a term, including directly and indirectly related task..." alt="" coords="2644,695,2780,721"/>
+<area shape="rect" id="node5" href="$d9/dd5/a00432.html" title="Created by jim on 1/14/16. " alt="" coords="671,859,837,885"/>
+<area shape="rect" id="node22" href="$d6/db8/a00376.html" title="A Bag is a storage with a constant capacity and maintains an internal priority distribution for retri..." alt="" coords="1076,1197,1239,1238"/>
+<area shape="rect" id="node6" href="$d0/d53/a00232.html" title="A link between a compound term and a component term. " alt="" coords="1087,972,1228,999"/>
+<area shape="rect" id="node41" href="$de/dc2/a00228.html" title="Reference to a Task. " alt="" coords="1941,975,2081,1001"/>
+<area shape="rect" id="node7" href="$dc/d31/a00208.html" title="An item is an object that can be put into a Bag, to participate in the resource competition of the sy..." alt="" coords="697,1132,811,1159"/>
+<area shape="rect" id="node31" href="$d5/ddf/a00224.html" title="A task to be processed, consists of a Sentence and a BudgetValue. " alt="" coords="1525,921,1641,948"/>
+<area shape="rect" id="node9" href="$dd/da2/a00192.html" title="A triple of priority (current), durability (decay), and quality (long&#45;term average). " alt="" coords="285,1233,447,1260"/>
+<area shape="rect" id="node14" href="$dc/d59/a00364.html" title="Term is the basic component of Narsese, and the object of processing in NARS. " alt="" coords="685,489,823,516"/>
+<area shape="rect" id="node33" href="$dd/dc1/a00212.html" title="A Sentence is an abstract class, mainly containing a Term, a TruthValue, and a Stamp. " alt="" coords="1086,640,1229,667"/>
+<area shape="rect" id="node35" href="$d7/d40/a00236.html" title="Frequency and confidence. " alt="" coords="679,644,829,671"/>
+<area shape="rect" id="node37" href="$d6/d43/a00216.html" title="Each Sentence has a time stamp, consisting the following components: (1) The creation time of the sen..." alt="" coords="691,719,817,745"/>
+<area shape="rect" id="node20" href="$d2/d56/a00384.html" title="Contains Concepts. " alt="" coords="1926,1175,2097,1201"/>
+<area shape="rect" id="node21" href="$d6/db8/a00376.html" title="nars.storage.Bag\&lt; Concept \&gt;" alt="" coords="1486,1175,1681,1201"/>
+<area shape="rect" id="node30" href="$d6/db8/a00376.html" title="nars.storage.Bag\&lt; Task \&gt;" alt="" coords="1496,1225,1671,1252"/>
+<area shape="rect" id="node46" href="$d6/db8/a00376.html" title="nars.storage.Bag\&lt; TaskLink \&gt;" alt="" coords="1484,1327,1683,1353"/>
+<area shape="rect" id="node49" href="$d6/db8/a00376.html" title="nars.storage.Bag\&lt; TermLink \&gt;" alt="" coords="1484,1276,1683,1303"/>
+<area shape="rect" id="node24" href="$d8/ddd/a00380.html" title="nars.storage.BagObserver" alt="" coords="667,1183,841,1209"/>
+<area shape="rect" id="node25" href="$d9/dc1/a00388.html" title="A pseudo&#45;random number generator, used in Bag. " alt="" coords="675,1233,833,1260"/>
+<area shape="rect" id="node28" href="$d0/dcd/a00280.html" title="nars.io.IInferenceRecorder" alt="" coords="1923,536,2099,563"/>
+<area shape="rect" id="node29" href="$d9/d95/a00400.html" title="New tasks that contain new Term. " alt="" coords="1919,1225,2103,1252"/>
+<area shape="rect" id="node45" href="$dc/df3/a00424.html" title="TaskLinkBag contains links to tasks. " alt="" coords="2129,1315,2304,1341"/>
+<area shape="rect" id="node48" href="$d4/dd3/a00428.html" title="Contains TermLinks to relevant (compound or component) Terms. " alt="" coords="2129,1269,2304,1296"/>
+<area shape="rect" id="node50" href="$d1/d72/a00204.html" title="nars.entity.EntityObserver" alt="" coords="2328,1428,2503,1455"/>
+</map>

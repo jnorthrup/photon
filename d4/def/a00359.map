@@ -1,0 +1,9 @@
+<map id="nars.language.Statement" name="nars.language.Statement">
+<area shape="rect" id="node7" href="$d3/db8/a00316.html" title="A Statement about an Inheritance relation. " alt="" coords="866,5,1037,32"/>
+<area shape="rect" id="node8" href="$dd/de2/a00320.html" title="A Statement about an Instance relation, which is used only in Narsese for I/O, and translated into In..." alt="" coords="873,56,1030,83"/>
+<area shape="rect" id="node9" href="$d4/d8f/a00324.html" title="A Statement about an InstanceProperty relation, which is used only in Narsese for I/O..." alt="" coords="848,107,1055,133"/>
+<area shape="rect" id="node10" href="$d8/d8e/a00344.html" title="A Statement about a Property relation, which is used only in Narsese for I/O, and translated into Inh..." alt="" coords="873,157,1029,184"/>
+<area shape="rect" id="node11" href="$d6/de1/a00356.html" title="A Statement about a Similarity relation. " alt="" coords="871,208,1032,235"/>
+<area shape="rect" id="node2" href="$d8/d17/a00304.html" title="A CompoundTerm is a Term with internal (syntactic) structure. " alt="" coords="385,107,585,133"/>
+<area shape="rect" id="node3" href="$dc/d59/a00364.html" title="Term is the basic component of Narsese, and the object of processing in NARS. " alt="" coords="200,107,337,133"/>
+</map>

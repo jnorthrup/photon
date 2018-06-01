@@ -1,0 +1,11 @@
+<map id="nars.storage.Bag&lt; Type extends Item &gt;" name="nars.storage.Bag&lt; Type extends Item &gt;">
+<area shape="rect" id="node4" href="$d6/db8/a00376.html" title="nars.storage.Bag\&lt; TaskLink \&gt;" alt="" coords="625,5,824,32"/>
+<area shape="rect" id="node6" href="$d6/db8/a00376.html" title="nars.storage.Bag\&lt; Task \&gt;" alt="" coords="637,56,812,83"/>
+<area shape="rect" id="node8" href="$d6/db8/a00376.html" title="nars.storage.Bag\&lt; TermLink \&gt;" alt="" coords="625,107,824,133"/>
+<area shape="rect" id="node10" href="$d6/db8/a00376.html" title="nars.storage.Bag\&lt; Concept \&gt;" alt="" coords="627,157,822,184"/>
+<area shape="rect" id="node2" href="$dc/d31/a00208.html" title="An item is an object that can be put into a Bag, to participate in the resource competition of the sy..." alt="" coords="137,83,251,109"/>
+<area shape="rect" id="node5" href="$dc/df3/a00424.html" title="TaskLinkBag contains links to tasks. " alt="" coords="878,5,1053,32"/>
+<area shape="rect" id="node7" href="$d9/d95/a00400.html" title="New tasks that contain new Term. " alt="" coords="873,56,1057,83"/>
+<area shape="rect" id="node9" href="$d4/dd3/a00428.html" title="Contains TermLinks to relevant (compound or component) Terms. " alt="" coords="878,107,1053,133"/>
+<area shape="rect" id="node11" href="$d2/d56/a00384.html" title="Contains Concepts. " alt="" coords="880,157,1051,184"/>
+</map>

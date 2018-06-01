@@ -1,0 +1,11 @@
+<map id="nars.language.IntersectionExt.make" name="nars.language.IntersectionExt.make">
+<area shape="rect" id="node2" href="$d4/db5/a00328.html#ac8507d8fd4891b78c7979f63b0e377db" title="Constructor with partial values, called by make. " alt="" coords="259,5,433,47"/>
+<area shape="rect" id="node3" href="$d8/d17/a00304.html#a8d1e610c509fa096c6b52eb5fe06d59b" title="default method to make the oldName of a compound term from given fields " alt="" coords="228,71,464,112"/>
+<area shape="rect" id="node6" href="$d4/d27/a00392.html#ac7c5d438820208253d1a2ee59bf80ddc" title="Get a Term for a given name of a Concept or Operator. " alt="" coords="255,136,437,177"/>
+<area shape="rect" id="node10" href="$d8/d17/a00304.html#ac81c5851f664320ddec435641f198b03" title="get the number of components " alt="" coords="232,202,460,229"/>
+<area shape="rect" id="node4" href="$d8/d17/a00304.html#a89000afae8017231889aaa549292d1e0" title="Default constructor. " alt="" coords="545,12,749,53"/>
+<area shape="rect" id="node5" href="$d8/d17/a00304.html#aa26a304f6249c185836d8fde8b8f17a8" title="default method to make the oldName of the current term from existing fields " alt="" coords="512,78,783,105"/>
+<area shape="rect" id="node7" href="$d4/d27/a00392.html#a33af7b3d806d32c85390563fec3c6d27" title="Concept bag. " alt="" coords="536,129,759,155"/>
+<area shape="rect" id="node8" href="$d6/db8/a00376.html#a011b37fc683db7fb7b41e33712a37d92" title="Get an Item by key. " alt="" coords="576,179,719,206"/>
+<area shape="rect" id="node9" href="$d7/ded/a00196.html#afcd1217b7680b073fa51f0d0f159dcea" title="The term is the unique ID of the concept. " alt="" coords="553,230,741,257"/>
+</map>

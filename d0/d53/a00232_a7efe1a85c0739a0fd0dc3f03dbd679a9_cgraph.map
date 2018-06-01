@@ -1,0 +1,10 @@
+<map id="nars.entity.TermLink.TermLink" name="nars.entity.TermLink.TermLink">
+<area shape="rect" id="node2" href="$dc/d59/a00364.html#ad85f45a7858737445d5158801774ff5f" title="Equal terms have identical name, though not necessarily the same reference. " alt="" coords="259,5,438,32"/>
+<area shape="rect" id="node3" href="$dc/d59/a00364.html#a3aad4654016b8615fd4fa8a26668e1db" title="Reporting the name of the current Term. " alt="" coords="493,31,688,57"/>
+<area shape="rect" id="node4" href="$d0/d53/a00232.html#a3fc10480b3cf18d6d9c748a7daa612c3" title="The index of the component in the component list of the compound, may have up to 4 levels..." alt="" coords="267,107,430,149"/>
+<area shape="rect" id="node5" href="$d0/d53/a00232.html#a807c24a5c7654fafa714b1a5aa43ccfa" title="nars.entity.TermLink.set\lIndex" alt="" coords="267,173,430,214"/>
+<area shape="rect" id="node6" href="$d0/d53/a00232.html#ad19e927a3e2e339682081d8e462fe73b" title="Set the key of the link. " alt="" coords="255,239,442,265"/>
+<area shape="rect" id="node8" href="$d0/d53/a00232.html#a0660f7b949881a67b88f428cc15d3caf" title="The type of link, one of the above. " alt="" coords="252,289,445,316"/>
+<area shape="rect" id="node9" href="$d0/d53/a00232.html#a38c105501a79e2f5f3036e7a8700607b" title="nars.entity.TermLink.setType" alt="" coords="253,340,445,367"/>
+<area shape="rect" id="node7" href="$dc/d31/a00208.html#ab5c9fbb171f325844966b496010acf60" title="The key of the Item, unique in a Bag. " alt="" coords="511,239,670,265"/>
+</map>
