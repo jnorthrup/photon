@@ -1,21 +1,47 @@
-*.class
+classes
+build
+nars-dist
+nbproject/private
+dist
+web/client/lib/jquery-ui/themes
+web/client/lib/jquery/src
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+*/out
 
-# Package Files #
-*.jar
-*.war
-*.ear
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-term
-*.class
-*.ipr
+lib/cache_dir
+lib/cachedir
+.jacocoverage
+jacoco**
+nbproject/yjp-build-impl.xml
+yjp-build.xmltarget
+target
 *.iml
-.classpath
 .idea
+dev/netbeans/nbproject/private
+
+hs_err_pid*
+replay*.log
+
+nb-configuration.xml
+UIFiles
+.classpath
 .project
 .settings
+/cache
 
+jmh-result.text
+.gradle/
+
+nal/tree.xml
+nal/vis.xml
+
+/web/src/main/resources/nbproject/private/
+
+on/.git
+.clover
+jmh-result*
+narchy.ipr
+narchy.iws
+log/
+gradle.properties
+dumps/
