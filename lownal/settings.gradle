@@ -1,0 +1,4 @@
+rootProject.name = 'lownal'
+
+
+//enableFeaturePreview("GRADLE_METADATA")
