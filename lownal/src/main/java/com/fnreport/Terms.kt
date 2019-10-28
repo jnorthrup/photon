@@ -96,7 +96,7 @@ confidence : #"[0]?\.[0]*[1-9]{1}[0-9]*"             (* 0 <  x <  1 *)
 
 enum class accounting(override val symbol: String, vararg decoders: Any) : RegexEmitter {
     /** same format, different interpretations */
-    desire("%%" / ("(" + fragment.frequency.regex + ")(;" + fragment.confidence.regex + ")?"), opt(fragment.frequency), opt(fragment.confidence)),
+    desire("%%" / ("(" + fragment.frequency.regex + ")(;" + fragment.confidence.regex + ")?"), opt(fragment.frequency), opt(fragment.confidence) ),
     /** two numbers in [0,1]x(0,1) */
     truth(
             desire.symbol,
