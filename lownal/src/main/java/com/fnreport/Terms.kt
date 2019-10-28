@@ -7,39 +7,10 @@ operator fun String.plus(re: Regex) = "()" / this + "()" / re.pattern
 
 operator fun String.div(re: String) = this[0] + re + this[1]
 
-infix fun TokenEmitter.`|`(dua: TokenEmitter) = this.let {
-    object : RegexEmitter {
-        override val name: String
-            get() = symbol
-        override val symbol: String by lazy { "(${it.symbol})|(${dua.symbol})" }
-    }
-}
 
-infix fun TokenEmitter.`&`(dua: TokenEmitter) = let {
-    object : RegexEmitter {
-        override val name: String
-            get() = symbol
 
-        override val symbol: String by lazy { "(${it.symbol})(${dua.symbol})" }
-    }
-}
 
-infix operator fun TokenEmitter.plus(dua: TokenEmitter): RegexEmitter = let {
-    object : RegexEmitter {
-        override val name: String
-            get() = symbol
-        override val symbol: String = "(${it.symbol})+(${dua.symbol})"
-    }
-}
 
-infix operator fun TokenEmitter.times(dua: TokenEmitter): RegexEmitter = let {
-    return object : RegexEmitter {
-        override val name: String
-            get() = symbol
-
-        override val symbol: String by lazy { "(${it.symbol})*(${dua.symbol})" }
-    }
-}
 
 /*
 
