@@ -31,13 +31,20 @@ infix fun <P : TokenEmitter> P.`|`(c: Char) = this `|` ("\\" + c)
 infix fun <T : Number, P : TokenEmitter> P.`|`(c: T) = this `|` c.toString()
 infix fun <T : CharSequence, P : TokenEmitter> P.`|`(c: T) = this `|` lit(c)
 infix fun <P : TokenEmitter> Char.`|`(i: P) = "\\" + toString() `|` i
+
+
 infix fun <T : Number, P : TokenEmitter> T.`|`(i: P) = toString() `|` i
 infix fun <T : CharSequence, P : TokenEmitter> T.`|`(i: P) = lit(this.toString() + "|" + i.symbol)
 infix fun <T : TokenEmitter> T.`|`(c: T) = rel(this.symbol + "|" + c.symbol, name + "|" + c.name)
 
 infix fun <P : TokenEmitter> P.`&`(c: Char) = this `&` "(\\$c)"
-infix fun <T : Number, P : TokenEmitter> P.`&`(c: T) = this `&` c.toString()
 infix fun <T : CharSequence, P : TokenEmitter> P.`&`(c: T) = this `&` lit(c)
+infix fun <T : Number, P : TokenEmitter> P.`&`(c: T) = this `&` c.toString()
 infix fun <T : Any, P : TokenEmitter> T.`&`(t: P) = lit(this) `&` t
-infix fun <T : TokenEmitter> T.`&`(t: T) = rel("${symbol.takeUnless { it.length > 1 }
-        ?: "(${symbol})"}(${t.symbol})", name + ">>" + t.name)
+infix fun <T : TokenEmitter> T.`&`(t: T) = rel("${symbol.takeUnless { it.length > 1 } ?: "(${symbol})"}(${t.symbol})", name + ">>" + t.name)
+
+ class opt(  var emitter:  TokenEmitter,
+        override val name: String = "opt" + ("()" / emitter.name),
+        override val regex: Regex = Regex(("()" / emitter.regex.pattern) + "?"),
+        override val symbol: String = ("()" / emitter.symbol) + "?"
+) : RegexEmitter
