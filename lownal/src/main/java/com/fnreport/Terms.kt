@@ -1,4 +1,8 @@
+@file:Suppress("RemoveRedundantBackticks")
+
 package com.fnreport
+
+import com.fnreport.Emitter.Companion.nd_
 
 
 operator fun String.plus(re: RegexEmitter) = this + re.regex
@@ -6,10 +10,9 @@ operator fun String.plus(re: RegexEmitter) = this + re.regex
 operator fun String.plus(re: Regex) = "()" / this + "()" / re.pattern
 
 operator fun String.div(re: String) = this[0] + re + this[1]
-
-
-
-
+val   period = lit("\\.") `&` nd_
+val   ws  = lit("\\s") * nd_
+val   capture= lit(".") * nd_
 
 
 /*
@@ -96,7 +99,7 @@ confidence : #"[0]?\.[0]*[1-9]{1}[0-9]*"             (* 0 <  x <  1 *)
 
 enum class accounting(override val symbol: String, vararg decoders: Any) : RegexEmitter {
     /** same format, different interpretations */
-    desire("%%" / ("(" + fragment.frequency.regex + ")(;" + fragment.confidence.regex + ")?"), opt(fragment.frequency), opt(fragment.confidence) ),
+    desire("%%" / ("(" + fragment.frequency.regex + ")(;" + fragment.confidence.regex + ")?"), opt(fragment.frequency), opt(fragment.confidence)),
     /** two numbers in [0,1]x(0,1) */
     truth(
             desire.symbol,
@@ -199,7 +202,7 @@ enum class op_multi(override var symbol: String, override var rep: String = symb
     /**extensional intersection*/
     extensional_intersection("&", "∩"),
     /**placeholder?*/
-    image("_", "◇")
+    image("nd__", "◇")
 }
 
 /**op-single*/
@@ -243,6 +246,18 @@ sentence ::= statement"." [tense] [truth]            (* judgement to be absorbed
  */
 
 
+enum class sentence(val regexEmitter: RegexEmitter) : TokenEmitter {
+    judgement(capture `&` period `&` oneOf(*tense.values()) `?` accounting.truth `?` nd_) {
+        override val symbol: String
+            get() = regexEmitter.symbol
+
+    },
+
+}
+
+
+/*
+
 object Judgement : Sentence("Judgement", ".",
         opt(oneOf(*tense.values())),
         opt(accounting.truth)
@@ -262,3 +277,4 @@ object Interest : Sentence("Interest", "@",
 ) {
     override val rep get() = "¿"
 }
+*/

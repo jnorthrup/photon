@@ -1,11 +1,13 @@
 package com.fnreport
 
+import com.fnreport.Emitter.Companion.nd_
 import io.kotlintest.specs.StringSpec
 import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 
-class TermsKtTest : StringSpec() {
 
+class TermsKtTest : StringSpec() {
+val x= nd_
     //    infix fun assertNotNull(it:Any ) =   kotlin.test.assertNotNull(it)
     init {
         val l1 = lit(1)
@@ -25,14 +27,15 @@ class TermsKtTest : StringSpec() {
             System.err.println(assertNotNull((l1 + 2 + opt(l1)).test("12")))
             System.err.println(assertNotNull((l1 + 2 + opt(l1)).test("121")))
 
-              regexEmitter  = l1 + 2 + oneOf(lit(33), lit(4)).`&`()
+            regexEmitter = l1 + 2 + ((oneOf(lit(33), lit(4)) as TokenEmitter)`&` nd_)
+
             System.err.println(regexEmitter.regex.pattern)
-            System.err.println(assertNotNull(regexEmitter .test("124")))
+            System.err.println(assertNotNull(regexEmitter.test("124")))
             System.err.println(assertNull(('z' + l1 + l2 + l1 + l1).test("1211")))
             System.err.println(assertNull(('z' + l1 + l2 + opt(l1)).test("12")))
             System.err.println(assertNull(('z' + l1 + l2 + opt(l1)).test("121")))
             System.err.println(assertNull(('z' + l1 + l2 + oneOf(lit(33), lit(433))).test("124")))
-        } 
+        }
 
 
         "times"   {
@@ -50,12 +53,14 @@ class TermsKtTest : StringSpec() {
         }
 
         "&" {
-            System.err.println(assertNotNull((l1 `&` 2).test("12")))
+            val regexEmitter1 = l1 `&` 2
+            System.err.println(regexEmitter1.regex to regexEmitter1.name)
+            System.err.println(assertNotNull((regexEmitter1).test("12")))
             System.err.println(assertNotNull((l1 `&` 2 `&` 1 `&` l1).test("1211")))
-            val regexEmitter = 2 `&` l1 `&` 1 `&` l1
+            val regexEmitter = 2 `&` l1 `&` 1 `&` l1 `&` ws
 
 
-            System.err.println(regexEmitter.regex)
+            System.err.println(regexEmitter.regex to regexEmitter.name)
             System.err.println(assertNotNull(regexEmitter.test("2111")))
             System.err.println(assertNotNull((l1 `&` 2 `&` opt(l1)).test("12")))
             System.err.println(assertNotNull((l1 `&` 2 `&` opt(l1)).test("121")))
@@ -68,7 +73,7 @@ class TermsKtTest : StringSpec() {
             System.err.println(assertNull(('z' `&` l1 `&` l2 `&` opt(l1)).test("121")))
             System.err.println(assertNull(('z' `&` l1 `&` l2 `&` oneOf(lit(3), lit(4))).test("124")))
 
-        }      
+        }
         "|" {
             System.err.println(assertNotNull((l1 `|` 2).test("2")))
             System.err.println(assertNotNull((l1 `|` 2 `|` 1 `|` l1).test("2")))
@@ -101,7 +106,7 @@ class TermsKtTest : StringSpec() {
             System.err.println(assertNull(('z' `|` l1 `|` l2 `|` opt(l1)).test("121")))
             System.err.println(assertNull(('z' `|` l1 `|` l2 `|` oneOf(lit(3), lit(4))).test("124")))
         }
-    }
-}
+
+}}
 
 
