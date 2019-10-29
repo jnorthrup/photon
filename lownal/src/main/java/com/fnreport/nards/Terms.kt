@@ -1,11 +1,11 @@
-@file:Suppress("RemoveRedundantBackticks")
 
-package com.fnreport
+package com.fnreport.nards
 
-import com.fnreport.Emitter.Companion.nd_
+import com.fnreport.*
+import com.fnreport.TokenMatcher.Companion.nd_
 
 
-operator fun String.plus(re: RegexEmitter) = this + re.regex
+operator fun String.plus(re: WithRegex) = this + re.regex
 /**confix*/
 operator fun String.plus(re: Regex) = "()" / this + "()" / re.pattern
 
@@ -13,8 +13,6 @@ operator fun String.div(re: String) = this[0] + re + this[1]
 val   period = lit("\\.") `&` nd_
 val   ws  = lit("\\s") * nd_
 val   capture= lit(".") * nd_
-
-
 /*
 
 task ::= [budget] sentence                       (* task to be processed *)
@@ -97,25 +95,20 @@ confidence : #"[0]?\.[0]*[1-9]{1}[0-9]*"             (* 0 <  x <  1 *)
 */
 
 
-enum class accounting(override val symbol: String, vararg decoders: Any) : RegexEmitter {
+enum class accounting(override val input: String) : WithRegex {
     /** same format, different interpretations */
-    desire("%%" / ("(" + fragment.frequency.regex + ")(;" + fragment.confidence.regex + ")?"), opt(fragment.frequency), opt(fragment.confidence)),
+    desire("%%" / ("(" + fragment.frequency.regex + ")(;" + fragment.confidence.regex + ")?")),
     /** two numbers in [0,1]x(0,1) */
     truth(
-            desire.symbol,
-            opt(fragment.frequency),
-            opt(fragment.confidence)
+            desire.input
     ),
     /** three numbers in [0,1]x(0,1)x[0,1] */
     budget(
-            "$$" / (fragment.priority.regex.pattern + "(;" + fragment.durability + ")?(;" + fragment.quality + ")?"),
-            fragment.priority,
-            opt(fragment.durability),
-            opt(fragment.quality)
+            "$$" / (fragment.priority.regex.pattern + "(;" + fragment.durability + ")?(;" + fragment.quality + ")?")
     );
 }
 
-enum class variable(override var symbol: String) : RegexEmitter {
+enum class variable(override var input: String) : WithRegex {
     /** independent variable */
     independent_variable("$" + fragment.word),
     /** dependent variable */
@@ -124,9 +117,9 @@ enum class variable(override var symbol: String) : RegexEmitter {
     query_variable_in_question("?" + fragment.word),
 }
 
-enum class tokenizer(override var symbol: String) : RegexEmitter { ws("\\s+"), }
+enum class tokenizer(override var input: String) : WithRegex { ws("\\s+"), }
 
-enum class fragment(override val symbol: String) : RegexEmitter {
+enum class fragment(override val input: String) : WithRegex {
 
     /** unicode string */
     word("[^\\ ]+"),
@@ -144,7 +137,7 @@ enum class fragment(override val symbol: String) : RegexEmitter {
 }
 
 
-enum class copula(override val symbol: String, override val rep: String) : TokenEmitter {
+enum class copula(sym:String, override var symbol:String=sym, var lit: lit = lit(sym)) : SymbolWithInput by lit {
     /*** inheritance*/
     inheritance("-->", "→"),
     /*** similarity*/
@@ -169,15 +162,18 @@ enum class copula(override val symbol: String, override val rep: String) : Token
     predictive_equivalence("</>", "/⇔"),
     /*** concurrent equivalence*/
     concurrent_equivalence("<|>", "|⇔"),
+    ;
+
 }
 
-enum class term_set(override val symbol: String, override var close: String) : SetOp {
+enum class term_set(op: String, cl: String, override val opn: OpaqueRegex = OpaqueRegex(op), override val cls: OpaqueRegex = OpaqueRegex(cl)) : SetOp {
     intensional_set("[", "]"),
-    extensional_set("{", "}"),
+    extensional_set("{", "}"),;
+
 }
 
-enum class term_connector(override val symbol: String, override val rep: String = symbol) :
-        TokenEmitter {
+enum class term_connector(sym:String, override var symbol: String =sym, var lit: lit = lit(sym)) : SymbolWithInput by lit {
+
 
     negation("--", "¬"),
     intensional_image("\\"),
@@ -185,9 +181,9 @@ enum class term_connector(override val symbol: String, override val rep: String 
 }
 
 /** conjunction */
-enum class op_multi(override var symbol: String, override var rep: String = symbol) :
-        TokenEmitter {
-    //(symbol: String, rep:String=symbol,override val regex: Regex = symbol.map { it }.joinToString(separator = "\\", prefix = "\\").toRegex()) : RegexEmitter {
+enum class op_multi(sym:String, override var symbol: String =sym, var lit: lit = lit(sym)) : SymbolWithInput by lit {
+
+    //(symbol: String, rep:String=symbol,override val regex: Regex = symbol.map { it }.joinToString(separator = "\\", prefix = "\\").toRegex()) : RegexTokenTest {
     conjunction("&&", "∧"),
     /**product*/
     product("*", "×"),
@@ -202,12 +198,12 @@ enum class op_multi(override var symbol: String, override var rep: String = symb
     /**extensional intersection*/
     extensional_intersection("&", "∩"),
     /**placeholder?*/
-    image("nd__", "◇")
+    image("`Ω`", "◇")
 }
 
 /**op-single*/
-enum class op_single(override val symbol: String, override val rep: String = symbol) :
-        TokenEmitter {
+enum class op_single(sym:String, override var symbol: String =sym, var lit: lit = lit(sym)) : SymbolWithInput by lit {
+
     /**`extensional difference`*/
     extensional_difference("-", "−"),
     /**`intensional difference`*/
@@ -215,8 +211,8 @@ enum class op_single(override val symbol: String, override val rep: String = sym
 }
 
 
-enum class tense(override val symbol: String, override val rep: String = symbol) :
-        TokenEmitter {
+enum class tense(sym:String, override var symbol: String =sym, var lit: lit = lit(sym)) : SymbolWithInput by lit {
+
     /** future event */
     future_event(":/:", "/⇒"),
     /** present event */
@@ -225,17 +221,6 @@ enum class tense(override val symbol: String, override val rep: String = symbol)
     past_event(":\\:", "\\⇒"),
 }
 
-
-open class Sentence(
-        override val name: String,
-        override val symbol: String,
-        vararg val after: RegexEmitter
-) : RegexEmitter {
-    override val rep: String
-        get() = symbol
-    override val regex: Regex
-        get() = Regex("([^\\" + symbol + "])+\\" + symbol)
-}
 
 
 /**
@@ -246,35 +231,14 @@ sentence ::= statement"." [tense] [truth]            (* judgement to be absorbed
  */
 
 
-enum class sentence(val regexEmitter: RegexEmitter) : TokenEmitter {
-    judgement(capture `&` period `&` oneOf(*tense.values()) `?` accounting.truth `?` nd_) {
-        override val symbol: String
-            get() = regexEmitter.symbol
+enum class sentence( var rel: WithRegex) : WithRegex by rel {
 
+    judgement( capture `&` period `&` oneOf(*tense.values()) `?` (ws `&` accounting.truth) `?` nd_    ),
+    valuation(capture `&` "\\?" `&` oneOf(*tense.values()) `?` (ws `&` accounting.truth) `?` nd_),
+    goal(capture `&` "\\!" `&` (ws `&` accounting.desire) `?` nd_),
+    interest(capture `&` "\\@" `&` (ws `&` accounting.desire) `?` nd_) {
+        override val symbol get() = "¿"
     },
+    ;
 
 }
-
-
-/*
-
-object Judgement : Sentence("Judgement", ".",
-        opt(oneOf(*tense.values())),
-        opt(accounting.truth)
-)
-
-object Valuation : Sentence("Valuation", "?",
-        opt(oneOf(*tense.values())),
-        opt(accounting.truth)
-)
-
-object Goal : Sentence("Goal", "!",
-        opt(accounting.desire)
-)
-
-object Interest : Sentence("Interest", "@",
-        opt(accounting.desire)
-) {
-    override val rep get() = "¿"
-}
-*/
