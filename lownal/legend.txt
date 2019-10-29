@@ -1,0 +1,59 @@
+
+  {} & $\mbox{?`}$ &  \verb+@+ &  quest (on desire-value) &  NAL-8 \\
+
+
+
+TypeSymbol    InputNameLayer
+
+primary copula
+→   --> inheritance	NAL-1
+↔   <-> similarity	NAL-2
+⇒   ==> implication	NAL-5
+⇔   <=> equivalence	NAL-5
+
+secondary copula
+◦→  {--    instance	NAL-2
+→◦  --]    property	NAL-2
+◦→◦ {-]    instance-property	NAL-2
+/⇒  =/>    predictive implication	NAL-7
+\⇒  =\>    retrospective implication	NAL-7
+|⇒  =|>    concurrent implication	NAL-7
+/⇔  </>    predictive equivalence	NAL-7
+|⇔  <|>    concurrent equivalence	NAL-7
+
+tense
+/⇒  :/:    future	NAL-7
+\⇒  :\:    past	NAL-7
+|⇒  :|:    present	NAL-7
+term connector
+{ }      { }    extensional set	NAL-2
+[ ]      [ ]    intensional set	NAL-2
+∩ &    extensional intersection	NAL-3
+∪ |    intensional intersection	NAL-3
+− -    extensional difference	NAL-3
+⦵ ~    intensional difference	NAL-3
+× *    product	NAL-4
+/ /    extensional image	NAL-4
+\ \    intensional image	NAL-4
+◆ _ image place-holder	NAL-4
+
+statement connector
+¬ --   negation	NAL-5
+∧ &&    conjunction	NAL-5
+∨ ||    disjunction	NAL-5
+, &/    sequential conjunction	NAL-7
+; &|    parallel conjunction	NAL-7
+
+term prefix
+# #   dependent variable	NAL-6
+$ $    independent variable	NAL-6
+? ?    query variable	NAL-6
+⇑ ^    operator	NAL-8
+
+punctuation
+.   .       judgment	NAL-8
+?   ?    question (on truth-value)	NAL-8
+!   !    goal	NAL-8
+¿   @           quest (on desire-value)	NAL-8
+
+Note:For instance-property secondary copulas, OpenNARS automatically trans-forms  them  to  inheretence  copula  with  added  instance-property  feature.   Fortimely implication secondary copulas, it is being transformed to implication/equivalencewith time details.
