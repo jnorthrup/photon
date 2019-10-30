@@ -9,25 +9,7 @@ private fun <T : SymbolWithInput> T.compend(oper: String, t: T): rel {
         else -> null
     }
 
-    return rel((if (input.startsWith("(") and input.endsWith(")")) input else if (input.isNotBlank()) "()" / ((name?.let {
-        var target = input + t.input
-        var gname = name.replace("\\W|_".toRegex(), "")
-        var rep=gname
-        var c = 0
-        while (
-                target.contains("?<" + (rep + (c.takeIf { it > 0 } ?: "")
-                        ).also {
-                    rep = it
-                } + ">")
-        )
-            c++
-        gname = rep
-        ("?<" + gname + "\\d*>")
-        "?" + ("<>" / gname)
-    }
-            ?: "") + input) else "") +
-            oper +
-            if (t.input.isNotBlank()) "()" / t.input else "")
+    return rel(  "()"/input.removeSurrounding("(",")")  +  oper + t.input )
 }
 
 /**

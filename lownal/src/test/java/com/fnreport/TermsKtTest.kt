@@ -47,7 +47,7 @@ class TermsKtTest : StringSpec() {
             System.err.println(assertNotNull((l1 + 2 + opt(l1)).test("12")))
             System.err.println(assertNotNull((l1 + 2 + opt(l1)).test("121")))
 
-            regexEmitter = l1 + 2 + ((oneOf(lit(33), lit(4)) as SymbolWithInput) `&` nd_)
+            regexEmitter = l1 + 2 +      (lit(3) `|`   4 `&` nd_)
 
             System.err.println(regexEmitter.regex.pattern)
             System.err.println(assertNotNull(regexEmitter.test("124")))
@@ -85,7 +85,7 @@ class TermsKtTest : StringSpec() {
 
             val rel = l1 `&` 2 `&` oneOf(lit(3), lit(4))
             System.err.println(rel.regex)
-            System.err.println(assertNotNull(rel.test("124")))
+            System.err.println(assertNotNull(rel.test("4")))
             System.err.println(assertNull(('z' `&` l1 `&` l2 `&` l1 + l1).test("1211")))
             System.err.println(assertNull(('z' `&` l1 `&` l2 `&` opt(l1)).test("12")))
             System.err.println(assertNull(('z' `&` l1 `&` l2 `&` opt(l1)).test("121")))
