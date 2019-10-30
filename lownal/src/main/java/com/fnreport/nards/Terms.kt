@@ -12,7 +12,7 @@ operator fun String.plus(re: Regex) = "()" / this + "()" / re.pattern
 operator fun String.div(re: String) = this[0] + re + this[1]
 val   period = lit("\\.") `&` nd_
 val   ws  = lit("\\s") * nd_
-val   capture= lit(".") * nd_
+val   capture= rel(".*")  `&` nd_
 /*
 
 task ::= [budget] sentence                       (* task to be processed *)
@@ -95,7 +95,7 @@ confidence : #"[0]?\.[0]*[1-9]{1}[0-9]*"             (* 0 <  x <  1 *)
 */
 
 
-enum class accounting(override val input: String) : WithRegex {
+enum class accounting(sym:String, override var symbol:String=sym, var rel: rel = rel(sym)) : RegexEmitter by rel {
     /** same format, different interpretations */
     desire("%%" / ("(" + fragment.frequency.regex + ")(;" + fragment.confidence.regex + ")?")),
     /** two numbers in [0,1]x(0,1) */
@@ -119,20 +119,22 @@ enum class variable(override var input: String) : WithRegex {
 
 enum class tokenizer(override var input: String) : WithRegex { ws("\\s+"), }
 
+private val fractionalpart = "([01]([.]\\d*)?|[.]\\d{1,})"
+
 enum class fragment(override val input: String) : WithRegex {
 
     /** unicode string */
-    word("[^\\ ]+"),
+    word("[^\\s]+"),
     /** 0 <= x <= 1 */
-    priority("[0]?\\.[0-9]+|1\\.[0]*|1|0"),
+    priority( fractionalpart ),
     /** 0 <  x <  1 */
-    durability("[0]?\\.[0]*[1-9]{1}[0-9]*"),
+    durability( fractionalpart ),
     /** 0 <= x <= 1 */
-    quality("[0]?\\.[0-9]+|1\\.[0]*|1|0"),
+    quality( fractionalpart ),
     /** 0 <= x <= 1 */
-    frequency("[0]?\\.[0-9]+|1\\.[0]*|1|0"),
+    frequency(fractionalpart),
     /** 0 <  x <  1 */
-    confidence("[0]?\\.[0]*[1-9]{1}[0-9]*"),
+    confidence(fractionalpart),
 
 }
 
@@ -143,7 +145,7 @@ enum class copula(sym:String, override var symbol:String=sym, var lit: lit = lit
     /*** similarity*/
     similarity("<->", "↔"),
     /*** instance*/
-    `instance`("{--", "◦→"),
+    instance("{--", "◦→"),
     /*** property*/
     narsproperty("--]", "→◦"),
     /*** instance-property*/
@@ -232,7 +234,6 @@ sentence ::= statement"." [tense] [truth]            (* judgement to be absorbed
 
 
 enum class sentence( var rel: WithRegex) : WithRegex by rel {
-
     judgement( capture `&` period `&` oneOf(*tense.values()) `?` (ws `&` accounting.truth) `?` nd_    ),
     valuation(capture `&` "\\?" `&` oneOf(*tense.values()) `?` (ws `&` accounting.truth) `?` nd_),
     goal(capture `&` "\\!" `&` (ws `&` accounting.desire) `?` nd_),
