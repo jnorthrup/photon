@@ -3,6 +3,7 @@ package com.fnreport.nards
 
 import com.fnreport.*
 import com.fnreport.TokenMatcher.Companion.nd_
+import com.fnreport.nards.carrion.*
 
 
 operator fun String.plus(re: WithRegex) = this + re.regex
@@ -10,9 +11,15 @@ operator fun String.plus(re: WithRegex) = this + re.regex
 operator fun String.plus(re: Regex) = "()" / this + "()" / re.pattern
 
 operator fun String.div(re: String) = this[0] + re + this[1]
-val   period = lit("\\.") `&` nd_
-val   ws  = lit("\\s") * nd_
-val   capture= rel(".*")  `&` nd_
+
+
+enum class carrion (rel:rel): RegexEmitter by rel{
+    period(rel("\\.")  ),
+    ws(  rel("\\s*") )     ,
+    capture(rel(".*") ),
+}
+
+
 /*
 
 task ::= [budget] sentence                       (* task to be processed *)

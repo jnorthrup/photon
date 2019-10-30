@@ -1,7 +1,8 @@
 package com.fnreport
 
 import com.fnreport.TokenMatcher.Companion.nd_
-import com.fnreport.nards.ws
+import com.fnreport.nards.carrion
+
 import io.kotlintest.specs.StringSpec
 import kotlin.test.assertNotNull
 import kotlin.test.assertNull
@@ -75,7 +76,7 @@ class TermsKtTest : StringSpec() {
             val regexEmitter1 = l1 `&` 2
             System.err.println(assertNotNull((regexEmitter1).test("12")))
             System.err.println(assertNotNull((l1 `&` 2 `&` 1 `&` l1).test("1211")))
-            val regexEmitter = 2 `&` l1 `&` 1 `&` l1 `&` ws
+            val regexEmitter = 2 `&` l1 `&` 1 `&` l1 `&` carrion.ws
 
 
             System.err.println(assertNotNull(regexEmitter.test("2111")))

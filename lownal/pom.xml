@@ -40,6 +40,16 @@
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib</artifactId>
+            <version>${kotlin.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib-common</artifactId>
+            <version>${kotlin.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib-jdk8</artifactId>
             <version>${kotlin.version}</version>
         </dependency>
@@ -60,6 +70,39 @@
             <artifactId>kotlintest-core</artifactId>
             <version>3.4.1</version>
             <scope>test</scope>
+        </dependency>
+        <!--                com/github/h0tk3y/betterParse/better-parse-multiplatform-jvm/0.4.2/better-parse-multiplatform-jvm-0.4.2-->
+        <dependency>
+            <groupId>com.github.h0tk3y.betterParse</groupId>
+            <artifactId>better-parse-multiplatform</artifactId>
+            <version>0.4.2</version>            <exclusions>
+            <exclusion>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-stdlib</artifactId>
+             </exclusion>
+            <exclusion>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-stdlib-commmon</artifactId>
+
+            </exclusion>
+        </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.github.h0tk3y.betterParse</groupId>
+            <artifactId>better-parse-multiplatform-jvm</artifactId>
+            <version>0.4.2</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.jetbrains.kotlin</groupId>
+                    <artifactId>kotlin-stdlib</artifactId>
+
+                </exclusion>
+                <exclusion>
+                    <groupId>org.jetbrains.kotlin</groupId>
+                    <artifactId>kotlin-stdlib-commmon</artifactId>
+
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 
