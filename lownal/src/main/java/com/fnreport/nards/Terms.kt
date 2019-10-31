@@ -1,46 +1,48 @@
 package com.fnreport.nards
 
 
-import com.fnreport.nards.carrion.capture
 import com.github.h0tk3y.betterParse.combinators.*
 import com.github.h0tk3y.betterParse.lexer.*
 import com.github.h0tk3y.betterParse.parser.Parser
 
 open class Omega
+
 object nd_ : Omega()
 
-enum class carrion(val s: String) : Parser<TokenMatch> by RegexToken(Enum<*>::name as String, s, true) {
-    period("\\."),
-    ws("\\s*"),
-    capture(".*")
-}
+val `Ω` = nd_
 
-fun lit(i: Any) = literalToken(i.toString(), i.toString() as String, false)
 
-inline infix fun <reified T, P : Parser<T>> Any.`&`(that: Omega): P = lit(this) as P
-inline infix fun <reified T, P : Parser<T>> Char.`&`(that: Omega): P = CharToken(this.toString(), this) as P
-inline infix fun <reified T, P : Parser<T>> Char.`&`(that: P): P = (CharToken(this.toString(), this) `&` that) as P
-inline infix fun <reified T, P : Parser<T>> Char.`?`(that: P): P = (CharToken(this.toString(), this) `?` that) as P
-inline infix fun <reified T, P : Parser<T>> Char.`|`(that: P): P = (CharToken(this.toString(), this) `|` that) as P
-inline infix fun <reified T, P : Parser<T>> P.`&`(other: P): P = (this and other) as P
-inline infix fun <reified T, P : Parser<T>> P.`&`(that: Char): P = (this `&` CharToken(that.toString(), that) as P)
-inline infix fun <reified T, P : Parser<T>> P.`&`(that: String): P = this `&` lit(that) as P
-inline infix fun <reified T, P : Parser<T>> P.`?`(c: Char): P = ((this `?` nd_) `&` c) as P
-inline infix fun <reified T, P : Parser<T>> P.`?`(c: String): P = ((this `?` nd_) `&` lit(c)) as P
-inline infix fun <reified T, P : Parser<T>> P.`?`(nd_: Omega) = optional(this) as P
-inline infix fun <reified T, P : Parser<T>> P.`?`(that: P): P = (optional(this) `&` that) as P
-inline infix fun <reified T, P : Parser<T>> P.`|`(that: P): P = OrCombinator(listOf(this, that)) as P
-inline infix fun <reified T, P : Parser<T>> P.`|`(that: String): P = OrCombinator(listOf(this, lit(that) as P)) as P
+val period        by lazy { lit('.') }
+val ws        by lazy { regexToken("\\s*".toRegex(),false) }
+val  capture by lazy { regexToken(".*".toRegex(),false) }
+//ws("\\s*"),
+//
+fun  lit(i: Any)  = literalToken(i.toString(), i.toString() as String, false)
+
+inline infix fun <reified T, P : Parser<T>> Any.`&`(that: Omega) = lit(this) as P
+inline infix fun <reified T, P : Parser<T>> Char.`&`(that: Omega) = CharToken(this.toString(), this) as P
+inline infix fun <reified T, P : Parser<T>> Char.`&`(that: P) = (CharToken(this.toString(), this) `&` that) as P
+inline infix fun <reified T, P : Parser<T>> Char.`?`(that: P) = (CharToken(this.toString(), this) `?` that) as P
+inline infix fun <reified T, P : Parser<T>> Char.`|`(that: P) = (CharToken(this.toString(), this) `|` that) as P
+inline infix fun <reified T, P : Parser<T>> P.`&`(other: P) = (this and other) as P
+inline infix fun <reified T, P : Parser<T>> P.`&`(that: Char) = this `&` CharToken(that.toString(), that) as P
+inline infix fun <reified T, P : Parser<T>> P.`&`(that: String) = this `&` lit(that) as P
+inline infix fun <reified T, P : Parser<T>> P.`?`(c: Char) = ((this `?` `Ω`) `&` c)
+inline infix fun <reified T, P : Parser<T>> P.`?`(c: String) = ((this `?` `Ω`) `&` lit(c)) as P
+inline infix fun <reified T, P : Parser<T>> P.`?`(`Ω`: Omega) = optional(this) as P
+inline infix fun <reified T, P : Parser<T>> P.`?`(that: P) = (optional(this) `&` that) as P
+inline infix fun <reified T, P : Parser<T>> P.`|`(that: P) = OrCombinator(listOf(this, that)) as P
+inline infix fun <reified T, P : Parser<T>> P.`|`(that: String) = OrCombinator(listOf(this, lit(that) as P)) as P
 inline infix fun <reified T, P : Parser<T>> Regex.`&`(that: Omega): P = (RegexToken(this.toString(), this.toString())) as P
-inline infix fun <reified T, P : Parser<T>> String.`&`(that: P): P = (lit(this) `&` that) as P
-inline infix fun <reified T, P : Parser<T>> String.`?`(that: P): P = (lit(this) `?` that) as P
-inline infix fun <reified T, P : Parser<T>> String.`|`(that: P): P = (lit(this) `|` that) as P
-inline infix operator fun <reified T, P : Parser<T>> P.plus(nd_: Omega) = oneOrMore(this) as P
-inline infix operator fun <reified T, P : Parser<T>> P.plus(that: P): P = (oneOrMore(this) `&` that) as P
-inline infix operator fun <reified T, P : Parser<T>> P.plus(that: String): P = (oneOrMore(this) `&` that) as P
-inline infix operator fun <reified T, P : Parser<T>> P.times(nd_: Omega) = zeroOrMore(this) as P
-inline infix operator fun <reified T, P : Parser<T>> P.times(that: P): P = (zeroOrMore(this as P) `&` that) as P
-inline infix operator fun <reified T, P : Parser<T>> P.times(that: String): P = (zeroOrMore(this) `&` lit(that)) as P
+inline infix fun <reified T, P : Parser<T>> String.`&`(that: P) = (lit(this) `&` that) as P
+inline infix fun <reified T, P : Parser<T>> String.`?`(that: P) = (lit(this) `?` that) as P
+inline infix fun <reified T, P : Parser<T>> String.`|`(that: P) = (lit(this) `|` that) as P
+inline infix operator fun <reified T, P : Parser<T>> P.plus(`Ω`: Omega) = oneOrMore(this) as P
+inline infix operator fun <reified T, P : Parser<T>> P.plus(that: P) = (oneOrMore(this) `&` that) as P
+inline infix operator fun <reified T, P : Parser<T>> P.plus(that: String) = (oneOrMore(this) `&` that) as P
+inline infix operator fun <reified T, P : Parser<T>> P.times(`Ω`: Omega) = zeroOrMore(this) as P
+inline infix operator fun <reified T, P : Parser<T>> P.times(that: P) = (zeroOrMore(this as P) `&` that) as P
+inline infix operator fun <reified T, P : Parser<T>> P.times(that: String) = (zeroOrMore(this) `&` lit(that)) as P
 inline infix operator fun <reified T, P : Parser<T>> String.plus(that: P) = oneOrMore(lit(this)) `&` that
 inline infix operator fun <reified T, P : Parser<T>> String.times(that: P) = zeroOrMore(lit(this)) `&` that
 /*
@@ -129,7 +131,6 @@ enum class accounting(p: Parser<TokenMatch>) : Parser<TokenMatch> by p {
     desire('%' `&` fragment.frequency `&` ';' `&` fragment.confidence `?` '%'),
     /** two numbers in [0,1]x(0,1) */
     truth('%' `&` fragment.frequency `&` ';' `&` fragment.confidence `?` '%'),
-
     /** three numbers in [0,1]x(0,1)x[0,1] */
     budget('$' `&` fragment.priority `&` ';' `&` fragment.durability `?` ';' `&` fragment.quality `?` '$');
 }
@@ -144,10 +145,9 @@ enum class variable(parser: Parser<TokenMatch>) : Parser<TokenMatch> by parser {
     query_variable_in_question(lit('?') `&` fragment.word),
 }
 
-
 val fractionalpart = "([01]([.]\\d*)?|[.]\\d{1,})"
 
-enum class fragment(s: String) : Parser<TokenMatch> by regexToken(Enum<*>::name as String, s.toRegex(), false) {
+enum class fragment(s: String) : Parser<TokenMatch> by regexToken(  s.toRegex(), false) {
     /** unicode string */
     word("[^\\s]+"),
     /** 0 <= x <= 1 */
@@ -198,7 +198,8 @@ enum class term_set(op: String, cl: String) {
     extensional_set("{", "}"), ;
 }
 
-enum class term_connector(s: Any?, symbol: String? = null,val lit: Token =literalToken(symbol.takeIf { it != null } ?: Enum<*>::name as String, s.toString(), false)) : Parser<TokenMatch> by lit {
+enum class term_connector(s: Any?, symbol: String? = null, val lit: Token = literalToken(symbol.takeIf { it != null }
+        ?: Enum<*>::name as String, s.toString(), false)) : Parser<TokenMatch> by lit {
     negation("--", "¬"),
     intensional_image('\\'),
     extensional_image('/')
@@ -254,10 +255,9 @@ sentence ::= statement"." [tense] [truth]            (* judgement to be absorbed
 
 
 enum class sentence(s: Parser<TokenMatch>, symbol: String? = null) : Parser<TokenMatch> by s {
-
-    judgement(capture `&` '.' `&` OrCombinator(tense.values().asList()) `?` accounting.truth `?` nd_),
-    valuation(capture `&` '?' `&` OrCombinator(tense.values().asList()) `?` accounting.truth `?` nd_),
-    goal(capture `&` '!' `&` (accounting.desire) `?` nd_),
-    interest(capture `&` '@' `&` (accounting.desire) `?` nd_, "¿"),
+    judgement(capture `&` '.' `&` OrCombinator(tense.values().asList()) `?` accounting.truth `?` `Ω`),
+    valuation(capture `&` '?' `&` OrCombinator(tense.values().asList()) `?` accounting.truth `?` `Ω`),
+    goal(capture `&` '!' `&` (accounting.desire) `?` `Ω`),
+    interest(capture `&` '@' `&` (accounting.desire) `?` `Ω`, "¿"),
     ;
 }
