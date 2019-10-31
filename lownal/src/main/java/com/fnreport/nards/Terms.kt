@@ -15,34 +15,34 @@ enum class carrion(val s: String) : Parser<TokenMatch> by RegexToken(Enum<*>::na
     capture(".*")
 }
 
-fun lit(i: Any) = LiteralToken(i.toString(), i.toString())    
+fun lit(i: Any) = literalToken(i.toString(), i.toString() as String, false)
 
-infix fun <T, P : Parser<T>> Char.`&`(that: Omega): P = CharToken(this.toString(), this) as P
-inline infix fun <reified T, P : Parser<T>> Regex.`&`(that: Omega): P = (RegexToken(this.toString(), this.toString())) as P
-inline infix operator fun <reified T, P : Parser<T>> P.plus(nd_: Omega) = oneOrMore(this) as P
-inline infix operator fun <reified T, P : Parser<T>> P.times(nd_: Omega) = zeroOrMore(this) as P
-inline infix fun <reified T, P : Parser<T>> P.`?`(nd_: Omega) = optional(this) as P
+inline infix fun <reified T, P : Parser<T>> Any.`&`(that: Omega): P = lit(this) as P
+inline infix fun <reified T, P : Parser<T>> Char.`&`(that: Omega): P = CharToken(this.toString(), this) as P
+inline infix fun <reified T, P : Parser<T>> Char.`&`(that: P): P = (CharToken(this.toString(), this) `&` that) as P
 inline infix fun <reified T, P : Parser<T>> Char.`?`(that: P): P = (CharToken(this.toString(), this) `?` that) as P
 inline infix fun <reified T, P : Parser<T>> Char.`|`(that: P): P = (CharToken(this.toString(), this) `|` that) as P
-inline infix fun <reified T, P : Parser<T>> Char.`&`(that: P): P = (CharToken(this.toString(), this) `&` that) as P
-inline infix fun <reified T, P : Parser<T>> P.`?`(c: Char): P = ((this `?` nd_) `&` c) as P
+inline infix fun <reified T, P : Parser<T>> P.`&`(other: P): P = (this and other) as P
 inline infix fun <reified T, P : Parser<T>> P.`&`(that: Char): P = (this `&` CharToken(that.toString(), that) as P)
+inline infix fun <reified T, P : Parser<T>> P.`&`(that: String): P = this `&` lit(that) as P
+inline infix fun <reified T, P : Parser<T>> P.`?`(c: Char): P = ((this `?` nd_) `&` c) as P
 inline infix fun <reified T, P : Parser<T>> P.`?`(c: String): P = ((this `?` nd_) `&` lit(c)) as P
-inline infix fun <reified T, P : Parser<T>> P.`&`(that: String): P =  this `&` lit(that)   as P 
-inline infix operator fun <reified T, P : Parser<T>> String.plus(that: P) = oneOrMore(lit(this)) `&` that
-inline infix operator fun <reified T, P : Parser<T>> String.times(that: P) = zeroOrMore(lit(this)) `&` that
+inline infix fun <reified T, P : Parser<T>> P.`?`(nd_: Omega) = optional(this) as P
+inline infix fun <reified T, P : Parser<T>> P.`?`(that: P): P = (optional(this) `&` that) as P
+inline infix fun <reified T, P : Parser<T>> P.`|`(that: P): P = OrCombinator(listOf(this, that)) as P
+inline infix fun <reified T, P : Parser<T>> P.`|`(that: String): P = OrCombinator(listOf(this, lit(that) as P)) as P
+inline infix fun <reified T, P : Parser<T>> Regex.`&`(that: Omega): P = (RegexToken(this.toString(), this.toString())) as P
+inline infix fun <reified T, P : Parser<T>> String.`&`(that: P): P = (lit(this) `&` that) as P
 inline infix fun <reified T, P : Parser<T>> String.`?`(that: P): P = (lit(this) `?` that) as P
 inline infix fun <reified T, P : Parser<T>> String.`|`(that: P): P = (lit(this) `|` that) as P
-inline infix fun <reified T, P : Parser<T>> String.`&`(that: P): P = (lit(this) `&` that) as P
-inline infix operator fun <reified T, P : Parser<T>> P.plus(that: String): P = (oneOrMore(this) `&` that) as P
+inline infix operator fun <reified T, P : Parser<T>> P.plus(nd_: Omega) = oneOrMore(this) as P
 inline infix operator fun <reified T, P : Parser<T>> P.plus(that: P): P = (oneOrMore(this) `&` that) as P
+inline infix operator fun <reified T, P : Parser<T>> P.plus(that: String): P = (oneOrMore(this) `&` that) as P
+inline infix operator fun <reified T, P : Parser<T>> P.times(nd_: Omega) = zeroOrMore(this) as P
 inline infix operator fun <reified T, P : Parser<T>> P.times(that: P): P = (zeroOrMore(this as P) `&` that) as P
 inline infix operator fun <reified T, P : Parser<T>> P.times(that: String): P = (zeroOrMore(this) `&` lit(that)) as P
-inline infix fun <reified T, P : Parser<T>> P.`|`(that: String): P = OrCombinator(listOf(this, lit(that) as P)) as P
-inline infix fun <reified T, P : Parser<T>> P.`|`(that: P): P = OrCombinator(listOf(this, that)) as P
-inline infix fun <reified T, P : Parser<T>> P.`?`(that: P): P = (optional(this) `&` that) as P
-inline infix fun <reified T, P : Parser<T>> Any.`&`(that: Omega): P = lit(this) as P
-inline infix fun <reified T, P : Parser<T>> P.`&`(other: P): P = (this and other) as P
+inline infix operator fun <reified T, P : Parser<T>> String.plus(that: P) = oneOrMore(lit(this)) `&` that
+inline infix operator fun <reified T, P : Parser<T>> String.times(that: P) = zeroOrMore(lit(this)) `&` that
 /*
 task ::= [budget] sentence                       (* task to be processed *)
 
@@ -126,29 +126,28 @@ confidence : #"[0]?\.[0]*[1-9]{1}[0-9]*"             (* 0 <  x <  1 *)
 
 enum class accounting(p: Parser<TokenMatch>) : Parser<TokenMatch> by p {
     /** same format, different interpretations */
-    desire('%' `&` fragment.frequency `&` (';' `&` fragment.confidence) as Parser<TokenMatch> `?` '%'),
+    desire('%' `&` fragment.frequency `&` ';' `&` fragment.confidence `?` '%'),
     /** two numbers in [0,1]x(0,1) */
-    truth('%' `&` fragment.frequency `&` (';' `&` fragment.confidence) as Parser<TokenMatch> `?` '%'),
+    truth('%' `&` fragment.frequency `&` ';' `&` fragment.confidence `?` '%'),
 
     /** three numbers in [0,1]x(0,1)x[0,1] */
-    budget('$' `&` fragment.priority `&` (';' `&` fragment.durability) as Parser<TokenMatch> `?` (';' `&` fragment.quality) as Parser<TokenMatch> `?` '$');
+    budget('$' `&` fragment.priority `&` ';' `&` fragment.durability `?` ';' `&` fragment.quality `?` '$');
 }
 
 
-enum class variable(s: String) : Parser<TokenMatch> by RegexToken(Enum<*>::name as String, s.toRegex(), false) {
-
+enum class variable(parser: Parser<TokenMatch>) : Parser<TokenMatch> by parser {
     /** independent variable */
-    independent_variable("$" + fragment.word),
+    independent_variable(lit('$') `&` fragment.word),
     /** dependent variable */
-    dependent_variable("#" + fragment.word),
+    dependent_variable(lit('#') `&` fragment.word),
     /** query variable in question */
-    query_variable_in_question("?" + fragment.word),
+    query_variable_in_question(lit('?') `&` fragment.word),
 }
 
 
 val fractionalpart = "([01]([.]\\d*)?|[.]\\d{1,})"
 
-enum class fragment(s: String) : Parser<TokenMatch> by RegexToken(Enum<*>::name as String, s.toRegex(), false) {
+enum class fragment(s: String) : Parser<TokenMatch> by regexToken(Enum<*>::name as String, s.toRegex(), false) {
     /** unicode string */
     word("[^\\s]+"),
     /** 0 <= x <= 1 */
@@ -165,7 +164,7 @@ enum class fragment(s: String) : Parser<TokenMatch> by RegexToken(Enum<*>::name 
 }
 
 
-enum class copula(s: String, symbol: String) : Parser<TokenMatch> by literalToken(Enum<*>::name as String, s, false) {
+enum class copula(s: String, symbol: String) : Parser<TokenMatch> by literalToken(symbol, s, false) {
     /*** inheritance*/
     inheritance("-->", "→"),
     /*** similarity*/
@@ -195,22 +194,19 @@ enum class copula(s: String, symbol: String) : Parser<TokenMatch> by literalToke
 }
 
 enum class term_set(op: String, cl: String) {
-    //}, override val opn: OpaqueRegex = OpaqueRegex(op), override val cls: OpaqueRegex = OpaqueRegex(cl)) : SetOp {
     intensional_set("[", "]"),
     extensional_set("{", "}"), ;
 }
 
-enum class term_connector(parser: Parser<TokenMatch>, symbol: String? = null) {
-
-    negation("--" `&` nd_, "¬"),
-    intensional_image('\\' `&` nd_),
-    extensional_image('/' `&` nd_)
+enum class term_connector(s: Any?, symbol: String? = null,val lit: Token =literalToken(symbol.takeIf { it != null } ?: Enum<*>::name as String, s.toString(), false)) : Parser<TokenMatch> by lit {
+    negation("--", "¬"),
+    intensional_image('\\'),
+    extensional_image('/')
 }
 
 
 /** conjunction */
-enum class op_multi(s: String, symbol: String) : Parser<TokenMatch> by RegexToken(Enum<*>::name as String, s.toRegex(), false) {
-    //(symbol: String, rep:String=symbol,override val regex: Regex = symbol.map { it }.joinToString(separator = "\\", prefix = "\\").toRegex()) : RegexTTest {
+enum class op_multi(s: String, symbol: String) : Parser<TokenMatch> by literalToken(symbol, s, false) {
     conjunction("&&", "∧"),
     /**product*/
     product("*", "×"),
@@ -225,11 +221,11 @@ enum class op_multi(s: String, symbol: String) : Parser<TokenMatch> by RegexToke
     /**extensional intersection*/
     extensional_intersection("&", "∩"),
     /**placeholder?*/
-    image("`Ω`", "◇")
+    image("_", "◇")
 }
 
 /**op-single*/
-enum class op_single(s: String, symbol: String) : Parser<TokenMatch> by RegexToken(Enum<*>::name as String, s.toRegex(), false) {
+enum class op_single(s: String, symbol: String) : Parser<TokenMatch> by literalToken(symbol, s, false) {
 
     /**`extensional difference`*/
     extensional_difference("-", "−"),
@@ -238,14 +234,14 @@ enum class op_single(s: String, symbol: String) : Parser<TokenMatch> by RegexTok
 }
 
 
-enum class tense(s: String, symbol: String) : Parser<TokenMatch> by RegexToken(Enum<*>::name as String, s.toRegex(), false) {
-
+enum class tense(s: String, symbol: String) : Parser<TokenMatch> by literalToken(symbol, s, false) {
     /** future event */
     future_event(":/:", "/⇒"),
     /** present event */
     present_event(":|:", "|⇒"),
     /** :\: past event */
-    past_event(":\\:", "\\⇒"),
+    past_event(":\\:", "\\⇒")
+    ;
 }
 
 
@@ -264,5 +260,4 @@ enum class sentence(s: Parser<TokenMatch>, symbol: String? = null) : Parser<Toke
     goal(capture `&` '!' `&` (accounting.desire) `?` nd_),
     interest(capture `&` '@' `&` (accounting.desire) `?` nd_, "¿"),
     ;
-
 }
