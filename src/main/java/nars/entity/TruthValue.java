@@ -110,13 +110,6 @@ public class TruthValue implements Cloneable { // implements Cloneable {
     }
 
     /**
-     * Set the isAnalytic flag
-     */
-    public void setAnalytic() {
-        isAnalytic = true;
-    }
-
-    /**
      * Calculate the expectation value of the truth value
      *
      * @return The expectation value

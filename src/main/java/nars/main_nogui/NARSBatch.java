@@ -46,8 +46,7 @@ public class NARSBatch {
      * The reasoner
      */
     ReasonerBatch reasoner;
-    private boolean logging;
-    private PrintStream out = System.out;
+     private PrintStream out = System.out;
     private boolean dumpLastState = true;
 
     public NARSBatch() {
@@ -153,12 +152,8 @@ public class NARSBatch {
         }
     }
 
-    public void setPrintStream(PrintStream out) {
-        this.out = out;
-    }
-
     private void log(String mess) {
-        if (logging) {
+        if (true) {
             System.out.println("/ " + mess);
         }
     }

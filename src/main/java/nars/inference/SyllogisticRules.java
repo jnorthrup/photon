@@ -22,7 +22,6 @@ package nars.inference;
 
 import nars.entity.BudgetValue;
 import nars.entity.Sentence;
-import nars.entity.Task;
 import nars.entity.TruthValue;
 import nars.io.Symbols;
 import nars.language.*;
@@ -73,15 +72,13 @@ public final class SyllogisticRules {
 
     /**
      * {<M ==> S>, <M ==> P>} |- {<S ==> P>, <P ==> S>, <S <=> P>}
-     *
-     * @param term1        Subject of the first new task
+     *  @param term1        Subject of the first new task
      * @param term2        Predicate of the first new task
      * @param taskSentence The first premise
      * @param belief       The second premise
-     * @param figure       Locations of the shared term in premises
      * @param memory       Reference to the memory
      */
-    static void abdIndCom(Term term1, Term term2, Sentence taskSentence, Sentence belief, int figure, Memory memory) {
+    static void abdIndCom(Term term1, Term term2, Sentence taskSentence, Sentence belief, Memory memory) {
         if (Statement.invalidStatement(term1, term2)) {
             return;
         }
@@ -114,15 +111,13 @@ public final class SyllogisticRules {
 
     /**
      * {<S ==> P>, <M <=> P>} |- <S ==> P>
-     *
-     * @param term1  Subject of the new task
+     *  @param term1  Subject of the new task
      * @param term2  Predicate of the new task
      * @param asym   The asymmetric premise
      * @param sym    The symmetric premise
-     * @param figure Locations of the shared term in premises
      * @param memory Reference to the memory
      */
-    static void analogy(Term term1, Term term2, Sentence asym, Sentence sym, int figure, Memory memory) {
+    static void analogy(Term term1, Term term2, Sentence asym, Sentence sym, Memory memory) {
         if (Statement.invalidStatement(term1, term2)) {
             return;
         }
@@ -147,15 +142,13 @@ public final class SyllogisticRules {
 
     /**
      * {<S <=> M>, <M <=> P>} |- <S <=> P>
-     *
-     * @param term1    Subject of the new task
+     *  @param term1    Subject of the new task
      * @param term2    Predicate of the new task
      * @param belief   The first premise
      * @param sentence The second premise
-     * @param figure   Locations of the shared term in premises
      * @param memory   Reference to the memory
      */
-    static void resemblance(Term term1, Term term2, Sentence belief, Sentence sentence, int figure, Memory memory) {
+    static void resemblance(Term term1, Term term2, Sentence belief, Sentence sentence, Memory memory) {
         if (Statement.invalidStatement(term1, term2)) {
             return;
         }

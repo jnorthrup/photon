@@ -77,10 +77,6 @@ public class Parameters {
     /**
      * Default expectation for confirmation.
      */
-    public static final float DEFAULT_CONFIRMATION_EXPECTATION = (float) 0.8;
-    /**
-     * Default expectation for confirmation.
-     */
     public static final float DEFAULT_CREATION_EXPECTATION = (float) 0.66;
     /**
      * Default confidence of input judgment.

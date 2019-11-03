@@ -107,26 +107,12 @@ public class ReasonerBatch {
     }
 
     /**
-     * Start the inference process
-     */
-    public void run() {
-        running = true;
-    }
-
-    /**
      * Will carry the inference process for a certain number of steps
      *
      * @param n The number of inference steps to be carried
      */
     public void walk(int n) {
         walkingSteps = n;
-    }
-
-    /**
-     * Will stop the inference process
-     */
-    public void stop() {
-        running = false;
     }
 
     /**

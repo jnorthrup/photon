@@ -91,8 +91,4 @@ public class ExperienceWriter implements OutputChannel {
             }
         }
     }
-
-    @Override
-    public void tickTimer() {
-    }
 }
