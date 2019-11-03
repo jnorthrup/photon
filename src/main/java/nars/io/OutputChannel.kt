@@ -3,14 +3,11 @@
  * and open the template in the editor.
  */
 
-package nars.io;
-
-import java.util.List;
+package nars.io
 
 /**
  * An interface to be implemented in all output channel
  */
-public interface OutputChannel {
-    public void nextOutput(List<String> output);
-
+interface OutputChannel {
+    fun nextOutput(output: List<String?>?)
 }

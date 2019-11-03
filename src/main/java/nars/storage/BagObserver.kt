@@ -1,36 +1,35 @@
-package nars.storage;
+package nars.storage
 
-import nars.entity.AbstractItem;
+import nars.entity.AbstractItem
 
 /**
  * Bag Observer; similar to Observer design pattern, except that here we have a single observer
  */
-public interface BagObserver<BagType extends AbstractItem> {
-
+interface BagObserver<BagType : AbstractItem?> {
     /**
      * Set a name for this observer
      */
-    public abstract void setTitle();
+    fun setTitle()
 
     /**
      * Set the observed Bag
      */
-    public abstract void setBag(Bag<BagType> concepts);
+    fun setBag(concepts: Bag<BagType>?)
 
     /**
      * Post given bag content
      *
      * @param str The text
      */
-    public abstract void post(String str);
+    fun post(str: String?)
 
     /**
      * Refresh display if in showing state
      */
-    public abstract void refresh(String string);
+    fun refresh(string: String?)
 
     /**
      * put in non-showing state
      */
-    public abstract void stop();
+    fun stop()
 }

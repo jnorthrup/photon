@@ -1,48 +1,47 @@
-package nars.io;
+package nars.io
 
-public interface IInferenceRecorder {
-
+interface IInferenceRecorder {
     /**
      * Initialize the window and the file
      */
-    public abstract void init();
+    fun init()
 
     /**
      * Show the window
      */
-    public abstract void show();
+    fun show()
 
     /**
      * Begin the display
      */
-    public abstract void play();
+    fun play()
 
     /**
      * Stop the display
      */
-    public abstract void stop();
+    fun stop()
 
     /**
      * Add new text to display
      *
      * @param s The line to be displayed
      */
-    public abstract void append(String s);
+    fun append(s: String?)
 
     /**
      * Open the log file
      */
-    public abstract void openLogFile();
+    fun openLogFile()
 
     /**
      * Close the log file
      */
-    public abstract void closeLogFile();
+    fun closeLogFile()
 
     /**
      * Check file logging
      *
      * @return If the file logging is going on
      */
-    public abstract boolean isLogging();
+    val isLogging: Boolean
 }
