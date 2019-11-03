@@ -24,6 +24,7 @@ import nars.entity.ItemIdentity
 import nars.inference.BudgetFunctions.forget
 import nars.main_nogui.Parameters
 import java.util.*
+import kotlin.math.ceil
 
 /**
  * A Bag is a storage with a constant capacity and maintains an internal
@@ -46,7 +47,7 @@ abstract class Bag<E : ItemIdentity?> protected constructor(
         /**
          * reference to memory
          */
-        public var memory: Memory) {
+        var memory: Memory) {
     /**
      * defined in different bags
      */
@@ -81,6 +82,9 @@ abstract class Bag<E : ItemIdentity?> protected constructor(
      */
     private val showLevel = Parameters.BAG_THRESHOLD
 
+    /**
+     *
+     */
     fun init() {
         itemTable = ArrayList(TOTAL_LEVEL)
         val bound = TOTAL_LEVEL
@@ -236,7 +240,7 @@ abstract class Bag<E : ItemIdentity?> protected constructor(
      * @param n The level index
      * @return Whether that level is empty
      */
-    protected fun emptyLevel(n: Int): Boolean {
+    private fun emptyLevel(n: Int): Boolean {
         return itemTable!![n] == null || itemTable!![n].isEmpty()
     }
 
@@ -248,7 +252,7 @@ abstract class Bag<E : ItemIdentity?> protected constructor(
      */
     private fun getLevel(item: E): Int {
         val fl = item!!.priority * TOTAL_LEVEL
-        val level = Math.ceil(fl.toDouble()).toInt() - 1
+        val level = ceil(fl.toDouble()).toInt() - 1
         return if (level < 0) 0 else level     // cannot be -1
     }
 
@@ -301,25 +305,11 @@ abstract class Bag<E : ItemIdentity?> protected constructor(
      *
      * @param oldItem The ImmutableItemIdentity to be removed
      */
-    protected fun outOfBase(oldItem: E) {
+    private fun outOfBase(oldItem: E) {
         val level = getLevel(oldItem)
         itemTable!![level].remove(oldItem)
         mass -= level + 1
         refresh()
-    }
-
-    /**
-     * To start displaying the Bag in a BagWindow;
-     * [nars.gui.BagWindow] implements interface [BagObserver];
-     *
-     * @param bagObserver BagObserver to set
-     * @param title       The title of the window
-     */
-    fun addBagObserver(bagObserver: BagObserver<E>, title: String?) {
-        this.bagObserver = bagObserver
-        bagObserver.post(toString())
-        bagObserver.setTitle()
-        bagObserver.setBag(this)
     }
 
     /**
@@ -367,11 +357,11 @@ abstract class Bag<E : ItemIdentity?> protected constructor(
     /**
      * show item Table Sizes
      */
-    internal fun showSizes(): String {
+    private fun showSizes(): String {
         val buf = StringBuilder(" ")
         var levels = 0
         for (items in itemTable!!) {
-            if (items != null && !items.isEmpty()) {
+            if (items != null && items.isNotEmpty()) {
                 levels++
                 buf.append(items.size).append(" ")
             }

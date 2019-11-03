@@ -27,7 +27,10 @@ import nars.language.Term;
 import nars.main_nogui.Parameters;
 import nars.main_nogui.ReasonerBatch;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -62,7 +65,7 @@ public class Memory {
     /**
      * List of Strings or Tasks to be sent to the output channels
      */
-    private final  List<String> exportStrings;
+    private final List<String> exportStrings;
     /**
      * The selected Term
      */
@@ -130,7 +133,7 @@ public class Memory {
     }
 
     /* ---------- access utilities ---------- */
-    public   List<String> getExportStrings() {
+    public List<String> getExportStrings() {
         return exportStrings;
     }
 
@@ -510,8 +513,8 @@ public class Memory {
         return toStringLongIfNotNull(concepts, "concepts")
                 + toStringLongIfNotNull(novelTasks, "novelTasks")
                 + toStringIfNotNull(newTasks, "newTasks")
-                + toStringLongIfNotNull((ItemIdentity)currentTask, "currentTask")
-                + toStringLongIfNotNull((ItemIdentity)currentBeliefLink, "currentBeliefLink")
+                + toStringLongIfNotNull(currentTask, "currentTask")
+                + toStringLongIfNotNull(currentBeliefLink, "currentBeliefLink")
                 + toStringIfNotNull(currentBelief, "currentBelief");
     }
 

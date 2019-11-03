@@ -48,8 +48,7 @@ object StringParser {
     fun parseExperience(buffer: StringBuffer, memory: Memory, time: Long): Task? {
         val i = buffer.indexOf(Symbols.PREFIX_MARK + "")
         if (i > 0) {
-            val prefix = buffer.substring(0, i).trim { it <= ' ' }
-            when (prefix) {
+            when (buffer.substring(0, i).trim { it <= ' ' }) {
                 Symbols.OUTPUT_LINE -> return null
                 Symbols.INPUT_LINE -> buffer.delete(0, i + 1)
             }
@@ -71,7 +70,7 @@ object StringParser {
      * @param time   The current time
      * @return An experienced task
      */
-    fun parseTask(s: String, memory: Memory, time: Long): Task? {
+    private fun parseTask(s: String, memory: Memory, time: Long): Task? {
         val buffer = StringBuffer(s)
         var task: Task? = null
         try {
@@ -115,7 +114,7 @@ object StringParser {
 
         assert(i >= 0) { "missing budget closer" }
         val budgetString = s.substring(1, i).trim { it <= ' ' }
-        assert(budgetString.length != 0) { "empty budget" }
+        assert(budgetString.isNotEmpty()) { "empty budget" }
         s.delete(0, i + 1)
         return budgetString
     }
@@ -146,7 +145,7 @@ object StringParser {
         val truthString = s.substring(first + 1, last).trim { it <= ' ' }
         // empty usage
 
-        assert(truthString.length != 0) { "empty truth" }
+        assert(truthString.isNotEmpty()) { "empty truth" }
         s.delete(first, last + 1)                 // remaining input to be processed outside
 
         s.trimToSize()
@@ -230,11 +229,11 @@ object StringParser {
      * @param memory Reference to the memory
      * @return the Term generated from the String
     </T1> */
-    fun parseTerm(s0: String, memory: Memory): Term? {
+    private fun parseTerm(s0: String, memory: Memory): Term? {
         var result: Term? = null
         val s = s0.trim { it <= ' ' }
         try {
-            assert(s.length != 0) { "missing content" }
+            assert(s.isNotEmpty()) { "missing content" }
             val t: Term? = memory.nameToListedTerm(s)    // existing constant or operator
 
             result = if (t == null) {
@@ -299,7 +298,7 @@ object StringParser {
     @Throws(InvalidInputException::class)
     private fun parseAtomicTerm(s0: String): Term {
         val s = s0.trim { it <= ' ' }
-        assert(s.length != 0) { "missing term" }
+        assert(s.isNotEmpty()) { "missing term" }
         assert(!s.contains(" ")) { "invalid term" }
         return if (Variable.containVar(s)) {
             Variable(s)
@@ -372,7 +371,7 @@ object StringParser {
             list.add(t)
             start = end + 1
         }
-        assert(!list.isEmpty()) { "null argument" }
+        assert(list.isNotEmpty()) { "null argument" }
         return list
     }
 
@@ -445,9 +444,7 @@ object StringParser {
         if (!b) {
             return false
         }
-        return if (i + 3 <= s.length && Statement.isRelation(s.substring(i, i + 3))) {
-            false
-        } else true
+        return !(i + 3 <= s.length && Statement.isRelation(s.substring(i, i + 3)))
     }
 
     /* ---------- recognize symbols ---------- */
@@ -469,9 +466,7 @@ object StringParser {
         if (!b) {
             return false
         }
-        return if (i >= 2 && Statement.isRelation(s.substring(i - 2, i + 1))) {
-            false
-        } else true
+        return !(i >= 2 && Statement.isRelation(s.substring(i - 2, i + 1)))
     }
 
     /**

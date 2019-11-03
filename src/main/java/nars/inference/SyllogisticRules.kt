@@ -101,8 +101,8 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
             budget3 = backward(value2, memory)
         } else {
             truth1 = TruthFunctions.abduction(value1!!, value2!!)
-            truth2 = TruthFunctions.abduction(value2!!, value1!!)
-            truth3 = TruthFunctions.comparison(value1!!, value2!!)
+            truth2 = TruthFunctions.abduction(value2, value1)
+            truth3 = TruthFunctions.comparison(value1, value2)
             budget1 = forward(truth1, memory)
             budget2 = forward(truth2, memory)
             budget3 = forward(truth3, memory)
@@ -419,7 +419,7 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
         var budget: BudgetValue
         if (term1 != null) {
             content = when {
-                term2 != null -> Statement.make(st2!!, term2!!, term1!!, memory!!)!!
+                term2 != null -> Statement.make(st2, term2, term1, memory)!!
                 else -> term1
             }
             if (sentence.isQuestion) {
@@ -432,7 +432,7 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
         }
         if (term2 != null) {
             content = if (term1 != null) {
-                Statement.make(st1!!, term1!!, term2!!, memory!!)!!
+                Statement.make(st1, term1, term2, memory)!!
             } else {
                 term2
             }

@@ -9,5 +9,8 @@ package nars.io
  * An interface to be implemented in all output channel
  */
 interface OutputChannel {
+    /**
+     *
+     */
     fun nextOutput(output: List<String?>?)
 }

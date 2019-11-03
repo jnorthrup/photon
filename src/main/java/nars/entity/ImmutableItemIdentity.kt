@@ -33,4 +33,8 @@ abstract class ImmutableItemIdentity
  *
  * @param key    The key value
  * @param budget The initial budget
- */ @JvmOverloads protected constructor(override val key: String, budget: BudgetValue = BudgetValue()) : ItemIdentity(budget)
+ */ @JvmOverloads protected constructor(
+        /**
+         *
+         */
+        override val key: String, budget: BudgetValue = BudgetValue()) : ItemIdentity(budget)

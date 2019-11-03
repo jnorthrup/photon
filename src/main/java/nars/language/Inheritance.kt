@@ -34,7 +34,7 @@ class Inheritance : Statement {
      * @param n   The name of the term
      * @param arg The component list of the term
      */
-    private constructor(arg: List<Term>) : super(arg) {}
+    private constructor(arg: List<Term>) : super(arg)
 
     /**
      * Constructor with full values, called by clone
@@ -44,7 +44,7 @@ class Inheritance : Statement {
      * @param open Open variable list
      * @param i    Syntactic complexity of the compound
      */
-    private constructor(n: String, cs: List<Term>, con: Boolean, i: Short) : super(n, cs, con, i) {}
+    private constructor(n: String, cs: List<Term>, con: Boolean, i: Short) : super(n, cs, con, i)
 
     /**
      * Clone an object

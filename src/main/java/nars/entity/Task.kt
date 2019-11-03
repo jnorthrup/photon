@@ -116,7 +116,7 @@ class Task
      *
      * @return The creation time of the sentence
      */
-    val creationTime: Long
+    private val creationTime: Long
         get() = sentence.stamp.creationTime
 
     /**
@@ -164,7 +164,7 @@ class Task
         if (parentTask != null) {
             s.append("  \n from task: ").append(parentTask!!.toStringBrief())
             if (parentBelief != null) {
-                s.append("  \n from belief: ").append(parentBelief!!.toStringBrief())
+                s.append("  \n from belief: ").append(parentBelief.toStringBrief())
             }
         }
         if (bestSolution != null) {
@@ -173,6 +173,9 @@ class Task
         return s.toString()
     }
 
+    /**
+     *
+     */
     override val key: String
         get() = sentence.toKey()
 

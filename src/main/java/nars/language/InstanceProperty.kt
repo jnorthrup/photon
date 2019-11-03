@@ -40,6 +40,6 @@ object InstanceProperty   {
      * @return A compound generated or null
      */
   @JvmStatic     fun make(subject: Term, predicate: Term, memory: Memory): Statement? {
-        return Inheritance.make(SetExt.make(subject as Term, memory) as Term, SetInt.make(predicate as Term, memory) as Term, memory!!)
+        return Inheritance.make(SetExt.make(subject, memory) as Term, SetInt.make(predicate, memory) as Term, memory)
     }
 }

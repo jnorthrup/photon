@@ -23,7 +23,7 @@ package nars.entity
 import nars.io.Symbols
 import nars.main_nogui.Parameters
 import nars.main_nogui.ReasonerBatch
-import java.util.*
+import kotlin.math.min
 
 /**
  * Each Sentence has a time stamp, consisting the following components:
@@ -107,7 +107,7 @@ class Stamp : Cloneable {
         var i1: Int=0
         var i2: Int=0
         var j: Int=0
-        baseLength = Math.min(first.length() + second.length(), Parameters.MAXIMUM_STAMP_LENGTH)
+        baseLength = min(first.length() + second.length(), Parameters.MAXIMUM_STAMP_LENGTH)
         base = LongArray(baseLength)
         while (i2 < second.length() && j < baseLength) {
             base[j] = first[i1]
@@ -159,14 +159,7 @@ class Stamp : Cloneable {
      *
      * @return The TreeSet representation of the evidential base
      */
-    private fun toSet(): Collection<Long> {
-        val longs = TreeSet<Long>()
-        for (l in base) {
-            longs.add(l)
-        }
-        return longs
-    }
-
+    private fun toSet()  = base.mapTo(sortedSetOf(), { it })
     /**
      * Check if two stamps contains the same content
      *

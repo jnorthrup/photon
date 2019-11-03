@@ -151,7 +151,7 @@ class Concept(
      * @param task The task to be processed
      * @return Whether to continue the processing of the task
      */
-    fun processQuestion(task: Task): Float {
+    private fun processQuestion(task: Task): Float {
         var ques: Sentence = task.sentence
         var newQuestion = true
         if (questions != null) {
@@ -197,7 +197,7 @@ class Concept(
 
         insertTaskLink(taskLink)
         if (term is CompoundTerm) {
-            if (termLinkTemplates!!.size > 0) {
+            if (termLinkTemplates!!.isNotEmpty()) {
                 val subBudget: BudgetValue = BudgetFunctions.distributeAmongLinks(taskBudget, termLinkTemplates!!.size)
                 if (subBudget.aboveThreshold()) {
                     var componentTerm: Term
@@ -229,8 +229,7 @@ class Concept(
 
         var judgment2: Sentence
         var rank2: Float
-        var i: Int
-        i = 0
+        var i: Int = 0
         while (i < table.size) {
             judgment2 = table[i]
             rank2 = BudgetFunctions.rankBelief(judgment2)
@@ -287,7 +286,7 @@ class Concept(
      *
      * @param taskLink The termLink to be inserted
      */
-    fun insertTaskLink(taskLink: TaskLink) {
+    private fun insertTaskLink(taskLink: TaskLink) {
         val taskBudget = taskLink.budget
         taskLinks.putIn(taskLink)
         memory.activateConcept(this, taskBudget)
@@ -301,12 +300,12 @@ class Concept(
      *
      * @param taskBudget The BudgetValue of the task
      */
-    fun buildTermLinks(taskBudget: BudgetValue) {
+    private fun buildTermLinks(taskBudget: BudgetValue) {
         var t: Term
         var concept: Concept?
         var termLink1: TermLink
         var termLink2: TermLink
-        if (termLinkTemplates!!.size > 0) {
+        if (termLinkTemplates!!.isNotEmpty()) {
             val subBudget: BudgetValue = BudgetFunctions.distributeAmongLinks(taskBudget, termLinkTemplates!!.size)
             if (subBudget.aboveThreshold()) {
                 for (template in termLinkTemplates!!) {
@@ -338,7 +337,7 @@ class Concept(
      *
      * @param termLink The termLink to be inserted
      */
-    fun insertTermLink(termLink: TermLink) {
+    private fun insertTermLink(termLink: TermLink) {
         termLinks.putIn(termLink)
     }
 
@@ -469,7 +468,7 @@ class Concept(
      *
      * @return String representation of direct content
      */
-    fun displayContent(): String {
+    private fun displayContent(): String {
         val buffer = StringBuilder()
         buffer.append("\n  Beliefs:\n")
         if (beliefs.size > 0) {

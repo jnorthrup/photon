@@ -1,7 +1,17 @@
 package nars.entity
 
-abstract class ItemIdentity (val budget:BudgetValue=BudgetValue()): Item, BudgetTriple by budget  {
+/**
+ *
+ */
+abstract class ItemIdentity (
+        /**
+         *
+         */
+        val budget:BudgetValue=BudgetValue()): Item, BudgetTriple by budget  {
 
+    /**
+     *
+     */
     abstract override val key: String
 
     /**
@@ -10,7 +20,7 @@ abstract class ItemIdentity (val budget:BudgetValue=BudgetValue()): Item, Budget
      * @param that The ImmutableItemIdentity to be merged
      */
     override fun merge(that: BudgetTriple?) {
-        budget!!.merge(that)
+        budget.merge(that)
     }
 
     /**
@@ -20,7 +30,7 @@ abstract class ItemIdentity (val budget:BudgetValue=BudgetValue()): Item, Budget
      */
 
     override fun toString(): String {
-        return budget.toString() + " " + key
+        return "$budget $key"
     }
 
     /**
@@ -30,9 +40,12 @@ abstract class ItemIdentity (val budget:BudgetValue=BudgetValue()): Item, Budget
      */
 
     override fun toStringBrief(): String? {
-        return budget!!.toStringBrief() + " " + key
+        return budget.toStringBrief() + " " + key
     }
 
+    /**
+     *
+     */
     override fun toStringLong(): String? {
         return toString()
     }

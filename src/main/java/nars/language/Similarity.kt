@@ -34,7 +34,7 @@ class Similarity : Statement {
      * @param n   The name of the term
      * @param arg The component list of the term
      */
-    private constructor(arg: List<Term>) : super(arg) {}
+    private constructor(arg: List<Term>) : super(arg)
 
     /**
      * Constructor with full values, called by clone
@@ -44,7 +44,7 @@ class Similarity : Statement {
      * @param open Open variable list
      * @param i    Syntactic complexity of the compound
      */
-    private constructor(n: String, cs: List<Term>, con: Boolean, i: Short) : super(n, cs, con, i) {}
+    private constructor(n: String, cs: List<Term>, con: Boolean, i: Short) : super(n, cs, con, i)
 
     /**
      * Clone an object
@@ -53,7 +53,7 @@ class Similarity : Statement {
      */
 
     override fun clone(): Any {
-        return Similarity(name, cloneList(components) as List<Term>, isConstant(), complexity)
+        return Similarity(name, cloneList(components) as List<Term>, isConstant, complexity)
     }
 
     /**
@@ -87,7 +87,7 @@ class Similarity : Statement {
          */
         fun make(subject: Term, predicate: Term, memory: Memory): Similarity? {
             if (!invalidStatement(subject, predicate)) {
-                if (subject.compareTo(predicate) > 0) {
+                if (subject > predicate) {
                     return make(predicate, subject, memory)
                 }
                 val name = makeStatementName(subject, Symbols.SIMILARITY_RELATION, predicate)

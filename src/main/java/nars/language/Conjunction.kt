@@ -33,7 +33,7 @@ class Conjunction : CompoundTerm {
      *
      * @param arg The component list of the term
      */
-    protected constructor(arg: List<Term>) : super(arg) {}
+    protected constructor(arg: List<Term>) : super(arg)
 
     /**
      * Constructor with full values, called by clone
@@ -43,7 +43,7 @@ class Conjunction : CompoundTerm {
      * @param con Whether the term is a constant
      * @param i   Syntactic complexity of the compound
      */
-    private constructor(n: String, cs: List<Term>, con: Boolean, i: Short) : super(n, cs, con, i) {}
+    private constructor(n: String, cs: List<Term>, con: Boolean, i: Short) : super(n, cs, con, i)
 
     /**
      * Clone an object
@@ -52,7 +52,7 @@ class Conjunction : CompoundTerm {
      */
 
     override fun clone(): Any {
-        return Conjunction(name, cloneList(components) as List<Term>, isConstant(), complexity as Short)
+        return Conjunction(name, cloneList(components) as List<Term>, isConstant, complexity)
     }
 
     /**

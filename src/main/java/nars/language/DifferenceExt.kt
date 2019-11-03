@@ -34,7 +34,7 @@ class DifferenceExt : CompoundTerm {
      * @param n   The name of the term
      * @param arg The component list of the term
      */
-    private constructor(arg: List<Term>) : super(arg) {}
+    private constructor(arg: List<Term>) : super(arg)
 
     /**
      * Constructor with full values, called by clone
@@ -44,7 +44,7 @@ class DifferenceExt : CompoundTerm {
      * @param open Open variable list
      * @param i    Syntactic complexity of the compound
      */
-    private constructor(n: String, cs: List<Term>, con: Boolean, i: Int) : super(n, cs, con, i.toShort()) {}
+    private constructor(n: String, cs: List<Term>, con: Boolean, i: Int) : super(n, cs, con, i.toShort())
 
     /**
      * Clone an object
@@ -52,7 +52,7 @@ class DifferenceExt : CompoundTerm {
      * @return A new object, to be casted into a DifferenceExt
      */
     override fun clone(): Any {
-        return DifferenceExt(name, cloneList(components) as List<Term>, isConstant(), complexity as Int)
+        return DifferenceExt(name, cloneList(components) as List<Term>, isConstant, complexity as Int)
     }
 
     /**

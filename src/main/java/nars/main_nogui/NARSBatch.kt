@@ -54,7 +54,7 @@ class NARSBatch {
      * initialize from an input file
      */
     fun init(args: Array<String>) {
-        if (args.size > 0) {
+        if (args.isNotEmpty()) {
             val experienceReader = ExperienceReader(reasoner!!)
             experienceReader.openLoadFile(args[0])
         }
@@ -77,7 +77,7 @@ class NARSBatch {
      * are Finished, or 1000 steps. This method is called when the Runnable's
      * thread is started.
      */
-    fun run() {
+    private fun run() {
         while (true) {
             log("NARSBatch.run():"
                     + " step " + reasoner!!.time
@@ -94,9 +94,6 @@ class NARSBatch {
     }
 
     private fun log(mess: String) {
-        if (false) {
-            println("/ $mess")
-        }
     }
 
     companion object {
@@ -129,10 +126,8 @@ class NARSBatch {
             // TODO only if single run ( no reset in between )
 
 
-            if (nars.dumpLastState) {
-                println("\n==== Dump Last State ====\n"
-                        + nars.reasoner.toString())
-            }
+            println("\n==== Dump Last State ====\n"
+                    + nars.reasoner.toString())
         }
 
     }

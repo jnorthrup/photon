@@ -33,12 +33,12 @@ abstract class Statement : CompoundTerm {
      *
      * @param arg The component list of the term
      */
-    protected constructor(arg: List<Term?>?) : super(arg) {}
+    protected constructor(arg: List<Term?>?) : super(arg)
 
     /**
      * Default constructor
      */
-    protected constructor() {}
+    protected constructor()
 
     /**
      * Constructor with full values, called by clone
@@ -48,7 +48,7 @@ abstract class Statement : CompoundTerm {
      * @param con Constant indicator
      * @param i   Syntactic complexity of the compound
      */
-    protected constructor(n: String?, cs: List<Term?>?, con: Boolean, i: Short) : super(n, cs, con, i) {}
+    protected constructor(n: String?, cs: List<Term?>?, con: Boolean, i: Short) : super(n, cs, con, i)
 
     /**
      * Override the default in making the nameStr of the current term from existing fields
@@ -100,14 +100,14 @@ abstract class Statement : CompoundTerm {
          */
       @JvmStatic  fun make(relation: String, subject: Term, predicate: Term, memory: Memory ): Statement? {
             if (!invalidStatement(subject, predicate)) {
-                when (relation) {
-                    Symbols.INHERITANCE_RELATION -> return Inheritance.make(subject, predicate, memory)
-                    Symbols.SIMILARITY_RELATION -> return Similarity.make(subject, predicate, memory)
-                    Symbols.INSTANCE_RELATION -> return Instance.make(subject, predicate, memory)
-                    Symbols.PROPERTY_RELATION -> return Property.make(subject, predicate, memory)
-                    Symbols.INSTANCE_PROPERTY_RELATION -> return InstanceProperty.make(subject, predicate, memory)
-                    Symbols.IMPLICATION_RELATION -> return Implication.make(subject, predicate, memory)
-                    else -> return if (relation == Symbols.EQUIVALENCE_RELATION) {
+                return when (relation) {
+                    Symbols.INHERITANCE_RELATION -> Inheritance.make(subject, predicate, memory)
+                    Symbols.SIMILARITY_RELATION -> Similarity.make(subject, predicate, memory)
+                    Symbols.INSTANCE_RELATION -> Instance.make(subject, predicate, memory)
+                    Symbols.PROPERTY_RELATION -> Property.make(subject, predicate, memory)
+                    Symbols.INSTANCE_PROPERTY_RELATION -> InstanceProperty.make(subject, predicate, memory)
+                    Symbols.IMPLICATION_RELATION -> Implication.make(subject, predicate, memory)
+                    else -> if (relation == Symbols.EQUIVALENCE_RELATION) {
                         Equivalence.make(subject, predicate, memory)
                     } else null
                 }
@@ -209,12 +209,10 @@ abstract class Statement : CompoundTerm {
                 return true
             }
             if (subject is Statement && predicate is Statement) {
-                val s1 = subject
-                val s2 = predicate
-                val t11 = s1.subject
-                val t12 = s1.predicate
-                val t21 = s2.subject
-                val t22 = s2.predicate
+                val t11 = subject.subject
+                val t12 = subject.predicate
+                val t21 = predicate.subject
+                val t22 = predicate.predicate
                 if (t11 == t22 && t12 == t21) {
                     return true
                 }

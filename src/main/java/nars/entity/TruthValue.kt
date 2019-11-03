@@ -21,6 +21,7 @@
 package nars.entity
 
 import nars.io.Symbols
+import kotlin.math.abs
 
 /**
  * Frequency and confidence.
@@ -113,7 +114,7 @@ class TruthValue : Cloneable  { // implements Cloneable {
      * @return The absolute difference
      */
     fun getExpDifAbs(t: TruthValue): Float {
-        return Math.abs(expectation - t.expectation)
+        return abs(expectation - t.expectation)
     }
 
     /**
@@ -147,6 +148,9 @@ class TruthValue : Cloneable  { // implements Cloneable {
         return (expectation * 37).toInt()
     }
 
+    /**
+     *
+     */
     public override fun clone(): Any {
         return TruthValue(getFrequency(), getConfidence(), analytic)
     }

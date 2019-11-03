@@ -40,6 +40,6 @@ object Property  {
      * @return A compound generated or null
      */
     fun make(subject: Term, predicate: Term,memory: Memory): Statement? {
-        return Inheritance.make(subject, SetInt.make(predicate, memory) as Term, memory!!)
+        return Inheritance.make(subject, SetInt.make(predicate, memory) as Term, memory)
     }
 }

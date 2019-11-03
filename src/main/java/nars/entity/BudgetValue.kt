@@ -48,7 +48,7 @@ class BudgetValue : BudgetTriple {
     /**
      * Default constructor
      */
-    constructor() {}
+    constructor()
 
     /**
      * Constructor with initialization
@@ -68,7 +68,7 @@ class BudgetValue : BudgetTriple {
      *
      * @param v Budget value to be cloned
      */
-    constructor(v: BudgetValue) : this(v.priority, v.durability, v.quality) {}
+    constructor(v: BudgetValue) : this(v.priority, v.durability, v.quality)
 
     /**
      * Increase priority value by a percentage of the remaining range

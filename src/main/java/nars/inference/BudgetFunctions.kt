@@ -27,6 +27,10 @@ import nars.inference.UtilityFunctions.Companion.or
 import nars.inference.UtilityFunctions.Companion.w2c
 import nars.language.Term
 import nars.storage.Memory
+import kotlin.math.max
+import kotlin.math.min
+import kotlin.math.pow
+import kotlin.math.sqrt
 
 /**
  * Budget functions for resources allocation
@@ -45,7 +49,7 @@ object BudgetFunctions   {/* ----------------------- Belief evaluation ---------
     @JvmStatic
     fun truthToQuality(t: TruthValue?): Float {
         val exp = t!!.expectation
-        return Math.max(exp.toDouble(), (1 - exp) * 0.75).toFloat()
+        return max(exp.toDouble(), (1 - exp) * 0.75).toFloat()
     }
 
     /**
@@ -91,11 +95,11 @@ object BudgetFunctions   {/* ----------------------- Belief evaluation ---------
         } else {
             val taskPriority = task1.priority
             budget = BudgetValue(or(taskPriority, quality), task1.durability, truthToQuality(solution.truth))
-            task1.priority = Math.min(1 - quality, taskPriority)
+            task1.priority = min(1 - quality, taskPriority)
         }
         if (feedbackToLinks) {
             val tLink: TaskLink = memory.currentTaskLink
-            tLink.priority = Math.min(1 - quality, tLink.priority)
+            tLink.priority = min(1 - quality, tLink.priority)
             val bLink = memory.currentBeliefLink
             bLink!!.incPriority(quality)
         }
@@ -124,11 +128,11 @@ object BudgetFunctions   {/* ----------------------- Belief evaluation ---------
             bLink!!.decPriority(1 - difB)
             bLink.decDurability(1 - difB)
         }
-        val dif = truth.getConfidence() - Math.max(tTruth.getConfidence(), bTruth.getConfidence())
+        val dif = truth.getConfidence() - max(tTruth.getConfidence(), bTruth.getConfidence())
         val priority = or(dif, task.priority)
         val durability = aveAri(dif, task.durability)
         val quality = truthToQuality(truth)
-        return BudgetValue(priority, durability, quality)
+        return BudgetValue(priority, durability as Float, quality)
     }
 
     /* ----------------------- Links ----------------------- */
@@ -143,7 +147,7 @@ object BudgetFunctions   {/* ----------------------- Belief evaluation ---------
      */
     @JvmStatic
     fun distributeAmongLinks(b: BudgetValue, n: Int): BudgetValue {
-        val priority = (b.priority / Math.sqrt(n.toDouble())).toFloat()
+        val priority = (b.priority / sqrt(n.toDouble())).toFloat()
         return BudgetValue(priority, b.durability, b.quality)
     }
 
@@ -163,7 +167,7 @@ object BudgetFunctions   {/* ----------------------- Belief evaluation ---------
         val durability = aveAri(concept.durability, budget.durability)
         val quality = concept.quality
         concept.priority = priority
-        concept.durability = durability
+        concept.durability = durability .toFloat()
         concept.quality = quality
     }
 
@@ -191,7 +195,7 @@ object BudgetFunctions   {/* ----------------------- Belief evaluation ---------
         val p = budget.priority - quality                     // priority above quality
 
         if (p > 0) {
-            quality += p * Math.pow(budget.durability.toDouble(), 1.0 / (forgetRate * p))
+            quality += p * budget.durability.toDouble().pow(1.0 / (forgetRate * p))
         }    // priority Durability
 
         budget.priority = quality.toFloat()
@@ -205,9 +209,9 @@ object BudgetFunctions   {/* ----------------------- Belief evaluation ---------
      */
     @JvmStatic
     fun merge(baseValue: BudgetValue, adjustValue: BudgetTriple) {
-        baseValue.priority = Math.max(baseValue.priority, adjustValue.priority)
-        baseValue.durability = Math.max(baseValue.durability, adjustValue.durability)
-        baseValue.quality = Math.max(baseValue.quality, adjustValue.quality)
+        baseValue.priority = max(baseValue.priority, adjustValue.priority)
+        baseValue.durability = max(baseValue.durability, adjustValue.durability)
+        baseValue.quality = max(baseValue.quality, adjustValue.quality)
     }
 
     /* ----- Task derivation in LocalRules and SyllogisticRules ----- */

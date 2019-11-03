@@ -56,11 +56,6 @@ class ExperienceReader(
         reasoner.addInputChannel(this)
     }
 
-    fun setBufferedReader(inExp: BufferedReader?) {
-        this.inExp = inExp
-        reasoner.addInputChannel(this)
-    }
-
     /**
      * Process the next chunk of input data;
      * TODO some duplicated code with
@@ -91,7 +86,7 @@ class ExperienceReader(
             }
             line = line!!.trim { it <= ' ' }
 // read NARS language or an integer
-            if (line.length > 0) {
+            if (line.isNotEmpty()) {
                 try {
                     timer = Integer.parseInt(line)
                     reasoner.walk(timer)

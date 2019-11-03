@@ -93,7 +93,7 @@ object LocalRules {/* -------------------- same contents -------------------- */
         val newTruth = newBelief.truth
         val oldTruth = oldBelief.truth
         val truth: TruthValue? = TruthFunctions.revision(newTruth!!, oldTruth!!)
-        val budget = revise(newTruth!!, oldTruth!!, truth!!, feedbackToLinks, memory)
+        val budget = revise(newTruth, oldTruth, truth!!, feedbackToLinks, memory)
         val content = newBelief.content
         memory.doublePremiseTask(content, truth, budget)
     }
@@ -198,8 +198,8 @@ object LocalRules {/* -------------------- same contents -------------------- */
     </P></S> */
     private fun inferToSym(judgment1: Sentence, judgment2: Sentence?, memory: Memory) {
         val s1 = judgment1.content as Statement
-        val t1: Term = s1.subject!!
-        val t2: Term = s1.predicate!!
+        val t1: Term = s1.subject
+        val t2: Term = s1.predicate
         val content: Term?
         content = if (s1 is Inheritance) {
             Similarity.make(t1, t2, memory)
@@ -276,7 +276,7 @@ object LocalRules {/* -------------------- same contents -------------------- */
     private fun convertedJudgment(newTruth: TruthValue?, newBudget: BudgetValue, memory: Memory) {
         var content = memory.currentTask.content as Statement
         val beliefContent = memory.currentBelief!!.content as Statement
-        val subjT: Term = content!!.subject
+        val subjT: Term = content.subject
         val predT: Term = content.predicate
         val subjB: Term = beliefContent.subject
         val predB: Term = beliefContent.predicate

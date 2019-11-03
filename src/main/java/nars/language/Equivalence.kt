@@ -33,7 +33,7 @@ class Equivalence : Statement {
      *
      * @param components The component list of the term
      */
-    protected constructor(components: List<Term>) : super(components) {}
+    protected constructor(components: List<Term>) : super(components)
 
     /**
      * Constructor with full values, called by clone
@@ -43,7 +43,7 @@ class Equivalence : Statement {
      * @param constant   Whether the statement contains open variable
      * @param complexity Syntactic complexity of the compound
      */
-    protected constructor(n: String, components: List<Term>, constant: Boolean, complexity: Short) : super(n, components, constant, complexity) {}
+    protected constructor(n: String, components: List<Term>, constant: Boolean, complexity: Short) : super(n, components, constant, complexity)
 
     /**
      * Clone an object
@@ -52,7 +52,7 @@ class Equivalence : Statement {
      */
 
     override fun clone(): Any {
-        return Equivalence(name, cloneList(components) as List<Term>, isConstant(), complexity)
+        return Equivalence(name, cloneList(components) as List<Term>, isConstant, complexity)
     }
 
     /**
@@ -90,7 +90,7 @@ class Equivalence : Statement {
             var predicate1 = predicate
             if (subject1 !is Implication && subject1 !is Equivalence) {
                 if (predicate1 !is Implication && predicate1 !is Equivalence && !invalidStatement(subject1, predicate1)) {
-                    if (subject1.compareTo(predicate1) > 0) {
+                    if (subject1 > predicate1) {
                         val interm = subject1
                         subject1 = predicate1
                         predicate1 = interm

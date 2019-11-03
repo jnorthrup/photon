@@ -1,5 +1,8 @@
 package nars.io
 
+/**
+ *
+ */
 interface IInferenceRecorder {
     /**
      * Initialize the window and the file

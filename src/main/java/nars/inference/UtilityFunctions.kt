@@ -21,6 +21,7 @@
 package nars.inference
 
 import nars.main_nogui.Parameters
+import kotlin.math.pow
 
 /**
  * Common functions on real numbers, mostly in [0,1].
@@ -35,9 +36,7 @@ open class UtilityFunctions {
          */
      @JvmStatic      fun and(vararg arr: Float): Float {
             var product = 1f
-            for (f in arr) {
-                product *= f
-            }
+            arr.forEach { f -> product *= f }
             return product
         }
 
@@ -49,7 +48,7 @@ open class UtilityFunctions {
          */
      @JvmStatic      fun or(vararg arr: Float): Float {
             var product = 1f
-            for (f in arr) {
+            arr.forEach { f ->
                 product *= 1 - f
             }
             return 1 - product
@@ -61,13 +60,7 @@ open class UtilityFunctions {
          * @param arr The inputs, each in [0, 1]
          * @return The arithmetic average the inputs
          */
-     @JvmStatic      fun aveAri(vararg arr: Float): Float {
-            var sum = 0f
-            for (f in arr) {
-                sum += f
-            }
-            return sum / arr.size
-        }
+     @JvmStatic      fun aveAri(vararg arr: Float)  = arr.average()
 
         /**
          * A function where the output is the geometric average the inputs
@@ -80,7 +73,7 @@ open class UtilityFunctions {
             for (f in arr) {
                 product *= f
             }
-            return Math.pow(product.toDouble(), 1.00 / arr.size).toFloat()
+            return product.toDouble().pow(1.00 / arr.size).toFloat()
         }
 
         /**

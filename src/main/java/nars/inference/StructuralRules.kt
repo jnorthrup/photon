@@ -185,7 +185,7 @@ object StructuralRules {
         val sentence = task.sentence
         val truth = sentence.truth
         val truthDed: TruthValue = TruthFunctions.deduction(truth!!, RELIANCE)
-        val truthNDed: TruthValue = TruthFunctions.negation(TruthFunctions.deduction(truth!!, RELIANCE))
+        val truthNDed: TruthValue = TruthFunctions.negation(TruthFunctions.deduction(truth, RELIANCE))
         val subj: Term = statement.subject
         val pred: Term = statement.predicate
         if (component == subj) {
@@ -232,7 +232,7 @@ object StructuralRules {
         val sentence = task.sentence
         val truth = sentence.truth
         val truthDed: TruthValue = TruthFunctions.deduction(truth!!, RELIANCE)
-        val truthNDed: TruthValue = TruthFunctions.negation(TruthFunctions.deduction(truth!!, RELIANCE))
+        val truthNDed: TruthValue = TruthFunctions.negation(TruthFunctions.deduction(truth, RELIANCE))
         val subj: Term = statement.subject
         val pred: Term = statement.predicate
         if (compound == subj) {
@@ -440,10 +440,9 @@ object StructuralRules {
         var newSubj: Term
         var newPred: Term
         if (subject is Product) {
-            val product = subject
-            for (i in 0 until product.size()) {
-                newSubj = product.componentAt(i)
-                newPred = ImageExt .make(product, predicate, i.toShort(), memory)
+            for (i in 0 until subject.size()) {
+                newSubj = subject.componentAt(i)
+                newPred = ImageExt .make(subject, predicate, i.toShort(), memory)
                 inheritance = Inheritance.make(newSubj, newPred, memory)
                 budget = if (truth == null) {
                     compoundBackward(inheritance!!, memory)
@@ -453,15 +452,14 @@ object StructuralRules {
                 memory.singlePremiseTask(inheritance, truth, budget)
             }
         } else if (subject is ImageInt) {
-            val image = subject
-            val relationIndex = image.relationIndex.toInt()
-            for (i in 0 until image.size()) {
+            val relationIndex = subject.relationIndex.toInt()
+            for (i in 0 until subject.size()) {
                 if (i == relationIndex) {
-                    newSubj = image.componentAt(relationIndex)
-                    newPred = Product.make(image, predicate, relationIndex, memory)
+                    newSubj = subject.componentAt(relationIndex)
+                    newPred = Product.make(subject, predicate, relationIndex, memory)
                 } else {
-                    newSubj = ImageInt.make(image, predicate, i.toShort(), memory)
-                    newPred = image.componentAt(i)
+                    newSubj = ImageInt.make(subject, predicate, i.toShort(), memory)
+                    newPred = subject.componentAt(i)
                 }
                 inheritance = Inheritance.make(newSubj, newPred, memory)
                 budget = if (truth == null) {
@@ -491,10 +489,9 @@ object StructuralRules {
         var newSubj: Term
         var newPred: Term
         if (predicate is Product) {
-            val product = predicate
-            for (i in 0 until product.size()) {
-                newSubj = ImageInt.make(product, subject, i.toShort(), memory)
-                newPred = product.componentAt(i)
+            for (i in 0 until predicate.size()) {
+                newSubj = ImageInt.make(predicate, subject, i.toShort(), memory)
+                newPred = predicate.componentAt(i)
                 inheritance = Inheritance.make(newSubj, newPred, memory)
                 budget = if (truth == null) {
                     compoundBackward(inheritance!!, memory)
@@ -504,15 +501,14 @@ object StructuralRules {
                 memory.singlePremiseTask(inheritance, truth, budget)
             }
         } else if (predicate is ImageExt) {
-            val image = predicate
-            val relationIndex = image.relationIndex.toInt()
-            for (i in 0 until image.size()) {
+            val relationIndex = predicate.relationIndex.toInt()
+            for (i in 0 until predicate.size()) {
                 if (i == relationIndex) {
-                    newSubj = Product.make(image, subject, relationIndex, memory)
-                    newPred = image.componentAt(relationIndex)
+                    newSubj = Product.make(predicate, subject, relationIndex, memory)
+                    newPred = predicate.componentAt(relationIndex)
                 } else {
-                    newSubj = image.componentAt(i)
-                    newPred = ImageExt.make(image, subject, i , memory)
+                    newSubj = predicate.componentAt(i)
+                    newPred = ImageExt.make(predicate, subject, i , memory)
                 }
                 inheritance = Inheritance.make(newSubj, newPred, memory)
                 if (inheritance != null) { // jmv <<<<<

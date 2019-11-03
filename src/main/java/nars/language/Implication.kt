@@ -33,7 +33,7 @@ class Implication : Statement {
      *
      * @param arg The component list of the term
      */
-    protected constructor(arg: List<Term>) : super(arg) {}
+    protected constructor(arg: List<Term>) : super(arg)
 
     /**
      * Constructor with full values, called by clone
@@ -43,7 +43,7 @@ class Implication : Statement {
      * @param con Whether it is a constant term
      * @param i   Syntactic complexity of the compound
      */
-    protected constructor(n: String, cs: List<Term>, con: Boolean, i: Short) : super(n, cs, con, i) {}
+    protected constructor(n: String, cs: List<Term>, con: Boolean, i: Short) : super(n, cs, con, i)
 
     /**
      * Clone an object
@@ -51,7 +51,7 @@ class Implication : Statement {
      * @return A new object
      */
     override fun clone(): Any {
-        return Implication(name, cloneList(components) as List<Term>, isConstant(), complexity)
+        return Implication(name, cloneList(components) as List<Term>, isConstant, complexity)
     }
 
     /**

@@ -155,10 +155,10 @@ class Variable
             if (hasSubs) {
                 renameVar(map1, compound1, "-1")
                 renameVar(map2, compound2, "-2")
-                if (!map1.isEmpty()) {
+                if (map1.isNotEmpty()) {
                     (compound1 as CompoundTerm).applySubstitute(map1)
                 }
-                if (!map2.isEmpty()) {
+                if (map2.isNotEmpty()) {
                     (compound2 as CompoundTerm).applySubstitute(map2)
                 }
             }
@@ -180,54 +180,51 @@ class Variable
                                    map1: HashMap<Term, Term>, map2: HashMap<Term, Term>): Boolean {
             val t: Term?
             if (term1 is Variable) {
-                val var1 = term1
-                t = map1[var1]
+                t = map1[term1]
                 return if (t != null) {    // already mapped
 
                     findSubstitute(type, t, term2, map1, map2)
                 } else {            // not mapped yet
 
-                    if (var1.type == type) {
+                    if (term1.type == type) {
                         if (term2 is Variable && term2.type == type) {
-                            val `var` = Variable(var1.getName() + term2.getName())
-                            map1[var1] = `var`  // unify
+                            val `var` = Variable(term1.getName() + term2.getName())
+                            map1[term1] = `var`  // unify
 
                             map2[term2] = `var`  // unify
                         } else {
-                            map1[var1] = term2  // elimination
+                            map1[term1] = term2  // elimination
                         }
                     } else {    // different type
 
-                        map1[var1] = Variable(var1.getName() + "-1")  // rename
+                        map1[term1] = Variable(term1.getName() + "-1")  // rename
                     }
                     true
                 }
             }
             if (term2 is Variable) {
-                val var2 = term2
-                t = map2[var2]
+                t = map2[term2]
                 return if (t != null) {    // already mapped
 
                     findSubstitute(type, term1, t, map1, map2)
                 } else {            // not mapped yet
 
-                    if (var2.type == type) {
-                        map2[var2] = term2  // unify
+                    if (term2.type == type) {
+                        map2[term2] = term2  // unify
                     } else {
-                        map2[var2] = Variable(var2.getName() + "-2")  // rename
+                        map2[term2] = Variable(term2.getName() + "-2")  // rename
                     }
                     true
                 }
             }
             if (term1 is CompoundTerm && term1.javaClass == term2.javaClass) {
-                val cTerm1 = term1
                 val cTerm2 = term2 as CompoundTerm
-                if (cTerm1.size() != cTerm2.size()) {
+                if (term1.size() != cTerm2.size()) {
                     return false
                 }
-                for (i in 0 until cTerm1.size()) {   // assuming matching order, to be refined in the future
+                for (i in 0 until term1.size()) {   // assuming matching order, to be refined in the future
 
-                    val t1: Term = cTerm1.componentAt(i)
+                    val t1: Term = term1.componentAt(i)
                     val t2: Term = cTerm2.componentAt(i)
                     val haveSub = findSubstitute(type, t1, t2, map1, map2)
                     if (!haveSub) {

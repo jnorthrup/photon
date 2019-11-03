@@ -10,6 +10,9 @@ import nars.storage.Memory
 import java.util.*
 import java.util.concurrent.atomic.AtomicInteger
 
+/**
+ *
+ */
 class ReasonerBatch {
     /**
      * The name of the reasoner
@@ -76,7 +79,7 @@ class ReasonerBatch {
      * Reset the system with an empty memory and reset clock. Called locally and
      * from [MainWindow].
      */
-    fun reset() {
+    private fun reset() {
         running = false
         walkingSteps = 0
         time = 0
@@ -86,20 +89,18 @@ class ReasonerBatch {
 
     }
 
+    /**
+     *
+     */
     fun addInputChannel(channel: InputChannel) {
         inputChannels.add(channel)
     }
 
-    fun removeInputChannel(channel: InputChannel) {
-        inputChannels.remove(channel)
-    }
-
+    /**
+     *
+     */
     fun addOutputChannel(channel: OutputChannel) {
         outputChannels.add(channel)
-    }
-
-    fun removeOutputChannel(channel: OutputChannel) {
-        outputChannels.remove(channel)
     }
 
     /**
@@ -119,17 +120,10 @@ class ReasonerBatch {
         doTick()
     }
 
+    /**
+     *
+     */
     fun doTick() {
-        if (DEBUG) {
-            if (running || walkingSteps > 0 || !isFinishedInputs) {
-                println("// doTick: "
-                        + "walkingSteps " + walkingSteps
-                        .toString() + ", clock " + time
-                        .toString() + ", getTimer " + timer
-                        .toString() + "\n//    memory.getExportStrings() " + memory.exportStrings)
-                System.out.flush()
-            }
-        }
         if (walkingSteps == 0) {
             var reasonerShouldRun = false
             for (channelIn in inputChannels) {
@@ -142,7 +136,7 @@ class ReasonerBatch {
 
 
         val output: MutableList<String?> = memory.exportStrings
-        if (!output.isEmpty()) {
+        if (output.isNotEmpty()) {
             for (channelOut in outputChannels) {
                 channelOut.nextOutput(output)
             }
@@ -214,8 +208,8 @@ class ReasonerBatch {
     /**
      * Update timer
      */
-    fun tickTimer() {
-        timer = timer + 1
+    private fun tickTimer() {
+        timer += 1
     }
 
     companion object {

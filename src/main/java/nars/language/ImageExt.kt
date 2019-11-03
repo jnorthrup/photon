@@ -73,7 +73,7 @@ class ImageExt : CompoundTerm {
      * @return A new object, to be casted into an ImageExt
      */
     override fun clone(): Any {
-        return ImageExt(name, cloneList(components) as List<Term>, isConstant(), complexity, relationIndex.toInt())
+        return ImageExt(name, cloneList(components) as List<Term>, isConstant, complexity, relationIndex.toInt())
     }
 
     /**
@@ -152,15 +152,14 @@ class ImageExt : CompoundTerm {
          */
    @JvmStatic     fun make(product: Product, relation: Term, index: Short, memory: Memory): Term {
             if (relation is Product) {
-                val p2 = relation
-                if (product.size() == 2 && p2.size() == 2) {
-                    if (index.toInt() == 0 && product.componentAt(1) == p2.componentAt(1)) { // (/,_,(*,a,b),b) is reduced to a
+                if (product.size() == 2 && relation.size() == 2) {
+                    if (index.toInt() == 0 && product.componentAt(1) == relation.componentAt(1)) { // (/,_,(*,a,b),b) is reduced to a
 
-                        return p2.componentAt(0)
+                        return relation.componentAt(0)
                     }
-                    if (index.toInt() == 1 && product.componentAt(0) == p2.componentAt(0)) { // (/,(*,a,b),a,_) is reduced to b
+                    if (index.toInt() == 1 && product.componentAt(0) == relation.componentAt(0)) { // (/,(*,a,b),a,_) is reduced to b
 
-                        return p2.componentAt(1)
+                        return relation.componentAt(1)
                     }
                 }
             }

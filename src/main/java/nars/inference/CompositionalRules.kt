@@ -337,14 +337,14 @@ object CompositionalRules {/* -------------------- intersections and differences
         var state2: Statement = Inheritance.make(term21, term22, memory)!!
         var content: Term = Implication.make(state1, state2, memory)!!
         var truth: TruthValue = TruthFunctions.induction(truthT!!, truthB!!)
-        var budget = compoundForward(truth, content!!, memory)
+        var budget = compoundForward(truth, content, memory)
         memory.doublePremiseTask(content, truth, budget)
-        content = Implication.make(state2 as Term, state1 as Term, memory as Memory)!!
-        truth = TruthFunctions.induction(truthB!!, truthT)
+        content = Implication.make(state2 as Term, state1 as Term, memory)!!
+        truth = TruthFunctions.induction(truthB, truthT)
         budget = compoundForward(truth, content, memory)
         memory.doublePremiseTask(content, truth, budget)
         content = Equivalence.make(state1, state2, memory)!!
-        truth = TruthFunctions.comparison(truthT, truthB!!)
+        truth = TruthFunctions.comparison(truthT, truthB)
         budget = compoundForward(truth, content, memory)
         memory.doublePremiseTask(content, truth, budget)
         val varDep = Variable("#varDep")

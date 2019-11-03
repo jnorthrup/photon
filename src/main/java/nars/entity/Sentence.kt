@@ -128,8 +128,7 @@ class Sentence : Cloneable {
 
     override fun equals(that: Any?): Boolean {
         if (that is Sentence) {
-            val t = that
-            return content == t.content && punctuation == t.punctuation && truth == t.truth && stamp == t.stamp
+            return content == that.content && punctuation == that.punctuation && truth == that.truth && stamp == that.stamp
         }
         return false
     }
@@ -200,6 +199,9 @@ class Sentence : Cloneable {
     val isQuestion: Boolean
         get() = punctuation == Symbols.QUESTION_MARK
 
+    /**
+     *
+     */
     fun containQueryVar(): Boolean {
         return content.name.indexOf(Symbols.VAR_QUERY) >= 0
     }

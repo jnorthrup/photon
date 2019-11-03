@@ -34,7 +34,7 @@ class IntersectionInt : CompoundTerm {
      * @param n   The name of the term
      * @param arg The component list of the term
      */
-    private constructor(arg: List<Term>) : super(arg) {}
+    private constructor(arg: List<Term>) : super(arg)
 
     /**
      * Constructor with full values, called by clone
@@ -44,7 +44,7 @@ class IntersectionInt : CompoundTerm {
      * @param open Open variable list
      * @param i    Syntactic complexity of the compound
      */
-    private constructor(n: String, cs: List<Term>, con: Boolean, i: Short) : super(n, cs, con, i) {}
+    private constructor(n: String, cs: List<Term>, con: Boolean, i: Short) : super(n, cs, con, i)
 
     /**
      * Clone an object
@@ -52,7 +52,7 @@ class IntersectionInt : CompoundTerm {
      * @return A new object, to be casted into a Conjunction
      */
     override fun clone(): Any {
-        return IntersectionInt(name, cloneList(components) as List<Term>, isConstant(), complexity)
+        return IntersectionInt(name, cloneList(components) as List<Term>, isConstant, complexity)
     }
 
     /**
@@ -89,7 +89,7 @@ class IntersectionInt : CompoundTerm {
                 set = TreeSet((term1 as CompoundTerm).cloneComponents())
                 set.addAll((term2 as CompoundTerm).cloneComponents())           // set union
 
-                return SetExt.make(set as TreeSet<Term>, memory) as Term
+                return SetExt.make(set, memory) as Term
             }
             if (term1 is SetInt && term2 is SetInt) {
                 set = TreeSet((term1 as CompoundTerm).cloneComponents())
