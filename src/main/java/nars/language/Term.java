@@ -114,8 +114,8 @@ public class Term implements Cloneable, Comparable<Term> {
      *
      * @return The complexity of the term, an integer
      */
-    public int getComplexity() {
-        return 1;
+    public short getComplexity() {
+        return (short) 1  ;
     }
 
     /**

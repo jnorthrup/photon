@@ -33,21 +33,7 @@ import java.util.*;
  * <p>
  * This abstract class contains default methods for all CompoundTerms.
  */
-public abstract class CompoundTerm extends Term {
-
-    /**
-     * list of (direct) components
-     */
-    protected List<Term> components;
-    /**
-     * syntactic complexity of the compound, the sum of those of its components
-     * plus 1
-     */
-    protected short complexity;
-    /**
-     * Whether the term names a concept
-     */
-    protected boolean isConstant = true;
+public abstract class CompoundTerm extends CompoundTermState {
 
     /* ----- abstract methods to be implemented in subclasses ----- */
 
@@ -61,9 +47,9 @@ public abstract class CompoundTerm extends Term {
      */
     protected CompoundTerm(String name ,  List<Term> components, boolean isConstant, short complexity) {
         super(name);
-        this.components = components;
-        this.isConstant = isConstant;
-        this.complexity = complexity;
+        this.setComponents(components);
+        this.setConstant(isConstant);
+        this.setComplexity(complexity);
     }
 
     /**
@@ -80,10 +66,10 @@ public abstract class CompoundTerm extends Term {
      * @param components Component list
      */
     protected CompoundTerm( List<Term> components) {
-        this.components = components;
+        this.setComponents(components);
         calcComplexity();
         name = makeName();
-        isConstant = !Variable.containVar(name);
+        setConstant(!Variable.containVar(name));
     }
 
     /**
@@ -93,8 +79,8 @@ public abstract class CompoundTerm extends Term {
      */
     protected CompoundTerm(String name, List<Term> components) {
         super(name);
-        isConstant = !Variable.containVar(name);
-        this.components = components;
+        setConstant(!Variable.containVar(name));
+        this.setComponents(components);
         calcComplexity();
     }
 
@@ -153,22 +139,6 @@ public abstract class CompoundTerm extends Term {
     }
 
     /**
-     * Check CompoundTerm operator symbol
-     *
-     * @param s The String to be checked
-     * @return if the given String is an operator symbol
-     */
-    public static boolean isOperator(String s) {
-        if (s.length() == 1) {
-            return (List.of(Symbols.INTERSECTION_EXT_OPERATOR, Symbols.INTERSECTION_INT_OPERATOR, Symbols.DIFFERENCE_EXT_OPERATOR, Symbols.DIFFERENCE_INT_OPERATOR, Symbols.PRODUCT_OPERATOR, Symbols.IMAGE_EXT_OPERATOR, Symbols.IMAGE_INT_OPERATOR).contains(s));
-        }
-        if (s.length() == 2) {
-            return (List.of(Symbols.NEGATION_OPERATOR, Symbols.DISJUNCTION_OPERATOR, Symbols.CONJUNCTION_OPERATOR).contains(s));
-        }
-        return false;
-    }
-
-    /**
      * build a component list from two terms
      *
      * @param t1 the first component
@@ -196,7 +166,7 @@ public abstract class CompoundTerm extends Term {
         for (var t : arg) {
             name.append(Symbols.ARGUMENT_SEPARATOR);
             if (t instanceof CompoundTerm) {
-                ((CompoundTerm) t).setName(((CompoundTerm) t).makeName());
+                ((CompoundTermState) t).setName(((CompoundTerm) t).makeName());
             }
             name.append(t.getName());
         }
@@ -282,37 +252,11 @@ public abstract class CompoundTerm extends Term {
         boolean success;
         var list = t1.cloneComponents();
         if (t1.getClass() == t2.getClass()) {
-            success = list.removeAll(((CompoundTerm) t2).getComponents());
+            success = list.removeAll(((CompoundTermState) t2).getComponents());
         } else {
             success = list.remove(t2);
         }
         return (success ? Util11. make(t1, list, memory) : null);
-    }
-
-    /**
-     * Try to replace a component in a compound at a given index by another one
-     *
-     * @param compound The compound
-     * @param index    The location of replacement
-     * @param t        The new component
-     * @param memory   Reference to the memory
-     * @return The new compound
-     */
-    public static Term setComponent(CompoundTerm compound, int index, Term t, Memory memory) {
-        var list = compound.cloneComponents();
-        list.remove(index);
-        if (t != null) {
-            if (compound.getClass() != t.getClass()) {
-                list.add(index, t);
-            } else {
-                var list2 = ((CompoundTerm) t).cloneComponents();
-                int bound = list2.size();
-                for (int i = 0; i < bound; i++) {
-                    list.add(index + i, list2.get(i));
-                }
-            }
-        }
-        return Util11.make(compound, list, memory);
     }
 
     /**
@@ -326,21 +270,12 @@ public abstract class CompoundTerm extends Term {
     /* ----- utilities for other fields ----- */
 
     /**
-     * Change the oldName of a CompoundTerm, called after variable substitution
-     *
-     * @param s The new oldName
-     */
-    protected void setName(String s) {
-        name = s;
-    }
-
-    /**
      * The complexity of the term is the sum of those of the components plus 1
      */
     private void calcComplexity() {
-        complexity = 1;
-        for (Term t : components) {
-            complexity += t.getComplexity();
+        setComplexity((short) 1);
+        for (Term t : getComponents()) {
+            setComplexity((short) (getComplexity() + t.getComplexity()));
         }
     }
 
@@ -355,7 +290,7 @@ public abstract class CompoundTerm extends Term {
     @Override
     public int compareTo(Term that) {
         if (that instanceof CompoundTerm) {
-            var t = (CompoundTerm) that;
+            var t = (CompoundTerm ) that;
             var minSize = Math.min(size(), t.size());
             for (var i = 0; i < minSize; i++) {
                 var diff = componentAt(i).compareTo(t.componentAt(i));
@@ -376,41 +311,10 @@ public abstract class CompoundTerm extends Term {
      * @return the oldName of the term
      */
     protected String makeName() {
-        return makeCompoundName(operator(), components);
+        return makeCompoundName(operator(), getComponents());
     }
 
     /* ----- extend Collection methods to component list ----- */
-
-    /**
-     * report the term's syntactic complexity
-     *
-     * @return the complexity value
-     */
-
-    @Override
-    public int getComplexity() {
-        return complexity;
-    }
-
-    /**
-     * check if the term contains free variable
-     *
-     * @return if the term is a constant
-     */
-
-    @Override
-    public boolean isConstant() {
-        return isConstant;
-    }
-
-    /**
-     * Set the constant status
-     *
-     * @param isConstant
-     */
-    public void setConstant(boolean isConstant) {
-        this.isConstant = isConstant;
-    }
 
     /**
      * Check if the order of the components matters
@@ -432,7 +336,7 @@ public abstract class CompoundTerm extends Term {
      * @return the size of the component list
      */
     public int size() {
-        return components.size();
+        return getComponents().size();
     }
 
     /**
@@ -442,16 +346,7 @@ public abstract class CompoundTerm extends Term {
      * @return the component
      */
     public Term componentAt(int i) {
-        return components.get(i);
-    }
-
-    /**
-     * Get the component list
-     *
-     * @return The component list
-     */
-    public List<Term> getComponents() {
-        return components;
+        return getComponents().get(i);
     }
 
     /**
@@ -460,7 +355,7 @@ public abstract class CompoundTerm extends Term {
      * @return The cloned component list
      */
     public   List<Term> cloneComponents() {
-        return cloneList(components);
+        return cloneList(getComponents());
     }
 
     /**
@@ -470,7 +365,7 @@ public abstract class CompoundTerm extends Term {
      * @return Whether the component is in the compound
      */
     public boolean containComponent(Term t) {
-        return components.contains(t);
+        return getComponents().contains(t);
     }
 
     /**
@@ -482,7 +377,7 @@ public abstract class CompoundTerm extends Term {
 
     @Override
     public boolean containTerm(Term target) {
-        for (Term term : components) {
+        for (Term term : getComponents()) {
             if (term.containTerm(target)) {
                 return true;
             }
@@ -499,9 +394,9 @@ public abstract class CompoundTerm extends Term {
      */
     public boolean containAllComponents(Term t) {
         if (getClass() == t.getClass()) {
-            return components.containsAll(((CompoundTerm) t).getComponents());
+            return getComponents().containsAll(((CompoundTermState) t).getComponents());
         } else {
-            return components.contains(t);
+            return getComponents().contains(t);
         }
     }
 
@@ -536,7 +431,7 @@ public abstract class CompoundTerm extends Term {
      */
     private void renameVariables(HashMap<Variable, Variable> map) {
         if (containVar()) {
-            for (var i = 0; i < components.size(); i++) {
+            for (var i = 0; i < getComponents().size(); i++) {
                 var term = componentAt(i);
                 if (term instanceof Variable) {
                     Variable var;
@@ -549,12 +444,12 @@ public abstract class CompoundTerm extends Term {
                         }
                     }
                     if (!term.equals(var)) {
-                        components.set(i, var);
+                        getComponents().set(i, var);
                     }
                     map.put((Variable) term, var);
                 } else if (term instanceof CompoundTerm) {
                     ((CompoundTerm) term).renameVariables(map);
-                    ((CompoundTerm) term).setName(((CompoundTerm) term).makeName());
+                    ((CompoundTermState) term).setName(((CompoundTerm) term).makeName());
                 }
             }
         }
@@ -571,14 +466,14 @@ public abstract class CompoundTerm extends Term {
             t1 = componentAt(i);
             t2 = subs.get(t1);
             if (t2 != null) {
-                components.set(i, (Term) t2.clone());
+                getComponents().set(i, (Term) t2.clone());
             } else if (t1 instanceof CompoundTerm) {
                 ((CompoundTerm) t1).applySubstitute(subs);
             }
         }
         if (this.isCommutative()) {         // re-order
-            var s = new TreeSet<>(components);
-            components = new ArrayList<>(s);
+            var s = new TreeSet<>(getComponents());
+            setComponents(new ArrayList<>(s));
         }
         name = makeName();
     }

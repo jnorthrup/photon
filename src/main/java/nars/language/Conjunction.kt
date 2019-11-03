@@ -52,7 +52,7 @@ class Conjunction : CompoundTerm {
      */
 
     override fun clone(): Any {
-        return Conjunction(name, cloneList(components) as List<Term>, isConstant(), complexity)
+        return Conjunction(name, cloneList(components) as List<Term>, isConstant(), complexity as Short)
     }
 
     /**

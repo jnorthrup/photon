@@ -67,9 +67,7 @@ class Variable
      * @return The complexity of the term, an integer
      */
 
-    override fun getComplexity(): Int {
-        return 0
-    }
+    override fun getComplexity() =0 as Short
 
     /**
      * variable terms are listed first alphabetically

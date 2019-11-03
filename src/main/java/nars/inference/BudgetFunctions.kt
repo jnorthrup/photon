@@ -261,7 +261,7 @@ object BudgetFunctions   {/* ----------------------- Belief evaluation ---------
      */
     @JvmStatic
     fun compoundForward(truth: TruthValue?, content: Term, memory: Memory): BudgetValue {
-        return budgetInference(truthToQuality(truth), content.complexity, memory)
+        return budgetInference(truthToQuality(truth), content.complexity as Int, memory)
     }
 
     /**
@@ -273,7 +273,7 @@ object BudgetFunctions   {/* ----------------------- Belief evaluation ---------
      */
     @JvmStatic
     fun compoundBackward(content: Term, memory: Memory): BudgetValue {
-        return budgetInference(1f, content.complexity, memory)
+        return budgetInference(1f, content.complexity as Int, memory)
     }
 
     /**
@@ -285,7 +285,7 @@ object BudgetFunctions   {/* ----------------------- Belief evaluation ---------
      */
     @JvmStatic
     fun compoundBackwardWeak(content: Term, memory: Memory): BudgetValue {
-        return budgetInference(w2c(1f), content.complexity, memory)
+        return budgetInference(w2c(1f), content.complexity as Int, memory)
     }
 
     /**
