@@ -19,33 +19,27 @@
  * along with Open-NARS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package nars.storage;
+package nars.storage
 
-import nars.entity.TaskLink;
-import nars.main_nogui.Parameters;
+import nars.entity.TaskLink
+import nars.main_nogui.Parameters
 
 /**
  * TaskLinkBag contains links to tasks.
  */
-public class TaskLinkBag extends Bag<TaskLink> {
-
-    /**
-     * Constructor
-     *
-     * @param memory The reference of memory
-     */
-    public TaskLinkBag(Memory memory) {
-        super(memory);
-    }
-
+class TaskLinkBag
+/**
+ * Constructor
+ *
+ * @param memory The reference of memory
+ */(memory: Memory?) : Bag<TaskLink?>(memory) {
     /**
      * Get the (constant) capacity of TaskLinkBag
      *
      * @return The capacity of TaskLinkBag
      */
-    @Override
-    protected int capacity() {
-        return Parameters.TASK_LINK_BAG_SIZE;
+    override fun capacity(): Int {
+        return Parameters.TASK_LINK_BAG_SIZE
     }
 
     /**
@@ -53,9 +47,7 @@ public class TaskLinkBag extends Bag<TaskLink> {
      *
      * @return The forget rate of TaskLinkBag
      */
-    @Override
-    protected int forgetRate() {
-        return memory.getTaskForgettingRate().get();
+    override fun forgetRate(): Int {
+        return memory.taskForgettingRate.get()
     }
 }
-

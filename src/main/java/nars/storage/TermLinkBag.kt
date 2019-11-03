@@ -18,34 +18,28 @@
  * You should have received a copy of the GNU General Public License
  * along with Open-NARS.  If not, see <http://www.gnu.org/licenses/>.
  */
-package nars.storage;
+package nars.storage
 
-import nars.entity.TaskLink;
-import nars.entity.TermLink;
-import nars.main_nogui.Parameters;
+import nars.entity.TaskLink
+import nars.entity.TermLink
+import nars.main_nogui.Parameters
 
 /**
  * Contains TermLinks to relevant (compound or component) Terms.
  */
-public class TermLinkBag extends Bag<TermLink> {
-
-    /**
-     * Constructor
-     *
-     * @param memory The reference of memory
-     */
-    public TermLinkBag(Memory memory) {
-        super(memory);
-    }
-
+class TermLinkBag
+/**
+ * Constructor
+ *
+ * @param memory The reference of memory
+ */(memory: Memory?) : Bag<TermLink?>(memory) {
     /**
      * Get the (constant) capacity of TermLinkBag
      *
      * @return The capacity of TermLinkBag
      */
-    @Override
-    protected int capacity() {
-        return Parameters.TERM_LINK_BAG_SIZE;
+    override fun capacity(): Int {
+        return Parameters.TERM_LINK_BAG_SIZE
     }
 
     /**
@@ -53,9 +47,8 @@ public class TermLinkBag extends Bag<TermLink> {
      *
      * @return The forget rate of TermLinkBag
      */
-    @Override
-    protected int forgetRate() {
-        return memory.getBeliefForgettingRate().get();
+    override fun forgetRate(): Int {
+        return memory.beliefForgettingRate.get()
     }
 
     /**
@@ -65,18 +58,14 @@ public class TermLinkBag extends Bag<TermLink> {
      * @param time     The current time
      * @return The selected TermLink
      */
-    public TermLink takeOut(TaskLink taskLink, long time) {
-        for (var i = 0; i < Parameters.MAX_MATCHED_TERM_LINK; i++) {
-            var termLink = takeOut();
-            if (termLink == null) {
-                return null;
-            }
+    fun takeOut(taskLink: TaskLink, time: Long): TermLink? {
+        for (i in 0 until Parameters.MAX_MATCHED_TERM_LINK) {
+            val termLink = takeOut() ?: return null
             if (taskLink.novel(termLink, time)) {
-                return termLink;
+                return termLink
             }
-            putBack(termLink);
+            putBack(termLink)
         }
-        return null;
+        return null
     }
 }
-
