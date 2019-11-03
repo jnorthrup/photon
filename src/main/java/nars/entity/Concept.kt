@@ -353,7 +353,7 @@ class Concept(
 
     override fun toString(): String {  // called from concept bag
 
-        return if (NARSBatch.isStandAlone()) {
+        return if (NARSBatch.standAlone) {
             super.toStringBrief() + " " + key
         } else {
             key
