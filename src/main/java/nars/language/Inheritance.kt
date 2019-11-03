@@ -18,27 +18,23 @@
  * You should have received a copy of the GNU General Public License
  * along with Open-NARS.  If not, see <http://www.gnu.org/licenses/>.
  */
-package nars.language;
+package nars.language
 
-import nars.io.Symbols;
-import nars.storage.Memory;
-
-import java.util.*;
+import nars.io.Symbols
+import nars.storage.Memory
+import java.util.*
 
 /**
  * A Statement about an Inheritance relation.
  */
-public class Inheritance extends Statement {
-
+class Inheritance : Statement {
     /**
      * Constructor with partial values, called by make
      *
      * @param n   The name of the term
      * @param arg The component list of the term
      */
-    private Inheritance( List<Term> arg) {
-        super(arg);
-    }
+    private constructor(arg: List<Term>) : super(arg) {}
 
     /**
      * Constructor with full values, called by clone
@@ -48,39 +44,15 @@ public class Inheritance extends Statement {
      * @param open Open variable list
      * @param i    Syntactic complexity of the compound
      */
-    private Inheritance(String n ,  List<Term> cs, boolean con, short i) {
-        super(n, cs, con, i);
-    }
-
-    /**
-     * Try to make a new compound from two components. Called by the inference rules.
-     *
-     * @param subject   The first compoment
-     * @param predicate The second compoment
-     * @param memory    Reference to the memory
-     * @return A compound generated or null
-     */
-    public static Inheritance make(Term subject, Term predicate, Memory memory) {
-        if (invalidStatement(subject, predicate)) {
-            return null;
-        }
-        var name = makeStatementName(subject, Symbols.INHERITANCE_RELATION, predicate);
-        var t = memory.nameToListedTerm(name);
-        if (t != null) {
-            return (Inheritance) t;
-        }
-        var argument = argumentsToList(subject, predicate);
-        return new Inheritance(argument);
-    }
+    private constructor(n: String, cs: List<Term>, con: Boolean, i: Short) : super(n, cs, con, i) {}
 
     /**
      * Clone an object
      *
      * @return A new object, to be casted into a SetExt
      */
-    @Override
-    public Object clone() {
-        return new Inheritance(name, ( List<Term>) cloneList(components), isConstant, complexity);
+    override fun clone(): Any {
+        return Inheritance(name, cloneList(components) as List<Term>, isConstant, complexity)
     }
 
     /**
@@ -88,10 +60,30 @@ public class Inheritance extends Statement {
      *
      * @return the operator of the term
      */
-    @Override
-    public String operator() {
-        return Symbols.INHERITANCE_RELATION;
+    override fun operator(): String {
+        return Symbols.INHERITANCE_RELATION
     }
 
+    companion object {
+        /**
+         * Try to make a new compound from two components. Called by the inference rules.
+         *
+         * @param subject   The first compoment
+         * @param predicate The second compoment
+         * @param memory    Reference to the memory
+         * @return A compound generated or null
+         */
+        fun make(subject: Term?, predicate: Term?, memory: Memory): Inheritance? {
+            if (invalidStatement(subject!!, predicate!!)) {
+                return null
+            }
+            val name = makeStatementName(subject, Symbols.INHERITANCE_RELATION, predicate)
+            val t: Term? = memory.nameToListedTerm(name)
+            if (t != null) {
+                return t as Inheritance
+            }
+            val argument: ArrayList<Term> = argumentsToList(subject, predicate)
+            return Inheritance(argument)
+        }
+    }
 }
-

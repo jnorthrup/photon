@@ -68,7 +68,7 @@ object StructuralRules {
                 }
                 sub = compound
                 components[index.toInt()] = pred
-                pred = CompoundTerm.make(compound, components, memory)
+                pred = Util11.make(compound, components, memory)
             }
         } else {
             if (components.contains(pred)) {
@@ -76,7 +76,7 @@ object StructuralRules {
                     return
                 }
                 components[index.toInt()] = sub
-                sub = CompoundTerm.make(compound, components, memory)
+                sub = Util11.make(compound, components, memory)
                 pred = compound
             }
         }
@@ -384,7 +384,7 @@ object StructuralRules {
         } else {
             return
         }
-        val newInh: Inheritance = Inheritance.make(subject, predicate, memory)
+        val newInh: Inheritance = Inheritance.make(subject, predicate, memory)!!
         var content: Term? = null
         if (indices.size == 2) {
             content = newInh
@@ -397,13 +397,13 @@ object StructuralRules {
                 if ((oldContent is Implication || oldContent is Equivalence) && condition is Conjunction) {
                     componentList = (condition as CompoundTerm).cloneComponents()
                     componentList[indices[1].toInt()] = newInh
-                    val newCond: Term = CompoundTerm.make(condition as CompoundTerm, componentList, memory)
+                    val newCond: Term = Util11.make(condition as CompoundTerm, componentList, memory)
                     content = Statement.make(oldContent as Statement, newCond, oldContent.predicate, memory)
                 } else {
                     componentList = oldContent.cloneComponents()
                     componentList[indices[0].toInt()] = newInh
                     if (oldContent is Conjunction) {
-                        content = CompoundTerm.make(oldContent, componentList, memory)
+                        content = Util11.make(oldContent, componentList, memory)
                     } else if (oldContent is Implication || oldContent is Equivalence) {
                         content = Statement.make(oldContent as Statement, componentList[0], componentList[1], memory)
                     }
@@ -446,9 +446,9 @@ object StructuralRules {
                 newPred = ImageExt .make(product, predicate, i.toShort(), memory)
                 inheritance = Inheritance.make(newSubj, newPred, memory)
                 budget = if (truth == null) {
-                    compoundBackward(inheritance, memory)
+                    compoundBackward(inheritance!!, memory)
                 } else {
-                    compoundForward(truth, inheritance, memory)
+                    compoundForward(truth, inheritance!!, memory)
                 }
                 memory.singlePremiseTask(inheritance, truth, budget)
             }
@@ -465,9 +465,9 @@ object StructuralRules {
                 }
                 inheritance = Inheritance.make(newSubj, newPred, memory)
                 budget = if (truth == null) {
-                    compoundBackward(inheritance, memory)
+                    compoundBackward(inheritance!!, memory)
                 } else {
-                    compoundForward(truth, inheritance, memory)
+                    compoundForward(truth, inheritance!!, memory)
                 }
                 memory.singlePremiseTask(inheritance, truth, budget)
             }
@@ -497,9 +497,9 @@ object StructuralRules {
                 newPred = product.componentAt(i)
                 inheritance = Inheritance.make(newSubj, newPred, memory)
                 budget = if (truth == null) {
-                    compoundBackward(inheritance, memory)
+                    compoundBackward(inheritance!!, memory)
                 } else {
-                    compoundForward(truth, inheritance, memory)
+                    compoundForward(truth, inheritance!!, memory)
                 }
                 memory.singlePremiseTask(inheritance, truth, budget)
             }

@@ -62,27 +62,23 @@ public class Equivalence extends Statement {
     public static Equivalence make(Term subject, Term predicate, Memory memory) {  // to be extended to check if subject is Conjunction
         var subject1 = subject;
         var predicate1 = predicate;
-        if ((subject1 instanceof Implication) || (subject1 instanceof Equivalence)) {
-            return null;
+        if (!(subject1 instanceof Implication) && (!(subject1 instanceof Equivalence))) {
+            if ((!(predicate1 instanceof Implication)) && (!(predicate1 instanceof Equivalence)) && !invalidStatement(subject1, predicate1)) {
+                if (subject1.compareTo(predicate1) > 0) {
+                    var interm = subject1;
+                    subject1 = predicate1;
+                    predicate1 = interm;
+                }
+                var name = makeStatementName(subject1, Symbols.EQUIVALENCE_RELATION, predicate1);
+                var t = memory.nameToListedTerm(name);
+                if (t != null) {
+                    return (Equivalence) t;
+                }
+                var argument = argumentsToList(subject1, predicate1);
+                return new Equivalence(argument);
+            }
         }
-        if ((predicate1 instanceof Implication) || (predicate1 instanceof Equivalence)) {
-            return null;
-        }
-        if (invalidStatement(subject1, predicate1)) {
-            return null;
-        }
-        if (subject1.compareTo(predicate1) > 0) {
-            var interm = subject1;
-            subject1 = predicate1;
-            predicate1 = interm;
-        }
-        var name = makeStatementName(subject1, Symbols.EQUIVALENCE_RELATION, predicate1);
-        var t = memory.nameToListedTerm(name);
-        if (t != null) {
-            return (Equivalence) t;
-        }
-        var argument = argumentsToList(subject1, predicate1);
-        return new Equivalence(argument);
+        return null;
     }
 
     /**

@@ -99,24 +99,6 @@ public abstract class CompoundTerm extends Term {
     }
 
     /**
-     * Try to make a compound term from a template and a list of components
-     *
-     * @param compound   The template
-     * @param components The components
-     * @param memory     Reference to the memory
-     * @return A compound term or null
-     */
-    public static Term make(CompoundTerm compound ,  List<Term> components, Memory memory) {
-        if (compound instanceof ImageExt) {
-            return ImageExt.make(components, ((ImageExt) compound).getRelationIndex(), memory);
-        } else if (compound instanceof ImageInt) {
-            return ImageInt.make(components, ((ImageInt) compound).getRelationIndex(), memory);
-        } else {
-            return make(compound.operator(), components, memory);
-        }
-    }
-
-    /**
      * Try to make a compound term from an operator and a list of components
      * <p>
      * Called from StringParser
@@ -304,7 +286,7 @@ public abstract class CompoundTerm extends Term {
         } else {
             success = list.remove(t2);
         }
-        return (success ? make(t1, list, memory) : null);
+        return (success ? Util11. make(t1, list, memory) : null);
     }
 
     /**
@@ -330,7 +312,7 @@ public abstract class CompoundTerm extends Term {
                 }
             }
         }
-        return make(compound, list, memory);
+        return Util11.make(compound, list, memory);
     }
 
     /**

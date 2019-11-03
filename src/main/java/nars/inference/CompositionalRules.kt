@@ -333,13 +333,13 @@ object CompositionalRules {/* -------------------- intersections and differences
                 }
             }
         }
-        var state1: Statement? = Inheritance.make(term11, term12, memory)
-        var state2: Statement? = Inheritance.make(term21, term22, memory)
-        var content: Term? = Implication.make(state1, state2, memory)
-        var truth: TruthValue? = TruthFunctions.induction(truthT!!, truthB!!)
+        var state1: Statement = Inheritance.make(term11, term12, memory)!!
+        var state2: Statement = Inheritance.make(term21, term22, memory)!!
+        var content: Term = Implication.make(state1, state2, memory)!!
+        var truth: TruthValue = TruthFunctions.induction(truthT!!, truthB!!)
         var budget = compoundForward(truth, content!!, memory)
         memory.doublePremiseTask(content, truth, budget)
-        content = Implication.make(state2, state1, memory)
+        content = Implication.make(state2 as Term, state1 as Term, memory as Memory)!!
         truth = TruthFunctions.induction(truthB!!, truthT)
         budget = compoundForward(truth, content, memory)
         memory.doublePremiseTask(content, truth, budget)
@@ -349,11 +349,11 @@ object CompositionalRules {/* -------------------- intersections and differences
         memory.doublePremiseTask(content, truth, budget)
         val varDep = Variable("#varDep")
         if (index == 0) {
-            state1 = Inheritance.make(varDep, taskContent.predicate, memory)
-            state2 = Inheritance.make(varDep, beliefContent.predicate, memory)
+            state1 = Inheritance.make(varDep, taskContent.predicate, memory)!!
+            state2 = Inheritance.make(varDep, beliefContent.predicate, memory)!!
         } else {
-            state1 = Inheritance.make(taskContent.subject, varDep, memory)
-            state2 = Inheritance.make(beliefContent.subject, varDep, memory)
+            state1 = Inheritance.make(taskContent.subject, varDep, memory)!!
+            state2 = Inheritance.make(beliefContent.subject, varDep, memory)!!
         }
         content = Conjunction.make(state1, state2, memory)
         truth = TruthFunctions.intersection(truthT, truthB)
@@ -407,7 +407,7 @@ object CompositionalRules {/* -------------------- intersections and differences
         if (commonTerm2 != null) {
             substitute[commonTerm2] = Variable("\$varInd2")
         }
-        content = Implication.make(premise1, oldCompound, memory)
+        content = Implication.make(premise1, oldCompound, memory)!!
         content.applySubstitute(substitute)
         truth = if (premise1 == taskSentence.content) {
             TruthFunctions.induction(belief.truth!!, taskSentence.truth!!)
