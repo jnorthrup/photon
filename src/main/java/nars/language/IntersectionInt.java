@@ -126,6 +126,7 @@ public class IntersectionInt extends CompoundTerm {
      *
      * @return A new object, to be casted into a Conjunction
      */
+    @Override
     public Object clone() {
         return new IntersectionInt(name, ( List<Term>) cloneList(components), isConstant(), complexity);
     }
@@ -135,6 +136,7 @@ public class IntersectionInt extends CompoundTerm {
      *
      * @return the operator of the term
      */
+    @Override
     public String operator() {
         return Symbols.INTERSECTION_INT_OPERATOR;
     }
@@ -145,6 +147,7 @@ public class IntersectionInt extends CompoundTerm {
      * @return true for communitative
      */
 
+    @Override
     public boolean isCommutative() {
         return true;
     }

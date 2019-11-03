@@ -82,6 +82,7 @@ public class Similarity extends Statement {
      * @return A new object, to be casted into a Similarity
      */
 
+    @Override
     public Object clone() {
         return new Similarity(name, ( List<Term>) cloneList(components), isConstant(), complexity);
     }
@@ -92,6 +93,7 @@ public class Similarity extends Statement {
      * @return the operator of the term
      */
 
+    @Override
     public String operator() {
         return Symbols.SIMILARITY_RELATION;
     }
@@ -102,6 +104,7 @@ public class Similarity extends Statement {
      * @return true for commutative
      */
 
+    @Override
     public boolean isCommutative() {
         return true;
     }

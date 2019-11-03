@@ -141,6 +141,7 @@ public class Sentence implements Cloneable {
      * @return The clone
      */
 
+    @Override
     public Object clone() {
         if (truth == null) {
             return new Sentence((Term) content.clone(), punctuation, null, (Stamp) stamp.clone());

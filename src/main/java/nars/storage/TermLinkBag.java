@@ -43,6 +43,7 @@ public class TermLinkBag extends Bag<TermLink> {
      *
      * @return The capacity of TermLinkBag
      */
+    @Override
     protected int capacity() {
         return Parameters.TERM_LINK_BAG_SIZE;
     }
@@ -52,6 +53,7 @@ public class TermLinkBag extends Bag<TermLink> {
      *
      * @return The forget rate of TermLinkBag
      */
+    @Override
     protected int forgetRate() {
         return memory.getBeliefForgettingRate().get();
     }

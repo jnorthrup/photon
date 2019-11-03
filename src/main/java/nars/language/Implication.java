@@ -95,6 +95,7 @@ public class Implication extends Statement {
      *
      * @return A new object
      */
+    @Override
     public Object clone() {
         return new Implication(name, ( List<Term>) cloneList(components), isConstant(), complexity);
     }
@@ -104,6 +105,7 @@ public class Implication extends Statement {
      *
      * @return the operator of the term
      */
+    @Override
     public String operator() {
         return Symbols.IMPLICATION_RELATION;
     }

@@ -127,6 +127,7 @@ public class IntersectionExt extends CompoundTerm {
      *
      * @return A new object, to be casted into a IntersectionExt
      */
+    @Override
     public Object clone() {
         return new IntersectionExt(name, ( List<Term>) cloneList(components), isConstant(), complexity);
     }
@@ -136,6 +137,7 @@ public class IntersectionExt extends CompoundTerm {
      *
      * @return the operator of the term
      */
+    @Override
     public String operator() {
         return Symbols.INTERSECTION_EXT_OPERATOR;
     }
@@ -146,6 +148,7 @@ public class IntersectionExt extends CompoundTerm {
      * @return true for communitative
      */
 
+    @Override
     public boolean isCommutative() {
         return true;
     }

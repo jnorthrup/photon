@@ -57,6 +57,7 @@ public class ExperienceWriter implements OutputChannel {
      * @param lines The text to be displayed
      */
 
+    @Override
     public void nextOutput(List<String> lines) {
         if (outExp != null) {
             for (String line : lines) {

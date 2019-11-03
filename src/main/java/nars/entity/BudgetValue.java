@@ -89,6 +89,7 @@ public class BudgetValue implements BudgetTriple  {
      *
      * @return The current priority
      */
+    @Override
     public float getPriority() {
         return priority.floatValue();
     }
@@ -98,6 +99,7 @@ public class BudgetValue implements BudgetTriple  {
      *
      * @param v The new priority
      */
+    @Override
     public void setPriority(float v) {
         priority=v;
     }
@@ -107,6 +109,7 @@ public class BudgetValue implements BudgetTriple  {
      *
      * @param v The increasing percent
      */
+    @Override
     public void incPriority(float v) {
         priority=UtilityFunctions.or(priority.floatValue(), v);
     }
@@ -116,6 +119,7 @@ public class BudgetValue implements BudgetTriple  {
      *
      * @param v The decreasing percent
      */
+    @Override
     public void decPriority(float v) {
         priority=UtilityFunctions.and(priority.floatValue(), v);
     }
@@ -125,6 +129,7 @@ public class BudgetValue implements BudgetTriple  {
      *
      * @return The current durability
      */
+    @Override
     public float getDurability() {
         return durability.floatValue();
     }
@@ -134,6 +139,7 @@ public class BudgetValue implements BudgetTriple  {
      *
      * @param v The new durability
      */
+    @Override
     public void setDurability(float v) {
         durability=v;
     }
@@ -143,6 +149,7 @@ public class BudgetValue implements BudgetTriple  {
      *
      * @param v The increasing percent
      */
+    @Override
     public void incDurability(float v) {
         durability=UtilityFunctions.or(durability.floatValue(), v);
     }
@@ -152,6 +159,7 @@ public class BudgetValue implements BudgetTriple  {
      *
      * @param v The decreasing percent
      */
+    @Override
     public void decDurability(float v) {
         durability=UtilityFunctions.and(durability.floatValue(), v);
     }
@@ -161,6 +169,7 @@ public class BudgetValue implements BudgetTriple  {
      *
      * @return The current quality
      */
+    @Override
     public float getQuality() {
         return quality.floatValue();
     }
@@ -170,6 +179,7 @@ public class BudgetValue implements BudgetTriple  {
      *
      * @param v The new quality
      */
+    @Override
     public void setQuality(float v) {
         quality=v;
     }
@@ -180,6 +190,7 @@ public class BudgetValue implements BudgetTriple  {
      * @param that The other Budget
      */
 
+    @Override
     public void merge(BudgetTriple that) {
         BudgetFunctions.merge(this, that);
     }

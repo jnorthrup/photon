@@ -86,6 +86,7 @@ public class Product extends CompoundTerm {
      *
      * @return A new object, to be casted into an ImageExt
      */
+    @Override
     public Object clone() {
         return new Product(name, ( List<Term>) cloneList(components), isConstant(), complexity);
     }
@@ -95,6 +96,7 @@ public class Product extends CompoundTerm {
      *
      * @return the operator of the term
      */
+    @Override
     public String operator() {
         return Symbols.PRODUCT_OPERATOR;
     }

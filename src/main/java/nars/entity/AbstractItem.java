@@ -70,6 +70,7 @@ public abstract class AbstractItem implements BudgetTriple, Item {
      * @return Current key value
      */
 
+    @Override
     public String getKey() {
         return key;
     }
@@ -80,6 +81,7 @@ public abstract class AbstractItem implements BudgetTriple, Item {
      * @return Current BudgetValue
      */
 
+    @Override
     public BudgetValue getBudget() {
         return budget;
     }
@@ -90,6 +92,7 @@ public abstract class AbstractItem implements BudgetTriple, Item {
      * @return Current priority value
      */
 
+    @Override
     public float getPriority() {
         return budget.getPriority();
     }
@@ -100,6 +103,7 @@ public abstract class AbstractItem implements BudgetTriple, Item {
      * @param v Set a new priority value
      */
 
+    @Override
     public void setPriority(float v) {
         budget.setPriority(v);
     }
@@ -110,6 +114,7 @@ public abstract class AbstractItem implements BudgetTriple, Item {
      * @param v The amount of increase
      */
 
+    @Override
     public void incPriority(float v) {
         budget.incPriority(v);
     }
@@ -120,6 +125,7 @@ public abstract class AbstractItem implements BudgetTriple, Item {
      * @param v The amount of decrease
      */
 
+    @Override
     public void decPriority(float v) {
         budget.decPriority(v);
     }
@@ -130,6 +136,7 @@ public abstract class AbstractItem implements BudgetTriple, Item {
      * @return Current durability value
      */
 
+    @Override
     public float getDurability() {
         return budget.getDurability();
     }
@@ -140,6 +147,7 @@ public abstract class AbstractItem implements BudgetTriple, Item {
      * @param v The new durability value
      */
 
+    @Override
     public void setDurability(float v) {
         budget.setDurability(v);
     }
@@ -150,6 +158,7 @@ public abstract class AbstractItem implements BudgetTriple, Item {
      * @param v The amount of increase
      */
 
+    @Override
     public void incDurability(float v) {
         budget.incDurability(v);
     }
@@ -160,6 +169,7 @@ public abstract class AbstractItem implements BudgetTriple, Item {
      * @param v The amount of decrease
      */
 
+    @Override
     public void decDurability(float v) {
         budget.decDurability(v);
     }
@@ -170,6 +180,7 @@ public abstract class AbstractItem implements BudgetTriple, Item {
      * @return The quality value
      */
 
+    @Override
     public float getQuality() {
         return budget.getQuality();
     }
@@ -180,6 +191,7 @@ public abstract class AbstractItem implements BudgetTriple, Item {
      * @param v The new quality value
      */
 
+    @Override
     public void setQuality(float v) {
         budget.setQuality(v);
     }
@@ -189,6 +201,7 @@ public abstract class AbstractItem implements BudgetTriple, Item {
      *
      * @param that The AbstractItem to be merged
      */
+    @Override
     public void merge(BudgetTriple that) {
         budget.merge(that );
     }
@@ -209,11 +222,13 @@ public abstract class AbstractItem implements BudgetTriple, Item {
      * @return A simplified String representation of the content
      */
 
+    @Override
     public String toStringBrief() {
         return budget.toStringBrief() + " " + key;
     }
 
 
+    @Override
     public String toStringLong() {
         return toString();
     }

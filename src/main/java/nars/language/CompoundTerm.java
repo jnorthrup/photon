@@ -340,13 +340,6 @@ public abstract class CompoundTerm extends Term {
      */
     public abstract String operator();
 
-    /**
-     * Abstract clone method
-     *
-     * @return A clone of the compound term
-     */
-
-    public abstract Object clone();
 
     /* ----- utilities for other fields ----- */
 
@@ -377,6 +370,7 @@ public abstract class CompoundTerm extends Term {
      * as compareTo as defined on Strings
      */
 
+    @Override
     public int compareTo(Term that) {
         if (that instanceof CompoundTerm) {
             var t = (CompoundTerm) that;
@@ -411,6 +405,7 @@ public abstract class CompoundTerm extends Term {
      * @return the complexity value
      */
 
+    @Override
     public int getComplexity() {
         return complexity;
     }
@@ -421,6 +416,7 @@ public abstract class CompoundTerm extends Term {
      * @return if the term is a constant
      */
 
+    @Override
     public boolean isConstant() {
         return isConstant;
     }
@@ -502,6 +498,7 @@ public abstract class CompoundTerm extends Term {
      * @return Whether the target is in the current term
      */
 
+    @Override
     public boolean containTerm(Term target) {
         for (Term term : components) {
             if (term.containTerm(target)) {
@@ -541,6 +538,7 @@ public abstract class CompoundTerm extends Term {
      * Rename the variables in the compound, called from Sentence constructors
      */
 
+    @Override
     public void renameVariables() {
         if (containVar()) {
             renameVariables(new HashMap<>());

@@ -91,6 +91,7 @@ public class Equivalence extends Statement {
      * @return A new object
      */
 
+    @Override
     public Object clone() {
         return new Equivalence(name, ( List<Term>) cloneList(components), isConstant(), complexity);
     }
@@ -101,6 +102,7 @@ public class Equivalence extends Statement {
      * @return the operator of the term
      */
 
+    @Override
     public String operator() {
         return Symbols.EQUIVALENCE_RELATION;
     }
@@ -111,6 +113,7 @@ public class Equivalence extends Statement {
      * @return true for commutative
      */
 
+    @Override
     public boolean isCommutative() {
         return true;
     }

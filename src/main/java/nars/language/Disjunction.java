@@ -117,6 +117,7 @@ public class Disjunction extends CompoundTerm {
      * @return A new object
      */
 
+    @Override
     public Object clone() {
         return new Disjunction(name, ( List<Term>) cloneList(components), isConstant(), complexity);
     }
@@ -127,6 +128,7 @@ public class Disjunction extends CompoundTerm {
      * @return the operator of the term
      */
 
+    @Override
     public String operator() {
         return Symbols.DISJUNCTION_OPERATOR;
     }
@@ -137,6 +139,7 @@ public class Disjunction extends CompoundTerm {
      * @return true for commutative
      */
 
+    @Override
     public boolean isCommutative() {
         return true;
     }

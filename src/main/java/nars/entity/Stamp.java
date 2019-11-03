@@ -160,6 +160,7 @@ public class Stamp implements Cloneable {
      * @return The cloned stamp
      */
 
+    @Override
     public Object clone() {
         return new Stamp(this);
     }

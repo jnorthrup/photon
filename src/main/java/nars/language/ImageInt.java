@@ -154,6 +154,7 @@ public class ImageInt extends CompoundTerm {
      *
      * @return A new object, to be casted into an ImageInt
      */
+    @Override
     public Object clone() {
         return new ImageInt(name, ( List<Term>) cloneList(components), isConstant(), complexity, relationIndex);
     }
@@ -194,6 +195,7 @@ public class ImageInt extends CompoundTerm {
      * @return the name of the term
      */
 
+    @Override
     public String makeName() {
         return makeImageName(Symbols.IMAGE_INT_OPERATOR, components, relationIndex);
     }
@@ -203,6 +205,7 @@ public class ImageInt extends CompoundTerm {
      *
      * @return the operator of the term
      */
+    @Override
     public String operator() {
         return Symbols.IMAGE_INT_OPERATOR;
     }

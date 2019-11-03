@@ -90,6 +90,7 @@ public class Negation extends CompoundTerm {
      * @return A new object
      */
 
+    @Override
     public Object clone() {
         return new Negation(name, ( List<Term>) cloneList(components), isConstant(), complexity);
     }
@@ -100,6 +101,7 @@ public class Negation extends CompoundTerm {
      * @return the operator of the term
      */
 
+    @Override
     public String operator() {
         return Symbols.NEGATION_OPERATOR;
     }

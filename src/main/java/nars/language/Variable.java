@@ -227,6 +227,7 @@ public class Variable extends Term {
      * @return The cloned Variable
      */
 
+    @Override
     public Object clone() {
         return new Variable(name);
     }
@@ -246,6 +247,7 @@ public class Variable extends Term {
      * @return false
      */
 
+    @Override
     public boolean isConstant() {
         return false;
     }
@@ -257,6 +259,7 @@ public class Variable extends Term {
      * @return The complexity of the term, an integer
      */
 
+    @Override
     public int getComplexity() {
         return 0;
     }
@@ -268,6 +271,7 @@ public class Variable extends Term {
      * @return The same as compareTo as defined on Strings
      */
 
+    @Override
     public final int compareTo(Term that) {
         return (that instanceof Variable) ? name.compareTo(that.getName()) : -1;
     }

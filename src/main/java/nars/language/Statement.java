@@ -211,6 +211,7 @@ public abstract class Statement extends CompoundTerm {
      * @return the nameStr of the term
      */
 
+    @Override
     protected String makeName() {
         return makeStatementName(getSubject(), operator(), getPredicate());
     }

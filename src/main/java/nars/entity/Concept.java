@@ -373,6 +373,7 @@ public final class Concept extends AbstractItem {
      * called from {@link NARSBatch}
      */
 
+    @Override
     public String toStringLong() {
         var res = toStringBrief() + " " + key
                 + toStringIfNotNull(termLinks, "termLinks")
@@ -396,6 +397,7 @@ public final class Concept extends AbstractItem {
      * @return The quality value
      */
 
+    @Override
     public float getQuality() {
         var linkPriority = termLinks.averagePriority();
         var termComplexityFactor = 1.0f / term.getComplexity();
@@ -490,23 +492,28 @@ public final class Concept extends AbstractItem {
     class NullEntityObserver implements EntityObserver {
 
 
+        @Override
         public void post(String str) {
         }
 
 
+        @Override
         public BagObserver<TermLink> createBagObserver() {
             return new NullBagObserver<>();
         }
 
 
+        @Override
         public void startPlay(Concept concept, boolean showLinks) {
         }
 
 
+        @Override
         public void stop() {
         }
 
 
+        @Override
         public void refresh(String message) {
         }
     }

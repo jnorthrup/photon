@@ -67,6 +67,7 @@ public class Term implements Cloneable, Comparable<Term> {
      * @return The new Term
      */
 
+    @Override
     public Object clone() {
         return new Term(name);
     }
@@ -124,6 +125,7 @@ public class Term implements Cloneable, Comparable<Term> {
      * @return The same as compareTo as defined on Strings
      */
 
+    @Override
     public int compareTo(Term that) {
         if (that instanceof CompoundTerm) {
             return -1;

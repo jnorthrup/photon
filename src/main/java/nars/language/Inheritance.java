@@ -78,6 +78,7 @@ public class Inheritance extends Statement {
      *
      * @return A new object, to be casted into a SetExt
      */
+    @Override
     public Object clone() {
         return new Inheritance(name, ( List<Term>) cloneList(components), isConstant, complexity);
     }
@@ -87,6 +88,7 @@ public class Inheritance extends Statement {
      *
      * @return the operator of the term
      */
+    @Override
     public String operator() {
         return Symbols.INHERITANCE_RELATION;
     }

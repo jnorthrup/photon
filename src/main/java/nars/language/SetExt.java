@@ -101,6 +101,7 @@ public class SetExt extends CompoundTerm {
      *
      * @return A new object, to be casted into a SetExt
      */
+    @Override
     public Object clone() {
         return new SetExt(name, ( List<Term>) cloneList(components), isConstant(), complexity);
     }
@@ -110,6 +111,7 @@ public class SetExt extends CompoundTerm {
      *
      * @return the operator of the term
      */
+    @Override
     public String operator() {
         return "" + Symbols.SET_EXT_OPENER;
     }
@@ -120,6 +122,7 @@ public class SetExt extends CompoundTerm {
      * @return true for communitative
      */
 
+    @Override
     public boolean isCommutative() {
         return true;
     }
@@ -130,6 +133,7 @@ public class SetExt extends CompoundTerm {
      * @return true for communitative
      */
 
+    @Override
     public String makeName() {
         return makeSetName(Symbols.SET_EXT_OPENER, components, Symbols.SET_EXT_CLOSER);
     }

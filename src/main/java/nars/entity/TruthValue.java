@@ -162,6 +162,7 @@ public class TruthValue implements Cloneable { // implements Cloneable {
     }
 
 
+    @Override
     public Object clone() {
         return new TruthValue(getFrequency(), getConfidence(), getAnalytic());
     }

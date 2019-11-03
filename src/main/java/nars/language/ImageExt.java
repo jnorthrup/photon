@@ -150,6 +150,7 @@ public class ImageExt extends CompoundTerm {
      *
      * @return A new object, to be casted into an ImageExt
      */
+    @Override
     public Object clone() {
         return new ImageExt(name, ( List<Term>) cloneList(components), isConstant(), complexity, relationIndex);
     }
@@ -190,6 +191,7 @@ public class ImageExt extends CompoundTerm {
      * @return the name of the term
      */
 
+    @Override
     public String makeName() {
         return makeImageName(Symbols.IMAGE_EXT_OPERATOR, components, relationIndex);
     }
@@ -199,6 +201,7 @@ public class ImageExt extends CompoundTerm {
      *
      * @return the operator of the term
      */
+    @Override
     public String operator() {
         return Symbols.IMAGE_EXT_OPERATOR;
     }
