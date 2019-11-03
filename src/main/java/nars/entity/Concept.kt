@@ -122,7 +122,7 @@ class Concept(
             val newStamp = judg.stamp
             val oldStamp = oldBelief.stamp
             if (newStamp == oldStamp) {
-                if (task.parentTask.sentence.isJudgment) {
+                if (task.parentTask!!.sentence.isJudgment) {
                     task.budget.decPriority(0f)    // duplicated task
                 }   // else: activated belief
 
