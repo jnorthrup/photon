@@ -209,7 +209,7 @@ public class BudgetValue implements BudgetTriple  {
      * <p>
      * to be revised to depend on how busy the system is
      *
-     * @return The decision on whether to process the AbstractItem
+     * @return The decision on whether to process the ImmutableItemIdentity
      */
      public boolean aboveThreshold() {
         return (summary() >= Parameters.BUDGET_THRESHOLD);

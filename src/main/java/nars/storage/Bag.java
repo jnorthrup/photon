@@ -20,7 +20,9 @@
  */
 package nars.storage;
 
-import nars.entity.AbstractItem;
+import nars.entity.ImmutableItemIdentity;
+import nars.entity.ItemIdentity;
+import nars.entity.Task;
 import nars.inference.BudgetFunctions;
 import nars.main_nogui.Parameters;
 
@@ -33,7 +35,7 @@ import java.util.List;
  * A Bag is a storage with a constant capacity and maintains an internal
  * priority distribution for retrieval.
  * <p>
- * Each entity in a bag must extend AbstractItem, which has a BudgetValue and a key.
+ * Each entity in a bag must extend ImmutableItemIdentity, which has a BudgetValue and a key.
  * <p>
  * A name table is used to merge duplicate items that have the same key.
  * <p>
@@ -41,9 +43,9 @@ import java.util.List;
  * management, and below, space management. Differences: (1) level selection vs.
  * item selection, (2) decay rate
  *
- * @param <E> The type of the AbstractItem in the Bag
+ * @param <E> The type of the ImmutableItemIdentity in the Bag
  */
-public abstract class Bag<E extends AbstractItem> {
+public abstract class Bag<E extends ItemIdentity> {
 
     /**
      * priority levels
@@ -97,7 +99,7 @@ public abstract class Bag<E extends AbstractItem> {
      * maximum number of items to be taken out at current level
      */
     private int currentCounter;
-    private BagObserver<E> bagObserver = new NullBagObserver<>();
+    private BagObserver<E> bagObserver = new NullBagObserver< >();
     /**
      * The display level; initialized at lowest
      */
@@ -171,20 +173,20 @@ public abstract class Bag<E extends AbstractItem> {
 
 
     /**
-     * Get an AbstractItem by key
+     * Get an ImmutableItemIdentity by key
      *
-     * @param key The key of the AbstractItem
-     * @return The AbstractItem with the given key
+     * @param key The key of the ImmutableItemIdentity
+     * @return The ImmutableItemIdentity with the given key
      */
     public E get(String key) {
         return nameTable.get(key);
     }
 
     /**
-     * Add a new AbstractItem into the Bag
+     * Add a new ImmutableItemIdentity into the Bag
      *
-     * @param newItem The new AbstractItem
-     * @return Whether the new AbstractItem is added into the Bag
+     * @param newItem The new ImmutableItemIdentity
+     * @return Whether the new ImmutableItemIdentity is added into the Bag
      */
     public boolean putIn(E newItem) {
         var newKey = newItem.getKey();
@@ -208,8 +210,8 @@ public abstract class Bag<E extends AbstractItem> {
      * <p>
      * The only place where the forgetting rate is applied
      *
-     * @param oldItem The AbstractItem to put back
-     * @return Whether the new AbstractItem is added into the Bag
+     * @param oldItem The ImmutableItemIdentity to put back
+     * @return Whether the new ImmutableItemIdentity is added into the Bag
      */
     public boolean putBack(E oldItem) {
         BudgetFunctions.forget(oldItem.getBudget(), forgetRate(), RELATIVE_THRESHOLD);
@@ -217,10 +219,10 @@ public abstract class Bag<E extends AbstractItem> {
     }
 
     /**
-     * Choose an AbstractItem according to priority distribution and take it out of the
+     * Choose an ImmutableItemIdentity according to priority distribution and take it out of the
      * Bag
      *
-     * @return The selected AbstractItem
+     * @return The selected ImmutableItemIdentity
      */
     public E takeOut() {
         if (nameTable.isEmpty()) { // empty bag
@@ -250,7 +252,7 @@ public abstract class Bag<E extends AbstractItem> {
      * Pick an item by key, then remove it from the bag
      *
      * @param key The given key
-     * @return The AbstractItem with the key
+     * @return The ImmutableItemIdentity with the key
      */
     public E pickOut(String key) {
         var picked = nameTable.get(key);
@@ -274,7 +276,7 @@ public abstract class Bag<E extends AbstractItem> {
     /**
      * Decide the put-in level according to priority
      *
-     * @param item The AbstractItem to put in
+     * @param item The ImmutableItemIdentity to put in
      * @return The put-in level
      */
     private int getLevel(E item) {
@@ -286,8 +288,8 @@ public abstract class Bag<E extends AbstractItem> {
     /**
      * Insert an item into the itemTable, and return the overflow
      *
-     * @param newItem The AbstractItem to put in
-     * @return The overflow AbstractItem
+     * @param newItem The ImmutableItemIdentity to put in
+     * @return The overflow ImmutableItemIdentity
      */
     private E intoBase(E newItem) {
         E oldItem = null;
@@ -313,7 +315,7 @@ public abstract class Bag<E extends AbstractItem> {
      * Take out the first or last E in a level from the itemTable
      *
      * @param level The current level
-     * @return The first AbstractItem
+     * @return The first ImmutableItemIdentity
      */
     private E takeOutFirst(int level) {
         var selected = itemTable.get(level).get(0);
@@ -326,7 +328,7 @@ public abstract class Bag<E extends AbstractItem> {
     /**
      * Remove an item from itemTable, then adjust mass
      *
-     * @param oldItem The AbstractItem to be removed
+     * @param oldItem The ImmutableItemIdentity to be removed
      */
     protected void outOfBase(E oldItem) {
         var level = getLevel(oldItem);

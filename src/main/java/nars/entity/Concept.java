@@ -42,7 +42,7 @@ import java.util.Optional;
  * concept are those in a ConceptBag. All other access go through the Term that
  * names the concept.
  */
-public final class Concept extends AbstractItem {
+public final class Concept extends ImmutableItemIdentity {
 
     /**
      * The term is the unique ID of the concept
@@ -363,9 +363,9 @@ public final class Concept extends AbstractItem {
 
     public String toString() {  // called from concept bag
         if (NARSBatch.isStandAlone()) {
-            return (super.toStringBrief() + " " + key);
+            return (super.toStringBrief() + " " + getKey());
         } else {
-            return key;
+            return getKey();
         }
     }
 
@@ -375,7 +375,7 @@ public final class Concept extends AbstractItem {
 
     @Override
     public String toStringLong() {
-        var res = toStringBrief() + " " + key
+        var res = toStringBrief() + " " + getKey()
                 + toStringIfNotNull(termLinks, "termLinks")
                 + toStringIfNotNull(taskLinks, "taskLinks");
         res += toStringIfNotNull(null, "questions");

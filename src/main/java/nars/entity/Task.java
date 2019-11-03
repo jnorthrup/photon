@@ -21,11 +21,12 @@
 package nars.entity;
 
 import nars.language.Term;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * A task to be processed, consists of a Sentence and a BudgetValue
  */
-public class Task extends AbstractItem {
+public class Task extends  ItemIdentity {
 
     /**
      * The sentence of the Task
@@ -51,9 +52,8 @@ public class Task extends AbstractItem {
      * @param b The budget
      */
     public Task(Sentence s, BudgetValue b) {
-        super(s.toKey(), b); // change to toKey()
+        super( b);
         sentence = s;
-        key = sentence.toKey();
     }
 
     /**
@@ -135,8 +135,8 @@ public class Task extends AbstractItem {
      * @param that The other Task
      */
 
-    public void merge(AbstractItem that) {
-        if (getCreationTime() >= ((Task) that).getCreationTime()) {
+    public void merge(Task that) {
+        if (getCreationTime() >= that.getCreationTime()) {
             super.merge(that);
         } else {
             that.merge(this);
@@ -200,5 +200,11 @@ public class Task extends AbstractItem {
             s.append("  \n solution: ").append(bestSolution.toStringBrief());
         }
         return s.toString();
+    }
+
+    @NotNull
+    @Override
+    public String getKey() {
+        return sentence.toKey();
     }
 }

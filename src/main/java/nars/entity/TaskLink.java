@@ -20,7 +20,6 @@
  */
 package nars.entity;
 
-import nars.language.Term;
 import nars.main_nogui.Parameters;
 
 /**
@@ -42,11 +41,11 @@ public class TaskLink extends TermLink {
     /**
      * Remember the TermLinks that has been used recently with this TaskLink
      */
-    private String recordedLinks[];
+    private String[] recordedLinks;
     /**
      * Remember the time when each TermLink is used with this TaskLink
      */
-    private long recordingTime[];
+    private long[] recordingTime;
 
     /**
      * Constructor
@@ -70,8 +69,10 @@ public class TaskLink extends TermLink {
         recordedLinks = new String[Parameters.TERM_LINK_RECORD_LENGTH];
         recordingTime = new long[Parameters.TERM_LINK_RECORD_LENGTH];
         counter = 0;
-        setKey();   // as defined in TermLink
-        key += t.getKey();
+    }
+
+    public String getKey() {
+        return super.getKey() + targetTask.getKey();
     }
 
     /**

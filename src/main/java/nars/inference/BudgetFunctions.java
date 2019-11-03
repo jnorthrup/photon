@@ -272,7 +272,7 @@ public final class BudgetFunctions extends UtilityFunctions {
      * @return Budget of the conclusion task
      */
     private static BudgetValue budgetInference(float qual, int complexity, Memory memory) {
-        AbstractItem t = memory.currentTaskLink;
+        BudgetTriple t = memory.currentTaskLink;
         if (t == null) {
             t = memory.currentTask;
         }

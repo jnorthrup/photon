@@ -36,7 +36,7 @@ import org.jetbrains.annotations.Nullable;
  * <p>
  * This class is mainly used in inference.RuleTable to dispatch premises to inference rules
  */
-public class TermLink extends AbstractItem {
+public class TermLink extends   ItemIdentity {
     /**
      * At C, point to C; TaskLink only
      */
@@ -69,6 +69,7 @@ public class TermLink extends AbstractItem {
      * At C, point to <(*, C, B) --> A>; TaskLink only
      */
     public static final short TRANSFORM = 8;
+    private String key = null;
     /**
      * The type of link, one of the above
      */
@@ -118,7 +119,8 @@ public class TermLink extends AbstractItem {
      * @param v The budget value of the TaskLink
      */
     protected TermLink(String s, BudgetValue v) {
-        super(s, v);
+        super(  v);
+        key=s ;
     }
 
     /**
@@ -131,21 +133,22 @@ public class TermLink extends AbstractItem {
      * @param v        Budget value of the link
      */
     public TermLink(Term t, TermLink template, BudgetValue v) {
-        super(t.getName(), v);
+        super(  v);
         target = t;
         type = template.getType();
         if (template.getTarget().equals(t)) {
             type--;     // point to component
         }
         index = template.getIndices();
-        setKey();
+//        setKey();
     }
 
     /**
      * Set the key of the link
      */
-    protected final void setKey() {
-        String at1, at2;
+    public   String getKey() {
+        if(this.key!=null)return key;
+        String key,at1, at2;
         if ((type % 2) == 1) {  // to component
             at1 = Symbols.TO_COMPONENT_1;
             at2 = Symbols.TO_COMPONENT_2;
@@ -163,6 +166,7 @@ public class TermLink extends AbstractItem {
         if (target != null) {
             key += target;
         }
+        return key;
     }
 
     /**

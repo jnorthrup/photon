@@ -221,7 +221,7 @@ public class Memory {
      */
     public float getConceptActivation(Term t) {
         var c = termToConcept(t);
-        return Optional.ofNullable(c).map(AbstractItem::getPriority).orElse(0f);
+        return Optional.ofNullable(c).map(ImmutableItemIdentity::getPriority).orElse(0f);
     }
 
     /* ---------- adjustment functions ---------- */
@@ -471,18 +471,6 @@ public class Memory {
     /* ---------- display ---------- */
 
     /**
-     * Display new tasks, called from MainWindow. see
-     * {@link #conceptsStartPlay(BagObserver, String)}
-     *
-     * @param bagObserver
-     * @param s           the window title
-     */
-    public void taskBuffersStartPlay(BagObserver<Task> bagObserver, String s) {
-        bagObserver.setBag(novelTasks);
-        novelTasks.addBagObserver(bagObserver, s);
-    }
-
-    /**
      * Display input/output sentence in the output channels. The only place to
      * add Objects into exportStrings. Currently only Strings are added, though
      * in the future there can be outgoing Tasks; also if exportStrings is empty
@@ -522,8 +510,8 @@ public class Memory {
         return toStringLongIfNotNull(concepts, "concepts")
                 + toStringLongIfNotNull(novelTasks, "novelTasks")
                 + toStringIfNotNull(newTasks, "newTasks")
-                + toStringLongIfNotNull(currentTask, "currentTask")
-                + toStringLongIfNotNull(currentBeliefLink, "currentBeliefLink")
+                + toStringLongIfNotNull((ItemIdentity)currentTask, "currentTask")
+                + toStringLongIfNotNull((ItemIdentity)currentBeliefLink, "currentBeliefLink")
                 + toStringIfNotNull(currentBelief, "currentBelief");
     }
 
@@ -532,7 +520,7 @@ public class Memory {
                 + bag.toStringLong()).orElse("");
     }
 
-    private String toStringLongIfNotNull(AbstractItem item, String title) {
+    private String toStringLongIfNotNull(ItemIdentity item, String title) {
         return Optional.ofNullable(item).map(item1 -> "\n " + title + ":\n"
                 + item1.toStringLong()).orElse("");
     }

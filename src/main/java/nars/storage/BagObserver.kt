@@ -1,11 +1,13 @@
 package nars.storage
 
-import nars.entity.AbstractItem
+import nars.entity.ImmutableItemIdentity
+import nars.entity.ItemIdentity
+import nars.entity.Task
 
 /**
  * Bag Observer; similar to Observer design pattern, except that here we have a single observer
  */
-interface BagObserver<BagType : AbstractItem?> {
+interface BagObserver<BagType : ItemIdentity?> {
     /**
      * Set a name for this observer
      */
