@@ -600,11 +600,13 @@ object StructuralRules {
      * @param memory    Reference to the memory
      */
     internal fun contraposition(statement: Statement, memory: Memory) {
-        val subj: Term? = statement.subject
-        val pred: Term? = statement.predicate
+        val subj: Term  = statement.subject
+        val pred: Term  = statement.predicate
         val task: Task = memory.currentTask
         val sentence = task.sentence
-        val content: Term? = Statement.make(statement, Negation.make(pred, memory), Negation.make(subj, memory), memory)
+        val term = Negation.make(pred, memory) as Term
+        val make = Negation.make(subj, memory)
+        val content: Term? = Statement.make(statement, term, make!!, memory)as Term
         var truth = sentence.truth
         val budget: BudgetValue
         if (sentence.isQuestion) {
