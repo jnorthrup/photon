@@ -10,8 +10,4 @@ interface BudgetTriple {
     var quality: Float
     fun merge(that: BudgetTriple?)
 
-//    float summary();
-//
-//    boolean aboveThreshold();
-
 }
