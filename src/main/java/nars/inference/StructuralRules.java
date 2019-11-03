@@ -20,6 +20,7 @@
  */
 package nars.inference;
 
+import kotlin.jvm.JvmStatic;
 import nars.entity.BudgetValue;
 import nars.entity.TruthValue;
 import nars.language.*;
@@ -561,7 +562,7 @@ public final class StructuralRules {
      *
      * @param content The premise
      * @param memory  Reference to the memory
-     */
+     */@JvmStatic
     public static void transformNegation(Term content, Memory memory) {
         var task = memory.currentTask;
         var sentence = task.getSentence();

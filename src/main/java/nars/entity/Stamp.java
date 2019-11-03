@@ -20,6 +20,7 @@
  */
 package nars.entity;
 
+import kotlin.jvm.JvmStatic;
 import nars.io.Symbols;
 import nars.main_nogui.Parameters;
 import nars.main_nogui.ReasonerBatch;
@@ -149,7 +150,7 @@ public class Stamp implements Cloneable {
 
     /**
      * Initialize the stamp mechanism of the system, called in Reasoner
-     */
+     */@JvmStatic
     public static void init() {
         currentSerial = 0;
     }

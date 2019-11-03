@@ -20,6 +20,7 @@
  */
 package nars.inference;
 
+import kotlin.jvm.JvmStatic;
 import nars.entity.BudgetValue;
 import nars.entity.Sentence;
 import nars.entity.Task;
@@ -50,7 +51,7 @@ public class LocalRules {
      * @param task   The task
      * @param belief The belief
      * @param memory Reference to the memory
-     */
+     */@JvmStatic
     public static void match(Task task, Sentence belief, Memory memory) {
         var sentence = (Sentence) task.getSentence().clone();
         if (sentence.isJudgment()) {
@@ -82,7 +83,7 @@ public class LocalRules {
      * @param oldBelief       The previous belief with the same content
      * @param feedbackToLinks Whether to send feedback to the links
      * @param memory          Reference to the memory
-     */
+     */@JvmStatic
     public static void revision(Sentence newBelief, Sentence oldBelief, boolean feedbackToLinks, Memory memory) {
         var newTruth = newBelief.getTruth();
         var oldTruth = oldBelief.getTruth();
@@ -98,7 +99,7 @@ public class LocalRules {
      * @param belief The proposed answer
      * @param task   The task to be processed
      * @param memory Reference to the memory
-     */
+     */@JvmStatic
     public static void trySolution(Sentence belief, Task task, Memory memory) {
         var problem = task.getSentence();
         var oldBest = task.getBestSolution();
@@ -144,7 +145,7 @@ public class LocalRules {
      * The task and belief match reversely
      *
      * @param memory Reference to the memory
-     */
+     */@JvmStatic
     public static void matchReverse(Memory memory) {
         var task = memory.currentTask;
         var belief = memory.currentBelief;
@@ -163,7 +164,7 @@ public class LocalRules {
      * @param sym    A Similarity/Equivalence sentence
      * @param figure location of the shared term
      * @param memory Reference to the memory
-     */
+     */@JvmStatic
     public static void matchAsymSym(Sentence asym, Sentence sym, int figure, Memory memory) {
         if (memory.currentTask.getSentence().isJudgment()) {
             inferToAsym((Sentence) asym, (Sentence) sym, memory);

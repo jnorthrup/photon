@@ -20,6 +20,7 @@
  */
 package nars.inference;
 
+import kotlin.jvm.JvmStatic;
 import nars.entity.*;
 import nars.language.Term;
 import nars.storage.Memory;
@@ -146,7 +147,7 @@ public final class BudgetFunctions extends UtilityFunctions {
      *
      * @param concept The concept
      * @param budget  The budget for the new item
-     */
+     */@JvmStatic
     public static void activate(Concept concept, BudgetValue budget) {
         var oldPri = concept.getPriority();
         var priority = or(oldPri, budget.getPriority());
@@ -171,7 +172,7 @@ public final class BudgetFunctions extends UtilityFunctions {
      * @param budget            The previous budget value
      * @param forgetRate        The budget for the new item
      * @param relativeThreshold The relative threshold of the bag
-     */
+     */@JvmStatic
     public static void forget(BudgetValue budget, float forgetRate, float relativeThreshold) {
         double quality = budget.getQuality() * relativeThreshold;      // re-scaled quality
         var p = budget.getPriority() - quality;                     // priority above quality
@@ -186,7 +187,7 @@ public final class BudgetFunctions extends UtilityFunctions {
      * except in budget values
      *  @param baseValue   The budget value to be modified
      * @param adjustValue The budget doing the adjusting
-     */
+     */@JvmStatic
     public static void merge(BudgetValue baseValue, BudgetTriple adjustValue) {
         baseValue.setPriority(Math.max(baseValue.getPriority(), adjustValue.getPriority()));
         baseValue.setDurability(Math.max(baseValue.getDurability(), adjustValue.getDurability()));

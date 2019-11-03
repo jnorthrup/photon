@@ -18,6 +18,7 @@
  */
 package nars.main_nogui;
 
+import kotlin.jvm.JvmStatic;
 import nars.io.ExperienceReader;
 import nars.io.ExperienceWriter;
 
@@ -58,7 +59,7 @@ public class NARSBatch {
      * {@link #run()} methods.
      *
      * @param args optional argument used : one input file
-     */
+     */@JvmStatic
     public static void main(String args[]) {
         var nars = new NARSBatch();
         setStandAlone(true);
@@ -78,8 +79,7 @@ public class NARSBatch {
      */
     public static boolean isStandAlone() {
         return standAlone;
-    }
-
+    }@JvmStatic
     public static void setStandAlone(boolean standAlone) {
         NARSBatch.standAlone = standAlone;
     }

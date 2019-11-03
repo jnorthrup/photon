@@ -20,6 +20,7 @@
  */
 package nars.inference;
 
+import kotlin.jvm.JvmStatic;
 import nars.entity.*;
 import nars.io.Symbols;
 import nars.language.*;
@@ -38,7 +39,7 @@ public class RuleTables {
      * @param tLink  The selected TaskLink, which will provide a task
      * @param bLink  The selected TermLink, which may provide a belief
      * @param memory Reference to the memory
-     */
+     */@JvmStatic
     public static void reason(TaskLink tLink, TermLink bLink, Memory memory) {
         var task = memory.currentTask;
         var taskSentence = task.getSentence();
@@ -558,7 +559,7 @@ public class RuleTables {
      *
      * @param tLink  The task link
      * @param memory Reference to the memory
-     */
+     */@JvmStatic
     public static void transformTask(TaskLink tLink, Memory memory) {
         var content = (CompoundTerm) memory.currentTask.getContent().clone();
         var indices = tLink.getIndices();
