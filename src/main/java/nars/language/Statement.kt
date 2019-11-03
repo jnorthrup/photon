@@ -98,31 +98,21 @@ abstract class Statement : CompoundTerm {
          * @param memory    Reference to the memory
          * @return The Statement built
          */
-      @JvmStatic  fun make(relation: String, subject: Term, predicate: Term, memory: Memory?): Statement? {
-            if (invalidStatement(subject, predicate)) {
-                return null
+      @JvmStatic  fun make(relation: String, subject: Term, predicate: Term, memory: Memory ): Statement? {
+            if (!invalidStatement(subject, predicate)) {
+                when (relation) {
+                    Symbols.INHERITANCE_RELATION -> return Inheritance.make(subject, predicate, memory)
+                    Symbols.SIMILARITY_RELATION -> return Similarity.make(subject, predicate, memory)
+                    Symbols.INSTANCE_RELATION -> return Instance.make(subject, predicate, memory)
+                    Symbols.PROPERTY_RELATION -> return Property.make(subject, predicate, memory)
+                    Symbols.INSTANCE_PROPERTY_RELATION -> return InstanceProperty.make(subject, predicate, memory)
+                    Symbols.IMPLICATION_RELATION -> return Implication.make(subject, predicate, memory)
+                    else -> return if (relation == Symbols.EQUIVALENCE_RELATION) {
+                        Equivalence.make(subject, predicate, memory)
+                    } else null
+                }
             }
-            if (relation == Symbols.INHERITANCE_RELATION) {
-                return Inheritance.make(subject, predicate, memory)
-            }
-            if (relation == Symbols.SIMILARITY_RELATION) {
-                return Similarity.make(subject, predicate, memory)
-            }
-            if (relation == Symbols.INSTANCE_RELATION) {
-                return Instance.make(subject, predicate, memory)
-            }
-            if (relation == Symbols.PROPERTY_RELATION) {
-                return Property.make(subject, predicate, memory)
-            }
-            if (relation == Symbols.INSTANCE_PROPERTY_RELATION) {
-                return InstanceProperty.make(subject, predicate, memory)
-            }
-            if (relation == Symbols.IMPLICATION_RELATION) {
-                return Implication.make(subject, predicate, memory)
-            }
-            return if (relation == Symbols.EQUIVALENCE_RELATION) {
-                Equivalence.make(subject, predicate, memory)
-            } else null
+            return null
         }
 
         /**
@@ -158,7 +148,7 @@ abstract class Statement : CompoundTerm {
          * @param memory    Reference to the memory
          * @return The Statement built
          */
-     @JvmStatic       fun makeSym(statement: Statement?, subj: Term?, pred: Term?, memory: Memory?): Statement? {
+     @JvmStatic       fun makeSym(statement: Statement, subj: Term, pred: Term, memory: Memory): Statement? {
             if (statement is Inheritance) {
                 return Similarity.make(subj, pred, memory)
             }

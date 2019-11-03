@@ -303,8 +303,8 @@ object StructuralRules {
                 return
             }
         }
-        val sub: Term? = statement.subject
-        val pre: Term? = statement.predicate
+        val sub: Term  = statement.subject
+        val pre: Term  = statement.predicate
         val content: Term?
         content = if (statement is Inheritance) {
             Similarity.make(sub, pre, memory)

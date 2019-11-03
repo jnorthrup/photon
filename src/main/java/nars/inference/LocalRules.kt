@@ -198,8 +198,8 @@ object LocalRules {/* -------------------- same contents -------------------- */
     </P></S> */
     private fun inferToSym(judgment1: Sentence, judgment2: Sentence?, memory: Memory) {
         val s1 = judgment1.content as Statement
-        val t1: Term? = s1.subject
-        val t2: Term? = s1.predicate
+        val t1: Term = s1.subject!!
+        val t2: Term = s1.predicate!!
         val content: Term?
         content = if (s1 is Inheritance) {
             Similarity.make(t1, t2, memory)
