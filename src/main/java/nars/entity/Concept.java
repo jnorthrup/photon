@@ -31,6 +31,7 @@ import nars.main_nogui.Parameters;
 import nars.storage.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A concept contains information associated with a term, including directly and
@@ -57,7 +58,7 @@ public final class Concept extends Item {
     /**
      * Question directly asked about the term
      */
-    private final ArrayList<Task> questions;
+    private final List<Task> questions;
     /**
      * Sentences directly made about the term, with non-future tense
      */
@@ -267,7 +268,7 @@ public final class Concept extends Item {
      * @param list  The list of beliefs to be used
      * @return The best candidate belief selected
      */
-    private Sentence evaluation(Sentence query, ArrayList<Sentence> list) {
+    private Sentence evaluation(Sentence query, Iterable<Sentence> list) {
         if (list == null) {
             return null;
         }
@@ -424,8 +425,8 @@ public final class Concept extends Item {
     public Sentence getBelief(Task task) {
         var taskSentence = task.getSentence();
         Sentence belief;
-        for (var i = 0; i < beliefs.size(); i++) {
-            belief = beliefs.get(i);
+        for (Sentence sentence : beliefs) {
+            belief = sentence;
             memory.getRecorder().append(" * Selected Belief: " + belief + "\n");
             memory.newStamp = Stamp.make(taskSentence.getStamp(), belief.getStamp(), memory.getTime());
             if (memory.newStamp != null) {

@@ -24,9 +24,8 @@ import nars.entity.TermLink;
 import nars.io.Symbols;
 import nars.storage.Memory;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.TreeSet;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * A CompoundTerm is a Term with internal (syntactic) structure
@@ -181,18 +180,10 @@ public abstract class CompoundTerm extends Term {
      */
     public static boolean isOperator(String s) {
         if (s.length() == 1) {
-            return (s.equals(Symbols.INTERSECTION_EXT_OPERATOR)
-                    || s.equals(Symbols.INTERSECTION_INT_OPERATOR)
-                    || s.equals(Symbols.DIFFERENCE_EXT_OPERATOR)
-                    || s.equals(Symbols.DIFFERENCE_INT_OPERATOR)
-                    || s.equals(Symbols.PRODUCT_OPERATOR)
-                    || s.equals(Symbols.IMAGE_EXT_OPERATOR)
-                    || s.equals(Symbols.IMAGE_INT_OPERATOR));
+            return (List.of(Symbols.INTERSECTION_EXT_OPERATOR, Symbols.INTERSECTION_INT_OPERATOR, Symbols.DIFFERENCE_EXT_OPERATOR, Symbols.DIFFERENCE_INT_OPERATOR, Symbols.PRODUCT_OPERATOR, Symbols.IMAGE_EXT_OPERATOR, Symbols.IMAGE_INT_OPERATOR).contains(s));
         }
         if (s.length() == 2) {
-            return (s.equals(Symbols.NEGATION_OPERATOR)
-                    || s.equals(Symbols.DISJUNCTION_OPERATOR)
-                    || s.equals(Symbols.CONJUNCTION_OPERATOR));
+            return (List.of(Symbols.NEGATION_OPERATOR, Symbols.DISJUNCTION_OPERATOR, Symbols.CONJUNCTION_OPERATOR).contains(s));
         }
         return false;
     }
@@ -218,7 +209,7 @@ public abstract class CompoundTerm extends Term {
      * @param arg the list of components
      * @return the oldName of the term
      */
-    protected static String makeCompoundName(String op, ArrayList<Term> arg) {
+    protected static String makeCompoundName(String op, Iterable<Term> arg) {
         var name = new StringBuilder();
         name.append(Symbols.COMPOUND_TERM_OPENER);
         name.append(op);
@@ -243,16 +234,9 @@ public abstract class CompoundTerm extends Term {
      * @param arg    the list of components
      * @return the oldName of the term
      */
-    protected static String makeSetName(char opener, ArrayList<Term> arg, char closer) {
-        var name = new StringBuilder();
-        name.append(opener);
-        name.append(arg.get(0).getName());
-        for (var i = 1; i < arg.size(); i++) {
-            name.append(Symbols.ARGUMENT_SEPARATOR);
-            name.append(arg.get(i).getName());
-        }
-        name.append(closer);
-        return name.toString();
+    protected static String makeSetName(char opener, Collection<Term> arg, char closer) {
+        String name = arg.stream().map(Term::getName).collect(Collectors.joining(String.valueOf(Symbols.ARGUMENT_SEPARATOR), String.valueOf(opener), String.valueOf(closer)));
+        return name;
     }
 
     /**
@@ -263,7 +247,7 @@ public abstract class CompoundTerm extends Term {
      * @param relationIndex the location of the place holder
      * @return the oldName of the term
      */
-    protected static String makeImageName(String op, ArrayList<Term> arg, int relationIndex) {
+    protected static String makeImageName(String op, List<Term> arg, int relationIndex) {
         var name = new StringBuilder();
         name.append(Symbols.COMPOUND_TERM_OPENER);
         name.append(op);
@@ -287,14 +271,11 @@ public abstract class CompoundTerm extends Term {
      * @param original The original component list
      * @return an identical and separate copy of the list
      */
-    public static ArrayList<Term> cloneList(ArrayList<Term> original) {
+    public static ArrayList<Term> cloneList(Collection<Term> original) {
         if (original == null) {
             return null;
         }
-        var arr = new ArrayList<Term>(original.size());
-        for (var i = 0; i < original.size(); i++) {
-            arr.add((Term) ((Term) original.get(i)).clone());
-        }
+        var arr = original.stream().map((Term term) -> (Term) ((Term) term).clone()).collect(Collectors.toCollection(() -> new ArrayList<>(original.size())));
         return arr;
     }
 
@@ -505,7 +486,7 @@ public abstract class CompoundTerm extends Term {
      *
      * @return The component list
      */
-    public ArrayList<Term> getComponents() {
+    public List<Term> getComponents() {
         return components;
     }
 
@@ -536,12 +517,7 @@ public abstract class CompoundTerm extends Term {
      */
     @Override
     public boolean containTerm(Term target) {
-        for (var term : components) {
-            if (term.containTerm(target)) {
-                return true;
-            }
-        }
-        return false;
+        return components.stream().anyMatch((Term term) -> term.containTerm(target));
     }
 
     /**

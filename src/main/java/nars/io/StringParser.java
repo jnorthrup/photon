@@ -114,13 +114,9 @@ public abstract class StringParser extends Symbols {
             return null;
         }
         var i = s.indexOf(BUDGET_VALUE_MARK + "", 1);    // looking for the end
-        if (i < 0) {
-            throw new InvalidInputException("missing budget closer");
-        }
+        assert i >= 0 : "missing budget closer";
         var budgetString = s.substring(1, i).trim();
-        if (budgetString.length() == 0) {
-            throw new InvalidInputException("empty budget");
-        }
+        assert budgetString.length() != 0 : "empty budget";
         s.delete(0, i + 1);
         return budgetString;
     }
@@ -141,13 +137,11 @@ public abstract class StringParser extends Symbols {
             return null;
         }
         var first = s.indexOf(TRUTH_VALUE_MARK + "");    // looking for the beginning
-        if (first == last) { // no matching closer
-            throw new InvalidInputException("missing truth mark");
-        }
+        // no matching closer
+        assert first != last : "missing truth mark";
         var truthString = s.substring(first + 1, last).trim();
-        if (truthString.length() == 0) {                // empty usage
-            throw new InvalidInputException("empty truth");
-        }
+        // empty usage
+        assert truthString.length() != 0 : "empty truth";
         s.delete(first, last + 1);                 // remaining input to be processed outside
         s.trimToSize();
         return truthString;
@@ -231,9 +225,7 @@ public abstract class StringParser extends Symbols {
     public static Term parseTerm(String s0, Memory memory) {
         var s = s0.trim();
         try {
-            if (s.length() == 0) {
-                throw new InvalidInputException("missing content");
-            }
+            assert s.length() != 0 : "missing content";
             var t = memory.nameToListedTerm(s);    // existing constant or operator
             if (t != null) {
                 return t;
@@ -291,13 +283,9 @@ public abstract class StringParser extends Symbols {
      */
     private static Term parseAtomicTerm(String s0) throws InvalidInputException {
         var s = s0.trim();
-        if (s.length() == 0) {
-            throw new InvalidInputException("missing term");
-        }
-        if (s.contains(" ")) // invalid characters in a name
-        {
-            throw new InvalidInputException("invalid term");
-        }
+        assert s.length() != 0 : "missing term";
+        // invalid characters in a name
+        assert !s.contains(" ") : "invalid term";
         if (Variable.containVar(s)) {
             return new Variable(s);
         } else {
@@ -321,16 +309,12 @@ public abstract class StringParser extends Symbols {
     private static Statement parseStatement(String s0, Memory memory) throws InvalidInputException {
         var s = s0.trim();
         var i = topRelation(s);
-        if (i < 0) {
-            throw new InvalidInputException("invalid statement");
-        }
+        assert i >= 0 : "invalid statement";
         var relation = s.substring(i, i + 3);
         var subject = parseTerm(s.substring(0, i), memory);
         var predicate = parseTerm(s.substring(i + 3), memory);
         var t = Statement.make(relation, subject, predicate, memory);
-        if (t == null) {
-            throw new InvalidInputException("invalid statement");
-        }
+        assert t != null : "invalid statement";
         return t;
     }
 
@@ -346,14 +330,10 @@ public abstract class StringParser extends Symbols {
         var s = s0.trim();
         var firstSeparator = s.indexOf(ARGUMENT_SEPARATOR);
         var op = s.substring(0, firstSeparator).trim();
-        if (!CompoundTerm.isOperator(op)) {
-            throw new InvalidInputException("unknown operator: " + op);
-        }
+        assert CompoundTerm.isOperator(op) : "unknown operator: " + op;
         var arg = parseArguments(s.substring(firstSeparator + 1) + ARGUMENT_SEPARATOR, memory);
         var t = CompoundTerm.make(op, arg, memory);
-        if (t == null) {
-            throw new InvalidInputException("invalid compound term");
-        }
+        assert t != null : "invalid compound term";
         return t;
     }
 
@@ -377,9 +357,7 @@ public abstract class StringParser extends Symbols {
             list.add(t);
             start = end + 1;
         }
-        if (list.isEmpty()) {
-            throw new InvalidInputException("null argument");
-        }
+        assert !list.isEmpty() : "null argument";
         return list;
     }
 

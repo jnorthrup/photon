@@ -24,6 +24,7 @@ import nars.io.Symbols;
 import nars.storage.Memory;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A statement is a compound term, consisting of a subject, a predicate,
@@ -150,13 +151,7 @@ public abstract class Statement extends CompoundTerm {
         if (s.length() != 3) {
             return false;
         }
-        return (s.equals(Symbols.INHERITANCE_RELATION) ||
-                s.equals(Symbols.SIMILARITY_RELATION) ||
-                s.equals(Symbols.INSTANCE_RELATION) ||
-                s.equals(Symbols.PROPERTY_RELATION) ||
-                s.equals(Symbols.INSTANCE_PROPERTY_RELATION) ||
-                s.equals(Symbols.IMPLICATION_RELATION) ||
-                s.equals(Symbols.EQUIVALENCE_RELATION));
+        return (List.of(Symbols.INHERITANCE_RELATION, Symbols.SIMILARITY_RELATION, Symbols.INSTANCE_RELATION, Symbols.PROPERTY_RELATION, Symbols.INSTANCE_PROPERTY_RELATION, Symbols.IMPLICATION_RELATION, Symbols.EQUIVALENCE_RELATION).contains(s));
     }
 
     /**

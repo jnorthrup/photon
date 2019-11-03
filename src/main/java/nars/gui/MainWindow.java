@@ -262,54 +262,64 @@ public class MainWindow extends NarsFrame implements ActionListener, OutputChann
             }
         } else if (obj instanceof MenuItem) {
             var label = e.getActionCommand();
-            if (label.equals("Load Experience")) {
-                experienceReader = new ExperienceReader(reasoner);
-                experienceReader.openLoadFile();
-            } else if (label.equals("Save Experience")) {
-                if (savingExp) {
-                    ioText.setBackground(DISPLAY_BACKGROUND_COLOR);
-                    experienceWriter.closeSaveFile();
-                } else {
-                    ioText.setBackground(SAVING_BACKGROUND_COLOR);
-                    experienceWriter.openSaveFile();
-                }
-                savingExp = !savingExp;
-            } else if (label.equals("Record Inference")) {
-                if (record.isLogging()) {
-                    record.closeLogFile();
-                } else {
-                    record.openLogFile();
-                }
-            } else if (label.equals("Initialize")) {
-                /// TODO mixture of modifier and reporting
-                reasoner.reset();
-                memory.getExportStrings().add("*****RESET*****");
-            } /*else if (label.equals("Concepts")) {
-             *//* see design for Bag and {@link BagWindow} in {@link Bag#startPlay(String)} *//*
-                memory.conceptsStartPlay(new BagWindow(), "Active Concepts");
-            } else if (label.equals("Buffered Tasks")) {
-                memory.taskBuffersStartPlay(new BagWindow(), "Buffered Tasks");
-            } */ else if (label.equals("Concept Content")) {
-                conceptWin.setVisible(true);
-            } else if (label.equals("Inference Log")) {
-                record.show();
-                record.play();
-            } else if (label.equals("Input Window")) {
-                inputWindow.setVisible(true);
-            } else if (label.equals("Task Forgetting Rate")) {
-                forgetTW.setVisible(true);
-            } else if (label.equals("Belief Forgetting Rate")) {
-                forgetBW.setVisible(true);
-            } else if (label.equals("Concept Forgetting Rate")) {
-                forgetCW.setVisible(true);
-            } else if (label.equals("Report Silence Level")) {
-                silentW.setVisible(true);
-            } else if (label.equals("Related Information")) {
-                new MessageDialog(this, NARS.WEBSITE);
-            } else if (label.equals("About NARS")) {
-                new MessageDialog(this, NARS.INFO);
-            } else {
-                new MessageDialog(this, UNAVAILABLE);
+            switch (label) {
+                case "Load Experience":
+                    experienceReader = new ExperienceReader(reasoner);
+                    experienceReader.openLoadFile();
+                    break;
+                case "Save Experience":
+                    if (savingExp) {
+                        ioText.setBackground(DISPLAY_BACKGROUND_COLOR);
+                        experienceWriter.closeSaveFile();
+                    } else {
+                        ioText.setBackground(SAVING_BACKGROUND_COLOR);
+                        experienceWriter.openSaveFile();
+                    }
+                    savingExp = !savingExp;
+                    break;
+                case "Record Inference":
+                    if (record.isLogging()) {
+                        record.closeLogFile();
+                    } else {
+                        record.openLogFile();
+                    }
+                    break;
+                case "Initialize":
+                    /// TODO mixture of modifier and reporting
+                    reasoner.reset();
+                    memory.getExportStrings().add("*****RESET*****");
+                    break;
+                case "Concept Content":
+                    conceptWin.setVisible(true);
+                    break;
+                case "Inference Log":
+                    record.show();
+                    record.play();
+                    break;
+                case "Input Window":
+                    inputWindow.setVisible(true);
+                    break;
+                case "Task Forgetting Rate":
+                    forgetTW.setVisible(true);
+                    break;
+                case "Belief Forgetting Rate":
+                    forgetBW.setVisible(true);
+                    break;
+                case "Concept Forgetting Rate":
+                    forgetCW.setVisible(true);
+                    break;
+                case "Report Silence Level":
+                    silentW.setVisible(true);
+                    break;
+                case "Related Information":
+                    new MessageDialog(this, NARS.WEBSITE);
+                    break;
+                case "About NARS":
+                    new MessageDialog(this, NARS.INFO);
+                    break;
+                default:
+                    new MessageDialog(this, UNAVAILABLE);
+                    break;
             }
         }
     }

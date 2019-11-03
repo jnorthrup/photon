@@ -10,6 +10,8 @@ import nars.io.Symbols;
 import nars.storage.Memory;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class ReasonerBatch {
@@ -29,11 +31,11 @@ public class ReasonerBatch {
     /**
      * The input channels of the reasoner
      */
-    protected ArrayList<InputChannel> inputChannels;
+    protected Collection<InputChannel> inputChannels;
     /**
      * The output channels of the reasoner
      */
-    protected ArrayList<OutputChannel> outputChannels;
+    protected Collection<OutputChannel> outputChannels;
     /**
      * System clock, relatively defined to guarantee the repeatability of
      * behaviors

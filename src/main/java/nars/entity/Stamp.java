@@ -24,7 +24,8 @@ import nars.io.Symbols;
 import nars.main_nogui.Parameters;
 import nars.main_nogui.ReasonerBatch;
 
-import java.util.TreeSet;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Each Sentence has a time stamp, consisting the following components:
@@ -195,12 +196,8 @@ public class Stamp implements Cloneable {
      *
      * @return The TreeSet representation of the evidential base
      */
-    private TreeSet<Long> toSet() {
-        var set = new TreeSet<Long>();
-        for (var i = 0; i < baseLength; i++) {
-            set.add(evidentialBase[i]);
-        }
-        return set;
+    private Collection<Long> toSet() {
+        return Arrays.stream(evidentialBase).boxed().collect(Collectors.toCollection(TreeSet::new));
     }
 
     /**
@@ -211,12 +208,13 @@ public class Stamp implements Cloneable {
      */
     @Override
     public boolean equals(Object that) {
-        if (!(that instanceof Stamp)) {
-            return false;
+        boolean result = false;
+        if (that instanceof Stamp) {
+            Collection<Long> set1 = toSet();
+            Collection<Long> set2 = ((Stamp) that).toSet();
+            result = (set1.containsAll(set2) && set2.containsAll(set1));
         }
-        var set1 = toSet();
-        var set2 = ((Stamp) that).toSet();
-        return (set1.containsAll(set2) && set2.containsAll(set1));
+        return result;
     }
 
     /**
@@ -249,7 +247,7 @@ public class Stamp implements Cloneable {
         var buffer = new StringBuilder(" " + Symbols.STAMP_OPENER + creationTime);
         buffer.append(" ").append(Symbols.STAMP_STARTER).append(" ");
         for (var i = 0; i < baseLength; i++) {
-            buffer.append(Long.toString(evidentialBase[i]));
+            buffer.append(evidentialBase[i]);
             if (i < (baseLength - 1)) {
                 buffer.append(Symbols.STAMP_SEPARATOR);
             } else {

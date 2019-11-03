@@ -25,7 +25,9 @@ import nars.inference.BudgetFunctions;
 import nars.main_nogui.Parameters;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * A Bag is a storage with a constant capacity and maintains an internal
@@ -78,7 +80,7 @@ public abstract class Bag<E extends Item> {
     /**
      * array of lists of items, for items on different level
      */
-    private ArrayList<ArrayList<E>> itemTable;
+    private List<ArrayList<E>> itemTable;
     /**
      * current sum of occupied level
      */
@@ -416,13 +418,13 @@ public abstract class Bag<E extends Item> {
     String showSizes() {
         var buf = new StringBuilder(" ");
         var levels = 0;
-        for (var items : itemTable) {
+        for (Collection<E> items : itemTable) {
             if ((items != null) && !items.isEmpty()) {
                 levels++;
                 buf.append(items.size()).append(" ");
             }
         }
-        return "Levels: " + Integer.toString(levels) + ", sizes: " + buf;
+        return "Levels: " + levels + ", sizes: " + buf;
     }
 
     /**

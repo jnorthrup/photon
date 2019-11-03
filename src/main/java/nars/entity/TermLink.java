@@ -154,8 +154,8 @@ public class TermLink extends Item {
         }
         var in = "T" + type;
         if (index != null) {
-            for (var i = 0; i < index.length; i++) {
-                in += "-" + (index[i] + 1);
+            for (short value : index) {
+                in += "-" + (value + 1);
             }
         }
         key = at1 + in + at2;
