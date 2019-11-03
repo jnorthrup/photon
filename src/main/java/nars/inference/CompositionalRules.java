@@ -289,7 +289,7 @@ public final class CompositionalRules {
         Variable varInd = new Variable("$varInd1");
         Variable varInd2 = new Variable("$varInd2");
         Term term11, term12, term21, term22, commonTerm;
-        HashMap<Term, Term> subs = new HashMap<>();
+        HashMap<Term, Term> subs = new HashMap<Term, Term>();
         if (index == 0) {
             term11 = varInd;
             term21 = varInd;
@@ -390,7 +390,7 @@ public final class CompositionalRules {
             return;
         }
         Sentence belief = memory.currentBelief;
-        HashMap<Term, Term> substitute = new HashMap<>();
+        HashMap<Term, Term> substitute = new HashMap<Term, Term>();
         substitute.put(commonTerm1, new Variable("#varDep2"));
         CompoundTerm content = (CompoundTerm) Conjunction.make(premise1, oldCompound, memory);
         content.applySubstitute(substitute);

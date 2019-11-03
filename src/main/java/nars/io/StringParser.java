@@ -379,7 +379,7 @@ public abstract class StringParser extends Symbols {
      */
     private static ArrayList<Term> parseArguments(String s0, Memory memory) throws InvalidInputException {
         String s = s0.trim();
-        ArrayList<Term> list = new ArrayList<>();
+        ArrayList<Term> list = new ArrayList<Term>();
         int start = 0;
         int end = 0;
         Term t;

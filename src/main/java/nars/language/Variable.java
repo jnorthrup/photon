@@ -145,8 +145,8 @@ public class Variable extends Term {
      * @return Whether the unification is possible
      */
     public static boolean unify(char type, Term t1, Term t2, Term compound1, Term compound2) {
-        HashMap<Term, Term> map1 = new HashMap<>();
-        HashMap<Term, Term> map2 = new HashMap<>();
+        HashMap<Term, Term> map1 = new HashMap<Term, Term>();
+        HashMap<Term, Term> map2 = new HashMap<Term, Term>();
         boolean hasSubs = findSubstitute(type, t1, t2, map1, map2); // find substitution
         if (hasSubs) {
             renameVar(map1, compound1, "-1");

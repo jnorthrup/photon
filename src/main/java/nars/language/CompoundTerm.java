@@ -260,7 +260,7 @@ public abstract class CompoundTerm extends Term {
      * @return the component list
      */
     protected static ArrayList<Term> argumentsToList(Term t1, Term t2) {
-        ArrayList<Term> list = new ArrayList<>(2);
+        ArrayList<Term> list = new ArrayList<Term>(2);
         list.add(t1);
         list.add(t2);
         return list;
@@ -437,7 +437,7 @@ public abstract class CompoundTerm extends Term {
         if (original == null) {
             return null;
         }
-        ArrayList<Term> arr = new ArrayList<>(original.size());
+        ArrayList<Term> arr = new ArrayList<Term>(original.size());
         for (int i = 0; i < original.size(); i++) {
             arr.add((Term) ((Term) original.get(i)).clone());
         }
@@ -621,8 +621,8 @@ public abstract class CompoundTerm extends Term {
             }
         }
         if (this.isCommutative()) {         // re-order
-            TreeSet<Term> s = new TreeSet<>(components);
-            components = new ArrayList<>(s);
+            TreeSet<Term> s = new TreeSet<Term>(components);
+            components = new ArrayList<Term>(s);
         }
         name = makeName();
     }
@@ -637,7 +637,7 @@ public abstract class CompoundTerm extends Term {
      * @return A list of TermLink templates
      */
     public ArrayList<TermLink> prepareComponentLinks() {
-        ArrayList<TermLink> componentLinks = new ArrayList<>();
+        ArrayList<TermLink> componentLinks = new ArrayList<TermLink>();
         short type = (this instanceof Statement) ? TermLink.COMPOUND_STATEMENT : TermLink.COMPOUND;   // default
         prepareComponentLinks(componentLinks, type, this);
         return componentLinks;

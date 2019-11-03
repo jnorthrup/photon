@@ -73,7 +73,7 @@ public class Negation extends CompoundTerm {
         if (t instanceof Negation) {
             return ((CompoundTerm) t).cloneComponents().get(0);
         }         // (--,(--,P)) = P
-        ArrayList<Term> argument = new ArrayList<>();
+        ArrayList<Term> argument = new ArrayList<Term>();
         argument.add(t);
         return make(argument, memory);
     }

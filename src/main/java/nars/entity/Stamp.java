@@ -178,7 +178,7 @@ public class Stamp implements Cloneable {
      * @return The TreeSet representation of the evidential base
      */
     private TreeSet<Long> toSet() {
-        TreeSet<Long> set = new TreeSet<>();
+        TreeSet<Long> set = new TreeSet<Long>();
         for (int i = 0; i < baseLength; i++) {
             set.add(evidentialBase[i]);
         }

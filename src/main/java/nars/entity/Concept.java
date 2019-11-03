@@ -92,8 +92,8 @@ public final class Concept extends Item {
         super(tm.getName());
         term = tm;
         this.memory = memory;
-        questions = new ArrayList<>();
-        beliefs = new ArrayList<>();
+        questions = new ArrayList<Task>();
+        beliefs = new ArrayList<Sentence>();
         taskLinks = new TaskLinkBag(memory);
         termLinks = new TermLinkBag(memory);
         if (tm instanceof CompoundTerm) {

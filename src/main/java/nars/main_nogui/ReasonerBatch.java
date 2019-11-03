@@ -60,8 +60,8 @@ public class ReasonerBatch {
 
     public ReasonerBatch() {
         memory = new Memory(this);
-        inputChannels = new ArrayList<>();
-        outputChannels = new ArrayList<>();
+        inputChannels = new ArrayList<InputChannel>();
+        outputChannels = new ArrayList<OutputChannel>();
     }
 
     /**

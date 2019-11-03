@@ -69,7 +69,7 @@ public class Disjunction extends CompoundTerm {
     public static Term make(Term term1, Term term2, Memory memory) {
         TreeSet<Term> set;
         if (term1 instanceof Disjunction) {
-            set = new TreeSet<>(((CompoundTerm) term1).cloneComponents());
+            set = new TreeSet<Term>(((CompoundTerm) term1).cloneComponents());
             if (term2 instanceof Disjunction) {
                 set.addAll(((CompoundTerm) term2).cloneComponents());
             } // (&,(&,P,Q),(&,R,S)) = (&,P,Q,R,S)
@@ -77,10 +77,10 @@ public class Disjunction extends CompoundTerm {
                 set.add((Term) term2.clone());
             }                          // (&,(&,P,Q),R) = (&,P,Q,R)
         } else if (term2 instanceof Disjunction) {
-            set = new TreeSet<>(((CompoundTerm) term2).cloneComponents());
+            set = new TreeSet<Term>(((CompoundTerm) term2).cloneComponents());
             set.add((Term) term1.clone());                              // (&,R,(&,P,Q)) = (&,P,Q,R)
         } else {
-            set = new TreeSet<>();
+            set = new TreeSet<Term>();
             set.add((Term) term1.clone());
             set.add((Term) term2.clone());
         }
@@ -94,7 +94,7 @@ public class Disjunction extends CompoundTerm {
      * @return the Term generated from the arguments
      */
     public static Term make(ArrayList<Term> argList, Memory memory) {
-        TreeSet<Term> set = new TreeSet<>(argList); // sort/merge arguments
+        TreeSet<Term> set = new TreeSet<Term>(argList); // sort/merge arguments
         return make(set, memory);
     }
 
@@ -108,7 +108,7 @@ public class Disjunction extends CompoundTerm {
         if (set.size() == 1) {
             return set.first();
         }                         // special case: single component
-        ArrayList<Term> argument = new ArrayList<>(set);
+        ArrayList<Term> argument = new ArrayList<Term>(set);
         String name = makeCompoundName(Symbols.DISJUNCTION_OPERATOR, argument);
         Term t = memory.nameToListedTerm(name);
         return (t != null) ? t : new Disjunction(argument);

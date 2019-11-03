@@ -114,11 +114,11 @@ public abstract class Bag<E extends Item> {
     }
 
     public void init() {
-        itemTable = new ArrayList<>(TOTAL_LEVEL);
+        itemTable = new ArrayList<ArrayList<E>>(TOTAL_LEVEL);
         for (int i = 0; i < TOTAL_LEVEL; i++) {
             itemTable.add(new ArrayList<E>());
         }
-        nameTable = new HashMap<>((int) (capacity / LOAD_FACTOR), LOAD_FACTOR);
+        nameTable = new HashMap<String, E>((int) (capacity / LOAD_FACTOR), LOAD_FACTOR);
         currentLevel = TOTAL_LEVEL - 1;
         levelIndex = capacity % TOTAL_LEVEL; // so that different bags start at different point
         mass = 0;
