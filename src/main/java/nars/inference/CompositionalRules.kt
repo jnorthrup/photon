@@ -343,7 +343,7 @@ object CompositionalRules {/* -------------------- intersections and differences
         truth = TruthFunctions.induction(truthB!!, truthT)
         budget = compoundForward(truth, content, memory)
         memory.doublePremiseTask(content, truth, budget)
-        content = Equivalence.make(state1, state2, memory)
+        content = Equivalence.make(state1, state2, memory)!!
         truth = TruthFunctions.comparison(truthT, truthB!!)
         budget = compoundForward(truth, content, memory)
         memory.doublePremiseTask(content, truth, budget)
@@ -355,7 +355,7 @@ object CompositionalRules {/* -------------------- intersections and differences
             state1 = Inheritance.make(taskContent.subject, varDep, memory)!!
             state2 = Inheritance.make(beliefContent.subject, varDep, memory)!!
         }
-        content = Conjunction.make(state1, state2, memory)
+        content = Conjunction.make(state1, state2, memory)!!
         truth = TruthFunctions.intersection(truthT, truthB)
         budget = compoundForward(truth, content, memory)
         memory.doublePremiseTask(content, truth, budget, false)
