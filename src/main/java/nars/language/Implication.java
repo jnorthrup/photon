@@ -23,7 +23,7 @@ package nars.language;
 import nars.io.Symbols;
 import nars.storage.Memory;
 
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  * A Statement about an Inheritance relation.
@@ -35,7 +35,7 @@ public class Implication extends Statement {
      *
      * @param arg The component list of the term
      */
-    protected Implication(ArrayList<Term> arg) {
+    protected Implication( List<Term> arg) {
         super(arg);
     }
 
@@ -47,7 +47,7 @@ public class Implication extends Statement {
      * @param con Whether it is a constant term
      * @param i   Syntactic complexity of the compound
      */
-    protected Implication(String n, ArrayList<Term> cs, boolean con, short i) {
+    protected Implication(String n ,  List<Term> cs, boolean con, short i) {
         super(n, cs, con, i);
     }
 
@@ -96,7 +96,7 @@ public class Implication extends Statement {
      * @return A new object
      */
     public Object clone() {
-        return new Implication(name, (ArrayList<Term>) cloneList(components), isConstant(), complexity);
+        return new Implication(name, ( List<Term>) cloneList(components), isConstant(), complexity);
     }
 
     /**

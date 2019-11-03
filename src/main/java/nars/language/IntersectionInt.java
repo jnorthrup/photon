@@ -23,7 +23,7 @@ package nars.language;
 import nars.io.Symbols;
 import nars.storage.Memory;
 
-import java.util.ArrayList;
+import java.util.*;
 import java.util.TreeSet;
 
 /**
@@ -37,7 +37,7 @@ public class IntersectionInt extends CompoundTerm {
      * @param n   The name of the term
      * @param arg The component list of the term
      */
-    private IntersectionInt(ArrayList<Term> arg) {
+    private IntersectionInt( List<Term> arg) {
         super(arg);
     }
 
@@ -49,7 +49,7 @@ public class IntersectionInt extends CompoundTerm {
      * @param open Open variable list
      * @param i    Syntactic complexity of the compound
      */
-    private IntersectionInt(String n, ArrayList<Term> cs, boolean con, short i) {
+    private IntersectionInt(String n ,  List<Term> cs, boolean con, short i) {
         super(n, cs, con, i);
     }
 
@@ -99,7 +99,7 @@ public class IntersectionInt extends CompoundTerm {
      * @param memory  Reference to the memory
      * @return the Term generated from the arguments
      */
-    public static Term make(ArrayList<Term> argList, Memory memory) {
+    public static Term make( List<Term> argList, Memory memory) {
         var set = new TreeSet<>(argList); // sort/merge arguments
         return make(set, memory);
     }
@@ -127,7 +127,7 @@ public class IntersectionInt extends CompoundTerm {
      * @return A new object, to be casted into a Conjunction
      */
     public Object clone() {
-        return new IntersectionInt(name, (ArrayList<Term>) cloneList(components), isConstant(), complexity);
+        return new IntersectionInt(name, ( List<Term>) cloneList(components), isConstant(), complexity);
     }
 
     /**
@@ -144,7 +144,7 @@ public class IntersectionInt extends CompoundTerm {
      *
      * @return true for communitative
      */
-    @Override
+
     public boolean isCommutative() {
         return true;
     }

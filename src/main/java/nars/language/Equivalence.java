@@ -23,7 +23,7 @@ package nars.language;
 import nars.io.Symbols;
 import nars.storage.Memory;
 
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  * A Statement about an Equivalence relation.
@@ -35,7 +35,7 @@ public class Equivalence extends Statement {
      *
      * @param components The component list of the term
      */
-    protected Equivalence(ArrayList<Term> components) {
+    protected Equivalence( List<Term> components) {
         super(components);
     }
 
@@ -47,7 +47,7 @@ public class Equivalence extends Statement {
      * @param constant   Whether the statement contains open variable
      * @param complexity Syntactic complexity of the compound
      */
-    protected Equivalence(String n, ArrayList<Term> components, boolean constant, short complexity) {
+    protected Equivalence(String n ,  List<Term> components, boolean constant, short complexity) {
         super(n, components, constant, complexity);
     }
 
@@ -90,9 +90,9 @@ public class Equivalence extends Statement {
      *
      * @return A new object
      */
-    @Override
+
     public Object clone() {
-        return new Equivalence(name, (ArrayList<Term>) cloneList(components), isConstant(), complexity);
+        return new Equivalence(name, ( List<Term>) cloneList(components), isConstant(), complexity);
     }
 
     /**
@@ -100,7 +100,7 @@ public class Equivalence extends Statement {
      *
      * @return the operator of the term
      */
-    @Override
+
     public String operator() {
         return Symbols.EQUIVALENCE_RELATION;
     }
@@ -110,7 +110,7 @@ public class Equivalence extends Statement {
      *
      * @return true for commutative
      */
-    @Override
+
     public boolean isCommutative() {
         return true;
     }

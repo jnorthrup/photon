@@ -21,14 +21,12 @@
 package nars.inference;
 
 import nars.entity.BudgetValue;
-import nars.entity.Sentence;
-import nars.entity.Task;
 import nars.entity.TruthValue;
 import nars.language.*;
 import nars.main_nogui.Parameters;
 import nars.storage.Memory;
 
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  * Single-premise inference rules involving compound terms. Input are one
@@ -387,7 +385,7 @@ public final class StructuralRules {
         } else if ((oldContent instanceof Statement) && (indices[0] == 1)) {
             content = Statement.make((Statement) oldContent, oldContent.componentAt(0), newInh, memory);
         } else {
-            ArrayList<Term> componentList;
+            List<Term> componentList;
             var condition = oldContent.componentAt(0);
             if (((oldContent instanceof Implication) || (oldContent instanceof Equivalence)) && (condition instanceof Conjunction)) {
                 componentList = ((CompoundTerm) condition).cloneComponents();

@@ -144,7 +144,7 @@ public class TruthValue implements Cloneable { // implements Cloneable {
      * @param that The other TruthValue
      * @return Whether the two are equivalent
      */
-    @Override
+
     public boolean equals(Object that) {
         return ((that instanceof TruthValue)
                 && (getFrequency() == ((TruthValue) that).getFrequency())
@@ -156,12 +156,12 @@ public class TruthValue implements Cloneable { // implements Cloneable {
      *
      * @return The hash code
      */
-    @Override
+
     public int hashCode() {
         return (int) (getExpectation() * 37);
     }
 
-    @Override
+
     public Object clone() {
         return new TruthValue(getFrequency(), getConfidence(), getAnalytic());
     }
@@ -171,7 +171,7 @@ public class TruthValue implements Cloneable { // implements Cloneable {
      *
      * @return The String
      */
-    @Override
+
     public String toString() {
         return DELIMITER + frequency.toString() + SEPARATOR + confidence.toString() + DELIMITER;
     }
@@ -185,10 +185,6 @@ public class TruthValue implements Cloneable { // implements Cloneable {
     public String toStringBrief() {
         var s1 = DELIMITER + frequency.toString () + SEPARATOR;
         var s2 = confidence.toString ();
-        if (s2.equals("1.00")) {
-            return s1 + "0.99" + DELIMITER;
-        } else {
-            return s1 + s2 + DELIMITER;
-        }
+        return s1 + (s2.equals("1.00") ? "0.99" : s2) + DELIMITER;
     }
 }

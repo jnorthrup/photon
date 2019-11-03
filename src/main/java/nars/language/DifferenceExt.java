@@ -23,7 +23,7 @@ package nars.language;
 import nars.io.Symbols;
 import nars.storage.Memory;
 
-import java.util.ArrayList;
+import java.util.*;
 import java.util.TreeSet;
 
 /**
@@ -37,7 +37,7 @@ public class DifferenceExt extends CompoundTerm {
      * @param n   The name of the term
      * @param arg The component list of the term
      */
-    private DifferenceExt(ArrayList<Term> arg) {
+    private DifferenceExt( List<Term> arg) {
         super(arg);
     }
 
@@ -49,7 +49,7 @@ public class DifferenceExt extends CompoundTerm {
      * @param open Open variable list
      * @param i    Syntactic complexity of the compound
      */
-    private DifferenceExt(String n, ArrayList<Term> cs, boolean con, short i) {
+    private DifferenceExt(String n ,  List<Term> cs, boolean con, short i) {
         super(n, cs, con, i);
     }
 
@@ -60,7 +60,7 @@ public class DifferenceExt extends CompoundTerm {
      * @param memory  Reference to the memory
      * @return the Term generated from the arguments
      */
-    public static Term make(ArrayList<Term> argList, Memory memory) {
+    public static Term make( List<Term> argList, Memory memory) {
         if (argList.size() == 1) { // special case from CompoundTerm.reduceComponent
             return argList.get(0);
         }
@@ -99,7 +99,7 @@ public class DifferenceExt extends CompoundTerm {
      * @return A new object, to be casted into a DifferenceExt
      */
     public Object clone() {
-        return new DifferenceExt(name, (ArrayList<Term>) cloneList(components), isConstant(), complexity);
+        return new DifferenceExt(name, ( List<Term>) cloneList(components), isConstant(), complexity);
     }
 
     /**

@@ -24,7 +24,7 @@ import nars.entity.AbstractItem;
 import nars.inference.BudgetFunctions;
 import nars.main_nogui.Parameters;
 
-import java.util.ArrayList;
+import java.util.*;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -359,7 +359,7 @@ public abstract class Bag<E extends AbstractItem> {
     /**
      * Collect Bag content into a String for display
      */
-    @Override
+
     public String toString() {
         var buf = new StringBuffer(" ");
         for (var i = TOTAL_LEVEL; i >= showLevel; i--) {

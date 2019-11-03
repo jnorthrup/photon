@@ -23,7 +23,7 @@ package nars.language;
 import nars.io.Symbols;
 import nars.storage.Memory;
 
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  * A negation of a statement.
@@ -36,7 +36,7 @@ public class Negation extends CompoundTerm {
      * @param n   The name of the term
      * @param arg The component list of the term
      */
-    private Negation(ArrayList<Term> arg) {
+    private Negation( List<Term> arg) {
         super(arg);
     }
 
@@ -48,7 +48,7 @@ public class Negation extends CompoundTerm {
      * @param open Open variable list
      * @param i    Syntactic complexity of the compound
      */
-    private Negation(String n, ArrayList<Term> cs, boolean con, short i) {
+    private Negation(String n ,  List<Term> cs, boolean con, short i) {
         super(n, cs, con, i);
     }
 
@@ -75,7 +75,7 @@ public class Negation extends CompoundTerm {
      * @param memory   Reference to the memory
      * @return the Term generated from the arguments
      */
-    public static Term make(ArrayList<Term> argument, Memory memory) {
+    public static Term make( List<Term> argument, Memory memory) {
         if (argument.size() != 1) {
             return null;
         }
@@ -89,9 +89,9 @@ public class Negation extends CompoundTerm {
      *
      * @return A new object
      */
-    @Override
+
     public Object clone() {
-        return new Negation(name, (ArrayList<Term>) cloneList(components), isConstant(), complexity);
+        return new Negation(name, ( List<Term>) cloneList(components), isConstant(), complexity);
     }
 
     /**
@@ -99,7 +99,7 @@ public class Negation extends CompoundTerm {
      *
      * @return the operator of the term
      */
-    @Override
+
     public String operator() {
         return Symbols.NEGATION_OPERATOR;
     }

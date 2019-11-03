@@ -184,11 +184,10 @@ public final class BudgetFunctions extends UtilityFunctions {
     /**
      * Merge an item into another one in a bag, when the two are identical
      * except in budget values
-     *
-     * @param baseValue   The budget value to be modified
+     *  @param baseValue   The budget value to be modified
      * @param adjustValue The budget doing the adjusting
      */
-    public static void merge(BudgetValue baseValue, BudgetValue adjustValue) {
+    public static void merge(BudgetValue baseValue, BudgetTriple adjustValue) {
         baseValue.setPriority(Math.max(baseValue.getPriority(), adjustValue.getPriority()));
         baseValue.setDurability(Math.max(baseValue.getDurability(), adjustValue.getDurability()));
         baseValue.setQuality(Math.max(baseValue.getQuality(), adjustValue.getQuality()));

@@ -27,9 +27,7 @@ import nars.language.Term;
 import nars.main_nogui.Parameters;
 import nars.main_nogui.ReasonerBatch;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Optional;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -58,13 +56,13 @@ public class Memory {
      * List of new tasks accumulated in one cycle, to be processed in the next
      * cycle
      */
-    private final ArrayList<Task> newTasks;
+    private final List<Task> newTasks;
 
     /* ---------- Short-term workspace for a single cycle ---------- */
     /**
      * List of Strings or Tasks to be sent to the output channels
      */
-    private final ArrayList<String> exportStrings;
+    private final  List<String> exportStrings;
     /**
      * The selected Term
      */
@@ -99,7 +97,7 @@ public class Memory {
      * The substitution that unify the common term in the Task and the Belief
      * TODO unused
      */
-    protected HashMap<Term, Term> substitute;
+    protected Map<Term, Term> substitute;
     /**
      * Inference record text to be written into a log file
      */
@@ -132,7 +130,7 @@ public class Memory {
     }
 
     /* ---------- access utilities ---------- */
-    public ArrayList<String> getExportStrings() {
+    public   List<String> getExportStrings() {
         return exportStrings;
     }
 
@@ -519,7 +517,7 @@ public class Memory {
         exportStrings.add(s);
     }
 
-    @Override
+
     public String toString() {
         return toStringLongIfNotNull(concepts, "concepts")
                 + toStringLongIfNotNull(novelTasks, "novelTasks")
@@ -558,35 +556,35 @@ public class Memory {
 
     class NullInferenceRecorder implements IInferenceRecorder {
 
-        @Override
+
         public void init() {
         }
 
-        @Override
+
         public void show() {
         }
 
-        @Override
+
         public void play() {
         }
 
-        @Override
+
         public void stop() {
         }
 
-        @Override
+
         public void append(String s) {
         }
 
-        @Override
+
         public void openLogFile() {
         }
 
-        @Override
+
         public void closeLogFile() {
         }
 
-        @Override
+
         public boolean isLogging() {
             return false;
         }

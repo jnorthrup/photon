@@ -23,7 +23,7 @@ package nars.language;
 import nars.io.Symbols;
 import nars.storage.Memory;
 
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  * A Statement about an Inheritance relation.
@@ -36,7 +36,7 @@ public class Inheritance extends Statement {
      * @param n   The name of the term
      * @param arg The component list of the term
      */
-    private Inheritance(ArrayList<Term> arg) {
+    private Inheritance( List<Term> arg) {
         super(arg);
     }
 
@@ -48,7 +48,7 @@ public class Inheritance extends Statement {
      * @param open Open variable list
      * @param i    Syntactic complexity of the compound
      */
-    private Inheritance(String n, ArrayList<Term> cs, boolean con, short i) {
+    private Inheritance(String n ,  List<Term> cs, boolean con, short i) {
         super(n, cs, con, i);
     }
 
@@ -79,7 +79,7 @@ public class Inheritance extends Statement {
      * @return A new object, to be casted into a SetExt
      */
     public Object clone() {
-        return new Inheritance(name, (ArrayList<Term>) cloneList(components), isConstant, complexity);
+        return new Inheritance(name, ( List<Term>) cloneList(components), isConstant, complexity);
     }
 
     /**

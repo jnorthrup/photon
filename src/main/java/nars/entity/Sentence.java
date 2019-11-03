@@ -98,7 +98,7 @@ public class Sentence implements Cloneable {
      * @param that The other sentence
      * @return Whether the two sentences have the same content
      */
-    @Override
+
     public boolean equals(Object that) {
         if (that instanceof Sentence) {
             var t = (Sentence) that;
@@ -112,7 +112,7 @@ public class Sentence implements Cloneable {
      *
      * @return A hashcode
      */
-    @Override
+
     public int hashCode() {
         var hash = 5;
         hash = 67 * hash + (Optional.ofNullable(this.content).map(Term::hashCode).orElse(0));
@@ -140,7 +140,7 @@ public class Sentence implements Cloneable {
      *
      * @return The clone
      */
-    @Override
+
     public Object clone() {
         if (truth == null) {
             return new Sentence((Term) content.clone(), punctuation, null, (Stamp) stamp.clone());
@@ -237,7 +237,7 @@ public class Sentence implements Cloneable {
      *
      * @return The String
      */
-    @Override
+
     public String toString() {
         var s = new StringBuilder();
         s.append(content.toString());

@@ -42,7 +42,7 @@ public class ConceptBag extends Bag<Concept> {
      *
      * @return The capacity of ConceptBag
      */
-    @Override
+
     protected int capacity() {
         return Parameters.CONCEPT_BAG_SIZE;
     }
@@ -52,7 +52,7 @@ public class ConceptBag extends Bag<Concept> {
      *
      * @return The forget rate of ConceptBag
      */
-    @Override
+
     protected int forgetRate() {
         return memory.getConceptForgettingRate().get();
     }

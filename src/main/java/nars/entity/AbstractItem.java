@@ -26,7 +26,7 @@ package nars.entity;
  * <p>
  * It has a key and a budget. Cannot be cloned
  */
-public abstract class AbstractItem implements BudgetTriple {
+public abstract class AbstractItem implements BudgetTriple, Item {
 
     /**
      * The key of the AbstractItem, unique in a Bag
@@ -69,6 +69,7 @@ public abstract class AbstractItem implements BudgetTriple {
      *
      * @return Current key value
      */
+
     public String getKey() {
         return key;
     }
@@ -78,6 +79,7 @@ public abstract class AbstractItem implements BudgetTriple {
      *
      * @return Current BudgetValue
      */
+
     public BudgetValue getBudget() {
         return budget;
     }
@@ -87,7 +89,7 @@ public abstract class AbstractItem implements BudgetTriple {
      *
      * @return Current priority value
      */
-    @Override
+
     public float getPriority() {
         return budget.getPriority();
     }
@@ -97,7 +99,7 @@ public abstract class AbstractItem implements BudgetTriple {
      *
      * @param v Set a new priority value
      */
-    @Override
+
     public void setPriority(float v) {
         budget.setPriority(v);
     }
@@ -107,7 +109,7 @@ public abstract class AbstractItem implements BudgetTriple {
      *
      * @param v The amount of increase
      */
-    @Override
+
     public void incPriority(float v) {
         budget.incPriority(v);
     }
@@ -117,7 +119,7 @@ public abstract class AbstractItem implements BudgetTriple {
      *
      * @param v The amount of decrease
      */
-    @Override
+
     public void decPriority(float v) {
         budget.decPriority(v);
     }
@@ -127,7 +129,7 @@ public abstract class AbstractItem implements BudgetTriple {
      *
      * @return Current durability value
      */
-    @Override
+
     public float getDurability() {
         return budget.getDurability();
     }
@@ -137,7 +139,7 @@ public abstract class AbstractItem implements BudgetTriple {
      *
      * @param v The new durability value
      */
-    @Override
+
     public void setDurability(float v) {
         budget.setDurability(v);
     }
@@ -147,7 +149,7 @@ public abstract class AbstractItem implements BudgetTriple {
      *
      * @param v The amount of increase
      */
-    @Override
+
     public void incDurability(float v) {
         budget.incDurability(v);
     }
@@ -157,7 +159,7 @@ public abstract class AbstractItem implements BudgetTriple {
      *
      * @param v The amount of decrease
      */
-    @Override
+
     public void decDurability(float v) {
         budget.decDurability(v);
     }
@@ -167,7 +169,7 @@ public abstract class AbstractItem implements BudgetTriple {
      *
      * @return The quality value
      */
-    @Override
+
     public float getQuality() {
         return budget.getQuality();
     }
@@ -177,7 +179,7 @@ public abstract class AbstractItem implements BudgetTriple {
      *
      * @param v The new quality value
      */
-    @Override
+
     public void setQuality(float v) {
         budget.setQuality(v);
     }
@@ -187,8 +189,8 @@ public abstract class AbstractItem implements BudgetTriple {
      *
      * @param that The AbstractItem to be merged
      */
-    public void merge(AbstractItem that) {
-        budget.merge(that.getBudget());
+    public void merge(BudgetTriple that) {
+        budget.merge(that );
     }
 
     /**
@@ -196,7 +198,7 @@ public abstract class AbstractItem implements BudgetTriple {
      *
      * @return The String representation of the full content
      */
-    @Override
+
     public String toString() {
         return budget + " " + key;
     }
@@ -206,9 +208,11 @@ public abstract class AbstractItem implements BudgetTriple {
      *
      * @return A simplified String representation of the content
      */
+
     public String toStringBrief() {
         return budget.toStringBrief() + " " + key;
     }
+
 
     public String toStringLong() {
         return toString();

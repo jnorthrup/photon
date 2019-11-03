@@ -28,7 +28,7 @@ import nars.main_nogui.Parameters;
 /**
  * A triple of priority (current), durability (decay), and quality (long-term average).
  */
-public class BudgetValue implements BudgetTriple {
+public class BudgetValue implements BudgetTriple  {
 
     /**
      * The character that marks the two ends of a budget value
@@ -179,7 +179,8 @@ public class BudgetValue implements BudgetTriple {
      *
      * @param that The other Budget
      */
-    public void merge(BudgetValue that) {
+
+    public void merge(BudgetTriple that) {
         BudgetFunctions.merge(this, that);
     }
 
@@ -188,7 +189,7 @@ public class BudgetValue implements BudgetTriple {
      *
      * @return The summary value
      */
-    public float summary() {
+     public float summary() {
         return UtilityFunctions.aveGeo(priority.floatValue(), durability.floatValue(), quality.floatValue());
     }
 
@@ -199,7 +200,7 @@ public class BudgetValue implements BudgetTriple {
      *
      * @return The decision on whether to process the AbstractItem
      */
-    public boolean aboveThreshold() {
+     public boolean aboveThreshold() {
         return (summary() >= Parameters.BUDGET_THRESHOLD);
     }
 
@@ -208,7 +209,7 @@ public class BudgetValue implements BudgetTriple {
      *
      * @return String representation of the value
      */
-    @Override
+
     public String toString() {
         return MARK + priority.toString() + SEPARATOR + durability.toString() + SEPARATOR + quality.toString() + MARK;
     }

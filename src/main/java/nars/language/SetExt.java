@@ -23,7 +23,8 @@ package nars.language;
 import nars.io.Symbols;
 import nars.storage.Memory;
 
-import java.util.ArrayList;
+import java.util.*;
+import java.util.List;
 import java.util.TreeSet;
 
 /**
@@ -37,7 +38,7 @@ public class SetExt extends CompoundTerm {
      * @param n   The name of the term
      * @param arg The component list of the term
      */
-    private SetExt(ArrayList<Term> arg) {
+    private SetExt( List<Term> arg) {
         super(arg);
     }
 
@@ -49,7 +50,7 @@ public class SetExt extends CompoundTerm {
      * @param open Open variable list
      * @param i    Syntactic complexity of the compound
      */
-    private SetExt(String n, ArrayList<Term> cs, boolean con, short i) {
+    private SetExt(String n ,  List<Term> cs, boolean con, short i) {
         super(n, cs, con, i);
     }
 
@@ -73,7 +74,7 @@ public class SetExt extends CompoundTerm {
      * @param memory  Reference to the memeory
      * @return the Term generated from the arguments
      */
-    public static Term make(ArrayList<Term> argList, Memory memory) {
+    public static Term make(List<Term> argList, Memory memory) {
         var set = new TreeSet<>(argList); // sort/merge arguments
         return make(set, memory);
     }
@@ -101,7 +102,7 @@ public class SetExt extends CompoundTerm {
      * @return A new object, to be casted into a SetExt
      */
     public Object clone() {
-        return new SetExt(name, (ArrayList<Term>) cloneList(components), isConstant(), complexity);
+        return new SetExt(name, ( List<Term>) cloneList(components), isConstant(), complexity);
     }
 
     /**
@@ -118,7 +119,7 @@ public class SetExt extends CompoundTerm {
      *
      * @return true for communitative
      */
-    @Override
+
     public boolean isCommutative() {
         return true;
     }
@@ -128,7 +129,7 @@ public class SetExt extends CompoundTerm {
      *
      * @return true for communitative
      */
-    @Override
+
     public String makeName() {
         return makeSetName(Symbols.SET_EXT_OPENER, components, Symbols.SET_EXT_CLOSER);
     }

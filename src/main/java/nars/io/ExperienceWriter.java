@@ -23,11 +23,8 @@ package nars.io;
 
 import nars.main_nogui.ReasonerBatch;
 
-import java.awt.*;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * To read and write experience as Task streams
@@ -59,8 +56,8 @@ public class ExperienceWriter implements OutputChannel {
      *
      * @param lines The text to be displayed
      */
-    @Override
-    public void nextOutput(ArrayList<String> lines) {
+
+    public void nextOutput(List<String> lines) {
         if (outExp != null) {
             for (String line : lines) {
                 outExp.println(line.toString());

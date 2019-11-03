@@ -25,8 +25,6 @@ import nars.io.Symbols;
 import nars.storage.Memory;
 
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 /**
  * A CompoundTerm is a Term with internal (syntactic) structure
@@ -40,7 +38,7 @@ public abstract class CompoundTerm extends Term {
     /**
      * list of (direct) components
      */
-    protected ArrayList<Term> components;
+    protected List<Term> components;
     /**
      * syntactic complexity of the compound, the sum of those of its components
      * plus 1
@@ -61,7 +59,7 @@ public abstract class CompoundTerm extends Term {
      * @param isConstant Whether the term refers to a concept
      * @param complexity Complexity of the compound term
      */
-    protected CompoundTerm(String name, ArrayList<Term> components, boolean isConstant, short complexity) {
+    protected CompoundTerm(String name ,  List<Term> components, boolean isConstant, short complexity) {
         super(name);
         this.components = components;
         this.isConstant = isConstant;
@@ -81,7 +79,7 @@ public abstract class CompoundTerm extends Term {
      *
      * @param components Component list
      */
-    protected CompoundTerm(ArrayList<Term> components) {
+    protected CompoundTerm( List<Term> components) {
         this.components = components;
         calcComplexity();
         name = makeName();
@@ -90,11 +88,10 @@ public abstract class CompoundTerm extends Term {
 
     /**
      * Constructor called from subclasses constructors to initialize the fields
-     *
-     * @param name       Name of the compound
+     *  @param name       Name of the compound
      * @param components Component list
      */
-    protected CompoundTerm(String name, ArrayList<Term> components) {
+    protected CompoundTerm(String name, List<Term> components) {
         super(name);
         isConstant = !Variable.containVar(name);
         this.components = components;
@@ -109,7 +106,7 @@ public abstract class CompoundTerm extends Term {
      * @param memory     Reference to the memory
      * @return A compound term or null
      */
-    public static Term make(CompoundTerm compound, ArrayList<Term> components, Memory memory) {
+    public static Term make(CompoundTerm compound ,  List<Term> components, Memory memory) {
         if (compound instanceof ImageExt) {
             return ImageExt.make(components, ((ImageExt) compound).getRelationIndex(), memory);
         } else if (compound instanceof ImageInt) {
@@ -129,7 +126,7 @@ public abstract class CompoundTerm extends Term {
      * @param memory Reference to the memory
      * @return A compound term or null
      */
-    public static Term make(String op, ArrayList<Term> arg, Memory memory) {
+    public static Term make(String op ,  List<Term> arg, Memory memory) {
         if (op.length() == 1) {
             if (op.charAt(0) == Symbols.SET_EXT_OPENER) {
                 return SetExt.make(arg, memory);
@@ -348,7 +345,7 @@ public abstract class CompoundTerm extends Term {
      *
      * @return A clone of the compound term
      */
-    @Override
+
     public abstract Object clone();
 
     /* ----- utilities for other fields ----- */
@@ -379,7 +376,7 @@ public abstract class CompoundTerm extends Term {
      * aram that The Term to be compared with the current Term @return The same
      * as compareTo as defined on Strings
      */
-    @Override
+
     public int compareTo(Term that) {
         if (that instanceof CompoundTerm) {
             var t = (CompoundTerm) that;
@@ -413,7 +410,7 @@ public abstract class CompoundTerm extends Term {
      *
      * @return the complexity value
      */
-    @Override
+
     public int getComplexity() {
         return complexity;
     }
@@ -423,7 +420,7 @@ public abstract class CompoundTerm extends Term {
      *
      * @return if the term is a constant
      */
-    @Override
+
     public boolean isConstant() {
         return isConstant;
     }
@@ -484,7 +481,7 @@ public abstract class CompoundTerm extends Term {
      *
      * @return The cloned component list
      */
-    public ArrayList<Term> cloneComponents() {
+    public   List<Term> cloneComponents() {
         return cloneList(components);
     }
 
@@ -504,7 +501,7 @@ public abstract class CompoundTerm extends Term {
      * @param target The term to be searched
      * @return Whether the target is in the current term
      */
-    @Override
+
     public boolean containTerm(Term target) {
         for (Term term : components) {
             if (term.containTerm(target)) {
@@ -543,7 +540,7 @@ public abstract class CompoundTerm extends Term {
     /**
      * Rename the variables in the compound, called from Sentence constructors
      */
-    @Override
+
     public void renameVariables() {
         if (containVar()) {
             renameVariables(new HashMap<>());
@@ -616,7 +613,7 @@ public abstract class CompoundTerm extends Term {
      *
      * @return A list of TermLink templates
      */
-    public ArrayList<TermLink> prepareComponentLinks() {
+    public   List<TermLink> prepareComponentLinks() {
         var componentLinks = new ArrayList<TermLink>();
         var type = (this instanceof Statement) ? TermLink.COMPOUND_STATEMENT : TermLink.COMPOUND;   // default
         prepareComponentLinks(componentLinks, type, this);
@@ -632,7 +629,7 @@ public abstract class CompoundTerm extends Term {
      * @param type           The type of TermLink to be built
      * @param term           The CompoundTerm for which the links are built
      */
-    private void prepareComponentLinks(ArrayList<TermLink> componentLinks, short type, CompoundTerm term) {
+    private void prepareComponentLinks( List<TermLink> componentLinks, short type, CompoundTerm term) {
         Term t1, t2, t3;                    // components at different levels
         for (var i = 0; i < term.size(); i++) {     // first level components
             t1 = term.componentAt(i);

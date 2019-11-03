@@ -134,7 +134,7 @@ public class Task extends AbstractItem {
      *
      * @param that The other Task
      */
-    @Override
+
     public void merge(AbstractItem that) {
         if (getCreationTime() >= ((Task) that).getCreationTime()) {
             super.merge(that);
@@ -185,7 +185,7 @@ public class Task extends AbstractItem {
      *
      * @return The Task as a String
      */
-    @Override
+
     public String toString() {
         var s = new StringBuilder();
         s.append(super.toString()).append(" ");

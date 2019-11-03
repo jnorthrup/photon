@@ -5,12 +5,12 @@
 
 package nars.io;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * An interface to be implemented in all output channel
  */
 public interface OutputChannel {
-    public void nextOutput(ArrayList<String> output);
+    public void nextOutput(List<String> output);
 
 }

@@ -30,7 +30,7 @@ import nars.main_nogui.NARSBatch;
 import nars.main_nogui.Parameters;
 import nars.storage.*;
 
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
 import java.util.Optional;
 
@@ -63,7 +63,7 @@ public final class Concept extends AbstractItem {
     /**
      * Sentences directly made about the term, with non-future tense
      */
-    private final ArrayList<Sentence> beliefs;
+    private final  List<Sentence> beliefs;
     /**
      * Reference to the memory
      */
@@ -72,7 +72,7 @@ public final class Concept extends AbstractItem {
      * Link templates of TermLink, only in concepts with CompoundTerm jmv TODO
      * explain more
      */
-    private ArrayList<TermLink> termLinkTemplates;
+    private  List<TermLink> termLinkTemplates;
     /**
      * The display window
      */
@@ -232,12 +232,11 @@ public final class Concept extends AbstractItem {
     /**
      * Add a new belief (or goal) into the table Sort the beliefs/goals by rank,
      * and remove redundant or low rank one
-     *
-     * @param newSentence The judgment to be processed
+     *  @param newSentence The judgment to be processed
      * @param table       The table to be revised
      * @param capacity    The capacity of the table
      */
-    private void addToTable(Sentence newSentence, ArrayList<Sentence> table, int capacity) {
+    private void addToTable(Sentence newSentence, List<Sentence> table, int capacity) {
         var rank1 = BudgetFunctions.rankBelief(newSentence);    // for the new isBelief
         Sentence judgment2;
         float rank2;
@@ -361,7 +360,7 @@ public final class Concept extends AbstractItem {
      *
      * @return The concept name, with taskBudget in the full version
      */
-    @Override
+
     public String toString() {  // called from concept bag
         if (NARSBatch.isStandAlone()) {
             return (super.toStringBrief() + " " + key);
@@ -373,7 +372,7 @@ public final class Concept extends AbstractItem {
     /**
      * called from {@link NARSBatch}
      */
-    @Override
+
     public String toStringLong() {
         var res = toStringBrief() + " " + key
                 + toStringIfNotNull(termLinks, "termLinks")
@@ -396,7 +395,7 @@ public final class Concept extends AbstractItem {
      *
      * @return The quality value
      */
-    @Override
+
     public float getQuality() {
         var linkPriority = termLinks.averagePriority();
         var termComplexityFactor = 1.0f / term.getComplexity();
@@ -490,24 +489,24 @@ public final class Concept extends AbstractItem {
 
     class NullEntityObserver implements EntityObserver {
 
-        @Override
+
         public void post(String str) {
         }
 
-        @Override
+
         public BagObserver<TermLink> createBagObserver() {
             return new NullBagObserver<>();
         }
 
-        @Override
+
         public void startPlay(Concept concept, boolean showLinks) {
         }
 
-        @Override
+
         public void stop() {
         }
 
-        @Override
+
         public void refresh(String message) {
         }
     }

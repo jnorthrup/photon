@@ -66,7 +66,7 @@ public class Term implements Cloneable, Comparable<Term> {
      *
      * @return The new Term
      */
-    @Override
+
     public Object clone() {
         return new Term(name);
     }
@@ -78,7 +78,7 @@ public class Term implements Cloneable, Comparable<Term> {
      * @param that The Term to be compared with the current Term
      * @return Whether the two Terms are equal
      */
-    @Override
+
     public boolean equals(Object that) {
         return (that instanceof Term) && name.equals(((Term) that).getName());
     }
@@ -88,7 +88,7 @@ public class Term implements Cloneable, Comparable<Term> {
      *
      * @return An integer hash code
      */
-    @Override
+
     public int hashCode() {
         return (Optional.ofNullable(name).map(String::hashCode).orElse(7));
     }
@@ -123,7 +123,7 @@ public class Term implements Cloneable, Comparable<Term> {
      * @param that The Term to be compared with the current Term
      * @return The same as compareTo as defined on Strings
      */
-    @Override
+
     public int compareTo(Term that) {
         if (that instanceof CompoundTerm) {
             return -1;
@@ -149,7 +149,7 @@ public class Term implements Cloneable, Comparable<Term> {
      *
      * @return The name of the term as a String
      */
-    @Override
+
     public final String toString() {
         return name;
     }

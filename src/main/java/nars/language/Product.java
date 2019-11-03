@@ -24,7 +24,7 @@ package nars.language;
 import nars.io.Symbols;
 import nars.storage.Memory;
 
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  * A Product is a sequence of terms.
@@ -37,7 +37,7 @@ public class Product extends CompoundTerm {
      * @param n   The name of the term
      * @param arg The component list of the term
      */
-    private Product(ArrayList<Term> arg) {
+    private Product( List<Term> arg) {
         super(arg);
     }
 
@@ -49,7 +49,7 @@ public class Product extends CompoundTerm {
      * @param open       Open variable list
      * @param complexity Syntactic complexity of the compound
      */
-    private Product(String n, ArrayList<Term> cs, boolean con, short complexity) {
+    private Product(String n ,  List<Term> cs, boolean con, short complexity) {
         super(n, cs, con, complexity);
     }
 
@@ -60,7 +60,7 @@ public class Product extends CompoundTerm {
      * @param memory   Reference to the memeory
      * @return the Term generated from the arguments
      */
-    public static Term make(ArrayList<Term> argument, Memory memory) {
+    public static Term make( List<Term> argument, Memory memory) {
         var name = makeCompoundName(Symbols.PRODUCT_OPERATOR, argument);
         var t = memory.nameToListedTerm(name);
         return (t != null) ? t : new Product(argument);
@@ -87,7 +87,7 @@ public class Product extends CompoundTerm {
      * @return A new object, to be casted into an ImageExt
      */
     public Object clone() {
-        return new Product(name, (ArrayList<Term>) cloneList(components), isConstant(), complexity);
+        return new Product(name, ( List<Term>) cloneList(components), isConstant(), complexity);
     }
 
     /**

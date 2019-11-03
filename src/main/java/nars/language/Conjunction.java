@@ -23,7 +23,7 @@ package nars.language;
 import nars.io.Symbols;
 import nars.storage.Memory;
 
-import java.util.ArrayList;
+import java.util.*;
 import java.util.TreeSet;
 
 /**
@@ -36,7 +36,7 @@ public class Conjunction extends CompoundTerm {
      *
      * @param arg The component list of the term
      */
-    protected Conjunction(ArrayList<Term> arg) {
+    protected Conjunction( List<Term> arg) {
         super(arg);
     }
 
@@ -48,7 +48,7 @@ public class Conjunction extends CompoundTerm {
      * @param con Whether the term is a constant
      * @param i   Syntactic complexity of the compound
      */
-    private Conjunction(String n, ArrayList<Term> cs, boolean con, short i) {
+    private Conjunction(String n ,  List<Term> cs, boolean con, short i) {
         super(n, cs, con, i);
     }
 
@@ -60,7 +60,7 @@ public class Conjunction extends CompoundTerm {
      * @param memory  Reference to the memory
      * @return the Term generated from the arguments
      */
-    public static Term make(ArrayList<Term> argList, Memory memory) {
+    public static Term make( List<Term> argList, Memory memory) {
         var set = new TreeSet<>(argList); // sort/merge arguments
         return make(set, memory);
     }
@@ -121,9 +121,9 @@ public class Conjunction extends CompoundTerm {
      *
      * @return A new object
      */
-    @Override
+
     public Object clone() {
-        return new Conjunction(name, (ArrayList<Term>) cloneList(components), isConstant(), complexity);
+        return new Conjunction(name, ( List<Term>) cloneList(components), isConstant(), complexity);
     }
 
     /**
@@ -131,7 +131,7 @@ public class Conjunction extends CompoundTerm {
      *
      * @return the operator of the term
      */
-    @Override
+
     public String operator() {
         return Symbols.CONJUNCTION_OPERATOR;
     }
@@ -143,7 +143,7 @@ public class Conjunction extends CompoundTerm {
      *
      * @return true for commutative
      */
-    @Override
+
     public boolean isCommutative() {
         return true;
     }

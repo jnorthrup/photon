@@ -26,7 +26,7 @@ import nars.language.*;
 import nars.main_nogui.Parameters;
 import nars.storage.Memory;
 
-import java.util.ArrayList;
+import java.util.*;
 
 import static nars.io.Symbols.*;
 

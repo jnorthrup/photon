@@ -8,7 +8,7 @@ import nars.io.Symbols;
 import nars.io.Symbols.*;
 import nars.storage.Memory;
 
-import java.util.ArrayList;
+import java.util.*;
 import java.util.Collection;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -196,7 +196,7 @@ public class ReasonerBatch {
         }
     }
 
-    @Override
+
     public String toString() {
         return memory.toString();
     }

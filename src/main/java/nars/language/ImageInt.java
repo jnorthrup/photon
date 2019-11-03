@@ -23,7 +23,8 @@ package nars.language;
 import nars.io.Symbols;
 import nars.storage.Memory;
 
-import java.util.ArrayList;
+import java.util.*;
+import java.util.List;
 
 /**
  * An intension image.
@@ -46,7 +47,7 @@ public class ImageInt extends CompoundTerm {
      * @param arg   The component list of the term
      * @param index The index of relation in the component list
      */
-    private ImageInt(String n, ArrayList<Term> arg, short index) {
+    private ImageInt(String n ,  List<Term> arg, short index) {
         super(n, arg);
         relationIndex = index;
     }
@@ -60,7 +61,7 @@ public class ImageInt extends CompoundTerm {
      * @param complexity Syntactic complexity of the compound
      * @param index      The index of relation in the component list
      */
-    private ImageInt(String n, ArrayList<Term> cs, boolean con, short complexity, short index) {
+    private ImageInt(String n ,  List<Term> cs, boolean con, short complexity, short index) {
         super(n, cs, con, complexity);
         relationIndex = index;
     }
@@ -72,7 +73,7 @@ public class ImageInt extends CompoundTerm {
      * @param memory  Reference to the memory
      * @return the Term generated from the arguments
      */
-    public static Term make(ArrayList<Term> argList, Memory memory) {
+    public static Term make( List<Term> argList, Memory memory) {
         if (argList.size() < 2) {
             return null;
         }
@@ -142,7 +143,7 @@ public class ImageInt extends CompoundTerm {
      * @param memory   Reference to the memory
      * @return the Term generated from the arguments
      */
-    public static Term make(ArrayList<Term> argument, short index, Memory memory) {
+    public static Term make(List<Term> argument, short index, Memory memory) {
         var name = makeImageName(Symbols.IMAGE_INT_OPERATOR, argument, index);
         var t = memory.nameToListedTerm(name);
         return (t != null) ? t : new ImageInt(name, argument, index);
@@ -154,7 +155,7 @@ public class ImageInt extends CompoundTerm {
      * @return A new object, to be casted into an ImageInt
      */
     public Object clone() {
-        return new ImageInt(name, (ArrayList<Term>) cloneList(components), isConstant(), complexity, relationIndex);
+        return new ImageInt(name, ( List<Term>) cloneList(components), isConstant(), complexity, relationIndex);
     }
 
     /**
@@ -192,7 +193,7 @@ public class ImageInt extends CompoundTerm {
      *
      * @return the name of the term
      */
-    @Override
+
     public String makeName() {
         return makeImageName(Symbols.IMAGE_INT_OPERATOR, components, relationIndex);
     }

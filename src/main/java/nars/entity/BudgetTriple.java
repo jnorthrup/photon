@@ -20,4 +20,10 @@ public interface BudgetTriple {
     float getQuality();
 
     void setQuality(float v);
+
+    void merge(BudgetTriple that);
+
+//    float summary();
+//
+//    boolean aboveThreshold();
 }

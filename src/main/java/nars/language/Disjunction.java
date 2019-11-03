@@ -23,7 +23,7 @@ package nars.language;
 import nars.io.Symbols;
 import nars.storage.Memory;
 
-import java.util.ArrayList;
+import java.util.*;
 import java.util.TreeSet;
 
 /**
@@ -37,7 +37,7 @@ public class Disjunction extends CompoundTerm {
      * @param n   The name of the term
      * @param arg The component list of the term
      */
-    private Disjunction(ArrayList<Term> arg) {
+    private Disjunction( List<Term> arg) {
         super(arg);
     }
 
@@ -49,7 +49,7 @@ public class Disjunction extends CompoundTerm {
      * @param open Open variable list
      * @param i    Syntactic complexity of the compound
      */
-    private Disjunction(String n, ArrayList<Term> cs, boolean con, short i) {
+    private Disjunction(String n ,  List<Term> cs, boolean con, short i) {
         super(n, cs, con, i);
     }
 
@@ -89,7 +89,7 @@ public class Disjunction extends CompoundTerm {
      * @param memory  Reference to the memory
      * @return the Term generated from the arguments
      */
-    public static Term make(ArrayList<Term> argList, Memory memory) {
+    public static Term make( List<Term> argList, Memory memory) {
         var set = new TreeSet<>(argList); // sort/merge arguments
         return make(set, memory);
     }
@@ -116,9 +116,9 @@ public class Disjunction extends CompoundTerm {
      *
      * @return A new object
      */
-    @Override
+
     public Object clone() {
-        return new Disjunction(name, (ArrayList<Term>) cloneList(components), isConstant(), complexity);
+        return new Disjunction(name, ( List<Term>) cloneList(components), isConstant(), complexity);
     }
 
     /**
@@ -126,7 +126,7 @@ public class Disjunction extends CompoundTerm {
      *
      * @return the operator of the term
      */
-    @Override
+
     public String operator() {
         return Symbols.DISJUNCTION_OPERATOR;
     }
@@ -136,7 +136,7 @@ public class Disjunction extends CompoundTerm {
      *
      * @return true for commutative
      */
-    @Override
+
     public boolean isCommutative() {
         return true;
     }

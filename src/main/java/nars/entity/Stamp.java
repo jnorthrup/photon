@@ -159,7 +159,7 @@ public class Stamp implements Cloneable {
      *
      * @return The cloned stamp
      */
-    @Override
+
     public Object clone() {
         return new Stamp(this);
     }
@@ -212,7 +212,7 @@ public class Stamp implements Cloneable {
      * @param that The Stamp to be compared
      * @return Whether the two have contain the same elements
      */
-    @Override
+
     public boolean equals(Object that) {
         boolean result = false;
         if (that instanceof Stamp) {
@@ -228,7 +228,7 @@ public class Stamp implements Cloneable {
      *
      * @return The hash code
      */
-    @Override
+
     public int hashCode() {
         return toString().hashCode();
     }
@@ -248,7 +248,7 @@ public class Stamp implements Cloneable {
      *
      * @return The Stamp as a String
      */
-    @Override
+
     public String toString() {
         var buffer = new StringBuilder(" " + Symbols.STAMP_OPENER + creationTime);
         buffer.append(" ").append(Symbols.STAMP_STARTER).append(" ");

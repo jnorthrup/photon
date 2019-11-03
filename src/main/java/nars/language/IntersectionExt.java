@@ -23,7 +23,8 @@ package nars.language;
 import nars.io.Symbols;
 import nars.storage.Memory;
 
-import java.util.ArrayList;
+import java.util.*;
+import java.util.List;
 import java.util.TreeSet;
 
 /**
@@ -37,7 +38,7 @@ public class IntersectionExt extends CompoundTerm {
      * @param n   The name of the term
      * @param arg The component list of the term
      */
-    private IntersectionExt(ArrayList<Term> arg) {
+    private IntersectionExt( List<Term> arg) {
         super(arg);
     }
 
@@ -49,7 +50,7 @@ public class IntersectionExt extends CompoundTerm {
      * @param open Open variable list
      * @param i    Syntactic complexity of the compound
      */
-    private IntersectionExt(String n, ArrayList<Term> cs, boolean con, short i) {
+    private IntersectionExt(String n ,  List<Term> cs, boolean con, short i) {
         super(n, cs, con, i);
     }
 
@@ -99,7 +100,7 @@ public class IntersectionExt extends CompoundTerm {
      * @param memory  Reference to the memory
      * @return the Term generated from the arguments
      */
-    public static Term make(ArrayList<Term> argList, Memory memory) {
+    public static Term make(List<Term> argList, Memory memory) {
         var set = new TreeSet<>(argList); // sort/merge arguments
         return make(set, memory);
     }
@@ -127,7 +128,7 @@ public class IntersectionExt extends CompoundTerm {
      * @return A new object, to be casted into a IntersectionExt
      */
     public Object clone() {
-        return new IntersectionExt(name, (ArrayList<Term>) cloneList(components), isConstant(), complexity);
+        return new IntersectionExt(name, ( List<Term>) cloneList(components), isConstant(), complexity);
     }
 
     /**
@@ -144,7 +145,7 @@ public class IntersectionExt extends CompoundTerm {
      *
      * @return true for communitative
      */
-    @Override
+
     public boolean isCommutative() {
         return true;
     }

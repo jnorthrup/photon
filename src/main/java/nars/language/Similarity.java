@@ -23,7 +23,7 @@ package nars.language;
 import nars.io.Symbols;
 import nars.storage.Memory;
 
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  * A Statement about a Similarity relation.
@@ -36,7 +36,7 @@ public class Similarity extends Statement {
      * @param n   The name of the term
      * @param arg The component list of the term
      */
-    private Similarity(ArrayList<Term> arg) {
+    private Similarity( List<Term> arg) {
         super(arg);
     }
 
@@ -48,7 +48,7 @@ public class Similarity extends Statement {
      * @param open Open variable list
      * @param i    Syntactic complexity of the compound
      */
-    private Similarity(String n, ArrayList<Term> cs, boolean con, short i) {
+    private Similarity(String n ,  List<Term> cs, boolean con, short i) {
         super(n, cs, con, i);
     }
 
@@ -81,9 +81,9 @@ public class Similarity extends Statement {
      *
      * @return A new object, to be casted into a Similarity
      */
-    @Override
+
     public Object clone() {
-        return new Similarity(name, (ArrayList<Term>) cloneList(components), isConstant(), complexity);
+        return new Similarity(name, ( List<Term>) cloneList(components), isConstant(), complexity);
     }
 
     /**
@@ -91,7 +91,7 @@ public class Similarity extends Statement {
      *
      * @return the operator of the term
      */
-    @Override
+
     public String operator() {
         return Symbols.SIMILARITY_RELATION;
     }
@@ -101,7 +101,7 @@ public class Similarity extends Statement {
      *
      * @return true for commutative
      */
-    @Override
+
     public boolean isCommutative() {
         return true;
     }

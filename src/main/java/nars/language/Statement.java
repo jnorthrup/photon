@@ -23,7 +23,7 @@ package nars.language;
 import nars.io.Symbols;
 import nars.storage.Memory;
 
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
 
 /**
@@ -37,7 +37,7 @@ public abstract class Statement extends CompoundTerm {
      *
      * @param arg The component list of the term
      */
-    protected Statement(ArrayList<Term> arg) {
+    protected Statement( List<Term> arg) {
         super(arg);
     }
 
@@ -55,7 +55,7 @@ public abstract class Statement extends CompoundTerm {
      * @param con Constant indicator
      * @param i   Syntactic complexity of the compound
      */
-    protected Statement(String n, ArrayList<Term> cs, boolean con, short i) {
+    protected Statement(String n ,  List<Term> cs, boolean con, short i) {
         super(n, cs, con, i);
     }
 
@@ -210,7 +210,7 @@ public abstract class Statement extends CompoundTerm {
      *
      * @return the nameStr of the term
      */
-    @Override
+
     protected String makeName() {
         return makeStatementName(getSubject(), operator(), getPredicate());
     }
