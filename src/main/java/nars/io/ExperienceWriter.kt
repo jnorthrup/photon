@@ -1,4 +1,3 @@
-
 /*
  * ExperienceReader.java
  *
@@ -19,36 +18,27 @@
  * You should have received a copy of the GNU General Public License
  * along with Open-NARS.  If not, see <http://www.gnu.org/licenses/>.
  */
-package nars.io;
+package nars.io
 
-import nars.main_nogui.ReasonerBatch;
-
-import java.io.PrintWriter;
-import java.util.List;
+import nars.main_nogui.ReasonerBatch
+import java.io.PrintWriter
 
 /**
  * To read and write experience as Task streams
  */
-public class ExperienceWriter implements OutputChannel {
-
-    private ReasonerBatch reasoner;
+class ExperienceWriter
+/**
+ * Default constructor
+ *
+ * @param reasoner
+ */(private val reasoner: ReasonerBatch) : OutputChannel {
     /**
      * Input experience from a file
      */
-    private PrintWriter outExp;
+    private var outExp: PrintWriter? = null
 
-    /**
-     * Default constructor
-     *
-     * @param reasoner
-     */
-    public ExperienceWriter(ReasonerBatch reasoner) {
-        this.reasoner = reasoner;
-    }
-
-    public ExperienceWriter(ReasonerBatch reasoner, PrintWriter outExp) {
-        this(reasoner);
-        this.outExp = outExp;
+    constructor(reasoner: ReasonerBatch, outExp: PrintWriter?) : this(reasoner) {
+        this.outExp = outExp
     }
 
     /**
@@ -57,12 +47,12 @@ public class ExperienceWriter implements OutputChannel {
      * @param lines The text to be displayed
      */
 
-    @Override
-    public void nextOutput(List<String> lines) {
+    override fun nextOutput(lines: List<String?>?) {
         if (outExp != null) {
-            for (String line : lines) {
-                outExp.println(line.toString());
+            for (line in lines!!) {
+                outExp!!.println(line)
             }
         }
     }
+
 }

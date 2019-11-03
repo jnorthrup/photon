@@ -55,10 +55,10 @@ class NARSBatch {
      */
     fun init(args: Array<String>) {
         if (args.size > 0) {
-            val experienceReader = ExperienceReader(reasoner)
+            val experienceReader = ExperienceReader(reasoner!!)
             experienceReader.openLoadFile(args[0])
         }
-        reasoner!!.addOutputChannel(ExperienceWriter(reasoner,
+        reasoner!!.addOutputChannel(ExperienceWriter(reasoner!!,
                 PrintWriter(out, true)))
     }
 
