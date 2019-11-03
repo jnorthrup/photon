@@ -19,33 +19,28 @@
  * along with Open-NARS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package nars.storage;
+package nars.storage
 
-import nars.entity.Concept;
-import nars.main_nogui.Parameters;
+import nars.entity.Concept
+import nars.main_nogui.Parameters
 
 /**
  * Contains Concepts.
  */
-public class ConceptBag extends Bag<Concept> {
-    /**
-     * Constructor
-     *
-     * @param memory The reference of memory
-     */
-    public ConceptBag(Memory memory) {
-        super(memory);
-    }
-
+class ConceptBag
+/**
+ * Constructor
+ *
+ * @param memory The reference of memory
+ */(memory: Memory?) : Bag<Concept?>(memory!!) {
     /**
      * Get the (constant) capacity of ConceptBag
      *
      * @return The capacity of ConceptBag
      */
 
-    @Override
-    protected int capacity() {
-        return Parameters.CONCEPT_BAG_SIZE;
+    override fun capacity(): Int {
+        return Parameters.CONCEPT_BAG_SIZE
     }
 
     /**
@@ -54,8 +49,7 @@ public class ConceptBag extends Bag<Concept> {
      * @return The forget rate of ConceptBag
      */
 
-    @Override
-    protected int forgetRate() {
-        return getMemory().getConceptForgettingRate().get();
+    override fun forgetRate(): Int {
+        return memory.conceptForgettingRate.get()
     }
 }
