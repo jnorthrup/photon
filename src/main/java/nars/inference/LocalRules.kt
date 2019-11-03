@@ -223,8 +223,8 @@ object LocalRules {/* -------------------- same contents -------------------- */
     </S></P> */
     private fun inferToAsym(asym: Sentence, sym: Sentence, memory: Memory) {
         val statement = asym.content as Statement
-        val sub: Term? = statement.predicate
-        val pre: Term? = statement.subject
+        val sub: Term  = statement.predicate
+        val pre: Term  = statement.subject
         val content: Statement? = Statement.make(statement, sub, pre, memory)
         val truth: TruthValue? = TruthFunctions.reduceConjunction(sym.truth!!, asym.truth!!)
         val budget = forward(truth, memory)
@@ -274,7 +274,7 @@ object LocalRules {/* -------------------- same contents -------------------- */
      * @param memory Reference to the memory
      */
     private fun convertedJudgment(newTruth: TruthValue?, newBudget: BudgetValue, memory: Memory) {
-        var content = memory.currentTask.content as Statement?
+        var content = memory.currentTask.content as Statement
         val beliefContent = memory.currentBelief!!.content as Statement
         val subjT: Term = content!!.subject
         val predT: Term = content.predicate
@@ -283,11 +283,11 @@ object LocalRules {/* -------------------- same contents -------------------- */
         var otherTerm: Term
         if (Variable.containVarQuery(subjT.name)) {
             otherTerm = if (predT == subjB) predB else subjB
-            content = Statement.make(content, otherTerm, predT, memory)
+            content = Statement.make(content, otherTerm, predT, memory)!!
         }
         if (Variable.containVarQuery(predT.name)) {
             otherTerm = if (subjT == subjB) predB else subjB
-            content = Statement.make(content, subjT, otherTerm, memory)
+            content = Statement.make(content, subjT, otherTerm, memory)!!
         }
         memory.singlePremiseTask(content, Symbols.JUDGMENT_MARK, newTruth, newBudget)
     }

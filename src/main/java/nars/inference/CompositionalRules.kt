@@ -157,7 +157,7 @@ object CompositionalRules {/* -------------------- intersections and differences
         val task: Task = memory.currentTask
         val sentence = task.sentence
         val belief = memory.currentBelief
-        val oldContent = task.content as Statement?
+        val oldContent = task.content as Statement
         val v1: TruthValue?
         val v2: TruthValue?
         if (compoundTask) {
@@ -168,39 +168,39 @@ object CompositionalRules {/* -------------------- intersections and differences
             v2 = sentence.truth
         }
         var truth: TruthValue? = null
-        val content: Term?
+        val content: Term ?
         if (index == 0) {
             content = Statement.make(oldContent, term1, term2, memory)
-            when {
-                content == null -> return
-                oldContent is Inheritance -> if (compound is IntersectionExt) {
-                    truth = TruthFunctions.reduceConjunction(v1!!, v2!!)
-                } else if (compound is IntersectionInt) {
-                    truth = TruthFunctions.reduceDisjunction(v1!!, v2!!)
-                } else if (compound is SetInt && component is SetInt) {
-                    truth = TruthFunctions.reduceConjunction(v1!!, v2!!)
-                } else if (compound is SetExt && component is SetExt) {
-                    truth = TruthFunctions.reduceDisjunction(v1!!, v2!!)
-                } else if (compound is DifferenceExt) {
-                    truth = if (compound.componentAt(0) == component) {
-                        TruthFunctions.reduceDisjunction(v2!!, v1!!)
-                    } else {
-                        TruthFunctions.reduceConjunctionNeg(v1!!, v2!!)
+            if (content != null) {
+                if (oldContent is Inheritance) {
+                    if (compound is IntersectionExt) {
+                        truth = TruthFunctions.reduceConjunction(v1!!, v2!!)
+                    } else if (compound is IntersectionInt) {
+                        truth = TruthFunctions.reduceDisjunction(v1!!, v2!!)
+                    } else if (compound is SetInt && component is SetInt) {
+                        truth = TruthFunctions.reduceConjunction(v1!!, v2!!)
+                    } else if (compound is SetExt && component is SetExt) {
+                        truth = TruthFunctions.reduceDisjunction(v1!!, v2!!)
+                    } else if (compound is DifferenceExt) {
+                        truth = if (compound.componentAt(0) == component) {
+                            TruthFunctions.reduceDisjunction(v2!!, v1!!)
+                        } else {
+                            TruthFunctions.reduceConjunctionNeg(v1!!, v2!!)
+                        }
+                    }
+                } else if (oldContent is Implication) {
+                    if (compound is Conjunction) {
+                        truth = TruthFunctions.reduceConjunction(v1!!, v2!!)
+                    } else if (compound is Disjunction) {
+                        truth = TruthFunctions.reduceDisjunction(v1!!, v2!!)
                     }
                 }
-                oldContent is Implication -> if (compound is Conjunction) {
-                    truth = TruthFunctions.reduceConjunction(v1!!, v2!!)
-                } else if (compound is Disjunction) {
-                    truth = TruthFunctions.reduceDisjunction(v1!!, v2!!)
-                }
-            }
+            } else return
         } else {
             content = Statement.make(oldContent, term2, term1, memory)
-            if (content == null) {
-                return
-            }
-            if (oldContent is Inheritance) {
-                if (compound is IntersectionInt) {
+            when {
+                content == null -> return
+                oldContent is Inheritance -> if (compound is IntersectionInt) {
                     truth = TruthFunctions.reduceConjunction(v1!!, v2!!)
                 } else if (compound is IntersectionExt) {
                     truth = TruthFunctions.reduceDisjunction(v1!!, v2!!)
@@ -215,17 +215,18 @@ object CompositionalRules {/* -------------------- intersections and differences
                         TruthFunctions.reduceConjunctionNeg(v1!!, v2!!)
                     }
                 }
-            } else if (oldContent is Implication) {
-                if (compound is Disjunction) {
+                oldContent is Implication -> if (compound is Disjunction) {
                     truth = TruthFunctions.reduceConjunction(v1!!, v2!!)
                 } else if (compound is Conjunction) {
                     truth = TruthFunctions.reduceDisjunction(v1!!, v2!!)
                 }
             }
         }
-        if (truth != null) {
-            val budget = compoundForward(truth, content, memory)
-            memory.doublePremiseTask(content, truth, budget)
+        when {
+            truth != null -> {
+                val budget = compoundForward(truth, content!!, memory)
+                memory.doublePremiseTask(content, truth, budget)
+            }
         }
     }
 

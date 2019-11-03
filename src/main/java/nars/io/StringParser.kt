@@ -326,8 +326,8 @@ object StringParser {
         val i = topRelation(s)
         assert(i >= 0) { "invalid statement" }
         val relation = s.substring(i, i + 3)
-        val subject = parseTerm(s.substring(0, i), memory)
-        val predicate = parseTerm(s.substring(i + 3), memory)
+        val subject = parseTerm(s.substring(0, i), memory)!!
+        val predicate = parseTerm(s.substring(i + 3), memory)!!
         return Statement.make(relation, subject, predicate, memory) ?: error("invalid statement")
     }
 

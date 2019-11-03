@@ -61,19 +61,19 @@ public class Similarity extends Statement {
      * @return A compound generated or null
      */
     public static Similarity make(Term subject, Term predicate, Memory memory) {
-        if (invalidStatement(subject, predicate)) {
-            return null;
-        }
-        if (subject.compareTo(predicate) > 0) {
-            return make(predicate, subject, memory);
-        }
-        var name = makeStatementName(subject, Symbols.SIMILARITY_RELATION, predicate);
-        var t = memory.nameToListedTerm(name);
-        if (t != null) {
+        if (!invalidStatement(subject, predicate)) {
+            if (subject.compareTo(predicate) > 0) {
+                return make(predicate, subject, memory);
+            }
+            var name = makeStatementName(subject, Symbols.SIMILARITY_RELATION, predicate);
+            var t = memory.nameToListedTerm(name);
+            if (t == null) {
+                var argument = argumentsToList(subject, predicate);
+                return new Similarity(argument);
+            }
             return (Similarity) t;
         }
-        var argument = argumentsToList(subject, predicate);
-        return new Similarity(argument);
+        return null;
     }
 
     /**

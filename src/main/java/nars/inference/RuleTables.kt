@@ -353,8 +353,8 @@ object RuleTables {
                 SyllogisticRules.detachment(mainSentence, subSentence, index, memory)
             } else if (Variable.unify(Symbols.VAR_INDEPENDENT, component, content, statement, content)) {
                 SyllogisticRules.detachment(mainSentence, subSentence, index, memory)
-            } else if (statement is Implication && statement.getPredicate() is Statement && memory.currentTask.sentence.isJudgment) {
-                val s2 = statement.getPredicate() as Statement
+            } else if (statement is Implication && statement.predicate is Statement && memory.currentTask.sentence.isJudgment) {
+                val s2 = statement.predicate as Statement
                 if (s2.subject == (content as Statement).subject) {
                     CompositionalRules.introVarInner(content, s2, statement, memory)
                 }

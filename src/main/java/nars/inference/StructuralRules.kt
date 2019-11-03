@@ -128,8 +128,8 @@ object StructuralRules {
         if (sub.size() != pre.size() || sub.size() <= index) {
             return
         }
-        val t1: Term? = sub.componentAt(index)
-        val t2: Term? = pre.componentAt(index)
+        val t1: Term  = sub.componentAt(index)
+        val t2: Term  = pre.componentAt(index)
         val content: Term?
         content = if (switchOrder(sub, index.toShort())) {
             Statement.make(statement, t2, t1, memory)
@@ -397,7 +397,7 @@ object StructuralRules {
                 if ((oldContent is Implication || oldContent is Equivalence) && condition is Conjunction) {
                     componentList = (condition as CompoundTerm).cloneComponents()
                     componentList[indices[1].toInt()] = newInh
-                    val newCond: Term? = CompoundTerm.make(condition as CompoundTerm, componentList, memory)
+                    val newCond: Term = CompoundTerm.make(condition as CompoundTerm, componentList, memory)
                     content = Statement.make(oldContent as Statement, newCond, oldContent.predicate, memory)
                 } else {
                     componentList = oldContent.cloneComponents()

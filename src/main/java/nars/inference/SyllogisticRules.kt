@@ -48,7 +48,7 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
      * @param belief   The second premise
      * @param memory   Reference to the memory
      */
-    internal fun dedExe(term1: Term?, term2: Term?, sentence: Sentence, belief: Sentence, memory: Memory) {
+    internal fun dedExe(term1: Term , term2: Term , sentence: Sentence, belief: Sentence, memory: Memory) {
         if (Statement.invalidStatement(term1, term2)) {
             return
         }
@@ -82,7 +82,7 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
      * @param belief       The second premise
      * @param memory       Reference to the memory
      */
-    internal fun abdIndCom(term1: Term?, term2: Term?, taskSentence: Sentence, belief: Sentence, memory: Memory) {
+    internal fun abdIndCom(term1: Term , term2: Term , taskSentence: Sentence, belief: Sentence, memory: Memory) {
         if (Statement.invalidStatement(term1, term2)) {
             return
         }
@@ -123,7 +123,7 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
      * @param sym    The symmetric premise
      * @param memory Reference to the memory
      */
-    internal fun analogy(term1: Term?, term2: Term?, asym: Sentence, sym: Sentence, memory: Memory) {
+    internal fun analogy(term1: Term, term2: Term, asym: Sentence, sym: Sentence, memory: Memory) {
         if (Statement.invalidStatement(term1, term2)) {
             return
         }
@@ -154,7 +154,7 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
      * @param sentence The second premise
      * @param memory   Reference to the memory
      */
-    internal fun resemblance(term1: Term?, term2: Term?, belief: Sentence, sentence: Sentence, memory: Memory) {
+    internal fun resemblance(term1: Term, term2: Term, belief: Sentence, sentence: Sentence, memory: Memory) {
         if (Statement.invalidStatement(term1, term2)) {
             return
         }
@@ -385,7 +385,7 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
      * @param memory      Reference to the memory
      * @return Whether there are derived tasks
      */
-    internal fun conditionalAbd(cond1: Term?, cond2: Term?, st1: Statement?, st2: Statement?, memory: Memory): Boolean {
+    internal fun conditionalAbd(cond1: Term, cond2: Term, st1: Statement, st2: Statement, memory: Memory): Boolean {
         if (st1 !is Implication || st2 !is Implication) {
             return false
         }
@@ -418,10 +418,9 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
         var truth: TruthValue? = null
         var budget: BudgetValue
         if (term1 != null) {
-            content = if (term2 != null) {
-                Statement.make(st2, term2, term1, memory)
-            } else {
-                term1
+            content = when {
+                term2 != null -> Statement.make(st2!!, term2!!, term1!!, memory!!)!!
+                else -> term1
             }
             if (sentence.isQuestion) {
                 budget = backwardWeak(value2, memory)
@@ -433,7 +432,7 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
         }
         if (term2 != null) {
             content = if (term1 != null) {
-                Statement.make(st1, term1, term2, memory)
+                Statement.make(st1!!, term1!!, term2!!, memory!!)!!
             } else {
                 term2
             }

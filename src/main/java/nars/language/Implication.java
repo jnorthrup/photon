@@ -60,34 +60,30 @@ public class Implication extends Statement {
      * @return A compound generated or a term it reduced to
      */
     public static Implication make(Term subject, Term predicate, Memory memory) {
-        if ((subject == null) || (predicate == null)) {
-            return null;
-        }
-        if ((subject == null) || (predicate == null)) {
-            return null;
-        }
-        if ((subject instanceof Implication) || (subject instanceof Equivalence) || (predicate instanceof Equivalence)) {
-            return null;
-        }
-        if (invalidStatement(subject, predicate)) {
-            return null;
-        }
-        var name = makeStatementName(subject, Symbols.IMPLICATION_RELATION, predicate);
-        var t = memory.nameToListedTerm(name);
-        if (t != null) {
-            return (Implication) t;
-        }
-        if (predicate instanceof Implication) {
-            var oldCondition = ((Implication) predicate).getSubject();
-            if ((oldCondition instanceof Conjunction) && ((Conjunction) oldCondition).containComponent(subject)) {
-                return null;
+        Implication result = null;
+        if ((subject != null) && (predicate != null)) {
+            if ((subject != null) && (predicate != null)) {
+                if ((!(subject instanceof Implication)) && (!(subject instanceof Equivalence)) && (!(predicate instanceof Equivalence))) {
+                    if (!invalidStatement(subject, predicate)) {
+                        var name = makeStatementName(subject, Symbols.IMPLICATION_RELATION, predicate);
+                        var t = memory.nameToListedTerm(name);
+                        if (t != null) {
+                            result = (Implication) t;
+                        } else if (predicate instanceof Implication) {
+                            var oldCondition = ((Implication) predicate).getSubject();
+                            if ((!(oldCondition instanceof Conjunction)) || !((Conjunction) oldCondition).containComponent(subject)) {
+                                var newCondition = Conjunction.make(subject, oldCondition, memory);
+                                result = make(newCondition, ((Implication) predicate).getPredicate(), memory);
+                            }
+                        } else {
+                            var argument = argumentsToList(subject, predicate);
+                            result = new Implication(argument);
+                        }
+                    }
+                }
             }
-            var newCondition = Conjunction.make(subject, oldCondition, memory);
-            return make(newCondition, ((Implication) predicate).getPredicate(), memory);
-        } else {
-            var argument = argumentsToList(subject, predicate);
-            return new Implication(argument);
         }
+        return result;
     }
 
     /**
