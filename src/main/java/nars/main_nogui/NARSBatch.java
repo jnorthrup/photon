@@ -63,7 +63,7 @@ public class NARSBatch {
      * @param args optional argument used : one input file
      */
     public static void main(String args[]) {
-        NARSBatch nars = new NARSBatch();
+        var nars = new NARSBatch();
         setStandAlone(true);
         CommandLineParameters.decode(args, nars.getReasoner());
         nars.runInference(args);
@@ -101,7 +101,7 @@ public class NARSBatch {
      */
     public void init(String[] args) {
         if (args.length > 0) {
-            ExperienceReader experienceReader = new ExperienceReader(reasoner);
+            var experienceReader = new ExperienceReader(reasoner);
             experienceReader.openLoadFile(args[0]);
         }
         reasoner.addOutputChannel(new ExperienceWriter(reasoner,
@@ -118,7 +118,7 @@ public class NARSBatch {
     }
 
     private void init(BufferedReader r, BufferedWriter w) {
-        ExperienceReader experienceReader = new ExperienceReader(reasoner);
+        var experienceReader = new ExperienceReader(reasoner);
         experienceReader.setBufferedReader(r);
         reasoner.addOutputChannel(new ExperienceWriter(reasoner,
                 new PrintWriter(w, true)));

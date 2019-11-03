@@ -63,13 +63,13 @@ public class ParameterWindow extends NarsFrame implements ActionListener, Adjust
         currentValue.set(dft);
         setLayout(new GridLayout(3, 3, 8, 4));
         setBackground(SINGLE_WINDOW_COLOR);
-        Label sp1 = new Label("");
+        var sp1 = new Label("");
         sp1.setBackground(SINGLE_WINDOW_COLOR);
         add(sp1);
         valueLabel = new Label(String.valueOf(dft), Label.CENTER);
         valueLabel.setBackground(SINGLE_WINDOW_COLOR);
         add(valueLabel);
-        Label sp2 = new Label("");
+        var sp2 = new Label("");
         sp2.setBackground(SINGLE_WINDOW_COLOR);
         add(sp2);
         add(new Label("0", Label.RIGHT));
@@ -104,7 +104,7 @@ public class ParameterWindow extends NarsFrame implements ActionListener, Adjust
      * @param e The ActionEvent
      */
     public void actionPerformed(ActionEvent e) {
-        Object s = e.getSource();
+        var s = e.getSource();
         if (s == defaultButton) {
             currentValue.set(defaultValue);
             valueBar.setValue(currentValue.get());
@@ -135,7 +135,7 @@ public class ParameterWindow extends NarsFrame implements ActionListener, Adjust
      */
     public void adjustmentValueChanged(AdjustmentEvent e) {
         if (e.getSource() == valueBar) {
-            int v = valueBar.getValue();
+            var v = valueBar.getValue();
             valueLabel.setText(String.valueOf(v));
             valueBar.setValue(v);
             currentValue.set(v);

@@ -61,8 +61,8 @@ public class Product extends CompoundTerm {
      * @return the Term generated from the arguments
      */
     public static Term make(ArrayList<Term> argument, Memory memory) {
-        String name = makeCompoundName(Symbols.PRODUCT_OPERATOR, argument);
-        Term t = memory.nameToListedTerm(name);
+        var name = makeCompoundName(Symbols.PRODUCT_OPERATOR, argument);
+        var t = memory.nameToListedTerm(name);
         return (t != null) ? t : new Product(argument);
     }
 
@@ -76,7 +76,7 @@ public class Product extends CompoundTerm {
      * @return A compound generated or a term it reduced to
      */
     public static Term make(CompoundTerm image, Term component, int index, Memory memory) {
-        ArrayList<Term> argument = image.cloneComponents();
+        var argument = image.cloneComponents();
         argument.set(index, component);
         return make(argument, memory);
     }

@@ -205,7 +205,7 @@ public abstract class CompoundTerm extends Term {
      * @return the component list
      */
     protected static ArrayList<Term> argumentsToList(Term t1, Term t2) {
-        ArrayList<Term> list = new ArrayList<Term>(2);
+        var list = new ArrayList<Term>(2);
         list.add(t1);
         list.add(t2);
         return list;
@@ -219,10 +219,10 @@ public abstract class CompoundTerm extends Term {
      * @return the oldName of the term
      */
     protected static String makeCompoundName(String op, ArrayList<Term> arg) {
-        StringBuilder name = new StringBuilder();
+        var name = new StringBuilder();
         name.append(Symbols.COMPOUND_TERM_OPENER);
         name.append(op);
-        for (Term t : arg) {
+        for (var t : arg) {
             name.append(Symbols.ARGUMENT_SEPARATOR);
             if (t instanceof CompoundTerm) {
                 ((CompoundTerm) t).setName(((CompoundTerm) t).makeName());
@@ -244,10 +244,10 @@ public abstract class CompoundTerm extends Term {
      * @return the oldName of the term
      */
     protected static String makeSetName(char opener, ArrayList<Term> arg, char closer) {
-        StringBuilder name = new StringBuilder();
+        var name = new StringBuilder();
         name.append(opener);
         name.append(arg.get(0).getName());
-        for (int i = 1; i < arg.size(); i++) {
+        for (var i = 1; i < arg.size(); i++) {
             name.append(Symbols.ARGUMENT_SEPARATOR);
             name.append(arg.get(i).getName());
         }
@@ -264,12 +264,12 @@ public abstract class CompoundTerm extends Term {
      * @return the oldName of the term
      */
     protected static String makeImageName(String op, ArrayList<Term> arg, int relationIndex) {
-        StringBuilder name = new StringBuilder();
+        var name = new StringBuilder();
         name.append(Symbols.COMPOUND_TERM_OPENER);
         name.append(op);
         name.append(Symbols.ARGUMENT_SEPARATOR);
         name.append(arg.get(relationIndex).getName());
-        for (int i = 0; i < arg.size(); i++) {
+        for (var i = 0; i < arg.size(); i++) {
             name.append(Symbols.ARGUMENT_SEPARATOR);
             if (i == relationIndex) {
                 name.append(Symbols.IMAGE_PLACE_HOLDER);
@@ -291,8 +291,8 @@ public abstract class CompoundTerm extends Term {
         if (original == null) {
             return null;
         }
-        ArrayList<Term> arr = new ArrayList<Term>(original.size());
-        for (int i = 0; i < original.size(); i++) {
+        var arr = new ArrayList<Term>(original.size());
+        for (var i = 0; i < original.size(); i++) {
             arr.add((Term) ((Term) original.get(i)).clone());
         }
         return arr;
@@ -311,7 +311,7 @@ public abstract class CompoundTerm extends Term {
             return t1;
         }
         boolean success;
-        ArrayList<Term> list = t1.cloneComponents();
+        var list = t1.cloneComponents();
         if (t1.getClass() == t2.getClass()) {
             success = list.addAll(((CompoundTerm) t2).getComponents());
         } else {
@@ -332,7 +332,7 @@ public abstract class CompoundTerm extends Term {
      */
     public static Term reduceComponents(CompoundTerm t1, Term t2, Memory memory) {
         boolean success;
-        ArrayList<Term> list = t1.cloneComponents();
+        var list = t1.cloneComponents();
         if (t1.getClass() == t2.getClass()) {
             success = list.removeAll(((CompoundTerm) t2).getComponents());
         } else {
@@ -351,14 +351,14 @@ public abstract class CompoundTerm extends Term {
      * @return The new compound
      */
     public static Term setComponent(CompoundTerm compound, int index, Term t, Memory memory) {
-        ArrayList<Term> list = compound.cloneComponents();
+        var list = compound.cloneComponents();
         list.remove(index);
         if (t != null) {
             if (compound.getClass() != t.getClass()) {
                 list.add(index, t);
             } else {
-                ArrayList<Term> list2 = ((CompoundTerm) t).cloneComponents();
-                for (int i = 0; i < list2.size(); i++) {
+                var list2 = ((CompoundTerm) t).cloneComponents();
+                for (var i = 0; i < list2.size(); i++) {
                     list.add(index + i, list2.get(i));
                 }
             }
@@ -397,7 +397,7 @@ public abstract class CompoundTerm extends Term {
      */
     private void calcComplexity() {
         complexity = 1;
-        for (Term t : components) {
+        for (var t : components) {
             complexity += t.getComplexity();
         }
     }
@@ -412,10 +412,10 @@ public abstract class CompoundTerm extends Term {
     @Override
     public int compareTo(Term that) {
         if (that instanceof CompoundTerm) {
-            CompoundTerm t = (CompoundTerm) that;
-            int minSize = Math.min(size(), t.size());
-            for (int i = 0; i < minSize; i++) {
-                int diff = componentAt(i).compareTo(t.componentAt(i));
+            var t = (CompoundTerm) that;
+            var minSize = Math.min(size(), t.size());
+            for (var i = 0; i < minSize; i++) {
+                var diff = componentAt(i).compareTo(t.componentAt(i));
                 if (diff != 0) {
                     return diff;
                 }
@@ -536,7 +536,7 @@ public abstract class CompoundTerm extends Term {
      */
     @Override
     public boolean containTerm(Term target) {
-        for (Term term : components) {
+        for (var term : components) {
             if (term.containTerm(target)) {
                 return true;
             }
@@ -589,8 +589,8 @@ public abstract class CompoundTerm extends Term {
      */
     private void renameVariables(HashMap<Variable, Variable> map) {
         if (containVar()) {
-            for (int i = 0; i < components.size(); i++) {
-                Term term = componentAt(i);
+            for (var i = 0; i < components.size(); i++) {
+                var term = componentAt(i);
                 if (term instanceof Variable) {
                     Variable var;
                     if (term.getName().length() == 1) { // anonymous variable from input
@@ -620,7 +620,7 @@ public abstract class CompoundTerm extends Term {
      */
     public void applySubstitute(HashMap<Term, Term> subs) {
         Term t1, t2;
-        for (int i = 0; i < size(); i++) {
+        for (var i = 0; i < size(); i++) {
             t1 = componentAt(i);
             t2 = subs.get(t1);
             if (t2 != null) {
@@ -630,7 +630,7 @@ public abstract class CompoundTerm extends Term {
             }
         }
         if (this.isCommutative()) {         // re-order
-            TreeSet<Term> s = new TreeSet<Term>(components);
+            var s = new TreeSet<Term>(components);
             components = new ArrayList<Term>(s);
         }
         name = makeName();
@@ -647,8 +647,8 @@ public abstract class CompoundTerm extends Term {
      * @return A list of TermLink templates
      */
     public ArrayList<TermLink> prepareComponentLinks() {
-        ArrayList<TermLink> componentLinks = new ArrayList<TermLink>();
-        short type = (this instanceof Statement) ? TermLink.COMPOUND_STATEMENT : TermLink.COMPOUND;   // default
+        var componentLinks = new ArrayList<TermLink>();
+        var type = (this instanceof Statement) ? TermLink.COMPOUND_STATEMENT : TermLink.COMPOUND;   // default
         prepareComponentLinks(componentLinks, type, this);
         return componentLinks;
     }
@@ -664,7 +664,7 @@ public abstract class CompoundTerm extends Term {
      */
     private void prepareComponentLinks(ArrayList<TermLink> componentLinks, short type, CompoundTerm term) {
         Term t1, t2, t3;                    // components at different levels
-        for (int i = 0; i < term.size(); i++) {     // first level components
+        for (var i = 0; i < term.size(); i++) {     // first level components
             t1 = term.componentAt(i);
             if (t1.isConstant()) {
                 componentLinks.add(new TermLink(t1, type, i));
@@ -672,7 +672,7 @@ public abstract class CompoundTerm extends Term {
             if ((t1 instanceof Conjunction) && ((this instanceof Equivalence) || ((this instanceof Implication) && (i == 0)))) {
                 ((CompoundTerm) t1).prepareComponentLinks(componentLinks, TermLink.COMPOUND_CONDITION, (CompoundTerm) t1);
             } else if (t1 instanceof CompoundTerm) {
-                for (int j = 0; j < ((CompoundTerm) t1).size(); j++) {  // second level components
+                for (var j = 0; j < ((CompoundTerm) t1).size(); j++) {  // second level components
                     t2 = ((CompoundTerm) t1).componentAt(j);
                     if (t2.isConstant()) {
                         if ((t1 instanceof Product) || (t1 instanceof ImageExt) || (t1 instanceof ImageInt)) {
@@ -686,7 +686,7 @@ public abstract class CompoundTerm extends Term {
                         }
                     }
                     if ((t2 instanceof Product) || (t2 instanceof ImageExt) || (t2 instanceof ImageInt)) {
-                        for (int k = 0; k < ((CompoundTerm) t2).size(); k++) {
+                        for (var k = 0; k < ((CompoundTerm) t2).size(); k++) {
                             t3 = ((CompoundTerm) t2).componentAt(k);
                             if (t3.isConstant()) {                           // third level
                                 if (type == TermLink.COMPOUND_CONDITION) {

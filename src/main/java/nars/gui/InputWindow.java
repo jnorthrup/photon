@@ -60,8 +60,8 @@ public class InputWindow extends NarsFrame implements ActionListener, InputChann
     public InputWindow(ReasonerBatch reasoner, String title) {
         super(title + " - Input Window");
         setBackground(SINGLE_WINDOW_COLOR);
-        GridBagLayout gridbag = new GridBagLayout();
-        GridBagConstraints c = new GridBagConstraints();
+        var gridbag = new GridBagLayout();
+        var c = new GridBagConstraints();
         setLayout(gridbag);
         c.ipadx = 3;
         c.ipady = 3;
@@ -111,7 +111,7 @@ public class InputWindow extends NarsFrame implements ActionListener, InputChann
      * @param e The ActionEvent
      */
     public void actionPerformed(ActionEvent e) {
-        Button b = (Button) e.getSource();
+        var b = (Button) e.getSource();
         if (b == okButton) {
             ready = true;
         } else if (b == holdButton) {
@@ -146,7 +146,7 @@ public class InputWindow extends NarsFrame implements ActionListener, InputChann
         if (!ready) {
             return false;
         }
-        String text = inputText.getText().trim();
+        var text = inputText.getText().trim();
         String line;    // The next line of text
         int endOfLine;
         // The process steps at a number or no more text

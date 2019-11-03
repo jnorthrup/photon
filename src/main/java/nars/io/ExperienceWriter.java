@@ -58,10 +58,10 @@ public class ExperienceWriter implements OutputChannel {
      * Open an output experience file
      */
     public void openSaveFile() {
-        FileDialog dialog = new FileDialog((FileDialog) null, "Save experience", FileDialog.SAVE);
+        var dialog = new FileDialog((FileDialog) null, "Save experience", FileDialog.SAVE);
         dialog.setVisible(true);
-        String directoryName = dialog.getDirectory();
-        String fileName = dialog.getFile();
+        var directoryName = dialog.getDirectory();
+        var fileName = dialog.getFile();
         try {
             outExp = new PrintWriter(new FileWriter(directoryName + fileName));
         } catch (IOException ex) {

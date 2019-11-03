@@ -36,10 +36,10 @@ public final class TruthFunctions extends UtilityFunctions {
      * @return Truth value of the conclusion
      */
     static TruthValue conversion(TruthValue v1) {
-        float f1 = v1.getFrequency();
-        float c1 = v1.getConfidence();
-        float w = and(f1, c1);
-        float c = w2c(w);
+        var f1 = v1.getFrequency();
+        var c1 = v1.getConfidence();
+        var w = and(f1, c1);
+        var c = w2c(w);
         return new TruthValue(1, c);
     }
 
@@ -52,8 +52,8 @@ public final class TruthFunctions extends UtilityFunctions {
      * @return Truth value of the conclusion
      */
     static TruthValue negation(TruthValue v1) {
-        float f = 1 - v1.getFrequency();
-        float c = v1.getConfidence();
+        var f = 1 - v1.getFrequency();
+        var c = v1.getConfidence();
         return new TruthValue(f, c);
     }
 
@@ -64,10 +64,10 @@ public final class TruthFunctions extends UtilityFunctions {
      * @return Truth value of the conclusion
      */
     static TruthValue contraposition(TruthValue v1) {
-        float f1 = v1.getFrequency();
-        float c1 = v1.getConfidence();
-        float w = and(1 - f1, c1);
-        float c = w2c(w);
+        var f1 = v1.getFrequency();
+        var c1 = v1.getConfidence();
+        var w = and(1 - f1, c1);
+        var c = w2c(w);
         return new TruthValue(0, c);
     }
 
@@ -81,15 +81,15 @@ public final class TruthFunctions extends UtilityFunctions {
      * @return Truth value of the conclusion
      */
     static TruthValue revision(TruthValue v1, TruthValue v2) {
-        float f1 = v1.getFrequency();
-        float f2 = v2.getFrequency();
-        float c1 = v1.getConfidence();
-        float c2 = v2.getConfidence();
-        float w1 = c2w(c1);
-        float w2 = c2w(c2);
-        float w = w1 + w2;
-        float f = (w1 * f1 + w2 * f2) / w;
-        float c = w2c(w);
+        var f1 = v1.getFrequency();
+        var f2 = v2.getFrequency();
+        var c1 = v1.getConfidence();
+        var c2 = v2.getConfidence();
+        var w1 = c2w(c1);
+        var w2 = c2w(c2);
+        var w = w1 + w2;
+        var f = (w1 * f1 + w2 * f2) / w;
+        var c = w2c(w);
         return new TruthValue(f, c);
     }
 
@@ -103,12 +103,12 @@ public final class TruthFunctions extends UtilityFunctions {
      * @return Truth value of the conclusion
      */
     static TruthValue deduction(TruthValue v1, TruthValue v2) {
-        float f1 = v1.getFrequency();
-        float f2 = v2.getFrequency();
-        float c1 = v1.getConfidence();
-        float c2 = v2.getConfidence();
-        float f = and(f1, f2);
-        float c = and(c1, c2, f);
+        var f1 = v1.getFrequency();
+        var f2 = v2.getFrequency();
+        var c1 = v1.getConfidence();
+        var c2 = v2.getConfidence();
+        var f = and(f1, f2);
+        var c = and(c1, c2, f);
         return new TruthValue(f, c);
     }
 
@@ -120,9 +120,9 @@ public final class TruthFunctions extends UtilityFunctions {
      * @return Truth value of the conclusion
      */
     static TruthValue deduction(TruthValue v1, float reliance) {
-        float f1 = v1.getFrequency();
-        float c1 = v1.getConfidence();
-        float c = and(f1, c1, reliance);
+        var f1 = v1.getFrequency();
+        var c1 = v1.getConfidence();
+        var c = and(f1, c1, reliance);
         return new TruthValue(f1, c, true);
     }
 
@@ -134,12 +134,12 @@ public final class TruthFunctions extends UtilityFunctions {
      * @return Truth value of the conclusion
      */
     static TruthValue analogy(TruthValue v1, TruthValue v2) {
-        float f1 = v1.getFrequency();
-        float f2 = v2.getFrequency();
-        float c1 = v1.getConfidence();
-        float c2 = v2.getConfidence();
-        float f = and(f1, f2);
-        float c = and(c1, c2, f2);
+        var f1 = v1.getFrequency();
+        var f2 = v2.getFrequency();
+        var c1 = v1.getConfidence();
+        var c2 = v2.getConfidence();
+        var f = and(f1, f2);
+        var c = and(c1, c2, f2);
         return new TruthValue(f, c);
     }
 
@@ -151,12 +151,12 @@ public final class TruthFunctions extends UtilityFunctions {
      * @return Truth value of the conclusion
      */
     static TruthValue resemblance(TruthValue v1, TruthValue v2) {
-        float f1 = v1.getFrequency();
-        float f2 = v2.getFrequency();
-        float c1 = v1.getConfidence();
-        float c2 = v2.getConfidence();
-        float f = and(f1, f2);
-        float c = and(c1, c2, or(f1, f2));
+        var f1 = v1.getFrequency();
+        var f2 = v2.getFrequency();
+        var c1 = v1.getConfidence();
+        var c2 = v2.getConfidence();
+        var f = and(f1, f2);
+        var c = and(c1, c2, or(f1, f2));
         return new TruthValue(f, c);
     }
 
@@ -171,12 +171,12 @@ public final class TruthFunctions extends UtilityFunctions {
         if (v1.getAnalytic() || v2.getAnalytic()) {
             return new TruthValue(0.5f, 0f);
         }
-        float f1 = v1.getFrequency();
-        float f2 = v2.getFrequency();
-        float c1 = v1.getConfidence();
-        float c2 = v2.getConfidence();
-        float w = and(f2, c1, c2);
-        float c = w2c(w);
+        var f1 = v1.getFrequency();
+        var f2 = v2.getFrequency();
+        var c1 = v1.getConfidence();
+        var c2 = v2.getConfidence();
+        var w = and(f2, c1, c2);
+        var c = w2c(w);
         return new TruthValue(f1, c);
     }
 
@@ -191,10 +191,10 @@ public final class TruthFunctions extends UtilityFunctions {
         if (v1.getAnalytic()) {
             return new TruthValue(0.5f, 0f);
         }
-        float f1 = v1.getFrequency();
-        float c1 = v1.getConfidence();
-        float w = and(c1, reliance);
-        float c = w2c(w);
+        var f1 = v1.getFrequency();
+        var c1 = v1.getConfidence();
+        var w = and(c1, reliance);
+        var c = w2c(w);
         return new TruthValue(f1, c, true);
     }
 
@@ -220,12 +220,12 @@ public final class TruthFunctions extends UtilityFunctions {
         if (v1.getAnalytic() || v2.getAnalytic()) {
             return new TruthValue(0.5f, 0f);
         }
-        float f1 = v1.getFrequency();
-        float f2 = v2.getFrequency();
-        float c1 = v1.getConfidence();
-        float c2 = v2.getConfidence();
-        float w = and(f1, f2, c1, c2);
-        float c = w2c(w);
+        var f1 = v1.getFrequency();
+        var f2 = v2.getFrequency();
+        var c1 = v1.getConfidence();
+        var c2 = v2.getConfidence();
+        var w = and(f1, f2, c1, c2);
+        var c = w2c(w);
         return new TruthValue(1, c);
     }
 
@@ -237,14 +237,14 @@ public final class TruthFunctions extends UtilityFunctions {
      * @return Truth value of the conclusion
      */
     static TruthValue comparison(TruthValue v1, TruthValue v2) {
-        float f1 = v1.getFrequency();
-        float f2 = v2.getFrequency();
-        float c1 = v1.getConfidence();
-        float c2 = v2.getConfidence();
-        float f0 = or(f1, f2);
-        float f = (f0 == 0) ? 0 : (and(f1, f2) / f0);
-        float w = and(f0, c1, c2);
-        float c = w2c(w);
+        var f1 = v1.getFrequency();
+        var f2 = v2.getFrequency();
+        var c1 = v1.getConfidence();
+        var c2 = v2.getConfidence();
+        var f0 = or(f1, f2);
+        var f = (f0 == 0) ? 0 : (and(f1, f2) / f0);
+        var w = and(f0, c1, c2);
+        var c = w2c(w);
         return new TruthValue(f, c);
     }
 
@@ -258,12 +258,12 @@ public final class TruthFunctions extends UtilityFunctions {
      * @return Truth value of the conclusion
      */
     static TruthValue desireStrong(TruthValue v1, TruthValue v2) {
-        float f1 = v1.getFrequency();
-        float f2 = v2.getFrequency();
-        float c1 = v1.getConfidence();
-        float c2 = v2.getConfidence();
-        float f = and(f1, f2);
-        float c = and(c1, c2, f2);
+        var f1 = v1.getFrequency();
+        var f2 = v2.getFrequency();
+        var c1 = v1.getConfidence();
+        var c2 = v2.getConfidence();
+        var f = and(f1, f2);
+        var c = and(c1, c2, f2);
         return new TruthValue(f, c);
     }
 
@@ -275,12 +275,12 @@ public final class TruthFunctions extends UtilityFunctions {
      * @return Truth value of the conclusion
      */
     static TruthValue desireWeak(TruthValue v1, TruthValue v2) {
-        float f1 = v1.getFrequency();
-        float f2 = v2.getFrequency();
-        float c1 = v1.getConfidence();
-        float c2 = v2.getConfidence();
-        float f = and(f1, f2);
-        float c = and(c1, c2, f2, w2c(1.0f));
+        var f1 = v1.getFrequency();
+        var f2 = v2.getFrequency();
+        var c1 = v1.getConfidence();
+        var c2 = v2.getConfidence();
+        var f = and(f1, f2);
+        var c = and(c1, c2, f2, w2c(1.0f));
         return new TruthValue(f, c);
     }
 
@@ -292,12 +292,12 @@ public final class TruthFunctions extends UtilityFunctions {
      * @return Truth value of the conclusion
      */
     static TruthValue desireDed(TruthValue v1, TruthValue v2) {
-        float f1 = v1.getFrequency();
-        float f2 = v2.getFrequency();
-        float c1 = v1.getConfidence();
-        float c2 = v2.getConfidence();
-        float f = and(f1, f2);
-        float c = and(c1, c2);
+        var f1 = v1.getFrequency();
+        var f2 = v2.getFrequency();
+        var c1 = v1.getConfidence();
+        var c2 = v2.getConfidence();
+        var f = and(f1, f2);
+        var c = and(c1, c2);
         return new TruthValue(f, c);
     }
 
@@ -309,12 +309,12 @@ public final class TruthFunctions extends UtilityFunctions {
      * @return Truth value of the conclusion
      */
     static TruthValue desireInd(TruthValue v1, TruthValue v2) {
-        float f1 = v1.getFrequency();
-        float f2 = v2.getFrequency();
-        float c1 = v1.getConfidence();
-        float c2 = v2.getConfidence();
-        float w = and(f2, c1, c2);
-        float c = w2c(w);
+        var f1 = v1.getFrequency();
+        var f2 = v2.getFrequency();
+        var c1 = v1.getConfidence();
+        var c2 = v2.getConfidence();
+        var w = and(f2, c1, c2);
+        var c = w2c(w);
         return new TruthValue(f1, c);
     }
 
@@ -328,12 +328,12 @@ public final class TruthFunctions extends UtilityFunctions {
      * @return Truth value of the conclusion
      */
     static TruthValue union(TruthValue v1, TruthValue v2) {
-        float f1 = v1.getFrequency();
-        float f2 = v2.getFrequency();
-        float c1 = v1.getConfidence();
-        float c2 = v2.getConfidence();
-        float f = or(f1, f2);
-        float c = and(c1, c2);
+        var f1 = v1.getFrequency();
+        var f2 = v2.getFrequency();
+        var c1 = v1.getConfidence();
+        var c2 = v2.getConfidence();
+        var f = or(f1, f2);
+        var c = and(c1, c2);
         return new TruthValue(f, c);
     }
 
@@ -345,12 +345,12 @@ public final class TruthFunctions extends UtilityFunctions {
      * @return Truth value of the conclusion
      */
     static TruthValue intersection(TruthValue v1, TruthValue v2) {
-        float f1 = v1.getFrequency();
-        float f2 = v2.getFrequency();
-        float c1 = v1.getConfidence();
-        float c2 = v2.getConfidence();
-        float f = and(f1, f2);
-        float c = and(c1, c2);
+        var f1 = v1.getFrequency();
+        var f2 = v2.getFrequency();
+        var c1 = v1.getConfidence();
+        var c2 = v2.getConfidence();
+        var f = and(f1, f2);
+        var c = and(c1, c2);
         return new TruthValue(f, c);
     }
 
@@ -362,7 +362,7 @@ public final class TruthFunctions extends UtilityFunctions {
      * @return Truth value of the conclusion
      */
     static TruthValue reduceDisjunction(TruthValue v1, TruthValue v2) {
-        TruthValue v0 = intersection(v1, negation(v2));
+        var v0 = intersection(v1, negation(v2));
         return deduction(v0, 1f);
     }
 
@@ -374,7 +374,7 @@ public final class TruthFunctions extends UtilityFunctions {
      * @return Truth value of the conclusion
      */
     static TruthValue reduceConjunction(TruthValue v1, TruthValue v2) {
-        TruthValue v0 = intersection(negation(v1), v2);
+        var v0 = intersection(negation(v1), v2);
         return negation(deduction(v0, 1f));
     }
 
@@ -397,9 +397,9 @@ public final class TruthFunctions extends UtilityFunctions {
      * @return Truth value of the conclusion
      */
     static TruthValue anonymousAnalogy(TruthValue v1, TruthValue v2) {
-        float f1 = v1.getFrequency();
-        float c1 = v1.getConfidence();
-        TruthValue v0 = new TruthValue(f1, w2c(c1));
+        var f1 = v1.getFrequency();
+        var c1 = v1.getConfidence();
+        var v0 = new TruthValue(f1, w2c(c1));
         return analogy(v2, v0);
     }
 }

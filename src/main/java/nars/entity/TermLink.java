@@ -99,12 +99,12 @@ public class TermLink extends Item {
         if (type == TermLink.COMPOUND_CONDITION) {  // the first index is 0 by default
             index = new short[indices.length + 1];
             index[0] = 0;
-            for (int i = 0; i < indices.length; i++) {
+            for (var i = 0; i < indices.length; i++) {
                 index[i + 1] = (short) indices[i];
             }
         } else {
             index = new short[indices.length];
-            for (int i = 0; i < index.length; i++) {
+            for (var i = 0; i < index.length; i++) {
                 index[i] = (short) indices[i];
             }
         }
@@ -152,9 +152,9 @@ public class TermLink extends Item {
             at1 = Symbols.TO_COMPOUND_1;
             at2 = Symbols.TO_COMPOUND_2;
         }
-        String in = "T" + type;
+        var in = "T" + type;
         if (index != null) {
-            for (int i = 0; i < index.length; i++) {
+            for (var i = 0; i < index.length; i++) {
                 in += "-" + (index[i] + 1);
             }
         }

@@ -67,13 +67,13 @@ public class BagWindow<BagType extends Item> extends NarsFrame implements Action
 
     public BagWindow() {
         /* The lowest level displayed */
-        int showLevel = Parameters.BAG_THRESHOLD;
+        var showLevel = Parameters.BAG_THRESHOLD;
         setBackground(MULTIPLE_WINDOW_COLOR);
 
         text = new JTextArea("");
         text.setBackground(DISPLAY_BACKGROUND_COLOR);
         text.setEditable(false);
-        JScrollPane textScrollPane = new JScrollPane(text);
+        var textScrollPane = new JScrollPane(text);
         valueLabel = new JLabel("00", JLabel.RIGHT);
         valueBar = new JScrollBar(Scrollbar.HORIZONTAL, showLevel, 0, 1, Parameters.BAG_LEVEL);
         valueBar.addAdjustmentListener(this);
@@ -95,7 +95,7 @@ public class BagWindow<BagType extends Item> extends NarsFrame implements Action
     private void applyBorderLayout(JScrollPane textScrollPane) {
         setLayout(new BorderLayout());
         add(textScrollPane, BorderLayout.CENTER);
-        JPanel bottomPanel = new JPanel();
+        var bottomPanel = new JPanel();
         add(bottomPanel, BorderLayout.SOUTH);
         bottomPanel.add(valueLabel);
         bottomPanel.add(valueBar);
@@ -105,7 +105,7 @@ public class BagWindow<BagType extends Item> extends NarsFrame implements Action
     }
 
     private void adjustLabelAndCursor(int showLevel) {
-        String valueText = String.valueOf(showLevel);
+        var valueText = String.valueOf(showLevel);
         // always occupy 3 characters (padding):
         valueText = showLevel > 9 ? "0" + valueText : "00" + valueText;
         valueText = showLevel > 99 ? "" + showLevel : valueText;
@@ -126,7 +126,7 @@ public class BagWindow<BagType extends Item> extends NarsFrame implements Action
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        Object source = e.getSource();
+        var source = e.getSource();
         if (source == playButton) {
             bag.play();
         } else if (source == stopButton) {
@@ -158,7 +158,7 @@ public class BagWindow<BagType extends Item> extends NarsFrame implements Action
     @Override
     public void adjustmentValueChanged(AdjustmentEvent e) {
         if (e.getSource() == valueBar) {
-            int showLevel = valueBar.getValue();
+            var showLevel = valueBar.getValue();
             adjustLabelAndCursor(showLevel);
             bag.setShowLevel(showLevel);
             bag.play();
@@ -184,8 +184,8 @@ public class BagWindow<BagType extends Item> extends NarsFrame implements Action
 
     @SuppressWarnings("unused")
     private void applyGridBagLayout(JScrollPane textScrollPane) {
-        GridBagLayout gridbag = new GridBagLayout();
-        GridBagConstraints c = new GridBagConstraints();
+        var gridbag = new GridBagLayout();
+        var c = new GridBagConstraints();
         setLayout(gridbag);
         c.ipadx = 3;
         c.ipady = 3;

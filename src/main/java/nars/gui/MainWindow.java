@@ -121,9 +121,9 @@ public class MainWindow extends NarsFrame implements ActionListener, OutputChann
         memory.setRecorder(record);
 
         setBackground(MAIN_WINDOW_COLOR);
-        MenuBar menuBar = new MenuBar();
+        var menuBar = new MenuBar();
 
-        Menu m = new Menu("File");
+        var m = new Menu("File");
         m.add(new MenuItem("Load Experience"));
         m.add(new MenuItem("Save Experience"));
         m.addSeparator();
@@ -162,8 +162,8 @@ public class MainWindow extends NarsFrame implements ActionListener, OutputChann
 
         setMenuBar(menuBar);
 
-        GridBagLayout gridbag = new GridBagLayout();
-        GridBagConstraints c = new GridBagConstraints();
+        var gridbag = new GridBagLayout();
+        var c = new GridBagConstraints();
         setLayout(gridbag);
 
         c.ipadx = 3;
@@ -249,7 +249,7 @@ public class MainWindow extends NarsFrame implements ActionListener, OutputChann
      * @param e The ActionEvent
      */
     public void actionPerformed(ActionEvent e) {
-        Object obj = e.getSource();
+        var obj = e.getSource();
         if (obj instanceof Button) {
             if (obj == runButton) {
                 reasoner.run();
@@ -261,7 +261,7 @@ public class MainWindow extends NarsFrame implements ActionListener, OutputChann
                 close();
             }
         } else if (obj instanceof MenuItem) {
-            String label = e.getActionCommand();
+            var label = e.getActionCommand();
             if (label.equals("Load Experience")) {
                 experienceReader = new ExperienceReader(reasoner);
                 experienceReader.openLoadFile();
@@ -335,7 +335,7 @@ public class MainWindow extends NarsFrame implements ActionListener, OutputChann
     @Override
     public void nextOutput(ArrayList<String> lines) {
         if (!lines.isEmpty()) {
-            String text = "";
+            var text = "";
             for (Object line : lines) {
                 text += line + "\n";
             }
@@ -349,7 +349,7 @@ public class MainWindow extends NarsFrame implements ActionListener, OutputChann
      * @return The previous timer value
      */
     public long updateTimer() {
-        long i = timer;
+        var i = timer;
         initTimer();
         return i;
     }

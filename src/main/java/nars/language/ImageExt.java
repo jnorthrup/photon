@@ -76,10 +76,10 @@ public class ImageExt extends CompoundTerm {
         if (argList.size() < 2) {
             return null;
         }
-        Term relation = argList.get(0);
-        ArrayList<Term> argument = new ArrayList<Term>();
-        int index = 0;
-        for (int j = 1; j < argList.size(); j++) {
+        var relation = argList.get(0);
+        var argument = new ArrayList<Term>();
+        var index = 0;
+        for (var j = 1; j < argList.size(); j++) {
             if (argList.get(j).getName().charAt(0) == Symbols.IMAGE_PLACE_HOLDER) {
                 index = j - 1;
                 argument.add(relation);
@@ -100,7 +100,7 @@ public class ImageExt extends CompoundTerm {
      */
     public static Term make(Product product, Term relation, short index, Memory memory) {
         if (relation instanceof Product) {
-            Product p2 = (Product) relation;
+            var p2 = (Product) relation;
             if ((product.size() == 2) && (p2.size() == 2)) {
                 if ((index == 0) && product.componentAt(1).equals(p2.componentAt(1))) { // (/,_,(*,a,b),b) is reduced to a
                     return p2.componentAt(0);
@@ -110,7 +110,7 @@ public class ImageExt extends CompoundTerm {
                 }
             }
         }
-        ArrayList<Term> argument = product.cloneComponents();
+        var argument = product.cloneComponents();
         argument.set(index, relation);
         return make(argument, index, memory);
     }
@@ -124,9 +124,9 @@ public class ImageExt extends CompoundTerm {
      * @return A compound generated or a term it reduced to
      */
     public static Term make(ImageExt oldImage, Term component, short index, Memory memory) {
-        ArrayList<Term> argList = oldImage.cloneComponents();
+        var argList = oldImage.cloneComponents();
         int oldIndex = oldImage.getRelationIndex();
-        Term relation = argList.get(oldIndex);
+        var relation = argList.get(oldIndex);
         argList.set(oldIndex, component);
         argList.set(index, relation);
         return make(argList, index, memory);
@@ -140,8 +140,8 @@ public class ImageExt extends CompoundTerm {
      * @return the Term generated from the arguments
      */
     public static Term make(ArrayList<Term> argument, short index, Memory memory) {
-        String name = makeImageName(Symbols.IMAGE_EXT_OPERATOR, argument, index);
-        Term t = memory.nameToListedTerm(name);
+        var name = makeImageName(Symbols.IMAGE_EXT_OPERATOR, argument, index);
+        var t = memory.nameToListedTerm(name);
         return (t != null) ? t : new ImageExt(name, argument, index);
     }
 

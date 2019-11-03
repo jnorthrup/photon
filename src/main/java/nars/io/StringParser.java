@@ -47,9 +47,9 @@ public abstract class StringParser extends Symbols {
      * @return An experienced task
      */
     public static Task parseExperience(StringBuffer buffer, Memory memory, long time) {
-        int i = buffer.indexOf(PREFIX_MARK + "");
+        var i = buffer.indexOf(PREFIX_MARK + "");
         if (i > 0) {
-            String prefix = buffer.substring(0, i).trim();
+            var prefix = buffer.substring(0, i).trim();
             switch (prefix) {
                 case OUTPUT_LINE:
                     return null;
@@ -58,9 +58,9 @@ public abstract class StringParser extends Symbols {
                     break;
             }
         }
-        char c = buffer.charAt(buffer.length() - 1);
+        var c = buffer.charAt(buffer.length() - 1);
         if (c == STAMP_CLOSER) {
-            int j = buffer.lastIndexOf(STAMP_OPENER + "");
+            var j = buffer.lastIndexOf(STAMP_OPENER + "");
             buffer.delete(j - 1, buffer.length());
         }
         return parseTask(buffer.toString().trim(), memory, time);
@@ -76,25 +76,25 @@ public abstract class StringParser extends Symbols {
      * @return An experienced task
      */
     public static Task parseTask(String s, Memory memory, long time) {
-        StringBuffer buffer = new StringBuffer(s);
+        var buffer = new StringBuffer(s);
         Task task = null;
         try {
-            String budgetString = getBudgetString(buffer);
-            String truthString = getTruthString(buffer);
-            String str = buffer.toString().trim();
-            int last = str.length() - 1;
-            char punc = str.charAt(last);
-            Stamp stamp = new Stamp(time);
-            TruthValue truth = parseTruth(truthString, punc);
-            Term content = parseTerm(str.substring(0, last), memory);
-            Sentence sentence = new Sentence(content, punc, truth, stamp);
+            var budgetString = getBudgetString(buffer);
+            var truthString = getTruthString(buffer);
+            var str = buffer.toString().trim();
+            var last = str.length() - 1;
+            var punc = str.charAt(last);
+            var stamp = new Stamp(time);
+            var truth = parseTruth(truthString, punc);
+            var content = parseTerm(str.substring(0, last), memory);
+            var sentence = new Sentence(content, punc, truth, stamp);
             if ((content instanceof Conjunction) && Variable.containVarDep(content.getName())) {
                 sentence.setRevisible(false);
             }
-            BudgetValue budget = parseBudget(budgetString, punc, truth);
+            var budget = parseBudget(budgetString, punc, truth);
             task = new Task(sentence, budget);
         } catch (InvalidInputException e) {
-            String message = " !!! INVALID INPUT: parseTask: " + buffer + " --- " + e.getMessage();
+            var message = " !!! INVALID INPUT: parseTask: " + buffer + " --- " + e.getMessage();
             System.out.println(message);
 //            showWarning(message);
         }
@@ -113,11 +113,11 @@ public abstract class StringParser extends Symbols {
         if (s.charAt(0) != BUDGET_VALUE_MARK) {
             return null;
         }
-        int i = s.indexOf(BUDGET_VALUE_MARK + "", 1);    // looking for the end
+        var i = s.indexOf(BUDGET_VALUE_MARK + "", 1);    // looking for the end
         if (i < 0) {
             throw new InvalidInputException("missing budget closer");
         }
-        String budgetString = s.substring(1, i).trim();
+        var budgetString = s.substring(1, i).trim();
         if (budgetString.length() == 0) {
             throw new InvalidInputException("empty budget");
         }
@@ -136,15 +136,15 @@ public abstract class StringParser extends Symbols {
      *                                                    parsed into a TruthValue
      */
     private static String getTruthString(StringBuffer s) throws InvalidInputException {
-        int last = s.length() - 1;
+        var last = s.length() - 1;
         if (s.charAt(last) != TRUTH_VALUE_MARK) {       // use default
             return null;
         }
-        int first = s.indexOf(TRUTH_VALUE_MARK + "");    // looking for the beginning
+        var first = s.indexOf(TRUTH_VALUE_MARK + "");    // looking for the beginning
         if (first == last) { // no matching closer
             throw new InvalidInputException("missing truth mark");
         }
-        String truthString = s.substring(first + 1, last).trim();
+        var truthString = s.substring(first + 1, last).trim();
         if (truthString.length() == 0) {                // empty usage
             throw new InvalidInputException("empty truth");
         }
@@ -164,10 +164,10 @@ public abstract class StringParser extends Symbols {
         if (type == QUESTION_MARK) {
             return null;
         }
-        float frequency = 1.0f;
-        float confidence = Parameters.DEFAULT_JUDGMENT_CONFIDENCE;
+        var frequency = 1.0f;
+        var confidence = Parameters.DEFAULT_JUDGMENT_CONFIDENCE;
         if (s != null) {
-            int i = s.indexOf(VALUE_SEPARATOR);
+            var i = s.indexOf(VALUE_SEPARATOR);
             if (i < 0) {
                 frequency = Float.parseFloat(s);
             } else {
@@ -203,7 +203,7 @@ public abstract class StringParser extends Symbols {
                 throw new InvalidInputException("unknown punctuation: '" + punctuation + "'");
         }
         if (s != null) { // overrite default
-            int i = s.indexOf(VALUE_SEPARATOR);
+            var i = s.indexOf(VALUE_SEPARATOR);
             if (i < 0) {        // default durability
                 priority = Float.parseFloat(s);
             } else {
@@ -211,7 +211,7 @@ public abstract class StringParser extends Symbols {
                 durability = Float.parseFloat(s.substring(i + 1));
             }
         }
-        float quality = (truth == null) ? 1 : BudgetFunctions.truthToQuality(truth);
+        var quality = (truth == null) ? 1 : BudgetFunctions.truthToQuality(truth);
         return new BudgetValue(priority, durability, quality);
     }
 
@@ -229,18 +229,18 @@ public abstract class StringParser extends Symbols {
      * @return the Term generated from the String
      */
     public static Term parseTerm(String s0, Memory memory) {
-        String s = s0.trim();
+        var s = s0.trim();
         try {
             if (s.length() == 0) {
                 throw new InvalidInputException("missing content");
             }
-            Term t = memory.nameToListedTerm(s);    // existing constant or operator
+            var t = memory.nameToListedTerm(s);    // existing constant or operator
             if (t != null) {
                 return t;
             }                           // existing Term
-            int index = s.length() - 1;
-            char first = s.charAt(0);
-            char last = s.charAt(index);
+            var index = s.length() - 1;
+            var first = s.charAt(0);
+            var last = s.charAt(index);
             switch (first) {
                 case COMPOUND_TERM_OPENER:
                     if (last == COMPOUND_TERM_CLOSER) {
@@ -270,7 +270,7 @@ public abstract class StringParser extends Symbols {
                     return parseAtomicTerm(s);
             }
         } catch (InvalidInputException e) {
-            String message = " !!! INVALID INPUT: parseTerm: " + s + " --- " + e.getMessage();
+            var message = " !!! INVALID INPUT: parseTerm: " + s + " --- " + e.getMessage();
             System.out.println(message);
 //            showWarning(message);
         }
@@ -290,7 +290,7 @@ public abstract class StringParser extends Symbols {
      *                                                    parsed into a Term
      */
     private static Term parseAtomicTerm(String s0) throws InvalidInputException {
-        String s = s0.trim();
+        var s = s0.trim();
         if (s.length() == 0) {
             throw new InvalidInputException("missing term");
         }
@@ -319,15 +319,15 @@ public abstract class StringParser extends Symbols {
      *                                                    parsed into a Term
      */
     private static Statement parseStatement(String s0, Memory memory) throws InvalidInputException {
-        String s = s0.trim();
-        int i = topRelation(s);
+        var s = s0.trim();
+        var i = topRelation(s);
         if (i < 0) {
             throw new InvalidInputException("invalid statement");
         }
-        String relation = s.substring(i, i + 3);
-        Term subject = parseTerm(s.substring(0, i), memory);
-        Term predicate = parseTerm(s.substring(i + 3), memory);
-        Statement t = Statement.make(relation, subject, predicate, memory);
+        var relation = s.substring(i, i + 3);
+        var subject = parseTerm(s.substring(0, i), memory);
+        var predicate = parseTerm(s.substring(i + 3), memory);
+        var t = Statement.make(relation, subject, predicate, memory);
         if (t == null) {
             throw new InvalidInputException("invalid statement");
         }
@@ -343,14 +343,14 @@ public abstract class StringParser extends Symbols {
      *                                                    parsed into a Term
      */
     private static Term parseCompoundTerm(String s0, Memory memory) throws InvalidInputException {
-        String s = s0.trim();
-        int firstSeparator = s.indexOf(ARGUMENT_SEPARATOR);
-        String op = s.substring(0, firstSeparator).trim();
+        var s = s0.trim();
+        var firstSeparator = s.indexOf(ARGUMENT_SEPARATOR);
+        var op = s.substring(0, firstSeparator).trim();
         if (!CompoundTerm.isOperator(op)) {
             throw new InvalidInputException("unknown operator: " + op);
         }
-        ArrayList<Term> arg = parseArguments(s.substring(firstSeparator + 1) + ARGUMENT_SEPARATOR, memory);
-        Term t = CompoundTerm.make(op, arg, memory);
+        var arg = parseArguments(s.substring(firstSeparator + 1) + ARGUMENT_SEPARATOR, memory);
+        var t = CompoundTerm.make(op, arg, memory);
         if (t == null) {
             throw new InvalidInputException("invalid compound term");
         }
@@ -366,10 +366,10 @@ public abstract class StringParser extends Symbols {
      *                                                    parsed into an argument get
      */
     private static ArrayList<Term> parseArguments(String s0, Memory memory) throws InvalidInputException {
-        String s = s0.trim();
-        ArrayList<Term> list = new ArrayList<Term>();
-        int start = 0;
-        int end = 0;
+        var s = s0.trim();
+        var list = new ArrayList<Term>();
+        var start = 0;
+        var end = 0;
         Term t;
         while (end < s.length() - 1) {
             end = nextSeparator(s, start);
@@ -391,8 +391,8 @@ public abstract class StringParser extends Symbols {
      * @return the index of the next seperator in a String
      */
     private static int nextSeparator(String s, int first) {
-        int levelCounter = 0;
-        int i = first;
+        var levelCounter = 0;
+        var i = first;
         while (i < s.length() - 1) {
             if (isOpener(s, i)) {
                 levelCounter++;
@@ -417,8 +417,8 @@ public abstract class StringParser extends Symbols {
      * @return the index of the top-level relation
      */
     private static int topRelation(String s) {      // need efficiency improvement
-        int levelCounter = 0;
-        int i = 0;
+        var levelCounter = 0;
+        var i = 0;
         while (i < s.length() - 3) {    // don't need to check the last 3 characters
             if ((levelCounter == 0) && (Statement.isRelation(s.substring(i, i + 3)))) {
                 return i;
@@ -441,8 +441,8 @@ public abstract class StringParser extends Symbols {
      * @return if the given String is an opener symbol
      */
     private static boolean isOpener(String s, int i) {
-        char c = s.charAt(i);
-        boolean b = (c == COMPOUND_TERM_OPENER)
+        var c = s.charAt(i);
+        var b = (c == COMPOUND_TERM_OPENER)
                 || (c == SET_EXT_OPENER)
                 || (c == SET_INT_OPENER)
                 || (c == STATEMENT_OPENER);
@@ -465,8 +465,8 @@ public abstract class StringParser extends Symbols {
      * @return if the given String is a closer symbol
      */
     private static boolean isCloser(String s, int i) {
-        char c = s.charAt(i);
-        boolean b = (c == COMPOUND_TERM_CLOSER)
+        var c = s.charAt(i);
+        var b = (c == COMPOUND_TERM_CLOSER)
                 || (c == SET_EXT_CLOSER)
                 || (c == SET_INT_CLOSER)
                 || (c == STATEMENT_CLOSER);

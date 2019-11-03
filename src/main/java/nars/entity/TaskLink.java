@@ -94,11 +94,11 @@ public class TaskLink extends TermLink {
      * @return Whether they are novel to each other
      */
     public boolean novel(TermLink termLink, long currentTime) {
-        Term bTerm = termLink.getTarget();
+        var bTerm = termLink.getTarget();
         if (bTerm.equals(targetTask.getSentence().getContent())) {
             return false;
         }
-        String linkKey = termLink.getKey();
+        var linkKey = termLink.getKey();
         int next, i;
         for (i = 0; i < counter; i++) {
             next = i % Parameters.TERM_LINK_RECORD_LENGTH;

@@ -100,7 +100,7 @@ public class IntersectionInt extends CompoundTerm {
      * @return the Term generated from the arguments
      */
     public static Term make(ArrayList<Term> argList, Memory memory) {
-        TreeSet<Term> set = new TreeSet<Term>(argList); // sort/merge arguments
+        var set = new TreeSet<Term>(argList); // sort/merge arguments
         return make(set, memory);
     }
 
@@ -115,9 +115,9 @@ public class IntersectionInt extends CompoundTerm {
         if (set.size() == 1) {
             return set.first();
         }                         // special case: single component
-        ArrayList<Term> argument = new ArrayList<Term>(set);
-        String name = makeCompoundName(Symbols.INTERSECTION_INT_OPERATOR, argument);
-        Term t = memory.nameToListedTerm(name);
+        var argument = new ArrayList<Term>(set);
+        var name = makeCompoundName(Symbols.INTERSECTION_INT_OPERATOR, argument);
+        var t = memory.nameToListedTerm(name);
         return (t != null) ? t : new IntersectionInt(argument);
     }
 

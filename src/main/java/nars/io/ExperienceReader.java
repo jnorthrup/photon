@@ -60,11 +60,11 @@ public class ExperienceReader implements InputChannel {
      * Open an input experience file with a FileDialog
      */
     public void openLoadFile() {
-        FileDialog dialog = new FileDialog((FileDialog) null, "Load experience", FileDialog.LOAD);
+        var dialog = new FileDialog((FileDialog) null, "Load experience", FileDialog.LOAD);
         dialog.setVisible(true);
-        String directoryName = dialog.getDirectory();
-        String fileName = dialog.getFile();
-        String filePath = directoryName + fileName;
+        var directoryName = dialog.getDirectory();
+        var fileName = dialog.getFile();
+        var filePath = directoryName + fileName;
         openLoadFile(filePath);
     }
 

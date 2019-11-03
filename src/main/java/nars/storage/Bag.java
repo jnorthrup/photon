@@ -115,7 +115,7 @@ public abstract class Bag<E extends Item> {
 
     public void init() {
         itemTable = new ArrayList<ArrayList<E>>(TOTAL_LEVEL);
-        for (int i = 0; i < TOTAL_LEVEL; i++) {
+        for (var i = 0; i < TOTAL_LEVEL; i++) {
             itemTable.add(new ArrayList<E>());
         }
         nameTable = new HashMap<String, E>((int) (capacity / LOAD_FACTOR), LOAD_FACTOR);
@@ -158,7 +158,7 @@ public abstract class Bag<E extends Item> {
         if (size() == 0) {
             return 0.01f;
         }
-        float f = (float) mass / (size() * TOTAL_LEVEL);
+        var f = (float) mass / (size() * TOTAL_LEVEL);
         if (f > 1) {
             return 1.0f;
         }
@@ -192,15 +192,15 @@ public abstract class Bag<E extends Item> {
      * @return Whether the new Item is added into the Bag
      */
     public boolean putIn(E newItem) {
-        String newKey = newItem.getKey();
-        E oldItem = nameTable.put(newKey, newItem);
+        var newKey = newItem.getKey();
+        var oldItem = nameTable.put(newKey, newItem);
         if (oldItem != null) {                  // merge duplications
             outOfBase(oldItem);
             newItem.merge(oldItem);
         }
-        E overflowItem = intoBase(newItem);  // put the (new or merged) item into itemTable
+        var overflowItem = intoBase(newItem);  // put the (new or merged) item into itemTable
         if (overflowItem != null) {             // remove overflow
-            String overflowKey = overflowItem.getKey();
+            var overflowKey = overflowItem.getKey();
             nameTable.remove(overflowKey);
             return (overflowItem != newItem);
         } else {
@@ -244,7 +244,7 @@ public abstract class Bag<E extends Item> {
                 currentCounter = itemTable.get(currentLevel).size();
             }
         }
-        E selected = takeOutFirst(currentLevel); // take out the first item in the level
+        var selected = takeOutFirst(currentLevel); // take out the first item in the level
         currentCounter--;
         nameTable.remove(selected.getKey());
         refresh();
@@ -258,7 +258,7 @@ public abstract class Bag<E extends Item> {
      * @return The Item with the key
      */
     public E pickOut(String key) {
-        E picked = nameTable.get(key);
+        var picked = nameTable.get(key);
         if (picked != null) {
             outOfBase(picked);
             nameTable.remove(key);
@@ -283,8 +283,8 @@ public abstract class Bag<E extends Item> {
      * @return The put-in level
      */
     private int getLevel(E item) {
-        float fl = item.getPriority() * TOTAL_LEVEL;
-        int level = (int) Math.ceil(fl) - 1;
+        var fl = item.getPriority() * TOTAL_LEVEL;
+        var level = (int) Math.ceil(fl) - 1;
         return (level < 0) ? 0 : level;     // cannot be -1
     }
 
@@ -296,9 +296,9 @@ public abstract class Bag<E extends Item> {
      */
     private E intoBase(E newItem) {
         E oldItem = null;
-        int inLevel = getLevel(newItem);
+        var inLevel = getLevel(newItem);
         if (size() > capacity) {      // the bag is full
-            int outLevel = 0;
+            var outLevel = 0;
             while (emptyLevel(outLevel)) {
                 outLevel++;
             }
@@ -321,7 +321,7 @@ public abstract class Bag<E extends Item> {
      * @return The first Item
      */
     private E takeOutFirst(int level) {
-        E selected = itemTable.get(level).get(0);
+        var selected = itemTable.get(level).get(0);
         itemTable.get(level).remove(0);
         mass -= (level + 1);
         refresh();
@@ -334,7 +334,7 @@ public abstract class Bag<E extends Item> {
      * @param oldItem The Item to be removed
      */
     protected void outOfBase(E oldItem) {
-        int level = getLevel(oldItem);
+        var level = getLevel(oldItem);
         itemTable.get(level).remove(oldItem);
         mass -= (level + 1);
         refresh();
@@ -380,11 +380,11 @@ public abstract class Bag<E extends Item> {
      */
     @Override
     public String toString() {
-        StringBuffer buf = new StringBuffer(" ");
-        for (int i = TOTAL_LEVEL; i >= showLevel; i--) {
+        var buf = new StringBuffer(" ");
+        for (var i = TOTAL_LEVEL; i >= showLevel; i--) {
             if (!emptyLevel(i - 1)) {
                 buf = buf.append("\n --- Level ").append(i).append(":\n ");
-                for (int j = 0; j < itemTable.get(i - 1).size(); j++) {
+                for (var j = 0; j < itemTable.get(i - 1).size(); j++) {
                     buf = buf.append(itemTable.get(i - 1).get(j).toStringBrief()).append("\n ");
                 }
             }
@@ -396,12 +396,12 @@ public abstract class Bag<E extends Item> {
      * TODO refactor : paste from preceding method
      */
     public String toStringLong() {
-        StringBuffer buf = new StringBuffer(" BAG " + getClass().getSimpleName());
+        var buf = new StringBuffer(" BAG " + getClass().getSimpleName());
         buf.append(" ").append(showSizes());
-        for (int i = TOTAL_LEVEL; i >= showLevel; i--) {
+        for (var i = TOTAL_LEVEL; i >= showLevel; i--) {
             if (!emptyLevel(i - 1)) {
                 buf = buf.append("\n --- LEVEL ").append(i).append(":\n ");
-                for (int j = 0; j < itemTable.get(i - 1).size(); j++) {
+                for (var j = 0; j < itemTable.get(i - 1).size(); j++) {
                     buf = buf.append(itemTable.get(i - 1).get(j).toStringLong()).append("\n ");
                 }
             }
@@ -414,9 +414,9 @@ public abstract class Bag<E extends Item> {
      * show item Table Sizes
      */
     String showSizes() {
-        StringBuilder buf = new StringBuilder(" ");
-        int levels = 0;
-        for (ArrayList<E> items : itemTable) {
+        var buf = new StringBuilder(" ");
+        var levels = 0;
+        for (var items : itemTable) {
             if ((items != null) && !items.isEmpty()) {
                 levels++;
                 buf.append(items.size()).append(" ");

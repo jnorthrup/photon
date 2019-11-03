@@ -72,20 +72,20 @@ public class Implication extends Statement {
         if (invalidStatement(subject, predicate)) {
             return null;
         }
-        String name = makeStatementName(subject, Symbols.IMPLICATION_RELATION, predicate);
-        Term t = memory.nameToListedTerm(name);
+        var name = makeStatementName(subject, Symbols.IMPLICATION_RELATION, predicate);
+        var t = memory.nameToListedTerm(name);
         if (t != null) {
             return (Implication) t;
         }
         if (predicate instanceof Implication) {
-            Term oldCondition = ((Implication) predicate).getSubject();
+            var oldCondition = ((Implication) predicate).getSubject();
             if ((oldCondition instanceof Conjunction) && ((Conjunction) oldCondition).containComponent(subject)) {
                 return null;
             }
-            Term newCondition = Conjunction.make(subject, oldCondition, memory);
+            var newCondition = Conjunction.make(subject, oldCondition, memory);
             return make(newCondition, ((Implication) predicate).getPredicate(), memory);
         } else {
-            ArrayList<Term> argument = argumentsToList(subject, predicate);
+            var argument = argumentsToList(subject, predicate);
             return new Implication(argument);
         }
     }

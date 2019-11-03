@@ -67,12 +67,12 @@ public class Similarity extends Statement {
         if (subject.compareTo(predicate) > 0) {
             return make(predicate, subject, memory);
         }
-        String name = makeStatementName(subject, Symbols.SIMILARITY_RELATION, predicate);
-        Term t = memory.nameToListedTerm(name);
+        var name = makeStatementName(subject, Symbols.SIMILARITY_RELATION, predicate);
+        var t = memory.nameToListedTerm(name);
         if (t != null) {
             return (Similarity) t;
         }
-        ArrayList<Term> argument = argumentsToList(subject, predicate);
+        var argument = argumentsToList(subject, predicate);
         return new Similarity(argument);
     }
 

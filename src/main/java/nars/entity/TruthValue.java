@@ -190,8 +190,8 @@ public class TruthValue implements Cloneable { // implements Cloneable {
      * @return The String
      */
     public String toStringBrief() {
-        String s1 = DELIMITER + frequency.toStringBrief() + SEPARATOR;
-        String s2 = confidence.toStringBrief();
+        var s1 = DELIMITER + frequency.toStringBrief() + SEPARATOR;
+        var s2 = confidence.toStringBrief();
         if (s2.equals("1.00")) {
             return s1 + "0.99" + DELIMITER;
         } else {

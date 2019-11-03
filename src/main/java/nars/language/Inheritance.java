@@ -64,12 +64,12 @@ public class Inheritance extends Statement {
         if (invalidStatement(subject, predicate)) {
             return null;
         }
-        String name = makeStatementName(subject, Symbols.INHERITANCE_RELATION, predicate);
-        Term t = memory.nameToListedTerm(name);
+        var name = makeStatementName(subject, Symbols.INHERITANCE_RELATION, predicate);
+        var t = memory.nameToListedTerm(name);
         if (t != null) {
             return (Inheritance) t;
         }
-        ArrayList<Term> argument = argumentsToList(subject, predicate);
+        var argument = argumentsToList(subject, predicate);
         return new Inheritance(argument);
     }
 

@@ -146,7 +146,7 @@ public abstract class Statement extends CompoundTerm {
      * @return if the given String is a relation symbol
      */
     public static boolean isRelation(String s0) {
-        String s = s0.trim();
+        var s = s0.trim();
         if (s.length() != 3) {
             return false;
         }
@@ -168,7 +168,7 @@ public abstract class Statement extends CompoundTerm {
      * @return The nameStr of the term
      */
     protected static String makeStatementName(Term subject, String relation, Term predicate) {
-        StringBuilder nameStr = new StringBuilder();
+        var nameStr = new StringBuilder();
         nameStr.append(Symbols.STATEMENT_OPENER);
         nameStr.append(subject.getName());
         nameStr.append(' ').append(relation).append(' ');
@@ -197,12 +197,12 @@ public abstract class Statement extends CompoundTerm {
             return true;
         }
         if ((subject instanceof Statement) && (predicate instanceof Statement)) {
-            Statement s1 = (Statement) subject;
-            Statement s2 = (Statement) predicate;
-            Term t11 = s1.getSubject();
-            Term t12 = s1.getPredicate();
-            Term t21 = s2.getSubject();
-            Term t22 = s2.getPredicate();
+            var s1 = (Statement) subject;
+            var s2 = (Statement) predicate;
+            var t11 = s1.getSubject();
+            var t12 = s1.getPredicate();
+            var t21 = s2.getSubject();
+            var t22 = s2.getPredicate();
             if (t11.equals(t22) && t12.equals(t21)) {
                 return true;
             }

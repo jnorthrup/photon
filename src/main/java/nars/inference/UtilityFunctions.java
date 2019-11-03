@@ -35,7 +35,7 @@ public class UtilityFunctions {
      */
     public static float and(float... arr) {
         float product = 1;
-        for (float f : arr) {
+        for (var f : arr) {
             product *= f;
         }
         return product;
@@ -49,7 +49,7 @@ public class UtilityFunctions {
      */
     public static float or(float... arr) {
         float product = 1;
-        for (float f : arr) {
+        for (var f : arr) {
             product *= (1 - f);
         }
         return 1 - product;
@@ -63,7 +63,7 @@ public class UtilityFunctions {
      */
     public static float aveAri(float... arr) {
         float sum = 0;
-        for (float f : arr) {
+        for (var f : arr) {
             sum += f;
         }
         return sum / arr.length;
@@ -77,7 +77,7 @@ public class UtilityFunctions {
      */
     public static float aveGeo(float... arr) {
         float product = 1;
-        for (float f : arr) {
+        for (var f : arr) {
             product *= f;
         }
         return (float) Math.pow(product, 1.00 / arr.length);

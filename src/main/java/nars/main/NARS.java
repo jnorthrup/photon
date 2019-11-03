@@ -67,7 +67,7 @@ public class NARS extends Applet implements Runnable {
      */
     public static void main(String args[]) {
         NARSBatch.setStandAlone(true);
-        NARS nars = new NARS();
+        var nars = new NARS();
         nars.init(args);
         nars.start();
     }
@@ -75,7 +75,7 @@ public class NARS extends Applet implements Runnable {
     public void init(String[] args) {
         init();
         if (args.length > 0) {
-            ExperienceReader experienceReader = new ExperienceReader(reasoner);
+            var experienceReader = new ExperienceReader(reasoner);
             experienceReader.openLoadFile(args[0]);
         }
     }
@@ -117,7 +117,7 @@ public class NARS extends Applet implements Runnable {
      */
     @Override
     public void run() {
-        Thread thisThread = Thread.currentThread();
+        var thisThread = Thread.currentThread();
         while (narsThread == thisThread) {
             try {
                 Thread.sleep(1);

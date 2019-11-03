@@ -130,11 +130,11 @@ public final class Concept extends Item {
      * @return Whether to continue the processing of the task
      */
     private void processJudgment(Task task) {
-        Sentence judg = task.getSentence();
-        Sentence oldBelief = evaluation(judg, beliefs);
+        var judg = task.getSentence();
+        var oldBelief = evaluation(judg, beliefs);
         if (oldBelief != null) {
-            Stamp newStamp = judg.getStamp();
-            Stamp oldStamp = oldBelief.getStamp();
+            var newStamp = judg.getStamp();
+            var oldStamp = oldBelief.getStamp();
             if (newStamp.equals(oldStamp)) {
                 if (task.getParentTask().getSentence().isJudgment()) {
                     task.getBudget().decPriority(0);    // duplicated task
@@ -149,7 +149,7 @@ public final class Concept extends Item {
             }
         }
         if (task.getBudget().aboveThreshold()) {
-            for (Task ques : questions) {
+            for (var ques : questions) {
 //                LocalRules.trySolution(ques.getSentence(), judg, ques, memory);
                 LocalRules.trySolution(judg, ques, memory);
             }
@@ -164,11 +164,11 @@ public final class Concept extends Item {
      * @return Whether to continue the processing of the task
      */
     public float processQuestion(Task task) {
-        Sentence ques = task.getSentence();
-        boolean newQuestion = true;
+        var ques = task.getSentence();
+        var newQuestion = true;
         if (questions != null) {
-            for (Task t : questions) {
-                Sentence q = t.getSentence();
+            for (var t : questions) {
+                var q = t.getSentence();
                 if (q.getContent().equals(ques.getContent())) {
                     ques = q;
                     newQuestion = false;
@@ -182,7 +182,7 @@ public final class Concept extends Item {
         if (questions.size() > Parameters.MAXIMUM_QUESTIONS_LENGTH) {
             questions.remove(0);    // FIFO
         }
-        Sentence newAnswer = evaluation(ques, beliefs);
+        var newAnswer = evaluation(ques, beliefs);
         if (newAnswer != null) {
 //            LocalRules.trySolution(ques, newAnswer, task, memory);
             LocalRules.trySolution(newAnswer, task, memory);
@@ -202,16 +202,16 @@ public final class Concept extends Item {
      * @param content The content of the task
      */
     private void linkToTask(Task task) {
-        BudgetValue taskBudget = task.getBudget();
-        TaskLink taskLink = new TaskLink(task, null, taskBudget);   // link type: SELF
+        var taskBudget = task.getBudget();
+        var taskLink = new TaskLink(task, null, taskBudget);   // link type: SELF
         insertTaskLink(taskLink);
         if (term instanceof CompoundTerm) {
             if (termLinkTemplates.size() > 0) {
-                BudgetValue subBudget = BudgetFunctions.distributeAmongLinks(taskBudget, termLinkTemplates.size());
+                var subBudget = BudgetFunctions.distributeAmongLinks(taskBudget, termLinkTemplates.size());
                 if (subBudget.aboveThreshold()) {
                     Term componentTerm;
                     Concept componentConcept;
-                    for (TermLink termLink : termLinkTemplates) {
+                    for (var termLink : termLinkTemplates) {
 //                        if (!(task.isStructural() && (termLink.getType() == TermLink.TRANSFORM))) { // avoid circular transform
                         taskLink = new TaskLink(task, termLink, subBudget);
                         componentTerm = termLink.getTarget();
@@ -236,7 +236,7 @@ public final class Concept extends Item {
      * @param capacity    The capacity of the table
      */
     private void addToTable(Sentence newSentence, ArrayList<Sentence> table, int capacity) {
-        float rank1 = BudgetFunctions.rankBelief(newSentence);    // for the new isBelief
+        var rank1 = BudgetFunctions.rankBelief(newSentence);    // for the new isBelief
         Sentence judgment2;
         float rank2;
         int i;
@@ -274,7 +274,7 @@ public final class Concept extends Item {
         float currentBest = 0;
         float beliefQuality;
         Sentence candidate = null;
-        for (Sentence judg : list) {
+        for (var judg : list) {
             beliefQuality = LocalRules.solutionQuality(query, judg);
             if (beliefQuality > currentBest) {
                 currentBest = beliefQuality;
@@ -294,7 +294,7 @@ public final class Concept extends Item {
      * @param taskLink The termLink to be inserted
      */
     public void insertTaskLink(TaskLink taskLink) {
-        BudgetValue taskBudget = taskLink.getBudget();
+        var taskBudget = taskLink.getBudget();
         taskLinks.putIn(taskLink);
         memory.activateConcept(this, taskBudget);
     }
@@ -311,9 +311,9 @@ public final class Concept extends Item {
         Concept concept;
         TermLink termLink1, termLink2;
         if (termLinkTemplates.size() > 0) {
-            BudgetValue subBudget = BudgetFunctions.distributeAmongLinks(taskBudget, termLinkTemplates.size());
+            var subBudget = BudgetFunctions.distributeAmongLinks(taskBudget, termLinkTemplates.size());
             if (subBudget.aboveThreshold()) {
-                for (TermLink template : termLinkTemplates) {
+                for (var template : termLinkTemplates) {
                     if (template.getType() != TermLink.TRANSFORM) {
                         t = template.getTarget();
                         concept = memory.getConcept(t);
@@ -373,11 +373,11 @@ public final class Concept extends Item {
      */
     @Override
     public String toStringLong() {
-        String res = toStringBrief() + " " + key
+        var res = toStringBrief() + " " + key
                 + toStringIfNotNull(termLinks, "termLinks")
                 + toStringIfNotNull(taskLinks, "taskLinks");
         res += toStringIfNotNull(null, "questions");
-        for (Task t : questions) {
+        for (var t : questions) {
             res += t.toString();
         }
         // TODO other details?
@@ -396,8 +396,8 @@ public final class Concept extends Item {
      */
     @Override
     public float getQuality() {
-        float linkPriority = termLinks.averagePriority();
-        float termComplexityFactor = 1.0f / term.getComplexity();
+        var linkPriority = termLinks.averagePriority();
+        var termComplexityFactor = 1.0f / term.getComplexity();
         return UtilityFunctions.or(linkPriority, termComplexityFactor);
     }
 
@@ -422,14 +422,14 @@ public final class Concept extends Item {
      * @return The selected isBelief
      */
     public Sentence getBelief(Task task) {
-        Sentence taskSentence = task.getSentence();
+        var taskSentence = task.getSentence();
         Sentence belief;
-        for (int i = 0; i < beliefs.size(); i++) {
+        for (var i = 0; i < beliefs.size(); i++) {
             belief = beliefs.get(i);
             memory.getRecorder().append(" * Selected Belief: " + belief + "\n");
             memory.newStamp = Stamp.make(taskSentence.getStamp(), belief.getStamp(), memory.getTime());
             if (memory.newStamp != null) {
-                Sentence belief2 = (Sentence) belief.clone();   // will this mess up priority adjustment?
+                var belief2 = (Sentence) belief.clone();   // will this mess up priority adjustment?
                 return belief2;
             }
         }
@@ -442,24 +442,24 @@ public final class Concept extends Item {
      * An atomic step in a concept, only called in {@link Memory#processConcept}
      */
     public void fire() {
-        TaskLink currentTaskLink = taskLinks.takeOut();
+        var currentTaskLink = taskLinks.takeOut();
         if (currentTaskLink == null) {
             return;
         }
         memory.currentTaskLink = currentTaskLink;
         memory.currentBeliefLink = null;
         memory.getRecorder().append(" * Selected TaskLink: " + currentTaskLink + "\n");
-        Task task = currentTaskLink.getTargetTask();
+        var task = currentTaskLink.getTargetTask();
         memory.currentTask = task;  // one of the two places where this variable is set
 //      memory.getRecorder().append(" * Selected Task: " + task + "\n");    // for debugging
         if (currentTaskLink.getType() == TermLink.TRANSFORM) {
             memory.currentBelief = null;
             RuleTables.transformTask(currentTaskLink, memory);  // to turn this into structural inference as below?
         } else {
-            int termLinkCount = Parameters.MAX_REASONED_TERM_LINK;
+            var termLinkCount = Parameters.MAX_REASONED_TERM_LINK;
 //        while (memory.noResult() && (termLinkCount > 0)) {
             while (termLinkCount > 0) {
-                TermLink termLink = termLinks.takeOut(currentTaskLink, memory.getTime());
+                var termLink = termLinks.takeOut(currentTaskLink, memory.getTime());
                 if (termLink != null) {
                     memory.getRecorder().append(" * Selected TermLink: " + termLink + "\n");
                     memory.currentBeliefLink = termLink;
@@ -519,16 +519,16 @@ public final class Concept extends Item {
      * @return String representation of direct content
      */
     public String displayContent() {
-        StringBuilder buffer = new StringBuilder();
+        var buffer = new StringBuilder();
         buffer.append("\n  Beliefs:\n");
         if (beliefs.size() > 0) {
-            for (Sentence s : beliefs) {
+            for (var s : beliefs) {
                 buffer.append(s).append("\n");
             }
         }
         buffer.append("\n  Question:\n");
         if (questions.size() > 0) {
-            for (Task t : questions) {
+            for (var t : questions) {
                 buffer.append(t).append("\n");
             }
         }

@@ -105,9 +105,9 @@ public class Variable extends Term {
      * @return Whether the unification is possible
      */
     public static boolean unify(char type, Term t1, Term t2, Term compound1, Term compound2) {
-        HashMap<Term, Term> map1 = new HashMap<Term, Term>();
-        HashMap<Term, Term> map2 = new HashMap<Term, Term>();
-        boolean hasSubs = findSubstitute(type, t1, t2, map1, map2); // find substitution
+        var map1 = new HashMap<Term, Term>();
+        var map2 = new HashMap<Term, Term>();
+        var hasSubs = findSubstitute(type, t1, t2, map1, map2); // find substitution
         if (hasSubs) {
             renameVar(map1, compound1, "-1");
             renameVar(map2, compound2, "-2");
@@ -136,14 +136,14 @@ public class Variable extends Term {
                                           HashMap<Term, Term> map1, HashMap<Term, Term> map2) {
         Term t;
         if (term1 instanceof Variable) {
-            Variable var1 = (Variable) term1;
+            var var1 = (Variable) term1;
             t = map1.get(var1);
             if (t != null) {    // already mapped
                 return findSubstitute(type, t, term2, map1, map2);
             } else {            // not mapped yet
                 if (var1.getType() == type) {
                     if ((term2 instanceof Variable) && (((Variable) term2).getType() == type)) {
-                        Variable var = new Variable(var1.getName() + term2.getName());
+                        var var = new Variable(var1.getName() + term2.getName());
                         map1.put(var1, var);  // unify
                         map2.put(term2, var);  // unify
                     } else {
@@ -156,7 +156,7 @@ public class Variable extends Term {
             }
         }
         if (term2 instanceof Variable) {
-            Variable var2 = (Variable) term2;
+            var var2 = (Variable) term2;
             t = map2.get(var2);
             if (t != null) {    // already mapped
                 return findSubstitute(type, term1, t, map1, map2);
@@ -170,15 +170,15 @@ public class Variable extends Term {
             }
         }
         if ((term1 instanceof CompoundTerm) && term1.getClass().equals(term2.getClass())) {
-            CompoundTerm cTerm1 = (CompoundTerm) term1;
-            CompoundTerm cTerm2 = (CompoundTerm) term2;
+            var cTerm1 = (CompoundTerm) term1;
+            var cTerm2 = (CompoundTerm) term2;
             if (cTerm1.size() != (cTerm2).size()) {
                 return false;
             }
-            for (int i = 0; i < cTerm1.size(); i++) {   // assuming matching order, to be refined in the future
-                Term t1 = cTerm1.componentAt(i);
-                Term t2 = cTerm2.componentAt(i);
-                boolean haveSub = findSubstitute(type, t1, t2, map1, map2);
+            for (var i = 0; i < cTerm1.size(); i++) {   // assuming matching order, to be refined in the future
+                var t1 = cTerm1.componentAt(i);
+                var t2 = cTerm2.componentAt(i);
+                var haveSub = findSubstitute(type, t1, t2, map1, map2);
                 if (!haveSub) {
                     return false;
                 }
@@ -209,12 +209,12 @@ public class Variable extends Term {
      */
     private static void renameVar(HashMap<Term, Term> map, Term term, String suffix) {
         if (term instanceof Variable) {
-            Term t = map.get(term);
+            var t = map.get(term);
             if (t == null) {    // new mapped yet
                 map.put(term, new Variable(term.getName() + suffix));  // rename
             }
         } else if (term instanceof CompoundTerm) {
-            for (Term t : ((CompoundTerm) term).components) {   // assuming matching order, to be refined in the future
+            for (var t : ((CompoundTerm) term).components) {   // assuming matching order, to be refined in the future
                 renameVar(map, t, suffix);
             }
         }

@@ -66,8 +66,8 @@ public class InferenceWindow extends NarsFrame implements ActionListener, ItemLi
         this.recorder = recorder;
 
         setBackground(SINGLE_WINDOW_COLOR);
-        GridBagLayout gridbag = new GridBagLayout();
-        GridBagConstraints c = new GridBagConstraints();
+        var gridbag = new GridBagLayout();
+        var c = new GridBagConstraints();
         setLayout(gridbag);
 
         c.ipadx = 3;
@@ -141,7 +141,7 @@ public class InferenceWindow extends NarsFrame implements ActionListener, ItemLi
      * @param e The ActionEvent
      */
     public void actionPerformed(ActionEvent e) {
-        Object s = e.getSource();
+        var s = e.getSource();
         if (s == playButton) {
             recorder.play();
         } else if (s == stopButton) {
@@ -153,7 +153,7 @@ public class InferenceWindow extends NarsFrame implements ActionListener, ItemLi
 
     // to rebuild the distinction between Term and String
     public void itemStateChanged(ItemEvent event) {
-        String request = watchText.getText().trim();
+        var request = watchText.getText().trim();
         if (!request.equals("")) {
             watched = request;
         }

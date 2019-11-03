@@ -99,7 +99,7 @@ public class Sentence implements Cloneable {
     @Override
     public boolean equals(Object that) {
         if (that instanceof Sentence) {
-            Sentence t = (Sentence) that;
+            var t = (Sentence) that;
             return content.equals(t.getContent()) && punctuation == t.getPunctuation() && truth.equals(t.getTruth()) && stamp.equals(t.getStamp());
         }
         return false;
@@ -112,7 +112,7 @@ public class Sentence implements Cloneable {
      */
     @Override
     public int hashCode() {
-        int hash = 5;
+        var hash = 5;
         hash = 67 * hash + (this.content != null ? this.content.hashCode() : 0);
         hash = 67 * hash + this.punctuation;
         hash = 67 * hash + (this.truth != null ? this.truth.hashCode() : 0);
@@ -237,7 +237,7 @@ public class Sentence implements Cloneable {
      */
     @Override
     public String toString() {
-        StringBuilder s = new StringBuilder();
+        var s = new StringBuilder();
         s.append(content.toString());
         s.append(punctuation).append(" ");
         if (truth != null) {
@@ -262,7 +262,7 @@ public class Sentence implements Cloneable {
      * @return The String
      */
     public String toKey() {
-        StringBuilder s = new StringBuilder();
+        var s = new StringBuilder();
         s.append(content.toString());
         s.append(punctuation).append(" ");
         if (truth != null) {

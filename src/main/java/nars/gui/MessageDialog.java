@@ -50,7 +50,7 @@ public class MessageDialog extends Dialog implements ActionListener, WindowListe
         this.add("Center", text);
         button = new Button(" OK ");
         button.addActionListener(this);
-        Panel p = new Panel();
+        var p = new Panel();
         p.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
         p.add(button);
         this.add("South", p);

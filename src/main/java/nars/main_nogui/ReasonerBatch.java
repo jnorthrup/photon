@@ -149,17 +149,17 @@ public class ReasonerBatch {
             }
         }
         if (walkingSteps == 0) {
-            boolean reasonerShouldRun = false;
-            for (InputChannel channelIn : inputChannels) {
+            var reasonerShouldRun = false;
+            for (var channelIn : inputChannels) {
                 reasonerShouldRun = reasonerShouldRun
                         || channelIn.nextInput();
             }
             finishedInputs = !reasonerShouldRun;
         }
         // forward to output Channels
-        ArrayList<String> output = memory.getExportStrings();
+        var output = memory.getExportStrings();
         if (!output.isEmpty()) {
-            for (OutputChannel channelOut : outputChannels) {
+            for (var channelOut : outputChannels) {
                 channelOut.nextOutput(output);
             }
             output.clear();    // this will trigger display the current value of timer in Memory.report()
@@ -190,17 +190,17 @@ public class ReasonerBatch {
         if (text.isEmpty()) {
             return;
         }
-        char c = text.charAt(0);
+        var c = text.charAt(0);
         if (c == Symbols.RESET_MARK) {
             reset();
             memory.getExportStrings().add(text);
         } else if (c != Symbols.COMMENT_MARK) {
             // read NARS language or an integer : TODO duplicated code
             try {
-                int i = Integer.parseInt(text);
+                var i = Integer.parseInt(text);
                 walk(i);
             } catch (NumberFormatException e) {
-                Task task = StringParser.parseExperience(new StringBuffer(text), memory, clock);
+                var task = StringParser.parseExperience(new StringBuffer(text), memory, clock);
                 if (task != null) {
                     memory.inputTask(task);
                 }
@@ -228,7 +228,7 @@ public class ReasonerBatch {
      * @return The previous timer value
      */
     public long updateTimer() {
-        long i = getTimer();
+        var i = getTimer();
         initTimer();
         return i;
     }

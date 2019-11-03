@@ -40,7 +40,7 @@ public final class BudgetFunctions extends UtilityFunctions {
      * @return The quality of the judgment, according to truth value only
      */
     public static float truthToQuality(TruthValue t) {
-        float exp = t.getExpectation();
+        var exp = t.getExpectation();
         return (float) Math.max(exp, (1 - exp) * 0.75);
     }
 
@@ -52,8 +52,8 @@ public final class BudgetFunctions extends UtilityFunctions {
      * @return The rank of the judgment, according to truth value only
      */
     public static float rankBelief(Sentence judg) {
-        float confidence = judg.getTruth().getConfidence();
-        float originality = 1.0f / (judg.getStamp().length() + 1);
+        var confidence = judg.getTruth().getConfidence();
+        var originality = 1.0f / (judg.getStamp().length() + 1);
         return or(confidence, originality);
     }
 
@@ -71,26 +71,26 @@ public final class BudgetFunctions extends UtilityFunctions {
      * necessary
      */
     static BudgetValue solutionEval(Sentence problem, Sentence solution, Task task, Memory memory) {
-        Task task1 = task;
+        var task1 = task;
         BudgetValue budget = null;
-        boolean feedbackToLinks = false;
+        var feedbackToLinks = false;
         if (task1 == null) {                   // called in continued processing
             task1 = memory.currentTask;
             feedbackToLinks = true;
         }
-        boolean judgmentTask = task1.getSentence().isJudgment();
-        float quality = LocalRules.solutionQuality(problem, solution);
+        var judgmentTask = task1.getSentence().isJudgment();
+        var quality = LocalRules.solutionQuality(problem, solution);
         if (judgmentTask) {
             task1.incPriority(quality);
         } else {
-            float taskPriority = task1.getPriority();
+            var taskPriority = task1.getPriority();
             budget = new BudgetValue(or(taskPriority, quality), task1.getDurability(), truthToQuality(solution.getTruth()));
             task1.setPriority(Math.min(1 - quality, taskPriority));
         }
         if (feedbackToLinks) {
-            TaskLink tLink = memory.currentTaskLink;
+            var tLink = memory.currentTaskLink;
             tLink.setPriority(Math.min(1 - quality, tLink.getPriority()));
-            TermLink bLink = memory.currentBeliefLink;
+            var bLink = memory.currentBeliefLink;
             bLink.incPriority(quality);
         }
         return budget;
@@ -105,23 +105,23 @@ public final class BudgetFunctions extends UtilityFunctions {
      * @return The budget for the new task
      */
     static BudgetValue revise(TruthValue tTruth, TruthValue bTruth, TruthValue truth, boolean feedbackToLinks, Memory memory) {
-        float difT = truth.getExpDifAbs(tTruth);
-        Task task = memory.currentTask;
+        var difT = truth.getExpDifAbs(tTruth);
+        var task = memory.currentTask;
         task.decPriority(1 - difT);
         task.decDurability(1 - difT);
         if (feedbackToLinks) {
-            TaskLink tLink = memory.currentTaskLink;
+            var tLink = memory.currentTaskLink;
             tLink.decPriority(1 - difT);
             tLink.decDurability(1 - difT);
-            TermLink bLink = memory.currentBeliefLink;
-            float difB = truth.getExpDifAbs(bTruth);
+            var bLink = memory.currentBeliefLink;
+            var difB = truth.getExpDifAbs(bTruth);
             bLink.decPriority(1 - difB);
             bLink.decDurability(1 - difB);
         }
-        float dif = truth.getConfidence() - Math.max(tTruth.getConfidence(), bTruth.getConfidence());
-        float priority = or(dif, task.getPriority());
-        float durability = aveAri(dif, task.getDurability());
-        float quality = truthToQuality(truth);
+        var dif = truth.getConfidence() - Math.max(tTruth.getConfidence(), bTruth.getConfidence());
+        var priority = or(dif, task.getPriority());
+        var durability = aveAri(dif, task.getDurability());
+        var quality = truthToQuality(truth);
         return new BudgetValue(priority, durability, quality);
     }
 
@@ -133,11 +133,11 @@ public final class BudgetFunctions extends UtilityFunctions {
      * @return Budget value of the updating task
      */
     static BudgetValue update(Task task, TruthValue bTruth) {
-        TruthValue tTruth = task.getSentence().getTruth();
-        float dif = tTruth.getExpDifAbs(bTruth);
-        float priority = or(dif, task.getPriority());
-        float durability = aveAri(dif, task.getDurability());
-        float quality = truthToQuality(bTruth);
+        var tTruth = task.getSentence().getTruth();
+        var dif = tTruth.getExpDifAbs(bTruth);
+        var priority = or(dif, task.getPriority());
+        var durability = aveAri(dif, task.getDurability());
+        var quality = truthToQuality(bTruth);
         return new BudgetValue(priority, durability, quality);
     }
 
@@ -151,7 +151,7 @@ public final class BudgetFunctions extends UtilityFunctions {
      * @return Budget value for each link
      */
     public static BudgetValue distributeAmongLinks(BudgetValue b, int n) {
-        float priority = (float) (b.getPriority() / Math.sqrt(n));
+        var priority = (float) (b.getPriority() / Math.sqrt(n));
         return new BudgetValue(priority, b.getDurability(), b.getQuality());
     }
 
@@ -164,10 +164,10 @@ public final class BudgetFunctions extends UtilityFunctions {
      * @param budget  The budget for the new item
      */
     public static void activate(Concept concept, BudgetValue budget) {
-        float oldPri = concept.getPriority();
-        float priority = or(oldPri, budget.getPriority());
-        float durability = aveAri(concept.getDurability(), budget.getDurability());
-        float quality = concept.getQuality();
+        var oldPri = concept.getPriority();
+        var priority = or(oldPri, budget.getPriority());
+        var durability = aveAri(concept.getDurability(), budget.getDurability());
+        var quality = concept.getQuality();
         concept.setPriority(priority);
         concept.setDurability(durability);
         concept.setQuality(quality);
@@ -190,7 +190,7 @@ public final class BudgetFunctions extends UtilityFunctions {
      */
     public static void forget(BudgetValue budget, float forgetRate, float relativeThreshold) {
         double quality = budget.getQuality() * relativeThreshold;      // re-scaled quality
-        double p = budget.getPriority() - quality;                     // priority above quality
+        var p = budget.getPriority() - quality;                     // priority above quality
         if (p > 0) {
             quality += p * Math.pow(budget.getDurability(), 1.0 / (forgetRate * p));
         }    // priority Durability
@@ -293,14 +293,14 @@ public final class BudgetFunctions extends UtilityFunctions {
         if (t == null) {
             t = memory.currentTask;
         }
-        float priority = t.getPriority();
-        float durability = t.getDurability() / complexity;
-        float quality = qual / complexity;
-        TermLink bLink = memory.currentBeliefLink;
+        var priority = t.getPriority();
+        var durability = t.getDurability() / complexity;
+        var quality = qual / complexity;
+        var bLink = memory.currentBeliefLink;
         if (bLink != null) {
             priority = or(priority, bLink.getPriority());
             durability = and(durability, bLink.getDurability());
-            float targetActivation = memory.getConceptActivation(bLink.getTarget());
+            var targetActivation = memory.getConceptActivation(bLink.getTarget());
             bLink.incPriority(or(quality, targetActivation));
             bLink.incDurability(quality);
         }

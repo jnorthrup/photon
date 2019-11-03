@@ -121,7 +121,7 @@ public class ShortFloat implements Cloneable {
         if (value >= 10000) {
             return "1.0000";
         } else {
-            String s = String.valueOf(value);
+            var s = String.valueOf(value);
             while (s.length() < 4) {
                 s = "0" + s;
             }
@@ -136,7 +136,7 @@ public class ShortFloat implements Cloneable {
      */
     public String toStringBrief() {
         value += 50;
-        String s = toString();
+        var s = toString();
         value -= 50;
         if (s.length() > 4) {
             return s.substring(0, 4);

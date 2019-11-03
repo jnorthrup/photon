@@ -79,10 +79,10 @@ public class InferenceRecorder implements IInferenceRecorder {
 
     @Override
     public void openLogFile() {
-        FileDialog dialog = new FileDialog((FileDialog) null, "Inference Log", FileDialog.SAVE);
+        var dialog = new FileDialog((FileDialog) null, "Inference Log", FileDialog.SAVE);
         dialog.setVisible(true);
-        String directoryName = dialog.getDirectory();
-        String fileName = dialog.getFile();
+        var directoryName = dialog.getDirectory();
+        var fileName = dialog.getFile();
         try {
             logFile = new PrintWriter(new FileWriter(directoryName + fileName));
         } catch (IOException ex) {

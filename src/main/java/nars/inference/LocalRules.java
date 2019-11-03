@@ -52,7 +52,7 @@ public class LocalRules {
      * @param memory Reference to the memory
      */
     public static void match(Task task, Sentence belief, Memory memory) {
-        Sentence sentence = (Sentence) task.getSentence().clone();
+        var sentence = (Sentence) task.getSentence().clone();
         if (sentence.isJudgment()) {
             if (revisible(sentence, belief)) {
                 revision(sentence, belief, true, memory);
@@ -84,11 +84,11 @@ public class LocalRules {
      * @param memory          Reference to the memory
      */
     public static void revision(Sentence newBelief, Sentence oldBelief, boolean feedbackToLinks, Memory memory) {
-        TruthValue newTruth = newBelief.getTruth();
-        TruthValue oldTruth = oldBelief.getTruth();
-        TruthValue truth = TruthFunctions.revision(newTruth, oldTruth);
-        BudgetValue budget = BudgetFunctions.revise(newTruth, oldTruth, truth, feedbackToLinks, memory);
-        Term content = newBelief.getContent();
+        var newTruth = newBelief.getTruth();
+        var oldTruth = oldBelief.getTruth();
+        var truth = TruthFunctions.revision(newTruth, oldTruth);
+        var budget = BudgetFunctions.revise(newTruth, oldTruth, truth, feedbackToLinks, memory);
+        var content = newBelief.getContent();
         memory.doublePremiseTask(content, truth, budget);
     }
 
@@ -100,11 +100,11 @@ public class LocalRules {
      * @param memory Reference to the memory
      */
     public static void trySolution(Sentence belief, Task task, Memory memory) {
-        Sentence problem = task.getSentence();
-        Sentence oldBest = task.getBestSolution();
-        float newQ = solutionQuality(problem, belief);
+        var problem = task.getSentence();
+        var oldBest = task.getBestSolution();
+        var newQ = solutionQuality(problem, belief);
         if (oldBest != null) {
-            float oldQ = solutionQuality(problem, oldBest);
+            var oldQ = solutionQuality(problem, oldBest);
             if (oldQ >= newQ) {
                 return;
             }
@@ -113,7 +113,7 @@ public class LocalRules {
         if (task.isInput()) {    // moved from Sentence
             memory.report(belief, false);
         }
-        BudgetValue budget = BudgetFunctions.solutionEval(problem, belief, task, memory);
+        var budget = BudgetFunctions.solutionEval(problem, belief, task, memory);
         if ((budget != null) && budget.aboveThreshold()) {
             memory.activatedTask(budget, belief, task.getParentBelief());
         }
@@ -130,7 +130,7 @@ public class LocalRules {
         if (problem == null) {
             return solution.getTruth().getExpectation();
         }
-        TruthValue truth = solution.getTruth();
+        var truth = solution.getTruth();
         if (problem.containQueryVar()) {   // "yes/no" question
             return truth.getExpectation() / solution.getContent().getComplexity();
         } else {                                    // "what" question or goal
@@ -146,9 +146,9 @@ public class LocalRules {
      * @param memory Reference to the memory
      */
     public static void matchReverse(Memory memory) {
-        Task task = memory.currentTask;
-        Sentence belief = memory.currentBelief;
-        Sentence sentence = task.getSentence();
+        var task = memory.currentTask;
+        var belief = memory.currentBelief;
+        var sentence = task.getSentence();
         if (sentence.isJudgment()) {
             inferToSym((Sentence) sentence, belief, memory);
         } else {
@@ -183,19 +183,19 @@ public class LocalRules {
      * @param memory    Reference to the memory
      */
     private static void inferToSym(Sentence judgment1, Sentence judgment2, Memory memory) {
-        Statement s1 = (Statement) judgment1.getContent();
-        Term t1 = s1.getSubject();
-        Term t2 = s1.getPredicate();
+        var s1 = (Statement) judgment1.getContent();
+        var t1 = s1.getSubject();
+        var t2 = s1.getPredicate();
         Term content;
         if (s1 instanceof Inheritance) {
             content = Similarity.make(t1, t2, memory);
         } else {
             content = Equivalence.make(t1, t2, memory);
         }
-        TruthValue value1 = judgment1.getTruth();
-        TruthValue value2 = judgment2.getTruth();
-        TruthValue truth = TruthFunctions.intersection(value1, value2);
-        BudgetValue budget = BudgetFunctions.forward(truth, memory);
+        var value1 = judgment1.getTruth();
+        var value2 = judgment2.getTruth();
+        var truth = TruthFunctions.intersection(value1, value2);
+        var budget = BudgetFunctions.forward(truth, memory);
         memory.doublePremiseTask(content, truth, budget);
     }
 
@@ -208,12 +208,12 @@ public class LocalRules {
      * @param memory Reference to the memory
      */
     private static void inferToAsym(Sentence asym, Sentence sym, Memory memory) {
-        Statement statement = (Statement) asym.getContent();
-        Term sub = statement.getPredicate();
-        Term pre = statement.getSubject();
-        Statement content = Statement.make(statement, sub, pre, memory);
-        TruthValue truth = TruthFunctions.reduceConjunction(sym.getTruth(), asym.getTruth());
-        BudgetValue budget = BudgetFunctions.forward(truth, memory);
+        var statement = (Statement) asym.getContent();
+        var sub = statement.getPredicate();
+        var pre = statement.getSubject();
+        var content = Statement.make(statement, sub, pre, memory);
+        var truth = TruthFunctions.reduceConjunction(sym.getTruth(), asym.getTruth());
+        var budget = BudgetFunctions.forward(truth, memory);
         memory.doublePremiseTask(content, truth, budget);
     }
 
@@ -226,8 +226,8 @@ public class LocalRules {
      * @param memory Reference to the memory
      */
     private static void conversion(Memory memory) {
-        TruthValue truth = TruthFunctions.conversion(memory.currentBelief.getTruth());
-        BudgetValue budget = BudgetFunctions.forward(truth, memory);
+        var truth = TruthFunctions.conversion(memory.currentBelief.getTruth());
+        var budget = BudgetFunctions.forward(truth, memory);
         convertedJudgment(truth, budget, memory);
     }
 
@@ -238,13 +238,13 @@ public class LocalRules {
      * @param memory Reference to the memory
      */
     private static void convertRelation(Memory memory) {
-        TruthValue truth = memory.currentBelief.getTruth();
+        var truth = memory.currentBelief.getTruth();
         if (((Statement) memory.currentTask.getContent()).isCommutative()) {
             truth = TruthFunctions.abduction(truth, 1.0f);
         } else {
             truth = TruthFunctions.deduction(truth, 1.0f);
         }
-        BudgetValue budget = BudgetFunctions.forward(truth, memory);
+        var budget = BudgetFunctions.forward(truth, memory);
         convertedJudgment(truth, budget, memory);
     }
 
@@ -258,12 +258,12 @@ public class LocalRules {
      * @param memory Reference to the memory
      */
     private static void convertedJudgment(TruthValue newTruth, BudgetValue newBudget, Memory memory) {
-        Statement content = (Statement) memory.currentTask.getContent();
-        Statement beliefContent = (Statement) memory.currentBelief.getContent();
-        Term subjT = content.getSubject();
-        Term predT = content.getPredicate();
-        Term subjB = beliefContent.getSubject();
-        Term predB = beliefContent.getPredicate();
+        var content = (Statement) memory.currentTask.getContent();
+        var beliefContent = (Statement) memory.currentBelief.getContent();
+        var subjT = content.getSubject();
+        var predT = content.getPredicate();
+        var subjB = beliefContent.getSubject();
+        var predB = beliefContent.getPredicate();
         Term otherTerm;
         if (Variable.containVarQuery(subjT.getName())) {
             otherTerm = (predT.equals(subjB)) ? predB : subjB;

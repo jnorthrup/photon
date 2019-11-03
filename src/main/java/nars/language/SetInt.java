@@ -61,7 +61,7 @@ public class SetInt extends CompoundTerm {
      * @return A compound generated or a term it reduced to
      */
     public static Term make(Term t, Memory memory) {
-        TreeSet<Term> set = new TreeSet<Term>();
+        var set = new TreeSet<Term>();
         set.add(t);
         return make(set, memory);
     }
@@ -74,7 +74,7 @@ public class SetInt extends CompoundTerm {
      * @return the Term generated from the arguments
      */
     public static Term make(ArrayList<Term> argList, Memory memory) {
-        TreeSet<Term> set = new TreeSet<Term>(argList); // sort/merge arguments
+        var set = new TreeSet<Term>(argList); // sort/merge arguments
         return make(set, memory);
     }
 
@@ -89,9 +89,9 @@ public class SetInt extends CompoundTerm {
         if (set.isEmpty()) {
             return null;
         }
-        ArrayList<Term> argument = new ArrayList<Term>(set);
-        String name = makeSetName(Symbols.SET_INT_OPENER, argument, Symbols.SET_INT_CLOSER);
-        Term t = memory.nameToListedTerm(name);
+        var argument = new ArrayList<Term>(set);
+        var name = makeSetName(Symbols.SET_INT_OPENER, argument, Symbols.SET_INT_CLOSER);
+        var t = memory.nameToListedTerm(name);
         return (t != null) ? t : new SetInt(argument);
     }
 

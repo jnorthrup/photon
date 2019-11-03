@@ -60,8 +60,8 @@ public class Equivalence extends Statement {
      * @return A compound generated or null
      */
     public static Equivalence make(Term subject, Term predicate, Memory memory) {  // to be extended to check if subject is Conjunction
-        Term subject1 = subject;
-        Term predicate1 = predicate;
+        var subject1 = subject;
+        var predicate1 = predicate;
         if ((subject1 instanceof Implication) || (subject1 instanceof Equivalence)) {
             return null;
         }
@@ -72,16 +72,16 @@ public class Equivalence extends Statement {
             return null;
         }
         if (subject1.compareTo(predicate1) > 0) {
-            Term interm = subject1;
+            var interm = subject1;
             subject1 = predicate1;
             predicate1 = interm;
         }
-        String name = makeStatementName(subject1, Symbols.EQUIVALENCE_RELATION, predicate1);
-        Term t = memory.nameToListedTerm(name);
+        var name = makeStatementName(subject1, Symbols.EQUIVALENCE_RELATION, predicate1);
+        var t = memory.nameToListedTerm(name);
         if (t != null) {
             return (Equivalence) t;
         }
-        ArrayList<Term> argument = argumentsToList(subject1, predicate1);
+        var argument = argumentsToList(subject1, predicate1);
         return new Equivalence(argument);
     }
 

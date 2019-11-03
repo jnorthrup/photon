@@ -179,7 +179,7 @@ public class Memory {
      * @return a Term or null (if no Concept/Operator has this name)
      */
     public Term nameToListedTerm(String name) {
-        Concept concept = concepts.get(name);
+        var concept = concepts.get(name);
         if (concept != null) {
             return concept.getTerm();
         }
@@ -206,11 +206,11 @@ public class Memory {
         if (!term.isConstant()) {
             return null;
         }
-        String n = term.getName();
-        Concept concept = concepts.get(n);
+        var n = term.getName();
+        var concept = concepts.get(n);
         if (concept == null) {
             concept = new Concept(term, this); // the only place to make a new Concept
-            boolean created = concepts.putIn(concept);
+            var created = concepts.putIn(concept);
             if (!created) {
                 return null;
             }
@@ -225,7 +225,7 @@ public class Memory {
      * @return the priority value of the concept
      */
     public float getConceptActivation(Term t) {
-        Concept c = termToConcept(t);
+        var c = termToConcept(t);
         return (c == null) ? 0f : c.getPriority();
     }
 
@@ -277,12 +277,12 @@ public class Memory {
      *                        forward/backward correspondence
      */
     public void activatedTask(BudgetValue budget, Sentence sentence, Sentence candidateBelief) {
-        Task task = new Task(sentence, budget, currentTask, sentence, candidateBelief);
+        var task = new Task(sentence, budget, currentTask, sentence, candidateBelief);
         recorder.append("!!! Activated: " + task.toString() + "\n");
         if (sentence.isQuestion()) {
-            float s = task.getBudget().summary();
+            var s = task.getBudget().summary();
 //            float minSilent = reasoner.getMainWindow().silentW.value() / 100.0f;
-            float minSilent = reasoner.getSilenceValue().get() / 100.0f;
+            var minSilent = reasoner.getSilenceValue().get() / 100.0f;
             if (s > minSilent) {  // only report significant derived Tasks
                 report(task.getSentence(), false);
             }
@@ -298,9 +298,9 @@ public class Memory {
     private void derivedTask(Task task) {
         if (task.getBudget().aboveThreshold()) {
             recorder.append("!!! Derived: " + task + "\n");
-            float budget = task.getBudget().summary();
+            var budget = task.getBudget().summary();
 //            float minSilent = reasoner.getMainWindow().silentW.value() / 100.0f;
-            float minSilent = reasoner.getSilenceValue().get() / 100.0f;
+            var minSilent = reasoner.getSilenceValue().get() / 100.0f;
             if (budget > minSilent) {  // only report significant derived Tasks
                 report(task.getSentence(), false);
             }
@@ -322,8 +322,8 @@ public class Memory {
      */
     public void doublePremiseTask(Term newContent, TruthValue newTruth, BudgetValue newBudget) {
         if (newContent != null) {
-            Sentence newSentence = new Sentence(newContent, currentTask.getSentence().getPunctuation(), newTruth, newStamp);
-            Task newTask = new Task(newSentence, newBudget, currentTask, currentBelief);
+            var newSentence = new Sentence(newContent, currentTask.getSentence().getPunctuation(), newTruth, newStamp);
+            var newTask = new Task(newSentence, newBudget, currentTask, currentBelief);
             derivedTask(newTask);
         }
     }
@@ -339,9 +339,9 @@ public class Memory {
      */
     public void doublePremiseTask(Term newContent, TruthValue newTruth, BudgetValue newBudget, boolean revisible) {
         if (newContent != null) {
-            Sentence taskSentence = currentTask.getSentence();
-            Sentence newSentence = new Sentence(newContent, taskSentence.getPunctuation(), newTruth, newStamp, revisible);
-            Task newTask = new Task(newSentence, newBudget, currentTask, currentBelief);
+            var taskSentence = currentTask.getSentence();
+            var newSentence = new Sentence(newContent, taskSentence.getPunctuation(), newTruth, newStamp, revisible);
+            var newTask = new Task(newSentence, newBudget, currentTask, currentBelief);
             derivedTask(newTask);
         }
     }
@@ -368,18 +368,18 @@ public class Memory {
      * @param newBudget   The budget value in task
      */
     public void singlePremiseTask(Term newContent, char punctuation, TruthValue newTruth, BudgetValue newBudget) {
-        Task parentTask = currentTask.getParentTask();
+        var parentTask = currentTask.getParentTask();
         if (parentTask != null && newContent.equals(parentTask.getContent())) { // circular structural inference
             return;
         }
-        Sentence taskSentence = currentTask.getSentence();
+        var taskSentence = currentTask.getSentence();
         if (taskSentence.isJudgment() || currentBelief == null) {
             newStamp = new Stamp(taskSentence.getStamp(), getTime());
         } else {    // to answer a question with negation in NAL-5 --- move to activated task?
             newStamp = new Stamp(currentBelief.getStamp(), getTime());
         }
-        Sentence newSentence = new Sentence(newContent, punctuation, newTruth, newStamp, taskSentence.getRevisible());
-        Task newTask = new Task(newSentence, newBudget, currentTask, null);
+        var newSentence = new Sentence(newContent, punctuation, newTruth, newStamp, taskSentence.getRevisible());
+        var newTask = new Task(newSentence, newBudget, currentTask, null);
         derivedTask(newTask);
     }
 
@@ -410,14 +410,14 @@ public class Memory {
      */
     private void processNewTask() {
         Task task;
-        int counter = newTasks.size();  // don't include new tasks produced in the current workCycle
+        var counter = newTasks.size();  // don't include new tasks produced in the current workCycle
         while (counter > 0) {
             counter--;
             task = newTasks.remove(0);
             if (task.isInput() || (termToConcept(task.getContent()) != null)) { // new input or existing concept
                 immediateProcess(task);
             } else {
-                Sentence s = task.getSentence();
+                var s = task.getSentence();
                 if (s.isJudgment()) {
                     double d = s.getTruth().getExpectation();
                     if (d > Parameters.DEFAULT_CREATION_EXPECTATION) {
@@ -435,7 +435,7 @@ public class Memory {
      * Select a novel task to process.
      */
     private void processNovelTask() {
-        Task task = novelTasks.takeOut();       // select a task from novelTasks
+        var task = novelTasks.takeOut();       // select a task from novelTasks
         if (task != null) {
             immediateProcess(task);
         }
@@ -525,7 +525,7 @@ public class Memory {
             System.out.flush();
         }
         if (exportStrings.isEmpty()) {
-            long timer = reasoner.updateTimer();
+            var timer = reasoner.updateTimer();
             if (timer > 0) {
                 exportStrings.add(String.valueOf(timer));
             }

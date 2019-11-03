@@ -131,8 +131,8 @@ public class Stamp implements Cloneable {
      * @return The merged Stamp, or null
      */
     public static Stamp make(Stamp first, Stamp second, long time) {
-        for (int i = 0; i < first.length(); i++) {
-            for (int j = 0; j < second.length(); j++) {
+        for (var i = 0; i < first.length(); i++) {
+            for (var j = 0; j < second.length(); j++) {
                 if (first.get(i) == second.get(j)) {
                     return null;
                 }
@@ -196,8 +196,8 @@ public class Stamp implements Cloneable {
      * @return The TreeSet representation of the evidential base
      */
     private TreeSet<Long> toSet() {
-        TreeSet<Long> set = new TreeSet<Long>();
-        for (int i = 0; i < baseLength; i++) {
+        var set = new TreeSet<Long>();
+        for (var i = 0; i < baseLength; i++) {
             set.add(evidentialBase[i]);
         }
         return set;
@@ -214,8 +214,8 @@ public class Stamp implements Cloneable {
         if (!(that instanceof Stamp)) {
             return false;
         }
-        TreeSet<Long> set1 = toSet();
-        TreeSet<Long> set2 = ((Stamp) that).toSet();
+        var set1 = toSet();
+        var set2 = ((Stamp) that).toSet();
         return (set1.containsAll(set2) && set2.containsAll(set1));
     }
 
@@ -246,9 +246,9 @@ public class Stamp implements Cloneable {
      */
     @Override
     public String toString() {
-        StringBuilder buffer = new StringBuilder(" " + Symbols.STAMP_OPENER + creationTime);
+        var buffer = new StringBuilder(" " + Symbols.STAMP_OPENER + creationTime);
         buffer.append(" ").append(Symbols.STAMP_STARTER).append(" ");
-        for (int i = 0; i < baseLength; i++) {
+        for (var i = 0; i < baseLength; i++) {
             buffer.append(Long.toString(evidentialBase[i]));
             if (i < (baseLength - 1)) {
                 buffer.append(Symbols.STAMP_SEPARATOR);

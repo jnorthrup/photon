@@ -52,9 +52,9 @@ public final class CompositionalRules {
         if ((!memory.currentTask.getSentence().isJudgment()) || (taskContent.getClass() != beliefContent.getClass())) {
             return;
         }
-        Term componentT = taskContent.componentAt(1 - index);
-        Term componentB = beliefContent.componentAt(1 - index);
-        Term componentCommon = taskContent.componentAt(index);
+        var componentT = taskContent.componentAt(1 - index);
+        var componentB = beliefContent.componentAt(1 - index);
+        var componentCommon = taskContent.componentAt(index);
         if ((componentT instanceof CompoundTerm) && ((CompoundTerm) componentT).containAllComponents(componentB)) {
             decomposeCompound((CompoundTerm) componentT, componentB, componentCommon, index, true, memory);
             return;
@@ -62,10 +62,10 @@ public final class CompositionalRules {
             decomposeCompound((CompoundTerm) componentB, componentT, componentCommon, index, false, memory);
             return;
         }
-        TruthValue truthT = memory.currentTask.getSentence().getTruth();
-        TruthValue truthB = memory.currentBelief.getTruth();
-        TruthValue truthOr = TruthFunctions.union(truthT, truthB);
-        TruthValue truthAnd = TruthFunctions.intersection(truthT, truthB);
+        var truthT = memory.currentTask.getSentence().getTruth();
+        var truthB = memory.currentBelief.getTruth();
+        var truthOr = TruthFunctions.union(truthT, truthB);
+        var truthAnd = TruthFunctions.intersection(truthT, truthB);
         TruthValue truthDif = null;
         Term termOr = null;
         Term termAnd = null;
@@ -133,7 +133,7 @@ public final class CompositionalRules {
         if ((content == null) || content.equals(statement) || content.equals(memory.currentBelief.getContent())) {
             return;
         }
-        BudgetValue budget = BudgetFunctions.compoundForward(truth, content, memory);
+        var budget = BudgetFunctions.compoundForward(truth, content, memory);
         memory.doublePremiseTask(content, truth, budget);
     }
 
@@ -152,14 +152,14 @@ public final class CompositionalRules {
         if (compound instanceof Statement) {
             return;
         }
-        Term term2 = CompoundTerm.reduceComponents(compound, component, memory);
+        var term2 = CompoundTerm.reduceComponents(compound, component, memory);
         if (term2 == null) {
             return;
         }
-        Task task = memory.currentTask;
-        Sentence sentence = task.getSentence();
-        Sentence belief = memory.currentBelief;
-        Statement oldContent = (Statement) task.getContent();
+        var task = memory.currentTask;
+        var sentence = task.getSentence();
+        var belief = memory.currentBelief;
+        var oldContent = (Statement) task.getContent();
         TruthValue v1,
                 v2;
         if (compoundTask) {
@@ -229,7 +229,7 @@ public final class CompositionalRules {
             }
         }
         if (truth != null) {
-            BudgetValue budget = BudgetFunctions.compoundForward(truth, content, memory);
+            var budget = BudgetFunctions.compoundForward(truth, content, memory);
             memory.doublePremiseTask(content, truth, budget);
         }
     }
@@ -243,13 +243,13 @@ public final class CompositionalRules {
      * @param memory          Reference to the memory
      */
     static void decomposeStatement(CompoundTerm compound, Term component, boolean compoundTask, Memory memory) {
-        Task task = memory.currentTask;
-        Sentence sentence = task.getSentence();
+        var task = memory.currentTask;
+        var sentence = task.getSentence();
         if (sentence.isQuestion()) {
             return;
         }
-        Sentence belief = memory.currentBelief;
-        Term content = CompoundTerm.reduceComponents(compound, component, memory);
+        var belief = memory.currentBelief;
+        var content = CompoundTerm.reduceComponents(compound, component, memory);
         if (content == null) {
             return;
         }
@@ -273,7 +273,7 @@ public final class CompositionalRules {
         } else {
             return;
         }
-        BudgetValue budget = BudgetFunctions.compoundForward(truth, content, memory);
+        var budget = BudgetFunctions.compoundForward(truth, content, memory);
         memory.doublePremiseTask(content, truth, budget);
     }
 
@@ -289,12 +289,12 @@ public final class CompositionalRules {
      * @param memory        Reference to the memory
      */
     private static void introVarOuter(Statement taskContent, Statement beliefContent, int index, Memory memory) {
-        TruthValue truthT = memory.currentTask.getSentence().getTruth();
-        TruthValue truthB = memory.currentBelief.getTruth();
-        Variable varInd = new Variable("$varInd1");
-        Variable varInd2 = new Variable("$varInd2");
+        var truthT = memory.currentTask.getSentence().getTruth();
+        var truthB = memory.currentBelief.getTruth();
+        var varInd = new Variable("$varInd1");
+        var varInd2 = new Variable("$varInd2");
         @org.jetbrains.annotations.Nullable Term term11, term12, term21, term22, commonTerm;
-        HashMap<Term, Term> subs = new HashMap<Term, Term>();
+        var subs = new HashMap<Term, Term>();
         if (index == 0) {
             term11 = varInd;
             term21 = varInd;
@@ -337,8 +337,8 @@ public final class CompositionalRules {
         Statement state1 = Inheritance.make(term11, term12, memory);
         Statement state2 = Inheritance.make(term21, term22, memory);
         Term content = Implication.make(state1, state2, memory);
-        TruthValue truth = TruthFunctions.induction(truthT, truthB);
-        BudgetValue budget = BudgetFunctions.compoundForward(truth, content, memory);
+        var truth = TruthFunctions.induction(truthT, truthB);
+        var budget = BudgetFunctions.compoundForward(truth, content, memory);
         memory.doublePremiseTask(content, truth, budget);
         content = Implication.make(state2, state1, memory);
         truth = TruthFunctions.induction(truthB, truthT);
@@ -348,7 +348,7 @@ public final class CompositionalRules {
         truth = TruthFunctions.comparison(truthT, truthB);
         budget = BudgetFunctions.compoundForward(truth, content, memory);
         memory.doublePremiseTask(content, truth, budget);
-        Variable varDep = new Variable("#varDep");
+        var varDep = new Variable("#varDep");
         if (index == 0) {
             state1 = Inheritance.make(varDep, taskContent.getPredicate(), memory);
             state2 = Inheritance.make(varDep, beliefContent.getPredicate(), memory);
@@ -375,15 +375,15 @@ public final class CompositionalRules {
      * @param memory        Reference to the memory
      */
     static void introVarInner(Statement premise1, Statement premise2, CompoundTerm oldCompound, Memory memory) {
-        Task task = memory.currentTask;
-        Sentence taskSentence = task.getSentence();
+        var task = memory.currentTask;
+        var taskSentence = task.getSentence();
         if (!taskSentence.isJudgment() || (premise1.getClass() != premise2.getClass()) || oldCompound.containComponent(premise1)) {
             return;
         }
-        Term subject1 = premise1.getSubject();
-        Term subject2 = premise2.getSubject();
-        Term predicate1 = premise1.getPredicate();
-        Term predicate2 = premise2.getPredicate();
+        var subject1 = premise1.getSubject();
+        var subject2 = premise2.getSubject();
+        var predicate1 = premise1.getPredicate();
+        var predicate2 = premise2.getPredicate();
         Term commonTerm1, commonTerm2;
         if (subject1.equals(subject2)) {
             commonTerm1 = subject1;
@@ -394,13 +394,13 @@ public final class CompositionalRules {
         } else {
             return;
         }
-        Sentence belief = memory.currentBelief;
-        HashMap<Term, Term> substitute = new HashMap<Term, Term>();
+        var belief = memory.currentBelief;
+        var substitute = new HashMap<Term, Term>();
         substitute.put(commonTerm1, new Variable("#varDep2"));
-        CompoundTerm content = (CompoundTerm) Conjunction.make(premise1, oldCompound, memory);
+        var content = (CompoundTerm) Conjunction.make(premise1, oldCompound, memory);
         content.applySubstitute(substitute);
-        TruthValue truth = TruthFunctions.intersection(taskSentence.getTruth(), belief.getTruth());
-        BudgetValue budget = BudgetFunctions.forward(truth, memory);
+        var truth = TruthFunctions.intersection(taskSentence.getTruth(), belief.getTruth());
+        var budget = BudgetFunctions.forward(truth, memory);
         memory.doublePremiseTask(content, truth, budget, false);
         substitute.clear();
         substitute.put(commonTerm1, new Variable("$varInd1"));

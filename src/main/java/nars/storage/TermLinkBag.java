@@ -64,8 +64,8 @@ public class TermLinkBag extends Bag<TermLink> {
      * @return The selected TermLink
      */
     public TermLink takeOut(TaskLink taskLink, long time) {
-        for (int i = 0; i < Parameters.MAX_MATCHED_TERM_LINK; i++) {
-            TermLink termLink = takeOut();
+        for (var i = 0; i < Parameters.MAX_MATCHED_TERM_LINK; i++) {
+            var termLink = takeOut();
             if (termLink == null) {
                 return null;
             }

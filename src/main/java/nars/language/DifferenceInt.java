@@ -67,8 +67,8 @@ public class DifferenceInt extends CompoundTerm {
         if (argList.size() != 2) {
             return null;
         }
-        String name = makeCompoundName(Symbols.DIFFERENCE_INT_OPERATOR, argList);
-        Term t = memory.nameToListedTerm(name);
+        var name = makeCompoundName(Symbols.DIFFERENCE_INT_OPERATOR, argList);
+        var t = memory.nameToListedTerm(name);
         return (t != null) ? t : new DifferenceInt(argList);
     }
 
@@ -85,11 +85,11 @@ public class DifferenceInt extends CompoundTerm {
             return null;
         }
         if ((t1 instanceof SetInt) && (t2 instanceof SetInt)) {
-            TreeSet<Term> set = new TreeSet<Term>(((CompoundTerm) t1).cloneComponents());
+            var set = new TreeSet<Term>(((CompoundTerm) t1).cloneComponents());
             set.removeAll(((CompoundTerm) t2).cloneComponents());           // set difference
             return SetInt.make(set, memory);
         }
-        ArrayList<Term> list = argumentsToList(t1, t2);
+        var list = argumentsToList(t1, t2);
         return make(list, memory);
     }
 

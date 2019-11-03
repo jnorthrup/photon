@@ -61,8 +61,8 @@ public class TermWindow extends NarsFrame implements ActionListener {
         this.memory = memory;
 
         setBackground(SINGLE_WINDOW_COLOR);
-        GridBagLayout gridbag = new GridBagLayout();
-        GridBagConstraints c = new GridBagConstraints();
+        var gridbag = new GridBagLayout();
+        var c = new GridBagConstraints();
         setLayout(gridbag);
 
         c.ipadx = 3;
@@ -102,9 +102,9 @@ public class TermWindow extends NarsFrame implements ActionListener {
      * @param e The ActionEvent
      */
     public void actionPerformed(ActionEvent e) {
-        Button b = (Button) e.getSource();
+        var b = (Button) e.getSource();
         if (b == playButton) {
-            Concept concept = memory.nameToConcept(termField.getText().trim());
+            var concept = memory.nameToConcept(termField.getText().trim());
             if (concept != null) {
                 EntityObserver entityObserver = new ConceptWindow(concept);
                 concept.startPlay(entityObserver, true);

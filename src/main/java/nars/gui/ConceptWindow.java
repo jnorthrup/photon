@@ -67,8 +67,8 @@ public class ConceptWindow extends NarsFrame implements ActionListener, EntityOb
         super(concept.getKey());
         this.concept = concept;
         setBackground(MULTIPLE_WINDOW_COLOR);
-        GridBagLayout gridbag = new GridBagLayout();
-        GridBagConstraints c = new GridBagConstraints();
+        var gridbag = new GridBagLayout();
+        var c = new GridBagConstraints();
         setLayout(gridbag);
 
         c.ipadx = 3;
@@ -136,7 +136,7 @@ public class ConceptWindow extends NarsFrame implements ActionListener, EntityOb
      * @param e The ActionEvent
      */
     public void actionPerformed(ActionEvent e) {
-        Object s = e.getSource();
+        var s = e.getSource();
         if (s == playButton) {
             concept.play();
         } else if (s == stopButton) {
