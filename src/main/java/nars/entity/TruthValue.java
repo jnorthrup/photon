@@ -38,36 +38,36 @@ public class TruthValue implements Cloneable { // implements Cloneable {
     /**
      * The frequency factor of the truth value
      */
-    private ShortFloat frequency;
+    private Float frequency;
     /**
      * The confidence factor of the truth value
      */
-    private ShortFloat confidence;
+    private Float confidence;
     /**
      * Whether the truth value is derived from a definition
      */
     private boolean isAnalytic = false;
 
     /**
-     * Constructor with two ShortFloats
+     * Constructor with two Floats
      *
      * @param f The frequency value
      * @param c The confidence value
      */
     public TruthValue(float f, float c) {
-        frequency = new ShortFloat(f);
-        confidence = (c < 1) ? new ShortFloat(c) : new ShortFloat(0.9999f);
+        frequency = new Float(f);
+        confidence = (c < 1) ? new Float(c) : new Float(0.9999f);
     }
 
     /**
-     * Constructor with two ShortFloats
+     * Constructor with two Floats
      *
      * @param f The frequency value
      * @param c The confidence value
      */
     public TruthValue(float f, float c, boolean b) {
-        frequency = new ShortFloat(f);
-        confidence = (c < 1) ? new ShortFloat(c) : new ShortFloat(0.9999f);
+        frequency = new Float(f);
+        confidence = (c < 1) ? new Float(c) : new Float(0.9999f);
         isAnalytic = b;
     }
 
@@ -77,8 +77,8 @@ public class TruthValue implements Cloneable { // implements Cloneable {
      * @param v The truth value to be cloned
      */
     public TruthValue(TruthValue v) {
-        frequency = new ShortFloat(v.getFrequency());
-        confidence = new ShortFloat(v.getConfidence());
+        frequency = new Float(v.getFrequency());
+        confidence = new Float(v.getConfidence());
         isAnalytic = v.getAnalytic();
     }
 
@@ -88,7 +88,7 @@ public class TruthValue implements Cloneable { // implements Cloneable {
      * @return The frequency value
      */
     public float getFrequency() {
-        return frequency.getValue();
+        return frequency.floatValue();
     }
 
     /**
@@ -97,7 +97,7 @@ public class TruthValue implements Cloneable { // implements Cloneable {
      * @return The confidence value
      */
     public float getConfidence() {
-        return confidence.getValue();
+        return confidence.floatValue();
     }
 
     /**
@@ -115,7 +115,7 @@ public class TruthValue implements Cloneable { // implements Cloneable {
      * @return The expectation value
      */
     public float getExpectation() {
-        return (float) (confidence.getValue() * (frequency.getValue() - 0.5) + 0.5);
+        return (float) (confidence.floatValue() * (frequency.floatValue() - 0.5) + 0.5);
     }
 
     /**
@@ -183,8 +183,8 @@ public class TruthValue implements Cloneable { // implements Cloneable {
      * @return The String
      */
     public String toStringBrief() {
-        var s1 = DELIMITER + frequency.toStringBrief() + SEPARATOR;
-        var s2 = confidence.toStringBrief();
+        var s1 = DELIMITER + frequency.toString () + SEPARATOR;
+        var s2 = confidence.toString ();
         if (s2.equals("1.00")) {
             return s1 + "0.99" + DELIMITER;
         } else {

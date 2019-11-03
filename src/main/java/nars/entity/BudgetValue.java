@@ -41,26 +41,26 @@ public class BudgetValue implements Cloneable {
     /**
      * The relative share of time resource to be allocated
      */
-    protected ShortFloat priority;
+    protected Float priority;
     /**
      * The percent of priority to be kept in a constant period; All priority
      * values “decay” over time, though at different rates. Each item is given a
      * “durability” factor in (0, 1) to specify the percentage of priority level
      * left after each reevaluation
      */
-    protected ShortFloat durability;
+    protected Float durability;
     /**
      * The overall (context-independent) evaluation
      */
-    protected ShortFloat quality;
+    protected Float quality;
 
     /**
      * Default constructor
      */
     public BudgetValue() {
-        priority = new ShortFloat(0.01f);
-        durability = new ShortFloat(0.01f);
-        quality = new ShortFloat(0.01f);
+        priority = new Float(0.01f);
+        durability = new Float(0.01f);
+        quality = new Float(0.01f);
     }
 
     /**
@@ -71,9 +71,9 @@ public class BudgetValue implements Cloneable {
      * @param q Initial quality
      */
     public BudgetValue(float p, float d, float q) {
-        priority = new ShortFloat(p);
-        durability = new ShortFloat(d);
-        quality = new ShortFloat(q);
+        priority = new Float(p);
+        durability = new Float(d);
+        quality = new Float(q);
     }
 
     /**
@@ -82,9 +82,9 @@ public class BudgetValue implements Cloneable {
      * @param v Budget value to be cloned
      */
     public BudgetValue(BudgetValue v) {
-        priority = new ShortFloat(v.getPriority());
-        durability = new ShortFloat(v.getDurability());
-        quality = new ShortFloat(v.getQuality());
+        priority = new Float(v.getPriority());
+        durability = new Float(v.getDurability());
+        quality = new Float(v.getQuality());
     }
 
     /**
@@ -101,7 +101,7 @@ public class BudgetValue implements Cloneable {
      * @return The current priority
      */
     public float getPriority() {
-        return priority.getValue();
+        return priority.floatValue();
     }
 
     /**
@@ -110,7 +110,7 @@ public class BudgetValue implements Cloneable {
      * @param v The new priority
      */
     public void setPriority(float v) {
-        priority.setValue(v);
+        priority=v;
     }
 
     /**
@@ -119,7 +119,7 @@ public class BudgetValue implements Cloneable {
      * @param v The increasing percent
      */
     public void incPriority(float v) {
-        priority.setValue(UtilityFunctions.or(priority.getValue(), v));
+        priority=UtilityFunctions.or(priority.floatValue(), v);
     }
 
     /**
@@ -128,7 +128,7 @@ public class BudgetValue implements Cloneable {
      * @param v The decreasing percent
      */
     public void decPriority(float v) {
-        priority.setValue(UtilityFunctions.and(priority.getValue(), v));
+        priority=UtilityFunctions.and(priority.floatValue(), v);
     }
 
     /**
@@ -137,7 +137,7 @@ public class BudgetValue implements Cloneable {
      * @return The current durability
      */
     public float getDurability() {
-        return durability.getValue();
+        return durability.floatValue();
     }
 
     /**
@@ -146,7 +146,7 @@ public class BudgetValue implements Cloneable {
      * @param v The new durability
      */
     public void setDurability(float v) {
-        durability.setValue(v);
+        durability=v;
     }
 
     /**
@@ -155,7 +155,7 @@ public class BudgetValue implements Cloneable {
      * @param v The increasing percent
      */
     public void incDurability(float v) {
-        durability.setValue(UtilityFunctions.or(durability.getValue(), v));
+        durability=UtilityFunctions.or(durability.floatValue(), v);
     }
 
     /**
@@ -164,7 +164,7 @@ public class BudgetValue implements Cloneable {
      * @param v The decreasing percent
      */
     public void decDurability(float v) {
-        durability.setValue(UtilityFunctions.and(durability.getValue(), v));
+        durability=UtilityFunctions.and(durability.floatValue(), v);
     }
 
     /**
@@ -173,7 +173,7 @@ public class BudgetValue implements Cloneable {
      * @return The current quality
      */
     public float getQuality() {
-        return quality.getValue();
+        return quality.floatValue();
     }
 
     /**
@@ -182,7 +182,7 @@ public class BudgetValue implements Cloneable {
      * @param v The new quality
      */
     public void setQuality(float v) {
-        quality.setValue(v);
+        quality=v;
     }
 
     /**
@@ -200,7 +200,7 @@ public class BudgetValue implements Cloneable {
      * @return The summary value
      */
     public float summary() {
-        return UtilityFunctions.aveGeo(priority.getValue(), durability.getValue(), quality.getValue());
+        return UtilityFunctions.aveGeo(priority.floatValue(), durability.floatValue(), quality.floatValue());
     }
 
     /**
@@ -229,7 +229,7 @@ public class BudgetValue implements Cloneable {
      *
      * @return String representation of the value with 2-digit accuracy
      */
-    public String toStringBrief() {
-        return MARK + priority.toStringBrief() + SEPARATOR + durability.toStringBrief() + SEPARATOR + quality.toStringBrief() + MARK;
+    public String toStringBrief() {return toString();
+//        return MARK + priority.toStringBrief() + SEPARATOR + durability.toStringBrief() + SEPARATOR + quality.toStringBrief() + MARK;
     }
 }
