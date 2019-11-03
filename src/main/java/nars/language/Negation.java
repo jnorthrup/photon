@@ -76,12 +76,13 @@ public class Negation extends CompoundTerm {
      * @return the Term generated from the arguments
      */
     public static Term make( List<Term> argument, Memory memory) {
-        if (argument.size() != 1) {
-            return null;
+        Term result = null;
+        if (argument.size() == 1) {
+            var name = makeCompoundName(Symbols.NEGATION_OPERATOR, argument);
+            var t = memory.nameToListedTerm(name);
+            result = (t != null) ? t : new Negation(argument);
         }
-        var name = makeCompoundName(Symbols.NEGATION_OPERATOR, argument);
-        var t = memory.nameToListedTerm(name);
-        return (t != null) ? t : new Negation(argument);
+        return result;
     }
 
     /**
@@ -92,7 +93,7 @@ public class Negation extends CompoundTerm {
 
     @Override
     public Object clone() {
-        return new Negation(name, ( List<Term>) cloneList(components), isConstant(), complexity);
+        return new Negation(name, cloneList(components), isConstant(), complexity);
     }
 
     /**

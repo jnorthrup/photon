@@ -375,7 +375,7 @@ object RuleTables {
     private fun conditionalDedIndWithVar(conditional: Implication, index: Short, statement: Statement, side: Short, memory: Memory) {
         var side1 = side
         val condition = conditional.subject as CompoundTerm
-        val component: Term? = condition.componentAt(index.toInt())
+        val component: Term  = condition.componentAt(index.toInt())
         var component2: Term? = null
         if (statement is Inheritance) {
             component2 = statement
