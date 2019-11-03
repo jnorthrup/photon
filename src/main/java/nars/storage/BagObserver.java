@@ -10,7 +10,7 @@ public interface BagObserver<BagType extends Item> {
     /**
      * Set a name for this observer
      */
-    public abstract void setTitle(String title);
+    public abstract void setTitle();
 
     /**
      * Set the observed Bag

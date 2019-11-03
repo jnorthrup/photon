@@ -166,15 +166,7 @@ public abstract class Bag<E extends Item> {
         return f;
     }
 
-    /**
-     * Check if an item is in the bag
-     *
-     * @param it An item
-     * @return Whether the Item is in the Bag
-     */
-    public boolean contains(E it) {
-        return nameTable.containsValue(it);
-    }
+
 
     /**
      * Get an Item by key
@@ -351,7 +343,7 @@ public abstract class Bag<E extends Item> {
     public void addBagObserver(BagObserver<E> bagObserver, String title) {
         this.bagObserver = bagObserver;
         bagObserver.post(toString());
-        bagObserver.setTitle(title);
+        bagObserver.setTitle();
         bagObserver.setBag(this);
     }
 

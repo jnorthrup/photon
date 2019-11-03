@@ -1,8 +1,6 @@
 package nars.main_nogui;
 
 import nars.entity.Stamp;
-import nars.entity.Task;
-import nars.gui.MainWindow;
 import nars.io.InputChannel;
 import nars.io.OutputChannel;
 import nars.io.StringParser;

@@ -125,22 +125,6 @@ public final class BudgetFunctions extends UtilityFunctions {
         return new BudgetValue(priority, durability, quality);
     }
 
-    /**
-     * Update a belief
-     *
-     * @param task   The task containing new belief
-     * @param bTruth Truth value of the previous belief
-     * @return Budget value of the updating task
-     */
-    static BudgetValue update(Task task, TruthValue bTruth) {
-        var tTruth = task.getSentence().getTruth();
-        var dif = tTruth.getExpDifAbs(bTruth);
-        var priority = or(dif, task.getPriority());
-        var durability = aveAri(dif, task.getDurability());
-        var quality = truthToQuality(bTruth);
-        return new BudgetValue(priority, durability, quality);
-    }
-
     /* ----------------------- Links ----------------------- */
 
     /**

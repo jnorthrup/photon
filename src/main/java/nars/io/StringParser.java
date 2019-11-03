@@ -223,50 +223,57 @@ public abstract class StringParser extends Symbols {
      * @return the Term generated from the String
      */
     public static Term parseTerm(String s0, Memory memory) {
+        Term result = null;
         var s = s0.trim();
         try {
             assert s.length() != 0 : "missing content";
             var t = memory.nameToListedTerm(s);    // existing constant or operator
-            if (t != null) {
-                return t;
+            if (t == null) {
+                var index = s.length() - 1;
+                var first = s.charAt(0);
+                var last = s.charAt(index);
+                switch (first) {
+                    case COMPOUND_TERM_OPENER:
+                        if (last == COMPOUND_TERM_CLOSER) {
+                            result = parseCompoundTerm(s.substring(1, index), memory);
+                            break;
+                        } else {
+                            throw new InvalidInputException("missing CompoundTerm closer");
+                        }
+                    case SET_EXT_OPENER:
+                        if (last == SET_EXT_CLOSER) {
+                            result = SetExt.make(parseArguments(s.substring(1, index) + ARGUMENT_SEPARATOR, memory), memory);
+                            break;
+                        } else {
+                            throw new InvalidInputException("missing ExtensionSet closer");
+                        }
+                    case SET_INT_OPENER:
+                        if (last == SET_INT_CLOSER) {
+                            result = SetInt.make(parseArguments(s.substring(1, index) + ARGUMENT_SEPARATOR, memory), memory);
+                            break;
+                        } else {
+                            throw new InvalidInputException("missing IntensionSet closer");
+                        }
+                    case STATEMENT_OPENER:
+                        if (last == STATEMENT_CLOSER) {
+                            result = parseStatement(s.substring(1, index), memory);
+                            break;
+                        } else {
+                            throw new InvalidInputException("missing Statement closer");
+                        }
+                    default:
+                        result = parseAtomicTerm(s);
+                        break;
+                }
+            } else {
+                result = t;
             }                           // existing Term
-            var index = s.length() - 1;
-            var first = s.charAt(0);
-            var last = s.charAt(index);
-            switch (first) {
-                case COMPOUND_TERM_OPENER:
-                    if (last == COMPOUND_TERM_CLOSER) {
-                        return parseCompoundTerm(s.substring(1, index), memory);
-                    } else {
-                        throw new InvalidInputException("missing CompoundTerm closer");
-                    }
-                case SET_EXT_OPENER:
-                    if (last == SET_EXT_CLOSER) {
-                        return SetExt.make(parseArguments(s.substring(1, index) + ARGUMENT_SEPARATOR, memory), memory);
-                    } else {
-                        throw new InvalidInputException("missing ExtensionSet closer");
-                    }
-                case SET_INT_OPENER:
-                    if (last == SET_INT_CLOSER) {
-                        return SetInt.make(parseArguments(s.substring(1, index) + ARGUMENT_SEPARATOR, memory), memory);
-                    } else {
-                        throw new InvalidInputException("missing IntensionSet closer");
-                    }
-                case STATEMENT_OPENER:
-                    if (last == STATEMENT_CLOSER) {
-                        return parseStatement(s.substring(1, index), memory);
-                    } else {
-                        throw new InvalidInputException("missing Statement closer");
-                    }
-                default:
-                    return parseAtomicTerm(s);
-            }
         } catch (InvalidInputException e) {
             var message = " !!! INVALID INPUT: parseTerm: " + s + " --- " + e.getMessage();
             System.out.println(message);
 //            showWarning(message);
         }
-        return null;
+        return result;
     }
 
     /* ---------- parse String into term ---------- */

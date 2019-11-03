@@ -235,8 +235,7 @@ public abstract class CompoundTerm extends Term {
      * @return the oldName of the term
      */
     protected static String makeSetName(char opener, Collection<Term> arg, char closer) {
-        String name = arg.stream().map(Term::getName).collect(Collectors.joining(String.valueOf(Symbols.ARGUMENT_SEPARATOR), String.valueOf(opener), String.valueOf(closer)));
-        return name;
+        return arg.stream().map(Term::getName).collect(Collectors.joining(String.valueOf(Symbols.ARGUMENT_SEPARATOR), String.valueOf(opener), String.valueOf(closer)));
     }
 
     /**
@@ -275,30 +274,7 @@ public abstract class CompoundTerm extends Term {
         if (original == null) {
             return null;
         }
-        var arr = original.stream().map((Term term) -> (Term) ((Term) term).clone()).collect(Collectors.toCollection(() -> new ArrayList<>(original.size())));
-        return arr;
-    }
-
-    /**
-     * Try to add a component into a compound
-     *
-     * @param t1     The compound
-     * @param t2     The component
-     * @param memory Reference to the memory
-     * @return The new compound
-     */
-    public static Term addComponents(CompoundTerm t1, Term t2, Memory memory) {
-        if (t2 == null) {
-            return t1;
-        }
-        boolean success;
-        var list = t1.cloneComponents();
-        if (t1.getClass() == t2.getClass()) {
-            success = list.addAll(((CompoundTerm) t2).getComponents());
-        } else {
-            success = list.add(t2);
-        }
-        return (success ? make(t1, list, memory) : null);
+        return original.stream().map((Term term) -> (Term) ((Term) term).clone()).collect(Collectors.toCollection(() -> new ArrayList<>(original.size())));
     }
 
     /* ----- utilities for oldName ----- */

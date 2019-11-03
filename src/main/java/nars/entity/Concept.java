@@ -430,8 +430,7 @@ public final class Concept extends Item {
             memory.getRecorder().append(" * Selected Belief: " + belief + "\n");
             memory.newStamp = Stamp.make(taskSentence.getStamp(), belief.getStamp(), memory.getTime());
             if (memory.newStamp != null) {
-                var belief2 = (Sentence) belief.clone();   // will this mess up priority adjustment?
-                return belief2;
+                return (Sentence) belief.clone();
             }
         }
         return null;
@@ -450,8 +449,7 @@ public final class Concept extends Item {
         memory.currentTaskLink = currentTaskLink;
         memory.currentBeliefLink = null;
         memory.getRecorder().append(" * Selected TaskLink: " + currentTaskLink + "\n");
-        var task = currentTaskLink.getTargetTask();
-        memory.currentTask = task;  // one of the two places where this variable is set
+        memory.currentTask = currentTaskLink.getTargetTask();  // one of the two places where this variable is set
 //      memory.getRecorder().append(" * Selected Task: " + task + "\n");    // for debugging
         if (currentTaskLink.getType() == TermLink.TRANSFORM) {
             memory.currentBelief = null;

@@ -22,13 +22,4 @@ public class CommandLineParameters {
         }
     }
 
-    /**
-     * Decode the silence level
-     *
-     * @param param Given argument
-     * @return Whether the argument is not the silence level
-     */
-    public static boolean isReallyFile(String param) {
-        return !"--silence".equals(param);
-    }
 }

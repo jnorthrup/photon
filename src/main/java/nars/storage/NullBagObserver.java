@@ -7,7 +7,7 @@ import nars.entity.Item;
  */
 public class NullBagObserver<BagType extends Item> implements BagObserver<BagType> {
     @Override
-    public void setTitle(String title) {
+    public void setTitle() {
     }
 
     @Override

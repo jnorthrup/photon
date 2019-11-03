@@ -186,24 +186,6 @@ public class BudgetValue implements Cloneable {
     }
 
     /**
-     * Increase quality value by a percentage of the remaining range
-     *
-     * @param v The increasing percent
-     */
-    public void incQuality(float v) {
-        quality.setValue(UtilityFunctions.or(quality.getValue(), v));
-    }
-
-    /**
-     * Decrease quality value by a percentage of the remaining range
-     *
-     * @param v The decreasing percent
-     */
-    public void decQuality(float v) {
-        quality.setValue(UtilityFunctions.and(quality.getValue(), v));
-    }
-
-    /**
      * Merge one BudgetValue into another
      *
      * @param that The other Budget
