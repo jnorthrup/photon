@@ -118,7 +118,10 @@ public abstract class Bag<E extends Item> {
 
     public void init() {
         itemTable = new ArrayList<>(TOTAL_LEVEL);
-        IntStream.range(0, TOTAL_LEVEL).forEach(i -> itemTable.add(new ArrayList<>()));
+        int bound = TOTAL_LEVEL;
+        for (int i = 0; i < bound; i++) {
+            itemTable.add(new ArrayList<>());
+        }
         nameTable = new HashMap<>((int) (capacity / LOAD_FACTOR), LOAD_FACTOR);
         currentLevel = TOTAL_LEVEL - 1;
         levelIndex = capacity % TOTAL_LEVEL; // so that different bags start at different point

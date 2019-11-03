@@ -26,6 +26,7 @@ import nars.storage.Memory;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * A CompoundTerm is a Term with internal (syntactic) structure
@@ -235,7 +236,12 @@ public abstract class CompoundTerm extends Term {
      * @return the oldName of the term
      */
     protected static String makeSetName(char opener, Collection<Term> arg, char closer) {
-        return arg.stream().map(Term::getName).collect(Collectors.joining(String.valueOf(Symbols.ARGUMENT_SEPARATOR), String.valueOf(opener), String.valueOf(closer)));
+        StringJoiner joiner = new StringJoiner(String.valueOf(Symbols.ARGUMENT_SEPARATOR), String.valueOf(opener), String.valueOf(closer));
+        for (Term term : arg) {
+            String termName = term.getName();
+            joiner.add(termName);
+        }
+        return joiner.toString();
     }
 
     /**
@@ -252,7 +258,8 @@ public abstract class CompoundTerm extends Term {
         name.append(op);
         name.append(Symbols.ARGUMENT_SEPARATOR);
         name.append(arg.get(relationIndex).getName());
-        for (var i = 0; i < arg.size(); i++) {
+        int bound = arg.size();
+        for (int i = 0; i < bound; i++) {
             name.append(Symbols.ARGUMENT_SEPARATOR);
             if (i == relationIndex) {
                 name.append(Symbols.IMAGE_PLACE_HOLDER);
@@ -274,7 +281,12 @@ public abstract class CompoundTerm extends Term {
         if (original == null) {
             return null;
         }
-        return original.stream().map((Term term) -> (Term) ((Term) term).clone()).collect(Collectors.toCollection(() -> new ArrayList<>(original.size())));
+        ArrayList<Term> terms = new ArrayList<>(original.size());
+        for (Term term : original) {
+            Term clone = (Term) term.clone();
+            terms.add(clone);
+        }
+        return terms;
     }
 
     /* ----- utilities for oldName ----- */
@@ -315,7 +327,8 @@ public abstract class CompoundTerm extends Term {
                 list.add(index, t);
             } else {
                 var list2 = ((CompoundTerm) t).cloneComponents();
-                for (var i = 0; i < list2.size(); i++) {
+                int bound = list2.size();
+                for (int i = 0; i < bound; i++) {
                     list.add(index + i, list2.get(i));
                 }
             }
@@ -354,7 +367,7 @@ public abstract class CompoundTerm extends Term {
      */
     private void calcComplexity() {
         complexity = 1;
-        for (var t : components) {
+        for (Term t : components) {
             complexity += t.getComplexity();
         }
     }
@@ -493,7 +506,12 @@ public abstract class CompoundTerm extends Term {
      */
     @Override
     public boolean containTerm(Term target) {
-        return components.stream().anyMatch((Term term) -> term.containTerm(target));
+        for (Term term : components) {
+            if (term.containTerm(target)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

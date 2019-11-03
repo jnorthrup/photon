@@ -26,6 +26,7 @@ import nars.main_nogui.ReasonerBatch;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * Each Sentence has a time stamp, consisting the following components:
@@ -197,7 +198,12 @@ public class Stamp implements Cloneable {
      * @return The TreeSet representation of the evidential base
      */
     private Collection<Long> toSet() {
-        return Arrays.stream(evidentialBase).boxed().collect(Collectors.toCollection(TreeSet::new));
+        TreeSet<Long> longs = new TreeSet<>();
+        for (long l : evidentialBase) {
+            Long aLong = l;
+            longs.add(aLong);
+        }
+        return longs;
     }
 
     /**
@@ -246,7 +252,8 @@ public class Stamp implements Cloneable {
     public String toString() {
         var buffer = new StringBuilder(" " + Symbols.STAMP_OPENER + creationTime);
         buffer.append(" ").append(Symbols.STAMP_STARTER).append(" ");
-        for (var i = 0; i < baseLength; i++) {
+        int bound = baseLength;
+        for (int i = 0; i < bound; i++) {
             buffer.append(evidentialBase[i]);
             if (i < (baseLength - 1)) {
                 buffer.append(Symbols.STAMP_SEPARATOR);

@@ -62,7 +62,7 @@ public class ExperienceWriter implements OutputChannel {
     @Override
     public void nextOutput(ArrayList<String> lines) {
         if (outExp != null) {
-            for (Object line : lines) {
+            for (String line : lines) {
                 outExp.println(line.toString());
             }
         }

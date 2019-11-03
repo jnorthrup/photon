@@ -24,6 +24,8 @@ import nars.io.Symbols;
 import nars.language.Term;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.stream.IntStream;
+
 /**
  * A link between a compound term and a component term
  * <p>
@@ -99,12 +101,13 @@ public class TermLink extends Item {
         if (type == TermLink.COMPOUND_CONDITION) {  // the first index is 0 by default
             index = new short[indices.length + 1];
             index[0] = 0;
-            for (var i = 0; i < indices.length; i++) {
+            for (int i = 0; i < indices.length; i++) {
                 index[i + 1] = (short) indices[i];
             }
         } else {
             index = new short[indices.length];
-            for (var i = 0; i < index.length; i++) {
+            int bound = index.length;
+            for (int i = 0; i < bound; i++) {
                 index[i] = (short) indices[i];
             }
         }

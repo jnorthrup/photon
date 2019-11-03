@@ -214,7 +214,8 @@ public class Variable extends Term {
                 map.put(term, new Variable(term.getName() + suffix));  // rename
             }
         } else if (term instanceof CompoundTerm) {
-            for (var t : ((CompoundTerm) term).components) {   // assuming matching order, to be refined in the future
+            // assuming matching order, to be refined in the future
+            for (Term t : ((CompoundTerm) term).components) {
                 renameVar(map, t, suffix);
             }
         }

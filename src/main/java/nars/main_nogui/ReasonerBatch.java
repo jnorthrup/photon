@@ -147,7 +147,7 @@ public class ReasonerBatch {
         // forward to output Channels
         var output = memory.getExportStrings();
         if (!output.isEmpty()) {
-            for (var channelOut : outputChannels) {
+            for (OutputChannel channelOut : outputChannels) {
                 channelOut.nextOutput(output);
             }
             output.clear();    // this will trigger display the current value of timer in Memory.report()

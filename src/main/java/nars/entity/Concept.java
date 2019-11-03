@@ -151,8 +151,8 @@ public final class Concept extends Item {
             }
         }
         if (task.getBudget().aboveThreshold()) {
-            for (var ques : questions) {
-//                LocalRules.trySolution(ques.getSentence(), judg, ques, memory);
+            //                LocalRules.trySolution(ques.getSentence(), judg, ques, memory);
+            for (Task ques : questions) {
                 LocalRules.trySolution(judg, ques, memory);
             }
             addToTable(judg, beliefs, Parameters.MAXIMUM_BELIEF_LENGTH);
@@ -475,13 +475,13 @@ public final class Concept extends Item {
         var buffer = new StringBuilder();
         buffer.append("\n  Beliefs:\n");
         if (beliefs.size() > 0) {
-            for (var s : beliefs) {
+            for (Sentence s : beliefs) {
                 buffer.append(s).append("\n");
             }
         }
         buffer.append("\n  Question:\n");
         if (questions.size() > 0) {
-            for (var t : questions) {
+            for (Task t : questions) {
                 buffer.append(t).append("\n");
             }
         }
