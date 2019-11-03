@@ -18,31 +18,34 @@
  * You should have received a copy of the GNU General Public License
  * along with Open-NARS.  If not, see <http://www.gnu.org/licenses/>.
  */
-package nars.inference;
+package nars.inference
 
-import kotlin.jvm.JvmStatic;
-import nars.entity.*;
-import nars.language.Term;
-import nars.storage.Memory;
+import nars.entity.*
+import nars.inference.UtilityFunctions.Companion.and
+import nars.inference.UtilityFunctions.Companion.aveAri
+import nars.inference.UtilityFunctions.Companion.or
+import nars.inference.UtilityFunctions.Companion.w2c
+import nars.language.Term
+import nars.storage.Memory
 
 /**
  * Budget functions for resources allocation
  */
-public final class BudgetFunctions extends UtilityFunctions {
-
-    /* ----------------------- Belief evaluation ----------------------- */
+object BudgetFunctions   {/* ----------------------- Belief evaluation ----------------------- */
 
     /**
      * Determine the quality of a judgment by its truth value alone
-     * <p>
+     *
+     *
      * Mainly decided by confidence, though binary judgment is also preferred
      *
      * @param t The truth value of a judgment
      * @return The quality of the judgment, according to truth value only
      */
-    public static float truthToQuality(TruthValue t) {
-        var exp = t.getExpectation();
-        return (float) Math.max(exp, (1 - exp) * 0.75);
+    @JvmStatic
+    fun truthToQuality(t: TruthValue?): Float {
+        val exp = t!!.expectation
+        return Math.max(exp.toDouble(), (1 - exp) * 0.75).toFloat()
     }
 
     /**
@@ -52,13 +55,15 @@ public final class BudgetFunctions extends UtilityFunctions {
      * @param judg The judgment to be ranked
      * @return The rank of the judgment, according to truth value only
      */
-    public static float rankBelief(Sentence judg) {
-        var confidence = judg.getTruth().getConfidence();
-        var originality = 1.0f / (judg.getStamp().length() + 1);
-        return or(confidence, originality);
+    @JvmStatic
+    fun rankBelief(judg: Sentence): Float {
+        val confidence = judg.truth!!.getConfidence()
+        val originality = 1.0f / (judg.stamp.length() + 1)
+        return or(confidence, originality)
     }
 
     /* ----- Functions used both in direct and indirect processing of tasks ----- */
+
 
     /**
      * Evaluate the quality of a belief as a solution to a problem, then reward
@@ -67,34 +72,34 @@ public final class BudgetFunctions extends UtilityFunctions {
      * @param problem  The problem (question or goal) to be solved
      * @param solution The belief as solution
      * @param task     The task to be immediately processed, or null for continued
-     *                 process
+     * process
      * @return The budget for the new task which is the belief activated, if
      * necessary
      */
-    static BudgetValue solutionEval(Sentence problem, Sentence solution, Task task, Memory memory) {
-        var task1 = task;
-        BudgetValue budget = null;
-        var feedbackToLinks = false;
+ @JvmStatic     fun solutionEval(problem: Sentence?, solution: Sentence, task: Task?, memory: Memory): BudgetValue? {
+        var task1 = task
+        var budget: BudgetValue? = null
+        var feedbackToLinks = false
         if (task1 == null) {                   // called in continued processing
-            task1 = memory.currentTask;
-            feedbackToLinks = true;
+            task1 = memory.currentTask
+            feedbackToLinks = true
         }
-        var judgmentTask = task1.getSentence().isJudgment();
-        var quality = LocalRules.solutionQuality(problem, solution);
+        val judgmentTask = task1!!.sentence.isJudgment
+        val quality = LocalRules.solutionQuality(problem, solution)
         if (judgmentTask) {
-            task1.incPriority(quality);
+            task1.incPriority(quality)
         } else {
-            var taskPriority = task1.getPriority();
-            budget = new BudgetValue(or(taskPriority, quality), task1.getDurability(), truthToQuality(solution.getTruth()));
-            task1.setPriority(Math.min(1 - quality, taskPriority));
+            val taskPriority = task1.priority
+            budget = BudgetValue(or(taskPriority, quality), task1.durability, truthToQuality(solution.truth))
+            task1.priority = Math.min(1 - quality, taskPriority)
         }
         if (feedbackToLinks) {
-            var tLink = memory.currentTaskLink;
-            tLink.setPriority(Math.min(1 - quality, tLink.getPriority()));
-            var bLink = memory.currentBeliefLink;
-            bLink.incPriority(quality);
+            val tLink: TaskLink = memory.currentTaskLink
+            tLink.priority = Math.min(1 - quality, tLink.priority)
+            val bLink = memory.currentBeliefLink
+            bLink!!.incPriority(quality)
         }
-        return budget;
+        return budget
     }
 
     /**
@@ -105,28 +110,29 @@ public final class BudgetFunctions extends UtilityFunctions {
      * @param truth  The truth value of the conclusion of revision
      * @return The budget for the new task
      */
-    static BudgetValue revise(TruthValue tTruth, TruthValue bTruth, TruthValue truth, boolean feedbackToLinks, Memory memory) {
-        var difT = truth.getExpDifAbs(tTruth);
-        var task = memory.currentTask;
-        task.decPriority(1 - difT);
-        task.decDurability(1 - difT);
+     @JvmStatic   fun revise(tTruth: TruthValue, bTruth: TruthValue, truth: TruthValue, feedbackToLinks: Boolean, memory: Memory): BudgetValue {
+        val difT = truth.getExpDifAbs(tTruth)
+        val task: Task = memory.currentTask
+        task.decPriority(1 - difT)
+        task.decDurability(1 - difT)
         if (feedbackToLinks) {
-            var tLink = memory.currentTaskLink;
-            tLink.decPriority(1 - difT);
-            tLink.decDurability(1 - difT);
-            var bLink = memory.currentBeliefLink;
-            var difB = truth.getExpDifAbs(bTruth);
-            bLink.decPriority(1 - difB);
-            bLink.decDurability(1 - difB);
+            val tLink: TaskLink = memory.currentTaskLink
+            tLink.decPriority(1 - difT)
+            tLink.decDurability(1 - difT)
+            val bLink = memory.currentBeliefLink
+            val difB = truth.getExpDifAbs(bTruth)
+            bLink!!.decPriority(1 - difB)
+            bLink.decDurability(1 - difB)
         }
-        var dif = truth.getConfidence() - Math.max(tTruth.getConfidence(), bTruth.getConfidence());
-        var priority = or(dif, task.getPriority());
-        var durability = aveAri(dif, task.getDurability());
-        var quality = truthToQuality(truth);
-        return new BudgetValue(priority, durability, quality);
+        val dif = truth.getConfidence() - Math.max(tTruth.getConfidence(), bTruth.getConfidence())
+        val priority = or(dif, task.priority)
+        val durability = aveAri(dif, task.durability)
+        val quality = truthToQuality(truth)
+        return BudgetValue(priority, durability, quality)
     }
 
     /* ----------------------- Links ----------------------- */
+
 
     /**
      * Distribute the budget of a task among the links to it
@@ -135,34 +141,39 @@ public final class BudgetFunctions extends UtilityFunctions {
      * @param n Number of links
      * @return Budget value for each link
      */
-    public static BudgetValue distributeAmongLinks(BudgetValue b, int n) {
-        var priority = (float) (b.getPriority() / Math.sqrt(n));
-        return new BudgetValue(priority, b.getDurability(), b.getQuality());
+    @JvmStatic
+    fun distributeAmongLinks(b: BudgetValue, n: Int): BudgetValue {
+        val priority = (b.priority / Math.sqrt(n.toDouble())).toFloat()
+        return BudgetValue(priority, b.durability, b.quality)
     }
 
     /* ----------------------- Concept ----------------------- */
+
 
     /**
      * Activate a concept by an incoming TaskLink
      *
      * @param concept The concept
      * @param budget  The budget for the new item
-     */@JvmStatic
-    public static void activate(Concept concept, BudgetValue budget) {
-        var oldPri = concept.getPriority();
-        var priority = or(oldPri, budget.getPriority());
-        var durability = aveAri(concept.getDurability(), budget.getDurability());
-        var quality = concept.getQuality();
-        concept.setPriority(priority);
-        concept.setDurability(durability);
-        concept.setQuality(quality);
+     */
+    @JvmStatic
+    fun activate(concept: Concept, budget: BudgetValue) {
+        val oldPri = concept.priority
+        val priority = or(oldPri, budget.priority)
+        val durability = aveAri(concept.durability, budget.durability)
+        val quality = concept.quality
+        concept.priority = priority
+        concept.durability = durability
+        concept.quality = quality
     }
 
     /* ---------------- Bag functions, on all Items ------------------- */
 
+
     /**
      * Decrease Priority after an item is used, called in Bag
-     * <p>
+     *
+     *
      * After a constant time, p should become d*p. Since in this period, the
      * item is accessed c*p times, each time p-q should multiple d^(1/(c*p)).
      * The intuitive meaning of the parameter "forgetRate" is: after this number
@@ -172,29 +183,35 @@ public final class BudgetFunctions extends UtilityFunctions {
      * @param budget            The previous budget value
      * @param forgetRate        The budget for the new item
      * @param relativeThreshold The relative threshold of the bag
-     */@JvmStatic
-    public static void forget(BudgetValue budget, float forgetRate, float relativeThreshold) {
-        double quality = budget.getQuality() * relativeThreshold;      // re-scaled quality
-        var p = budget.getPriority() - quality;                     // priority above quality
+     */
+    @JvmStatic
+    fun forget(budget: BudgetValue, forgetRate: Float, relativeThreshold: Float) {
+        var quality = (budget.quality * relativeThreshold).toDouble()      // re-scaled quality
+
+        val p = budget.priority - quality                     // priority above quality
+
         if (p > 0) {
-            quality += p * Math.pow(budget.getDurability(), 1.0 / (forgetRate * p));
+            quality += p * Math.pow(budget.durability.toDouble(), 1.0 / (forgetRate * p))
         }    // priority Durability
-        budget.setPriority((float) quality);
+
+        budget.priority = quality.toFloat()
     }
 
     /**
      * Merge an item into another one in a bag, when the two are identical
      * except in budget values
-     *  @param baseValue   The budget value to be modified
+     * @param baseValue   The budget value to be modified
      * @param adjustValue The budget doing the adjusting
-     */@JvmStatic
-    public static void merge(BudgetValue baseValue, BudgetTriple adjustValue) {
-        baseValue.setPriority(Math.max(baseValue.getPriority(), adjustValue.getPriority()));
-        baseValue.setDurability(Math.max(baseValue.getDurability(), adjustValue.getDurability()));
-        baseValue.setQuality(Math.max(baseValue.getQuality(), adjustValue.getQuality()));
+     */
+    @JvmStatic
+    fun merge(baseValue: BudgetValue, adjustValue: BudgetTriple) {
+        baseValue.priority = Math.max(baseValue.priority, adjustValue.priority)
+        baseValue.durability = Math.max(baseValue.durability, adjustValue.durability)
+        baseValue.quality = Math.max(baseValue.quality, adjustValue.quality)
     }
 
     /* ----- Task derivation in LocalRules and SyllogisticRules ----- */
+
 
     /**
      * Forward inference result and adjustment
@@ -202,8 +219,9 @@ public final class BudgetFunctions extends UtilityFunctions {
      * @param truth The truth value of the conclusion
      * @return The budget value of the conclusion
      */
-    static BudgetValue forward(TruthValue truth, Memory memory) {
-        return budgetInference(truthToQuality(truth), 1, memory);
+
+    @JvmStatic      fun forward(truth: TruthValue?, memory: Memory): BudgetValue {
+        return budgetInference(truthToQuality(truth), 1, memory)
     }
 
     /**
@@ -213,8 +231,9 @@ public final class BudgetFunctions extends UtilityFunctions {
      * @param memory Reference to the memory
      * @return The budget value of the conclusion
      */
-    public static BudgetValue backward(TruthValue truth, Memory memory) {
-        return budgetInference(truthToQuality(truth), 1, memory);
+    @JvmStatic
+    fun backward(truth: TruthValue?, memory: Memory): BudgetValue {
+        return budgetInference(truthToQuality(truth), 1, memory)
     }
 
     /**
@@ -224,11 +243,13 @@ public final class BudgetFunctions extends UtilityFunctions {
      * @param memory Reference to the memory
      * @return The budget value of the conclusion
      */
-    public static BudgetValue backwardWeak(TruthValue truth, Memory memory) {
-        return budgetInference(w2c(1) * truthToQuality(truth), 1, memory);
+    @JvmStatic
+    fun backwardWeak(truth: TruthValue?, memory: Memory): BudgetValue {
+        return budgetInference(w2c(1f) * truthToQuality(truth), 1, memory)
     }
 
     /* ----- Task derivation in CompositionalRules and StructuralRules ----- */
+
 
     /**
      * Forward inference with CompoundTerm conclusion
@@ -238,8 +259,9 @@ public final class BudgetFunctions extends UtilityFunctions {
      * @param memory  Reference to the memory
      * @return The budget of the conclusion
      */
-    public static BudgetValue compoundForward(TruthValue truth, Term content, Memory memory) {
-        return budgetInference(truthToQuality(truth), content.getComplexity(), memory);
+    @JvmStatic
+    fun compoundForward(truth: TruthValue?, content: Term, memory: Memory): BudgetValue {
+        return budgetInference(truthToQuality(truth), content.complexity, memory)
     }
 
     /**
@@ -249,8 +271,9 @@ public final class BudgetFunctions extends UtilityFunctions {
      * @param memory  Reference to the memory
      * @return The budget of the conclusion
      */
-    public static BudgetValue compoundBackward(Term content, Memory memory) {
-        return budgetInference(1, content.getComplexity(), memory);
+    @JvmStatic
+    fun compoundBackward(content: Term, memory: Memory): BudgetValue {
+        return budgetInference(1f, content.complexity, memory)
     }
 
     /**
@@ -260,8 +283,9 @@ public final class BudgetFunctions extends UtilityFunctions {
      * @param memory  Reference to the memory
      * @return The budget of the conclusion
      */
-    public static BudgetValue compoundBackwardWeak(Term content, Memory memory) {
-        return budgetInference(w2c(1), content.getComplexity(), memory);
+    @JvmStatic
+    fun compoundBackwardWeak(content: Term, memory: Memory): BudgetValue {
+        return budgetInference(w2c(1f), content.complexity, memory)
     }
 
     /**
@@ -272,22 +296,22 @@ public final class BudgetFunctions extends UtilityFunctions {
      * @param memory     Reference to the memory
      * @return Budget of the conclusion task
      */
-    private static BudgetValue budgetInference(float qual, int complexity, Memory memory) {
-        BudgetTriple t = memory.currentTaskLink;
+    @JvmStatic    fun budgetInference(qual: Float, complexity: Int, memory: Memory): BudgetValue {
+        var t: BudgetTriple? = memory.currentTaskLink
         if (t == null) {
-            t = memory.currentTask;
+            t = memory.currentTask
         }
-        var priority = t.getPriority();
-        var durability = t.getDurability() / complexity;
-        var quality = qual / complexity;
-        var bLink = memory.currentBeliefLink;
+        var priority = t!!.priority
+        var durability = t.durability / complexity
+        val quality = qual / complexity
+        val bLink = memory.currentBeliefLink
         if (bLink != null) {
-            priority = or(priority, bLink.getPriority());
-            durability = and(durability, bLink.getDurability());
-            var targetActivation = memory.getConceptActivation(bLink.getTarget());
-            bLink.incPriority(or(quality, targetActivation));
-            bLink.incDurability(quality);
+            priority = or(priority, bLink.priority)
+            durability = and(durability, bLink.durability)
+            val targetActivation = memory.getConceptActivation(bLink.target)
+            bLink.incPriority(or(quality, targetActivation))
+            bLink.incDurability(quality)
         }
-        return new BudgetValue(priority, durability, quality);
+        return BudgetValue(priority, durability, quality)
     }
 }

@@ -115,7 +115,9 @@ class BudgetValue : BudgetTriple {
      */
 
     override fun merge(that: BudgetTriple?) {
-        BudgetFunctions.merge(this, that)
+        if (that != null) {
+            BudgetFunctions.merge(this, that)
+        }
     }
 
     /**
