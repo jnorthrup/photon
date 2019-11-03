@@ -403,16 +403,6 @@ public final class Concept extends Item {
     }
 
     /**
-     * Return the templates for TermLinks, only called in
-     * Memory.continuedProcess
-     *
-     * @return The template get
-     */
-    public ArrayList<TermLink> getTermLinkTemplates() {
-        return termLinkTemplates;
-    }
-
-    /**
      * Select a isBelief to interact with the given task in inference
      * <p>
      * get the first qualified one
@@ -474,43 +464,6 @@ public final class Concept extends Item {
     }
 
     /* ---------- display ---------- */
-
-    /**
-     * Start displaying contents and links, called from ConceptWindow,
-     * TermWindow or Memory.processTask only
-     * <p>
-     * same design as for {@link nars.storage.Bag} and {@link nars.gui.BagWindow}; see
-     * {@link nars.storage.Bag#addBagObserver(BagObserver, String)}
-     *
-     * @param entityObserver {@link EntityObserver} to set;
-     *                       TODO make it a real observer pattern (i.e. with a
-     *                       plurality of observers)
-     * @param showLinks      Whether to display the task links
-     */
-    @SuppressWarnings("unchecked")
-    public void startPlay(EntityObserver entityObserver, boolean showLinks) {
-        this.entityObserver = entityObserver;
-        entityObserver.startPlay(this, showLinks);
-        entityObserver.post(displayContent());
-        if (showLinks) {
-            taskLinks.addBagObserver(entityObserver.createBagObserver(), "Task Links in " + term);
-            termLinks.addBagObserver(entityObserver.createBagObserver(), "Term Links in " + term);
-        }
-    }
-
-    /**
-     * Resume display, called from ConceptWindow only
-     */
-    public void play() {
-        entityObserver.post(displayContent());
-    }
-
-    /**
-     * Stop display, called from ConceptWindow only
-     */
-    public void stop() {
-        entityObserver.stop();
-    }
 
     /**
      * Collect direct isBelief, questions, and goals for display

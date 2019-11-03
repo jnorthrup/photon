@@ -139,10 +139,6 @@ public class Memory {
         return recorder;
     }
 
-    public void setRecorder(IInferenceRecorder recorder) {
-        this.recorder = recorder;
-    }
-
     public long getTime() {
         return reasoner.getTime();
     }
@@ -474,24 +470,6 @@ public class Memory {
     }
 
     /* ---------- display ---------- */
-
-    /**
-     * Start display active concepts on given bagObserver, called from MainWindow.
-     * <p>
-     * we don't want to expose fields concepts and novelTasks, AND we want to
-     * separate GUI and inference, so this method takes as argument a
-     * {@link BagObserver} and calls {@link ConceptBag#addBagObserver(BagObserver, String)} ;
-     * <p>
-     * see design for {@link Bag} and {@link nars.gui.BagWindow}
-     * in {@link Bag#addBagObserver(BagObserver, String)}
-     *
-     * @param bagObserver bag Observer that will receive notifications
-     * @param title       the window title
-     */
-    public void conceptsStartPlay(BagObserver<Concept> bagObserver, String title) {
-        bagObserver.setBag(concepts);
-        concepts.addBagObserver(bagObserver, title);
-    }
 
     /**
      * Display new tasks, called from MainWindow. see

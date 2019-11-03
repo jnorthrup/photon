@@ -55,30 +55,6 @@ public class ExperienceWriter implements OutputChannel {
     }
 
     /**
-     * Open an output experience file
-     */
-    public void openSaveFile() {
-        var dialog = new FileDialog((FileDialog) null, "Save experience", FileDialog.SAVE);
-        dialog.setVisible(true);
-        var directoryName = dialog.getDirectory();
-        var fileName = dialog.getFile();
-        try {
-            outExp = new PrintWriter(new FileWriter(directoryName + fileName));
-        } catch (IOException ex) {
-            System.out.println("i/o error: " + ex.getMessage());
-        }
-        reasoner.addOutputChannel(this);
-    }
-
-    /**
-     * Close an output experience file
-     */
-    public void closeSaveFile() {
-        outExp.close();
-        reasoner.removeOutputChannel(this);
-    }
-
-    /**
      * Process the next chunk of output data
      *
      * @param lines The text to be displayed

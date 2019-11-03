@@ -348,20 +348,6 @@ public abstract class Bag<E extends Item> {
     }
 
     /**
-     * Resume display
-     */
-    public void play() {
-        bagObserver.post(toString());
-    }
-
-    /**
-     * Stop display
-     */
-    public void stop() {
-        bagObserver.stop();
-    }
-
-    /**
      * Refresh display
      */
     public void refresh() {
@@ -418,10 +404,4 @@ public abstract class Bag<E extends Item> {
         return "Levels: " + levels + ", sizes: " + buf;
     }
 
-    /**
-     * set Show Level
-     */
-    public void setShowLevel(int showLevel) {
-        this.showLevel = showLevel;
-    }
 }

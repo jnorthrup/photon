@@ -83,15 +83,6 @@ public abstract class Item {
     }
 
     /**
-     * Constructor with initial budget
-     *
-     * @param budget The initial budget
-     */
-    protected void setBudget(BudgetValue budget) {
-        this.budget = budget;
-    }
-
-    /**
      * Get priority value
      *
      * @return Current priority value

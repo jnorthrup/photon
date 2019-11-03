@@ -21,8 +21,6 @@ package nars.main_nogui;
 import nars.io.ExperienceReader;
 import nars.io.ExperienceWriter;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 
@@ -105,22 +103,6 @@ public class NARSBatch {
         }
         reasoner.addOutputChannel(new ExperienceWriter(reasoner,
                 new PrintWriter(out, true)));
-    }
-
-    /**
-     * non-static equivalent to {@link #main(String[])} : run to completion from
-     * a BufferedReader
-     */
-    public void runInference(BufferedReader r, BufferedWriter w) {
-        init(r, w);
-        run();
-    }
-
-    private void init(BufferedReader r, BufferedWriter w) {
-        var experienceReader = new ExperienceReader(reasoner);
-        experienceReader.setBufferedReader(r);
-        reasoner.addOutputChannel(new ExperienceWriter(reasoner,
-                new PrintWriter(w, true)));
     }
 
     /**
