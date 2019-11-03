@@ -18,35 +18,32 @@
  * You should have received a copy of the GNU General Public License
  * along with Open-NARS.  If not, see <http://www.gnu.org/licenses/>.
  */
-package nars.entity;
+package nars.entity
 
-import nars.io.Symbols;
+import nars.io.Symbols
 
 /**
  * Frequency and confidence.
  */
-public class TruthValue implements Cloneable { // implements Cloneable {
-
-    /**
-     * The character that marks the two ends of a truth value
-     */
-    private static final char DELIMITER = Symbols.TRUTH_VALUE_MARK;
-    /**
-     * The character that separates the factors in a truth value
-     */
-    private static final char SEPARATOR = Symbols.VALUE_SEPARATOR;
+class TruthValue : Cloneable  { // implements Cloneable {
     /**
      * The frequency factor of the truth value
      */
-    private Float frequency;
+    private var frequency: Float
     /**
      * The confidence factor of the truth value
      */
-    private Float confidence;
+    private var confidence: Float
+    /**
+     * Get the isAnalytic flag
+     *
+     * @return The isAnalytic value
+     */
     /**
      * Whether the truth value is derived from a definition
      */
-    private boolean isAnalytic = false;
+    var analytic = false
+        private set
 
     /**
      * Constructor with two Floats
@@ -54,9 +51,9 @@ public class TruthValue implements Cloneable { // implements Cloneable {
      * @param f The frequency value
      * @param c The confidence value
      */
-    public TruthValue(float f, float c) {
-        frequency = new Float(f);
-        confidence = (c < 1) ? new Float(c) : new Float(0.9999f);
+    constructor(f: Float, c: Float) {
+        frequency = f
+        confidence = if (c < 1) c else 0.9999f
     }
 
     /**
@@ -65,10 +62,10 @@ public class TruthValue implements Cloneable { // implements Cloneable {
      * @param f The frequency value
      * @param c The confidence value
      */
-    public TruthValue(float f, float c, boolean b) {
-        frequency = new Float(f);
-        confidence = (c < 1) ? new Float(c) : new Float(0.9999f);
-        isAnalytic = b;
+    constructor(f: Float, c: Float, b: Boolean) {
+        frequency = f
+        confidence = if (c < 1) c else 0.9999f
+        analytic = b
     }
 
     /**
@@ -76,10 +73,10 @@ public class TruthValue implements Cloneable { // implements Cloneable {
      *
      * @param v The truth value to be cloned
      */
-    public TruthValue(TruthValue v) {
-        frequency = new Float(v.getFrequency());
-        confidence = new Float(v.getConfidence());
-        isAnalytic = v.getAnalytic();
+    constructor(v: TruthValue) {
+        frequency = v.getFrequency()
+        confidence = v.getConfidence()
+        analytic = v.analytic
     }
 
     /**
@@ -87,8 +84,8 @@ public class TruthValue implements Cloneable { // implements Cloneable {
      *
      * @return The frequency value
      */
-    public float getFrequency() {
-        return frequency.floatValue();
+    fun getFrequency(): Float {
+        return frequency
     }
 
     /**
@@ -96,17 +93,8 @@ public class TruthValue implements Cloneable { // implements Cloneable {
      *
      * @return The confidence value
      */
-    public float getConfidence() {
-        return confidence.floatValue();
-    }
-
-    /**
-     * Get the isAnalytic flag
-     *
-     * @return The isAnalytic value
-     */
-    public boolean getAnalytic() {
-        return isAnalytic;
+    fun getConfidence(): Float {
+        return confidence
     }
 
     /**
@@ -114,9 +102,8 @@ public class TruthValue implements Cloneable { // implements Cloneable {
      *
      * @return The expectation value
      */
-    public float getExpectation() {
-        return (float) (confidence.floatValue() * (frequency.floatValue() - 0.5) + 0.5);
-    }
+    val expectation: Float
+        get() = (confidence * (frequency - 0.5) + 0.5).toFloat()
 
     /**
      * Calculate the absolute difference of the expectation value and that of a
@@ -125,8 +112,8 @@ public class TruthValue implements Cloneable { // implements Cloneable {
      * @param t The given value
      * @return The absolute difference
      */
-    public float getExpDifAbs(TruthValue t) {
-        return Math.abs(getExpectation() - t.getExpectation());
+    fun getExpDifAbs(t: TruthValue): Float {
+        return Math.abs(expectation - t.expectation)
     }
 
     /**
@@ -134,9 +121,8 @@ public class TruthValue implements Cloneable { // implements Cloneable {
      *
      * @return True if the frequence is less than 1/2
      */
-    public boolean isNegative() {
-        return getFrequency() < 0.5;
-    }
+    val isNegative: Boolean
+        get() = getFrequency() < 0.5
 
     /**
      * Compare two truth values
@@ -145,10 +131,10 @@ public class TruthValue implements Cloneable { // implements Cloneable {
      * @return Whether the two are equivalent
      */
 
-    public boolean equals(Object that) {
-        return ((that instanceof TruthValue)
-                && (getFrequency() == ((TruthValue) that).getFrequency())
-                && (getConfidence() == ((TruthValue) that).getConfidence()));
+    override fun equals(that: Any?): Boolean {
+        return (that is TruthValue
+                && getFrequency() == that.getFrequency()
+                && getConfidence() == that.getConfidence())
     }
 
     /**
@@ -157,14 +143,12 @@ public class TruthValue implements Cloneable { // implements Cloneable {
      * @return The hash code
      */
 
-    public int hashCode() {
-        return (int) (getExpectation() * 37);
+    override fun hashCode(): Int {
+        return (expectation * 37).toInt()
     }
 
-
-    @Override
-    public Object clone() {
-        return new TruthValue(getFrequency(), getConfidence(), getAnalytic());
+    public override fun clone(): Any {
+        return TruthValue(getFrequency(), getConfidence(), analytic)
     }
 
     /**
@@ -173,8 +157,8 @@ public class TruthValue implements Cloneable { // implements Cloneable {
      * @return The String
      */
 
-    public String toString() {
-        return DELIMITER + frequency.toString() + SEPARATOR + confidence.toString() + DELIMITER;
+    override fun toString(): String {
+        return DELIMITER.toString() + frequency.toString() + SEPARATOR.toString() + confidence.toString() + DELIMITER
     }
 
     /**
@@ -183,9 +167,21 @@ public class TruthValue implements Cloneable { // implements Cloneable {
      *
      * @return The String
      */
-    public String toStringBrief() {
-        var s1 = DELIMITER + frequency.toString () + SEPARATOR;
-        var s2 = confidence.toString ();
-        return s1 + (s2.equals("1.00") ? "0.99" : s2) + DELIMITER;
+    fun toStringBrief(): String {
+        val s1 = DELIMITER.toString() + frequency.toString() + SEPARATOR
+        val s2 = confidence.toString()
+        return s1 + (if (s2 == "1.00") "0.99" else s2) + DELIMITER
+    }
+
+    companion object {
+
+        /**
+         * The character that marks the two ends of a truth value
+         */
+        private const val DELIMITER = Symbols.TRUTH_VALUE_MARK
+        /**
+         * The character that separates the factors in a truth value
+         */
+        private const val SEPARATOR = Symbols.VALUE_SEPARATOR
     }
 }

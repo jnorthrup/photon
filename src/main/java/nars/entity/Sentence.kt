@@ -172,7 +172,7 @@ class Sentence : Cloneable {
     public override fun clone(): Any {
         return if (truth == null) {
             Sentence(content.clone() as Term, punctuation, null, stamp.clone() as Stamp)
-        } else Sentence(content.clone() as Term, punctuation, TruthValue(truth), stamp.clone() as Stamp, revisible)
+        } else Sentence(content.clone() as Term, punctuation, TruthValue(truth!!), stamp.clone() as Stamp, revisible)
     }
 
     /**
