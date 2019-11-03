@@ -42,7 +42,7 @@ public class ImageExt extends CompoundTerm {
 
     /**
      * Constructor with partial values, called by make
-     *  @param n     The name of the term
+     * @param n     The name of the term
      * @param arg   The component list of the term
      * @param index The index of relation in the component list
      */
@@ -53,16 +53,15 @@ public class ImageExt extends CompoundTerm {
 
     /**
      * Constructor with full values, called by clone
-     *
+     *  @param open       Open variable list
      * @param n          The name of the term
      * @param cs         Component list
-     * @param open       Open variable list
      * @param complexity Syntactic complexity of the compound
      * @param index      The index of relation in the component list
      */
-    private ImageExt(String n ,  List<Term> cs, boolean con, short complexity, short index) {
+    private ImageExt(String n , List<Term> cs, boolean con, short complexity, int index) {
         super(n, cs, con, complexity);
-        relationIndex = index;
+        relationIndex = (short) index;
     }
 
     /**
@@ -123,13 +122,13 @@ public class ImageExt extends CompoundTerm {
      * @param index     The index of the place-holder in the new Image
      * @return A compound generated or a term it reduced to
      */
-    public static Term make(ImageExt oldImage, Term component, short index, Memory memory) {
+    public static Term make(ImageExt oldImage, Term component, int index, Memory memory) {
         var argList = oldImage.cloneComponents();
         int oldIndex = oldImage.getRelationIndex();
         var relation = argList.get(oldIndex);
         argList.set(oldIndex, component);
         argList.set(index, relation);
-        return make(argList, index, memory);
+        return make(argList, (short) index, memory);
     }
 
     /**
