@@ -20,7 +20,7 @@
  */
 package nars.storage;
 
-import nars.entity.Item;
+import nars.entity.AbstractItem;
 import nars.inference.BudgetFunctions;
 import nars.main_nogui.Parameters;
 
@@ -28,13 +28,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
-import java.util.stream.IntStream;
 
 /**
  * A Bag is a storage with a constant capacity and maintains an internal
  * priority distribution for retrieval.
  * <p>
- * Each entity in a bag must extend Item, which has a BudgetValue and a key.
+ * Each entity in a bag must extend AbstractItem, which has a BudgetValue and a key.
  * <p>
  * A name table is used to merge duplicate items that have the same key.
  * <p>
@@ -42,9 +41,9 @@ import java.util.stream.IntStream;
  * management, and below, space management. Differences: (1) level selection vs.
  * item selection, (2) decay rate
  *
- * @param <E> The type of the Item in the Bag
+ * @param <E> The type of the AbstractItem in the Bag
  */
-public abstract class Bag<E extends Item> {
+public abstract class Bag<E extends AbstractItem> {
 
     /**
      * priority levels
@@ -172,20 +171,20 @@ public abstract class Bag<E extends Item> {
 
 
     /**
-     * Get an Item by key
+     * Get an AbstractItem by key
      *
-     * @param key The key of the Item
-     * @return The Item with the given key
+     * @param key The key of the AbstractItem
+     * @return The AbstractItem with the given key
      */
     public E get(String key) {
         return nameTable.get(key);
     }
 
     /**
-     * Add a new Item into the Bag
+     * Add a new AbstractItem into the Bag
      *
-     * @param newItem The new Item
-     * @return Whether the new Item is added into the Bag
+     * @param newItem The new AbstractItem
+     * @return Whether the new AbstractItem is added into the Bag
      */
     public boolean putIn(E newItem) {
         var newKey = newItem.getKey();
@@ -209,8 +208,8 @@ public abstract class Bag<E extends Item> {
      * <p>
      * The only place where the forgetting rate is applied
      *
-     * @param oldItem The Item to put back
-     * @return Whether the new Item is added into the Bag
+     * @param oldItem The AbstractItem to put back
+     * @return Whether the new AbstractItem is added into the Bag
      */
     public boolean putBack(E oldItem) {
         BudgetFunctions.forget(oldItem.getBudget(), forgetRate(), RELATIVE_THRESHOLD);
@@ -218,10 +217,10 @@ public abstract class Bag<E extends Item> {
     }
 
     /**
-     * Choose an Item according to priority distribution and take it out of the
+     * Choose an AbstractItem according to priority distribution and take it out of the
      * Bag
      *
-     * @return The selected Item
+     * @return The selected AbstractItem
      */
     public E takeOut() {
         if (nameTable.isEmpty()) { // empty bag
@@ -251,7 +250,7 @@ public abstract class Bag<E extends Item> {
      * Pick an item by key, then remove it from the bag
      *
      * @param key The given key
-     * @return The Item with the key
+     * @return The AbstractItem with the key
      */
     public E pickOut(String key) {
         var picked = nameTable.get(key);
@@ -275,7 +274,7 @@ public abstract class Bag<E extends Item> {
     /**
      * Decide the put-in level according to priority
      *
-     * @param item The Item to put in
+     * @param item The AbstractItem to put in
      * @return The put-in level
      */
     private int getLevel(E item) {
@@ -287,8 +286,8 @@ public abstract class Bag<E extends Item> {
     /**
      * Insert an item into the itemTable, and return the overflow
      *
-     * @param newItem The Item to put in
-     * @return The overflow Item
+     * @param newItem The AbstractItem to put in
+     * @return The overflow AbstractItem
      */
     private E intoBase(E newItem) {
         E oldItem = null;
@@ -314,7 +313,7 @@ public abstract class Bag<E extends Item> {
      * Take out the first or last E in a level from the itemTable
      *
      * @param level The current level
-     * @return The first Item
+     * @return The first AbstractItem
      */
     private E takeOutFirst(int level) {
         var selected = itemTable.get(level).get(0);
@@ -327,7 +326,7 @@ public abstract class Bag<E extends Item> {
     /**
      * Remove an item from itemTable, then adjust mass
      *
-     * @param oldItem The Item to be removed
+     * @param oldItem The AbstractItem to be removed
      */
     protected void outOfBase(E oldItem) {
         var level = getLevel(oldItem);

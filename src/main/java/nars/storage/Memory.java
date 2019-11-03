@@ -223,7 +223,7 @@ public class Memory {
      */
     public float getConceptActivation(Term t) {
         var c = termToConcept(t);
-        return Optional.ofNullable(c).map(Item::getPriority).orElse(0f);
+        return Optional.ofNullable(c).map(AbstractItem::getPriority).orElse(0f);
     }
 
     /* ---------- adjustment functions ---------- */
@@ -534,7 +534,7 @@ public class Memory {
                 + bag.toStringLong()).orElse("");
     }
 
-    private String toStringLongIfNotNull(Item item, String title) {
+    private String toStringLongIfNotNull(AbstractItem item, String title) {
         return Optional.ofNullable(item).map(item1 -> "\n " + title + ":\n"
                 + item1.toStringLong()).orElse("");
     }

@@ -24,8 +24,6 @@ import nars.io.Symbols;
 import nars.language.Term;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.stream.IntStream;
-
 /**
  * A link between a compound term and a component term
  * <p>
@@ -38,7 +36,7 @@ import java.util.stream.IntStream;
  * <p>
  * This class is mainly used in inference.RuleTable to dispatch premises to inference rules
  */
-public class TermLink extends Item {
+public class TermLink extends AbstractItem {
     /**
      * At C, point to C; TaskLink only
      */

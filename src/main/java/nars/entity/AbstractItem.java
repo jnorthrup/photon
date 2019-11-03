@@ -1,5 +1,5 @@
 /*
- * Item.java
+ * AbstractItem.java
  *
  * Copyright (C) 2008  Pei Wang
  *
@@ -26,21 +26,21 @@ package nars.entity;
  * <p>
  * It has a key and a budget. Cannot be cloned
  */
-public abstract class Item {
+public abstract class AbstractItem implements BudgetTriple {
 
     /**
-     * The key of the Item, unique in a Bag
+     * The key of the AbstractItem, unique in a Bag
      */
     protected String key;
     /**
-     * The budget of the Item, consisting of 3 numbers
+     * The budget of the AbstractItem, consisting of 3 numbers
      */
     protected BudgetValue budget;
 
     /**
      * The default constructor
      */
-    protected Item() {
+    protected AbstractItem() {
     }
 
     /**
@@ -48,7 +48,7 @@ public abstract class Item {
      *
      * @param key The key value
      */
-    protected Item(String key) {
+    protected AbstractItem(String key) {
         this.key = key;
         this.budget = new BudgetValue();
     }
@@ -59,7 +59,7 @@ public abstract class Item {
      * @param key    The key value
      * @param budget The initial budget
      */
-    protected Item(String key, BudgetValue budget) {
+    protected AbstractItem(String key, BudgetValue budget) {
         this.key = key;
         this.budget = new BudgetValue(budget);  // clone, not assignment
     }
@@ -87,6 +87,7 @@ public abstract class Item {
      *
      * @return Current priority value
      */
+    @Override
     public float getPriority() {
         return budget.getPriority();
     }
@@ -96,6 +97,7 @@ public abstract class Item {
      *
      * @param v Set a new priority value
      */
+    @Override
     public void setPriority(float v) {
         budget.setPriority(v);
     }
@@ -105,6 +107,7 @@ public abstract class Item {
      *
      * @param v The amount of increase
      */
+    @Override
     public void incPriority(float v) {
         budget.incPriority(v);
     }
@@ -114,6 +117,7 @@ public abstract class Item {
      *
      * @param v The amount of decrease
      */
+    @Override
     public void decPriority(float v) {
         budget.decPriority(v);
     }
@@ -123,6 +127,7 @@ public abstract class Item {
      *
      * @return Current durability value
      */
+    @Override
     public float getDurability() {
         return budget.getDurability();
     }
@@ -132,6 +137,7 @@ public abstract class Item {
      *
      * @param v The new durability value
      */
+    @Override
     public void setDurability(float v) {
         budget.setDurability(v);
     }
@@ -141,6 +147,7 @@ public abstract class Item {
      *
      * @param v The amount of increase
      */
+    @Override
     public void incDurability(float v) {
         budget.incDurability(v);
     }
@@ -150,6 +157,7 @@ public abstract class Item {
      *
      * @param v The amount of decrease
      */
+    @Override
     public void decDurability(float v) {
         budget.decDurability(v);
     }
@@ -159,6 +167,7 @@ public abstract class Item {
      *
      * @return The quality value
      */
+    @Override
     public float getQuality() {
         return budget.getQuality();
     }
@@ -168,21 +177,22 @@ public abstract class Item {
      *
      * @param v The new quality value
      */
+    @Override
     public void setQuality(float v) {
         budget.setQuality(v);
     }
 
     /**
-     * Merge with another Item with identical key
+     * Merge with another AbstractItem with identical key
      *
-     * @param that The Item to be merged
+     * @param that The AbstractItem to be merged
      */
-    public void merge(Item that) {
+    public void merge(AbstractItem that) {
         budget.merge(that.getBudget());
     }
 
     /**
-     * Return a String representation of the Item
+     * Return a String representation of the AbstractItem
      *
      * @return The String representation of the full content
      */
@@ -192,7 +202,7 @@ public abstract class Item {
     }
 
     /**
-     * Return a String representation of the Item after simplification
+     * Return a String representation of the AbstractItem after simplification
      *
      * @return A simplified String representation of the content
      */

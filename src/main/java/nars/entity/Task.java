@@ -25,7 +25,7 @@ import nars.language.Term;
 /**
  * A task to be processed, consists of a Sentence and a BudgetValue
  */
-public class Task extends Item {
+public class Task extends AbstractItem {
 
     /**
      * The sentence of the Task
@@ -135,7 +135,7 @@ public class Task extends Item {
      * @param that The other Task
      */
     @Override
-    public void merge(Item that) {
+    public void merge(AbstractItem that) {
         if (getCreationTime() >= ((Task) that).getCreationTime()) {
             super.merge(that);
         } else {

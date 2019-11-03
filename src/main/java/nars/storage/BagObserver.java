@@ -1,11 +1,11 @@
 package nars.storage;
 
-import nars.entity.Item;
+import nars.entity.AbstractItem;
 
 /**
  * Bag Observer; similar to Observer design pattern, except that here we have a single observer
  */
-public interface BagObserver<BagType extends Item> {
+public interface BagObserver<BagType extends AbstractItem> {
 
     /**
      * Set a name for this observer

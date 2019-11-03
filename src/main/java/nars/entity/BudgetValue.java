@@ -28,7 +28,7 @@ import nars.main_nogui.Parameters;
 /**
  * A triple of priority (current), durability (decay), and quality (long-term average).
  */
-public class BudgetValue implements Cloneable {
+public class BudgetValue implements BudgetTriple {
 
     /**
      * The character that marks the two ends of a budget value
@@ -41,26 +41,23 @@ public class BudgetValue implements Cloneable {
     /**
      * The relative share of time resource to be allocated
      */
-    protected Float priority;
+    protected Float priority= new Float(0.01f);;
     /**
      * The percent of priority to be kept in a constant period; All priority
      * values “decay” over time, though at different rates. Each item is given a
      * “durability” factor in (0, 1) to specify the percentage of priority level
      * left after each reevaluation
      */
-    protected Float durability;
+    protected Float durability= new Float(0.01f);;
     /**
      * The overall (context-independent) evaluation
      */
-    protected Float quality;
+    protected Float quality= new Float(0.01f);;
 
     /**
      * Default constructor
      */
     public BudgetValue() {
-        priority = new Float(0.01f);
-        durability = new Float(0.01f);
-        quality = new Float(0.01f);
     }
 
     /**
@@ -82,17 +79,9 @@ public class BudgetValue implements Cloneable {
      * @param v Budget value to be cloned
      */
     public BudgetValue(BudgetValue v) {
-        priority = new Float(v.getPriority());
-        durability = new Float(v.getDurability());
-        quality = new Float(v.getQuality());
-    }
-
-    /**
-     * Cloning method
-     */
-    @Override
-    public Object clone() {
-        return new BudgetValue(this.getPriority(), this.getDurability(), this.getQuality());
+   this(     new Float(v.getPriority()),
+        new Float(v.getDurability()),
+      new Float(v.getQuality())) ;
     }
 
     /**
@@ -208,7 +197,7 @@ public class BudgetValue implements Cloneable {
      * <p>
      * to be revised to depend on how busy the system is
      *
-     * @return The decision on whether to process the Item
+     * @return The decision on whether to process the AbstractItem
      */
     public boolean aboveThreshold() {
         return (summary() >= Parameters.BUDGET_THRESHOLD);

@@ -42,7 +42,7 @@ import java.util.Optional;
  * concept are those in a ConceptBag. All other access go through the Term that
  * names the concept.
  */
-public final class Concept extends Item {
+public final class Concept extends AbstractItem {
 
     /**
      * The term is the unique ID of the concept
