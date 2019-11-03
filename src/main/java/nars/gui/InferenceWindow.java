@@ -20,10 +20,10 @@
  */
 package nars.gui;
 
+import nars.io.IInferenceRecorder;
+
 import java.awt.*;
 import java.awt.event.*;
-
-import nars.io.*;
 //import nars.term.Term;
 
 /**
@@ -31,21 +31,34 @@ import nars.io.*;
  */
 public class InferenceWindow extends NarsFrame implements ActionListener, ItemListener {
 
-    /** Control buttons */
+    /**
+     * Control buttons
+     */
     private Button playButton, stopButton, hideButton;
-    /** Display area */
+    /**
+     * Display area
+     */
     private TextArea text;
-    /** String to be caught */
+    /**
+     * String to be caught
+     */
     private TextField watchText;
-    /** Type of caught text */
+    /**
+     * Type of caught text
+     */
     private Choice watchType;
-    /** Type of caught text */
+    /**
+     * Type of caught text
+     */
     private String watched = "";
-    /** Inference recorder */
+    /**
+     * Inference recorder
+     */
     private IInferenceRecorder recorder = new NullInferenceRecorder();
 
     /**
      * Constructor
+     *
      * @param recorder The inference recorder
      */
     public InferenceWindow(IInferenceRecorder recorder) {
@@ -112,6 +125,7 @@ public class InferenceWindow extends NarsFrame implements ActionListener, ItemLi
 
     /**
      * Append a new line to display
+     *
      * @param str Text to be added into display
      */
     public void append(String str) {
@@ -123,6 +137,7 @@ public class InferenceWindow extends NarsFrame implements ActionListener, ItemLi
 
     /**
      * Handling button click
+     *
      * @param e The ActionEvent
      */
     public void actionPerformed(ActionEvent e) {
@@ -167,25 +182,39 @@ public class InferenceWindow extends NarsFrame implements ActionListener, ItemLi
     public void resetBackground() {
         text.setBackground(DISPLAY_BACKGROUND_COLOR);
     }
-    
+
     class NullInferenceRecorder implements IInferenceRecorder {
-		@Override
-		public void init() {}
-		@Override
-		public void show() {}
-		@Override
-		public void play() {}
-		@Override
-		public void stop() {}
-		@Override
-		public void append(String s) {}
-		@Override
-		public void openLogFile() {}
-		@Override
-		public void closeLogFile() {}
-		@Override
-		public boolean isLogging() {
-			return false;
-		}    	
+        @Override
+        public void init() {
+        }
+
+        @Override
+        public void show() {
+        }
+
+        @Override
+        public void play() {
+        }
+
+        @Override
+        public void stop() {
+        }
+
+        @Override
+        public void append(String s) {
+        }
+
+        @Override
+        public void openLogFile() {
+        }
+
+        @Override
+        public void closeLogFile() {
+        }
+
+        @Override
+        public boolean isLogging() {
+            return false;
+        }
     }
 }

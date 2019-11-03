@@ -20,9 +20,9 @@
  */
 package nars.language;
 
-import java.util.*;
-
 import nars.io.Symbols;
+
+import java.util.HashMap;
 
 /**
  * A variable term, which does not correspond to a concept
@@ -36,46 +36,6 @@ public class Variable extends Term {
      */
     public Variable(String s) {
         super(s);
-    }
-
-    /**
-     * Clone a Variable
-     *
-     * @return The cloned Variable
-     */
-    @Override
-    public Object clone() {
-        return new Variable(name);
-    }
-
-    /**
-     * Get the type of the variable
-     *
-     * @return The variable type
-     */
-    public char getType() {
-        return name.charAt(0);
-    }
-
-    /**
-     * A variable is not constant
-     *
-     * @return false
-     */
-    @Override
-    public boolean isConstant() {
-        return false;
-    }
-
-    /**
-     * The syntactic complexity of a variable is 0, because it does not refer to
-     * any concept.
-     *
-     * @return The complexity of the term, an integer
-     */
-    @Override
-    public int getComplexity() {
-        return 0;
     }
 
     /**
@@ -126,8 +86,8 @@ public class Variable extends Term {
      * To unify two terms
      *
      * @param type The type of variable that can be substituted
-     * @param t1 The first term
-     * @param t2 The second term
+     * @param t1   The first term
+     * @param t2   The second term
      * @return Whether the unification is possible
      */
     public static boolean unify(char type, Term t1, Term t2) {
@@ -137,9 +97,9 @@ public class Variable extends Term {
     /**
      * To unify two terms
      *
-     * @param type The type of variable that can be substituted
-     * @param t1 The first term to be unified
-     * @param t2 The second term to be unified
+     * @param type      The type of variable that can be substituted
+     * @param t1        The first term to be unified
+     * @param t2        The second term to be unified
      * @param compound1 The compound containing the first term
      * @param compound2 The compound containing the second term
      * @return Whether the unification is possible
@@ -165,15 +125,15 @@ public class Variable extends Term {
      * To recursively find a substitution that can unify two Terms without
      * changing them
      *
-     * @param type The type of Variable to be substituted
+     * @param type  The type of Variable to be substituted
      * @param term1 The first Term to be unified
      * @param term2 The second Term to be unified
-     * @param map1 The substitution for term1 formed so far
-     * @param map2 The substitution for term2 formed so far
+     * @param map1  The substitution for term1 formed so far
+     * @param map2  The substitution for term2 formed so far
      * @return Whether there is a substitution that unifies the two Terms
      */
     private static boolean findSubstitute(char type, Term term1, Term term2,
-            HashMap<Term, Term> map1, HashMap<Term, Term> map2) {
+                                          HashMap<Term, Term> map1, HashMap<Term, Term> map2) {
         Term t;
         if (term1 instanceof Variable) {
             Variable var1 = (Variable) term1;
@@ -190,7 +150,7 @@ public class Variable extends Term {
                         map1.put(var1, term2);  // elimination
                     }
                 } else {    // different type
-                    map1.put(var1, new Variable(var1.getName() + "-1"));  // rename             
+                    map1.put(var1, new Variable(var1.getName() + "-1"));  // rename
                 }
                 return true;
             }
@@ -204,7 +164,7 @@ public class Variable extends Term {
                 if (var2.getType() == type) {
                     map2.put(var2, term2);  // unify
                 } else {
-                    map2.put(var2, new Variable(var2.getName() + "-2"));  // rename             
+                    map2.put(var2, new Variable(var2.getName() + "-2"));  // rename
                 }
                 return true;
             }
@@ -231,7 +191,7 @@ public class Variable extends Term {
     /**
      * Check if two terms can be unified
      *
-     * @param type The type of variable that can be substituted
+     * @param type  The type of variable that can be substituted
      * @param term1 The first term to be unified
      * @param term2 The second term to be unified
      * @return Whether there is a substitution
@@ -242,21 +202,62 @@ public class Variable extends Term {
 
     /**
      * Rename the variables to prepare for unification of two terms
-     * @param map The substitution so far
-     * @param term The term to be processed 
+     *
+     * @param map    The substitution so far
+     * @param term   The term to be processed
      * @param suffix The suffix that distinguish the variables in one premise from those from the other
      */
     private static void renameVar(HashMap<Term, Term> map, Term term, String suffix) {
         if (term instanceof Variable) {
             Term t = map.get(term);
             if (t == null) {    // new mapped yet
-                map.put(term, new Variable(term.getName() + suffix));  // rename             
+                map.put(term, new Variable(term.getName() + suffix));  // rename
             }
         } else if (term instanceof CompoundTerm) {
             for (Term t : ((CompoundTerm) term).components) {   // assuming matching order, to be refined in the future
                 renameVar(map, t, suffix);
             }
         }
+    }
+
+    /**
+     * Clone a Variable
+     *
+     * @return The cloned Variable
+     */
+    @Override
+    public Object clone() {
+        return new Variable(name);
+    }
+
+    /**
+     * Get the type of the variable
+     *
+     * @return The variable type
+     */
+    public char getType() {
+        return name.charAt(0);
+    }
+
+    /**
+     * A variable is not constant
+     *
+     * @return false
+     */
+    @Override
+    public boolean isConstant() {
+        return false;
+    }
+
+    /**
+     * The syntactic complexity of a variable is 0, because it does not refer to
+     * any concept.
+     *
+     * @return The complexity of the term, an integer
+     */
+    @Override
+    public int getComplexity() {
+        return 0;
     }
 
     /**

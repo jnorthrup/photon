@@ -20,24 +20,16 @@
  */
 package nars.storage;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicInteger;
-
-import nars.entity.BudgetValue;
-import nars.entity.Concept;
-import nars.entity.Item;
-import nars.entity.Sentence;
-import nars.entity.Stamp;
-import nars.entity.Task;
-import nars.entity.TaskLink;
-import nars.entity.TermLink;
-import nars.entity.TruthValue;
+import nars.entity.*;
 import nars.inference.BudgetFunctions;
 import nars.io.IInferenceRecorder;
 import nars.language.Term;
 import nars.main_nogui.Parameters;
 import nars.main_nogui.ReasonerBatch;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * The memory of the system.
@@ -58,20 +50,16 @@ public class Memory {
      * New tasks with novel composed terms, for delayed and selective processing
      */
     private final NovelTaskBag novelTasks;
-    /**
-     * Inference record text to be written into a log file
-     */
-    private IInferenceRecorder recorder;
     private final AtomicInteger beliefForgettingRate = new AtomicInteger(Parameters.TERM_LINK_FORGETTING_CYCLE);
     private final AtomicInteger taskForgettingRate = new AtomicInteger(Parameters.TASK_LINK_FORGETTING_CYCLE);
     private final AtomicInteger conceptForgettingRate = new AtomicInteger(Parameters.CONCEPT_FORGETTING_CYCLE);
-
-    /* ---------- Short-term workspace for a single cycle ---------- */
     /**
      * List of new tasks accumulated in one cycle, to be processed in the next
      * cycle
      */
     private final ArrayList<Task> newTasks;
+
+    /* ---------- Short-term workspace for a single cycle ---------- */
     /**
      * List of Strings or Tasks to be sent to the output channels
      */
@@ -111,9 +99,14 @@ public class Memory {
      * TODO unused
      */
     protected HashMap<Term, Term> substitute;
+    /**
+     * Inference record text to be written into a log file
+     */
+    private IInferenceRecorder recorder;
 
 
     /* ---------- Constructor ---------- */
+
     /**
      * Create a new memory <p> Called in Reasoner.reset only
      *
@@ -157,6 +150,7 @@ public class Memory {
 //    public MainWindow getMainWindow() {
 //        return reasoner.getMainWindow();
 //    }
+
     /**
      * Actually means that there are no new Tasks
      */
@@ -165,6 +159,7 @@ public class Memory {
     }
 
     /* ---------- conversion utilities ---------- */
+
     /**
      * Get an existing Concept for a given name <p> called from Term and
      * ConceptWindow.
@@ -235,6 +230,7 @@ public class Memory {
     }
 
     /* ---------- adjustment functions ---------- */
+
     /**
      * Adjust the activation level of a Concept <p> called in
      * Concept.insertTaskLink only
@@ -253,6 +249,7 @@ public class Memory {
     /* There are several types of new tasks, all added into the
      newTasks list, to be processed in the next workCycle.
      Some of them are reported and/or logged. */
+
     /**
      * Input task processing. Invoked by the outside or inside environment.
      * Outside: StringParser (input); Inside: Operator (feedback). Input tasks
@@ -274,10 +271,10 @@ public class Memory {
      * Activated task called in MatchingRules.trySolution and
      * Concept.processGoal
      *
-     * @param budget The budget value of the new Task
-     * @param sentence The content of the new Task
+     * @param budget          The budget value of the new Task
+     * @param sentence        The content of the new Task
      * @param candidateBelief The belief to be used in future inference, for
-     * forward/backward correspondence
+     *                        forward/backward correspondence
      */
     public void activatedTask(BudgetValue budget, Sentence sentence, Sentence candidateBelief) {
         Task task = new Task(sentence, budget, currentTask, sentence, candidateBelief);
@@ -314,13 +311,14 @@ public class Memory {
     }
 
     /* --------------- new task building --------------- */
+
     /**
      * Shared final operations by all double-premise rules, called from the
      * rules except StructuralRules
      *
      * @param newContent The content of the sentence in task
-     * @param newTruth The truth value of the sentence in task
-     * @param newBudget The budget value in task
+     * @param newTruth   The truth value of the sentence in task
+     * @param newBudget  The budget value in task
      */
     public void doublePremiseTask(Term newContent, TruthValue newTruth, BudgetValue newBudget) {
         if (newContent != null) {
@@ -335,9 +333,9 @@ public class Memory {
      * rules except StructuralRules
      *
      * @param newContent The content of the sentence in task
-     * @param newTruth The truth value of the sentence in task
-     * @param newBudget The budget value in task
-     * @param revisible Whether the sentence is revisible
+     * @param newTruth   The truth value of the sentence in task
+     * @param newBudget  The budget value in task
+     * @param revisible  Whether the sentence is revisible
      */
     public void doublePremiseTask(Term newContent, TruthValue newTruth, BudgetValue newBudget, boolean revisible) {
         if (newContent != null) {
@@ -353,8 +351,8 @@ public class Memory {
      * StructuralRules
      *
      * @param newContent The content of the sentence in task
-     * @param newTruth The truth value of the sentence in task
-     * @param newBudget The budget value in task
+     * @param newTruth   The truth value of the sentence in task
+     * @param newBudget  The budget value in task
      */
     public void singlePremiseTask(Term newContent, TruthValue newTruth, BudgetValue newBudget) {
         singlePremiseTask(newContent, currentTask.getSentence().getPunctuation(), newTruth, newBudget);
@@ -364,10 +362,10 @@ public class Memory {
      * Shared final operations by all single-premise rules, called in
      * StructuralRules
      *
-     * @param newContent The content of the sentence in task
+     * @param newContent  The content of the sentence in task
      * @param punctuation The punctuation of the sentence in task
-     * @param newTruth The truth value of the sentence in task
-     * @param newBudget The budget value in task
+     * @param newTruth    The truth value of the sentence in task
+     * @param newBudget   The budget value in task
      */
     public void singlePremiseTask(Term newContent, char punctuation, TruthValue newTruth, BudgetValue newBudget) {
         Task parentTask = currentTask.getParentTask();
@@ -386,6 +384,7 @@ public class Memory {
     }
 
     /* ---------- system working workCycle ---------- */
+
     /**
      * An atomic working cycle of the system: process new Tasks, then fire a
      * concept <p> Called from Reasoner.tick only
@@ -456,6 +455,7 @@ public class Memory {
     }
 
     /* ---------- task processing ---------- */
+
     /**
      * Immediate processing of a new task, in constant time Local processing, in
      * one concept only
@@ -474,20 +474,21 @@ public class Memory {
     }
 
     /* ---------- display ---------- */
+
     /**
      * Start display active concepts on given bagObserver, called from MainWindow.
-     *
+     * <p>
      * we don't want to expose fields concepts and novelTasks, AND we want to
-     * separate GUI and inference, so this method takes as argument a 
+     * separate GUI and inference, so this method takes as argument a
      * {@link BagObserver} and calls {@link ConceptBag#addBagObserver(BagObserver, String)} ;
-     * 
+     * <p>
      * see design for {@link Bag} and {@link nars.gui.BagWindow}
      * in {@link Bag#addBagObserver(BagObserver, String)}
      *
      * @param bagObserver bag Observer that will receive notifications
-     * @param title the window title
+     * @param title       the window title
      */
-	public void conceptsStartPlay( BagObserver<Concept> bagObserver, String title ) {
+    public void conceptsStartPlay(BagObserver<Concept> bagObserver, String title) {
         bagObserver.setBag(concepts);
         concepts.addBagObserver(bagObserver, title);
     }
@@ -497,9 +498,9 @@ public class Memory {
      * {@link #conceptsStartPlay(BagObserver, String)}
      *
      * @param bagObserver
-     * @param s the window title
+     * @param s           the window title
      */
-	public void taskBuffersStartPlay( BagObserver<Task> bagObserver, String s ) {
+    public void taskBuffersStartPlay(BagObserver<Task> bagObserver, String s) {
         bagObserver.setBag(novelTasks);
         novelTasks.addBagObserver(bagObserver, s);
     }
@@ -512,7 +513,7 @@ public class Memory {
      * {@link ReasonerBatch#doTick()} - TODO fragile mechanism)
      *
      * @param sentence the sentence to be displayed
-     * @param input whether the task is input
+     * @param input    whether the task is input
      */
     public void report(Sentence sentence, boolean input) {
         if (ReasonerBatch.DEBUG) {

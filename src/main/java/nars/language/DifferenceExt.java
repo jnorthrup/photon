@@ -20,10 +20,11 @@
  */
 package nars.language;
 
-import java.util.*;
-
 import nars.io.Symbols;
 import nars.storage.Memory;
+
+import java.util.ArrayList;
+import java.util.TreeSet;
 
 /**
  * A compound term whose extension is the difference of the extensions of its components
@@ -32,7 +33,8 @@ public class DifferenceExt extends CompoundTerm {
 
     /**
      * Constructor with partial values, called by make
-     * @param n The name of the term
+     *
+     * @param n   The name of the term
      * @param arg The component list of the term
      */
     private DifferenceExt(ArrayList<Term> arg) {
@@ -41,28 +43,22 @@ public class DifferenceExt extends CompoundTerm {
 
     /**
      * Constructor with full values, called by clone
-     * @param n The name of the term
-     * @param cs Component list
+     *
+     * @param n    The name of the term
+     * @param cs   Component list
      * @param open Open variable list
-     * @param i Syntactic complexity of the compound
+     * @param i    Syntactic complexity of the compound
      */
     private DifferenceExt(String n, ArrayList<Term> cs, boolean con, short i) {
         super(n, cs, con, i);
     }
 
     /**
-     * Clone an object
-     * @return A new object, to be casted into a DifferenceExt
-     */
-    public Object clone() {
-        return new DifferenceExt(name, (ArrayList<Term>) cloneList(components), isConstant(), complexity);
-    }
-
-    /**
      * Try to make a new DifferenceExt. Called by StringParser.
-     * @return the Term generated from the arguments
+     *
      * @param argList The list of components
-     * @param memory Reference to the memory
+     * @param memory  Reference to the memory
+     * @return the Term generated from the arguments
      */
     public static Term make(ArrayList<Term> argList, Memory memory) {
         if (argList.size() == 1) { // special case from CompoundTerm.reduceComponent
@@ -78,8 +74,9 @@ public class DifferenceExt extends CompoundTerm {
 
     /**
      * Try to make a new compound from two components. Called by the inference rules.
-     * @param t1 The first compoment
-     * @param t2 The second compoment
+     *
+     * @param t1     The first compoment
+     * @param t2     The second compoment
      * @param memory Reference to the memory
      * @return A compound generated or a term it reduced to
      */
@@ -97,7 +94,17 @@ public class DifferenceExt extends CompoundTerm {
     }
 
     /**
+     * Clone an object
+     *
+     * @return A new object, to be casted into a DifferenceExt
+     */
+    public Object clone() {
+        return new DifferenceExt(name, (ArrayList<Term>) cloneList(components), isConstant(), complexity);
+    }
+
+    /**
      * Get the operator of the term.
+     *
      * @return the operator of the term
      */
     public String operator() {

@@ -20,11 +20,11 @@
  */
 package nars.main;
 
-import java.applet.Applet;
-
 import nars.io.ExperienceReader;
 import nars.main_nogui.NARSBatch;
 import nars.main_nogui.ReasonerBatch;
+
+import java.applet.Applet;
 
 /**
  * The main class of the project.
@@ -45,7 +45,7 @@ public class NARS extends Applet implements Runnable {
      */
     public static final String WEBSITE =
             " Open-NARS website:  http://code.google.com/p/open-nars/ \n" +
-            "      NARS website:  http://sites.google.com/site/narswang/ ";
+                    "      NARS website:  http://sites.google.com/site/narswang/ ";
     /**
      * The internal working thread of the system.
      */
@@ -57,10 +57,12 @@ public class NARS extends Applet implements Runnable {
     ReasonerBatch reasoner;
 
     /* Application-only code */
+
     /**
      * The entry point of the standalone application.
      * <p>
      * Create an instance of the class, then run the init and start methods.
+     *
      * @param args optional argument used : one input file
      */
     public static void main(String args[]) {
@@ -79,6 +81,7 @@ public class NARS extends Applet implements Runnable {
     }
 
     /* Applet/Application code */
+
     /**
      * Initialize the system at the control center.<p>
      * Can instantiate multiple reasoners
@@ -94,7 +97,7 @@ public class NARS extends Applet implements Runnable {
     @Override
     public void start() {
         if (narsThread == null) {
-            narsThread = new Thread(this, "Inference" );
+            narsThread = new Thread(this, "Inference");
             narsThread.start();
         }
     }
@@ -108,6 +111,7 @@ public class NARS extends Applet implements Runnable {
     }
 
     /* Implementing the Runnable Interface */
+
     /**
      * Repeatedly execute NARS working cycle. This method is called when the Runnable's thread is started.
      */
@@ -120,16 +124,17 @@ public class NARS extends Applet implements Runnable {
             } catch (InterruptedException e) {
             }
             try {
-            	// NOTE: try/catch not necessary for input errors , but may be useful for other troubles
-				reasoner.tick();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+                // NOTE: try/catch not necessary for input errors , but may be useful for other troubles
+                reasoner.tick();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
     /**
      * Provide system information for the applet.
+     *
      * @return The string containing the information about the applet.
      */
     @Override

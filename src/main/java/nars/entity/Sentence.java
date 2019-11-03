@@ -56,11 +56,11 @@ public class Sentence implements Cloneable {
     /**
      * Create a Sentence with the given fields
      *
-     * @param content The Term that forms the content of the sentence
+     * @param content     The Term that forms the content of the sentence
      * @param punctuation The punctuation indicating the type of the sentence
-     * @param truth The truth value of the sentence, null for question
-     * @param stamp The stamp of the sentence indicating its derivation time and
-     * base
+     * @param truth       The truth value of the sentence, null for question
+     * @param stamp       The stamp of the sentence indicating its derivation time and
+     *                    base
      */
     public Sentence(Term content, char punctuation, TruthValue truth, Stamp stamp) {
         this.content = content;
@@ -74,12 +74,12 @@ public class Sentence implements Cloneable {
     /**
      * Create a Sentence with the given fields
      *
-     * @param content The Term that forms the content of the sentence
+     * @param content     The Term that forms the content of the sentence
      * @param punctuation The punctuation indicating the type of the sentence
-     * @param truth The truth value of the sentence, null for question
-     * @param stamp The stamp of the sentence indicating its derivation time and
-     * base
-     * @param revisible Whether the sentence can be revised
+     * @param truth       The truth value of the sentence, null for question
+     * @param stamp       The stamp of the sentence indicating its derivation time and
+     *                    base
+     * @param revisible   Whether the sentence can be revised
      */
     public Sentence(Term content, char punctuation, TruthValue truth, Stamp stamp, boolean revisible) {
         this.content = content;
@@ -156,6 +156,15 @@ public class Sentence implements Cloneable {
     }
 
     /**
+     * Set the content Term of the Sentence
+     *
+     * @param t The new content
+     */
+    public void setContent(Term t) {
+        content = t;
+    }
+
+    /**
      * Get the punctuation of the sentence
      *
      * @return The character '.' or '?'
@@ -171,15 +180,6 @@ public class Sentence implements Cloneable {
      */
     public Term cloneContent() {
         return (Term) content.clone();
-    }
-
-    /**
-     * Set the content Term of the Sentence
-     *
-     * @param t The new content
-     */
-    public void setContent(Term t) {
-        content = t;
     }
 
     /**

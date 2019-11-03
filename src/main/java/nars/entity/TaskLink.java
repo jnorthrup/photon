@@ -32,6 +32,10 @@ import nars.main_nogui.Parameters;
 public class TaskLink extends TermLink {
 
     /**
+     * The number of TermLinks remembered
+     */
+    int counter;
+    /**
      * The Task linked. The "target" field in TermLink is not used here.
      */
     private Task targetTask;
@@ -43,19 +47,15 @@ public class TaskLink extends TermLink {
      * Remember the time when each TermLink is used with this TaskLink
      */
     private long recordingTime[];
-    /**
-     * The number of TermLinks remembered
-     */
-    int counter;
 
     /**
      * Constructor
      * <p>
      * only called in Memory.continuedProcess
      *
-     * @param t The target Task
+     * @param t        The target Task
      * @param template The TermLink template
-     * @param v The budget
+     * @param v        The budget
      */
     public TaskLink(Task t, TermLink template, BudgetValue v) {
         super("", v);
@@ -89,7 +89,7 @@ public class TaskLink extends TermLink {
      * <p>
      * called in TermLinkBag only
      *
-     * @param termLink The TermLink to be checked
+     * @param termLink    The TermLink to be checked
      * @param currentTime The current time
      * @return Whether they are novel to each other
      */

@@ -20,10 +20,11 @@
  */
 package nars.language;
 
-import java.util.*;
-
 import nars.io.Symbols;
 import nars.storage.Memory;
+
+import java.util.ArrayList;
+import java.util.TreeSet;
 
 /**
  * Conjunction of statements
@@ -42,52 +43,22 @@ public class Conjunction extends CompoundTerm {
     /**
      * Constructor with full values, called by clone
      *
-     * @param n The name of the term
-     * @param cs Component list
+     * @param n   The name of the term
+     * @param cs  Component list
      * @param con Whether the term is a constant
-     * @param i Syntactic complexity of the compound
+     * @param i   Syntactic complexity of the compound
      */
     private Conjunction(String n, ArrayList<Term> cs, boolean con, short i) {
         super(n, cs, con, i);
     }
 
     /**
-     * Clone an object
-     *
-     * @return A new object
-     */
-    @Override
-    public Object clone() {
-        return new Conjunction(name, (ArrayList<Term>) cloneList(components), isConstant(), complexity);
-    }
-
-    /**
-     * Get the operator of the term.
-     *
-     * @return the operator of the term
-     */
-    @Override
-    public String operator() {
-        return Symbols.CONJUNCTION_OPERATOR;
-    }
-
-    /**
-     * Check if the compound is commutative.
-     *
-     * @return true for commutative
-     */
-    @Override
-    public boolean isCommutative() {
-        return true;
-    }
-
-    /**
      * Try to make a new compound from a list of components. Called by
      * StringParser.
      *
-     * @return the Term generated from the arguments
      * @param argList the list of arguments
-     * @param memory Reference to the memory
+     * @param memory  Reference to the memory
+     * @return the Term generated from the arguments
      */
     public static Term make(ArrayList<Term> argList, Memory memory) {
         TreeSet<Term> set = new TreeSet<Term>(argList); // sort/merge arguments
@@ -98,7 +69,7 @@ public class Conjunction extends CompoundTerm {
      * Try to make a new Disjunction from a set of components. Called by the
      * public make methods.
      *
-     * @param set a set of Term as components
+     * @param set    a set of Term as components
      * @param memory Reference to the memory
      * @return the Term generated from the arguments
      */
@@ -115,13 +86,12 @@ public class Conjunction extends CompoundTerm {
         return (t != null) ? t : new Conjunction(argument);
     }
 
-    // overload this method by term type?
     /**
      * Try to make a new compound from two components. Called by the inference
      * rules.
      *
-     * @param term1 The first component
-     * @param term2 The second component
+     * @param term1  The first component
+     * @param term2  The second component
      * @param memory Reference to the memory
      * @return A compound generated or a term it reduced to
      */
@@ -144,5 +114,37 @@ public class Conjunction extends CompoundTerm {
             set.add((Term) term2.clone());
         }
         return make(set, memory);
+    }
+
+    /**
+     * Clone an object
+     *
+     * @return A new object
+     */
+    @Override
+    public Object clone() {
+        return new Conjunction(name, (ArrayList<Term>) cloneList(components), isConstant(), complexity);
+    }
+
+    /**
+     * Get the operator of the term.
+     *
+     * @return the operator of the term
+     */
+    @Override
+    public String operator() {
+        return Symbols.CONJUNCTION_OPERATOR;
+    }
+
+    // overload this method by term type?
+
+    /**
+     * Check if the compound is commutative.
+     *
+     * @return true for commutative
+     */
+    @Override
+    public boolean isCommutative() {
+        return true;
     }
 }

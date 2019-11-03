@@ -4,6 +4,7 @@
  */
 
 package nars.io;
+
 import java.util.ArrayList;
 
 /**
@@ -12,6 +13,8 @@ import java.util.ArrayList;
 public interface OutputChannel {
     public void nextOutput(ArrayList<String> output);
 
-    /** Update timer and its display */
+    /**
+     * Update timer and its display
+     */
     public void tickTimer();
 }

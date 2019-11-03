@@ -18,13 +18,13 @@
  */
 package nars.main_nogui;
 
+import nars.io.ExperienceReader;
+import nars.io.ExperienceWriter;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.PrintStream;
 import java.io.PrintWriter;
-
-import nars.io.ExperienceReader;
-import nars.io.ExperienceWriter;
 
 ;
 
@@ -39,16 +39,20 @@ import nars.io.ExperienceWriter;
 public class NARSBatch {
 
     /**
+     * Flag to distinguish the two running modes of the project.
+     */
+    private static boolean standAlone = false;
+    /**
      * The reasoner
      */
     ReasonerBatch reasoner;
     private boolean logging;
     private PrintStream out = System.out;
     private boolean dumpLastState = true;
-    /**
-     * Flag to distinguish the two running modes of the project.
-     */
-    private static boolean standAlone = false;
+
+    public NARSBatch() {
+        init();
+    }
 
     /**
      * The entry point of the standalone application.
@@ -70,8 +74,17 @@ public class NARSBatch {
         }
     }
 
-    public NARSBatch() {
-        init();
+    /**
+     * Whether the project running as an application.
+     *
+     * @return true for application; false for applet.
+     */
+    public static boolean isStandAlone() {
+        return standAlone;
+    }
+
+    public static void setStandAlone(boolean standAlone) {
+        NARSBatch.standAlone = standAlone;
     }
 
     /**
@@ -152,18 +165,5 @@ public class NARSBatch {
 
     public ReasonerBatch getReasoner() {
         return reasoner;
-    }
-
-    /**
-     * Whether the project running as an application.
-     *
-     * @return true for application; false for applet.
-     */
-    public static boolean isStandAlone() {
-        return standAlone;
-    }
-
-    public static void setStandAlone(boolean standAlone) {
-        NARSBatch.standAlone = standAlone;
     }
 }

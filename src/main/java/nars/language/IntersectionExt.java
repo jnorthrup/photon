@@ -20,10 +20,11 @@
  */
 package nars.language;
 
-import java.util.*;
-
 import nars.io.Symbols;
 import nars.storage.Memory;
+
+import java.util.ArrayList;
+import java.util.TreeSet;
 
 /**
  * A compound term whose extension is the intersection of the extensions of its components
@@ -32,7 +33,8 @@ public class IntersectionExt extends CompoundTerm {
 
     /**
      * Constructor with partial values, called by make
-     * @param n The name of the term
+     *
+     * @param n   The name of the term
      * @param arg The component list of the term
      */
     private IntersectionExt(ArrayList<Term> arg) {
@@ -41,27 +43,21 @@ public class IntersectionExt extends CompoundTerm {
 
     /**
      * Constructor with full values, called by clone
-     * @param n The name of the term
-     * @param cs Component list
+     *
+     * @param n    The name of the term
+     * @param cs   Component list
      * @param open Open variable list
-     * @param i Syntactic complexity of the compound
+     * @param i    Syntactic complexity of the compound
      */
     private IntersectionExt(String n, ArrayList<Term> cs, boolean con, short i) {
         super(n, cs, con, i);
     }
 
     /**
-     * Clone an object
-     * @return A new object, to be casted into a IntersectionExt
-     */
-    public Object clone() {
-        return new IntersectionExt(name, (ArrayList<Term>) cloneList(components), isConstant(), complexity);
-    }
-
-    /**
      * Try to make a new compound from two components. Called by the inference rules.
-     * @param term1 The first compoment
-     * @param term2 The first compoment
+     *
+     * @param term1  The first compoment
+     * @param term2  The first compoment
      * @param memory Reference to the memory
      * @return A compound generated or a term it reduced to
      */
@@ -98,9 +94,10 @@ public class IntersectionExt extends CompoundTerm {
 
     /**
      * Try to make a new IntersectionExt. Called by StringParser.
-     * @return the Term generated from the arguments
+     *
      * @param argList The list of components
-     * @param memory Reference to the memory
+     * @param memory  Reference to the memory
+     * @return the Term generated from the arguments
      */
     public static Term make(ArrayList<Term> argList, Memory memory) {
         TreeSet<Term> set = new TreeSet<Term>(argList); // sort/merge arguments
@@ -109,7 +106,8 @@ public class IntersectionExt extends CompoundTerm {
 
     /**
      * Try to make a new compound from a set of components. Called by the public make methods.
-     * @param set a set of Term as compoments
+     *
+     * @param set    a set of Term as compoments
      * @param memory Reference to the memory
      * @return the Term generated from the arguments
      */
@@ -124,7 +122,17 @@ public class IntersectionExt extends CompoundTerm {
     }
 
     /**
+     * Clone an object
+     *
+     * @return A new object, to be casted into a IntersectionExt
+     */
+    public Object clone() {
+        return new IntersectionExt(name, (ArrayList<Term>) cloneList(components), isConstant(), complexity);
+    }
+
+    /**
      * Get the operator of the term.
+     *
      * @return the operator of the term
      */
     public String operator() {
@@ -133,6 +141,7 @@ public class IntersectionExt extends CompoundTerm {
 
     /**
      * Check if the compound is communitative.
+     *
      * @return true for communitative
      */
     @Override

@@ -25,13 +25,18 @@ package nars.storage;
  */
 class Distributor {
 
-    /** Shuffled sequence of index numbers */
+    /**
+     * Shuffled sequence of index numbers
+     */
     private int order[];
-    /** Capacity of the array */
+    /**
+     * Capacity of the array
+     */
     private int capacity;
 
     /**
      * For any number N < range, there is N+1 copies of it in the array, distributed as evenly as possible
+     *
      * @param range Range of valid numbers
      */
     public Distributor(int range) {
@@ -54,6 +59,7 @@ class Distributor {
 
     /**
      * Get the next number according to the given index
+     *
      * @param index The current index
      * @return the random value
      */
@@ -63,6 +69,7 @@ class Distributor {
 
     /**
      * Advance the index
+     *
      * @param index The current index
      * @return the next index
      */

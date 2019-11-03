@@ -20,11 +20,14 @@
  */
 package nars.inference;
 
-import java.util.*;
-
-import nars.entity.*;
+import nars.entity.BudgetValue;
+import nars.entity.Sentence;
+import nars.entity.Task;
+import nars.entity.TruthValue;
 import nars.language.*;
 import nars.storage.Memory;
+
+import java.util.HashMap;
 
 /**
  * Compound term composition and decomposition rules, with two premises.
@@ -35,14 +38,15 @@ import nars.storage.Memory;
 public final class CompositionalRules {
 
     /* -------------------- intersections and differences -------------------- */
+
     /**
      * {<S ==> M>, <P ==> M>} |- {<(S|P) ==> M>, <(S&P) ==> M>, <(S-P) ==> M>,
      * <(P-S) ==> M>}
      *
      * @param taskSentence The first premise
-     * @param belief The second premise
-     * @param index The location of the shared term
-     * @param memory Reference to the memory
+     * @param belief       The second premise
+     * @param index        The location of the shared term
+     * @param memory       Reference to the memory
      */
     static void composeCompound(Statement taskContent, Statement beliefContent, int index, Memory memory) {
         if ((!memory.currentTask.getSentence().isJudgment()) || (taskContent.getClass() != beliefContent.getClass())) {
@@ -115,11 +119,11 @@ public final class CompositionalRules {
     /**
      * Finish composing implication term
      *
-     * @param premise1 Type of the contentInd
-     * @param subject Subject of contentInd
+     * @param premise1  Type of the contentInd
+     * @param subject   Subject of contentInd
      * @param predicate Predicate of contentInd
-     * @param truth TruthValue of the contentInd
-     * @param memory Reference to the memory
+     * @param truth     TruthValue of the contentInd
+     * @param memory    Reference to the memory
      */
     private static void processComposed(Statement statement, Term subject, Term predicate, TruthValue truth, Memory memory) {
         if ((subject == null) || (predicate == null)) {
@@ -136,13 +140,13 @@ public final class CompositionalRules {
     /**
      * {<(S|P) ==> M>, <P ==> M>} |- <S ==> M>
      *
-     * @param implication The implication term to be decomposed
+     * @param implication     The implication term to be decomposed
      * @param componentCommon The part of the implication to be removed
-     * @param term1 The other term in the contentInd
-     * @param index The location of the shared term: 0 for subject, 1 for
-     * predicate
-     * @param compoundTask Whether the implication comes from the task
-     * @param memory Reference to the memory
+     * @param term1           The other term in the contentInd
+     * @param index           The location of the shared term: 0 for subject, 1 for
+     *                        predicate
+     * @param compoundTask    Whether the implication comes from the task
+     * @param memory          Reference to the memory
      */
     private static void decomposeCompound(CompoundTerm compound, Term component, Term term1, int index, boolean compoundTask, Memory memory) {
         if (compound instanceof Statement) {
@@ -233,10 +237,10 @@ public final class CompositionalRules {
     /**
      * {(||, S, P), P} |- S {(&&, S, P), P} |- S
      *
-     * @param implication The implication term to be decomposed
+     * @param implication     The implication term to be decomposed
      * @param componentCommon The part of the implication to be removed
-     * @param compoundTask Whether the implication comes from the task
-     * @param memory Reference to the memory
+     * @param compoundTask    Whether the implication comes from the task
+     * @param memory          Reference to the memory
      */
     static void decomposeStatement(CompoundTerm compound, Term component, boolean compoundTask, Memory memory) {
         Task task = memory.currentTask;
@@ -274,14 +278,15 @@ public final class CompositionalRules {
     }
 
     /* --------------- rules used for variable introduction --------------- */
+
     /**
      * Introduce a dependent variable in an outer-layer conjunction
      *
-     * @param taskContent The first premise <M --> S>
+     * @param taskContent   The first premise <M --> S>
      * @param beliefContent The second premise <M --> P>
-     * @param index The location of the shared term: 0 for subject, 1 for
-     * predicate
-     * @param memory Reference to the memory
+     * @param index         The location of the shared term: 0 for subject, 1 for
+     *                      predicate
+     * @param memory        Reference to the memory
      */
     private static void introVarOuter(Statement taskContent, Statement beliefContent, int index, Memory memory) {
         TruthValue truthT = memory.currentTask.getSentence().getTruth();
@@ -361,13 +366,13 @@ public final class CompositionalRules {
      * {<M --> S>, <C ==> <M --> P>>} |- <(&&, <#x --> S>, C) ==> <#x --> P>>
      * {<M --> S>, (&&, C, <M --> P>)} |- (&&, C, <<#x --> S> ==> <#x --> P>>)
      *
-     * @param taskContent The first premise directly used in internal induction,
-     * <M --> S>
+     * @param taskContent   The first premise directly used in internal induction,
+     *                      <M --> S>
      * @param beliefContent The componentCommon to be used as a premise in
-     * internal induction, <M --> P>
-     * @param oldCompound The whole contentInd of the first premise, Implication
-     * or Conjunction
-     * @param memory Reference to the memory
+     *                      internal induction, <M --> P>
+     * @param oldCompound   The whole contentInd of the first premise, Implication
+     *                      or Conjunction
+     * @param memory        Reference to the memory
      */
     static void introVarInner(Statement premise1, Statement premise2, CompoundTerm oldCompound, Memory memory) {
         Task task = memory.currentTask;

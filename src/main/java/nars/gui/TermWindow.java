@@ -20,26 +20,37 @@
  */
 package nars.gui;
 
-import java.awt.*;
-import java.awt.event.*;
-
 import nars.entity.Concept;
 import nars.entity.EntityObserver;
-//import nars.io.StringParser;
 import nars.storage.Memory;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+
+//import nars.io.StringParser;
 
 /**
  * Window accept a Term, then display the content of the corresponding Concept
  */
 public class TermWindow extends NarsFrame implements ActionListener {
 
-    /** Display label */
+    /**
+     * Display label
+     */
     private Label termLabel;
-    /** Input field for term name */
+    /**
+     * Input field for term name
+     */
     private TextField termField;
-    /** Control buttons */
+    /**
+     * Control buttons
+     */
     private Button playButton, hideButton;
-    /** Reference to the memory */
+    /**
+     * Reference to the memory
+     */
     private Memory memory;
 
     /**
@@ -87,6 +98,7 @@ public class TermWindow extends NarsFrame implements ActionListener {
 
     /**
      * Handling button click
+     *
      * @param e The ActionEvent
      */
     public void actionPerformed(ActionEvent e) {
@@ -95,7 +107,7 @@ public class TermWindow extends NarsFrame implements ActionListener {
             Concept concept = memory.nameToConcept(termField.getText().trim());
             if (concept != null) {
                 EntityObserver entityObserver = new ConceptWindow(concept);
-				concept.startPlay(entityObserver , true);
+                concept.startPlay(entityObserver, true);
             }
         } else if (b == hideButton) {
             close();

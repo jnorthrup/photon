@@ -29,29 +29,38 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class ParameterWindow extends NarsFrame implements ActionListener, AdjustmentListener {
 
-    /** Display label */
-    private Label valueLabel;
-    /** Control buttons */
-    private Button hideButton, undoButton, defaultButton;
-    /** Adjusting bar */
-    private Scrollbar valueBar;
-    /** parameter values */
-    private int defaultValue, previousValue; // , currentValue;
     AtomicInteger currentValue;
-    
+    /**
+     * Display label
+     */
+    private Label valueLabel;
+    /**
+     * Control buttons
+     */
+    private Button hideButton, undoButton, defaultButton;
+    /**
+     * Adjusting bar
+     */
+    private Scrollbar valueBar;
+    /**
+     * parameter values
+     */
+    private int defaultValue, previousValue; // , currentValue;
+
     /**
      * Constructor
+     *
      * @param title Parameter name
-     * @param dft The default value of the parameter
-     * @param value  
+     * @param dft   The default value of the parameter
+     * @param value
      */
-    ParameterWindow(String title, int dft, AtomicInteger currentValue ) {
+    ParameterWindow(String title, int dft, AtomicInteger currentValue) {
         super(title);
         defaultValue = dft;
         this.currentValue = currentValue;
-        
+
         previousValue = dft;
-        currentValue.set( dft );
+        currentValue.set(dft);
         setLayout(new GridLayout(3, 3, 8, 4));
         setBackground(SINGLE_WINDOW_COLOR);
         Label sp1 = new Label("");
@@ -82,6 +91,7 @@ public class ParameterWindow extends NarsFrame implements ActionListener, Adjust
 
     /**
      * Get the value of the parameter
+     *
      * @return The current value
      */
     public int value() {
@@ -90,17 +100,18 @@ public class ParameterWindow extends NarsFrame implements ActionListener, Adjust
 
     /**
      * Handling button click
+     *
      * @param e The ActionEvent
      */
     public void actionPerformed(ActionEvent e) {
         Object s = e.getSource();
         if (s == defaultButton) {
-            currentValue.set( defaultValue );
-            valueBar.setValue(currentValue.get() );
+            currentValue.set(defaultValue);
+            valueBar.setValue(currentValue.get());
             valueLabel.setText(String.valueOf(currentValue));
         } else if (s == undoButton) {
-            currentValue.set( previousValue );
-            valueBar.setValue(currentValue.get() );
+            currentValue.set(previousValue);
+            valueBar.setValue(currentValue.get());
             valueLabel.setText(String.valueOf(currentValue));
         } else if (s == hideButton) {
             close();
@@ -119,6 +130,7 @@ public class ParameterWindow extends NarsFrame implements ActionListener, Adjust
 
     /**
      * Handling scrollbar movement
+     *
      * @param e The AdjustmentEvent
      */
     public void adjustmentValueChanged(AdjustmentEvent e) {
@@ -126,7 +138,7 @@ public class ParameterWindow extends NarsFrame implements ActionListener, Adjust
             int v = valueBar.getValue();
             valueLabel.setText(String.valueOf(v));
             valueBar.setValue(v);
-            currentValue.set( v );
+            currentValue.set(v);
         }
     }
 }

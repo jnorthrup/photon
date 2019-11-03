@@ -20,12 +20,12 @@
  */
 package nars.storage;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import nars.entity.Item;
 import nars.inference.BudgetFunctions;
 import nars.main_nogui.Parameters;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * A Bag is a storage with a constant capacity and maintains an internal
@@ -64,6 +64,14 @@ public abstract class Bag<E extends Item> {
      */
     private static final Distributor DISTRIBUTOR = new Distributor(TOTAL_LEVEL); //
     /**
+     * defined in different bags
+     */
+    private final int capacity;
+    /**
+     * reference to memory
+     */
+    protected Memory memory;
+    /**
      * mapping from key to item
      */
     private HashMap<String, E> nameTable;
@@ -71,10 +79,6 @@ public abstract class Bag<E extends Item> {
      * array of lists of items, for items on different level
      */
     private ArrayList<ArrayList<E>> itemTable;
-    /**
-     * defined in different bags
-     */
-    private final int capacity;
     /**
      * current sum of occupied level
      */
@@ -91,11 +95,7 @@ public abstract class Bag<E extends Item> {
      * maximum number of items to be taken out at current level
      */
     private int currentCounter;
-    /**
-     * reference to memory
-     */
-    protected Memory memory;
-	private BagObserver<E> bagObserver = new NullBagObserver<E>();
+    private BagObserver<E> bagObserver = new NullBagObserver<E>();
     /**
      * The display level; initialized at lowest
      */
@@ -311,7 +311,7 @@ public abstract class Bag<E extends Item> {
         itemTable.get(inLevel).add(newItem);        // FIFO
         mass += (inLevel + 1);                  // increase total mass
         refresh();                              // refresh the window
-        return oldItem;		// TODO return null is a bad smell
+        return oldItem;        // TODO return null is a bad smell
     }
 
     /**
@@ -345,9 +345,9 @@ public abstract class Bag<E extends Item> {
      * {@link nars.gui.BagWindow} implements interface {@link BagObserver};
      *
      * @param bagObserver BagObserver to set
-     * @param title The title of the window
+     * @param title       The title of the window
      */
-	public void addBagObserver( BagObserver<E> bagObserver, String title ) {
+    public void addBagObserver(BagObserver<E> bagObserver, String title) {
         this.bagObserver = bagObserver;
         bagObserver.post(toString());
         bagObserver.setTitle(title);
@@ -410,7 +410,9 @@ public abstract class Bag<E extends Item> {
         return buf.toString();
     }
 
-    /** show item Table Sizes */
+    /**
+     * show item Table Sizes
+     */
     String showSizes() {
         StringBuilder buf = new StringBuilder(" ");
         int levels = 0;
@@ -423,7 +425,9 @@ public abstract class Bag<E extends Item> {
         return "Levels: " + Integer.toString(levels) + ", sizes: " + buf;
     }
 
-    /** set Show Level */
+    /**
+     * set Show Level
+     */
     public void setShowLevel(int showLevel) {
         this.showLevel = showLevel;
     }

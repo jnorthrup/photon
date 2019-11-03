@@ -27,7 +27,7 @@ import org.jetbrains.annotations.Nullable;
 /**
  * A link between a compound term and a component term
  * <p>
- * A TermLink links the current Term to a target Term, which is 
+ * A TermLink links the current Term to a target Term, which is
  * either a component of, or compound made from, the current term.
  * <p>
  * Neither of the two terms contain variable shared with other terms.
@@ -37,36 +37,59 @@ import org.jetbrains.annotations.Nullable;
  * This class is mainly used in inference.RuleTable to dispatch premises to inference rules
  */
 public class TermLink extends Item {
-    /** At C, point to C; TaskLink only */
+    /**
+     * At C, point to C; TaskLink only
+     */
     public static final short SELF = 0;
-    /** At (&&, A, C), point to C */
+    /**
+     * At (&&, A, C), point to C
+     */
     public static final short COMPONENT = 1;
-    /** At C, point to (&&, A, C) */
+    /**
+     * At C, point to (&&, A, C)
+     */
     public static final short COMPOUND = 2;
-    /** At <C --> A>, point to C */
+    /**
+     * At <C --> A>, point to C
+     */
     public static final short COMPONENT_STATEMENT = 3;
-    /** At C, point to <C --> A> */
+    /**
+     * At C, point to <C --> A>
+     */
     public static final short COMPOUND_STATEMENT = 4;
-    /** At <(&&, C, B) ==> A>, point to C */
+    /**
+     * At <(&&, C, B) ==> A>, point to C
+     */
     public static final short COMPONENT_CONDITION = 5;
-    /** At C, point to <(&&, C, B) ==> A> */
+    /**
+     * At C, point to <(&&, C, B) ==> A>
+     */
     public static final short COMPOUND_CONDITION = 6;
-    /** At C, point to <(*, C, B) --> A>; TaskLink only */
+    /**
+     * At C, point to <(*, C, B) --> A>; TaskLink only
+     */
     public static final short TRANSFORM = 8;
-    /** The linked Term */
-    private Term target;
-    /** The type of link, one of the above */
+    /**
+     * The type of link, one of the above
+     */
     protected short type;
-    /** The index of the component in the component list of the compound, may have up to 4 levels */
+    /**
+     * The index of the component in the component list of the compound, may have up to 4 levels
+     */
     @Nullable
     protected short[] index;
+    /**
+     * The linked Term
+     */
+    private Term target;
 
     /**
      * Constructor for TermLink template
      * <p>
      * called in CompoundTerm.prepareComponentLinks only
-     * @param t Target Term
-     * @param p Link type
+     *
+     * @param t       Target Term
+     * @param p       Link type
      * @param indices Component indices in compound, may be 1 to 4
      */
     public TermLink(Term t, short p, int... indices) {
@@ -87,7 +110,9 @@ public class TermLink extends Item {
         }
     }
 
-    /** called from TaskLink
+    /**
+     * called from TaskLink
+     *
      * @param s The key of the TaskLink
      * @param v The budget value of the TaskLink
      */
@@ -99,9 +124,10 @@ public class TermLink extends Item {
      * Constructor to make actual TermLink from a template
      * <p>
      * called in Concept.buildTermLinks only
-     * @param t Target Term
+     *
+     * @param t        Target Term
      * @param template TermLink template previously prepared
-     * @param v Budget value of the link
+     * @param v        Budget value of the link
      */
     public TermLink(Term t, TermLink template, BudgetValue v) {
         super(t.getName(), v);
@@ -140,6 +166,7 @@ public class TermLink extends Item {
 
     /**
      * Get the target of the link
+     *
      * @return The Term pointed by the link
      */
     public Term getTarget() {
@@ -148,6 +175,7 @@ public class TermLink extends Item {
 
     /**
      * Get the link type
+     *
      * @return Type of the link
      */
     public short getType() {
@@ -156,6 +184,7 @@ public class TermLink extends Item {
 
     /**
      * Get all the indices
+     *
      * @return The index array
      */
     public short[] getIndices() {
@@ -164,6 +193,7 @@ public class TermLink extends Item {
 
     /**
      * Get one index by level
+     *
      * @param i The index level
      * @return The index value
      */

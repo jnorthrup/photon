@@ -20,19 +20,21 @@
  */
 package nars.language;
 
-import java.util.*;
-
 import nars.io.Symbols;
 import nars.storage.Memory;
 
-/** 
+import java.util.ArrayList;
+import java.util.TreeSet;
+
+/**
  * A disjunction of Statements.
  */
 public class Disjunction extends CompoundTerm {
 
     /**
      * Constructor with partial values, called by make
-     * @param n The name of the term
+     *
+     * @param n   The name of the term
      * @param arg The component list of the term
      */
     private Disjunction(ArrayList<Term> arg) {
@@ -41,28 +43,21 @@ public class Disjunction extends CompoundTerm {
 
     /**
      * Constructor with full values, called by clone
-     * @param n The name of the term
-     * @param cs Component list
+     *
+     * @param n    The name of the term
+     * @param cs   Component list
      * @param open Open variable list
-     * @param i Syntactic complexity of the compound
+     * @param i    Syntactic complexity of the compound
      */
     private Disjunction(String n, ArrayList<Term> cs, boolean con, short i) {
         super(n, cs, con, i);
     }
 
     /**
-     * Clone an object
-     * @return A new object
-     */
-    @Override
-    public Object clone() {
-        return new Disjunction(name, (ArrayList<Term>) cloneList(components), isConstant(), complexity);
-    }
-
-    /**
      * Try to make a new Disjunction from two components. Called by the inference rules.
-     * @param term1 The first component
-     * @param term2 The first component
+     *
+     * @param term1  The first component
+     * @param term2  The first component
      * @param memory Reference to the memory
      * @return A Disjunction generated or a Term it reduced to
      */
@@ -89,8 +84,9 @@ public class Disjunction extends CompoundTerm {
 
     /**
      * Try to make a new IntersectionExt. Called by StringParser.
+     *
      * @param argList a list of Term as components
-     * @param memory Reference to the memory
+     * @param memory  Reference to the memory
      * @return the Term generated from the arguments
      */
     public static Term make(ArrayList<Term> argList, Memory memory) {
@@ -100,7 +96,8 @@ public class Disjunction extends CompoundTerm {
 
     /**
      * Try to make a new Disjunction from a set of components. Called by the public make methods.
-     * @param set a set of Term as components
+     *
+     * @param set    a set of Term as components
      * @param memory Reference to the memory
      * @return the Term generated from the arguments
      */
@@ -115,7 +112,18 @@ public class Disjunction extends CompoundTerm {
     }
 
     /**
+     * Clone an object
+     *
+     * @return A new object
+     */
+    @Override
+    public Object clone() {
+        return new Disjunction(name, (ArrayList<Term>) cloneList(components), isConstant(), complexity);
+    }
+
+    /**
      * Get the operator of the term.
+     *
      * @return the operator of the term
      */
     @Override
@@ -125,6 +133,7 @@ public class Disjunction extends CompoundTerm {
 
     /**
      * Disjunction is commutative.
+     *
      * @return true for commutative
      */
     @Override

@@ -73,8 +73,8 @@ public class Term implements Cloneable, Comparable<Term> {
      * Equal terms have identical name, though not necessarily the same
      * reference.
      *
-     * @return Whether the two Terms are equal
      * @param that The Term to be compared with the current Term
+     * @return Whether the two Terms are equal
      */
     @Override
     public boolean equals(Object that) {
@@ -117,6 +117,7 @@ public class Term implements Cloneable, Comparable<Term> {
 
     /**
      * Orders among terms: variable < atomic < compound
+     *
      * @param that The Term to be compared with the current Term
      * @return The same as compareTo as defined on Strings
      */

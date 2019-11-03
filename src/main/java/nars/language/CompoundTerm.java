@@ -20,11 +20,13 @@
  */
 package nars.language;
 
-import java.util.*;
-
-import nars.entity.*;
-import nars.storage.*;
+import nars.entity.TermLink;
 import nars.io.Symbols;
+import nars.storage.Memory;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.TreeSet;
 
 /**
  * A CompoundTerm is a Term with internal (syntactic) structure
@@ -50,26 +52,11 @@ public abstract class CompoundTerm extends Term {
     protected boolean isConstant = true;
 
     /* ----- abstract methods to be implemented in subclasses ----- */
-    /**
-     * Abstract method to get the operator of the compound
-     *
-     * @return The operator in a String
-     */
-    public abstract String operator();
 
-    /**
-     * Abstract clone method
-     *
-     * @return A clone of the compound term
-     */
-    @Override
-    public abstract Object clone();
-
-    /* ----- object builders, called from subclasses ----- */
     /**
      * Constructor called from subclasses constructors to clone the fields
      *
-     * @param name Name
+     * @param name       Name
      * @param components Component list
      * @param isConstant Whether the term refers to a concept
      * @param complexity Complexity of the compound term
@@ -87,6 +74,8 @@ public abstract class CompoundTerm extends Term {
     protected CompoundTerm() {
     }
 
+    /* ----- object builders, called from subclasses ----- */
+
     /**
      * Constructor called from subclasses constructors to initialize the fields
      *
@@ -102,7 +91,7 @@ public abstract class CompoundTerm extends Term {
     /**
      * Constructor called from subclasses constructors to initialize the fields
      *
-     * @param name Name of the compound
+     * @param name       Name of the compound
      * @param components Component list
      */
     protected CompoundTerm(String name, ArrayList<Term> components) {
@@ -113,55 +102,11 @@ public abstract class CompoundTerm extends Term {
     }
 
     /**
-     * Change the oldName of a CompoundTerm, called after variable substitution
-     *
-     * @param s The new oldName
-     */
-    protected void setName(String s) {
-        name = s;
-    }
-
-    /**
-     * The complexity of the term is the sum of those of the components plus 1
-     */
-    private void calcComplexity() {
-        complexity = 1;
-        for (Term t : components) {
-            complexity += t.getComplexity();
-        }
-    }
-
-    /**
-     * Orders among terms: variable < atomic < compound @p
-     *
-     *
-     * aram that The Term to be compared with the current Term @return The same
-     * as compareTo as defined on Strings
-     */
-    @Override
-    public int compareTo(Term that) {
-        if (that instanceof CompoundTerm) {
-            CompoundTerm t = (CompoundTerm) that;
-            int minSize = Math.min(size(), t.size());
-            for (int i = 0; i < minSize; i++) {
-                int diff = componentAt(i).compareTo(t.componentAt(i));
-                if (diff != 0) {
-                    return diff;
-                }
-            }
-            return size() - t.size();
-        } else {
-            return 1;
-        }
-    }
-
-    /* static methods making new compounds, which may return null */
-    /**
      * Try to make a compound term from a template and a list of components
      *
-     * @param compound The template
+     * @param compound   The template
      * @param components The components
-     * @param memory Reference to the memory
+     * @param memory     Reference to the memory
      * @return A compound term or null
      */
     public static Term make(CompoundTerm compound, ArrayList<Term> components, Memory memory) {
@@ -179,8 +124,8 @@ public abstract class CompoundTerm extends Term {
      * <p>
      * Called from StringParser
      *
-     * @param op Term operator
-     * @param arg Component list
+     * @param op     Term operator
+     * @param arg    Component list
      * @param memory Reference to the memory
      * @return A compound term or null
      */
@@ -231,8 +176,8 @@ public abstract class CompoundTerm extends Term {
     /**
      * Check CompoundTerm operator symbol
      *
-     * @return if the given String is an operator symbol
      * @param s The String to be checked
+     * @return if the given String is an operator symbol
      */
     public static boolean isOperator(String s) {
         if (s.length() == 1) {
@@ -266,21 +211,10 @@ public abstract class CompoundTerm extends Term {
         return list;
     }
 
-    /* ----- utilities for oldName ----- */
-    /**
-     * default method to make the oldName of the current term from existing
-     * fields
-     *
-     * @return the oldName of the term
-     */
-    protected String makeName() {
-        return makeCompoundName(operator(), components);
-    }
-
     /**
      * default method to make the oldName of a compound term from given fields
      *
-     * @param op the term operator
+     * @param op  the term operator
      * @param arg the list of components
      * @return the oldName of the term
      */
@@ -299,12 +233,14 @@ public abstract class CompoundTerm extends Term {
         return name.toString();
     }
 
+    /* static methods making new compounds, which may return null */
+
     /**
      * make the oldName of an ExtensionSet or IntensionSet
      *
      * @param opener the set opener
      * @param closer the set closer
-     * @param arg the list of components
+     * @param arg    the list of components
      * @return the oldName of the term
      */
     protected static String makeSetName(char opener, ArrayList<Term> arg, char closer) {
@@ -322,8 +258,8 @@ public abstract class CompoundTerm extends Term {
     /**
      * default method to make the oldName of an image term from given fields
      *
-     * @param op the term operator
-     * @param arg the list of components
+     * @param op            the term operator
+     * @param arg           the list of components
      * @param relationIndex the location of the place holder
      * @return the oldName of the term
      */
@@ -345,7 +281,163 @@ public abstract class CompoundTerm extends Term {
         return name.toString();
     }
 
+    /**
+     * Deep clone an array list of terms
+     *
+     * @param original The original component list
+     * @return an identical and separate copy of the list
+     */
+    public static ArrayList<Term> cloneList(ArrayList<Term> original) {
+        if (original == null) {
+            return null;
+        }
+        ArrayList<Term> arr = new ArrayList<Term>(original.size());
+        for (int i = 0; i < original.size(); i++) {
+            arr.add((Term) ((Term) original.get(i)).clone());
+        }
+        return arr;
+    }
+
+    /**
+     * Try to add a component into a compound
+     *
+     * @param t1     The compound
+     * @param t2     The component
+     * @param memory Reference to the memory
+     * @return The new compound
+     */
+    public static Term addComponents(CompoundTerm t1, Term t2, Memory memory) {
+        if (t2 == null) {
+            return t1;
+        }
+        boolean success;
+        ArrayList<Term> list = t1.cloneComponents();
+        if (t1.getClass() == t2.getClass()) {
+            success = list.addAll(((CompoundTerm) t2).getComponents());
+        } else {
+            success = list.add(t2);
+        }
+        return (success ? make(t1, list, memory) : null);
+    }
+
+    /* ----- utilities for oldName ----- */
+
+    /**
+     * Try to remove a component from a compound
+     *
+     * @param t1     The compound
+     * @param t2     The component
+     * @param memory Reference to the memory
+     * @return The new compound
+     */
+    public static Term reduceComponents(CompoundTerm t1, Term t2, Memory memory) {
+        boolean success;
+        ArrayList<Term> list = t1.cloneComponents();
+        if (t1.getClass() == t2.getClass()) {
+            success = list.removeAll(((CompoundTerm) t2).getComponents());
+        } else {
+            success = list.remove(t2);
+        }
+        return (success ? make(t1, list, memory) : null);
+    }
+
+    /**
+     * Try to replace a component in a compound at a given index by another one
+     *
+     * @param compound The compound
+     * @param index    The location of replacement
+     * @param t        The new component
+     * @param memory   Reference to the memory
+     * @return The new compound
+     */
+    public static Term setComponent(CompoundTerm compound, int index, Term t, Memory memory) {
+        ArrayList<Term> list = compound.cloneComponents();
+        list.remove(index);
+        if (t != null) {
+            if (compound.getClass() != t.getClass()) {
+                list.add(index, t);
+            } else {
+                ArrayList<Term> list2 = ((CompoundTerm) t).cloneComponents();
+                for (int i = 0; i < list2.size(); i++) {
+                    list.add(index + i, list2.get(i));
+                }
+            }
+        }
+        return make(compound, list, memory);
+    }
+
+    /**
+     * Abstract method to get the operator of the compound
+     *
+     * @return The operator in a String
+     */
+    public abstract String operator();
+
+    /**
+     * Abstract clone method
+     *
+     * @return A clone of the compound term
+     */
+    @Override
+    public abstract Object clone();
+
     /* ----- utilities for other fields ----- */
+
+    /**
+     * Change the oldName of a CompoundTerm, called after variable substitution
+     *
+     * @param s The new oldName
+     */
+    protected void setName(String s) {
+        name = s;
+    }
+
+    /**
+     * The complexity of the term is the sum of those of the components plus 1
+     */
+    private void calcComplexity() {
+        complexity = 1;
+        for (Term t : components) {
+            complexity += t.getComplexity();
+        }
+    }
+
+    /**
+     * Orders among terms: variable < atomic < compound @p
+     * <p>
+     * <p>
+     * aram that The Term to be compared with the current Term @return The same
+     * as compareTo as defined on Strings
+     */
+    @Override
+    public int compareTo(Term that) {
+        if (that instanceof CompoundTerm) {
+            CompoundTerm t = (CompoundTerm) that;
+            int minSize = Math.min(size(), t.size());
+            for (int i = 0; i < minSize; i++) {
+                int diff = componentAt(i).compareTo(t.componentAt(i));
+                if (diff != 0) {
+                    return diff;
+                }
+            }
+            return size() - t.size();
+        } else {
+            return 1;
+        }
+    }
+
+    /**
+     * default method to make the oldName of the current term from existing
+     * fields
+     *
+     * @return the oldName of the term
+     */
+    protected String makeName() {
+        return makeCompoundName(operator(), components);
+    }
+
+    /* ----- extend Collection methods to component list ----- */
+
     /**
      * report the term's syntactic complexity
      *
@@ -389,7 +481,6 @@ public abstract class CompoundTerm extends Term {
         return false;
     }
 
-    /* ----- extend Collection methods to component list ----- */
     /**
      * get the number of components
      *
@@ -425,23 +516,6 @@ public abstract class CompoundTerm extends Term {
      */
     public ArrayList<Term> cloneComponents() {
         return cloneList(components);
-    }
-
-    /**
-     * Deep clone an array list of terms
-     *
-     * @param original The original component list
-     * @return an identical and separate copy of the list
-     */
-    public static ArrayList<Term> cloneList(ArrayList<Term> original) {
-        if (original == null) {
-            return null;
-        }
-        ArrayList<Term> arr = new ArrayList<Term>(original.size());
-        for (int i = 0; i < original.size(); i++) {
-            arr.add((Term) ((Term) original.get(i)).clone());
-        }
-        return arr;
     }
 
     /**
@@ -485,73 +559,8 @@ public abstract class CompoundTerm extends Term {
         }
     }
 
-    /**
-     * Try to add a component into a compound
-     *
-     * @param t1 The compound
-     * @param t2 The component
-     * @param memory Reference to the memory
-     * @return The new compound
-     */
-    public static Term addComponents(CompoundTerm t1, Term t2, Memory memory) {
-        if (t2 == null) {
-            return t1;
-        }
-        boolean success;
-        ArrayList<Term> list = t1.cloneComponents();
-        if (t1.getClass() == t2.getClass()) {
-            success = list.addAll(((CompoundTerm) t2).getComponents());
-        } else {
-            success = list.add(t2);
-        }
-        return (success ? make(t1, list, memory) : null);
-    }
-
-    /**
-     * Try to remove a component from a compound
-     *
-     * @param t1 The compound
-     * @param t2 The component
-     * @param memory Reference to the memory
-     * @return The new compound
-     */
-    public static Term reduceComponents(CompoundTerm t1, Term t2, Memory memory) {
-        boolean success;
-        ArrayList<Term> list = t1.cloneComponents();
-        if (t1.getClass() == t2.getClass()) {
-            success = list.removeAll(((CompoundTerm) t2).getComponents());
-        } else {
-            success = list.remove(t2);
-        }
-        return (success ? make(t1, list, memory) : null);
-    }
-
-    /**
-     * Try to replace a component in a compound at a given index by another one
-     *
-     * @param compound The compound
-     * @param index The location of replacement
-     * @param t The new component
-     * @param memory Reference to the memory
-     * @return The new compound
-     */
-    public static Term setComponent(CompoundTerm compound, int index, Term t, Memory memory) {
-        ArrayList<Term> list = compound.cloneComponents();
-        list.remove(index);
-        if (t != null) {
-            if (compound.getClass() != t.getClass()) {
-                list.add(index, t);
-            } else {
-                ArrayList<Term> list2 = ((CompoundTerm) t).cloneComponents();
-                for (int i = 0; i < list2.size(); i++) {
-                    list.add(index + i, list2.get(i));
-                }
-            }
-        }
-        return make(compound, list, memory);
-    }
-
     /* ----- variable-related utilities ----- */
+
     /**
      * Whether this compound term contains any variable term
      *
@@ -628,6 +637,7 @@ public abstract class CompoundTerm extends Term {
     }
 
     /* ----- link CompoundTerm and its components ----- */
+
     /**
      * Build TermLink templates to constant components and subcomponents
      * <p>
@@ -649,8 +659,8 @@ public abstract class CompoundTerm extends Term {
      * <p>
      *
      * @param componentLinks The list of TermLink templates built so far
-     * @param type The type of TermLink to be built
-     * @param term The CompoundTerm for which the links are built
+     * @param type           The type of TermLink to be built
+     * @param term           The CompoundTerm for which the links are built
      */
     private void prepareComponentLinks(ArrayList<TermLink> componentLinks, short type, CompoundTerm term) {
         Term t1, t2, t3;                    // components at different levels

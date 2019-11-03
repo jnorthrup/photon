@@ -20,10 +20,10 @@
  */
 package nars.language;
 
-import java.util.ArrayList;
-
 import nars.io.Symbols;
 import nars.storage.Memory;
+
+import java.util.ArrayList;
 
 /**
  * A Statement about an Inheritance relation.
@@ -32,7 +32,8 @@ public class Inheritance extends Statement {
 
     /**
      * Constructor with partial values, called by make
-     * @param n The name of the term
+     *
+     * @param n   The name of the term
      * @param arg The component list of the term
      */
     private Inheritance(ArrayList<Term> arg) {
@@ -41,28 +42,22 @@ public class Inheritance extends Statement {
 
     /**
      * Constructor with full values, called by clone
-     * @param n The name of the term
-     * @param cs Component list
+     *
+     * @param n    The name of the term
+     * @param cs   Component list
      * @param open Open variable list
-     * @param i Syntactic complexity of the compound
+     * @param i    Syntactic complexity of the compound
      */
     private Inheritance(String n, ArrayList<Term> cs, boolean con, short i) {
         super(n, cs, con, i);
     }
 
     /**
-     * Clone an object
-     * @return A new object, to be casted into a SetExt
-     */
-    public Object clone() {
-        return new Inheritance(name, (ArrayList<Term>) cloneList(components), isConstant, complexity);
-    }
-
-    /**
      * Try to make a new compound from two components. Called by the inference rules.
-     * @param subject The first compoment
+     *
+     * @param subject   The first compoment
      * @param predicate The second compoment
-     * @param memory Reference to the memory
+     * @param memory    Reference to the memory
      * @return A compound generated or null
      */
     public static Inheritance make(Term subject, Term predicate, Memory memory) {
@@ -79,7 +74,17 @@ public class Inheritance extends Statement {
     }
 
     /**
+     * Clone an object
+     *
+     * @return A new object, to be casted into a SetExt
+     */
+    public Object clone() {
+        return new Inheritance(name, (ArrayList<Term>) cloneList(components), isConstant, complexity);
+    }
+
+    /**
      * Get the operator of the term.
+     *
      * @return the operator of the term
      */
     public String operator() {

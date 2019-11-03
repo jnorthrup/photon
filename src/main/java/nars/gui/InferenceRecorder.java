@@ -20,10 +20,12 @@
  */
 package nars.gui;
 
-import java.awt.FileDialog;
-import java.io.*;
-
 import nars.io.IInferenceRecorder;
+
+import java.awt.*;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  * Inference log, which record input/output of each inference step
@@ -31,36 +33,42 @@ import nars.io.IInferenceRecorder;
  */
 public class InferenceRecorder implements IInferenceRecorder {
 
-    /** the display window */
+    /**
+     * the display window
+     */
     private InferenceWindow window = new InferenceWindow(this);
-    /** whether to display */
+    /**
+     * whether to display
+     */
     private boolean isReporting = false;
-    /** the log file */
+    /**
+     * the log file
+     */
     @org.jetbrains.annotations.Nullable
     private PrintWriter logFile = null;
 
     @Override
-	public void init() {
+    public void init() {
         window.clear();
     }
 
     @Override
-	public void show() {
+    public void show() {
         window.setVisible(true);
     }
 
     @Override
-	public void play() {
+    public void play() {
         isReporting = true;
     }
 
     @Override
-	public void stop() {
+    public void stop() {
         isReporting = false;
     }
 
     @Override
-	public void append(String s) {
+    public void append(String s) {
         if (isReporting) {
             window.append(s);
         }
@@ -70,7 +78,7 @@ public class InferenceRecorder implements IInferenceRecorder {
     }
 
     @Override
-	public void openLogFile() {
+    public void openLogFile() {
         FileDialog dialog = new FileDialog((FileDialog) null, "Inference Log", FileDialog.SAVE);
         dialog.setVisible(true);
         String directoryName = dialog.getDirectory();
@@ -85,14 +93,14 @@ public class InferenceRecorder implements IInferenceRecorder {
     }
 
     @Override
-	public void closeLogFile() {
+    public void closeLogFile() {
         logFile.close();
         logFile = null;
         window.resetBackground();
     }
 
     @Override
-	public boolean isLogging() {
+    public boolean isLogging() {
         return (logFile != null);
     }
 }

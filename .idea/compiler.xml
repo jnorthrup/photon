@@ -17,10 +17,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="core" />
+        <module name="anars" />
         <module name="staging" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="anars" target="7" />
       <module name="core" target="1.5" />
       <module name="staging" target="7" />
     </bytecodeTargetLevel>

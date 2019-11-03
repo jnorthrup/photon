@@ -21,7 +21,10 @@
 package nars.gui;
 
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 /**
  * Pop-up message for the user to accept
@@ -33,7 +36,8 @@ public class MessageDialog extends Dialog implements ActionListener, WindowListe
 
     /**
      * Constructor
-     * @param parent The parent Frame
+     *
+     * @param parent  The parent Frame
      * @param message The text to be displayed
      */
     public MessageDialog(Frame parent, String message) {
@@ -58,6 +62,7 @@ public class MessageDialog extends Dialog implements ActionListener, WindowListe
 
     /**
      * Handling button click
+     *
      * @param e The ActionEvent
      */
     public void actionPerformed(ActionEvent e) {

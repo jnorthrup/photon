@@ -20,7 +20,8 @@
  */
 package nars.storage;
 
-import nars.entity.*;
+import nars.entity.TaskLink;
+import nars.entity.TermLink;
 import nars.main_nogui.Parameters;
 
 /**
@@ -28,15 +29,18 @@ import nars.main_nogui.Parameters;
  */
 public class TermLinkBag extends Bag<TermLink> {
 
-    /** Constructor
+    /**
+     * Constructor
+     *
      * @param memory The reference of memory
      */
-    public TermLinkBag (Memory memory) {
+    public TermLinkBag(Memory memory) {
         super(memory);
     }
 
     /**
      * Get the (constant) capacity of TermLinkBag
+     *
      * @return The capacity of TermLinkBag
      */
     protected int capacity() {
@@ -45,16 +49,18 @@ public class TermLinkBag extends Bag<TermLink> {
 
     /**
      * Get the (adjustable) forget rate of TermLinkBag
+     *
      * @return The forget rate of TermLinkBag
      */
     protected int forgetRate() {
-        return memory.getBeliefForgettingRate().get();  
+        return memory.getBeliefForgettingRate().get();
     }
 
     /**
      * Replace default to prevent repeated inference, by checking TaskLink
+     *
      * @param taskLink The selected TaskLink
-     * @param time The current time
+     * @param time     The current time
      * @return The selected TermLink
      */
     public TermLink takeOut(TaskLink taskLink, long time) {

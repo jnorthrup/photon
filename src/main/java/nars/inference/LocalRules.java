@@ -20,10 +20,13 @@
  */
 package nars.inference;
 
-import nars.storage.Memory;
-import nars.entity.*;
-import nars.language.*;
+import nars.entity.BudgetValue;
+import nars.entity.Sentence;
+import nars.entity.Task;
+import nars.entity.TruthValue;
 import nars.io.Symbols;
+import nars.language.*;
+import nars.storage.Memory;
 
 /**
  * Directly process a task by a oldBelief, with only two Terms in both. In
@@ -38,12 +41,13 @@ import nars.io.Symbols;
 public class LocalRules {
 
     /* -------------------- same contents -------------------- */
+
     /**
      * The task and belief have the same content
      * <p>
      * called in RuleTables.reason
      *
-     * @param task The task
+     * @param task   The task
      * @param belief The belief
      * @param memory Reference to the memory
      */
@@ -74,10 +78,10 @@ public class LocalRules {
      * <p>
      * called from Concept.reviseTable and match
      *
-     * @param newBelief The new belief in task
-     * @param oldBelief The previous belief with the same content
+     * @param newBelief       The new belief in task
+     * @param oldBelief       The previous belief with the same content
      * @param feedbackToLinks Whether to send feedback to the links
-     * @param memory Reference to the memory
+     * @param memory          Reference to the memory
      */
     public static void revision(Sentence newBelief, Sentence oldBelief, boolean feedbackToLinks, Memory memory) {
         TruthValue newTruth = newBelief.getTruth();
@@ -92,7 +96,7 @@ public class LocalRules {
      * Check if a Sentence provide a better answer to a Question or Goal
      *
      * @param belief The proposed answer
-     * @param task The task to be processed
+     * @param task   The task to be processed
      * @param memory Reference to the memory
      */
     public static void trySolution(Sentence belief, Task task, Memory memory) {
@@ -118,7 +122,7 @@ public class LocalRules {
     /**
      * Evaluate the quality of the judgment as a solution to a problem
      *
-     * @param problem A goal or question
+     * @param problem  A goal or question
      * @param solution The solution to be evaluated
      * @return The quality of the judgment as the solution
      */
@@ -135,6 +139,7 @@ public class LocalRules {
     }
 
     /* -------------------- same terms, difference relations -------------------- */
+
     /**
      * The task and belief match reversely
      *
@@ -154,8 +159,8 @@ public class LocalRules {
     /**
      * Inheritance/Implication matches Similarity/Equivalence
      *
-     * @param asym A Inheritance/Implication sentence
-     * @param sym A Similarity/Equivalence sentence
+     * @param asym   A Inheritance/Implication sentence
+     * @param sym    A Similarity/Equivalence sentence
      * @param figure location of the shared term
      * @param memory Reference to the memory
      */
@@ -168,13 +173,14 @@ public class LocalRules {
     }
 
     /* -------------------- two-premise inference rules -------------------- */
+
     /**
      * {<S --> P>, <P --> S} |- <S <-> p> Produce Similarity/Equivalence from a
      * pair of reversed Inheritance/Implication
      *
      * @param judgment1 The first premise
      * @param judgment2 The second premise
-     * @param memory Reference to the memory
+     * @param memory    Reference to the memory
      */
     private static void inferToSym(Sentence judgment1, Sentence judgment2, Memory memory) {
         Statement s1 = (Statement) judgment1.getContent();
@@ -197,8 +203,8 @@ public class LocalRules {
      * {<S <-> P>, <P --> S>} |- <S --> P> Produce an Inheritance/Implication
      * from a Similarity/Equivalence and a reversed Inheritance/Implication
      *
-     * @param asym The asymmetric premise
-     * @param sym The symmetric premise
+     * @param asym   The asymmetric premise
+     * @param sym    The symmetric premise
      * @param memory Reference to the memory
      */
     private static void inferToAsym(Sentence asym, Sentence sym, Memory memory) {
@@ -212,6 +218,7 @@ public class LocalRules {
     }
 
     /* -------------------- one-premise inference rules -------------------- */
+
     /**
      * {<P --> S>} |- <S --> P> Produce an Inheritance/Implication from a
      * reversed Inheritance/Implication
@@ -247,7 +254,7 @@ public class LocalRules {
      * called in MatchingRules
      *
      * @param budget The budget value of the new task
-     * @param truth The truth value of the new task
+     * @param truth  The truth value of the new task
      * @param memory Reference to the memory
      */
     private static void convertedJudgment(TruthValue newTruth, BudgetValue newBudget, Memory memory) {

@@ -20,12 +20,12 @@
  */
 package nars.io;
 
-import java.awt.FileDialog;
+import nars.main_nogui.ReasonerBatch;
+
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-
-import nars.main_nogui.ReasonerBatch;
 
 /**
  * To read and write experience as Task streams

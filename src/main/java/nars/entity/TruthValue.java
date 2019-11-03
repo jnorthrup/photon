@@ -64,7 +64,6 @@ public class TruthValue implements Cloneable { // implements Cloneable {
      *
      * @param f The frequency value
      * @param c The confidence value
-     *
      */
     public TruthValue(float f, float c, boolean b) {
         frequency = new ShortFloat(f);

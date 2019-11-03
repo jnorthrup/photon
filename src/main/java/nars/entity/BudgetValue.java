@@ -20,7 +20,8 @@
  */
 package nars.entity;
 
-import nars.inference.*;
+import nars.inference.BudgetFunctions;
+import nars.inference.UtilityFunctions;
 import nars.io.Symbols;
 import nars.main_nogui.Parameters;
 
@@ -29,23 +30,31 @@ import nars.main_nogui.Parameters;
  */
 public class BudgetValue implements Cloneable {
 
-    /** The character that marks the two ends of a budget value */
+    /**
+     * The character that marks the two ends of a budget value
+     */
     private static final char MARK = Symbols.BUDGET_VALUE_MARK;
-    /** The character that separates the factors in a budget value */
+    /**
+     * The character that separates the factors in a budget value
+     */
     private static final char SEPARATOR = Symbols.VALUE_SEPARATOR;
-    /** The relative share of time resource to be allocated */
+    /**
+     * The relative share of time resource to be allocated
+     */
     protected ShortFloat priority;
-	/**
-	 * The percent of priority to be kept in a constant period; All priority
-	 * values “decay” over time, though at different rates. Each item is given a
-	 * “durability” factor in (0, 1) to specify the percentage of priority level
-	 * left after each reevaluation
-	 */
+    /**
+     * The percent of priority to be kept in a constant period; All priority
+     * values “decay” over time, though at different rates. Each item is given a
+     * “durability” factor in (0, 1) to specify the percentage of priority level
+     * left after each reevaluation
+     */
     protected ShortFloat durability;
-    /** The overall (context-independent) evaluation */
+    /**
+     * The overall (context-independent) evaluation
+     */
     protected ShortFloat quality;
 
-    /** 
+    /**
      * Default constructor
      */
     public BudgetValue() {
@@ -54,8 +63,9 @@ public class BudgetValue implements Cloneable {
         quality = new ShortFloat(0.01f);
     }
 
-    /** 
+    /**
      * Constructor with initialization
+     *
      * @param p Initial priority
      * @param d Initial durability
      * @param q Initial quality
@@ -68,6 +78,7 @@ public class BudgetValue implements Cloneable {
 
     /**
      * Cloning constructor
+     *
      * @param v Budget value to be cloned
      */
     public BudgetValue(BudgetValue v) {
@@ -86,6 +97,7 @@ public class BudgetValue implements Cloneable {
 
     /**
      * Get priority value
+     *
      * @return The current priority
      */
     public float getPriority() {
@@ -94,6 +106,7 @@ public class BudgetValue implements Cloneable {
 
     /**
      * Change priority value
+     *
      * @param v The new priority
      */
     public void setPriority(float v) {
@@ -102,6 +115,7 @@ public class BudgetValue implements Cloneable {
 
     /**
      * Increase priority value by a percentage of the remaining range
+     *
      * @param v The increasing percent
      */
     public void incPriority(float v) {
@@ -110,6 +124,7 @@ public class BudgetValue implements Cloneable {
 
     /**
      * Decrease priority value by a percentage of the remaining range
+     *
      * @param v The decreasing percent
      */
     public void decPriority(float v) {
@@ -118,6 +133,7 @@ public class BudgetValue implements Cloneable {
 
     /**
      * Get durability value
+     *
      * @return The current durability
      */
     public float getDurability() {
@@ -126,6 +142,7 @@ public class BudgetValue implements Cloneable {
 
     /**
      * Change durability value
+     *
      * @param v The new durability
      */
     public void setDurability(float v) {
@@ -134,6 +151,7 @@ public class BudgetValue implements Cloneable {
 
     /**
      * Increase durability value by a percentage of the remaining range
+     *
      * @param v The increasing percent
      */
     public void incDurability(float v) {
@@ -142,6 +160,7 @@ public class BudgetValue implements Cloneable {
 
     /**
      * Decrease durability value by a percentage of the remaining range
+     *
      * @param v The decreasing percent
      */
     public void decDurability(float v) {
@@ -150,6 +169,7 @@ public class BudgetValue implements Cloneable {
 
     /**
      * Get quality value
+     *
      * @return The current quality
      */
     public float getQuality() {
@@ -158,6 +178,7 @@ public class BudgetValue implements Cloneable {
 
     /**
      * Change quality value
+     *
      * @param v The new quality
      */
     public void setQuality(float v) {
@@ -166,6 +187,7 @@ public class BudgetValue implements Cloneable {
 
     /**
      * Increase quality value by a percentage of the remaining range
+     *
      * @param v The increasing percent
      */
     public void incQuality(float v) {
@@ -174,6 +196,7 @@ public class BudgetValue implements Cloneable {
 
     /**
      * Decrease quality value by a percentage of the remaining range
+     *
      * @param v The decreasing percent
      */
     public void decQuality(float v) {
@@ -182,6 +205,7 @@ public class BudgetValue implements Cloneable {
 
     /**
      * Merge one BudgetValue into another
+     *
      * @param that The other Budget
      */
     public void merge(BudgetValue that) {
@@ -190,6 +214,7 @@ public class BudgetValue implements Cloneable {
 
     /**
      * To summarize a BudgetValue into a single number in [0, 1]
+     *
      * @return The summary value
      */
     public float summary() {
@@ -200,6 +225,7 @@ public class BudgetValue implements Cloneable {
      * Whether the budget should get any processing at all
      * <p>
      * to be revised to depend on how busy the system is
+     *
      * @return The decision on whether to process the Item
      */
     public boolean aboveThreshold() {
@@ -208,6 +234,7 @@ public class BudgetValue implements Cloneable {
 
     /**
      * Fully display the BudgetValue
+     *
      * @return String representation of the value
      */
     @Override
@@ -217,6 +244,7 @@ public class BudgetValue implements Cloneable {
 
     /**
      * Briefly display the BudgetValue
+     *
      * @return String representation of the value with 2-digit accuracy
      */
     public String toStringBrief() {

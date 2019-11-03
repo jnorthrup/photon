@@ -21,9 +21,9 @@
 package nars.inference;
 
 import nars.entity.*;
+import nars.io.Symbols;
 import nars.language.*;
 import nars.storage.Memory;
-import nars.io.Symbols;
 
 /**
  * Table of inference rules, indexed by the TermLinks for the task and the
@@ -35,8 +35,8 @@ public class RuleTables {
     /**
      * Entry point of the inference engine
      *
-     * @param tLink The selected TaskLink, which will provide a task
-     * @param bLink The selected TermLink, which may provide a belief
+     * @param tLink  The selected TaskLink, which will provide a task
+     * @param bLink  The selected TermLink, which may provide a belief
      * @param memory Reference to the memory
      */
     public static void reason(TaskLink tLink, TermLink bLink, Memory memory) {
@@ -149,15 +149,16 @@ public class RuleTables {
     }
 
     /* ----- syllogistic inferences ----- */
+
     /**
      * Meta-table of syllogistic rules, indexed by the content classes of the
      * taskSentence and the belief
      *
-     * @param tLink The link to task
-     * @param bLink The link to belief
-     * @param taskTerm The content of task
+     * @param tLink      The link to task
+     * @param bLink      The link to belief
+     * @param taskTerm   The content of task
      * @param beliefTerm The content of belief
-     * @param memory Reference to the memory
+     * @param memory     Reference to the memory
      */
     private static void syllogisms(TaskLink tLink, TermLink bLink, Term taskTerm, Term beliefTerm, Memory memory) {
         Sentence taskSentence = memory.currentTask.getSentence();
@@ -220,9 +221,9 @@ public class RuleTables {
      * Syllogistic rules whose both premises are on the same asymmetric relation
      *
      * @param sentence The taskSentence in the task
-     * @param belief The judgment in the belief
-     * @param figure The location of the shared term
-     * @param memory Reference to the memory
+     * @param belief   The judgment in the belief
+     * @param figure   The location of the shared term
+     * @param memory   Reference to the memory
      */
     private static void asymmetricAsymmetric(Sentence sentence, Sentence belief, int figure, Memory memory) {
         Statement s1 = (Statement) sentence.cloneContent();
@@ -290,8 +291,8 @@ public class RuleTables {
      * Syllogistic rules whose first premise is on an asymmetric relation, and
      * the second on a symmetric relation
      *
-     * @param asym The asymmetric premise
-     * @param sym The symmetric premise
+     * @param asym   The asymmetric premise
+     * @param sym    The symmetric premise
      * @param figure The location of the shared term
      * @param memory Reference to the memory
      */
@@ -350,10 +351,10 @@ public class RuleTables {
     /**
      * Syllogistic rules whose both premises are on the same symmetric relation
      *
-     * @param belief The premise that comes from a belief
+     * @param belief       The premise that comes from a belief
      * @param taskSentence The premise that comes from a task
-     * @param figure The location of the shared term
-     * @param memory Reference to the memory
+     * @param figure       The location of the shared term
+     * @param memory       Reference to the memory
      */
     private static void symmetricSymmetric(Sentence belief, Sentence taskSentence, int figure, Memory memory) {
         Statement s1 = (Statement) belief.cloneContent();
@@ -383,15 +384,16 @@ public class RuleTables {
     }
 
     /* ----- conditional inferences ----- */
+
     /**
      * The detachment rule, with variable unification
      *
      * @param originalMainSentence The premise that is an Implication or
-     * Equivalence
-     * @param subSentence The premise that is the subject or predicate of the
-     * first one
-     * @param index The location of the second premise in the first
-     * @param memory Reference to the memory
+     *                             Equivalence
+     * @param subSentence          The premise that is the subject or predicate of the
+     *                             first one
+     * @param index                The location of the second premise in the first
+     * @param memory               Reference to the memory
      */
     private static void detachmentWithVar(Sentence originalMainSentence, Sentence subSentence, int index, Memory memory) {
         Sentence mainSentence = (Sentence) originalMainSentence.clone();   // for substitution
@@ -416,11 +418,11 @@ public class RuleTables {
      * Conditional deduction or induction, with variable unification
      *
      * @param conditional The premise that is an Implication with a Conjunction
-     * as condition
-     * @param index The location of the shared term in the condition
-     * @param statement The second premise that is a statement
-     * @param side The location of the shared term in the statement
-     * @param memory Reference to the memory
+     *                    as condition
+     * @param index       The location of the shared term in the condition
+     * @param statement   The second premise that is a statement
+     * @param side        The location of the shared term in the statement
+     * @param memory      Reference to the memory
      */
     private static void conditionalDedIndWithVar(Implication conditional, short index, Statement statement, short side, Memory memory) {
         short side1 = side;
@@ -439,13 +441,14 @@ public class RuleTables {
     }
 
     /* ----- structural inferences ----- */
+
     /**
      * Inference between a compound term and a component of it
      *
-     * @param compound The compound term
-     * @param component The component term
+     * @param compound     The compound term
+     * @param component    The component term
      * @param compoundTask Whether the compound comes from the task
-     * @param memory Reference to the memory
+     * @param memory       Reference to the memory
      */
     private static void compoundAndSelf(CompoundTerm compound, Term component, boolean compoundTask, Memory memory) {
         if ((compound instanceof Conjunction) || (compound instanceof Disjunction)) {
@@ -467,9 +470,9 @@ public class RuleTables {
     /**
      * Inference between two compound terms
      *
-     * @param taskTerm The compound from the task
+     * @param taskTerm   The compound from the task
      * @param beliefTerm The compound from the belief
-     * @param memory Reference to the memory
+     * @param memory     Reference to the memory
      */
     private static void compoundAndCompound(CompoundTerm taskTerm, CompoundTerm beliefTerm, Memory memory) {
         if (taskTerm.getClass() == beliefTerm.getClass()) {
@@ -484,12 +487,12 @@ public class RuleTables {
     /**
      * Inference between a compound term and a statement
      *
-     * @param compound The compound term
-     * @param index The location of the current term in the compound
-     * @param statement The statement
-     * @param side The location of the current term in the statement
+     * @param compound   The compound term
+     * @param index      The location of the current term in the compound
+     * @param statement  The statement
+     * @param side       The location of the current term in the statement
      * @param beliefTerm The content of the belief
-     * @param memory Reference to the memory
+     * @param memory     Reference to the memory
      */
     private static void compoundAndStatement(CompoundTerm compound, short index, Statement statement, short side, Term beliefTerm, Memory memory) {
         Term component = compound.componentAt(index);
@@ -521,11 +524,11 @@ public class RuleTables {
     /**
      * Inference between a component term (of the current term) and a statement
      *
-     * @param compound The compound term
-     * @param index The location of the current term in the compound
+     * @param compound  The compound term
+     * @param index     The location of the current term in the compound
      * @param statement The statement
-     * @param side The location of the current term in the statement
-     * @param memory Reference to the memory
+     * @param side      The location of the current term in the statement
+     * @param memory    Reference to the memory
      */
     private static void componentAndStatement(CompoundTerm compound, short index, Statement statement, short side, Memory memory) {
 //        if (!memory.currentTask.isStructural()) {
@@ -548,11 +551,12 @@ public class RuleTables {
     }
 
     /* ----- inference with one TaskLink only ----- */
+
     /**
      * The TaskLink is of type TRANSFORM, and the conclusion is an equivalent
      * transformation
      *
-     * @param tLink The task link
+     * @param tLink  The task link
      * @param memory Reference to the memory
      */
     public static void transformTask(TaskLink tLink, Memory memory) {

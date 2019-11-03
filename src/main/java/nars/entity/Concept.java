@@ -20,8 +20,6 @@
  */
 package nars.entity;
 
-import java.util.ArrayList;
-
 import nars.inference.BudgetFunctions;
 import nars.inference.LocalRules;
 import nars.inference.RuleTables;
@@ -30,11 +28,9 @@ import nars.language.CompoundTerm;
 import nars.language.Term;
 import nars.main_nogui.NARSBatch;
 import nars.main_nogui.Parameters;
-import nars.storage.BagObserver;
-import nars.storage.Memory;
-import nars.storage.NullBagObserver;
-import nars.storage.TaskLinkBag;
-import nars.storage.TermLinkBag;
+import nars.storage.*;
+
+import java.util.ArrayList;
 
 /**
  * A concept contains information associated with a term, including directly and
@@ -59,11 +55,6 @@ public final class Concept extends Item {
      */
     private final TermLinkBag termLinks;
     /**
-     * Link templates of TermLink, only in concepts with CompoundTerm jmv TODO
-     * explain more
-     */
-    private ArrayList<TermLink> termLinkTemplates;
-    /**
      * Question directly asked about the term
      */
     private final ArrayList<Task> questions;
@@ -76,16 +67,22 @@ public final class Concept extends Item {
      */
     Memory memory;
     /**
+     * Link templates of TermLink, only in concepts with CompoundTerm jmv TODO
+     * explain more
+     */
+    private ArrayList<TermLink> termLinkTemplates;
+    /**
      * The display window
      */
     private EntityObserver entityObserver = new NullEntityObserver();
 
 
     /* ---------- constructor and initialization ---------- */
+
     /**
      * Constructor, called in Memory.getConcept only
      *
-     * @param tm A term corresponding to the concept
+     * @param tm     A term corresponding to the concept
      * @param memory A reference to the memory
      */
     public Concept(Term tm, Memory memory) {
@@ -102,6 +99,7 @@ public final class Concept extends Item {
     }
 
     /* ---------- direct processing of tasks ---------- */
+
     /**
      * Directly process a new task. Called exactly once on each task. Using
      * local information and finishing in a constant time. Provide feedback in
@@ -200,7 +198,7 @@ public final class Concept extends Item {
      * <p>
      * The only method that calls the TaskLink constructor.
      *
-     * @param task The task to be linked
+     * @param task    The task to be linked
      * @param content The content of the task
      */
     private void linkToTask(Task task) {
@@ -234,8 +232,8 @@ public final class Concept extends Item {
      * and remove redundant or low rank one
      *
      * @param newSentence The judgment to be processed
-     * @param table The table to be revised
-     * @param capacity The capacity of the table
+     * @param table       The table to be revised
+     * @param capacity    The capacity of the table
      */
     private void addToTable(Sentence newSentence, ArrayList<Sentence> table, int capacity) {
         float rank1 = BudgetFunctions.rankBelief(newSentence);    // for the new isBelief
@@ -266,7 +264,7 @@ public final class Concept extends Item {
      * Evaluate a query against beliefs (and desires in the future)
      *
      * @param query The question to be processed
-     * @param list The list of beliefs to be used
+     * @param list  The list of beliefs to be used
      * @return The best candidate belief selected
      */
     private Sentence evaluation(Sentence query, ArrayList<Sentence> list) {
@@ -287,6 +285,7 @@ public final class Concept extends Item {
     }
 
     /* ---------- insert Links for indirect processing ---------- */
+
     /**
      * Insert a TaskLink into the TaskLink bag
      * <p>
@@ -345,6 +344,7 @@ public final class Concept extends Item {
     }
 
     /* ---------- access local information ---------- */
+
     /**
      * Return the associated term, called from Memory only
      *
@@ -437,6 +437,7 @@ public final class Concept extends Item {
     }
 
     /* ---------- main loop ---------- */
+
     /**
      * An atomic step in a concept, only called in {@link Memory#processConcept}
      */
@@ -474,20 +475,21 @@ public final class Concept extends Item {
     }
 
     /* ---------- display ---------- */
+
     /**
      * Start displaying contents and links, called from ConceptWindow,
      * TermWindow or Memory.processTask only
-     *
+     * <p>
      * same design as for {@link nars.storage.Bag} and {@link nars.gui.BagWindow}; see
      * {@link nars.storage.Bag#addBagObserver(BagObserver, String)}
      *
      * @param entityObserver {@link EntityObserver} to set;
-     * TODO make it a real observer pattern (i.e. with a
-     * plurality of observers)
-     * @param showLinks Whether to display the task links
+     *                       TODO make it a real observer pattern (i.e. with a
+     *                       plurality of observers)
+     * @param showLinks      Whether to display the task links
      */
-	@SuppressWarnings("unchecked")
-	public void startPlay( EntityObserver entityObserver, boolean showLinks ) {
+    @SuppressWarnings("unchecked")
+    public void startPlay(EntityObserver entityObserver, boolean showLinks) {
         this.entityObserver = entityObserver;
         entityObserver.startPlay(this, showLinks);
         entityObserver.post(displayContent());
@@ -540,8 +542,8 @@ public final class Concept extends Item {
         }
 
         @Override
-		public BagObserver<TermLink> createBagObserver() {
-			return new NullBagObserver<TermLink>();
+        public BagObserver<TermLink> createBagObserver() {
+            return new NullBagObserver<TermLink>();
         }
 
         @Override

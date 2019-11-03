@@ -1,8 +1,5 @@
 package nars.main_nogui;
 
-import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicInteger;
-
 import nars.entity.Stamp;
 import nars.entity.Task;
 import nars.gui.MainWindow;
@@ -11,6 +8,9 @@ import nars.io.OutputChannel;
 import nars.io.StringParser;
 import nars.io.Symbols;
 import nars.storage.Memory;
+
+import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class ReasonerBatch {
 
@@ -162,7 +162,7 @@ public class ReasonerBatch {
             for (OutputChannel channelOut : outputChannels) {
                 channelOut.nextOutput(output);
             }
-            output.clear();	// this will trigger display the current value of timer in Memory.report()
+            output.clear();    // this will trigger display the current value of timer in Memory.report()
         }
         if (running || walkingSteps > 0) {
             clock++;
@@ -223,7 +223,7 @@ public class ReasonerBatch {
     /**
      * To get the timer value and then to
      * reset it by {@link #initTimer()};
-     * plays the same role as {@link nars.gui.MainWindow#updateTimer()} 
+     * plays the same role as {@link nars.gui.MainWindow#updateTimer()}
      *
      * @return The previous timer value
      */
@@ -235,7 +235,7 @@ public class ReasonerBatch {
 
     /**
      * Reset timer;
-     * plays the same role as {@link nars.gui.MainWindow#initTimer()} 
+     * plays the same role as {@link nars.gui.MainWindow#initTimer()}
      */
     public void initTimer() {
         setTimer(0);
@@ -248,12 +248,16 @@ public class ReasonerBatch {
         setTimer(getTimer() + 1);
     }
 
-    /** @return System clock : number of cycles since last output */
+    /**
+     * @return System clock : number of cycles since last output
+     */
     public long getTimer() {
         return timer;
     }
 
-    /** set System clock : number of cycles since last output */
+    /**
+     * set System clock : number of cycles since last output
+     */
     private void setTimer(long timer) {
         this.timer = timer;
     }

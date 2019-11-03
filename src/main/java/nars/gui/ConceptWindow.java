@@ -20,33 +20,47 @@
  */
 package nars.gui;
 
-import java.awt.*;
-import java.awt.event.*;
-//import java.beans.PropertyChangeEvent;
-//import java.beans.PropertyChangeListener;
-
 import nars.entity.Concept;
 import nars.entity.EntityObserver;
 import nars.storage.BagObserver;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+
+//import java.beans.PropertyChangeEvent;
+//import java.beans.PropertyChangeListener;
 
 /**
  * Window displaying the content of a Concept, such as beliefs, goals, and questions
  */
 public class ConceptWindow extends NarsFrame implements ActionListener, EntityObserver {
 
-    /** Control buttons */
-    private Button playButton, stopButton, playInNewWindowButton, closeButton;
-    /** Display area */
-    private TextArea text;
-    /** The concept to be displayed */
-    private Concept concept;
-    /** Whether the content of the concept is being displayed */
-    private boolean showing = false;
-    /** Used to adjust the screen position */
+    /**
+     * Used to adjust the screen position
+     */
     private static int instanceCount = 0;
+    /**
+     * Control buttons
+     */
+    private Button playButton, stopButton, playInNewWindowButton, closeButton;
+    /**
+     * Display area
+     */
+    private TextArea text;
+    /**
+     * The concept to be displayed
+     */
+    private Concept concept;
+    /**
+     * Whether the content of the concept is being displayed
+     */
+    private boolean showing = false;
 
     /**
      * Constructor
+     *
      * @param concept The concept to be displayed
      */
     public ConceptWindow(Concept concept) {
@@ -99,11 +113,11 @@ public class ConceptWindow extends NarsFrame implements ActionListener, EntityOb
     }
 
     /* (non-Javadoc)
-	 * @see nars.gui.EntityObserver#post(java.lang.String)
-	 */
+     * @see nars.gui.EntityObserver#post(java.lang.String)
+     */
     @Override
-	public void post(String str) {
-      showing = true;
+    public void post(String str) {
+        showing = true;
         text.setText(str);
     }
 
@@ -118,6 +132,7 @@ public class ConceptWindow extends NarsFrame implements ActionListener, EntityOb
 
     /**
      * Handling button click
+     *
      * @param e The ActionEvent
      */
     public void actionPerformed(ActionEvent e) {
@@ -145,34 +160,34 @@ public class ConceptWindow extends NarsFrame implements ActionListener, EntityOb
         close();
     }
 
-	@Override
-	public BagObserver createBagObserver() {
-		/*return new BagWindow();*/
+    @Override
+    public BagObserver createBagObserver() {
+        /*return new BagWindow();*/
         return null;
     }
 
-	@Override
-	public void startPlay(Concept concept, boolean showLinks) {
+    @Override
+    public void startPlay(Concept concept, boolean showLinks) {
         if (this.isVisible()) {
             this.detachFromConcept();
         }
 //        this = new ConceptWindow(this);
         showing = true;
-        this.post(concept.displayContent());	
-	}
-	
+        this.post(concept.displayContent());
+    }
+
     /**
      * Refresh display if in showing state
      */
-	@Override
-    public void refresh( String message) {
+    @Override
+    public void refresh(String message) {
         if (showing) {
-            post( message );
+            post(message);
         }
     }
 
-	@Override
-	public void stop() {
+    @Override
+    public void stop() {
         showing = false;
-	}
+    }
 }
