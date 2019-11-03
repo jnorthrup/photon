@@ -135,7 +135,7 @@ public class NARSBatch {
     }
 
     private void log(String mess) {
-        if (true) {
+        if (false) {
             System.out.println("/ " + mess);
         }
     }
