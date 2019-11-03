@@ -29,6 +29,7 @@ import nars.main_nogui.ReasonerBatch;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -222,7 +223,7 @@ public class Memory {
      */
     public float getConceptActivation(Term t) {
         var c = termToConcept(t);
-        return (c == null) ? 0f : c.getPriority();
+        return Optional.ofNullable(c).map(Item::getPriority).orElse(0f);
     }
 
     /* ---------- adjustment functions ---------- */
@@ -529,18 +530,18 @@ public class Memory {
     }
 
     private String toStringLongIfNotNull(Bag<?> item, String title) {
-        return item == null ? "" : "\n " + title + ":\n"
-                + item.toStringLong();
+        return Optional.ofNullable(item).map(bag -> "\n " + title + ":\n"
+                + bag.toStringLong()).orElse("");
     }
 
     private String toStringLongIfNotNull(Item item, String title) {
-        return item == null ? "" : "\n " + title + ":\n"
-                + item.toStringLong();
+        return Optional.ofNullable(item).map(item1 -> "\n " + title + ":\n"
+                + item1.toStringLong()).orElse("");
     }
 
     private String toStringIfNotNull(Object item, String title) {
-        return item == null ? "" : "\n " + title + ":\n"
-                + item.toString();
+        return Optional.ofNullable(item).map(o -> "\n " + title + ":\n"
+                + o.toString()).orElse("");
     }
 
     public AtomicInteger getTaskForgettingRate() {

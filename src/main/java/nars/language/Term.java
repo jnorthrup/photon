@@ -20,6 +20,8 @@
  */
 package nars.language;
 
+import java.util.Optional;
+
 /**
  * Term is the basic component of Narsese, and the object of processing in NARS.
  * <p>
@@ -88,7 +90,7 @@ public class Term implements Cloneable, Comparable<Term> {
      */
     @Override
     public int hashCode() {
-        return (name != null ? name.hashCode() : 7);
+        return (Optional.ofNullable(name).map(String::hashCode).orElse(7));
     }
 
     /**

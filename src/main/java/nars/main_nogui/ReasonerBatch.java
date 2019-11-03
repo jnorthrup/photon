@@ -5,12 +5,14 @@ import nars.io.InputChannel;
 import nars.io.OutputChannel;
 import nars.io.StringParser;
 import nars.io.Symbols;
+import nars.io.Symbols.*;
 import nars.storage.Memory;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import static nars.io.Symbols.*;
 
 public class ReasonerBatch {
 
@@ -177,10 +179,10 @@ public class ReasonerBatch {
             return;
         }
         var c = text.charAt(0);
-        if (c == Symbols.RESET_MARK) {
+        if (c == RESET_MARK) {
             reset();
             memory.getExportStrings().add(text);
-        } else if (c != Symbols.COMMENT_MARK) {
+        } else if (c != COMMENT_MARK) {
             // read NARS language or an integer : TODO duplicated code
             try {
                 var i = Integer.parseInt(text);

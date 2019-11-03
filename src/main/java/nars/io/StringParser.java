@@ -28,13 +28,15 @@ import nars.storage.Memory;
 
 import java.util.ArrayList;
 
+import static nars.io.Symbols.*;
+
 //import deductions.runtime.swing.TemporaryFrame;
 
 /**
  * Parse input String into Task or Term. Abstract class with static methods
  * only.
  */
-public abstract class StringParser extends Symbols {
+public abstract class StringParser   {
 
     /**
      * Parse a line of input experience
@@ -232,38 +234,32 @@ public abstract class StringParser extends Symbols {
                 var index = s.length() - 1;
                 var first = s.charAt(0);
                 var last = s.charAt(index);
-                switch (first) {
-                    case COMPOUND_TERM_OPENER:
-                        if (last == COMPOUND_TERM_CLOSER) {
-                            result = parseCompoundTerm(s.substring(1, index), memory);
-                            break;
-                        } else {
-                            throw new InvalidInputException("missing CompoundTerm closer");
-                        }
-                    case SET_EXT_OPENER:
-                        if (last == SET_EXT_CLOSER) {
-                            result = SetExt.make(parseArguments(s.substring(1, index) + ARGUMENT_SEPARATOR, memory), memory);
-                            break;
-                        } else {
-                            throw new InvalidInputException("missing ExtensionSet closer");
-                        }
-                    case SET_INT_OPENER:
-                        if (last == SET_INT_CLOSER) {
-                            result = SetInt.make(parseArguments(s.substring(1, index) + ARGUMENT_SEPARATOR, memory), memory);
-                            break;
-                        } else {
-                            throw new InvalidInputException("missing IntensionSet closer");
-                        }
-                    case STATEMENT_OPENER:
-                        if (last == STATEMENT_CLOSER) {
-                            result = parseStatement(s.substring(1, index), memory);
-                            break;
-                        } else {
-                            throw new InvalidInputException("missing Statement closer");
-                        }
-                    default:
-                        result = parseAtomicTerm(s);
-                        break;
+                if (first == COMPOUND_TERM_OPENER) {
+                    if (last == COMPOUND_TERM_CLOSER) {
+                        result = parseCompoundTerm(s.substring(1, index), memory);
+                    } else {
+                        throw new InvalidInputException("missing CompoundTerm closer");
+                    }
+                } else if (first == SET_EXT_OPENER) {
+                    if (last == SET_EXT_CLOSER) {
+                        result = SetExt.make(parseArguments(s.substring(1, index) + ARGUMENT_SEPARATOR, memory), memory);
+                    } else {
+                        throw new InvalidInputException("missing ExtensionSet closer");
+                    }
+                } else if (first == SET_INT_OPENER) {
+                    if (last == SET_INT_CLOSER) {
+                        result = SetInt.make(parseArguments(s.substring(1, index) + ARGUMENT_SEPARATOR, memory), memory);
+                    } else {
+                        throw new InvalidInputException("missing IntensionSet closer");
+                    }
+                } else if (first == STATEMENT_OPENER) {
+                    if (last == STATEMENT_CLOSER) {
+                        result = parseStatement(s.substring(1, index), memory);
+                    } else {
+                        throw new InvalidInputException("missing Statement closer");
+                    }
+                } else {
+                    result = parseAtomicTerm(s);
                 }
             } else {
                 result = t;

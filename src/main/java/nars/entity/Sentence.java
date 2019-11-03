@@ -23,6 +23,8 @@ package nars.entity;
 import nars.io.Symbols;
 import nars.language.Term;
 
+import java.util.Optional;
+
 /**
  * A Sentence is an abstract class, mainly containing a Term, a TruthValue, and
  * a Stamp.
@@ -113,10 +115,10 @@ public class Sentence implements Cloneable {
     @Override
     public int hashCode() {
         var hash = 5;
-        hash = 67 * hash + (this.content != null ? this.content.hashCode() : 0);
+        hash = 67 * hash + (Optional.ofNullable(this.content).map(Term::hashCode).orElse(0));
         hash = 67 * hash + this.punctuation;
-        hash = 67 * hash + (this.truth != null ? this.truth.hashCode() : 0);
-        hash = 67 * hash + (this.stamp != null ? this.stamp.hashCode() : 0);
+        hash = 67 * hash + (Optional.ofNullable(this.truth).map(TruthValue::hashCode).orElse(0));
+        hash = 67 * hash + (Optional.ofNullable(this.stamp).map(Stamp::hashCode).orElse(0));
         return hash;
     }
 

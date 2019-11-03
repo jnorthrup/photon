@@ -32,6 +32,7 @@ import nars.storage.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * A concept contains information associated with a term, including directly and
@@ -386,7 +387,7 @@ public final class Concept extends Item {
     }
 
     private String toStringIfNotNull(Object item, String title) {
-        return item == null ? "" : "\n " + title + ":" + item.toString();
+        return Optional.ofNullable(item).map(o -> "\n " + title + ":" + o.toString()).orElse("");
     }
 
     /**
