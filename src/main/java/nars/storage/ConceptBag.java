@@ -56,6 +56,6 @@ public class ConceptBag extends Bag<Concept> {
 
     @Override
     protected int forgetRate() {
-        return memory.getConceptForgettingRate().get();
+        return getMemory().getConceptForgettingRate().get();
     }
 }

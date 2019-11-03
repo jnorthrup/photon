@@ -32,7 +32,7 @@ class TermLinkBag
  * Constructor
  *
  * @param memory The reference of memory
- */(memory: Memory?) : Bag<TermLink?>(memory) {
+ */(memory: Memory?) : Bag<TermLink?>(memory!!) {
     /**
      * Get the (constant) capacity of TermLinkBag
      *

@@ -32,7 +32,7 @@ class TaskLinkBag
  * Constructor
  *
  * @param memory The reference of memory
- */(memory: Memory?) : Bag<TaskLink?>(memory) {
+ */(memory: Memory?) : Bag<TaskLink?>(memory!!) {
     /**
      * Get the (constant) capacity of TaskLinkBag
      *

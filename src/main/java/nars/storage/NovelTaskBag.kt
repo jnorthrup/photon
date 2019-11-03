@@ -19,33 +19,27 @@
  * along with Open-NARS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package nars.storage;
+package nars.storage
 
-import nars.entity.Task;
- import nars.main_nogui.Parameters;
+import nars.entity.Task
+import nars.main_nogui.Parameters
 
 /**
  * New tasks that contain new Term.
  */
-public class NovelTaskBag extends Bag<Task> {
-
-    /**
-     * Constructor
-     *
-     * @param memory The reference of memory
-     */
-    public NovelTaskBag(Memory memory) {
-        super(memory);
-    }
-
+class NovelTaskBag
+/**
+ * Constructor
+ *
+ * @param memory The reference of memory
+ */(memory: Memory?) : Bag<Task?>(memory!!) {
     /**
      * Get the (constant) capacity of NovelTaskBag
      *
      * @return The capacity of NovelTaskBag
      */
-    @Override
-    protected int capacity() {
-        return Parameters.TASK_BUFFER_SIZE;
+    override fun capacity(): Int {
+        return Parameters.TASK_BUFFER_SIZE
     }
 
     /**
@@ -53,9 +47,7 @@ public class NovelTaskBag extends Bag<Task> {
      *
      * @return The forget rate in NovelTaskBag
      */
-    @Override
-    protected int forgetRate() {
-        return Parameters.NEW_TASK_FORGETTING_CYCLE;
+    override fun forgetRate(): Int {
+        return Parameters.NEW_TASK_FORGETTING_CYCLE
     }
 }
-
