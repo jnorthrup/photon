@@ -85,7 +85,7 @@ public class DifferenceExt extends CompoundTerm {
             return null;
         }
         if ((t1 instanceof SetExt) && (t2 instanceof SetExt)) {
-            var set = new TreeSet<Term>(((CompoundTerm) t1).cloneComponents());
+            var set = new TreeSet<>(((CompoundTerm) t1).cloneComponents());
             set.removeAll(((CompoundTerm) t2).cloneComponents());           // set difference
             return SetExt.make(set, memory);
         }

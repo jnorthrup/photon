@@ -90,8 +90,8 @@ public final class Concept extends Item {
         super(tm.getName());
         term = tm;
         this.memory = memory;
-        questions = new ArrayList<Task>();
-        beliefs = new ArrayList<Sentence>();
+        questions = new ArrayList<>();
+        beliefs = new ArrayList<>();
         taskLinks = new TaskLinkBag(memory);
         termLinks = new TermLinkBag(memory);
         if (tm instanceof CompoundTerm) {
@@ -544,7 +544,7 @@ public final class Concept extends Item {
 
         @Override
         public BagObserver<TermLink> createBagObserver() {
-            return new NullBagObserver<TermLink>();
+            return new NullBagObserver<>();
         }
 
         @Override

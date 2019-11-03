@@ -85,7 +85,7 @@ public class DifferenceInt extends CompoundTerm {
             return null;
         }
         if ((t1 instanceof SetInt) && (t2 instanceof SetInt)) {
-            var set = new TreeSet<Term>(((CompoundTerm) t1).cloneComponents());
+            var set = new TreeSet<>(((CompoundTerm) t1).cloneComponents());
             set.removeAll(((CompoundTerm) t2).cloneComponents());           // set difference
             return SetInt.make(set, memory);
         }

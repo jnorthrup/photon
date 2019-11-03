@@ -74,7 +74,7 @@ public class SetInt extends CompoundTerm {
      * @return the Term generated from the arguments
      */
     public static Term make(ArrayList<Term> argList, Memory memory) {
-        var set = new TreeSet<Term>(argList); // sort/merge arguments
+        var set = new TreeSet<>(argList); // sort/merge arguments
         return make(set, memory);
     }
 
@@ -89,7 +89,7 @@ public class SetInt extends CompoundTerm {
         if (set.isEmpty()) {
             return null;
         }
-        var argument = new ArrayList<Term>(set);
+        var argument = new ArrayList<>(set);
         var name = makeSetName(Symbols.SET_INT_OPENER, argument, Symbols.SET_INT_CLOSER);
         var t = memory.nameToListedTerm(name);
         return (t != null) ? t : new SetInt(argument);

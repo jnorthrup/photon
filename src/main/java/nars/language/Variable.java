@@ -197,7 +197,7 @@ public class Variable extends Term {
      * @return Whether there is a substitution
      */
     public static boolean hasSubstitute(char type, Term term1, Term term2) {
-        return findSubstitute(type, term1, term2, new HashMap<Term, Term>(), new HashMap<Term, Term>());
+        return findSubstitute(type, term1, term2, new HashMap<>(), new HashMap<>());
     }
 
     /**

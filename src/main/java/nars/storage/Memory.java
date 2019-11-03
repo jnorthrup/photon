@@ -117,8 +117,8 @@ public class Memory {
         recorder = new NullInferenceRecorder();
         concepts = new ConceptBag(this);
         novelTasks = new NovelTaskBag(this);
-        newTasks = new ArrayList<Task>();
-        exportStrings = new ArrayList<String>();
+        newTasks = new ArrayList<>();
+        exportStrings = new ArrayList<>();
     }
 
     public void init() {

@@ -552,7 +552,7 @@ public abstract class CompoundTerm extends Term {
     @Override
     public void renameVariables() {
         if (containVar()) {
-            renameVariables(new HashMap<Variable, Variable>());
+            renameVariables(new HashMap<>());
         }
         setConstant(true);
         setName(makeName());
@@ -606,8 +606,8 @@ public abstract class CompoundTerm extends Term {
             }
         }
         if (this.isCommutative()) {         // re-order
-            var s = new TreeSet<Term>(components);
-            components = new ArrayList<Term>(s);
+            var s = new TreeSet<>(components);
+            components = new ArrayList<>(s);
         }
         name = makeName();
     }

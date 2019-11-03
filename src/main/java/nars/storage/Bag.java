@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.IntStream;
 
 /**
  * A Bag is a storage with a constant capacity and maintains an internal
@@ -97,7 +98,7 @@ public abstract class Bag<E extends Item> {
      * maximum number of items to be taken out at current level
      */
     private int currentCounter;
-    private BagObserver<E> bagObserver = new NullBagObserver<E>();
+    private BagObserver<E> bagObserver = new NullBagObserver<>();
     /**
      * The display level; initialized at lowest
      */
@@ -116,11 +117,9 @@ public abstract class Bag<E extends Item> {
     }
 
     public void init() {
-        itemTable = new ArrayList<ArrayList<E>>(TOTAL_LEVEL);
-        for (var i = 0; i < TOTAL_LEVEL; i++) {
-            itemTable.add(new ArrayList<E>());
-        }
-        nameTable = new HashMap<String, E>((int) (capacity / LOAD_FACTOR), LOAD_FACTOR);
+        itemTable = new ArrayList<>(TOTAL_LEVEL);
+        IntStream.range(0, TOTAL_LEVEL).forEach(i -> itemTable.add(new ArrayList<>()));
+        nameTable = new HashMap<>((int) (capacity / LOAD_FACTOR), LOAD_FACTOR);
         currentLevel = TOTAL_LEVEL - 1;
         levelIndex = capacity % TOTAL_LEVEL; // so that different bags start at different point
         mass = 0;

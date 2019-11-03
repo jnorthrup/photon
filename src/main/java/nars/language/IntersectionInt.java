@@ -64,17 +64,17 @@ public class IntersectionInt extends CompoundTerm {
     public static Term make(Term term1, Term term2, Memory memory) {
         TreeSet<Term> set;
         if ((term1 instanceof SetExt) && (term2 instanceof SetExt)) {
-            set = new TreeSet<Term>(((CompoundTerm) term1).cloneComponents());
+            set = new TreeSet<>(((CompoundTerm) term1).cloneComponents());
             set.addAll(((CompoundTerm) term2).cloneComponents());           // set union
             return SetExt.make(set, memory);
         }
         if ((term1 instanceof SetInt) && (term2 instanceof SetInt)) {
-            set = new TreeSet<Term>(((CompoundTerm) term1).cloneComponents());
+            set = new TreeSet<>(((CompoundTerm) term1).cloneComponents());
             set.retainAll(((CompoundTerm) term2).cloneComponents());        // set intersection
             return SetInt.make(set, memory);
         }
         if (term1 instanceof IntersectionInt) {
-            set = new TreeSet<Term>(((CompoundTerm) term1).cloneComponents());
+            set = new TreeSet<>(((CompoundTerm) term1).cloneComponents());
             if (term2 instanceof IntersectionInt) {
                 set.addAll(((CompoundTerm) term2).cloneComponents());
             } // (|,(|,P,Q),(|,R,S)) = (|,P,Q,R,S)
@@ -82,10 +82,10 @@ public class IntersectionInt extends CompoundTerm {
                 set.add((Term) term2.clone());
             }                          // (|,(|,P,Q),R) = (|,P,Q,R)
         } else if (term2 instanceof IntersectionInt) {
-            set = new TreeSet<Term>(((CompoundTerm) term2).cloneComponents());
+            set = new TreeSet<>(((CompoundTerm) term2).cloneComponents());
             set.add((Term) term1.clone());   // (|,R,(|,P,Q)) = (|,P,Q,R)
         } else {
-            set = new TreeSet<Term>();
+            set = new TreeSet<>();
             set.add((Term) term1.clone());
             set.add((Term) term2.clone());
         }
@@ -100,7 +100,7 @@ public class IntersectionInt extends CompoundTerm {
      * @return the Term generated from the arguments
      */
     public static Term make(ArrayList<Term> argList, Memory memory) {
-        var set = new TreeSet<Term>(argList); // sort/merge arguments
+        var set = new TreeSet<>(argList); // sort/merge arguments
         return make(set, memory);
     }
 
@@ -115,7 +115,7 @@ public class IntersectionInt extends CompoundTerm {
         if (set.size() == 1) {
             return set.first();
         }                         // special case: single component
-        var argument = new ArrayList<Term>(set);
+        var argument = new ArrayList<>(set);
         var name = makeCompoundName(Symbols.INTERSECTION_INT_OPERATOR, argument);
         var t = memory.nameToListedTerm(name);
         return (t != null) ? t : new IntersectionInt(argument);
