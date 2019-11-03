@@ -89,13 +89,13 @@ class IntersectionInt : CompoundTerm {
                 set = TreeSet((term1 as CompoundTerm).cloneComponents())
                 set.addAll((term2 as CompoundTerm).cloneComponents())           // set union
 
-                return SetExt.make(set, memory)
+                return SetExt.make(set as TreeSet<Term>, memory) as Term
             }
             if (term1 is SetInt && term2 is SetInt) {
                 set = TreeSet((term1 as CompoundTerm).cloneComponents())
                 set.retainAll((term2 as CompoundTerm).cloneComponents())        // set intersection
 
-                return SetInt.make(set, memory)
+                return SetInt.make(set, memory) as Term
             }
             if (term1 is IntersectionInt) {
                 set = TreeSet((term1 as CompoundTerm).cloneComponents())

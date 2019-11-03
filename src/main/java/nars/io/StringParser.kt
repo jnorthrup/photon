@@ -249,13 +249,15 @@ object StringParser {
                     }
                 } else if (first == Symbols.SET_EXT_OPENER) {
                     if (last == Symbols.SET_EXT_CLOSER) {
-                        SetExt.make(parseArguments(s.substring(1, index) + Symbols.ARGUMENT_SEPARATOR, memory), memory)
+                        val parseArguments = parseArguments(s.substring(1, index) + Symbols.ARGUMENT_SEPARATOR, memory)
+                        SetExt.make(parseArguments as List<Term>, memory) as Term
                     } else {
-                        throw InvalidInputException("missing ExtensionSet closer")
+                        throw InvalidInputException("m  issing ExtensionSet closer")
                     }
                 } else if (first == Symbols.SET_INT_OPENER) {
                     if (last == Symbols.SET_INT_CLOSER) {
-                        SetInt.make(parseArguments(s.substring(1, index) + Symbols.ARGUMENT_SEPARATOR, memory), memory)
+                        val parseArguments = parseArguments(s.substring(1, index) + Symbols.ARGUMENT_SEPARATOR, memory)
+                        SetInt.make(parseArguments as List<Term>, memory)
                     } else {
                         throw InvalidInputException("missing IntensionSet closer")
                     }

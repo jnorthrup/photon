@@ -39,7 +39,7 @@ object Instance   {
      * @param memory    Reference to the memory
      * @return A compound generated or null
      */
-    fun make(subject: Term?, predicate: Term?, memory: Memory?): Statement? {
+  @JvmStatic     fun make(subject: Term, predicate: Term, memory: Memory): Statement? {
         return Inheritance.make(SetExt.make(subject, memory), predicate, memory!!)
     }
 }

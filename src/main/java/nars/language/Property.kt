@@ -39,7 +39,7 @@ object Property  {
      * @param memory    Reference to the memory
      * @return A compound generated or null
      */
-    fun make(subject: Term?, predicate: Term?, memory: Memory?): Statement? {
-        return Inheritance.make(subject, SetInt.make(predicate, memory), memory!!)
+    fun make(subject: Term, predicate: Term,memory: Memory): Statement? {
+        return Inheritance.make(subject, SetInt.make(predicate, memory) as Term, memory!!)
     }
 }
