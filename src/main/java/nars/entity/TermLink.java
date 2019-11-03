@@ -22,6 +22,7 @@ package nars.entity;
 
 import nars.io.Symbols;
 import nars.language.Term;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * A link between a compound term and a component term
@@ -57,6 +58,7 @@ public class TermLink extends Item {
     /** The type of link, one of the above */
     protected short type;
     /** The index of the component in the component list of the compound, may have up to 4 levels */
+    @Nullable
     protected short[] index;
 
     /**

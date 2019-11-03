@@ -423,17 +423,18 @@ public class RuleTables {
      * @param memory Reference to the memory
      */
     private static void conditionalDedIndWithVar(Implication conditional, short index, Statement statement, short side, Memory memory) {
+        short side1 = side;
         CompoundTerm condition = (CompoundTerm) conditional.getSubject();
         Term component = condition.componentAt(index);
         Term component2 = null;
         if (statement instanceof Inheritance) {
             component2 = statement;
-            side = -1;
+            side1 = -1;
         } else if (statement instanceof Implication) {
-            component2 = statement.componentAt(side);
+            component2 = statement.componentAt(side1);
         }
         if ((component2 != null) && Variable.unify(Symbols.VAR_INDEPENDENT, component, component2, conditional, statement)) {
-            SyllogisticRules.conditionalDedInd(conditional, index, statement, side, memory);
+            SyllogisticRules.conditionalDedInd(conditional, index, statement, side1, memory);
         }
     }
 

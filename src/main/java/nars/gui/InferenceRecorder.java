@@ -36,6 +36,7 @@ public class InferenceRecorder implements IInferenceRecorder {
     /** whether to display */
     private boolean isReporting = false;
     /** the log file */
+    @org.jetbrains.annotations.Nullable
     private PrintWriter logFile = null;
 
     @Override

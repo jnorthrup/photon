@@ -69,20 +69,21 @@ public final class BudgetFunctions extends UtilityFunctions {
      * necessary
      */
     static BudgetValue solutionEval(Sentence problem, Sentence solution, Task task, Memory memory) {
+        Task task1 = task;
         BudgetValue budget = null;
         boolean feedbackToLinks = false;
-        if (task == null) {                   // called in continued processing
-            task = memory.currentTask;
+        if (task1 == null) {                   // called in continued processing
+            task1 = memory.currentTask;
             feedbackToLinks = true;
         }
-        boolean judgmentTask = task.getSentence().isJudgment();
+        boolean judgmentTask = task1.getSentence().isJudgment();
         float quality = LocalRules.solutionQuality(problem, solution);
         if (judgmentTask) {
-            task.incPriority(quality);
+            task1.incPriority(quality);
         } else {
-            float taskPriority = task.getPriority();
-            budget = new BudgetValue(or(taskPriority, quality), task.getDurability(), truthToQuality(solution.getTruth()));
-            task.setPriority(Math.min(1 - quality, taskPriority));
+            float taskPriority = task1.getPriority();
+            budget = new BudgetValue(or(taskPriority, quality), task1.getDurability(), truthToQuality(solution.getTruth()));
+            task1.setPriority(Math.min(1 - quality, taskPriority));
         }
         if (feedbackToLinks) {
             TaskLink tLink = memory.currentTaskLink;

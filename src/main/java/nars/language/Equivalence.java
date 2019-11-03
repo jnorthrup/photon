@@ -66,26 +66,28 @@ public class Equivalence extends Statement {
      * @return A compound generated or null
      */
     public static Equivalence make(Term subject, Term predicate, Memory memory) {  // to be extended to check if subject is Conjunction
-        if ((subject instanceof Implication) || (subject instanceof Equivalence)) {
+        Term subject1 = subject;
+        Term predicate1 = predicate;
+        if ((subject1 instanceof Implication) || (subject1 instanceof Equivalence)) {
             return null;
         }
-        if ((predicate instanceof Implication) || (predicate instanceof Equivalence)) {
+        if ((predicate1 instanceof Implication) || (predicate1 instanceof Equivalence)) {
             return null;
         }
-        if (invalidStatement(subject, predicate)) {
+        if (invalidStatement(subject1, predicate1)) {
             return null;
         }
-        if (subject.compareTo(predicate) > 0) {
-            Term interm = subject;
-            subject = predicate;
-            predicate = interm;
+        if (subject1.compareTo(predicate1) > 0) {
+            Term interm = subject1;
+            subject1 = predicate1;
+            predicate1 = interm;
         }
-        String name = makeStatementName(subject, Symbols.EQUIVALENCE_RELATION, predicate);
+        String name = makeStatementName(subject1, Symbols.EQUIVALENCE_RELATION, predicate1);
         Term t = memory.nameToListedTerm(name);
         if (t != null) {
             return (Equivalence) t;
         }
-        ArrayList<Term> argument = argumentsToList(subject, predicate);
+        ArrayList<Term> argument = argumentsToList(subject1, predicate1);
         return new Equivalence(argument);
     }
 

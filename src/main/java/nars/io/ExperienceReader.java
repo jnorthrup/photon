@@ -39,6 +39,7 @@ public class ExperienceReader implements InputChannel {
     /**
      * Input experience from a file
      */
+    @org.jetbrains.annotations.Nullable
     private BufferedReader inExp;
     /**
      * Remaining working cycles before reading the next line

@@ -49,6 +49,7 @@ public class NARS extends Applet implements Runnable {
     /**
      * The internal working thread of the system.
      */
+    @org.jetbrains.annotations.Nullable
     Thread narsThread = null;
     /**
      * The reasoner

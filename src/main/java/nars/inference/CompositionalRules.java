@@ -288,7 +288,7 @@ public final class CompositionalRules {
         TruthValue truthB = memory.currentBelief.getTruth();
         Variable varInd = new Variable("$varInd1");
         Variable varInd2 = new Variable("$varInd2");
-        Term term11, term12, term21, term22, commonTerm;
+        @org.jetbrains.annotations.Nullable Term term11, term12, term21, term22, commonTerm;
         HashMap<Term, Term> subs = new HashMap<Term, Term>();
         if (index == 0) {
             term11 = varInd;
@@ -422,7 +422,7 @@ public final class CompositionalRules {
      * @param index The index of the terms in their statement
      */
     private static Term secondCommonTerm(Term term1, Term term2, int index) {
-        Term commonTerm = null;
+        @org.jetbrains.annotations.Nullable Term commonTerm = null;
         if (index == 0) {
             if ((term1 instanceof ImageExt) && (term2 instanceof ImageExt)) {
                 commonTerm = ((ImageExt) term1).getTheOtherComponent();

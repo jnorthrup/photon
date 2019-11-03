@@ -95,10 +95,12 @@ public class Memory {
     /**
      * The selected TermLink
      */
+    @org.jetbrains.annotations.Nullable
     public TermLink currentBeliefLink;
     /**
      * The selected belief
      */
+    @org.jetbrains.annotations.Nullable
     public Sentence currentBelief;
     /**
      * The new Stamp
@@ -410,7 +412,8 @@ public class Memory {
     private void processNewTask() {
         Task task;
         int counter = newTasks.size();  // don't include new tasks produced in the current workCycle
-        while (counter-- > 0) {
+        while (counter > 0) {
+            counter--;
             task = newTasks.remove(0);
             if (task.isInput() || (termToConcept(task.getContent()) != null)) { // new input or existing concept
                 immediateProcess(task);
@@ -426,6 +429,7 @@ public class Memory {
                 }
             }
         }
+        counter--;
     }
 
     /**

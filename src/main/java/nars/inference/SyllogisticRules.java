@@ -240,6 +240,7 @@ public final class SyllogisticRules {
      * @param memory Reference to the memory
      */
     static void conditionalDedInd(Implication premise1, short index, Term premise2, int side, Memory memory) {
+        short index1 = index;
         Task task = memory.currentTask;
         Sentence taskSentence = task.getSentence();
         Sentence belief = memory.currentBelief;
@@ -259,21 +260,21 @@ public final class SyllogisticRules {
         Conjunction oldCondition = (Conjunction) premise1.getSubject();
         int index2 = oldCondition.getComponents().indexOf(commonComponent);
         if (index2 >= 0) {
-            index = (short) index2;
+            index1 = (short) index2;
         } else {
-            boolean match = Variable.unify(Symbols.VAR_INDEPENDENT, oldCondition.componentAt(index), commonComponent, premise1, premise2);
+            boolean match = Variable.unify(Symbols.VAR_INDEPENDENT, oldCondition.componentAt(index1), commonComponent, premise1, premise2);
             if (!match && (commonComponent.getClass() == oldCondition.getClass())) {
-                match = Variable.unify(Symbols.VAR_INDEPENDENT, oldCondition.componentAt(index), ((CompoundTerm) commonComponent).componentAt(index), premise1, premise2);
+                match = Variable.unify(Symbols.VAR_INDEPENDENT, oldCondition.componentAt(index1), ((CompoundTerm) commonComponent).componentAt(index1), premise1, premise2);
             }
             if (!match) {
                 return;
             }
         }
-        Term newCondition;
+        @org.jetbrains.annotations.Nullable Term newCondition;
         if (oldCondition.equals(commonComponent)) {
             newCondition = null;
         } else {
-            newCondition = CompoundTerm.setComponent(oldCondition, index, newComponent, memory);
+            newCondition = CompoundTerm.setComponent(oldCondition, index1, newComponent, memory);
         }
         Term content;
         if (newCondition != null) {
@@ -338,7 +339,7 @@ public final class SyllogisticRules {
         if (!match) {
             return;
         }
-        Term newCondition;
+        @org.jetbrains.annotations.Nullable Term newCondition;
         if (oldCondition.equals(commonComponent)) {
             newCondition = null;
         } else {
