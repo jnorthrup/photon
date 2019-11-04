@@ -164,7 +164,7 @@ class ReasonerBatch {
         val c = text[0]
         if (c == Symbols.RESET_MARK) {
             reset()
-            memory!!.exportStrings!!.add(text   )
+            memory.exportStrings!!.add(text   )
         } else if (c != Symbols.COMMENT_MARK) {
             // read NARS language or an integer : TODO duplicated code
 

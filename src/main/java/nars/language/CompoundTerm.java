@@ -101,7 +101,7 @@ public abstract class CompoundTerm extends CompoundTermState {
                 return SetExt.make(arg, memory);
             }
             if (op.charAt(0) == Symbols.SET_INT_OPENER) {
-                return SetInt.make(arg, (BackingStore) memory);
+                return SetInt.make(arg, memory);
             }
             if (op.equals(Symbols.INTERSECTION_EXT_OPERATOR)) {
                 return IntersectionExt.make(arg, memory);
@@ -439,7 +439,7 @@ public abstract class CompoundTerm extends CompoundTermState {
                     if (term.getName().length() == 1) { // anonymous variable from input
                         var = new Variable(term.getName().charAt(0) + "" + (map.size() + 1));
                     } else {
-                        var = (Variable) map.get((Variable) term);
+                        var = map.get(term);
                         if (var == null) {
                             var = new Variable(term.getName().charAt(0) + "" + (map.size() + 1));
                         }

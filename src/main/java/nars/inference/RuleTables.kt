@@ -128,7 +128,7 @@ object RuleTables {
      * @param memory     Reference to the memory
      */
     private fun syllogisms(tLink: TaskLink, bLink: TermLink, taskTerm: Term, beliefTerm: Term, memory: BackingStore) {
-        val taskSentence = memory.currentTask!!!!.sentence
+        val taskSentence = memory.currentTask!!.sentence
         val belief = memory.currentBelief
         val figure: Int
         if (taskTerm is Inheritance) {

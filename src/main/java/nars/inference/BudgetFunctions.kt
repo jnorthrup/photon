@@ -116,7 +116,7 @@ object BudgetFunctions   {/* ----------------------- Belief evaluation ---------
      */
      @JvmStatic   fun revise(tTruth: TruthValue, bTruth: TruthValue, truth: TruthValue, feedbackToLinks: Boolean, memory: BackingStore): BudgetValue {
         val difT = truth.getExpDifAbs(tTruth)
-        val task: Task =  memory!!.currentTask!!
+        val task: Task =  memory.currentTask!!
         task.decPriority(1 - difT)
         task.decDurability(1 - difT)
         if (feedbackToLinks) {

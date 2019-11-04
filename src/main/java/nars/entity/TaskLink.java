@@ -20,7 +20,7 @@
  */
 package nars.entity;
 
-import nars.main_nogui.Parameters;
+import nars.main_nogui. *;
 
 /**
  * Reference to a Task.

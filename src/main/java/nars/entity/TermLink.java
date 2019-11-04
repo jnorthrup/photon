@@ -177,4 +177,5 @@ public class TermLink extends   ItemIdentity implements TermLinkConstants {
             return -1;
         }
     }
+
 }
