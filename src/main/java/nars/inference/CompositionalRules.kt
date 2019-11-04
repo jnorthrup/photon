@@ -385,14 +385,18 @@ object CompositionalRules {/* -------------------- intersections and differences
         val predicate2: Term = premise2.predicate
         val commonTerm1: Term
         val commonTerm2: Term?
-        if (subject1 == subject2) {
-            commonTerm1 = subject1
-            commonTerm2 = secondCommonTerm(predicate1, predicate2, 0)
-        } else if (predicate1 == predicate2) {
-            commonTerm1 = predicate1
-            commonTerm2 = secondCommonTerm(subject1, subject2, 0)
-        } else {
-            return
+        when {
+            subject1 == subject2 -> {
+                commonTerm1 = subject1
+                commonTerm2 = secondCommonTerm(predicate1, predicate2, 0)
+            }
+            predicate1 == predicate2 -> {
+                commonTerm1 = predicate1
+                commonTerm2 = secondCommonTerm(subject1, subject2, 0)
+            }
+            else -> {
+                return
+            }
         }
         val belief = memory.currentBelief
         val substitute = HashMap<Term, Term>()

@@ -211,20 +211,28 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
         var truth: TruthValue? = null
         val budget: BudgetValue
         if (taskSentence.isQuestion) {
-            budget = if (statement is Equivalence) {
-                backward(beliefTruth, memory)
-            } else if (side == 0) {
-                backwardWeak(beliefTruth, memory)
-            } else {
-                backward(beliefTruth, memory)
+            budget = when {
+                statement is Equivalence -> {
+                    backward(beliefTruth, memory)
+                }
+                side == 0 -> {
+                    backwardWeak(beliefTruth, memory)
+                }
+                else -> {
+                    backward(beliefTruth, memory)
+                }
             }
         } else {
-            truth = if (statement is Equivalence) {
-                TruthFunctions.analogy(truth2!!, truth1!!)
-            } else if (side == 0) {
-                TruthFunctions.deduction(truth1!!, truth2!!)
-            } else {
-                TruthFunctions.abduction(truth2!!, truth1!!)
+            truth = when {
+                statement is Equivalence -> {
+                    TruthFunctions.analogy(truth2!!, truth1!!)
+                }
+                side == 0 -> {
+                    TruthFunctions.deduction(truth1!!, truth2!!)
+                }
+                else -> {
+                    TruthFunctions.abduction(truth2!!, truth1!!)
+                }
             }
             budget = forward(truth, memory)
         }
@@ -253,14 +261,18 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
         val conditionalTask = Variable.hasSubstitute(var_type.VAR_INDEPENDENT.sym, premise2, belief!!.content)
         val commonComponent: Term
         var newComponent: Term? = null
-        if (side == 0) {
-            commonComponent = (premise2 as Statement).subject
-            newComponent = premise2.predicate
-        } else if (side == 1) {
-            commonComponent = (premise2 as Statement).predicate
-            newComponent = premise2.subject
-        } else {
-            commonComponent = premise2
+        when (side) {
+            0 -> {
+                commonComponent = (premise2 as Statement).subject
+                newComponent = premise2.predicate
+            }
+            1 -> {
+                commonComponent = (premise2 as Statement).predicate
+                newComponent = premise2.subject
+            }
+            else -> {
+                commonComponent = premise2
+            }
         }
         val oldCondition = premise1.subject as Conjunction
         val index2 = oldCondition.components.indexOf(commonComponent)
@@ -297,12 +309,16 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
         if (taskSentence.isQuestion) {
             budget = backwardWeak(truth2, memory)
         } else {
-            truth = if (deduction) {
-                TruthFunctions.deduction(truth1, truth2)
-            } else if (conditionalTask) {
-                TruthFunctions.induction(truth2, truth1)
-            } else {
-                TruthFunctions.induction(truth1, truth2)
+            truth = when {
+                deduction -> {
+                    TruthFunctions.deduction(truth1, truth2)
+                }
+                conditionalTask -> {
+                    TruthFunctions.induction(truth2, truth1)
+                }
+                else -> {
+                    TruthFunctions.induction(truth1, truth2)
+                }
             }
             budget = forward(truth, memory)
         }
@@ -327,14 +343,18 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
         val conditionalTask = Variable.hasSubstitute(var_type.VAR_INDEPENDENT.sym, premise2, belief!!.content)
         val commonComponent: Term
         var newComponent: Term? = null
-        if (side == 0) {
-            commonComponent = (premise2 as Statement).subject
-            newComponent = premise2.predicate
-        } else if (side == 1) {
-            commonComponent = (premise2 as Statement).predicate
-            newComponent = premise2.subject
-        } else {
-            commonComponent = premise2
+        when (side) {
+            0 -> {
+                commonComponent = (premise2 as Statement).subject
+                newComponent = premise2.predicate
+            }
+            1 -> {
+                commonComponent = (premise2 as Statement).predicate
+                newComponent = premise2.subject
+            }
+            else -> {
+                commonComponent = premise2
+            }
         }
         val oldCondition = premise1.subject as Conjunction
         var match = Variable.unify(var_type.VAR_DEPENDENT.sym, oldCondition.componentAt(index.toInt()), commonComponent, premise1, premise2)

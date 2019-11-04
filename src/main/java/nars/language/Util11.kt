@@ -15,11 +15,15 @@ object Util11 {
      * @return A compound term or null
      */
     @JvmStatic
-    fun make(compound: CompoundTerm, components: List<Term > , memory: BackingStore) =if (compound is ImageExt) {
+    fun make(compound: CompoundTerm, components: List<Term > , memory: BackingStore) = when (compound) {
+        is ImageExt -> {
             ImageExt.make(components , compound.relationIndex, memory)
-        } else if (compound is ImageInt) {
+        }
+        is ImageInt -> {
             ImageInt.make(components, compound.relationIndex, memory)
-        } else {
+        }
+        else -> {
             Util2.make(compound.operator(), components, memory)
         }
+    }
 }

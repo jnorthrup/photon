@@ -132,43 +132,59 @@ object RuleTables {
         val taskSentence = memory.currentTask!!.sentence
         val belief = memory.currentBelief
         val figure: Int
-        if (taskTerm is Inheritance) {
-            if (beliefTerm is Inheritance) {
-                figure = indexToFigure(tLink, bLink)
-                asymmetricAsymmetric(taskSentence, belief, figure, memory)
-            } else if (beliefTerm is Similarity) {
-                figure = indexToFigure(tLink, bLink)
-                asymmetricSymmetric(taskSentence, belief, figure, memory)
-            } else {
-                detachmentWithVar(belief, taskSentence, bLink.getIndex(0).toInt(), memory)
+        when (taskTerm) {
+            is Inheritance -> {
+                when (beliefTerm) {
+                    is Inheritance -> {
+                        figure = indexToFigure(tLink, bLink)
+                        asymmetricAsymmetric(taskSentence, belief, figure, memory)
+                    }
+                    is Similarity -> {
+                        figure = indexToFigure(tLink, bLink)
+                        asymmetricSymmetric(taskSentence, belief, figure, memory)
+                    }
+                    else -> {
+                        detachmentWithVar(belief, taskSentence, bLink.getIndex(0).toInt(), memory)
+                    }
+                }
             }
-        } else if (taskTerm is Similarity) {
-            if (beliefTerm is Inheritance) {
-                figure = indexToFigure(bLink, tLink)
-                asymmetricSymmetric(belief, taskSentence, figure, memory)
-            } else if (beliefTerm is Similarity) {
-                figure = indexToFigure(bLink, tLink)
-                symmetricSymmetric(belief, taskSentence, figure, memory)
+            is Similarity -> when (beliefTerm) {
+                is Inheritance -> {
+                    figure = indexToFigure(bLink, tLink)
+                    asymmetricSymmetric(belief, taskSentence, figure, memory)
+                }
+                is Similarity -> {
+                    figure = indexToFigure(bLink, tLink)
+                    symmetricSymmetric(belief, taskSentence, figure, memory)
+                }
             }
-        } else if (taskTerm is Implication) {
-            if (beliefTerm is Implication) {
-                figure = indexToFigure(tLink, bLink)
-                asymmetricAsymmetric(taskSentence, belief, figure, memory)
-            } else if (beliefTerm is Equivalence) {
-                figure = indexToFigure(tLink, bLink)
-                asymmetricSymmetric(taskSentence, belief, figure, memory)
-            } else if (beliefTerm is Inheritance) {
-                detachmentWithVar(taskSentence, belief, tLink.getIndex(0).toInt(), memory)
+            is Implication -> {
+                when (beliefTerm) {
+                    is Implication -> {
+                        figure = indexToFigure(tLink, bLink)
+                        asymmetricAsymmetric(taskSentence, belief, figure, memory)
+                    }
+                    is Equivalence -> {
+                        figure = indexToFigure(tLink, bLink)
+                        asymmetricSymmetric(taskSentence, belief, figure, memory)
+                    }
+                    is Inheritance -> {
+                        detachmentWithVar(taskSentence, belief, tLink.getIndex(0).toInt(), memory)
+                    }
+                }
             }
-        } else if (taskTerm is Equivalence) {
-            if (beliefTerm is Implication) {
-                figure = indexToFigure(bLink, tLink)
-                asymmetricSymmetric(belief, taskSentence, figure, memory)
-            } else if (beliefTerm is Equivalence) {
-                figure = indexToFigure(bLink, tLink)
-                symmetricSymmetric(belief, taskSentence, figure, memory)
-            } else if (beliefTerm is Inheritance) {
-                detachmentWithVar(taskSentence, belief, tLink.getIndex(0).toInt(), memory)
+            is Equivalence -> when (beliefTerm) {
+                is Implication -> {
+                    figure = indexToFigure(bLink, tLink)
+                    asymmetricSymmetric(belief, taskSentence, figure, memory)
+                }
+                is Equivalence -> {
+                    figure = indexToFigure(bLink, tLink)
+                    symmetricSymmetric(belief, taskSentence, figure, memory)
+                }
+                is Inheritance -> {
+                    detachmentWithVar(taskSentence, belief, tLink.getIndex(0).toInt(), memory)
+                }
             }
         }
     }
