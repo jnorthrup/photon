@@ -30,22 +30,7 @@ import nars.main_nogui.Parameters;
  */
 public class TaskLink extends TermLink {
 
-    /**
-     * The number of TermLinks remembered
-     */
-    int counter;
-    /**
-     * The Task linked. The "target" field in TermLink is not used here.
-     */
-    private Task targetTask;
-    /**
-     * Remember the TermLinks that has been used recently with this TaskLink
-     */
-    private String[] recordedLinks;
-    /**
-     * Remember the time when each TermLink is used with this TaskLink
-     */
-    private long[] recordingTime;
+    final TasklinkState tasklinkState = new TasklinkState();
 
     /**
      * Constructor
@@ -58,21 +43,21 @@ public class TaskLink extends TermLink {
      */
     public TaskLink(Task t, TermLink template, BudgetValue v) {
         super("", v);
-        targetTask = t;
+        tasklinkState.targetTask = t;
         if (template == null) {
-            type = TermLink.SELF;
+            type = TermLinkConstants.SELF;
             index = null;
         } else {
             type = template.getType();
             index = template.getIndices();
         }
-        recordedLinks = new String[Parameters.TERM_LINK_RECORD_LENGTH];
-        recordingTime = new long[Parameters.TERM_LINK_RECORD_LENGTH];
-        counter = 0;
+        tasklinkState.recordedLinks = new String[Parameters.TERM_LINK_RECORD_LENGTH];
+        tasklinkState.recordingTime = new long[Parameters.TERM_LINK_RECORD_LENGTH];
+        tasklinkState.counter = 0;
     }
 
     public String getKey() {
-        return super.getKey() + targetTask.getKey();
+        return super.getKey() + tasklinkState.targetTask.getKey();
     }
 
     /**
@@ -81,7 +66,7 @@ public class TaskLink extends TermLink {
      * @return The linked Task
      */
     public Task getTargetTask() {
-        return targetTask;
+        return tasklinkState.targetTask;
     }
 
     /**
@@ -96,27 +81,27 @@ public class TaskLink extends TermLink {
      */
     public boolean novel(TermLink termLink, long currentTime) {
         var bTerm = termLink.getTarget();
-        if (bTerm.equals(targetTask.getSentence().getContent())) {
+        if (bTerm.equals(tasklinkState.targetTask.getSentence().getContent())) {
             return false;
         }
         var linkKey = termLink.getKey();
         int next, i;
-        for (i = 0; i < counter; i++) {
+        for (i = 0; i < tasklinkState.counter; i++) {
             next = i % Parameters.TERM_LINK_RECORD_LENGTH;
-            if (linkKey.equals(recordedLinks[next])) {
-                if (currentTime < recordingTime[next] + Parameters.TERM_LINK_RECORD_LENGTH) {
+            if (linkKey.equals(tasklinkState.recordedLinks[next])) {
+                if (currentTime < tasklinkState.recordingTime[next] + Parameters.TERM_LINK_RECORD_LENGTH) {
                     return false;
                 } else {
-                    recordingTime[next] = currentTime;
+                    tasklinkState.recordingTime[next] = currentTime;
                     return true;
                 }
             }
         }
         next = i % Parameters.TERM_LINK_RECORD_LENGTH;
-        recordedLinks[next] = linkKey;       // add knowledge reference to recordedLinks
-        recordingTime[next] = currentTime;
-        if (counter < Parameters.TERM_LINK_RECORD_LENGTH) { // keep a constant length
-            counter++;
+        tasklinkState.recordedLinks[next] = linkKey;       // add knowledge reference to recordedLinks
+        tasklinkState.recordingTime[next] = currentTime;
+        if (tasklinkState.counter < Parameters.TERM_LINK_RECORD_LENGTH) { // keep a constant length
+            tasklinkState.counter++;
         }
         return true;
     }

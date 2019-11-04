@@ -21,6 +21,7 @@
 package nars.language;
 
 import nars.entity.TermLink;
+import nars.entity.TermLinkConstants;
 import nars.io.Symbols;
 import nars.storage.Memory;
 
@@ -488,9 +489,9 @@ public abstract class CompoundTerm extends CompoundTermState {
      *
      * @return A list of TermLink templates
      */
-    public   List<TermLink> prepareComponentLinks() {
-        var componentLinks = new ArrayList<TermLink>();
-        var type = (this instanceof Statement) ? TermLink.COMPOUND_STATEMENT : TermLink.COMPOUND;   // default
+    public   List<TermLinkConstants> prepareComponentLinks() {
+        var componentLinks = new ArrayList<TermLinkConstants>();
+        var type = (this instanceof Statement) ? TermLinkConstants.COMPOUND_STATEMENT : TermLinkConstants.COMPOUND;   // default
         prepareComponentLinks(componentLinks, type, this);
         return componentLinks;
     }
@@ -504,7 +505,7 @@ public abstract class CompoundTerm extends CompoundTermState {
      * @param type           The type of TermLink to be built
      * @param term           The CompoundTerm for which the links are built
      */
-    private void prepareComponentLinks( List<TermLink> componentLinks, short type, CompoundTerm term) {
+    private void prepareComponentLinks(List<TermLinkConstants> componentLinks, short type, CompoundTerm term) {
         Term t1, t2, t3;                    // components at different levels
         for (var i = 0; i < term.size(); i++) {     // first level components
             t1 = term.componentAt(i);
@@ -512,16 +513,16 @@ public abstract class CompoundTerm extends CompoundTermState {
                 componentLinks.add(new TermLink(t1, type, i));
             }
             if ((t1 instanceof Conjunction) && ((this instanceof Equivalence) || ((this instanceof Implication) && (i == 0)))) {
-                ((CompoundTerm) t1).prepareComponentLinks(componentLinks, TermLink.COMPOUND_CONDITION, (CompoundTerm) t1);
+                ((CompoundTerm) t1).prepareComponentLinks(componentLinks, TermLinkConstants.COMPOUND_CONDITION, (CompoundTerm) t1);
             } else if (t1 instanceof CompoundTerm) {
                 for (var j = 0; j < ((CompoundTerm) t1).size(); j++) {  // second level components
                     t2 = ((CompoundTerm) t1).componentAt(j);
                     if (t2.isConstant()) {
                         if ((t1 instanceof Product) || (t1 instanceof ImageExt) || (t1 instanceof ImageInt)) {
-                            if (type == TermLink.COMPOUND_CONDITION) {
-                                componentLinks.add(new TermLink(t2, TermLink.TRANSFORM, 0, i, j));
+                            if (type == TermLinkConstants.COMPOUND_CONDITION) {
+                                componentLinks.add(new TermLink(t2, TermLinkConstants.TRANSFORM, 0, i, j));
                             } else {
-                                componentLinks.add(new TermLink(t2, TermLink.TRANSFORM, i, j));
+                                componentLinks.add(new TermLink(t2, TermLinkConstants.TRANSFORM, i, j));
                             }
                         } else {
                             componentLinks.add(new TermLink(t2, type, i, j));
@@ -531,10 +532,10 @@ public abstract class CompoundTerm extends CompoundTermState {
                         for (var k = 0; k < ((CompoundTerm) t2).size(); k++) {
                             t3 = ((CompoundTerm) t2).componentAt(k);
                             if (t3.isConstant()) {                           // third level
-                                if (type == TermLink.COMPOUND_CONDITION) {
-                                    componentLinks.add(new TermLink(t3, TermLink.TRANSFORM, 0, i, j, k));
+                                if (type == TermLinkConstants.COMPOUND_CONDITION) {
+                                    componentLinks.add(new TermLink(t3, TermLinkConstants.TRANSFORM, 0, i, j, k));
                                 } else {
-                                    componentLinks.add(new TermLink(t3, TermLink.TRANSFORM, i, j, k));
+                                    componentLinks.add(new TermLink(t3, TermLinkConstants.TRANSFORM, i, j, k));
                                 }
                             }
                         }

@@ -36,39 +36,7 @@ import org.jetbrains.annotations.Nullable;
  * <p>
  * This class is mainly used in inference.RuleTable to dispatch premises to inference rules
  */
-public class TermLink extends   ItemIdentity {
-    /**
-     * At C, point to C; TaskLink only
-     */
-    public static final short SELF = 0;
-    /**
-     * At (&&, A, C), point to C
-     */
-    public static final short COMPONENT = 1;
-    /**
-     * At C, point to (&&, A, C)
-     */
-    public static final short COMPOUND = 2;
-    /**
-     * At <C --> A>, point to C
-     */
-    public static final short COMPONENT_STATEMENT = 3;
-    /**
-     * At C, point to <C --> A>
-     */
-    public static final short COMPOUND_STATEMENT = 4;
-    /**
-     * At <(&&, C, B) ==> A>, point to C
-     */
-    public static final short COMPONENT_CONDITION = 5;
-    /**
-     * At C, point to <(&&, C, B) ==> A>
-     */
-    public static final short COMPOUND_CONDITION = 6;
-    /**
-     * At C, point to <(*, C, B) --> A>; TaskLink only
-     */
-    public static final short TRANSFORM = 8;
+public class TermLink extends   ItemIdentity implements TermLinkConstants {
     private String key = null;
     /**
      * The type of link, one of the above
@@ -97,7 +65,7 @@ public class TermLink extends   ItemIdentity {
         target = t;
         type = p;
         assert (type % 2 == 0); // template types all point to compound, though the target is component
-        if (type == TermLink.COMPOUND_CONDITION) {  // the first index is 0 by default
+        if (type == TermLinkConstants.COMPOUND_CONDITION) {  // the first index is 0 by default
             index = new short[indices.length + 1];
             index[0] = 0;
             for (int i = 0; i < indices.length; i++) {

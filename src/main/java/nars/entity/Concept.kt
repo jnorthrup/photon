@@ -510,7 +510,7 @@ class Concept(
         taskLinks = TaskLinkBag(memory)
         termLinks = TermLinkBag(memory)
         if (term is CompoundTerm) {
-            termLinkTemplates = term.prepareComponentLinks()
+            termLinkTemplates = term.prepareComponentLinks() as List<TermLink>?
         }
     }
 

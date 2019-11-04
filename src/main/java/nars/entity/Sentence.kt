@@ -141,10 +141,10 @@ class Sentence : Cloneable {
 
     override fun hashCode(): Int {
         var hash = 5
-        hash = 67 * hash + Optional.ofNullable(content).map { obj: Term -> obj.hashCode() }.orElse(0)
+        hash = 67 * hash + Optional.ofNullable(content).map(Term::hashCode).orElse(0)
         hash = 67 * hash + punctuation.toInt()
-        hash = 67 * hash + Optional.ofNullable(truth).map { obj: TruthValue -> obj.hashCode() }.orElse(0)
-        hash = 67 * hash + Optional.ofNullable(stamp).map { obj: Stamp -> obj.hashCode() }.orElse(0)
+        hash = 67 * hash + Optional.ofNullable(truth).map(TruthValue::hashCode).orElse(0)
+        hash = 67 * hash + Optional.ofNullable(stamp).map(Stamp::hashCode).orElse(0)
         return hash
     }
 
