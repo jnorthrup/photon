@@ -25,6 +25,7 @@ import nars.entity.*
 import nars.io.var_type.*
 import nars.language.*
 import nars.storage.BackingStore
+import kotlin.reflect.KProperty1
 
 /**
  * Table of inference rules, indexed by the TermLinks for the task and the
@@ -65,17 +66,13 @@ object RuleTables {
             TermLink.SELF -> when (bLink.type) {
                 TermLink.COMPONENT -> compoundAndSelf(taskTerm as CompoundTerm, beliefTerm, true, memory)
                 TermLink.COMPOUND -> compoundAndSelf(beliefTerm as CompoundTerm, taskTerm, false, memory)
-                TermLink.COMPONENT_STATEMENT -> if (belief != null) {
-                    SyllogisticRules.detachment(task.sentence, belief, bIndex.toInt(), memory)
-                }
-                TermLink.COMPOUND_STATEMENT -> if (belief != null) {
-                    SyllogisticRules.detachment(belief, task.sentence, bIndex.toInt(), memory)
-                }
+                TermLink.COMPONENT_STATEMENT -> if (belief != null) SyllogisticRules.detachment(task.sentence, belief, bIndex.toInt(), memory)
+                TermLink.COMPOUND_STATEMENT -> if (belief != null) SyllogisticRules.detachment(belief, task.sentence, bIndex.toInt(), memory)
                 TermLink.COMPONENT_CONDITION -> if (belief != null) {
                     bIndex = bLink.getIndex(1)
                     SyllogisticRules.conditionalDedInd(taskTerm as Implication, bIndex, beliefTerm, tIndex.toInt(), memory)
                 }
-                TermLink.COMPOUND_CONDITION -> if (belief != null) {
+                TermLink.COMPOUND_CONDITION -> belief?.also {
                     bIndex = bLink.getIndex(1)
                     SyllogisticRules.conditionalDedInd(beliefTerm as Implication, bIndex, taskTerm, tIndex.toInt(), memory)
                 }
@@ -83,11 +80,14 @@ object RuleTables {
             TermLink.COMPOUND -> when (bLink.type) {
                 TermLink.COMPOUND -> compoundAndCompound(taskTerm as CompoundTerm, beliefTerm as CompoundTerm, memory)
                 TermLink.COMPOUND_STATEMENT -> compoundAndStatement(taskTerm as CompoundTerm, tIndex, beliefTerm as Statement, bIndex, beliefTerm, memory)
-                TermLink.COMPOUND_CONDITION -> if (belief != null) {
-                    if (beliefTerm is Implication) {
-                        SyllogisticRules.conditionalDedInd(beliefTerm, bIndex, taskTerm, -1, memory)
-                    } else if (beliefTerm is Equivalence) {
-                        SyllogisticRules.conditionalAna(beliefTerm, bIndex, taskTerm, -1, memory)
+                TermLink.COMPOUND_CONDITION -> (belief)?.also {
+                    when (beliefTerm) {
+                        is Implication -> {
+                            SyllogisticRules.conditionalDedInd(beliefTerm, bIndex, taskTerm, -1, memory)
+                        }
+                        is Equivalence -> {
+                            SyllogisticRules.conditionalAna(beliefTerm, bIndex, taskTerm, -1, memory)
+                        }
                     }
                 }
             }
@@ -128,7 +128,8 @@ object RuleTables {
      * @param beliefTerm The content of belief
      * @param memory     Reference to the memory
      */
-    private fun syllogisms(tLink: TaskLink, bLink: TermLink, taskTerm: Term, beliefTerm: Term, memory: BackingStore) {
+    @JvmStatic
+    fun syllogisms(tLink: TaskLink, bLink: TermLink, taskTerm: Term, beliefTerm: Term, memory: BackingStore) {
         val taskSentence = memory.currentTask!!.sentence
         val belief = memory.currentBelief!!
         val figure: Int
@@ -197,9 +198,8 @@ object RuleTables {
      * @param link2 The link to the second premise
      * @return The figure of the syllogism, one of the four: 11, 12, 21, or 22
      */
-    private fun indexToFigure(link1: TermLink, link2: TermLink): Int {
-        return (link1.getIndex(0) + 1) * 10 + (link2.getIndex(0) + 1)
-    }
+    @JvmStatic
+    fun indexToFigure(link1: TermLink, link2: TermLink) = (link1.getIndex(0) + 1) * 10 + (link2.getIndex(0) + 1)
 
     /**
      * Syllogistic rules whose both premises are on the same asymmetric relation
@@ -209,41 +209,41 @@ object RuleTables {
      * @param figure   The location of the shared term [1-2]{2}
      * @param memory   Reference to the memory
      */
+    @JvmStatic
     fun asymmetricAsymmetric(sentence: Sentence, belief: Sentence, figure: Int, memory: BackingStore) {
-        if (sentence != belief) {
-            arrayOf(sentence, belief)
-                    .map(Sentence::cloneContent).map { it as Statement }
-                    .also { (s1, s2) ->
-                        figure.toString()
-                                .map { arrayOf(Statement::subject, Statement::predicate)[it.toInt() - 1] }
-                                .zip(arrayOf(s1, s2)) { fn, stmt -> fn(stmt) }
-                                .also { (t1, t2) ->
+        val dispatch = arrayOf(Statement::subject, Statement::predicate)
+        if (sentence != belief) arrayOf(sentence, belief)
+                .map(Sentence::cloneContent).map { it as Statement }
+                .also { (s1, s2) ->
+                    "$figure".map(Char::toInt).map(Int::dec)
+                            .map(dispatch::get)
+                            .zip(arrayOf(s1, s2), KProperty1<Statement, Term>::invoke)
+                            .also { (t1, t2) ->
 
-                                    if (Variable.unify(VAR_INDEPENDENT.sym, t1, t2, s1, s2))
-                                        when (figure) {
-                                            11 -> {
-                                                CompositionalRules.composeCompound(s1, s2, 0, memory)
-                                                SyllogisticRules.abdIndCom(s2.predicate, s1.predicate, sentence, belief, memory)
-                                            }
-                                            12 -> if (Variable.unify(VAR_QUERY.sym, s2.subject, s1.predicate, s1, s2)) {
-                                                LocalRules.matchReverse(memory)
-                                            } else {
-                                                SyllogisticRules.dedExe(s2.subject, s1.predicate, sentence, belief, memory)
-                                            }
-                                            21 -> if (!Variable.unify(VAR_QUERY.sym, s1.subject, s2.predicate, s1, s2)) {
-                                                SyllogisticRules.dedExe(s1.subject, s2.predicate, sentence, belief, memory)
-                                            } else {
-                                                LocalRules.matchReverse(memory)
-                                            }
-                                            22 -> if (!SyllogisticRules.conditionalAbd(s1.subject, s2.subject, s1, s2, memory)) {
-                                                // if conditional abduction, skip the following
-                                                CompositionalRules.composeCompound(s1, s2, 1, memory)
-                                                SyllogisticRules.abdIndCom(s1.subject, s2.subject, sentence, belief, memory)
-                                            }
+                                if (Variable.unify(VAR_INDEPENDENT.sym, t1, t2, s1, s2))
+                                    when (figure) {
+                                        11 -> {
+                                            CompositionalRules.composeCompound(s1, s2, 0, memory)
+                                            SyllogisticRules.abdIndCom(s2.predicate, s1.predicate, sentence, belief, memory)
                                         }
-                                }
-                    }
-        }
+                                        12 -> if (Variable.unify(VAR_QUERY.sym, s2.subject, s1.predicate, s1, s2)) {
+                                            LocalRules.matchReverse(memory)
+                                        } else {
+                                            SyllogisticRules.dedExe(s2.subject, s1.predicate, sentence, belief, memory)
+                                        }
+                                        21 -> if (!Variable.unify(VAR_QUERY.sym, s1.subject, s2.predicate, s1, s2)) {
+                                            SyllogisticRules.dedExe(s1.subject, s2.predicate, sentence, belief, memory)
+                                        } else {
+                                            LocalRules.matchReverse(memory)
+                                        }
+                                        22 -> if (!SyllogisticRules.conditionalAbd(s1.subject, s2.subject, s1, s2, memory)) {
+                                            // if conditional abduction, skip the following
+                                            CompositionalRules.composeCompound(s1, s2, 1, memory)
+                                            SyllogisticRules.abdIndCom(s1.subject, s2.subject, sentence, belief, memory)
+                                        }
+                                    }
+                            }
+                }
     }
 
     /**
@@ -255,40 +255,49 @@ object RuleTables {
      * @param figure The location of the shared term
      * @param memory Reference to the memory
      */
-    private fun asymmetricSymmetric(asym: Sentence?, sym: Sentence, figure: Int, memory: BackingStore) {
-        val asymSt = asym!!.cloneContent() as Statement
-        val symSt = sym.cloneContent() as Statement
+    @JvmStatic
+    fun asymmetricSymmetric(asym: Sentence, sym: Sentence, figure: Int, memory: BackingStore) {
 
-
-        when (figure) {
-            11 -> if (Variable.unify(VAR_INDEPENDENT.sym, asymSt.subject, symSt.subject, asymSt, symSt)) {
-                if (Variable.unify(VAR_QUERY.sym, asymSt.predicate, symSt.predicate, asymSt, symSt)) {
-                    LocalRules.matchAsymSym(asym, sym, figure, memory)
-                } else {
-                    SyllogisticRules.analogy(symSt.predicate, asymSt.predicate, asym, sym, memory)
-                }
-            }
-            12 -> if (Variable.unify(VAR_INDEPENDENT.sym, asymSt.subject, symSt.predicate, asymSt, symSt)) {
-                if (Variable.unify(VAR_QUERY.sym, asymSt.predicate, symSt.subject, asymSt, symSt)) {
-                    LocalRules.matchAsymSym(asym, sym, figure, memory)
-                } else {
-                    SyllogisticRules.analogy(symSt.subject, asymSt.predicate, asym, sym, memory)
-                }
-            }
-            21 -> if (Variable.unify(VAR_INDEPENDENT.sym, asymSt.predicate, symSt.subject, asymSt, symSt)) {
-                if (Variable.unify(VAR_QUERY.sym, asymSt.subject, symSt.predicate, asymSt, symSt)) {
-                    LocalRules.matchAsymSym(asym, sym, figure, memory)
-                } else {
-                    SyllogisticRules.analogy(asymSt.subject, symSt.predicate, asym, sym, memory)
-                }
-            }
-            22 -> if (Variable.unify(VAR_INDEPENDENT.sym, asymSt.predicate, symSt.predicate, asymSt, symSt)) {
-                if (Variable.unify(VAR_QUERY.sym, asymSt.subject, symSt.subject, asymSt, symSt)) {
-                    LocalRules.matchAsymSym(asym, sym, figure, memory)
-                } else {
-                    SyllogisticRules.analogy(asymSt.subject, symSt.subject, asym, sym, memory)
-                }
-            }
+        arrayOf(asym, sym).map { it.cloneContent() as Statement }.also { (s1, s2) ->
+            val dispatch = arrayOf(Statement::subject, Statement::predicate)
+            "$figure"
+                    .map(Char::toInt)
+                    .map(Int::dec)
+                    .map(dispatch::get)
+                    .zip(arrayOf(s1, s2), KProperty1<Statement, Term>::invoke)
+                    .also { (t1, t2) ->
+                        if (Variable.unify(VAR_INDEPENDENT.sym, t1, t2, s1, s2))
+                            when (figure) {
+                                11 -> {
+                                    if (Variable.unify(VAR_QUERY.sym, s1.predicate, s2.predicate, s1, s2)) {
+                                        LocalRules.matchAsymSym(asym, sym, figure, memory)
+                                    } else {
+                                        SyllogisticRules.analogy(s2.predicate, s1.predicate, asym, sym, memory)
+                                    }
+                                }
+                                12 -> {
+                                    if (Variable.unify(VAR_QUERY.sym, s1.predicate, s2.subject, s1, s2)) {
+                                        LocalRules.matchAsymSym(asym, sym, figure, memory)
+                                    } else {
+                                        SyllogisticRules.analogy(s2.subject, s1.predicate, asym, sym, memory)
+                                    }
+                                }
+                                21 -> {
+                                    if (Variable.unify(VAR_QUERY.sym, s1.subject, s2.predicate, s1, s2)) {
+                                        LocalRules.matchAsymSym(asym, sym, figure, memory)
+                                    } else {
+                                        SyllogisticRules.analogy(s1.subject, s2.predicate, asym, sym, memory)
+                                    }
+                                }
+                                22 -> {
+                                    if (Variable.unify(VAR_QUERY.sym, s1.subject, s2.subject, s1, s2)) {
+                                        LocalRules.matchAsymSym(asym, sym, figure, memory)
+                                    } else {
+                                        SyllogisticRules.analogy(s1.subject, s2.subject, asym, sym, memory)
+                                    }
+                                }
+                            }
+                    }
         }
     }
 
@@ -300,22 +309,25 @@ object RuleTables {
      * @param figure       The location of the shared term
      * @param memory       Reference to the memory
      */
-    private fun symmetricSymmetric(belief: Sentence?, taskSentence: Sentence, figure: Int, memory: BackingStore) {
-        val s1 = belief!!.cloneContent() as Statement
-        val s2 = taskSentence.cloneContent() as Statement
-        when (figure) {
-            11 -> if (Variable.unify(VAR_INDEPENDENT.sym, s1.subject, s2.subject, s1, s2)) {
-                SyllogisticRules.resemblance(s1.predicate, s2.predicate, belief, taskSentence, memory)
-            }
-            12 -> if (Variable.unify(VAR_INDEPENDENT.sym, s1.subject, s2.predicate, s1, s2)) {
-                SyllogisticRules.resemblance(s1.predicate, s2.subject, belief, taskSentence, memory)
-            }
-            21 -> if (Variable.unify(VAR_INDEPENDENT.sym, s1.predicate, s2.subject, s1, s2)) {
-                SyllogisticRules.resemblance(s1.subject, s2.predicate, belief, taskSentence, memory)
-            }
-            22 -> if (Variable.unify(VAR_INDEPENDENT.sym, s1.predicate, s2.predicate, s1, s2)) {
-                SyllogisticRules.resemblance(s1.subject, s2.subject, belief, taskSentence, memory)
-            }
+    @JvmStatic
+    fun symmetricSymmetric(belief: Sentence, taskSentence: Sentence, figure: Int, memory: BackingStore) {
+        arrayOf(Statement::subject, Statement::predicate).also {
+            arrayOf(belief, taskSentence).map { it.cloneContent() as Statement }
+                    .also { (s1, s2) ->
+                        val legend = "$figure".map { it.toInt() - 1 }
+                        legend.map(it::get)
+                                .zip(arrayOf(s1, s2), KProperty1<Statement, Term>::invoke)
+                                .also { (t1, t2) ->
+                                    if (Variable.unify(VAR_INDEPENDENT.sym, t1, t2, s1, s2)) it.reversedArray().also { reversedArray ->
+                                        legend
+                                                .map(reversedArray::get)
+                                                .zip(arrayOf(s1, s2)) { fn, stmt -> fn(stmt) }
+                                                .also { (t1, t2) ->
+                                                    SyllogisticRules.resemblance(t1, t2, belief, taskSentence, memory)
+                                                }
+                                    }
+                                }
+                    }
         }
     }
 
@@ -332,7 +344,8 @@ object RuleTables {
      * @param index                The location of the second premise in the first
      * @param memory               Reference to the memory
      */
-    private fun detachmentWithVar(originalMainSentence: Sentence?, subSentence: Sentence?, index: Int, memory: BackingStore) {
+    @JvmStatic
+    fun detachmentWithVar(originalMainSentence: Sentence?, subSentence: Sentence?, index: Int, memory: BackingStore) {
         val mainSentence = originalMainSentence!!.clone() as Sentence   // for substitution
 
         val statement = mainSentence.content as Statement
@@ -362,7 +375,8 @@ object RuleTables {
      * @param side        The location of the shared term in the statement
      * @param memory      Reference to the memory
      */
-    private fun conditionalDedIndWithVar(conditional: Implication, index: Short, statement: Statement, side: Short, memory: BackingStore) {
+    @JvmStatic
+    fun conditionalDedIndWithVar(conditional: Implication, index: Short, statement: Statement, side: Short, memory: BackingStore) {
         var side1 = side
         val condition = conditional.subject as CompoundTerm
         val component: Term = condition.componentAt(index.toInt())
@@ -389,7 +403,8 @@ object RuleTables {
      * @param compoundTask Whether the compound comes from the task
      * @param memory       Reference to the memory
      */
-    private fun compoundAndSelf(compound: CompoundTerm, component: Term, compoundTask: Boolean, memory: BackingStore) {
+    @JvmStatic
+    fun compoundAndSelf(compound: CompoundTerm, component: Term, compoundTask: Boolean, memory: BackingStore) {
         if (compound is Conjunction || compound is Disjunction) {
             if (memory.currentBelief != null) {
                 CompositionalRules.decomposeStatement(compound, component, compoundTask, memory)
@@ -414,7 +429,8 @@ object RuleTables {
      * @param beliefTerm The compound from the belief
      * @param memory     Reference to the memory
      */
-    private fun compoundAndCompound(taskTerm: CompoundTerm, beliefTerm: CompoundTerm, memory: BackingStore) {
+    @JvmStatic
+    fun compoundAndCompound(taskTerm: CompoundTerm, beliefTerm: CompoundTerm, memory: BackingStore) {
         if (taskTerm.javaClass == beliefTerm.javaClass) {
             if (taskTerm.size() > beliefTerm.size()) {
                 compoundAndSelf(taskTerm, beliefTerm, true, memory)
@@ -434,7 +450,8 @@ object RuleTables {
      * @param beliefTerm The content of the belief
      * @param memory     Reference to the memory
      */
-    private fun compoundAndStatement(compound: CompoundTerm, index: Short, statement: Statement, side: Short, beliefTerm: Term, memory: BackingStore) {
+    @JvmStatic
+    fun compoundAndStatement(compound: CompoundTerm, index: Short, statement: Statement, side: Short, beliefTerm: Term, memory: BackingStore) {
         val component: Term = compound.componentAt(index.toInt())
         val task: Task = memory.currentTask!!
         if (component.javaClass == statement.javaClass) {
@@ -472,7 +489,8 @@ object RuleTables {
      * @param side      The location of the current term in the statement
      * @param memory    Reference to the memory
      */
-    private fun componentAndStatement(compound: CompoundTerm, index: Short, statement: Statement, side: Short, memory: BackingStore) {
+    @JvmStatic
+    fun componentAndStatement(compound: CompoundTerm, index: Short, statement: Statement, side: Short, memory: BackingStore) {
 //        if (!memory.currentTask.isStructural()) {
 
         if (statement is Inheritance) {

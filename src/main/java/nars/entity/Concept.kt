@@ -81,9 +81,6 @@ class Concept(
     private val entityObserver: EntityObserver = NullEntityObserver()
 
 
-    /* ---------- constructor and initialization ---------- */
-/* ---------- direct processing of tasks ---------- */
-
     /**
      * Directly process a new task. Called exactly once on each task. Using
      * local information and finishing in a constant time. Provide feedback in

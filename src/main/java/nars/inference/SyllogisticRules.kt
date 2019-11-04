@@ -117,7 +117,7 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
     }
 
     /**
-     * {<S></S>  P>, <M></M> <=> P>} |- <S></S>  P>
+     * {<S  P>, <M <=> P>} |- <S  P>
      * @param term1  Subject of the new task
      * @param term2  Predicate of the new task
      * @param asym   The asymmetric premise
@@ -125,30 +125,29 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
      * @param memory Reference to the memory
      */
     internal fun analogy(term1: Term, term2: Term, asym: Sentence, sym: Sentence, memory: BackingStore) {
-        if (Statement.invalidStatement(term1, term2)) {
-            return
-        }
-        val st = asym.content as Statement
-        var truth: TruthValue? = null
-        val budget: BudgetValue
-        val sentence = memory.currentTask!!.sentence
-        val taskTerm = sentence.content as CompoundTerm
-        if (sentence.isQuestion) {
-            budget = if (taskTerm.isCommutative) {
-                backwardWeak(asym.truth, memory)
+        if (!Statement.invalidStatement(term1, term2)) {
+            val st = asym.content as Statement
+            var truth: TruthValue? = null
+            val budget: BudgetValue
+            val sentence = memory.currentTask!!.sentence
+            val taskTerm = sentence.content as CompoundTerm
+            if (sentence.isQuestion) {
+                budget = if (taskTerm.isCommutative) {
+                    backwardWeak(asym.truth, memory)
+                } else {
+                    backward(sym.truth, memory)
+                }
             } else {
-                backward(sym.truth, memory)
+                truth = TruthFunctions.analogy(asym.truth!!, sym.truth!!)
+                budget = forward(truth, memory)
             }
-        } else {
-            truth = TruthFunctions.analogy(asym.truth!!, sym.truth!!)
-            budget = forward(truth, memory)
+            val content: Term? = Statement.make(st, term1, term2, memory)
+            memory.doublePremiseTask(content, truth, budget)
         }
-        val content: Term? = Statement.make(st, term1, term2, memory)
-        memory.doublePremiseTask(content, truth, budget)
     }
 
     /**
-     * {<S></S> <=> M>, <M></M> <=> P>} |- <S></S> <=> P>
+     * {<S  <=> M>, <M  <=> P>} |- <S <=> P>
      * @param term1    Subject of the new task
      * @param term2    Predicate of the new task
      * @param belief   The first premise
@@ -156,20 +155,19 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
      * @param memory   Reference to the memory
      */
     internal fun resemblance(term1: Term, term2: Term, belief: Sentence, sentence: Sentence, memory: BackingStore) {
-        if (Statement.invalidStatement(term1, term2)) {
-            return
+        if (!Statement.invalidStatement(term1, term2)) {
+            val st = belief.content as Statement
+            var truth: TruthValue? = null
+            val budget: BudgetValue
+            if (sentence.isQuestion) {
+                budget = backward(belief.truth, memory)
+            } else {
+                truth = TruthFunctions.resemblance(belief.truth!!, sentence.truth!!)
+                budget = forward(truth, memory)
+            }
+            val statement: Term? = Statement.make(st, term1, term2, memory)
+            memory.doublePremiseTask(statement, truth, budget)
         }
-        val st = belief.content as Statement
-        var truth: TruthValue? = null
-        val budget: BudgetValue
-        if (sentence.isQuestion) {
-            budget = backward(belief.truth, memory)
-        } else {
-            truth = TruthFunctions.resemblance(belief.truth!!, sentence.truth!!)
-            budget = forward(truth, memory)
-        }
-        val statement: Term? = Statement.make(st, term1, term2, memory)
-        memory.doublePremiseTask(statement, truth, budget)
     }
 
     /* --------------- rules used only in conditional inference --------------- */
@@ -186,57 +184,56 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
     </M></M></M></M></M></M></M></M></M></M></M></M></M></M></M></M> */
     internal fun detachment(mainSentence: Sentence, subSentence: Sentence, side: Int, memory: BackingStore) {
         val statement = mainSentence.content as Statement
-        if (statement !is Implication && statement !is Equivalence) {
-            return
-        }
-        val subject: Term = statement.subject
-        val predicate: Term = statement.predicate
-        val content: Term
-        val term = subSentence.content
-        content = if (side == 0 && term == subject) {
-            predicate
-        } else if (side == 1 && term == predicate) {
-            subject
-        } else {
-            return
-        }
-        if (content is Statement && content.invalid()) {
-            return
-        }
-        val taskSentence = memory.currentTask!!.sentence
-        val beliefSentence = memory.currentBelief
-        val beliefTruth = beliefSentence!!.truth
-        val truth1 = mainSentence.truth
-        val truth2 = subSentence.truth
-        var truth: TruthValue? = null
-        val budget: BudgetValue
-        if (taskSentence.isQuestion) {
-            budget = when {
-                statement is Equivalence -> {
-                    backward(beliefTruth, memory)
-                }
-                side == 0 -> {
-                    backwardWeak(beliefTruth, memory)
-                }
-                else -> {
-                    backward(beliefTruth, memory)
-                }
+        if (statement is Implication || statement is Equivalence) {
+            val subject: Term = statement.subject
+            val predicate: Term = statement.predicate
+            val content: Term
+            val term = subSentence.content
+            content = if (side == 0 && term == subject) {
+                predicate
+            } else if (side == 1 && term == predicate) {
+                subject
+            } else {
+                return
             }
-        } else {
-            truth = when {
-                statement is Equivalence -> {
-                    TruthFunctions.analogy(truth2!!, truth1!!)
-                }
-                side == 0 -> {
-                    TruthFunctions.deduction(truth1!!, truth2!!)
-                }
-                else -> {
-                    TruthFunctions.abduction(truth2!!, truth1!!)
-                }
+            if (content is Statement && content.invalid()) {
+                return
             }
-            budget = forward(truth, memory)
+            val taskSentence = memory.currentTask!!.sentence
+            val beliefSentence = memory.currentBelief
+            val beliefTruth = beliefSentence!!.truth
+            val truth1 = mainSentence.truth
+            val truth2 = subSentence.truth
+            var truth: TruthValue? = null
+            val budget: BudgetValue
+            if (taskSentence.isQuestion) {
+                budget = when {
+                    statement is Equivalence -> {
+                        backward(beliefTruth, memory)
+                    }
+                    side == 0 -> {
+                        backwardWeak(beliefTruth, memory)
+                    }
+                    else -> {
+                        backward(beliefTruth, memory)
+                    }
+                }
+            } else {
+                truth = when {
+                    statement is Equivalence -> {
+                        TruthFunctions.analogy(truth2!!, truth1!!)
+                    }
+                    side == 0 -> {
+                        TruthFunctions.deduction(truth1!!, truth2!!)
+                    }
+                    else -> {
+                        TruthFunctions.abduction(truth2!!, truth1!!)
+                    }
+                }
+                budget = forward(truth, memory)
+            }
+            memory.doublePremiseTask(content, truth, budget)
         }
-        memory.doublePremiseTask(content, truth, budget)
     }
 
     /**
@@ -407,65 +404,60 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
      * @return Whether there are derived tasks
      */
     internal fun conditionalAbd(cond1: Term, cond2: Term, st1: Statement, st2: Statement, memory: BackingStore): Boolean {
-        if (st1 !is Implication || st2 !is Implication) {
-            return false
-        }
-        if (cond1 !is Conjunction && cond2 !is Conjunction) {
-            return false
-        }
-        var term1: Term? = null
-        var term2: Term? = null
-//        if ((cond1 instanceof Conjunction) && !Variable.containVarDep(cond1.getName())) {
+        if (st1 is Implication && st2 is Implication && (cond1 is Conjunction || cond2 is Conjunction)) {
+            var term1: Term? = null
+            var term2: Term? = null
+            //        if ((cond1 instanceof Conjunction) && !Variable.containVarDep(cond1.getName())) {
 
 
-        if (cond1 is Conjunction) {
-            term1 = Util2.reduceComponents(cond1, cond2, memory)
-        }
-//        if ((cond2 instanceof Conjunction) && !Variable.containVarDep(cond2.getName())) {
+            if (cond1 is Conjunction) {
+                term1 = Util2.reduceComponents(cond1, cond2, memory)
+            }
+            //        if ((cond2 instanceof Conjunction) && !Variable.containVarDep(cond2.getName())) {
 
 
-        if (cond2 is Conjunction) {
-            term2 = Util2.reduceComponents(cond2, cond1, memory)
-        }
-        if (term1 == null && term2 == null) {
-            return false
-        }
-        val task: Task = memory.currentTask!!
-        val sentence = task.sentence
-        val belief = memory.currentBelief
-        val value1 = sentence.truth!!
-        val value2 = belief!!.truth!!
-        var content: Term
-        var truth: TruthValue? = null
-        var budget: BudgetValue
-        if (term1 != null) {
-            content = when {
-                term2 != null -> Statement.make(st2, term2, term1, memory)!!
-                else -> term1
+            if (cond2 is Conjunction) {
+                term2 = Util2.reduceComponents(cond2, cond1, memory)
             }
-            if (sentence.isQuestion) {
-                budget = backwardWeak(value2, memory)
-            } else {
-                truth = TruthFunctions.abduction(value2, value1)
-                budget = forward(truth, memory)
+            if (!(term1 == null && term2 == null)) {
+                val task: Task = memory.currentTask!!
+                val sentence = task.sentence
+                val belief = memory.currentBelief
+                val value1 = sentence.truth!!
+                val value2 = belief!!.truth!!
+                var content: Term
+                var truth: TruthValue? = null
+                var budget: BudgetValue
+                if (term1 != null) {
+                    content = when {
+                        term2 != null -> Statement.make(st2, term2, term1, memory)!!
+                        else -> term1
+                    }
+                    if (sentence.isQuestion) {
+                        budget = backwardWeak(value2, memory)
+                    } else {
+                        truth = TruthFunctions.abduction(value2, value1)
+                        budget = forward(truth, memory)
+                    }
+                    memory.doublePremiseTask(content, truth, budget)
+                }
+                if (term2 != null) {
+                    content = if (term1 != null) {
+                        Statement.make(st1, term1, term2, memory)!!
+                    } else {
+                        term2
+                    }
+                    if (sentence.isQuestion) {
+                        budget = backwardWeak(value2, memory)
+                    } else {
+                        truth = TruthFunctions.abduction(value1, value2)
+                        budget = forward(truth, memory)
+                    }
+                    memory.doublePremiseTask(content, truth, budget)
+                }
             }
-            memory.doublePremiseTask(content, truth, budget)
         }
-        if (term2 != null) {
-            content = if (term1 != null) {
-                Statement.make(st1, term1, term2, memory)!!
-            } else {
-                term2
-            }
-            if (sentence.isQuestion) {
-                budget = backwardWeak(value2, memory)
-            } else {
-                truth = TruthFunctions.abduction(value1, value2)
-                budget = forward(truth, memory)
-            }
-            memory.doublePremiseTask(content, truth, budget)
-        }
-        return true
+        return false
     }
 
     /**
