@@ -26,6 +26,7 @@ import nars.io.IInferenceRecorder;
 import nars.language.Term;
 import nars.main_nogui.Parameters;
 import nars.main_nogui.ReasonerBatch;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,73 +39,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class Memory {
 
-    /**
-     * Backward pointer to the reasoner
-     */
-    private final ReasonerBatch reasoner;
-
-    /* ---------- Long-term storage for multiple cycles ---------- */
-    /**
-     * Concept bag. Containing all Concepts of the system
-     */
-    private final ConceptBag concepts;
-    /**
-     * New tasks with novel composed terms, for delayed and selective processing
-     */
-    private final NovelTaskBag novelTasks;
-    private final AtomicInteger beliefForgettingRate = new AtomicInteger(Parameters.TERM_LINK_FORGETTING_CYCLE);
-    private final AtomicInteger taskForgettingRate = new AtomicInteger(Parameters.TASK_LINK_FORGETTING_CYCLE);
-    private final AtomicInteger conceptForgettingRate = new AtomicInteger(Parameters.CONCEPT_FORGETTING_CYCLE);
-    /**
-     * List of new tasks accumulated in one cycle, to be processed in the next
-     * cycle
-     */
-    private final List<Task> newTasks;
-
-    /* ---------- Short-term workspace for a single cycle ---------- */
-    /**
-     * List of Strings or Tasks to be sent to the output channels
-     */
-    private final List<String> exportStrings;
-    /**
-     * The selected Term
-     */
-    public Term currentTerm;
-    /**
-     * The selected Concept
-     */
-    public Concept currentConcept;
-    /**
-     * The selected TaskLink
-     */
-    public TaskLink currentTaskLink;
-    /**
-     * The selected Task
-     */
-    public Task currentTask;
-    /**
-     * The selected TermLink
-     */
-    @org.jetbrains.annotations.Nullable
-    public TermLink currentBeliefLink;
-    /**
-     * The selected belief
-     */
-    @org.jetbrains.annotations.Nullable
-    public Sentence currentBelief;
-    /**
-     * The new Stamp
-     */
-    public Stamp newStamp;
-    /**
-     * The substitution that unify the common term in the Task and the Belief
-     * TODO unused
-     */
-    protected Map<Term, Term> substitute;
-    /**
-     * Inference record text to be written into a log file
-     */
-    private IInferenceRecorder recorder;
+    public final MemoryState memoryState = new MemoryState();
 
 
     /* ---------- Constructor ---------- */
@@ -115,34 +50,39 @@ public class Memory {
      * @param reasoner
      */
     public Memory(ReasonerBatch reasoner) {
-        this.reasoner = reasoner;
-        recorder = new NullInferenceRecorder();
-        concepts = new ConceptBag(this);
-        novelTasks = new NovelTaskBag(this);
-        newTasks = new ArrayList<>();
-        exportStrings = new ArrayList<>();
+        this.memoryState.setReasoner(reasoner);
+        memoryState.setRecorder(new NullInferenceRecorder());
+        memoryState.setConcepts(new ConceptBag(this));
+        memoryState.setNovelTasks(new NovelTaskBag(this));
+        memoryState.setNewTasks(new ArrayList<>());
+        memoryState.setExportStrings(new ArrayList<>());
     }
 
     public void init() {
-        concepts.init();
-        novelTasks.init();
-        newTasks.clear();
-        exportStrings.clear();
-        reasoner.initTimer();
-        recorder.append("\n-----RESET-----\n");
+        memoryState.getConcepts().init();
+        memoryState.getNovelTasks().init();
+        memoryState.getNewTasks().clear();
+        getExportStrings().clear();
+        memoryState.getReasoner().initTimer();
+        getRecorder().append("\n-----RESET-----\n");
     }
 
-    /* ---------- access utilities ---------- */
+    /**
+     * List of Strings or Tasks to be sent to the output channels
+     */ /* ---------- access utilities ---------- */
     public List<String> getExportStrings() {
-        return exportStrings;
+        return memoryState.getExportStrings();
     }
 
+    /**
+     * Inference record text to be written into a log file
+     */
     public IInferenceRecorder getRecorder() {
-        return recorder;
+        return memoryState.getRecorder();
     }
 
     public long getTime() {
-        return reasoner.getTime();
+        return memoryState.getReasoner().getTime();
     }
 
 //    public MainWindow getMainWindow() {
@@ -153,7 +93,7 @@ public class Memory {
      * Actually means that there are no new Tasks
      */
     public boolean noResult() {
-        return newTasks.isEmpty();
+        return memoryState.getNewTasks().isEmpty();
     }
 
     /* ---------- conversion utilities ---------- */
@@ -166,7 +106,7 @@ public class Memory {
      * @return a Concept or null
      */
     public Concept nameToConcept(String name) {
-        return concepts.get(name);
+        return memoryState.getConcepts().get(name);
     }
 
     /**
@@ -177,7 +117,7 @@ public class Memory {
      * @return a Term or null (if no Concept/Operator has this name)
      */
     public Term nameToListedTerm(String name) {
-        var concept = concepts.get(name);
+        var concept = memoryState.getConcepts().get(name);
         if (concept != null) {
             return concept.getTerm();
         }
@@ -205,10 +145,10 @@ public class Memory {
             return null;
         }
         var n = term.getName();
-        var concept = concepts.get(n);
+        var concept = memoryState.getConcepts().get(n);
         if (concept == null) {
             concept = new Concept(term, this); // the only place to make a new Concept
-            var created = concepts.putIn(concept);
+            var created = memoryState.getConcepts().putIn(concept);
             if (!created) {
                 return null;
             }
@@ -237,9 +177,9 @@ public class Memory {
      * @param b the new BudgetValue
      */
     public void activateConcept(Concept c, BudgetValue b) {
-        concepts.pickOut(c.getKey());
+        memoryState.getConcepts().pickOut(c.getKey());
         BudgetFunctions.activate(c, b);
-        concepts.putBack(c);
+        memoryState.getConcepts().putBack(c);
     }
 
     /* ---------- new task entries ---------- */
@@ -257,11 +197,11 @@ public class Memory {
      */
     public void inputTask(Task task) {
         if (task.getBudget().aboveThreshold()) {
-            recorder.append("!!! Perceived: " + task + "\n");
+            getRecorder().append("!!! Perceived: " + task + "\n");
             report(task.getSentence(), true);    // report input
-            newTasks.add(task);       // wait to be processed in the next workCycle
+            memoryState.getNewTasks().add(task);       // wait to be processed in the next workCycle
         } else {
-            recorder.append("!!! Neglected: " + task + "\n");
+            getRecorder().append("!!! Neglected: " + task + "\n");
         }
     }
 
@@ -275,17 +215,17 @@ public class Memory {
      *                        forward/backward correspondence
      */
     public void activatedTask(BudgetValue budget, Sentence sentence, Sentence candidateBelief) {
-        var task = new Task(sentence, budget, currentTask, sentence, candidateBelief);
-        recorder.append("!!! Activated: " + task.toString() + "\n");
+        var task = new Task(sentence, budget, memoryState.getCurrentTask(), sentence, candidateBelief);
+        getRecorder().append("!!! Activated: " + task.toString() + "\n");
         if (sentence.isQuestion()) {
             var s = task.getBudget().summary();
 //            float minSilent = reasoner.getMainWindow().silentW.value() / 100.0f;
-            var minSilent = reasoner.getSilenceValue().get() / 100.0f;
+            var minSilent = memoryState.getReasoner().getSilenceValue().get() / 100.0f;
             if (s > minSilent) {  // only report significant derived Tasks
                 report(task.getSentence(), false);
             }
         }
-        newTasks.add(task);
+        memoryState.getNewTasks().add(task);
     }
 
     /**
@@ -295,16 +235,16 @@ public class Memory {
      */
     private void derivedTask(Task task) {
         if (task.getBudget().aboveThreshold()) {
-            recorder.append("!!! Derived: " + task + "\n");
+            getRecorder().append("!!! Derived: " + task + "\n");
             var budget = task.getBudget().summary();
 //            float minSilent = reasoner.getMainWindow().silentW.value() / 100.0f;
-            var minSilent = reasoner.getSilenceValue().get() / 100.0f;
+            var minSilent = memoryState.getReasoner().getSilenceValue().get() / 100.0f;
             if (budget > minSilent) {  // only report significant derived Tasks
                 report(task.getSentence(), false);
             }
-            newTasks.add(task);
+            memoryState.getNewTasks().add(task);
         } else {
-            recorder.append("!!! Ignored: " + task + "\n");
+            getRecorder().append("!!! Ignored: " + task + "\n");
         }
     }
 
@@ -320,8 +260,8 @@ public class Memory {
      */
     public void doublePremiseTask(Term newContent, TruthValue newTruth, BudgetValue newBudget) {
         if (newContent != null) {
-            var newSentence = new Sentence(newContent, currentTask.getSentence().getPunctuation(), newTruth, newStamp);
-            var newTask = new Task(newSentence, newBudget, currentTask, currentBelief);
+            var newSentence = new Sentence(newContent, memoryState.getCurrentTask().getSentence().getPunctuation(), newTruth, memoryState.getNewStamp());
+            var newTask = new Task(newSentence, newBudget, memoryState.getCurrentTask(), memoryState.getCurrentBelief());
             derivedTask(newTask);
         }
     }
@@ -337,9 +277,9 @@ public class Memory {
      */
     public void doublePremiseTask(Term newContent, TruthValue newTruth, BudgetValue newBudget, boolean revisible) {
         if (newContent != null) {
-            var taskSentence = currentTask.getSentence();
-            var newSentence = new Sentence(newContent, taskSentence.getPunctuation(), newTruth, newStamp, revisible);
-            var newTask = new Task(newSentence, newBudget, currentTask, currentBelief);
+            var taskSentence = memoryState.getCurrentTask().getSentence();
+            var newSentence = new Sentence(newContent, taskSentence.getPunctuation(), newTruth, memoryState.getNewStamp(), revisible);
+            var newTask = new Task(newSentence, newBudget, memoryState.getCurrentTask(), memoryState.getCurrentBelief());
             derivedTask(newTask);
         }
     }
@@ -353,7 +293,7 @@ public class Memory {
      * @param newBudget  The budget value in task
      */
     public void singlePremiseTask(Term newContent, TruthValue newTruth, BudgetValue newBudget) {
-        singlePremiseTask(newContent, currentTask.getSentence().getPunctuation(), newTruth, newBudget);
+        singlePremiseTask(newContent, memoryState.getCurrentTask().getSentence().getPunctuation(), newTruth, newBudget);
     }
 
     /**
@@ -366,18 +306,18 @@ public class Memory {
      * @param newBudget   The budget value in task
      */
     public void singlePremiseTask(Term newContent, char punctuation, TruthValue newTruth, BudgetValue newBudget) {
-        var parentTask = currentTask.getParentTask();
+        var parentTask = memoryState.getCurrentTask().getParentTask();
         if (parentTask != null && newContent.equals(parentTask.getContent())) { // circular structural inference
             return;
         }
-        var taskSentence = currentTask.getSentence();
-        if (taskSentence.isJudgment() || currentBelief == null) {
-            newStamp = new Stamp(taskSentence.getStamp(), getTime());
+        var taskSentence = memoryState.getCurrentTask().getSentence();
+        if (taskSentence.isJudgment() || memoryState.getCurrentBelief() == null) {
+            memoryState.setNewStamp(new Stamp(taskSentence.getStamp(), getTime()));
         } else {    // to answer a question with negation in NAL-5 --- move to activated task?
-            newStamp = new Stamp(currentBelief.getStamp(), getTime());
+            memoryState.setNewStamp(new Stamp(memoryState.getCurrentBelief().getStamp(), getTime()));
         }
-        var newSentence = new Sentence(newContent, punctuation, newTruth, newStamp, taskSentence.getRevisible());
-        var newTask = new Task(newSentence, newBudget, currentTask, null);
+        var newSentence = new Sentence(newContent, punctuation, newTruth, memoryState.getNewStamp(), taskSentence.getRevisible());
+        var newTask = new Task(newSentence, newBudget, memoryState.getCurrentTask(), null);
         derivedTask(newTask);
     }
 
@@ -390,7 +330,7 @@ public class Memory {
      * @param clock The current time to be displayed
      */
     public void workCycle(long clock) {
-        recorder.append(" --- " + clock + " ---\n");
+        getRecorder().append(" --- " + clock + " ---\n");
         processNewTask();
         if (noResult()) {       // necessary?
             processNovelTask();
@@ -398,7 +338,7 @@ public class Memory {
         if (noResult()) {       // necessary?
             processConcept();
         }
-        novelTasks.refresh();
+        memoryState.getNovelTasks().refresh();
     }
 
     /**
@@ -408,10 +348,10 @@ public class Memory {
      */
     private void processNewTask() {
         Task task;
-        var counter = newTasks.size();  // don't include new tasks produced in the current workCycle
+        var counter = memoryState.getNewTasks().size();  // don't include new tasks produced in the current workCycle
         while (counter > 0) {
             counter--;
-            task = newTasks.remove(0);
+            task = memoryState.getNewTasks().remove(0);
             if (task.isInput() || (termToConcept(task.getContent()) != null)) { // new input or existing concept
                 immediateProcess(task);
             } else {
@@ -419,9 +359,9 @@ public class Memory {
                 if (s.isJudgment()) {
                     double d = s.getTruth().getExpectation();
                     if (d > Parameters.DEFAULT_CREATION_EXPECTATION) {
-                        novelTasks.putIn(task);    // new concept formation
+                        memoryState.getNovelTasks().putIn(task);    // new concept formation
                     } else {
-                        recorder.append("!!! Neglected: " + task + "\n");
+                        getRecorder().append("!!! Neglected: " + task + "\n");
                     }
                 }
             }
@@ -433,7 +373,7 @@ public class Memory {
      * Select a novel task to process.
      */
     private void processNovelTask() {
-        var task = novelTasks.takeOut();       // select a task from novelTasks
+        var task = memoryState.getNovelTasks().takeOut();       // select a task from novelTasks
         if (task != null) {
             immediateProcess(task);
         }
@@ -443,12 +383,12 @@ public class Memory {
      * Select a concept to fire.
      */
     private void processConcept() {
-        currentConcept = concepts.takeOut();
-        if (currentConcept != null) {
-            currentTerm = currentConcept.getTerm();
-            recorder.append(" * Selected Concept: " + currentTerm + "\n");
-            concepts.putBack(currentConcept);   // current Concept remains in the bag all the time
-            currentConcept.fire();              // a working workCycle
+        memoryState.setCurrentConcept(memoryState.getConcepts().takeOut());
+        if (memoryState.getCurrentConcept() != null) {
+            memoryState.setCurrentTerm(memoryState.getCurrentConcept().getTerm());
+            getRecorder().append(" * Selected Concept: " + memoryState.getCurrentTerm() + "\n");
+            memoryState.getConcepts().putBack(memoryState.getCurrentConcept());   // current Concept remains in the bag all the time
+            memoryState.getCurrentConcept().fire();              // a working workCycle
         }
     }
 
@@ -461,13 +401,13 @@ public class Memory {
      * @param task the task to be accepted
      */
     private void immediateProcess(Task task) {
-        currentTask = task; // one of the two places where this variable is set
-        recorder.append("!!! Insert: " + task + "\n");
-        currentTerm = task.getContent();
-        currentConcept = getConcept(currentTerm);
-        if (currentConcept != null) {
-            activateConcept(currentConcept, task.getBudget());
-            currentConcept.directProcess(task);
+        memoryState.setCurrentTask(task); // one of the two places where this variable is set
+        getRecorder().append("!!! Insert: " + task + "\n");
+        memoryState.setCurrentTerm(task.getContent());
+        memoryState.setCurrentConcept(getConcept(memoryState.getCurrentTerm()));
+        if (memoryState.getCurrentConcept() != null) {
+            activateConcept(memoryState.getCurrentConcept(), task.getBudget());
+            memoryState.getCurrentConcept().directProcess(task);
         }
     }
 
@@ -485,17 +425,17 @@ public class Memory {
      */
     public void report(Sentence sentence, boolean input) {
         if (ReasonerBatch.DEBUG) {
-            System.out.println("// report( clock " + reasoner.getTime()
+            System.out.println("// report( clock " + memoryState.getReasoner().getTime()
                     + ", input " + input
-                    + ", timer " + reasoner.getTimer()
+                    + ", timer " + memoryState.getReasoner().getTimer()
                     + ", Sentence " + sentence
-                    + ", exportStrings " + exportStrings);
+                    + ", exportStrings " + getExportStrings());
             System.out.flush();
         }
-        if (exportStrings.isEmpty()) {
-            var timer = reasoner.updateTimer();
+        if (getExportStrings().isEmpty()) {
+            var timer = memoryState.getReasoner().updateTimer();
             if (timer > 0) {
-                exportStrings.add(String.valueOf(timer));
+                getExportStrings().add(String.valueOf(timer));
             }
         }
         String s;
@@ -505,17 +445,17 @@ public class Memory {
             s = " OUT: ";
         }
         s += sentence.toStringBrief();
-        exportStrings.add(s);
+        getExportStrings().add(s);
     }
 
 
     public String toString() {
-        return toStringLongIfNotNull(concepts, "concepts")
-                + toStringLongIfNotNull(novelTasks, "novelTasks")
-                + toStringIfNotNull(newTasks, "newTasks")
-                + toStringLongIfNotNull(currentTask, "currentTask")
-                + toStringLongIfNotNull(currentBeliefLink, "currentBeliefLink")
-                + toStringIfNotNull(currentBelief, "currentBelief");
+        return toStringLongIfNotNull(memoryState.getConcepts(), "concepts")
+                + toStringLongIfNotNull(memoryState.getNovelTasks(), "novelTasks")
+                + toStringIfNotNull(memoryState.getNewTasks(), "newTasks")
+                + toStringLongIfNotNull(memoryState.getCurrentTask(), "currentTask")
+                + toStringLongIfNotNull(memoryState.getCurrentBeliefLink(), "currentBeliefLink")
+                + toStringIfNotNull(memoryState.getCurrentBelief(), "currentBelief");
     }
 
     private String toStringLongIfNotNull(Bag<?> item, String title) {
@@ -534,15 +474,331 @@ public class Memory {
     }
 
     public AtomicInteger getTaskForgettingRate() {
-        return taskForgettingRate;
+        return memoryState.getTaskForgettingRate();
     }
 
     public AtomicInteger getBeliefForgettingRate() {
-        return beliefForgettingRate;
+        return memoryState.getBeliefForgettingRate();
     }
 
     public AtomicInteger getConceptForgettingRate() {
-        return conceptForgettingRate;
+        return memoryState.getConceptForgettingRate();
     }
 
+    /**
+     * Backward pointer to the reasoner
+     */
+    public ReasonerBatch getReasoner() {
+        return memoryState.getReasoner();
+    }
+
+    /**
+     * Concept bag. Containing all Concepts of the system
+     */
+    public ConceptBag getConcepts() {
+        return memoryState.getConcepts();
+    }
+
+    /**
+     * New tasks with novel composed terms, for delayed and selective processing
+     */
+    public NovelTaskBag getNovelTasks() {
+        return memoryState.getNovelTasks();
+    }
+
+    /**
+     * List of new tasks accumulated in one cycle, to be processed in the next
+     * cycle
+     */
+    public List<Task> getNewTasks() {
+        return memoryState.getNewTasks();
+    }
+
+    /**
+     * The selected Term
+     */
+    public Term getCurrentTerm() {
+        return memoryState.getCurrentTerm();
+    }
+
+    public void setCurrentTerm(Term currentTerm) {
+        memoryState.setCurrentTerm(currentTerm);
+    }
+
+    /**
+     * The selected Concept
+     */
+    public Concept getCurrentConcept() {
+        return memoryState.getCurrentConcept();
+    }
+
+    public void setCurrentConcept(Concept currentConcept) {
+        memoryState.setCurrentConcept(currentConcept);
+    }
+
+    /**
+     * The selected TaskLink
+     */
+    public TaskLink getCurrentTaskLink() {
+        return memoryState.getCurrentTaskLink();
+    }
+
+    public void setCurrentTaskLink(TaskLink currentTaskLink) {
+        memoryState.setCurrentTaskLink(currentTaskLink);
+    }
+
+    /**
+     * The selected Task
+     */
+    public Task getCurrentTask() {
+        return memoryState.getCurrentTask();
+    }
+
+    public void setCurrentTask(Task currentTask) {
+        memoryState.setCurrentTask(currentTask);
+    }
+
+    /**
+     * The selected TermLink
+     */
+    @org.jetbrains.annotations.Nullable
+    public TermLink getCurrentBeliefLink() {
+        return memoryState.getCurrentBeliefLink();
+    }
+
+    public void setCurrentBeliefLink(@org.jetbrains.annotations.Nullable TermLink currentBeliefLink) {
+        memoryState.setCurrentBeliefLink(currentBeliefLink);
+    }
+
+    /**
+     * The selected belief
+     */
+    @org.jetbrains.annotations.Nullable
+    public Sentence getCurrentBelief() {
+        return memoryState.getCurrentBelief();
+    }
+
+    public void setCurrentBelief(@org.jetbrains.annotations.Nullable Sentence currentBelief) {
+        memoryState.setCurrentBelief(currentBelief);
+    }
+
+    /**
+     * The new Stamp
+     */
+    public Stamp getNewStamp() {
+        return memoryState.getNewStamp();
+    }
+
+    public void setNewStamp(Stamp newStamp) {
+        memoryState.setNewStamp(newStamp);
+    }
+
+    /**
+     * The substitution that unify the common term in the Task and the Belief
+     * TODO unused
+     */
+    public Map<Term, Term> getSubstitute() {
+        return memoryState.getSubstitute();
+    }
+
+    public void setSubstitute(Map<Term, Term> substitute) {
+        memoryState.setSubstitute(substitute);
+    }
+
+    public void setRecorder(IInferenceRecorder recorder) {
+        memoryState.setRecorder(recorder);
+    }
+
+    public static class MemoryState {
+        private   ReasonerBatch reasoner;/* ---------- Long-term storage for multiple cycles ---------- */
+        private   ConceptBag concepts;
+        private   NovelTaskBag novelTasks;
+        private   AtomicInteger beliefForgettingRate;
+        private   AtomicInteger taskForgettingRate;
+        private   AtomicInteger conceptForgettingRate;
+        private   List<Task> newTasks;/* ---------- Short-term workspace for a single cycle ---------- */
+        private   List<String> exportStrings;
+
+        public List<String> getExportStrings() {
+            return exportStrings;
+        }
+
+        public void setExportStrings(List<String> exportStrings) {
+            this.exportStrings = exportStrings;
+        }
+
+        public Term currentTerm;
+        public Concept currentConcept;
+        public TaskLink currentTaskLink;
+        public Task currentTask;
+        @Nullable
+        public TermLink currentBeliefLink;
+        @Nullable
+        public Sentence currentBelief;
+        public Stamp newStamp;
+        protected Map<Term, Term> substitute;
+        private IInferenceRecorder recorder;
+
+        public IInferenceRecorder getRecorder() {
+            return recorder;
+        }
+
+        public MemoryState() {
+            this.beliefForgettingRate = new AtomicInteger(Parameters.TERM_LINK_FORGETTING_CYCLE);
+            this.taskForgettingRate = new AtomicInteger(Parameters.TASK_LINK_FORGETTING_CYCLE);
+            this.conceptForgettingRate = new AtomicInteger(Parameters.CONCEPT_FORGETTING_CYCLE);
+        }
+
+        public AtomicInteger getTaskForgettingRate() {
+            return taskForgettingRate;
+        }
+
+        public AtomicInteger getBeliefForgettingRate() {
+            return beliefForgettingRate;
+        }
+
+        public AtomicInteger getConceptForgettingRate() {
+            return conceptForgettingRate;
+        }
+
+        /**
+         * Backward pointer to the reasoner
+         */
+        public ReasonerBatch getReasoner() {
+            return reasoner;
+        }
+
+        /**
+         * Concept bag. Containing all Concepts of the system
+         */
+        public ConceptBag getConcepts() {
+            return concepts;
+        }
+
+        /**
+         * New tasks with novel composed terms, for delayed and selective processing
+         */
+        public NovelTaskBag getNovelTasks() {
+            return novelTasks;
+        }
+
+        /**
+         * List of new tasks accumulated in one cycle, to be processed in the next
+         * cycle
+         */
+        public List<Task> getNewTasks() {
+            return newTasks;
+        }
+
+        /**
+         * The selected Term
+         */
+        public Term getCurrentTerm() {
+            return currentTerm;
+        }
+
+        public void setCurrentTerm(Term currentTerm) {
+            this.currentTerm = currentTerm;
+        }
+
+        /**
+         * The selected Concept
+         */
+        public Concept getCurrentConcept() {
+            return currentConcept;
+        }
+
+        public void setCurrentConcept(Concept currentConcept) {
+            this.currentConcept = currentConcept;
+        }
+
+        /**
+         * The selected TaskLink
+         */
+        public TaskLink getCurrentTaskLink() {
+            return currentTaskLink;
+        }
+
+        public void setCurrentTaskLink(TaskLink currentTaskLink) {
+            this.currentTaskLink = currentTaskLink;
+        }
+
+        /**
+         * The selected Task
+         */
+        public Task getCurrentTask() {
+            return currentTask;
+        }
+
+        public void setCurrentTask(Task currentTask) {
+            this.currentTask = currentTask;
+        }
+
+        /**
+         * The selected TermLink
+         */
+        @Nullable
+        public TermLink getCurrentBeliefLink() {
+            return currentBeliefLink;
+        }
+
+        public void setCurrentBeliefLink(@Nullable TermLink currentBeliefLink) {
+            this.currentBeliefLink = currentBeliefLink;
+        }
+
+        /**
+         * The selected belief
+         */
+        @Nullable
+        public Sentence getCurrentBelief() {
+            return currentBelief;
+        }
+
+        public void setCurrentBelief(@Nullable Sentence currentBelief) {
+            this.currentBelief = currentBelief;
+        }
+
+        /**
+         * The new Stamp
+         */
+        public Stamp getNewStamp() {
+            return newStamp;
+        }
+
+        public void setNewStamp(Stamp newStamp) {
+            this.newStamp = newStamp;
+        }
+
+        /**
+         * The substitution that unify the common term in the Task and the Belief
+         * TODO unused
+         */
+        public Map<Term, Term> getSubstitute() {
+            return substitute;
+        }
+
+        public void setSubstitute(Map<Term, Term> substitute) {
+            this.substitute = substitute;
+        }
+
+        public void setRecorder(IInferenceRecorder recorder) {
+            this.recorder = recorder;
+        }
+
+        public void setConcepts(ConceptBag concepts) {
+            this.concepts = concepts;
+        }
+
+        public void setReasoner(ReasonerBatch reasoner) {
+            this.reasoner = reasoner;
+        }
+
+        public void setNovelTasks(NovelTaskBag novelTasks) {
+            this.novelTasks = novelTasks;
+        }
+
+        public <E> void setNewTasks( List<Task> newTasks) {
+            this.newTasks = newTasks;
+        }
+    }
 }
