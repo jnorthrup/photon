@@ -24,7 +24,7 @@ import nars.entity.*
 import nars.inference.BudgetFunctions.truthToQuality
 import nars.language.*
 import nars.main_nogui.Parameters
-import nars.storage.Memory
+import nars.storage.BackingStore
 import java.util.*
 
 //import deductions.runtime.swing.TemporaryFrame;
@@ -45,7 +45,7 @@ object StringParser {
      * @param time   The current time
      * @return An experienced task
      */
-    fun parseExperience(buffer: StringBuffer, memory: Memory, time: Long): Task? {
+    fun parseExperience(buffer: StringBuffer, memory: BackingStore, time: Long): Task? {
         val i = buffer.indexOf(Symbols.PREFIX_MARK + "")
         if (i > 0) {
             when (buffer.substring(0, i).trim { it <= ' ' }) {
@@ -70,7 +70,7 @@ object StringParser {
      * @param time   The current time
      * @return An experienced task
      */
-    private fun parseTask(s: String, memory: Memory, time: Long): Task? {
+    private fun parseTask(s: String, memory: BackingStore, time: Long): Task? {
         val buffer = StringBuffer(s)
         var task: Task? = null
         try {
@@ -229,7 +229,7 @@ object StringParser {
      * @param memory Reference to the memory
      * @return the Term generated from the String
     </T1> */
-    private fun parseTerm(s0: String, memory: Memory): Term? {
+    private fun parseTerm(s0: String, memory: BackingStore): Term? {
         var result: Term? = null
         val s = s0.trim { it <= ' ' }
         try {
@@ -322,7 +322,7 @@ object StringParser {
      * parsed into a Term
      */
     @Throws(InvalidInputException::class)
-    private fun parseStatement(s0: String, memory: Memory): Statement? {
+    private fun parseStatement(s0: String, memory: BackingStore): Statement? {
         val s = s0.trim { it <= ' ' }
         val i = topRelation(s)
         assert(i >= 0) { "invalid statement" }
@@ -341,7 +341,7 @@ object StringParser {
      * parsed into a Term
      */
     @Throws(InvalidInputException::class)
-    private fun parseCompoundTerm(s0: String, memory: Memory): Term? {
+    private fun parseCompoundTerm(s0: String, memory: BackingStore): Term? {
         val s = s0.trim { it <= ' ' }
         val firstSeparator = s.indexOf(Symbols.ARGUMENT_SEPARATOR)
         val op = s.substring(0, firstSeparator).trim { it <= ' ' }
@@ -359,7 +359,7 @@ object StringParser {
      * parsed into an argument get
      */
     @Throws(InvalidInputException::class)
-    private fun parseArguments(s0: String, memory: Memory): ArrayList<Term?> {
+    private fun parseArguments(s0: String, memory: BackingStore): ArrayList<Term?> {
         val s = s0.trim { it <= ' ' }
         val list = ArrayList<Term?>()
         var start = 0

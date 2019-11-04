@@ -32,7 +32,7 @@ class TermLinkBag
  * Constructor
  *
  * @param memory The reference of memory
- */(memory: Memory?) : Bag<TermLink?>(memory!!) {
+ */(memory: BackingStore?) : Bag<TermLink?>(memory!!) {
     /**
      * Get the (constant) capacity of TermLinkBag
      *
@@ -48,7 +48,7 @@ class TermLinkBag
      * @return The forget rate of TermLinkBag
      */
     override fun forgetRate(): Int {
-        return memory.beliefForgettingRate.get()
+        return memory.beliefForgettingRate!!.get()
     }
 
     /**

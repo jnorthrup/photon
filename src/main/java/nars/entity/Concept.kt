@@ -48,9 +48,9 @@ class Concept(
         /**
          * Reference to the memory
          */
-        internal var memory: Memory) : ImmutableItemIdentity(term.name) {
+        internal var memory: BackingStore) : ImmutableItemIdentity(term.name) {
     /**
-     * Return the associated term, called from Memory only
+     * Return the associated term, called from BackingStore only
      *
      * @return The associated term
      */
@@ -90,7 +90,7 @@ class Concept(
      * the taskBudget value of the task.
      *
      *
-     * called in Memory.immediateProcess only
+     * called in BackingStore.immediateProcess only
      *
      * @param task The task to be processed
      */
@@ -282,7 +282,7 @@ class Concept(
      * Insert a TaskLink into the TaskLink bag
      *
      *
-     * called only from Memory.continuedProcess
+     * called only from BackingStore.continuedProcess
      *
      * @param taskLink The termLink to be inserted
      */
@@ -296,7 +296,7 @@ class Concept(
      * Recursively build TermLinks between a compound and its components
      *
      *
-     * called only from Memory.continuedProcess
+     * called only from BackingStore.continuedProcess
      *
      * @param taskBudget The BudgetValue of the task
      */
@@ -414,7 +414,7 @@ class Concept(
         var belief: Sentence
         for (sentence in beliefs) {
             belief = sentence
-            memory.recorder.append(" * Selected Belief: $belief\n")
+            memory.recorder!!.append(" * Selected Belief: $belief\n")
             memory.newStamp = Stamp.make(taskSentence.stamp, belief.stamp, memory.time)
             if (memory.newStamp != null) {
                 return belief.clone() as Sentence
@@ -427,13 +427,13 @@ class Concept(
 
 
     /**
-     * An atomic step in a concept, only called in [Memory.processConcept]
+     * An atomic step in a concept, only called in [BackingStore.processConcept]
      */
     fun fire() {
         val currentTaskLink = taskLinks.takeOut() ?: return
         memory.currentTaskLink = currentTaskLink
         memory.currentBeliefLink = null
-        memory.recorder.append(" * Selected TaskLink: $currentTaskLink\n")
+        memory.recorder!!.append(" * Selected TaskLink: $currentTaskLink\n")
         memory.currentTask = currentTaskLink.targetTask
 //      memory.getRecorder().append(" * Selected Task: " + task + "\n");    // for debugging
         if (currentTaskLink.getType() == TermLink.TRANSFORM) {
@@ -447,7 +447,7 @@ class Concept(
             while (termLinkCount > 0) {
                 val termLink: TermLink? = termLinks.takeOut(currentTaskLink, memory.time)
                 if (termLink != null) {
-                    memory.recorder.append(" * Selected TermLink: $termLink\n")
+                    memory.recorder!!.append(" * Selected TermLink: $termLink\n")
                     memory.currentBeliefLink = termLink
                     RuleTables.reason(currentTaskLink, termLink, memory)
                     termLinks.putBack(termLink)
@@ -498,7 +498,7 @@ class Concept(
 
 
     /**
-     * Constructor, called in Memory.getConcept only
+     * Constructor, called in BackingStore.getConcept only
      *
      * @param tm     A term corresponding to the concept
      * @param memory A reference to the memory

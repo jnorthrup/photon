@@ -14,7 +14,7 @@ java -jar NARS.jar
 java -jar NARS.jar Examples/Example-NAL1-edited.txt --silence 90
 
 - reasoner in batch:
-java -cp NARS.jar nars.storage.Memory.NARSBatch Examples/Example-NAL1-edited.txt
+java -cp NARS.jar nars.storage.BackingStore.NARSBatch Examples/Example-NAL1-edited.txt
 
 
 Example experience files are in directory Examples. 

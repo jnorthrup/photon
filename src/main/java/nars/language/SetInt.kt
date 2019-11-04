@@ -21,7 +21,7 @@
 package nars.language
 
 import nars.io.Symbols
-import nars.storage.Memory
+import nars.storage.BackingStore
 import java.util.*
 
 /**
@@ -92,7 +92,7 @@ class SetInt : CompoundTerm {
          * @param memory Reference to the memeory
          * @return A compound generated or a term it reduced to
          */
-        @JvmStatic    fun make(t: Term, memory: Memory): Term? {
+        @JvmStatic    fun make(t: Term, memory: BackingStore): Term? {
             val set = TreeSet<Term>()
             set.add(t)
             return make(set, memory)
@@ -105,7 +105,7 @@ class SetInt : CompoundTerm {
          * @param memory  Reference to the memeory
          * @return the Term generated from the arguments
          */
-        @JvmStatic  fun make(argList: List<Term>?, memory: Memory): Term? {
+        @JvmStatic  fun make(argList: List<Term>?, memory: BackingStore): Term? {
             val set = TreeSet(argList) // sort/merge arguments
 
             return make(set, memory)
@@ -118,7 +118,7 @@ class SetInt : CompoundTerm {
          * @param memory Reference to the memeory
          * @return the Term generated from the arguments
          */
-        @JvmStatic    fun make(set: SortedSet <Term>, memory: Memory): Term? {
+        @JvmStatic    fun make(set: SortedSet <Term>, memory: BackingStore): Term? {
             if (!set.isEmpty()) {
                 val argument = ArrayList(set)
                 val name: String? = makeSetName(Symbols.SET_INT_OPENER, argument, Symbols.SET_INT_CLOSER)

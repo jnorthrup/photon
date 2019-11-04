@@ -47,7 +47,7 @@ abstract class Bag<E : ItemIdentity?> protected constructor(
         /**
          * reference to memory
          */
-        var memory: Memory) {
+        var memory: BackingStore) {
     /**
      * defined in different bags
      */

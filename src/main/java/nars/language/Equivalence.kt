@@ -21,7 +21,7 @@
 package nars.language
 
 import nars.io.Symbols
-import nars.storage.Memory
+import nars.storage.BackingStore
 import java.util.*
 
 /**
@@ -84,7 +84,7 @@ class Equivalence : Statement {
          * @param memory    Reference to the memory
          * @return A compound generated or null
          */
-        fun make(subject: Term, predicate: Term, memory: Memory): Equivalence? {  // to be extended to check if subject is Conjunction
+        fun make(subject: Term, predicate: Term, memory: BackingStore): Equivalence? {  // to be extended to check if subject is Conjunction
 
             var subject1 = subject
             var predicate1 = predicate

@@ -29,7 +29,7 @@ import nars.inference.BudgetFunctions.revise
 import nars.inference.BudgetFunctions.solutionEval
 import nars.io.Symbols
 import nars.language.*
-import nars.storage.Memory
+import nars.storage.BackingStore
 
 /**
  * Directly process a task by a oldBelief, with only two Terms in both. In
@@ -55,7 +55,7 @@ object LocalRules {/* -------------------- same contents -------------------- */
      * @param memory Reference to the memory
      */
     @JvmStatic
-    fun match(task: Task, belief: Sentence, memory: Memory) {
+    fun match(task: Task, belief: Sentence, memory: BackingStore) {
         val sentence = task.sentence.clone() as Sentence
         if (sentence.isJudgment) {
             if (revisible(sentence, belief)) {
@@ -89,7 +89,7 @@ object LocalRules {/* -------------------- same contents -------------------- */
      * @param memory          Reference to the memory
      */
     @JvmStatic
-    fun revision(newBelief: Sentence, oldBelief: Sentence, feedbackToLinks: Boolean, memory: Memory) {
+    fun revision(newBelief: Sentence, oldBelief: Sentence, feedbackToLinks: Boolean, memory: BackingStore) {
         val newTruth = newBelief.truth
         val oldTruth = oldBelief.truth
         val truth: TruthValue? = TruthFunctions.revision(newTruth!!, oldTruth!!)
@@ -106,7 +106,7 @@ object LocalRules {/* -------------------- same contents -------------------- */
      * @param memory Reference to the memory
      */
     @JvmStatic
-    fun trySolution(belief: Sentence, task: Task, memory: Memory) {
+    fun trySolution(belief: Sentence, task: Task, memory: BackingStore) {
         val problem = task.sentence
         val oldBest = task.bestSolution
         val newQ = solutionQuality(problem, belief)
@@ -157,8 +157,8 @@ object LocalRules {/* -------------------- same contents -------------------- */
      * @param memory Reference to the memory
      */
     @JvmStatic
-    fun matchReverse(memory: Memory) {
-        val task: Task = memory.currentTask
+    fun matchReverse(memory: BackingStore) {
+        val task: Task = memory.currentTask!!
         val belief = memory.currentBelief
         val sentence = task.sentence
         if (sentence.isJudgment) {
@@ -177,8 +177,8 @@ object LocalRules {/* -------------------- same contents -------------------- */
      * @param memory Reference to the memory
      */
     @JvmStatic
-    fun matchAsymSym(asym: Sentence, sym: Sentence, figure: Int, memory: Memory) {
-        if (memory.currentTask.sentence.isJudgment) {
+    fun matchAsymSym(asym: Sentence, sym: Sentence, figure: Int, memory: BackingStore) {
+        if (memory.currentTask!!.sentence.isJudgment) {
             inferToAsym(asym, sym, memory)
         } else {
             convertRelation(memory)
@@ -196,7 +196,7 @@ object LocalRules {/* -------------------- same contents -------------------- */
      * @param judgment2 The second premise
      * @param memory    Reference to the memory
     </P></S> */
-    private fun inferToSym(judgment1: Sentence, judgment2: Sentence?, memory: Memory) {
+    private fun inferToSym(judgment1: Sentence, judgment2: Sentence?, memory: BackingStore) {
         val s1 = judgment1.content as Statement
         val t1: Term = s1.subject
         val t2: Term = s1.predicate
@@ -221,7 +221,7 @@ object LocalRules {/* -------------------- same contents -------------------- */
      * @param sym    The symmetric premise
      * @param memory Reference to the memory
     </S></P> */
-    private fun inferToAsym(asym: Sentence, sym: Sentence, memory: Memory) {
+    private fun inferToAsym(asym: Sentence, sym: Sentence, memory: BackingStore) {
         val statement = asym.content as Statement
         val sub: Term  = statement.predicate
         val pre: Term  = statement.subject
@@ -240,7 +240,7 @@ object LocalRules {/* -------------------- same contents -------------------- */
      *
      * @param memory Reference to the memory
     </S></P> */
-    private fun conversion(memory: Memory) {
+    private fun conversion(memory: BackingStore) {
         val truth: TruthValue? = TruthFunctions.conversion(memory.currentBelief!!.truth!!)
         val budget = forward(truth, memory)
         convertedJudgment(truth, budget, memory)
@@ -252,9 +252,9 @@ object LocalRules {/* -------------------- same contents -------------------- */
      *
      * @param memory Reference to the memory
     </S></S> */
-    private fun convertRelation(memory: Memory) {
+    private fun convertRelation(memory: BackingStore) {
         var truth = memory.currentBelief!!.truth
-        truth = if ((memory.currentTask.content as Statement?)!!.isCommutative) {
+        truth = if ((memory.currentTask!!.content as Statement?)!!.isCommutative) {
             TruthFunctions.abduction(truth!!, 1.0f)
         } else {
             TruthFunctions.deduction(truth!!, 1.0f)
@@ -273,8 +273,8 @@ object LocalRules {/* -------------------- same contents -------------------- */
      * @param truth  The truth value of the new task
      * @param memory Reference to the memory
      */
-    private fun convertedJudgment(newTruth: TruthValue?, newBudget: BudgetValue, memory: Memory) {
-        var content = memory.currentTask.content as Statement
+    private fun convertedJudgment(newTruth: TruthValue?, newBudget: BudgetValue, memory: BackingStore) {
+        var content = memory.currentTask!!.content as Statement
         val beliefContent = memory.currentBelief!!.content as Statement
         val subjT: Term = content.subject
         val predT: Term = content.predicate

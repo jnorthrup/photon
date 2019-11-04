@@ -8,6 +8,7 @@ import nars.main_nogui.ReasonerBatch
 import java.util.concurrent.atomic.AtomicInteger
 
 class MemoryState {
+      var exportStrings = mutableListOf <String>()
     /**
      * Backward pointer to the reasoner
      */
@@ -29,7 +30,6 @@ class MemoryState {
      */
     var newTasks/* ---------- Short-term workspace for a single cycle ---------- */: List<Task>? = null
         private set
-    var exportStrings: List<String>? = null
 
     /**
      * The selected Term

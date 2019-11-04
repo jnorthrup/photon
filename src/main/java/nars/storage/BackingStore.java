@@ -1,5 +1,5 @@
 /*
- * Memory.java
+ * BackingStore.java
  *
  * Copyright (C) 2008  Pei Wang
  *
@@ -20,6 +20,7 @@
  */
 package nars.storage;
 
+import kotlin.collections.AbstractMutableList;
 import nars.entity.*;
 import nars.inference.BudgetFunctions;
 import nars.io.IInferenceRecorder;
@@ -37,7 +38,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * The memory of the system.
  */
-public class Memory implements MemoryOps {
+public class BackingStore implements MemoryOps {
 
     public final MemoryState memoryState = new MemoryState();
 
@@ -49,13 +50,13 @@ public class Memory implements MemoryOps {
      *
      * @param reasoner
      */
-    public Memory(ReasonerBatch reasoner) {
+    public BackingStore(ReasonerBatch reasoner) {
         this.memoryState.setReasoner(reasoner);
         memoryState.setRecorder(new NullInferenceRecorder());
         memoryState.setConcepts(new ConceptBag(this));
         memoryState.setNovelTasks(new NovelTaskBag(this));
         memoryState.setNewTasks(new ArrayList<>());
-        memoryState.setExportStrings(new ArrayList<>());
+        memoryState.setExportStrings(new ArrayList<String>());
     }
 
     @Override
@@ -70,10 +71,11 @@ public class Memory implements MemoryOps {
 
     /**
      * List of Strings or Tasks to be sent to the output channels
+     * @return
      */ /* ---------- access utilities ---------- */
     @Override
-    public List<String> getExportStrings() {
-        return memoryState.getExportStrings();
+    public  ArrayList<String> getExportStrings() {
+        return (ArrayList<String>) memoryState.getExportStrings();
     }
 
     /**

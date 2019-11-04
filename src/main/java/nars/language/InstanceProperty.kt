@@ -21,7 +21,7 @@
 
 package nars.language
 
-import nars.storage.Memory
+import nars.storage.BackingStore
 
 /**
  * A Statement about an InstanceProperty relation, which is used only in Narsese for I/O,
@@ -39,7 +39,7 @@ object InstanceProperty   {
      * @param memory    Reference to the memory
      * @return A compound generated or null
      */
-  @JvmStatic     fun make(subject: Term, predicate: Term, memory: Memory): Statement? {
+  @JvmStatic     fun make(subject: Term, predicate: Term, memory: BackingStore): Statement? {
         return Inheritance.make(SetExt.make(subject, memory) as Term, SetInt.make(predicate, memory) as Term, memory)
     }
 }

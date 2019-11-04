@@ -21,7 +21,7 @@
 
 package nars.language
 
-import nars.storage.Memory
+import nars.storage.BackingStore
 
 /**
  * A Statement about a Property relation, which is used only in Narsese for I/O,
@@ -39,7 +39,7 @@ object Property  {
      * @param memory    Reference to the memory
      * @return A compound generated or null
      */
-    fun make(subject: Term, predicate: Term,memory: Memory): Statement? {
+    fun make(subject: Term, predicate: Term,memory: BackingStore): Statement? {
         return Inheritance.make(subject, SetInt.make(predicate, memory) as Term, memory)
     }
 }

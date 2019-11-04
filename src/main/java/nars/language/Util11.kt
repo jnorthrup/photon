@@ -1,6 +1,6 @@
 package nars.language
 
-import nars.storage.Memory
+import nars.storage.BackingStore
 
 /**
  *
@@ -15,7 +15,7 @@ object Util11 {
      * @return A compound term or null
      */
     @JvmStatic
-    fun make(compound: CompoundTerm, components: List<Term > , memory: Memory ): Term {
+    fun make(compound: CompoundTerm, components: List<Term > , memory: BackingStore): Term {
         return if (compound is ImageExt) {
             ImageExt.make(components , compound.relationIndex, memory)
         } else if (compound is ImageInt) {

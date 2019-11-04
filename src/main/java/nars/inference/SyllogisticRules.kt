@@ -30,7 +30,7 @@ import nars.inference.BudgetFunctions.compoundForward
 import nars.inference.BudgetFunctions.forward
 import nars.io.Symbols
 import nars.language.*
-import nars.storage.Memory
+import nars.storage.BackingStore
 
 /**
  * Syllogisms: Inference rules based on the transitivity of the relation.
@@ -48,7 +48,7 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
      * @param belief   The second premise
      * @param memory   Reference to the memory
      */
-    internal fun dedExe(term1: Term , term2: Term , sentence: Sentence, belief: Sentence, memory: Memory) {
+    internal fun dedExe(term1: Term , term2: Term , sentence: Sentence, belief: Sentence, memory: BackingStore) {
         if (Statement.invalidStatement(term1, term2)) {
             return
         }
@@ -82,7 +82,7 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
      * @param belief       The second premise
      * @param memory       Reference to the memory
      */
-    internal fun abdIndCom(term1: Term , term2: Term , taskSentence: Sentence, belief: Sentence, memory: Memory) {
+    internal fun abdIndCom(term1: Term , term2: Term , taskSentence: Sentence, belief: Sentence, memory: BackingStore) {
         if (Statement.invalidStatement(term1, term2)) {
             return
         }
@@ -123,14 +123,14 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
      * @param sym    The symmetric premise
      * @param memory Reference to the memory
      */
-    internal fun analogy(term1: Term, term2: Term, asym: Sentence, sym: Sentence, memory: Memory) {
+    internal fun analogy(term1: Term, term2: Term, asym: Sentence, sym: Sentence, memory: BackingStore) {
         if (Statement.invalidStatement(term1, term2)) {
             return
         }
         val st = asym.content as Statement
         var truth: TruthValue? = null
         val budget: BudgetValue
-        val sentence = memory.currentTask.sentence
+        val sentence = memory.currentTask!!.sentence
         val taskTerm = sentence.content as CompoundTerm
         if (sentence.isQuestion) {
             budget = if (taskTerm.isCommutative) {
@@ -154,7 +154,7 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
      * @param sentence The second premise
      * @param memory   Reference to the memory
      */
-    internal fun resemblance(term1: Term, term2: Term, belief: Sentence, sentence: Sentence, memory: Memory) {
+    internal fun resemblance(term1: Term, term2: Term, belief: Sentence, sentence: Sentence, memory: BackingStore) {
         if (Statement.invalidStatement(term1, term2)) {
             return
         }
@@ -183,7 +183,7 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
      * @param side         The location of s2 in s1
      * @param memory       Reference to the memory
     </M></M></M></M></M></M></M></M></M></M></M></M></M></M></M></M> */
-    internal fun detachment(mainSentence: Sentence, subSentence: Sentence, side: Int, memory: Memory) {
+    internal fun detachment(mainSentence: Sentence, subSentence: Sentence, side: Int, memory: BackingStore) {
         val statement = mainSentence.content as Statement
         if (statement !is Implication && statement !is Equivalence) {
             return
@@ -202,7 +202,7 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
         if (content is Statement && content.invalid()) {
             return
         }
-        val taskSentence = memory.currentTask.sentence
+        val taskSentence = memory.currentTask!!.sentence
         val beliefSentence = memory.currentBelief
         val beliefTruth = beliefSentence!!.truth
         val truth1 = mainSentence.truth
@@ -243,9 +243,9 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
      * for predicate, -1 for the whole term
      * @param memory   Reference to the memory
      */
-    internal fun conditionalDedInd(premise1: Implication, index: Short, premise2: Term, side: Int, memory: Memory) {
+    internal fun conditionalDedInd(premise1: Implication, index: Short, premise2: Term, side: Int, memory: BackingStore) {
         var index1 = index
-        val task: Task = memory.currentTask
+        val task: Task = memory.currentTask!!
         val taskSentence = task.sentence
         val belief = memory.currentBelief
         val deduction = side != 0
@@ -319,8 +319,8 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
      * for predicate, -1 for the whole term
      * @param memory   Reference to the memory
      */
-    internal fun conditionalAna(premise1: Equivalence, index: Short, premise2: Term, side: Int, memory: Memory) {
-        val task: Task = memory.currentTask
+    internal fun conditionalAna(premise1: Equivalence, index: Short, premise2: Term, side: Int, memory: BackingStore) {
+        val task: Task = memory.currentTask!!
         val taskSentence = task.sentence
         val belief = memory.currentBelief
         val conditionalTask = Variable.hasSubstitute(Symbols.VAR_INDEPENDENT, premise2, belief!!.content)
@@ -385,7 +385,7 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
      * @param memory      Reference to the memory
      * @return Whether there are derived tasks
      */
-    internal fun conditionalAbd(cond1: Term, cond2: Term, st1: Statement, st2: Statement, memory: Memory): Boolean {
+    internal fun conditionalAbd(cond1: Term, cond2: Term, st1: Statement, st2: Statement, memory: BackingStore): Boolean {
         if (st1 !is Implication || st2 !is Implication) {
             return false
         }
@@ -409,7 +409,7 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
         if (term1 == null && term2 == null) {
             return false
         }
-        val task: Task = memory.currentTask
+        val task: Task = memory.currentTask!!
         val sentence = task.sentence
         val belief = memory.currentBelief
         val value1 = sentence.truth!!
@@ -455,9 +455,9 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
      * @param compoundTask Whether the compound comes from the task
      * @param memory       Reference to the memory
     </M></M> */
-    internal fun elimiVarDep(compound: CompoundTerm?, component: Term?, compoundTask: Boolean, memory: Memory) {
+    internal fun elimiVarDep(compound: CompoundTerm?, component: Term?, compoundTask: Boolean, memory: BackingStore) {
         val content: Term? = CompoundTerm.reduceComponents(compound, component, memory)
-        val task: Task = memory.currentTask
+        val task: Task = memory.currentTask!!
         val sentence = task.sentence
         val belief = memory.currentBelief
         val v1 = sentence.truth!!

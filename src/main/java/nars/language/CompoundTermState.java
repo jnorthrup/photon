@@ -1,7 +1,7 @@
 package nars.language;
 
 import nars.io.Symbols;
-import nars.storage.Memory;
+import nars.storage.BackingStore;
 
 import java.util.List;
 
@@ -42,7 +42,7 @@ public class CompoundTermState extends Term {
      * @param memory   Reference to the memory
      * @return The new compound
      */
-    public static Term setComponent(CompoundTerm compound, int index, Term t, Memory memory) {
+    public static Term setComponent(CompoundTerm compound, int index, Term t, BackingStore memory) {
         var list = compound.cloneComponents();
         list.remove(index);
         if (t != null) {

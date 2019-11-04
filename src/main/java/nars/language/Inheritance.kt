@@ -21,7 +21,7 @@
 package nars.language
 
 import nars.io.Symbols
-import nars.storage.Memory
+import nars.storage.BackingStore
 import java.util.*
 
 /**
@@ -73,7 +73,7 @@ class Inheritance : Statement {
          * @param memory    Reference to the memory
          * @return A compound generated or null
          */
-        fun make(subject: Term?, predicate: Term?, memory: Memory): Inheritance? {
+        fun make(subject: Term?, predicate: Term?, memory: BackingStore): Inheritance? {
             if (invalidStatement(subject!!, predicate!!)) {
                 return null
             }

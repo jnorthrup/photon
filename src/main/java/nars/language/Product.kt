@@ -22,7 +22,7 @@
 package nars.language
 
 import nars.io.Symbols
-import nars.storage.Memory
+import nars.storage.BackingStore
 
 /**
  * A Product is a sequence of terms.
@@ -72,7 +72,7 @@ class Product : CompoundTerm {
          * @param memory   Reference to the memeory
          * @return the Term generated from the arguments
          */
-        @JvmStatic   fun make(argument: List<Term>, memory: Memory): Term {
+        @JvmStatic   fun make(argument: List<Term>, memory: BackingStore): Term {
             val name: String? = makeCompoundName(Symbols.PRODUCT_OPERATOR, argument)
             val t: Term? = memory.nameToListedTerm(name)
             return t ?: Product(argument)
@@ -87,7 +87,7 @@ class Product : CompoundTerm {
          * @param memory    Reference to the memeory
          * @return A compound generated or a term it reduced to
          */
-        @JvmStatic     fun make(image: CompoundTerm, component: Term, index: Int, memory: Memory): Term {
+        @JvmStatic     fun make(image: CompoundTerm, component: Term, index: Int, memory: BackingStore): Term {
             val argument: MutableList<Term> = image.cloneComponents()
             argument[index] = component
             return make(argument, memory)

@@ -21,7 +21,7 @@
 package nars.language
 
 import nars.io.Symbols
-import nars.storage.Memory
+import nars.storage.BackingStore
 import java.util.*
 
 /**
@@ -72,7 +72,7 @@ class Implication : Statement {
          * @param memory    Reference to the memory
          * @return A compound generated or a term it reduced to
          */
-        fun make(subject: Term?, predicate: Term?, memory: Memory): Implication? {
+        fun make(subject: Term?, predicate: Term?, memory: BackingStore): Implication? {
             var result: Implication? = null
             if (subject != null && predicate != null) {
                 if (subject != null && predicate != null) {

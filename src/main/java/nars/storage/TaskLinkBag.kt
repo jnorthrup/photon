@@ -32,7 +32,7 @@ class TaskLinkBag
  * Constructor
  *
  * @param memory The reference of memory
- */(memory: Memory?) : Bag<TaskLink?>(memory!!) {
+ */(memory: BackingStore?) : Bag<TaskLink?>(memory!!) {
     /**
      * Get the (constant) capacity of TaskLinkBag
      *
@@ -48,6 +48,6 @@ class TaskLinkBag
      * @return The forget rate of TaskLinkBag
      */
     override fun forgetRate(): Int {
-        return memory.taskForgettingRate.get()
+        return memory.taskForgettingRate!!.get()
     }
 }

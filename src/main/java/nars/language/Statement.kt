@@ -21,7 +21,7 @@
 package nars.language
 
 import nars.io.Symbols
-import nars.storage.Memory
+import nars.storage.BackingStore
 
 /**
  * A statement is a compound term, consisting of a subject, a predicate,
@@ -98,7 +98,7 @@ abstract class Statement : CompoundTerm {
          * @param memory    Reference to the memory
          * @return The Statement built
          */
-      @JvmStatic  fun make(relation: String, subject: Term, predicate: Term, memory: Memory ): Statement? {
+      @JvmStatic  fun make(relation: String, subject: Term, predicate: Term, memory: BackingStore): Statement? {
             if (!invalidStatement(subject, predicate)) {
                 return when (relation) {
                     Symbols.INHERITANCE_RELATION -> Inheritance.make(subject, predicate, memory)
@@ -124,7 +124,7 @@ abstract class Statement : CompoundTerm {
          * @param memory    Reference to the memory
          * @return The Statement built
          */
-      @JvmStatic      fun make(statement: Statement , subj: Term , pred: Term, memory: Memory): Statement? {
+      @JvmStatic      fun make(statement: Statement , subj: Term , pred: Term, memory: BackingStore): Statement? {
             if (statement is Inheritance) {
                 return Inheritance.make(subj, pred, memory)
             }
@@ -148,7 +148,7 @@ abstract class Statement : CompoundTerm {
          * @param memory    Reference to the memory
          * @return The Statement built
          */
-     @JvmStatic       fun makeSym(statement: Statement, subj: Term, pred: Term, memory: Memory): Statement? {
+     @JvmStatic       fun makeSym(statement: Statement, subj: Term, pred: Term, memory: BackingStore): Statement? {
             if (statement is Inheritance) {
                 return Similarity.make(subj, pred, memory)
             }

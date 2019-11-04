@@ -35,7 +35,7 @@ public class TaskLink extends TermLink {
     /**
      * Constructor
      * <p>
-     * only called in Memory.continuedProcess
+     * only called in BackingStore.continuedProcess
      *
      * @param t        The target Task
      * @param template The TermLink template

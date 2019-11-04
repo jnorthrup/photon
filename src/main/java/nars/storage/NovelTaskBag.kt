@@ -32,7 +32,7 @@ class NovelTaskBag
  * Constructor
  *
  * @param memory The reference of memory
- */(memory: Memory?) : Bag<Task?>(memory!!) {
+ */(memory: BackingStore?) : Bag<Task?>(memory!!) {
     /**
      * Get the (constant) capacity of NovelTaskBag
      *

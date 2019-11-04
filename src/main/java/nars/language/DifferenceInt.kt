@@ -21,7 +21,7 @@
 package nars.language
 
 import nars.io.Symbols
-import nars.storage.Memory
+import nars.storage.BackingStore
 import java.util.*
 
 /**
@@ -72,7 +72,7 @@ class DifferenceInt : CompoundTerm {
          * @param memory  Reference to the memory
          * @return the Term generated from the arguments
          */
-    @JvmStatic        fun make(argList: List<Term>, memory: Memory): Term? {
+    @JvmStatic        fun make(argList: List<Term>, memory: BackingStore): Term? {
             if (argList.size == 1) { // special case from CompoundTerm.reduceComponent
 
                 return argList[0]
@@ -93,7 +93,7 @@ class DifferenceInt : CompoundTerm {
          * @param memory Reference to the memory
          * @return A compound generated or a term it reduced to
          */
-  @JvmStatic          fun make(t1: Term, t2: Term, memory: Memory): Term? {
+  @JvmStatic          fun make(t1: Term, t2: Term, memory: BackingStore): Term? {
             if (t1 == t2) {
                 return null
             }

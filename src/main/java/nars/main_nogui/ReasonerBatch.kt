@@ -6,7 +6,7 @@ import nars.io.InputChannel
 import nars.io.OutputChannel
 import nars.io.StringParser
 import nars.io.Symbols
-import nars.storage.Memory
+import nars.storage.BackingStore
 import java.util.*
 import java.util.concurrent.atomic.AtomicInteger
 
@@ -21,7 +21,7 @@ class ReasonerBatch {
     /**
      * The memory of the reasoner
      */
-    var memory: Memory
+    var memory: BackingStore
         protected set
     /**
      * The input channels of the reasoner
@@ -135,12 +135,12 @@ class ReasonerBatch {
         // forward to output Channels
 
 
-        val output: MutableList<String?> = memory.exportStrings
+        val output: MutableList<String?> = memory.exportStrings as MutableList<String?>
         if (output.isNotEmpty()) {
             for (channelOut in outputChannels) {
                 channelOut.nextOutput(output)
             }
-            output.clear()    // this will trigger display the current value of timer in Memory.report()
+            output.clear()    // this will trigger display the current value of timer in BackingStore.report()
         }
         if (running || walkingSteps > 0) {
             time++
@@ -164,7 +164,7 @@ class ReasonerBatch {
         val c = text[0]
         if (c == Symbols.RESET_MARK) {
             reset()
-            memory.exportStrings.add(text)
+            memory!!.exportStrings!!.add(text   )
         } else if (c != Symbols.COMMENT_MARK) {
             // read NARS language or an integer : TODO duplicated code
 
@@ -220,7 +220,7 @@ class ReasonerBatch {
     }
 
     init {
-        memory = Memory(this)
+        memory = BackingStore(this)
         inputChannels = ArrayList()
         outputChannels = ArrayList()
     }

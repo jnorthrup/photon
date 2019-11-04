@@ -26,7 +26,7 @@ import nars.entity.TruthValue
 import nars.inference.BudgetFunctions.compoundForward
 import nars.inference.BudgetFunctions.forward
 import nars.language.*
-import nars.storage.Memory
+import nars.storage.BackingStore
 import java.util.*
 
 /**
@@ -47,8 +47,8 @@ object CompositionalRules {/* -------------------- intersections and differences
      * @param index        The location of the shared term
      * @param memory       Reference to the memory
      */
-    internal fun composeCompound(taskContent: Statement, beliefContent: Statement, index: Int, memory: Memory) {
-        if (!memory.currentTask.sentence.isJudgment || taskContent.javaClass != beliefContent.javaClass) {
+    internal fun composeCompound(taskContent: Statement, beliefContent: Statement, index: Int, memory: BackingStore) {
+        if (!memory.currentTask!!.sentence.isJudgment || taskContent.javaClass != beliefContent.javaClass) {
             return
         }
         val componentT: Term = taskContent.componentAt(1 - index)
@@ -61,7 +61,7 @@ object CompositionalRules {/* -------------------- intersections and differences
             decomposeCompound(componentB, componentT, componentCommon, index, false, memory)
             return
         }
-        val truthT = memory.currentTask.sentence.truth
+        val truthT =  memory.currentTask!!.sentence.truth
         val truthB = memory.currentBelief!!.truth
         val truthOr: TruthValue? = TruthFunctions.union(truthT!!, truthB!!)
         val truthAnd: TruthValue? = TruthFunctions.intersection(truthT, truthB)
@@ -125,7 +125,7 @@ object CompositionalRules {/* -------------------- intersections and differences
      * @param truth     TruthValue of the contentInd
      * @param memory    Reference to the memory
      */
-    private fun processComposed(statement: Statement, subject: Term?, predicate: Term?, truth: TruthValue?, memory: Memory) {
+    private fun processComposed(statement: Statement, subject: Term?, predicate: Term?, truth: TruthValue?, memory: BackingStore) {
         if (subject == null || predicate == null) {
             return
         }
@@ -149,12 +149,12 @@ object CompositionalRules {/* -------------------- intersections and differences
      * @param memory          Reference to the memory
      */
     @JvmStatic
-    private fun decomposeCompound(compound: CompoundTerm, component: Term, term1: Term, index: Int, compoundTask: Boolean, memory: Memory) {
+    private fun decomposeCompound(compound: CompoundTerm, component: Term, term1: Term, index: Int, compoundTask: Boolean, memory: BackingStore) {
         if (compound is Statement) {
             return
         }
         val term2 = CompoundTerm.reduceComponents(compound, component, memory) ?: return
-        val task: Task = memory.currentTask
+        val task: Task =  memory.currentTask!!
         val sentence = task.sentence
         val belief = memory.currentBelief
         val oldContent = task.content as Statement
@@ -238,8 +238,8 @@ object CompositionalRules {/* -------------------- intersections and differences
      * @param compoundTask    Whether the implication comes from the task
      * @param memory          Reference to the memory
      */
-    internal fun decomposeStatement(compound: CompoundTerm?, component: Term?, compoundTask: Boolean, memory: Memory) {
-        val task: Task = memory.currentTask
+    internal fun decomposeStatement(compound: CompoundTerm?, component: Term?, compoundTask: Boolean, memory: BackingStore) {
+        val task: Task = memory.currentTask!!
         val sentence = task.sentence
         if (sentence.isQuestion) {
             return
@@ -283,8 +283,8 @@ object CompositionalRules {/* -------------------- intersections and differences
      * predicate
      * @param memory        Reference to the memory
     </M></M> */
-    private fun introVarOuter(taskContent: Statement, beliefContent: Statement, index: Int, memory: Memory) {
-        val truthT = memory.currentTask.sentence.truth
+    private fun introVarOuter(taskContent: Statement, beliefContent: Statement, index: Int, memory: BackingStore) {
+        val truthT = memory.currentTask!!.sentence.truth
         val truthB = memory.currentBelief!!.truth
         val varInd = Variable("\$varInd1")
         val varInd2 = Variable("\$varInd2")
@@ -373,8 +373,8 @@ object CompositionalRules {/* -------------------- intersections and differences
      * or Conjunction
      * @param memory        Reference to the memory
     </M></M></M></M></M></M> */
-    internal fun introVarInner(premise1: Statement, premise2: Statement, oldCompound: CompoundTerm, memory: Memory) {
-        val task: Task = memory.currentTask
+    internal fun introVarInner(premise1: Statement, premise2: Statement, oldCompound: CompoundTerm, memory: BackingStore) {
+        val task: Task = memory.currentTask!!
         val taskSentence = task.sentence
         if (!taskSentence.isJudgment || premise1.javaClass != premise2.javaClass || oldCompound.containComponent(premise1)) {
             return

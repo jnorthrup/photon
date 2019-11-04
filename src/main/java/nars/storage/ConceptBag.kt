@@ -32,7 +32,7 @@ class ConceptBag
  * Constructor
  *
  * @param memory The reference of memory
- */(memory: Memory?) : Bag<Concept?>(memory!!) {
+ */(memory: BackingStore?) : Bag<Concept?>(memory!!) {
     /**
      * Get the (constant) capacity of ConceptBag
      *
@@ -50,6 +50,6 @@ class ConceptBag
      */
 
     override fun forgetRate(): Int {
-        return memory.conceptForgettingRate.get()
+        return memory.conceptForgettingRate!!.get()
     }
 }

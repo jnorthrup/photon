@@ -29,7 +29,7 @@ import nars.inference.BudgetFunctions.compoundForward
 import nars.inference.BudgetFunctions.forward
 import nars.language.*
 import nars.main_nogui.Parameters
-import nars.storage.Memory
+import nars.storage.BackingStore
 
 /**
  * Single-premise inference rules involving compound terms. Input are one
@@ -51,7 +51,7 @@ object StructuralRules {
      * @param side      The location of the indicated term in the premise
      * @param memory    Reference to the memory
     </S></S> */
-    internal fun structuralCompose2(compound: CompoundTerm, index: Short, statement: Statement, side: Short, memory: Memory) {
+    internal fun structuralCompose2(compound: CompoundTerm, index: Short, statement: Statement, side: Short, memory: BackingStore) {
         if (compound == statement.componentAt(side.toInt())) {
             return
         }
@@ -92,7 +92,7 @@ object StructuralRules {
         if (content == null) {
             return
         }
-        val task: Task = memory.currentTask
+        val task: Task = memory.currentTask!!
         val sentence = task.sentence
         var truth = sentence.truth
         val budget: BudgetValue
@@ -117,7 +117,7 @@ object StructuralRules {
      * @param statement The premise
      * @param memory    Reference to the memory
     </S> */
-    internal fun structuralDecompose2(statement: Statement, index: Int, memory: Memory) {
+    internal fun structuralDecompose2(statement: Statement, index: Int, memory: BackingStore) {
         val subj: Term = statement.subject
         val pred: Term = statement.predicate
         if (subj.javaClass != pred.javaClass) {
@@ -139,7 +139,7 @@ object StructuralRules {
         if (content == null) {
             return
         }
-        val task: Task = memory.currentTask
+        val task: Task = memory.currentTask!!
         val sentence = task.sentence
         val truth = sentence.truth
         val budget: BudgetValue
@@ -176,12 +176,12 @@ object StructuralRules {
      * @param statement The premise
      * @param memory    Reference to the memory
     </S></S> */
-    internal fun structuralCompose1(compound: CompoundTerm, index: Short, statement: Statement, memory: Memory) {
-        if (!memory.currentTask.sentence.isJudgment) {
+    internal fun structuralCompose1(compound: CompoundTerm, index: Short, statement: Statement, memory: BackingStore) {
+        if (!memory.currentTask!!.sentence.isJudgment) {
             return
         }
         val component: Term = compound.componentAt(index.toInt())
-        val task: Task = memory.currentTask
+        val task: Task = memory.currentTask!!
         val sentence = task.sentence
         val truth = sentence.truth
         val truthDed: TruthValue = TruthFunctions.deduction(truth!!, RELIANCE)
@@ -223,12 +223,12 @@ object StructuralRules {
      * @param statement The premise
      * @param memory    Reference to the memory
     </S> */
-    internal fun structuralDecompose1(compound: CompoundTerm, index: Short, statement: Statement, memory: Memory) {
-        if (!memory.currentTask.sentence.isJudgment) {
+    internal fun structuralDecompose1(compound: CompoundTerm, index: Short, statement: Statement, memory: BackingStore) {
+        if (!memory.currentTask!!.sentence.isJudgment) {
             return
         }
         val component: Term = compound.componentAt(index.toInt())
-        val task: Task = memory.currentTask
+        val task: Task = memory.currentTask!!
         val sentence = task.sentence
         val truth = sentence.truth
         val truthDed: TruthValue = TruthFunctions.deduction(truth!!, RELIANCE)
@@ -271,8 +271,8 @@ object StructuralRules {
      * @param truth     The truth value of the new task
      * @param memory    Reference to the memory
      */
-    private fun structuralStatement(subject: Term, predicate: Term, truth: TruthValue, memory: Memory) {
-        val task: Task = memory.currentTask
+    private fun structuralStatement(subject: Term, predicate: Term, truth: TruthValue, memory: BackingStore) {
+        val task: Task = memory.currentTask!!
         val oldContent = task.content
         if (oldContent is Statement) {
             val content: Term? = Statement.make(oldContent, subject, predicate, memory)
@@ -294,7 +294,7 @@ object StructuralRules {
      * @param side      The location of the indicated term in the premise
      * @param memory    Reference to the memory
     </S> */
-    internal fun transformSetRelation(compound: CompoundTerm, statement: Statement, side: Short, memory: Memory) {
+    internal fun transformSetRelation(compound: CompoundTerm, statement: Statement, side: Short, memory: BackingStore) {
         if (compound.size() > 1) {
             return
         }
@@ -315,7 +315,7 @@ object StructuralRules {
                 Inheritance.make(sub, pre, memory)
             }
         }
-        val task: Task = memory.currentTask
+        val task: Task = memory.currentTask!!
         val sentence = task.sentence
         val truth = sentence.truth
         val budget: BudgetValue
@@ -342,7 +342,7 @@ object StructuralRules {
      * @param task       The task
      * @param memory     Reference to the memory
     </M></S></S></S> */
-    internal fun transformProductImage(inh: Inheritance, oldContent: CompoundTerm, indices: ShortArray, memory: Memory) {
+    internal fun transformProductImage(inh: Inheritance, oldContent: CompoundTerm, indices: ShortArray, memory: BackingStore) {
         var subject: Term = inh.subject
         var predicate: Term = inh.predicate
         if (inh == oldContent) {
@@ -413,7 +413,7 @@ object StructuralRules {
         if (content == null) {
             return
         }
-        val sentence = memory.currentTask.sentence
+        val sentence = memory.currentTask!!.sentence
         val truth = sentence.truth
         val budget: BudgetValue
         budget = if (sentence.isQuestion) {
@@ -433,8 +433,8 @@ object StructuralRules {
      * @param predicate The predicate term
      * @param memory    Reference to the memory
     </M></S></S></S> */
-    private fun transformSubjectPI(subject: CompoundTerm, predicate: Term, memory: Memory) {
-        val truth = memory.currentTask.sentence.truth
+    private fun transformSubjectPI(subject: CompoundTerm, predicate: Term, memory: BackingStore) {
+        val truth = memory.currentTask!!.sentence.truth
         var budget: BudgetValue
         var inheritance: Inheritance?
         var newSubj: Term
@@ -482,8 +482,8 @@ object StructuralRules {
      * @param predicate The predicate term
      * @param memory    Reference to the memory
     </M></S></S></S> */
-    private fun transformPredicatePI(subject: Term, predicate: CompoundTerm, memory: Memory) {
-        val truth = memory.currentTask.sentence.truth
+    private fun transformPredicatePI(subject: Term, predicate: CompoundTerm, memory: BackingStore) {
+        val truth = memory.currentTask!!.sentence.truth
         var budget: BudgetValue
         var inheritance: Inheritance?
         var newSubj: Term
@@ -536,12 +536,12 @@ object StructuralRules {
      * @param compoundTask Whether the compound comes from the task
      * @param memory       Reference to the memory
      */
-    internal fun structuralCompound(compound: CompoundTerm?, component: Term, compoundTask: Boolean, memory: Memory) {
+    internal fun structuralCompound(compound: CompoundTerm?, component: Term, compoundTask: Boolean, memory: BackingStore) {
         if (!component.isConstant) {
             return
         }
         val content = if (compoundTask) component else compound!!
-        val task: Task = memory.currentTask
+        val task: Task = memory.currentTask!!
 //        if (task.isStructural()) {
 //            return;
 //        }
@@ -573,8 +573,8 @@ object StructuralRules {
      * @param memory  Reference to the memory
      */
     @JvmStatic
-    fun transformNegation(content: Term?, memory: Memory) {
-        val task: Task = memory.currentTask
+    fun transformNegation(content: Term?, memory: BackingStore) {
+        val task: Task = memory.currentTask!!
         val sentence = task.sentence
         var truth = sentence.truth
         if (sentence.isJudgment) {
@@ -595,10 +595,10 @@ object StructuralRules {
      * @param statement The premise
      * @param memory    Reference to the memory
      */
-    internal fun contraposition(statement: Statement, memory: Memory) {
+    internal fun contraposition(statement: Statement, memory: BackingStore) {
         val subj: Term  = statement.subject
         val pred: Term  = statement.predicate
-        val task: Task = memory.currentTask
+        val task: Task = memory.currentTask!!
         val sentence = task.sentence
         val term = Negation.make(pred, memory) as Term
         val make = Negation.make(subj, memory)

@@ -23,7 +23,7 @@ package nars.language;
 import nars.entity.TermLink;
 import nars.entity.TermLinkConstants;
 import nars.io.Symbols;
-import nars.storage.Memory;
+import nars.storage.BackingStore;
 
 import java.util.*;
 
@@ -95,13 +95,13 @@ public abstract class CompoundTerm extends CompoundTermState {
      * @param memory Reference to the memory
      * @return A compound term or null
      */
-    public static Term make(String op ,  List<Term> arg, Memory  memory) {
+    public static Term make(String op ,  List<Term> arg, BackingStore memory) {
         if (op.length() == 1) {
             if (op.charAt(0) == Symbols.SET_EXT_OPENER) {
                 return SetExt.make(arg, memory);
             }
             if (op.charAt(0) == Symbols.SET_INT_OPENER) {
-                return SetInt.make(arg, (Memory) memory);
+                return SetInt.make(arg, (BackingStore) memory);
             }
             if (op.equals(Symbols.INTERSECTION_EXT_OPERATOR)) {
                 return IntersectionExt.make(arg, memory);
@@ -249,7 +249,7 @@ public abstract class CompoundTerm extends CompoundTermState {
      * @param memory Reference to the memory
      * @return The new compound
      */
-    public static Term reduceComponents(CompoundTerm t1, Term t2, Memory memory) {
+    public static Term reduceComponents(CompoundTerm t1, Term t2, BackingStore memory) {
         boolean success;
         var list = t1.cloneComponents();
         if (t1.getClass() == t2.getClass()) {

@@ -21,7 +21,7 @@
 package nars.language
 
 import nars.io.Symbols
-import nars.storage.Memory
+import nars.storage.BackingStore
 import java.util.*
 
 /**
@@ -74,7 +74,7 @@ class Negation : CompoundTerm {
          * @param memory Reference to the memory
          * @return A compound generated or a term it reduced to
          */
-        @JvmStatic   fun make(t: Term, memory: Memory): Term? {
+        @JvmStatic   fun make(t: Term, memory: BackingStore): Term? {
             if (t is Negation) {
                 return (t as CompoundTerm).cloneComponents()[0]
             }         // (--,(--,P)) = P
@@ -91,7 +91,7 @@ class Negation : CompoundTerm {
          * @param memory   Reference to the memory
          * @return the Term generated from the arguments
          */
-        @JvmStatic      fun make(argument: List<Term>, memory: Memory): Term? {
+        @JvmStatic      fun make(argument: List<Term>, memory: BackingStore): Term? {
             var result: Term? = null
             if (argument.size == 1) {
                 val name: String? = makeCompoundName(Symbols.NEGATION_OPERATOR, argument)

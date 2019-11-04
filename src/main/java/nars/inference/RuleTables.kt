@@ -23,7 +23,7 @@ package nars.inference
 import nars.entity.*
 import nars.io.Symbols
 import nars.language.*
-import nars.storage.Memory
+import nars.storage.BackingStore
 
 /**
  * Table of inference rules, indexed by the TermLinks for the task and the
@@ -39,8 +39,8 @@ object RuleTables {
      * @param memory Reference to the memory
      */
     @JvmStatic
-    fun reason(tLink: TaskLink, bLink: TermLink, memory: Memory) {
-        val task: Task = memory.currentTask
+    fun reason(tLink: TaskLink, bLink: TermLink, memory: BackingStore) {
+        val task: Task = memory.currentTask!!
         val taskSentence = task.sentence
         val taskTerm = taskSentence.content.clone() as Term         // cloning for substitution
 
@@ -127,8 +127,8 @@ object RuleTables {
      * @param beliefTerm The content of belief
      * @param memory     Reference to the memory
      */
-    private fun syllogisms(tLink: TaskLink, bLink: TermLink, taskTerm: Term, beliefTerm: Term, memory: Memory) {
-        val taskSentence = memory.currentTask.sentence
+    private fun syllogisms(tLink: TaskLink, bLink: TermLink, taskTerm: Term, beliefTerm: Term, memory: BackingStore) {
+        val taskSentence = memory.currentTask!!!!.sentence
         val belief = memory.currentBelief
         val figure: Int
         if (taskTerm is Inheritance) {
@@ -192,7 +192,7 @@ object RuleTables {
      * @param figure   The location of the shared term
      * @param memory   Reference to the memory
      */
-    private fun asymmetricAsymmetric(sentence: Sentence, belief: Sentence?, figure: Int, memory: Memory) {
+    private fun asymmetricAsymmetric(sentence: Sentence, belief: Sentence?, figure: Int, memory: BackingStore) {
         val s1 = sentence.cloneContent() as Statement
         val s2 = belief!!.cloneContent() as Statement
         val t1: Term?
@@ -257,7 +257,7 @@ object RuleTables {
      * @param figure The location of the shared term
      * @param memory Reference to the memory
      */
-    private fun asymmetricSymmetric(asym: Sentence?, sym: Sentence?, figure: Int, memory: Memory) {
+    private fun asymmetricSymmetric(asym: Sentence?, sym: Sentence?, figure: Int, memory: BackingStore) {
         val asymSt = asym!!.cloneContent() as Statement
         val symSt = sym!!.cloneContent() as Statement
         val t1: Term?
@@ -310,7 +310,7 @@ object RuleTables {
      * @param figure       The location of the shared term
      * @param memory       Reference to the memory
      */
-    private fun symmetricSymmetric(belief: Sentence?, taskSentence: Sentence, figure: Int, memory: Memory) {
+    private fun symmetricSymmetric(belief: Sentence?, taskSentence: Sentence, figure: Int, memory: BackingStore) {
         val s1 = belief!!.cloneContent() as Statement
         val s2 = taskSentence.cloneContent() as Statement
         when (figure) {
@@ -342,7 +342,7 @@ object RuleTables {
      * @param index                The location of the second premise in the first
      * @param memory               Reference to the memory
      */
-    private fun detachmentWithVar(originalMainSentence: Sentence?, subSentence: Sentence?, index: Int, memory: Memory) {
+    private fun detachmentWithVar(originalMainSentence: Sentence?, subSentence: Sentence?, index: Int, memory: BackingStore) {
         val mainSentence = originalMainSentence!!.clone() as Sentence   // for substitution
 
         val statement = mainSentence.content as Statement
@@ -353,7 +353,7 @@ object RuleTables {
                 SyllogisticRules.detachment(mainSentence, subSentence, index, memory)
             } else if (Variable.unify(Symbols.VAR_INDEPENDENT, component, content, statement, content)) {
                 SyllogisticRules.detachment(mainSentence, subSentence, index, memory)
-            } else if (statement is Implication && statement.predicate is Statement && memory.currentTask.sentence.isJudgment) {
+            } else if (statement is Implication && statement.predicate is Statement && memory.currentTask!!.sentence.isJudgment) {
                 val s2 = statement.predicate as Statement
                 if (s2.subject == (content as Statement).subject) {
                     CompositionalRules.introVarInner(content, s2, statement, memory)
@@ -372,7 +372,7 @@ object RuleTables {
      * @param side        The location of the shared term in the statement
      * @param memory      Reference to the memory
      */
-    private fun conditionalDedIndWithVar(conditional: Implication, index: Short, statement: Statement, side: Short, memory: Memory) {
+    private fun conditionalDedIndWithVar(conditional: Implication, index: Short, statement: Statement, side: Short, memory: BackingStore) {
         var side1 = side
         val condition = conditional.subject as CompoundTerm
         val component: Term  = condition.componentAt(index.toInt())
@@ -399,7 +399,7 @@ object RuleTables {
      * @param compoundTask Whether the compound comes from the task
      * @param memory       Reference to the memory
      */
-    private fun compoundAndSelf(compound: CompoundTerm, component: Term, compoundTask: Boolean, memory: Memory) {
+    private fun compoundAndSelf(compound: CompoundTerm, component: Term, compoundTask: Boolean, memory: BackingStore) {
         if (compound is Conjunction || compound is Disjunction) {
             if (memory.currentBelief != null) {
                 CompositionalRules.decomposeStatement(compound, component, compoundTask, memory)
@@ -424,7 +424,7 @@ object RuleTables {
      * @param beliefTerm The compound from the belief
      * @param memory     Reference to the memory
      */
-    private fun compoundAndCompound(taskTerm: CompoundTerm, beliefTerm: CompoundTerm, memory: Memory) {
+    private fun compoundAndCompound(taskTerm: CompoundTerm, beliefTerm: CompoundTerm, memory: BackingStore) {
         if (taskTerm.javaClass == beliefTerm.javaClass) {
             if (taskTerm.size() > beliefTerm.size()) {
                 compoundAndSelf(taskTerm, beliefTerm, true, memory)
@@ -444,9 +444,9 @@ object RuleTables {
      * @param beliefTerm The content of the belief
      * @param memory     Reference to the memory
      */
-    private fun compoundAndStatement(compound: CompoundTerm, index: Short, statement: Statement, side: Short, beliefTerm: Term, memory: Memory) {
+    private fun compoundAndStatement(compound: CompoundTerm, index: Short, statement: Statement, side: Short, beliefTerm: Term, memory: BackingStore) {
         val component: Term = compound.componentAt(index.toInt())
-        val task: Task = memory.currentTask
+        val task: Task = memory.currentTask!!
         if (component.javaClass == statement.javaClass) {
             if (compound is Conjunction && memory.currentBelief != null) {
                 if (Variable.unify(Symbols.VAR_DEPENDENT, component, statement, compound, statement)) {
@@ -484,7 +484,7 @@ object RuleTables {
      * @param side      The location of the current term in the statement
      * @param memory    Reference to the memory
      */
-    private fun componentAndStatement(compound: CompoundTerm, index: Short, statement: Statement, side: Short, memory: Memory) {
+    private fun componentAndStatement(compound: CompoundTerm, index: Short, statement: Statement, side: Short, memory: BackingStore) {
 //        if (!memory.currentTask.isStructural()) {
 
         if (statement is Inheritance) {
@@ -518,8 +518,8 @@ object RuleTables {
      * @param memory Reference to the memory
      */
     @JvmStatic
-    fun transformTask(tLink: TaskLink, memory: Memory) {
-        val content = memory.currentTask.content!!.clone() as CompoundTerm
+    fun transformTask(tLink: TaskLink, memory: BackingStore) {
+        val content = memory.currentTask!!.content!!.clone() as CompoundTerm
         val indices: ShortArray = tLink.indices
         var inh: Term? = null
         if (indices.size == 2 || content is Inheritance) {          // <(*, term, #) --> #>

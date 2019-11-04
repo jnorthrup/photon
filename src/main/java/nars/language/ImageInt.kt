@@ -21,7 +21,7 @@
 package nars.language
 
 import nars.io.Symbols
-import nars.storage.Memory
+import nars.storage.BackingStore
 import java.util.*
 
 /**
@@ -126,7 +126,7 @@ class ImageInt : CompoundTerm {
          * @param memory  Reference to the memory
          * @return the Term generated from the arguments
          */
-   @JvmStatic     fun make(argList: List<Term>, memory: Memory): Term? {
+   @JvmStatic     fun make(argList: List<Term>, memory: BackingStore): Term? {
             if (argList.size < 2) {
                 return null
             }
@@ -153,7 +153,7 @@ class ImageInt : CompoundTerm {
          * @param memory   Reference to the memory
          * @return A compound generated or a term it reduced to
          */
-    @JvmStatic    fun make(product: Product, relation: Term, index: Short, memory: Memory): Term {
+    @JvmStatic    fun make(product: Product, relation: Term, index: Short, memory: BackingStore): Term {
             if (relation is Product) {
                 if (product.size() == 2 && relation.size() == 2) {
                     if (index.toInt() == 0 && product.componentAt(1) == relation.componentAt(1)) {// (\,_,(*,a,b),b) is reduced to a
@@ -180,7 +180,7 @@ class ImageInt : CompoundTerm {
          * @param memory    Reference to the memory
          * @return A compound generated or a term it reduced to
          */
-     @JvmStatic   fun make(oldImage: ImageInt, component: Term, index: Short, memory: Memory): Term {
+     @JvmStatic   fun make(oldImage: ImageInt, component: Term, index: Short, memory: BackingStore): Term {
             val argList: MutableList<Term> = oldImage.cloneComponents()
             val oldIndex = oldImage.relationIndex.toInt()
             val relation = argList[oldIndex]
@@ -197,7 +197,7 @@ class ImageInt : CompoundTerm {
          * @param memory   Reference to the memory
          * @return the Term generated from the arguments
          */
-  @JvmStatic      fun make(argument: List<Term>, index: Short, memory: Memory): Term {
+  @JvmStatic      fun make(argument: List<Term>, index: Short, memory: BackingStore): Term {
             val name: String = makeImageName(Symbols.IMAGE_INT_OPERATOR, argument, index.toInt())
             val t: Term? = memory.nameToListedTerm(name)
             return t ?: ImageInt(name, argument, index)

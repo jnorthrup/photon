@@ -21,7 +21,7 @@
 package nars.language
 
 import nars.io.Symbols
-import nars.storage.Memory
+import nars.storage.BackingStore
 import java.util.*
 
 /**
@@ -83,7 +83,7 @@ class IntersectionExt : CompoundTerm {
          * @param memory Reference to the memory
          * @return A compound generated or a term it reduced to
          */
-@JvmStatic        fun make(term1: Term, term2: Term, memory: Memory): Term {
+@JvmStatic        fun make(term1: Term, term2: Term, memory: BackingStore): Term {
             val set: TreeSet<Term>
             if (term1 is SetInt && term2 is SetInt) {
                 set = TreeSet((term1 as CompoundTerm).cloneComponents())
@@ -123,7 +123,7 @@ class IntersectionExt : CompoundTerm {
          * @param memory  Reference to the memory
          * @return the Term generated from the arguments
          */
-   @JvmStatic     fun make(argList: List<Term>?, memory: Memory): Term {
+   @JvmStatic     fun make(argList: List<Term>?, memory: BackingStore): Term {
             val set = TreeSet(argList) // sort/merge arguments
 
             return make(set, memory)
@@ -136,7 +136,7 @@ class IntersectionExt : CompoundTerm {
          * @param memory Reference to the memory
          * @return the Term generated from the arguments
          */
-     @JvmStatic   fun make(set: TreeSet<Term>, memory: Memory): Term {
+     @JvmStatic   fun make(set: TreeSet<Term>, memory: BackingStore): Term {
             if (set.size == 1) {
                 return set.first()
             }                         // special case: single component
