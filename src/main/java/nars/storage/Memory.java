@@ -26,6 +26,7 @@ import nars.io.IInferenceRecorder;
 import nars.language.Term;
 import nars.main_nogui.Parameters;
 import nars.main_nogui.ReasonerBatch;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -647,13 +648,13 @@ public class Memory implements MemoryOps {
     }
 
     @Override
-    public void setSubstitute(Map<Term, Term> substitute) {
-        memoryState.setSubstitute(substitute);
+    public void setRecorder(IInferenceRecorder recorder) {
+        memoryState.setRecorder(recorder);
     }
 
     @Override
-    public void setRecorder(IInferenceRecorder recorder) {
-        memoryState.setRecorder(recorder);
+    public void setSubstitute(@Nullable Map<Term, ? extends Term> substitute) {
+        memoryState.setSubstitute(substitute);
     }
 
 }
