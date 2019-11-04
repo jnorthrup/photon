@@ -95,7 +95,7 @@ object LocalRules {/* -------------------- same contents -------------------- */
         val newTruth = newBelief.truth
         val oldTruth = oldBelief.truth
         val truth: TruthValue? = TruthFunctions.revision(newTruth!!, oldTruth!!)
-        val budget = revise(newTruth, oldTruth, truth!!, feedbackToLinks, memory)
+        val budget = memory.revise(newTruth, oldTruth, truth!!, feedbackToLinks)
         val content = newBelief.content
         memory.doublePremiseTask(content, truth, budget)
     }
@@ -123,7 +123,7 @@ object LocalRules {/* -------------------- same contents -------------------- */
 
             memory.report(belief, false)
         }
-        val budget = solutionEval(problem, belief, task, memory)
+        val budget = memory.solutionEval(problem, belief, task)
         if (budget != null && budget.aboveThreshold()) {
             memory.activatedTask(budget, belief, task.parentBelief)
         }
@@ -211,7 +211,7 @@ object LocalRules {/* -------------------- same contents -------------------- */
         val value1 = judgment1.truth
         val value2 = judgment2!!.truth
         val truth: TruthValue? = TruthFunctions.intersection(value1!!, value2!!)
-        val budget = forward(truth, memory)
+        val budget = memory.forward(truth)
         memory.doublePremiseTask(content, truth, budget)
     }
 
@@ -229,7 +229,7 @@ object LocalRules {/* -------------------- same contents -------------------- */
         val pre: Term  = statement.subject
         val content: Statement? = Statement.make(statement, sub, pre, memory)
         val truth: TruthValue? = TruthFunctions.reduceConjunction(sym.truth!!, asym.truth!!)
-        val budget = forward(truth, memory)
+        val budget = memory.forward(truth)
         memory.doublePremiseTask(content, truth, budget)
     }
 
@@ -244,7 +244,7 @@ object LocalRules {/* -------------------- same contents -------------------- */
     </S></P> */
     private fun conversion(memory: BackingStore) {
         val truth: TruthValue? = TruthFunctions.conversion(memory.currentBelief!!.truth!!)
-        val budget = forward(truth, memory)
+        val budget = memory.forward(truth)
         convertedJudgment(truth, budget, memory)
     }
 
@@ -261,7 +261,7 @@ object LocalRules {/* -------------------- same contents -------------------- */
         } else {
             TruthFunctions.deduction(truth!!, 1.0f)
         }
-        val budget = forward(truth, memory)
+        val budget = memory.forward(truth)
         convertedJudgment(truth, budget, memory)
     }
 

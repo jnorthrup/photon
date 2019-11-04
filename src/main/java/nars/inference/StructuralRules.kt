@@ -97,7 +97,7 @@ object StructuralRules {
         var truth = sentence.truth
         val budget: BudgetValue
         if (sentence.isQuestion) {
-            budget = compoundBackwardWeak(content, memory)
+            budget = memory.compoundBackwardWeak(content)
         } else {
             if (compound.size() > 1) {
                 if (sentence.isJudgment) {
@@ -106,7 +106,7 @@ object StructuralRules {
                     return
                 }
             }
-            budget = compoundForward(truth, content, memory)
+            budget = memory.compoundForward(truth, content)
         }
         memory.singlePremiseTask(content, truth, budget)
     }
@@ -144,12 +144,12 @@ object StructuralRules {
         val truth = sentence.truth
         val budget: BudgetValue
         budget = if (sentence.isQuestion) {
-            compoundBackward(content, memory)
+            memory.compoundBackward(content)
         } else {
             if (sub !is Product && sub.size() > 1 && sentence.isJudgment) {
                 return
             }
-            compoundForward(truth, content, memory)
+            memory.compoundForward(truth, content)
         }
         memory.singlePremiseTask(content, truth, budget)
     }
@@ -277,7 +277,7 @@ object StructuralRules {
         if (oldContent is Statement) {
             val content: Term? = Statement.make(oldContent, subject, predicate, memory)
             if (content != null) {
-                val budget = compoundForward(truth, content, memory)
+                val budget = memory.compoundForward(truth, content)
                 memory.singlePremiseTask(content, truth, budget)
             }
         }
@@ -320,9 +320,9 @@ object StructuralRules {
         val truth = sentence.truth
         val budget: BudgetValue
         budget = if (sentence.isQuestion) {
-            compoundBackward(content!!, memory)
+            memory.compoundBackward(content!!)
         } else {
-            compoundForward(truth, content!!, memory)
+            memory.compoundForward(truth, content!!)
         }
         memory.singlePremiseTask(content, truth, budget)
     }
@@ -417,9 +417,9 @@ object StructuralRules {
         val truth = sentence.truth
         val budget: BudgetValue
         budget = if (sentence.isQuestion) {
-            compoundBackward(content, memory)
+            memory.compoundBackward(content)
         } else {
-            compoundForward(truth, content, memory)
+            memory.compoundForward(truth, content)
         }
         memory.singlePremiseTask(content, truth, budget)
     }
@@ -445,9 +445,9 @@ object StructuralRules {
                 newPred = ImageExt.make(subject, predicate, i.toShort(), memory)
                 inheritance = Inheritance.make(newSubj, newPred, memory)
                 budget = if (truth == null) {
-                    compoundBackward(inheritance!!, memory)
+                    memory.compoundBackward(inheritance!!)
                 } else {
-                    compoundForward(truth, inheritance!!, memory)
+                    memory.compoundForward(truth, inheritance!!)
                 }
                 memory.singlePremiseTask(inheritance, truth, budget)
             }
@@ -463,9 +463,9 @@ object StructuralRules {
                 }
                 inheritance = Inheritance.make(newSubj, newPred, memory)
                 budget = if (truth == null) {
-                    compoundBackward(inheritance!!, memory)
+                    memory.compoundBackward(inheritance!!)
                 } else {
-                    compoundForward(truth, inheritance!!, memory)
+                    memory.compoundForward(truth, inheritance!!)
                 }
                 memory.singlePremiseTask(inheritance, truth, budget)
             }
@@ -494,9 +494,9 @@ object StructuralRules {
                 newPred = predicate.componentAt(i)
                 inheritance = Inheritance.make(newSubj, newPred, memory)
                 budget = if (truth == null) {
-                    compoundBackward(inheritance!!, memory)
+                    memory.compoundBackward(inheritance!!)
                 } else {
-                    compoundForward(truth, inheritance!!, memory)
+                    memory.compoundForward(truth, inheritance!!)
                 }
                 memory.singlePremiseTask(inheritance, truth, budget)
             }
@@ -514,9 +514,9 @@ object StructuralRules {
                 if (inheritance != null) { // jmv <<<<<
 
                     budget = if (truth == null) {
-                        compoundBackward(inheritance, memory)
+                        memory.compoundBackward(inheritance)
                     } else {
-                        compoundForward(truth, inheritance, memory)
+                        memory.compoundForward(truth, inheritance)
                     }
                     memory.singlePremiseTask(inheritance, truth, budget)
                 }
@@ -551,14 +551,14 @@ object StructuralRules {
         var truth = sentence.truth
         val budget: BudgetValue
         if (sentence.isQuestion) {
-            budget = compoundBackward(content, memory)
+            budget = memory.compoundBackward(content)
         } else {
             if (sentence.isJudgment == (compoundTask == compound is Conjunction)) {
                 truth = TruthFunctions.deduction(truth!!, RELIANCE)
             } else {
                 return
             }
-            budget = forward(truth, memory)
+            budget = memory.forward(truth)
         }
         memory.singlePremiseTask(content, truth, budget)
     }
@@ -582,9 +582,9 @@ object StructuralRules {
         }
         val budget: BudgetValue
         budget = if (sentence.isQuestion) {
-            compoundBackward(content!!, memory)
+            memory.compoundBackward(content!!)
         } else {
-            compoundForward(truth, content!!, memory)
+            memory.compoundForward(truth, content!!)
         }
         memory.singlePremiseTask(content, truth, budget)
     }
@@ -607,15 +607,15 @@ object StructuralRules {
         val budget: BudgetValue
         if (sentence.isQuestion) {
             budget = if (content is Implication) {
-                compoundBackwardWeak(content, memory)
+                memory.compoundBackwardWeak(content)
             } else {
-                compoundBackward(content!!, memory)
+                memory.compoundBackward(content!!)
             }
         } else {
             if (content is Implication) {
                 truth = TruthFunctions.contraposition(truth!!)
             }
-            budget = compoundForward(truth, content!!, memory)
+            budget = memory.compoundForward(truth, content!!)
         }
         memory.singlePremiseTask(content, truth, budget)
     }

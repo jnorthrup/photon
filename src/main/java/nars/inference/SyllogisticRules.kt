@@ -49,7 +49,7 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
      * @param belief   The second premise
      * @param memory   Reference to the memory
      */
-    internal fun dedExe(term1: Term , term2: Term , sentence: Sentence, belief: Sentence, memory: BackingStore) {
+    internal fun dedExe(term1: Term, term2: Term, sentence: Sentence, belief: Sentence, memory: BackingStore) {
         if (Statement.invalidStatement(term1, term2)) {
             return
         }
@@ -65,8 +65,8 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
         } else {
             truth1 = TruthFunctions.deduction(value1, value2)
             truth2 = TruthFunctions.exemplification(value1, value2)
-            budget1 = forward(truth1, memory)
-            budget2 = forward(truth2, memory)
+            budget1 = memory.forward(truth1)
+            budget2 = memory.forward(truth2)
         }
         val content = sentence.content as Statement
         val content1: Statement? = Statement.make(content, term1, term2, memory)
@@ -83,7 +83,7 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
      * @param belief       The second premise
      * @param memory       Reference to the memory
      */
-    internal fun abdIndCom(term1: Term , term2: Term , taskSentence: Sentence, belief: Sentence, memory: BackingStore) {
+    internal fun abdIndCom(term1: Term, term2: Term, taskSentence: Sentence, belief: Sentence, memory: BackingStore) {
         if (Statement.invalidStatement(term1, term2)) {
             return
         }
@@ -97,16 +97,16 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
         val value1 = taskSentence.truth
         val value2 = belief.truth
         if (taskSentence.isQuestion) {
-            budget1 = backward(value2, memory)
+            budget1 = memory.backward(value2)
             budget2 = backwardWeak(value2, memory)
-            budget3 = backward(value2, memory)
+            budget3 = memory.backward(value2)
         } else {
             truth1 = TruthFunctions.abduction(value1!!, value2!!)
             truth2 = TruthFunctions.abduction(value2, value1)
             truth3 = TruthFunctions.comparison(value1, value2)
-            budget1 = forward(truth1, memory)
-            budget2 = forward(truth2, memory)
-            budget3 = forward(truth3, memory)
+            budget1 = memory.forward(truth1)
+            budget2 = memory.forward(truth2)
+            budget3 = memory.forward(truth3)
         }
         val statement1: Statement? = Statement.make(taskContent, term1, term2, memory)
         val statement2: Statement? = Statement.make(taskContent, term2, term1, memory)
@@ -135,11 +135,11 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
                 budget = if (taskTerm.isCommutative) {
                     backwardWeak(asym.truth, memory)
                 } else {
-                    backward(sym.truth, memory)
+                    memory.backward(sym.truth)
                 }
             } else {
                 truth = TruthFunctions.analogy(asym.truth!!, sym.truth!!)
-                budget = forward(truth, memory)
+                budget = memory.forward(truth)
             }
             val content: Term? = Statement.make(st, term1, term2, memory)
             memory.doublePremiseTask(content, truth, budget)
@@ -160,10 +160,10 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
             var truth: TruthValue? = null
             val budget: BudgetValue
             if (sentence.isQuestion) {
-                budget = backward(belief.truth, memory)
+                budget = memory.backward(belief.truth)
             } else {
                 truth = TruthFunctions.resemblance(belief.truth!!, sentence.truth!!)
-                budget = forward(truth, memory)
+                budget = memory.forward(truth)
             }
             val statement: Term? = Statement.make(st, term1, term2, memory)
             memory.doublePremiseTask(statement, truth, budget)
@@ -209,13 +209,13 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
             if (taskSentence.isQuestion) {
                 budget = when {
                     statement is Equivalence -> {
-                        backward(beliefTruth, memory)
+                        memory.backward(beliefTruth)
                     }
                     side == 0 -> {
                         backwardWeak(beliefTruth, memory)
                     }
                     else -> {
-                        backward(beliefTruth, memory)
+                        memory.backward(beliefTruth)
                     }
                 }
             } else {
@@ -230,7 +230,7 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
                         TruthFunctions.abduction(truth2!!, truth1!!)
                     }
                 }
-                budget = forward(truth, memory)
+                budget = memory.forward(truth)
             }
             memory.doublePremiseTask(content, truth, budget)
         }
@@ -317,7 +317,7 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
                     TruthFunctions.induction(truth1, truth2)
                 }
             }
-            budget = forward(truth, memory)
+            budget = memory.forward(truth)
         }
         memory.doublePremiseTask(content, truth, budget)
     }
@@ -388,7 +388,7 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
             } else {
                 TruthFunctions.analogy(truth1, truth2)
             }
-            budget = forward(truth, memory)
+            budget = memory.forward(truth)
         }
         memory.doublePremiseTask(content, truth, budget)
     }
@@ -437,7 +437,7 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
                         budget = backwardWeak(value2, memory)
                     } else {
                         truth = TruthFunctions.abduction(value2, value1)
-                        budget = forward(truth, memory)
+                        budget = memory.forward(truth)
                     }
                     memory.doublePremiseTask(content, truth, budget)
                 }
@@ -451,7 +451,7 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
                         budget = backwardWeak(value2, memory)
                     } else {
                         truth = TruthFunctions.abduction(value1, value2)
-                        budget = forward(truth, memory)
+                        budget = memory.forward(truth)
                     }
                     memory.doublePremiseTask(content, truth, budget)
                 }
@@ -468,21 +468,28 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
      * @param compoundTask Whether the compound comes from the task
      * @param memory       Reference to the memory
     </M></M> */
+    @JvmStatic
     internal fun elimiVarDep(compound: CompoundTerm?, component: Term?, compoundTask: Boolean, memory: BackingStore) {
-        val content: Term? = Util2.reduceComponents(compound!!, component!!, memory)
-        val task: Task = memory.currentTask!!
-        val sentence = task.sentence
-        val belief = memory.currentBelief
-        val v1 = sentence.truth!!
-        val v2 = belief!!.truth!!
-        var truth: TruthValue? = null
-        val budget: BudgetValue
-        if (sentence.isQuestion) {
-            budget = if (compoundTask) backward(v2, memory) else backwardWeak(v2, memory)
-        } else {
-            truth = if (compoundTask) TruthFunctions.anonymousAnalogy(v1, v2) else TruthFunctions.anonymousAnalogy(v2, v1)
-            budget = compoundForward(truth, content!!, memory)
+        memory.apply {
+
+            val content: Term? = Util2.reduceComponents(compound!!, component!!, this)
+
+            var truth: TruthValue? = null
+            val budget: BudgetValue
+            budget = when {
+                currentTask!!.sentence.isQuestion -> if (compoundTask) this.backward(currentBelief!!.truth!!) else backwardWeak(memory.currentBelief!!.truth!!, this)
+                else -> {
+                    TruthFunctions::anonymousAnalogy.also { f ->
+                        arrayOf(currentTask!!.sentence.truth!!, currentBelief!!.truth!!).also { if (!compoundTask) it.reverse() }.also { (t1, t2) ->
+                            truth = f(t1, t2)
+                        }
+                    }.let {
+                        this.compoundForward(truth, content!!)
+
+                    }
+                }
+            }
+            doublePremiseTask(content, truth, budget)
         }
-        memory.doublePremiseTask(content, truth, budget)
     }
 }

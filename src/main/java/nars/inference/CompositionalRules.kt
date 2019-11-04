@@ -133,7 +133,7 @@ object CompositionalRules {/* -------------------- intersections and differences
         if (content == null || content == statement || content == memory.currentBelief!!.content) {
             return
         }
-        val budget = compoundForward(truth, content, memory)
+        val budget = memory.compoundForward(truth, content)
         memory.doublePremiseTask(content, truth, budget)
     }
 
@@ -224,7 +224,7 @@ object CompositionalRules {/* -------------------- intersections and differences
         }
         when {
             truth != null -> {
-                val budget = compoundForward(truth, content!!, memory)
+                val budget = memory.compoundForward(truth, content!!)
                 memory.doublePremiseTask(content, truth, budget)
             }
         }
@@ -267,7 +267,7 @@ object CompositionalRules {/* -------------------- intersections and differences
         } else {
             return
         }
-        val budget = compoundForward(truth, content, memory)
+        val budget = memory.compoundForward(truth, content)
         memory.doublePremiseTask(content, truth, budget)
     }
 
@@ -337,15 +337,15 @@ object CompositionalRules {/* -------------------- intersections and differences
         var state2: Statement = Inheritance.make(term21, term22, memory)!!
         var content: Term = Implication.make(state1, state2, memory)!!
         var truth: TruthValue = TruthFunctions.induction(truthT!!, truthB!!)
-        var budget = compoundForward(truth, content, memory)
+        var budget = memory.compoundForward(truth, content)
         memory.doublePremiseTask(content, truth, budget)
         content = Implication.make(state2 as Term, state1 as Term, memory)!!
         truth = TruthFunctions.induction(truthB, truthT)
-        budget = compoundForward(truth, content, memory)
+        budget = memory.compoundForward(truth, content)
         memory.doublePremiseTask(content, truth, budget)
         content = Equivalence.make(state1, state2, memory)!!
         truth = TruthFunctions.comparison(truthT, truthB)
-        budget = compoundForward(truth, content, memory)
+        budget = memory.compoundForward(truth, content)
         memory.doublePremiseTask(content, truth, budget)
         val varDep = Variable("#varDep")
         if (index == 0) {
@@ -357,7 +357,7 @@ object CompositionalRules {/* -------------------- intersections and differences
         }
         content = Conjunction.make(state1, state2, memory)!!
         truth = TruthFunctions.intersection(truthT, truthB)
-        budget = compoundForward(truth, content, memory)
+        budget = memory.compoundForward(truth, content)
         memory.doublePremiseTask(content, truth, budget, false)
     }
 
@@ -404,7 +404,7 @@ object CompositionalRules {/* -------------------- intersections and differences
         var content = Conjunction.make(premise1, oldCompound, memory) as CompoundTerm
         content.applySubstitute(substitute)
         var truth: TruthValue? = TruthFunctions.intersection(taskSentence.truth!!, belief!!.truth!!)
-        var budget = forward(truth, memory)
+        var budget = memory.forward(truth)
         memory.doublePremiseTask(content, truth, budget, false)
         substitute.clear()
         substitute[commonTerm1] = Variable("\$varInd1")
@@ -418,7 +418,7 @@ object CompositionalRules {/* -------------------- intersections and differences
         } else {
             TruthFunctions.induction(taskSentence.truth!!, belief.truth!!)
         }
-        budget = forward(truth, memory)
+        budget = memory.forward(truth)
         memory.doublePremiseTask(content, truth, budget)
     }
 

@@ -80,12 +80,12 @@ object BudgetFunctions   {/* ----------------------- Belief evaluation ---------
      * @return The budget for the new task which is the belief activated, if
      * necessary
      */
- @JvmStatic     fun solutionEval(problem: Sentence?, solution: Sentence, task: Task?, memory: BackingStore): BudgetValue? {
+ @JvmStatic     fun BackingStore.solutionEval(problem: Sentence?, solution: Sentence, task: Task?): BudgetValue? {
         var task1 = task
         var budget: BudgetValue? = null
         var feedbackToLinks = false
         if (task1 == null) {                   // called in continued processing
-            task1 = memory.currentTask
+            task1 = currentTask
             feedbackToLinks = true
         }
         val judgmentTask = task1!!.sentence.isJudgment
@@ -98,9 +98,9 @@ object BudgetFunctions   {/* ----------------------- Belief evaluation ---------
             task1.priority = min(1 - quality, taskPriority)
         }
         if (feedbackToLinks) {
-            val tLink: TaskLink =  memory.currentTaskLink!!
+            val tLink: TaskLink =  currentTaskLink!!
             tLink.priority = min(1 - quality, tLink.priority)
-            val bLink = memory.currentBeliefLink
+            val bLink = currentBeliefLink
             bLink!!.incPriority(quality)
         }
         return budget
@@ -114,16 +114,16 @@ object BudgetFunctions   {/* ----------------------- Belief evaluation ---------
      * @param truth  The truth value of the conclusion of revision
      * @return The budget for the new task
      */
-     @JvmStatic   fun revise(tTruth: TruthValue, bTruth: TruthValue, truth: TruthValue, feedbackToLinks: Boolean, memory: BackingStore): BudgetValue {
+     @JvmStatic   fun BackingStore.revise(tTruth: TruthValue, bTruth: TruthValue, truth: TruthValue, feedbackToLinks: Boolean): BudgetValue {
         val difT = truth.getExpDifAbs(tTruth)
-        val task: Task =  memory.currentTask!!
+        val task: Task =  currentTask!!
         task.decPriority(1 - difT)
         task.decDurability(1 - difT)
         if (feedbackToLinks) {
-            val tLink: TaskLink =  memory.currentTaskLink!!
+            val tLink: TaskLink =  currentTaskLink!!
             tLink.decPriority(1 - difT)
             tLink.decDurability(1 - difT)
-            val bLink = memory.currentBeliefLink
+            val bLink = currentBeliefLink
             val difB = truth.getExpDifAbs(bTruth)
             bLink!!.decPriority(1 - difB)
             bLink.decDurability(1 - difB)
@@ -224,20 +224,20 @@ object BudgetFunctions   {/* ----------------------- Belief evaluation ---------
      * @return The budget value of the conclusion
      */
 
-    @JvmStatic      fun forward(truth: TruthValue?, memory: BackingStore): BudgetValue {
-        return budgetInference(truthToQuality(truth), 1, memory)
+    @JvmStatic      fun BackingStore.forward(truth: TruthValue?): BudgetValue {
+        return budgetInference(truthToQuality(truth), 1)
     }
 
     /**
      * Backward inference result and adjustment, stronger case
      *
      * @param truth  The truth value of the belief deriving the conclusion
-     * @param memory Reference to the memory
+     * @param this@backward Reference to the memory
      * @return The budget value of the conclusion
      */
     @JvmStatic
-    fun backward(truth: TruthValue?, memory: BackingStore): BudgetValue {
-        return budgetInference(truthToQuality(truth), 1, memory)
+    fun BackingStore.backward(truth: TruthValue?): BudgetValue {
+        return budgetInference(truthToQuality(truth), 1)
     }
 
     /**
@@ -249,7 +249,7 @@ object BudgetFunctions   {/* ----------------------- Belief evaluation ---------
      */
     @JvmStatic
     fun backwardWeak(truth: TruthValue?, memory: BackingStore): BudgetValue {
-        return budgetInference(w2c(1f) * truthToQuality(truth), 1, memory)
+        return memory.budgetInference(w2c(1f) * truthToQuality(truth), 1)
     }
 
     /* ----- Task derivation in CompositionalRules and StructuralRules ----- */
@@ -260,36 +260,36 @@ object BudgetFunctions   {/* ----------------------- Belief evaluation ---------
      *
      * @param truth   The truth value of the conclusion
      * @param content The content of the conclusion
-     * @param memory  Reference to the memory
+     * @param this@compoundForward  Reference to the memory
      * @return The budget of the conclusion
      */
     @JvmStatic
-    fun compoundForward(truth: TruthValue?, content: Term, memory: BackingStore): BudgetValue {
-        return budgetInference(truthToQuality(truth), content.complexity as Int, memory)
+    fun BackingStore.compoundForward(truth: TruthValue?, content: Term): BudgetValue {
+        return this.budgetInference(truthToQuality(truth), content.complexity as Int)
     }
 
     /**
      * Backward inference with CompoundTerm conclusion, stronger case
      *
      * @param content The content of the conclusion
-     * @param memory  Reference to the memory
+     * @param this@compoundBackward  Reference to the memory
      * @return The budget of the conclusion
      */
     @JvmStatic
-    fun compoundBackward(content: Term, memory: BackingStore): BudgetValue {
-        return budgetInference(1f, content.complexity as Int, memory)
+    fun BackingStore.compoundBackward(content: Term): BudgetValue {
+        return this.budgetInference(1f, content.complexity as Int)
     }
 
     /**
      * Backward inference with CompoundTerm conclusion, weaker case
      *
      * @param content The content of the conclusion
-     * @param memory  Reference to the memory
+     * @param this@compoundBackwardWeak  Reference to the memory
      * @return The budget of the conclusion
      */
     @JvmStatic
-    fun compoundBackwardWeak(content: Term, memory: BackingStore): BudgetValue {
-        return budgetInference(w2c(1f), content.complexity as Int, memory)
+    fun BackingStore.compoundBackwardWeak(content: Term): BudgetValue {
+        return this.budgetInference(w2c(1f), content.complexity as Int)
     }
 
     /**
@@ -297,22 +297,22 @@ object BudgetFunctions   {/* ----------------------- Belief evaluation ---------
      *
      * @param qual       Quality of the inference
      * @param complexity Syntactic complexity of the conclusion
-     * @param memory     Reference to the memory
+     * @param this@budgetInference     Reference to the memory
      * @return Budget of the conclusion task
      */
-    @JvmStatic    fun budgetInference(qual: Float, complexity: Int, memory: BackingStore): BudgetValue {
-        var t: BudgetTriple? = memory.currentTaskLink
+    @JvmStatic    fun BackingStore.budgetInference(qual: Float, complexity: Int): BudgetValue {
+        var t: BudgetTriple? = currentTaskLink
         if (t == null) {
-            t = memory.currentTask
+            t = currentTask
         }
         var priority = t!!.priority
         var durability = t.durability / complexity
         val quality = qual / complexity
-        val bLink = memory.currentBeliefLink
+        val bLink = currentBeliefLink
         if (bLink != null) {
             priority = or(priority, bLink.priority)
             durability = and(durability, bLink.durability)
-            val targetActivation = memory.getConceptActivation(bLink.target)
+            val targetActivation = getConceptActivation(bLink.target)
             bLink.incPriority(or(quality, targetActivation))
             bLink.incDurability(quality)
         }

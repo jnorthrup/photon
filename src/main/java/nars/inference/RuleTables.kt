@@ -454,29 +454,27 @@ object RuleTables {
     fun compoundAndStatement(compound: CompoundTerm, index: Short, statement: Statement, side: Short, beliefTerm: Term, memory: BackingStore) {
         val component: Term = compound.componentAt(index.toInt())
         val task: Task = memory.currentTask!!
-        if (component.javaClass == statement.javaClass) {
-            if (compound is Conjunction && memory.currentBelief != null) if (Variable.unify(VAR_DEPENDENT.sym, component, statement, compound, statement)) {
-                SyllogisticRules.elimiVarDep(compound, component, statement == beliefTerm, memory)
-            } else if (task.sentence.isJudgment) { // && !compound.containComponent(component)) {
-
-                CompositionalRules.introVarInner(statement, component as Statement, compound, memory)
+        /*            if (!task.isStructural() && task.getSentence().isJudgment()) {*/
+        // {A <-> B, A @ (A&C)} |- (A&C) <-> (B&C)
+        // && !compound.containComponent(component)) {
+        when {
+            component.javaClass == statement.javaClass ->    memory.currentBelief ?.apply {
+                when (compound) {
+                    is Conjunction -> if (!Variable.unify(VAR_DEPENDENT.sym, component, statement, compound, statement)) {
+                        if (task.sentence.isJudgment) CompositionalRules.introVarInner(statement, component as Statement, compound, memory)
+                    } else SyllogisticRules.elimiVarDep(compound, component, statement == beliefTerm, memory)
+                }
             }
-        } else {
-//            if (!task.isStructural() && task.getSentence().isJudgment()) {
-
-            if (task.sentence.isJudgment) {
-                if (statement is Inheritance) {
+            task.sentence.isJudgment -> when {
+                statement is Inheritance -> {
                     StructuralRules.structuralCompose1(compound, index, statement, memory)
-//                    if (!(compound instanceof SetExt) && !(compound instanceof SetInt)) {
-
-
-                    if (!(compound is SetExt || compound is SetInt || compound is Negation)) {
+                    if (!(compound is SetExt || compound is SetInt || compound is Negation))
                         StructuralRules.structuralCompose2(compound, index, statement, side, memory)
-                    }    // {A --> B, A @ (A&C)} |- (A&C) --> (B&C)
-                } else if (statement is Similarity && compound !is Conjunction) {
-                    StructuralRules.structuralCompose2(compound, index, statement, side, memory)
-                }       // {A <-> B, A @ (A&C)} |- (A&C) <-> (B&C)
+                    // {A --> B, A @ (A&C)} |- (A&C) --> (B&C)
+                }
+                statement is Similarity && compound !is Conjunction -> StructuralRules.structuralCompose2(compound, index, statement, side, memory)
             }
+            // {A <-> B, A @ (A&C)} |- (A&C) <-> (B&C)
         }
     }
 
