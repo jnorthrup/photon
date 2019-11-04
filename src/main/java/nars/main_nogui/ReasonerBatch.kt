@@ -83,7 +83,7 @@ class ReasonerBatch {
         running = false
         walkingSteps = 0
         time = 0
-        memory.init()
+        memory.clear()
         Stamp.init()
 //	    timer = 0;
 

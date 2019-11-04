@@ -36,7 +36,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * The memory of the system.
  */
-public class Memory {
+public class Memory implements MemoryOps {
 
     public final MemoryState memoryState = new MemoryState();
 
@@ -57,7 +57,8 @@ public class Memory {
         memoryState.setExportStrings(new ArrayList<>());
     }
 
-    public void init() {
+    @Override
+    public void clear() {
         memoryState.getConcepts().init();
         memoryState.getNovelTasks().init();
         memoryState.getNewTasks().clear();
@@ -69,6 +70,7 @@ public class Memory {
     /**
      * List of Strings or Tasks to be sent to the output channels
      */ /* ---------- access utilities ---------- */
+    @Override
     public List<String> getExportStrings() {
         return memoryState.getExportStrings();
     }
@@ -76,10 +78,12 @@ public class Memory {
     /**
      * Inference record text to be written into a log file
      */
+    @Override
     public IInferenceRecorder getRecorder() {
         return memoryState.getRecorder();
     }
 
+    @Override
     public long getTime() {
         return memoryState.getReasoner().getTime();
     }
@@ -91,6 +95,7 @@ public class Memory {
     /**
      * Actually means that there are no new Tasks
      */
+    @Override
     public boolean noResult() {
         return memoryState.getNewTasks().isEmpty();
     }
@@ -104,6 +109,7 @@ public class Memory {
      * @param name the name of a concept
      * @return a Concept or null
      */
+    @Override
     public Concept nameToConcept(String name) {
         return memoryState.getConcepts().get(name);
     }
@@ -115,6 +121,7 @@ public class Memory {
      * @param name the name of a concept or operator
      * @return a Term or null (if no Concept/Operator has this name)
      */
+    @Override
     public Term nameToListedTerm(String name) {
         var concept = memoryState.getConcepts().get(name);
         if (concept != null) {
@@ -129,6 +136,7 @@ public class Memory {
      * @param term The Term naming a concept
      * @return a Concept or null
      */
+    @Override
     public Concept termToConcept(Term term) {
         return nameToConcept(term.getName());
     }
@@ -139,6 +147,7 @@ public class Memory {
      * @param term indicating the concept
      * @return an existing Concept, or a new one, or null ( TODO bad smell )
      */
+    @Override
     public Concept getConcept(Term term) {
         if (!term.isConstant()) {
             return null;
@@ -161,6 +170,7 @@ public class Memory {
      * @param t The Term naming a concept
      * @return the priority value of the concept
      */
+    @Override
     public float getConceptActivation(Term t) {
         var c = termToConcept(t);
         return Optional.ofNullable(c).map(ImmutableItemIdentity::getPriority).orElse(0f);
@@ -175,6 +185,7 @@ public class Memory {
      * @param c the concept to be adjusted
      * @param b the new BudgetValue
      */
+    @Override
     public void activateConcept(Concept c, BudgetValue b) {
         memoryState.getConcepts().pickOut(c.getKey());
         BudgetFunctions.activate(c, b);
@@ -194,6 +205,7 @@ public class Memory {
      *
      * @param task The input task
      */
+    @Override
     public void inputTask(Task task) {
         if (task.getBudget().aboveThreshold()) {
             getRecorder().append("!!! Perceived: " + task + "\n");
@@ -213,6 +225,7 @@ public class Memory {
      * @param candidateBelief The belief to be used in future inference, for
      *                        forward/backward correspondence
      */
+    @Override
     public void activatedTask(BudgetValue budget, Sentence sentence, Sentence candidateBelief) {
         var task = new Task(sentence, budget, memoryState.getCurrentTask(), sentence, candidateBelief);
         getRecorder().append("!!! Activated: " + task.toString() + "\n");
@@ -232,7 +245,8 @@ public class Memory {
      *
      * @param task the derived task
      */
-    private void derivedTask(Task task) {
+    @Override
+    public void derivedTask(Task task) {
         if (task.getBudget().aboveThreshold()) {
             getRecorder().append("!!! Derived: " + task + "\n");
             var budget = task.getBudget().summary();
@@ -257,6 +271,7 @@ public class Memory {
      * @param newTruth   The truth value of the sentence in task
      * @param newBudget  The budget value in task
      */
+    @Override
     public void doublePremiseTask(Term newContent, TruthValue newTruth, BudgetValue newBudget) {
         if (newContent != null) {
             var newSentence = new Sentence(newContent, memoryState.getCurrentTask().getSentence().getPunctuation(), newTruth, memoryState.getNewStamp());
@@ -274,6 +289,7 @@ public class Memory {
      * @param newBudget  The budget value in task
      * @param revisible  Whether the sentence is revisible
      */
+    @Override
     public void doublePremiseTask(Term newContent, TruthValue newTruth, BudgetValue newBudget, boolean revisible) {
         if (newContent != null) {
             var taskSentence = memoryState.getCurrentTask().getSentence();
@@ -291,6 +307,7 @@ public class Memory {
      * @param newTruth   The truth value of the sentence in task
      * @param newBudget  The budget value in task
      */
+    @Override
     public void singlePremiseTask(Term newContent, TruthValue newTruth, BudgetValue newBudget) {
         singlePremiseTask(newContent, memoryState.getCurrentTask().getSentence().getPunctuation(), newTruth, newBudget);
     }
@@ -304,6 +321,7 @@ public class Memory {
      * @param newTruth    The truth value of the sentence in task
      * @param newBudget   The budget value in task
      */
+    @Override
     public void singlePremiseTask(Term newContent, char punctuation, TruthValue newTruth, BudgetValue newBudget) {
         var parentTask = memoryState.getCurrentTask().getParentTask();
         if (parentTask != null && newContent.equals(parentTask.getContent())) { // circular structural inference
@@ -328,6 +346,7 @@ public class Memory {
      *
      * @param clock The current time to be displayed
      */
+    @Override
     public void workCycle(long clock) {
         getRecorder().append(" --- " + clock + " ---\n");
         processNewTask();
@@ -345,7 +364,8 @@ public class Memory {
      * ones and those that corresponding to existing concepts, plus one from the
      * buffer.
      */
-    private void processNewTask() {
+    @Override
+    public void processNewTask() {
         Task task;
         var counter = memoryState.getNewTasks().size();  // don't include new tasks produced in the current workCycle
         while (counter > 0) {
@@ -371,7 +391,8 @@ public class Memory {
     /**
      * Select a novel task to process.
      */
-    private void processNovelTask() {
+    @Override
+    public void processNovelTask() {
         var task = memoryState.getNovelTasks().takeOut();       // select a task from novelTasks
         if (task != null) {
             immediateProcess(task);
@@ -381,7 +402,8 @@ public class Memory {
     /**
      * Select a concept to fire.
      */
-    private void processConcept() {
+    @Override
+    public void processConcept() {
         memoryState.setCurrentConcept(memoryState.getConcepts().takeOut());
         if (memoryState.getCurrentConcept() != null) {
             memoryState.setCurrentTerm(memoryState.getCurrentConcept().getTerm());
@@ -399,7 +421,8 @@ public class Memory {
      *
      * @param task the task to be accepted
      */
-    private void immediateProcess(Task task) {
+    @Override
+    public void immediateProcess(Task task) {
         memoryState.setCurrentTask(task); // one of the two places where this variable is set
         getRecorder().append("!!! Insert: " + task + "\n");
         memoryState.setCurrentTerm(task.getContent());
@@ -422,6 +445,7 @@ public class Memory {
      * @param sentence the sentence to be displayed
      * @param input    whether the task is input
      */
+    @Override
     public void report(Sentence sentence, boolean input) {
         if (ReasonerBatch.DEBUG) {
             System.out.println("// report( clock " + memoryState.getReasoner().getTime()
@@ -472,14 +496,17 @@ public class Memory {
                 + o.toString()).orElse("");
     }
 
+    @Override
     public AtomicInteger getTaskForgettingRate() {
         return memoryState.getTaskForgettingRate();
     }
 
+    @Override
     public AtomicInteger getBeliefForgettingRate() {
         return memoryState.getBeliefForgettingRate();
     }
 
+    @Override
     public AtomicInteger getConceptForgettingRate() {
         return memoryState.getConceptForgettingRate();
     }
@@ -487,6 +514,7 @@ public class Memory {
     /**
      * Backward pointer to the reasoner
      */
+    @Override
     public ReasonerBatch getReasoner() {
         return memoryState.getReasoner();
     }
@@ -494,6 +522,7 @@ public class Memory {
     /**
      * Concept bag. Containing all Concepts of the system
      */
+    @Override
     public ConceptBag getConcepts() {
         return memoryState.getConcepts();
     }
@@ -501,6 +530,7 @@ public class Memory {
     /**
      * New tasks with novel composed terms, for delayed and selective processing
      */
+    @Override
     public NovelTaskBag getNovelTasks() {
         return memoryState.getNovelTasks();
     }
@@ -509,6 +539,7 @@ public class Memory {
      * List of new tasks accumulated in one cycle, to be processed in the next
      * cycle
      */
+    @Override
     public List<Task> getNewTasks() {
         return memoryState.getNewTasks();
     }
@@ -516,10 +547,12 @@ public class Memory {
     /**
      * The selected Term
      */
+    @Override
     public Term getCurrentTerm() {
         return memoryState.getCurrentTerm();
     }
 
+    @Override
     public void setCurrentTerm(Term currentTerm) {
         memoryState.setCurrentTerm(currentTerm);
     }
@@ -527,10 +560,12 @@ public class Memory {
     /**
      * The selected Concept
      */
+    @Override
     public Concept getCurrentConcept() {
         return memoryState.getCurrentConcept();
     }
 
+    @Override
     public void setCurrentConcept(Concept currentConcept) {
         memoryState.setCurrentConcept(currentConcept);
     }
@@ -538,10 +573,12 @@ public class Memory {
     /**
      * The selected TaskLink
      */
+    @Override
     public TaskLink getCurrentTaskLink() {
         return memoryState.getCurrentTaskLink();
     }
 
+    @Override
     public void setCurrentTaskLink(TaskLink currentTaskLink) {
         memoryState.setCurrentTaskLink(currentTaskLink);
     }
@@ -549,10 +586,12 @@ public class Memory {
     /**
      * The selected Task
      */
+    @Override
     public Task getCurrentTask() {
         return memoryState.getCurrentTask();
     }
 
+    @Override
     public void setCurrentTask(Task currentTask) {
         memoryState.setCurrentTask(currentTask);
     }
@@ -560,11 +599,13 @@ public class Memory {
     /**
      * The selected TermLink
      */
+    @Override
     @org.jetbrains.annotations.Nullable
     public TermLink getCurrentBeliefLink() {
         return memoryState.getCurrentBeliefLink();
     }
 
+    @Override
     public void setCurrentBeliefLink(@org.jetbrains.annotations.Nullable TermLink currentBeliefLink) {
         memoryState.setCurrentBeliefLink(currentBeliefLink);
     }
@@ -572,11 +613,13 @@ public class Memory {
     /**
      * The selected belief
      */
+    @Override
     @org.jetbrains.annotations.Nullable
     public Sentence getCurrentBelief() {
         return memoryState.getCurrentBelief();
     }
 
+    @Override
     public void setCurrentBelief(@org.jetbrains.annotations.Nullable Sentence currentBelief) {
         memoryState.setCurrentBelief(currentBelief);
     }
@@ -584,10 +627,12 @@ public class Memory {
     /**
      * The new Stamp
      */
+    @Override
     public Stamp getNewStamp() {
         return memoryState.getNewStamp();
     }
 
+    @Override
     public void setNewStamp(Stamp newStamp) {
         memoryState.setNewStamp(newStamp);
     }
@@ -596,14 +641,17 @@ public class Memory {
      * The substitution that unify the common term in the Task and the Belief
      * TODO unused
      */
+    @Override
     public Map<Term, Term> getSubstitute() {
         return memoryState.getSubstitute();
     }
 
+    @Override
     public void setSubstitute(Map<Term, Term> substitute) {
         memoryState.setSubstitute(substitute);
     }
 
+    @Override
     public void setRecorder(IInferenceRecorder recorder) {
         memoryState.setRecorder(recorder);
     }

@@ -95,13 +95,13 @@ public abstract class CompoundTerm extends CompoundTermState {
      * @param memory Reference to the memory
      * @return A compound term or null
      */
-    public static Term make(String op ,  List<Term> arg, Memory memory) {
+    public static Term make(String op ,  List<Term> arg, Memory  memory) {
         if (op.length() == 1) {
             if (op.charAt(0) == Symbols.SET_EXT_OPENER) {
                 return SetExt.make(arg, memory);
             }
             if (op.charAt(0) == Symbols.SET_INT_OPENER) {
-                return SetInt.make(arg, memory);
+                return SetInt.make(arg, (Memory) memory);
             }
             if (op.equals(Symbols.INTERSECTION_EXT_OPERATOR)) {
                 return IntersectionExt.make(arg, memory);
