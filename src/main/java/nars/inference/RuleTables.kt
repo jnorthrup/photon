@@ -130,7 +130,7 @@ object RuleTables {
      */
     private fun syllogisms(tLink: TaskLink, bLink: TermLink, taskTerm: Term, beliefTerm: Term, memory: BackingStore) {
         val taskSentence = memory.currentTask!!.sentence
-        val belief = memory.currentBelief
+        val belief = memory.currentBelief!!
         val figure: Int
         when (taskTerm) {
             is Inheritance -> {
@@ -206,62 +206,43 @@ object RuleTables {
      *
      * @param sentence The taskSentence in the task
      * @param belief   The judgment in the belief
-     * @param figure   The location of the shared term
+     * @param figure   The location of the shared term [1-2]{2}
      * @param memory   Reference to the memory
      */
-    private fun asymmetricAsymmetric(sentence: Sentence, belief: Sentence?, figure: Int, memory: BackingStore) {
-        val s1 = sentence.cloneContent() as Statement
-        val s2 = belief!!.cloneContent() as Statement
-        val t1: Term?
-        val t2: Term?
-        when (figure) {
-            11 -> if (Variable.unify(VAR_INDEPENDENT.sym, s1.subject, s2.subject, s1, s2)) {
-                if (s1 == s2) {
-                    return
-                }
-                t1 = s2.predicate
-                t2 = s1.predicate
-                CompositionalRules.composeCompound(s1, s2, 0, memory)
-                SyllogisticRules.abdIndCom(t1, t2, sentence, belief, memory)
-            }
-            12 -> if (Variable.unify(VAR_INDEPENDENT.sym, s1.subject, s2.predicate, s1, s2)) {
-                if (s1 == s2) {
-                    return
-                }
-                t1 = s2.subject
-                t2 = s1.predicate
-                if (Variable.unify(VAR_QUERY.sym, t1, t2, s1, s2)) {
-                    LocalRules.matchReverse(memory)
-                } else {
-                    SyllogisticRules.dedExe(t1, t2, sentence, belief, memory)
-                }
-            }
-            21 -> if (Variable.unify(VAR_INDEPENDENT.sym, s1.predicate, s2.subject, s1, s2)) {
-                if (s1 == s2) {
-                    return
-                }
-                t1 = s1.subject
-                t2 = s2.predicate
-                if (Variable.unify(VAR_QUERY.sym, t1, t2, s1, s2)) {
-                    LocalRules.matchReverse(memory)
-                } else {
-                    SyllogisticRules.dedExe(t1, t2, sentence, belief, memory)
-                }
-            }
-            22 -> if (Variable.unify(VAR_INDEPENDENT.sym, s1.predicate, s2.predicate, s1, s2)) {
-                if (s1 == s2) {
-                    return
-                }
-                t1 = s1.subject
-                t2 = s2.subject
-                if (!SyllogisticRules.conditionalAbd(t1, t2, s1, s2, memory)) {         // if conditional abduction, skip the following
+    fun asymmetricAsymmetric(sentence: Sentence, belief: Sentence, figure: Int, memory: BackingStore) {
+        if (sentence != belief) {
+            arrayOf(sentence, belief)
+                    .map(Sentence::cloneContent).map { it as Statement }
+                    .also { (s1, s2) ->
+                        figure.toString()
+                                .map { arrayOf(Statement::subject, Statement::predicate)[it.toInt() - 1] }
+                                .zip(arrayOf(s1, s2)) { fn, stmt -> fn(stmt) }
+                                .also { (t1, t2) ->
 
-                    CompositionalRules.composeCompound(s1, s2, 1, memory)
-                    SyllogisticRules.abdIndCom(t1, t2, sentence, belief, memory)
-                }
-            }
-            else -> {
-            }
+                                    if (Variable.unify(VAR_INDEPENDENT.sym, t1, t2, s1, s2))
+                                        when (figure) {
+                                            11 -> {
+                                                CompositionalRules.composeCompound(s1, s2, 0, memory)
+                                                SyllogisticRules.abdIndCom(s2.predicate, s1.predicate, sentence, belief, memory)
+                                            }
+                                            12 -> if (Variable.unify(VAR_QUERY.sym, s2.subject, s1.predicate, s1, s2)) {
+                                                LocalRules.matchReverse(memory)
+                                            } else {
+                                                SyllogisticRules.dedExe(s2.subject, s1.predicate, sentence, belief, memory)
+                                            }
+                                            21 -> if (!Variable.unify(VAR_QUERY.sym, s1.subject, s2.predicate, s1, s2)) {
+                                                SyllogisticRules.dedExe(s1.subject, s2.predicate, sentence, belief, memory)
+                                            } else {
+                                                LocalRules.matchReverse(memory)
+                                            }
+                                            22 -> if (!SyllogisticRules.conditionalAbd(s1.subject, s2.subject, s1, s2, memory)) {
+                                                // if conditional abduction, skip the following
+                                                CompositionalRules.composeCompound(s1, s2, 1, memory)
+                                                SyllogisticRules.abdIndCom(s1.subject, s2.subject, sentence, belief, memory)
+                                            }
+                                        }
+                                }
+                    }
         }
     }
 
@@ -274,46 +255,38 @@ object RuleTables {
      * @param figure The location of the shared term
      * @param memory Reference to the memory
      */
-    private fun asymmetricSymmetric(asym: Sentence?, sym: Sentence?, figure: Int, memory: BackingStore) {
+    private fun asymmetricSymmetric(asym: Sentence?, sym: Sentence, figure: Int, memory: BackingStore) {
         val asymSt = asym!!.cloneContent() as Statement
-        val symSt = sym!!.cloneContent() as Statement
-        val t1: Term?
-        val t2: Term?
+        val symSt = sym.cloneContent() as Statement
+
+
         when (figure) {
             11 -> if (Variable.unify(VAR_INDEPENDENT.sym, asymSt.subject, symSt.subject, asymSt, symSt)) {
-                t1 = asymSt.predicate
-                t2 = symSt.predicate
-                if (Variable.unify(VAR_QUERY.sym, t1, t2, asymSt, symSt)) {
+                if (Variable.unify(VAR_QUERY.sym, asymSt.predicate, symSt.predicate, asymSt, symSt)) {
                     LocalRules.matchAsymSym(asym, sym, figure, memory)
                 } else {
-                    SyllogisticRules.analogy(t2, t1, asym, sym, memory)
+                    SyllogisticRules.analogy(symSt.predicate, asymSt.predicate, asym, sym, memory)
                 }
             }
             12 -> if (Variable.unify(VAR_INDEPENDENT.sym, asymSt.subject, symSt.predicate, asymSt, symSt)) {
-                t1 = asymSt.predicate
-                t2 = symSt.subject
-                if (Variable.unify(VAR_QUERY.sym, t1, t2, asymSt, symSt)) {
+                if (Variable.unify(VAR_QUERY.sym, asymSt.predicate, symSt.subject, asymSt, symSt)) {
                     LocalRules.matchAsymSym(asym, sym, figure, memory)
                 } else {
-                    SyllogisticRules.analogy(t2, t1, asym, sym, memory)
+                    SyllogisticRules.analogy(symSt.subject, asymSt.predicate, asym, sym, memory)
                 }
             }
             21 -> if (Variable.unify(VAR_INDEPENDENT.sym, asymSt.predicate, symSt.subject, asymSt, symSt)) {
-                t1 = asymSt.subject
-                t2 = symSt.predicate
-                if (Variable.unify(VAR_QUERY.sym, t1, t2, asymSt, symSt)) {
+                if (Variable.unify(VAR_QUERY.sym, asymSt.subject, symSt.predicate, asymSt, symSt)) {
                     LocalRules.matchAsymSym(asym, sym, figure, memory)
                 } else {
-                    SyllogisticRules.analogy(t1, t2, asym, sym, memory)
+                    SyllogisticRules.analogy(asymSt.subject, symSt.predicate, asym, sym, memory)
                 }
             }
             22 -> if (Variable.unify(VAR_INDEPENDENT.sym, asymSt.predicate, symSt.predicate, asymSt, symSt)) {
-                t1 = asymSt.subject
-                t2 = symSt.subject
-                if (Variable.unify(VAR_QUERY.sym, t1, t2, asymSt, symSt)) {
+                if (Variable.unify(VAR_QUERY.sym, asymSt.subject, symSt.subject, asymSt, symSt)) {
                     LocalRules.matchAsymSym(asym, sym, figure, memory)
                 } else {
-                    SyllogisticRules.analogy(t1, t2, asym, sym, memory)
+                    SyllogisticRules.analogy(asymSt.subject, symSt.subject, asym, sym, memory)
                 }
             }
         }
@@ -392,7 +365,7 @@ object RuleTables {
     private fun conditionalDedIndWithVar(conditional: Implication, index: Short, statement: Statement, side: Short, memory: BackingStore) {
         var side1 = side
         val condition = conditional.subject as CompoundTerm
-        val component: Term  = condition.componentAt(index.toInt())
+        val component: Term = condition.componentAt(index.toInt())
         var component2: Term? = null
         if (statement is Inheritance) {
             component2 = statement
