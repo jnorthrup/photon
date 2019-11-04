@@ -1,6 +1,6 @@
 package nars.language;
 
-import nars.io.Symbols;
+
 import nars.storage.BackingStore;
 
 import java.util.List;
@@ -17,21 +17,7 @@ public class CompoundTermState extends Term {
     public CompoundTermState() {
     }
 
-    /**
-     * Check CompoundTerm operator symbol
-     *
-     * @param s The String to be checked
-     * @return if the given String is an operator symbol
-     */
-    public static boolean isOperator(String s) {
-        if (s.length() == 1) {
-            return (List.of(Symbols.INTERSECTION_EXT_OPERATOR, Symbols.INTERSECTION_INT_OPERATOR, Symbols.DIFFERENCE_EXT_OPERATOR, Symbols.DIFFERENCE_INT_OPERATOR, Symbols.PRODUCT_OPERATOR, Symbols.IMAGE_EXT_OPERATOR, Symbols.IMAGE_INT_OPERATOR).contains(s));
-        }
-        if (s.length() == 2) {
-            return (List.of(Symbols.NEGATION_OPERATOR, Symbols.DISJUNCTION_OPERATOR, Symbols.CONJUNCTION_OPERATOR).contains(s));
-        }
-        return false;
-    }
+
 
     /**
      * Try to replace a component in a compound at a given index by another one

@@ -20,7 +20,9 @@
  */
 package nars.language
 
-import nars.io.Symbols
+//import nars.io.Symbols
+import nars.io.compound_delim.SET_EXT_CLOSER
+import nars.io.compound_delim.SET_EXT_OPENER
 import nars.storage.BackingStore
 import java.util.*
 
@@ -52,7 +54,7 @@ class SetExt : CompoundTerm {
      * @return A new object, to be casted into a SetExt
      */
     override fun clone(): Any {
-        return SetExt(name, cloneList(components) as List<Term>, isConstant, complexity)
+        return SetExt(name, Util2.cloneList(components) as List<Term>, isConstant, complexity)
     }
 
     /**
@@ -61,7 +63,7 @@ class SetExt : CompoundTerm {
      * @return the operator of the term
      */
     override fun operator(): String {
-        return "" + Symbols.SET_EXT_OPENER
+        return SET_EXT_OPENER.sym.toString()
     }
 
     /**
@@ -81,7 +83,7 @@ class SetExt : CompoundTerm {
      */
 
     public override fun makeName(): String {
-        return makeSetName(Symbols.SET_EXT_OPENER, components, Symbols.SET_EXT_CLOSER)
+        return Util2.makeSetName(SET_EXT_OPENER.sym, components, SET_EXT_CLOSER.sym)
     }
 
     companion object {
@@ -123,7 +125,7 @@ class SetExt : CompoundTerm {
                 return null
             }
             val argument = ArrayList(set)
-            val name: String? = makeSetName(Symbols.SET_EXT_OPENER, argument, Symbols.SET_EXT_CLOSER)
+            val name: String? = Util2.makeSetName(SET_EXT_OPENER.sym, argument, SET_EXT_CLOSER.sym)
             val t: Term? = memory.nameToListedTerm(name)
             return t ?: SetExt(argument)
         }

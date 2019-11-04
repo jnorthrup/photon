@@ -20,7 +20,8 @@
  */
 package nars.language
 
-import nars.io.Symbols
+//import nars.io.Symbols
+import nars.io.compound_oper_arity2.NEGATION_OPERATOR
 import nars.storage.BackingStore
 import java.util.*
 
@@ -53,7 +54,7 @@ class Negation : CompoundTerm {
      */
 
     override fun clone(): Any {
-        return Negation(name, cloneList(components), isConstant, complexity)
+        return Negation(name, Util2.cloneList(components), isConstant, complexity)
     }
 
     /**
@@ -62,9 +63,7 @@ class Negation : CompoundTerm {
      * @return the operator of the term
      */
 
-    override fun operator(): String {
-        return Symbols.NEGATION_OPERATOR
-    }
+    override fun operator(): String =NEGATION_OPERATOR.sym
 
     companion object {
         /**
@@ -94,7 +93,7 @@ class Negation : CompoundTerm {
         @JvmStatic      fun make(argument: List<Term>, memory: BackingStore): Term? {
             var result: Term? = null
             if (argument.size == 1) {
-                val name: String? = makeCompoundName(Symbols.NEGATION_OPERATOR, argument)
+                val name: String? = Util2.makeCompoundName(NEGATION_OPERATOR.sym, argument)
                 val t: Term? = memory.nameToListedTerm(name)
                 result = t ?: Negation(argument)
             }

@@ -22,7 +22,16 @@ package nars.io
 
 import nars.entity.*
 import nars.inference.BudgetFunctions.truthToQuality
+import nars.io.compound_delim.*
+import nars.io.experience_line_prefix.*
+import nars.io.numeric_delim.*
+import nars.io.sentence_type.JUDGMENT_MARK
+import nars.io.sentence_type.QUESTION_MARK
+import nars.io.special_operator.ARGUMENT_SEPARATOR
+import nars.io.stamp_display.STAMP_CLOSER
+import nars.io.stamp_display.STAMP_OPENER
 import nars.language.*
+import nars.language.Util2.isOperator
 import nars.main_nogui.Parameters
 import nars.storage.BackingStore
 import java.util.*
@@ -46,16 +55,16 @@ object StringParser {
      * @return An experienced task
      */
     fun parseExperience(buffer: StringBuffer, memory: BackingStore, time: Long): Task? {
-        val i = buffer.indexOf(Symbols.PREFIX_MARK + "")
+        val i = buffer.indexOf( PREFIX_MARK.sym .toString())
         if (i > 0) {
             when (buffer.substring(0, i).trim { it <= ' ' }) {
-                Symbols.OUTPUT_LINE -> return null
-                Symbols.INPUT_LINE -> buffer.delete(0, i + 1)
+                OUTPUT_LINE.sym -> return null
+                INPUT_LINE.sym -> buffer.delete(0, i + 1)
             }
         }
         val c = buffer[buffer.length - 1]
-        if (c == Symbols.STAMP_CLOSER) {
-            val j = buffer.lastIndexOf(Symbols.STAMP_OPENER + "")
+        if (c ==  STAMP_CLOSER.sym) {
+            val j = buffer.lastIndexOf(STAMP_OPENER.sym  .toString())
             buffer.delete(j - 1, buffer.length)
         }
         return parseTask(buffer.toString().trim { it <= ' ' }, memory, time)
@@ -107,10 +116,10 @@ object StringParser {
      */
     @Throws(InvalidInputException::class)
     private fun getBudgetString(s: StringBuffer): String? {
-        if (s[0] != Symbols.BUDGET_VALUE_MARK) {
+        if (s[0] != BUDGET_VALUE_MARK.sym) {
             return null
         }
-        val i = s.indexOf(Symbols.BUDGET_VALUE_MARK + "", 1)    // looking for the end
+        val i = s.indexOf(BUDGET_VALUE_MARK.sym + "", 1)    // looking for the end
 
         assert(i >= 0) { "missing budget closer" }
         val budgetString = s.substring(1, i).trim { it <= ' ' }
@@ -133,11 +142,11 @@ object StringParser {
     @Throws(InvalidInputException::class)
     private fun getTruthString(s: StringBuffer): String? {
         val last = s.length - 1
-        if (s[last] != Symbols.TRUTH_VALUE_MARK) {       // use default
+        if (s[last] != TRUTH_VALUE_MARK.sym) {       // use default
 
             return null
         }
-        val first = s.indexOf(Symbols.TRUTH_VALUE_MARK + "")    // looking for the beginning
+        val first = s.indexOf(TRUTH_VALUE_MARK.sym + "")    // looking for the beginning
 
         // no matching closer
 
@@ -160,13 +169,13 @@ object StringParser {
      * @return the input TruthValue
      */
     private fun parseTruth(s: String?, type: Char): TruthValue? {
-        if (type == Symbols.QUESTION_MARK) {
+        if (type == QUESTION_MARK.sym) {
             return null
         }
         var frequency = 1.0f
         var confidence = Parameters.DEFAULT_JUDGMENT_CONFIDENCE
         if (s != null) {
-            val i = s.indexOf(Symbols.VALUE_SEPARATOR)
+            val i = s.indexOf(VALUE_SEPARATOR.sym.toString())
             if (i < 0) {
                 frequency    =  (s).toFloat()
             } else {
@@ -192,18 +201,18 @@ object StringParser {
         var priority: Float
         var durability: Float
         when (punctuation) {
-            Symbols.JUDGMENT_MARK -> {
+            JUDGMENT_MARK.sym -> {
                 priority = Parameters.DEFAULT_JUDGMENT_PRIORITY
                 durability = Parameters.DEFAULT_JUDGMENT_DURABILITY
             }
-            Symbols.QUESTION_MARK -> {
+            QUESTION_MARK.sym -> {
                 priority = Parameters.DEFAULT_QUESTION_PRIORITY
                 durability = Parameters.DEFAULT_QUESTION_DURABILITY
             }
             else -> throw InvalidInputException("unknown punctuation: '$punctuation'")
         }
         if (s != null) { // overrite default
-            val i = s.indexOf(Symbols.VALUE_SEPARATOR)
+            val i = s.indexOf(VALUE_SEPARATOR.sym.toString())
             if (i < 0) {        // default durability
                 priority =         s.toFloat()
             } else {
@@ -240,28 +249,28 @@ object StringParser {
                 val index = s.length - 1
                 val first = s[0]
                 val last = s[index]
-                if (first == Symbols.COMPOUND_TERM_OPENER) {
-                    if (last == Symbols.COMPOUND_TERM_CLOSER) {
+                if (first == COMPOUND_TERM_OPENER.sym) {
+                    if (last == COMPOUND_TERM_CLOSER.sym) {
                         parseCompoundTerm(s.substring(1, index), memory)
                     } else {
                         throw InvalidInputException("missing CompoundTerm closer")
                     }
-                } else if (first == Symbols.SET_EXT_OPENER) {
-                    if (last == Symbols.SET_EXT_CLOSER) {
-                        val parseArguments = parseArguments(s.substring(1, index) + Symbols.ARGUMENT_SEPARATOR, memory)
+                } else if (first == compound_delim.SET_EXT_OPENER.sym) {
+                    if (last == SET_EXT_CLOSER.sym) {
+                        val parseArguments = parseArguments(s.substring(1, index) + ARGUMENT_SEPARATOR.sym, memory)
                         SetExt.make(parseArguments as List<Term>, memory) as Term
                     } else {
                         throw InvalidInputException("m  issing ExtensionSet closer")
                     }
-                } else if (first == Symbols.SET_INT_OPENER) {
-                    if (last == Symbols.SET_INT_CLOSER) {
-                        val parseArguments = parseArguments(s.substring(1, index) + Symbols.ARGUMENT_SEPARATOR, memory)
+                } else if (first == SET_INT_OPENER.sym) {
+                    if (last == SET_INT_CLOSER.sym) {
+                        val parseArguments = parseArguments(s.substring(1, index) + ARGUMENT_SEPARATOR.sym, memory)
                         SetInt.make(parseArguments as List<Term>, memory)
                     } else {
                         throw InvalidInputException("missing IntensionSet closer")
                     }
-                } else if (first == Symbols.STATEMENT_OPENER) {
-                    if (last == Symbols.STATEMENT_CLOSER) {
+                } else if (first == STATEMENT_OPENER.sym) {
+                    if (last == STATEMENT_CLOSER.sym) {
                         parseStatement(s.substring(1, index), memory)
                     } else {
                         throw InvalidInputException("missing Statement closer")
@@ -343,11 +352,11 @@ object StringParser {
     @Throws(InvalidInputException::class)
     private fun parseCompoundTerm(s0: String, memory: BackingStore): Term? {
         val s = s0.trim { it <= ' ' }
-        val firstSeparator = s.indexOf(Symbols.ARGUMENT_SEPARATOR)
+        val firstSeparator = s.indexOf(ARGUMENT_SEPARATOR.sym.toString())
         val op = s.substring(0, firstSeparator).trim { it <= ' ' }
-        assert(CompoundTerm.isOperator(op)) { "unknown operator: $op" }
-        val arg = parseArguments(s.substring(firstSeparator + 1) + Symbols.ARGUMENT_SEPARATOR, memory)
-        return CompoundTerm.make(op, arg, memory) ?: error("invalid compound term")
+        assert( isOperator(op)) { "unknown operator: $op" }
+        val arg = parseArguments(s.substring(firstSeparator + 1) + ARGUMENT_SEPARATOR.sym, memory)
+        return Util2.make(op, arg, memory) ?: error("invalid compound term")
     }
 
     /**
@@ -390,7 +399,7 @@ object StringParser {
                 levelCounter++
             } else if (isCloser(s, i)) {
                 levelCounter--
-            } else if (s[i] == Symbols.ARGUMENT_SEPARATOR) {
+            } else if (s[i] == ARGUMENT_SEPARATOR.sym) {
                 if (levelCounter == 0) {
                     break
                 }
@@ -437,10 +446,10 @@ object StringParser {
      */
     private fun isOpener(s: String, i: Int): Boolean {
         val c = s[i]
-        val b = (c == Symbols.COMPOUND_TERM_OPENER
-                || c == Symbols.SET_EXT_OPENER
-                || c == Symbols.SET_INT_OPENER
-                || c == Symbols.STATEMENT_OPENER)
+        val b = (c == COMPOUND_TERM_OPENER.sym
+                || c == SET_EXT_OPENER.sym
+                || c == SET_INT_OPENER.sym
+                || c == STATEMENT_OPENER.sym)
         if (!b) {
             return false
         }
@@ -459,10 +468,10 @@ object StringParser {
      */
     private fun isCloser(s: String, i: Int): Boolean {
         val c = s[i]
-        val b = (c == Symbols.COMPOUND_TERM_CLOSER
-                || c == Symbols.SET_EXT_CLOSER
-                || c == Symbols.SET_INT_CLOSER
-                || c == Symbols.STATEMENT_CLOSER)
+        val b = (c == COMPOUND_TERM_CLOSER.sym
+                || c == SET_EXT_CLOSER.sym
+                || c == SET_INT_CLOSER.sym
+                || c == STATEMENT_CLOSER.sym)
         if (!b) {
             return false
         }

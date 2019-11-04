@@ -20,7 +20,10 @@
  */
 package nars.entity
 
-import nars.io.Symbols
+//import nars.io.Symbols
+import nars.io.sentence_type.JUDGMENT_MARK
+import nars.io.sentence_type.QUESTION_MARK
+import nars.io.var_type.VAR_QUERY
 import nars.language.Term
 import java.util.*
 
@@ -110,10 +113,10 @@ class Sentence : Cloneable {
      * base
      * @param revisible   Whether the sentence can be revised
      */
-    constructor(content: Term, punctuation: Char, truth: TruthValue, stamp: Stamp, revisible: Boolean) {
+    constructor(content: Term, punctuation: Any, truth: TruthValue, stamp: Stamp, revisible: Boolean) {
         this.content = content
         this.content.renameVariables()
-        this.punctuation = punctuation
+        this.punctuation = punctuation.toString()[0]
         this.truth = truth
         this.stamp = stamp
         this.revisible = revisible
@@ -189,7 +192,7 @@ class Sentence : Cloneable {
      * @return Whether the object is a Judgment
      */
     val isJudgment: Boolean
-        get() = punctuation == Symbols.JUDGMENT_MARK
+        get() = punctuation == JUDGMENT_MARK.sym
 
     /**
      * Distinguish Question from Quest ("instanceof Question" doesn't work)
@@ -197,13 +200,13 @@ class Sentence : Cloneable {
      * @return Whether the object is a Question
      */
     val isQuestion: Boolean
-        get() = punctuation == Symbols.QUESTION_MARK
+        get() = punctuation == QUESTION_MARK.sym
 
     /**
      *
      */
     fun containQueryVar(): Boolean {
-        return content.name.indexOf(Symbols.VAR_QUERY) >= 0
+        return content.name.indexOf(VAR_QUERY.sym.toString()) >= 0
     }
 
     /**

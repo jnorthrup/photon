@@ -34,8 +34,8 @@ object TruthFunctions : UtilityFunctions() {/* ----- Single argument functions, 
      * @return Truth value of the conclusion
      */
     internal fun conversion(v1: TruthValue): TruthValue {
-        val f1 = v1.getFrequency()
-        val c1 = v1.getConfidence()
+        val f1 = v1.frequency
+        val c1 = v1.confidence
         val w = and(f1, c1)
         val c = w2c(w)
         return TruthValue(1f, c)
@@ -51,8 +51,8 @@ object TruthFunctions : UtilityFunctions() {/* ----- Single argument functions, 
      * @return Truth value of the conclusion
      */
     internal fun negation(v1: TruthValue): TruthValue {
-        val f = 1 - v1.getFrequency()
-        val c = v1.getConfidence()
+        val f = 1 - v1.frequency
+        val c = v1.confidence
         return TruthValue(f, c)
     }
 
@@ -63,8 +63,8 @@ object TruthFunctions : UtilityFunctions() {/* ----- Single argument functions, 
      * @return Truth value of the conclusion
      */
     internal fun contraposition(v1: TruthValue): TruthValue {
-        val f1 = v1.getFrequency()
-        val c1 = v1.getConfidence()
+        val f1 = v1.frequency
+        val c1 = v1.confidence
         val w = and(1 - f1, c1)
         val c = w2c(w)
         return TruthValue(0f, c)
@@ -81,10 +81,10 @@ object TruthFunctions : UtilityFunctions() {/* ----- Single argument functions, 
      * @return Truth value of the conclusion
      */
     internal fun revision(v1: TruthValue, v2: TruthValue): TruthValue {
-        val f1 = v1.getFrequency()
-        val f2 = v2.getFrequency()
-        val c1 = v1.getConfidence()
-        val c2 = v2.getConfidence()
+        val f1 = v1.frequency
+        val f2 = v2.frequency
+        val c1 = v1.confidence
+        val c2 = v2.confidence
         val w1 = c2w(c1)
         val w2 = c2w(c2)
         val w = w1 + w2
@@ -104,10 +104,10 @@ object TruthFunctions : UtilityFunctions() {/* ----- Single argument functions, 
      * @return Truth value of the conclusion
      */
     internal fun deduction(v1: TruthValue, v2: TruthValue): TruthValue {
-        val f1 = v1.getFrequency()
-        val f2 = v2.getFrequency()
-        val c1 = v1.getConfidence()
-        val c2 = v2.getConfidence()
+        val f1 = v1.frequency
+        val f2 = v2.frequency
+        val c1 = v1.confidence
+        val c2 = v2.confidence
         val f = and(f1, f2)
         val c = and(c1, c2, f)
         return TruthValue(f, c)
@@ -121,8 +121,8 @@ object TruthFunctions : UtilityFunctions() {/* ----- Single argument functions, 
      * @return Truth value of the conclusion
      */
     internal fun deduction(v1: TruthValue, reliance: Float): TruthValue {
-        val f1 = v1.getFrequency()
-        val c1 = v1.getConfidence()
+        val f1 = v1.frequency
+        val c1 = v1.confidence
         val c = and(f1, c1, reliance)
         return TruthValue(f1, c, true)
     }
@@ -135,10 +135,10 @@ object TruthFunctions : UtilityFunctions() {/* ----- Single argument functions, 
      * @return Truth value of the conclusion
      */
     internal fun analogy(v1: TruthValue, v2: TruthValue): TruthValue {
-        val f1 = v1.getFrequency()
-        val f2 = v2.getFrequency()
-        val c1 = v1.getConfidence()
-        val c2 = v2.getConfidence()
+        val f1 = v1.frequency
+        val f2 = v2.frequency
+        val c1 = v1.confidence
+        val c2 = v2.confidence
         val f = and(f1, f2)
         val c = and(c1, c2, f2)
         return TruthValue(f, c)
@@ -152,10 +152,10 @@ object TruthFunctions : UtilityFunctions() {/* ----- Single argument functions, 
      * @return Truth value of the conclusion
      */
     internal fun resemblance(v1: TruthValue, v2: TruthValue): TruthValue {
-        val f1 = v1.getFrequency()
-        val f2 = v2.getFrequency()
-        val c1 = v1.getConfidence()
-        val c2 = v2.getConfidence()
+        val f1 = v1.frequency
+        val f2 = v2.frequency
+        val c1 = v1.confidence
+        val c2 = v2.confidence
         val f = and(f1, f2)
         val c = and(c1, c2, or(f1, f2))
         return TruthValue(f, c)
@@ -172,10 +172,10 @@ object TruthFunctions : UtilityFunctions() {/* ----- Single argument functions, 
         if (v1.analytic || v2.analytic) {
             return TruthValue(0.5f, 0f)
         }
-        val f1 = v1.getFrequency()
-        val f2 = v2.getFrequency()
-        val c1 = v1.getConfidence()
-        val c2 = v2.getConfidence()
+        val f1 = v1.frequency
+        val f2 = v2.frequency
+        val c1 = v1.confidence
+        val c2 = v2.confidence
         val w = and(f2, c1, c2)
         val c = w2c(w)
         return TruthValue(f1, c)
@@ -192,8 +192,8 @@ object TruthFunctions : UtilityFunctions() {/* ----- Single argument functions, 
         if (v1.analytic) {
             return TruthValue(0.5f, 0f)
         }
-        val f1 = v1.getFrequency()
-        val c1 = v1.getConfidence()
+        val f1 = v1.frequency
+        val c1 = v1.confidence
         val w = and(c1, reliance)
         val c = w2c(w)
         return TruthValue(f1, c, true)
@@ -221,10 +221,10 @@ object TruthFunctions : UtilityFunctions() {/* ----- Single argument functions, 
         if (v1.analytic || v2.analytic) {
             return TruthValue(0.5f, 0f)
         }
-        val f1 = v1.getFrequency()
-        val f2 = v2.getFrequency()
-        val c1 = v1.getConfidence()
-        val c2 = v2.getConfidence()
+        val f1 = v1.frequency
+        val f2 = v2.frequency
+        val c1 = v1.confidence
+        val c2 = v2.confidence
         val w = and(f1, f2, c1, c2)
         val c = w2c(w)
         return TruthValue(1f, c)
@@ -238,10 +238,10 @@ object TruthFunctions : UtilityFunctions() {/* ----- Single argument functions, 
      * @return Truth value of the conclusion
      */
     internal fun comparison(v1: TruthValue, v2: TruthValue): TruthValue {
-        val f1 = v1.getFrequency()
-        val f2 = v2.getFrequency()
-        val c1 = v1.getConfidence()
-        val c2 = v2.getConfidence()
+        val f1 = v1.frequency
+        val f2 = v2.frequency
+        val c1 = v1.confidence
+        val c2 = v2.confidence
         val f0 = or(f1, f2)
         val f: Float = if (f0 == 0f) 0f else and(f1, f2) / f0
         val w = and(f0, c1, c2)
@@ -262,10 +262,10 @@ object TruthFunctions : UtilityFunctions() {/* ----- Single argument functions, 
      * @return Truth value of the conclusion
     </M></M> */
     internal fun union(v1: TruthValue, v2: TruthValue): TruthValue {
-        val f1 = v1.getFrequency()
-        val f2 = v2.getFrequency()
-        val c1 = v1.getConfidence()
-        val c2 = v2.getConfidence()
+        val f1 = v1.frequency
+        val f2 = v2.frequency
+        val c1 = v1.confidence
+        val c2 = v2.confidence
         val f = or(f1, f2)
         val c = and(c1, c2)
         return TruthValue(f, c)
@@ -279,10 +279,10 @@ object TruthFunctions : UtilityFunctions() {/* ----- Single argument functions, 
      * @return Truth value of the conclusion
     </M></M> */
     internal fun intersection(v1: TruthValue, v2: TruthValue): TruthValue {
-        val f1 = v1.getFrequency()
-        val f2 = v2.getFrequency()
-        val c1 = v1.getConfidence()
-        val c2 = v2.getConfidence()
+        val f1 = v1.frequency
+        val f2 = v2.frequency
+        val c1 = v1.confidence
+        val c2 = v2.confidence
         val f = and(f1, f2)
         val c = and(c1, c2)
         return TruthValue(f, c)
@@ -331,8 +331,8 @@ object TruthFunctions : UtilityFunctions() {/* ----- Single argument functions, 
      * @return Truth value of the conclusion
      */
     internal fun anonymousAnalogy(v1: TruthValue, v2: TruthValue): TruthValue {
-        val f1 = v1.getFrequency()
-        val c1 = v1.getConfidence()
+        val f1 = v1.frequency
+        val c1 = v1.confidence
         val v0 = TruthValue(f1, w2c(c1))
         return analogy(v2, v0)
     }

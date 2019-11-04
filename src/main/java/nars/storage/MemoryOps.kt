@@ -24,7 +24,7 @@ interface MemoryOps {
     fun doublePremiseTask(newContent: Term?, newTruth: TruthValue?, newBudget: BudgetValue?)
     fun doublePremiseTask(newContent: Term?, newTruth: TruthValue?, newBudget: BudgetValue?, revisible: Boolean)
     fun singlePremiseTask(newContent: Term?, newTruth: TruthValue?, newBudget: BudgetValue?)
-    fun singlePremiseTask(newContent: Term?, punctuation: Char, newTruth: TruthValue?, newBudget: BudgetValue?)
+    fun singlePremiseTask(newContent: Term?, punctuation: Any, newTruth: TruthValue?, newBudget: BudgetValue?)
     fun workCycle(clock: Long)
     fun processNewTask()
     fun processNovelTask()

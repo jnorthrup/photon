@@ -20,7 +20,9 @@
  */
 package nars.language
 
-import nars.io.Symbols
+//import nars.io.Symbols
+import nars.io.compound_oper_arity1.IMAGE_INT_OPERATOR
+import nars.io.special_operator.IMAGE_PLACE_HOLDER
 import nars.storage.BackingStore
 import java.util.*
 
@@ -75,7 +77,7 @@ class ImageInt : CompoundTerm {
      * @return A new object, to be casted into an ImageInt
      */
     override fun clone(): Any {
-        return ImageInt(name, cloneList(components) as List<Term>, isConstant, complexity, relationIndex)
+        return ImageInt(name, Util2.cloneList(components) as List<Term>, isConstant, complexity, relationIndex)
     }
 
     /**
@@ -106,7 +108,7 @@ class ImageInt : CompoundTerm {
      */
 
     public override fun makeName(): String {
-        return makeImageName(Symbols.IMAGE_INT_OPERATOR, components, relationIndex.toInt())
+        return Util2.makeImageName(IMAGE_INT_OPERATOR.sym, components, relationIndex.toInt())
     }
 
     /**
@@ -115,7 +117,7 @@ class ImageInt : CompoundTerm {
      * @return the operator of the term
      */
     override fun operator(): String {
-        return Symbols.IMAGE_INT_OPERATOR
+        return IMAGE_INT_OPERATOR.sym
     }
 
     companion object {
@@ -134,7 +136,7 @@ class ImageInt : CompoundTerm {
             val argument = ArrayList<Term>()
             var index = 0
             for (j in 1 until argList.size) {
-                if (argList[j].getName()[0] == Symbols.IMAGE_PLACE_HOLDER) {
+                if (argList[j].getName()[0] == IMAGE_PLACE_HOLDER.sym) {
                     index = j - 1
                     argument.add(relation)
                 } else {
@@ -198,7 +200,7 @@ class ImageInt : CompoundTerm {
          * @return the Term generated from the arguments
          */
   @JvmStatic      fun make(argument: List<Term>, index: Short, memory: BackingStore): Term {
-            val name: String = makeImageName(Symbols.IMAGE_INT_OPERATOR, argument, index.toInt())
+            val name: String = Util2.makeImageName(IMAGE_INT_OPERATOR.sym, argument, index.toInt())
             val t: Term? = memory.nameToListedTerm(name)
             return t ?: ImageInt(name, argument, index)
         }

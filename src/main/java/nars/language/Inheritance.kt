@@ -20,7 +20,8 @@
  */
 package nars.language
 
-import nars.io.Symbols
+//import nars.io.Symbols
+import nars.io.builtin_relation_arity3.INHERITANCE_RELATION
 import nars.storage.BackingStore
 import java.util.*
 
@@ -52,7 +53,7 @@ class Inheritance : Statement {
      * @return A new object, to be casted into a SetExt
      */
     override fun clone(): Any {
-        return Inheritance(name, cloneList(components) as List<Term>, isConstant, complexity)
+        return Inheritance(name, Util2.cloneList(components) as List<Term>, isConstant, complexity)
     }
 
     /**
@@ -61,7 +62,7 @@ class Inheritance : Statement {
      * @return the operator of the term
      */
     override fun operator(): String {
-        return Symbols.INHERITANCE_RELATION
+        return INHERITANCE_RELATION.sym
     }
 
     companion object {
@@ -77,12 +78,12 @@ class Inheritance : Statement {
             if (invalidStatement(subject!!, predicate!!)) {
                 return null
             }
-            val name = makeStatementName(subject, Symbols.INHERITANCE_RELATION, predicate)
+            val name = makeStatementName(subject, INHERITANCE_RELATION.sym, predicate)
             val t: Term? = memory.nameToListedTerm(name)
             if (t != null) {
                 return t as Inheritance
             }
-            val argument: ArrayList<Term> = argumentsToList(subject, predicate)
+            val argument: ArrayList<Term> = Util2.argumentsToList(subject, predicate)
             return Inheritance(argument)
         }
     }

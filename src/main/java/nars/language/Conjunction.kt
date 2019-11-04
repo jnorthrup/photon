@@ -20,7 +20,11 @@
  */
 package nars.language
 
-import nars.io.Symbols
+//import nars.io.Symbols
+import nars.io.compound_delim.SET_EXT_OPENER
+import nars.io.compound_delim.SET_INT_OPENER
+import nars.io.compound_oper_arity1.*
+import nars.io.compound_oper_arity2.*
 import nars.storage.BackingStore
 import java.util.*
 
@@ -52,7 +56,7 @@ class Conjunction : CompoundTerm {
      */
 
     override fun clone(): Any {
-        return Conjunction(name, cloneList(components) as List<Term>, isConstant, complexity)
+        return Conjunction(name, Util2.cloneList(components) as List<Term>, isConstant, complexity)
     }
 
     /**
@@ -61,10 +65,7 @@ class Conjunction : CompoundTerm {
      * @return the operator of the term
      */
 
-    override fun operator(): String {
-        return Symbols.CONJUNCTION_OPERATOR
-    }
-
+    override fun operator() = CONJUNCTION_OPERATOR.sym
     // overload this method by term type?
 
 
@@ -111,7 +112,7 @@ class Conjunction : CompoundTerm {
             }                         // special case: single component
 
             val argument = ArrayList(set)
-            val name: String? = makeCompoundName(Symbols.CONJUNCTION_OPERATOR, argument)
+            val name: String? = Util2.makeCompoundName(CONJUNCTION_OPERATOR.sym, argument)
             val t: Term? = memory.nameToListedTerm(name)
             return t ?: Conjunction(argument)
         }
@@ -146,4 +147,48 @@ class Conjunction : CompoundTerm {
             return make(set, memory)
         }
     }
+}
+
+public   fun getTerm(op: String, arg: List<Term>, memory: BackingStore): Term? {
+    if (op.length == 1) {
+        if (op[0] == SET_EXT_OPENER.sym) {
+            return SetExt.make(arg, memory)
+        }
+        if (op[0] == SET_INT_OPENER.sym) {
+            return SetInt.make(arg, memory)
+        }
+        if (op == INTERSECTION_EXT_OPERATOR.sym) {
+            return IntersectionExt.make(arg, memory)
+        }
+        if (op == INTERSECTION_INT_OPERATOR.sym) {
+            return IntersectionInt.make(arg, memory)
+        }
+        if (op == DIFFERENCE_EXT_OPERATOR.sym) {
+            return DifferenceExt.make(arg, memory)
+        }
+        if (op == DIFFERENCE_INT_OPERATOR.sym) {
+            return DifferenceInt.make(arg, memory)
+        }
+        if (op == PRODUCT_OPERATOR.sym) {
+            return Product.make(arg, memory)
+        }
+        if (op == IMAGE_EXT_OPERATOR.sym) {
+            return ImageExt.make(arg, memory)
+        }
+        if (op == IMAGE_INT_OPERATOR.sym) {
+            return ImageInt.make(arg, memory)
+        }
+    }
+    if (op.length == 2) {
+        if (op == NEGATION_OPERATOR.sym) {
+            return Negation.make(arg, memory)
+        }
+        if (op == DISJUNCTION_OPERATOR.sym) {
+            return Disjunction.make(arg, memory)
+        }
+        if (op == CONJUNCTION_OPERATOR.sym) {
+            return Conjunction.make(arg, memory)
+        }
+    }
+    return null
 }

@@ -20,7 +20,9 @@
  */
 package nars.language
 
-import nars.io.Symbols
+//import nars.io.Symbols
+import nars.io.builtin_relation_arity3.*
+import nars.io.compound_delim
 import nars.storage.BackingStore
 
 /**
@@ -101,13 +103,13 @@ abstract class Statement : CompoundTerm {
       @JvmStatic  fun make(relation: String, subject: Term, predicate: Term, memory: BackingStore): Statement? {
             if (!invalidStatement(subject, predicate)) {
                 return when (relation) {
-                    Symbols.INHERITANCE_RELATION -> Inheritance.make(subject, predicate, memory)
-                    Symbols.SIMILARITY_RELATION -> Similarity.make(subject, predicate, memory)
-                    Symbols.INSTANCE_RELATION -> Instance.make(subject, predicate, memory)
-                    Symbols.PROPERTY_RELATION -> Property.make(subject, predicate, memory)
-                    Symbols.INSTANCE_PROPERTY_RELATION -> InstanceProperty.make(subject, predicate, memory)
-                    Symbols.IMPLICATION_RELATION -> Implication.make(subject, predicate, memory)
-                    else -> if (relation == Symbols.EQUIVALENCE_RELATION) {
+                    INHERITANCE_RELATION.sym -> Inheritance.make(subject, predicate, memory)
+                    SIMILARITY_RELATION.sym -> Similarity.make(subject, predicate, memory)
+                    INSTANCE_RELATION.sym -> Instance.make(subject, predicate, memory)
+                    PROPERTY_RELATION.sym -> Property.make(subject, predicate, memory)
+                    INSTANCE_PROPERTY_RELATION.sym -> InstanceProperty.make(subject, predicate, memory)
+                    IMPLICATION_RELATION.sym -> Implication.make(subject, predicate, memory)
+                    else -> if (relation == EQUIVALENCE_RELATION.sym) {
                         Equivalence.make(subject, predicate, memory)
                     } else null
                 }
@@ -167,7 +169,7 @@ abstract class Statement : CompoundTerm {
             val s = s0.trim { it <= ' ' }
             return if (s.length != 3) {
                 false
-            } else listOf(Symbols.INHERITANCE_RELATION, Symbols.SIMILARITY_RELATION, Symbols.INSTANCE_RELATION, Symbols.PROPERTY_RELATION, Symbols.INSTANCE_PROPERTY_RELATION, Symbols.IMPLICATION_RELATION, Symbols.EQUIVALENCE_RELATION).contains(s)
+            } else listOf(INHERITANCE_RELATION.sym, SIMILARITY_RELATION.sym, INSTANCE_RELATION.sym, PROPERTY_RELATION.sym, INSTANCE_PROPERTY_RELATION.sym, IMPLICATION_RELATION.sym, EQUIVALENCE_RELATION.sym).contains(s)
         }
 
         /**
@@ -178,13 +180,13 @@ abstract class Statement : CompoundTerm {
          * @param relation  The relation operator
          * @return The nameStr of the term
          */
-     @JvmStatic       protected fun makeStatementName(subject: Term, relation: String?, predicate: Term): String {
+     @JvmStatic       protected fun makeStatementName(subject: Term, relation: Any, predicate: Term): String {
             val nameStr = StringBuilder()
-            nameStr.append(Symbols.STATEMENT_OPENER)
+            nameStr.append(compound_delim.STATEMENT_OPENER.sym)
             nameStr.append(subject.getName())
             nameStr.append(' ').append(relation).append(' ')
             nameStr.append(predicate.getName())
-            nameStr.append(Symbols.STATEMENT_CLOSER)
+            nameStr.append(compound_delim.STATEMENT_CLOSER.sym)
             return nameStr.toString()
         }
 

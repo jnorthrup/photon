@@ -22,8 +22,6 @@ package nars.language;
 
 import nars.entity.TermLink;
 import nars.entity.TermLinkConstants;
-import nars.io.Symbols;
-import nars.storage.BackingStore;
 
 import java.util.*;
 
@@ -46,7 +44,7 @@ public abstract class CompoundTerm extends CompoundTermState {
      * @param isConstant Whether the term refers to a concept
      * @param complexity Complexity of the compound term
      */
-    protected CompoundTerm(String name ,  List<Term> components, boolean isConstant, short complexity) {
+    CompoundTerm(String name ,  List<Term> components, boolean isConstant, short complexity) {
         super(name);
         this.setComponents(components);
         this.setConstant(isConstant);
@@ -56,7 +54,7 @@ public abstract class CompoundTerm extends CompoundTermState {
     /**
      * Default constructor
      */
-    protected CompoundTerm() {
+    CompoundTerm() {
     }
 
     /* ----- object builders, called from subclasses ----- */
@@ -66,7 +64,7 @@ public abstract class CompoundTerm extends CompoundTermState {
      *
      * @param components Component list
      */
-    protected CompoundTerm( List<Term> components) {
+    CompoundTerm( List<Term> components) {
         this.setComponents(components);
         calcComplexity();
         name = makeName();
@@ -78,187 +76,17 @@ public abstract class CompoundTerm extends CompoundTermState {
      *  @param name       Name of the compound
      * @param components Component list
      */
-    protected CompoundTerm(String name, List<Term> components) {
+    CompoundTerm(String name, List<Term> components) {
         super(name);
         setConstant(!Variable.containVar(name));
         this.setComponents(components);
         calcComplexity();
     }
 
-    /**
-     * Try to make a compound term from an operator and a list of components
-     * <p>
-     * Called from StringParser
-     *
-     * @param op     Term operator
-     * @param arg    Component list
-     * @param memory Reference to the memory
-     * @return A compound term or null
-     */
-    public static Term make(String op ,  List<Term> arg, BackingStore memory) {
-        if (op.length() == 1) {
-            if (op.charAt(0) == Symbols.SET_EXT_OPENER) {
-                return SetExt.make(arg, memory);
-            }
-            if (op.charAt(0) == Symbols.SET_INT_OPENER) {
-                return SetInt.make(arg, memory);
-            }
-            if (op.equals(Symbols.INTERSECTION_EXT_OPERATOR)) {
-                return IntersectionExt.make(arg, memory);
-            }
-            if (op.equals(Symbols.INTERSECTION_INT_OPERATOR)) {
-                return IntersectionInt.make(arg, memory);
-            }
-            if (op.equals(Symbols.DIFFERENCE_EXT_OPERATOR)) {
-                return DifferenceExt.make(arg, memory);
-            }
-            if (op.equals(Symbols.DIFFERENCE_INT_OPERATOR)) {
-                return DifferenceInt.make(arg, memory);
-            }
-            if (op.equals(Symbols.PRODUCT_OPERATOR)) {
-                return Product.make(arg, memory);
-            }
-            if (op.equals(Symbols.IMAGE_EXT_OPERATOR)) {
-                return ImageExt.make(arg, memory);
-            }
-            if (op.equals(Symbols.IMAGE_INT_OPERATOR)) {
-                return ImageInt.make(arg, memory);
-            }
-        }
-        if (op.length() == 2) {
-            if (op.equals(Symbols.NEGATION_OPERATOR)) {
-                return Negation.make(arg, memory);
-            }
-            if (op.equals(Symbols.DISJUNCTION_OPERATOR)) {
-                return Disjunction.make(arg, memory);
-            }
-            if (op.equals(Symbols.CONJUNCTION_OPERATOR)) {
-                return Conjunction.make(arg, memory);
-            }
-        }
-        return null;
-    }
-
-    /**
-     * build a component list from two terms
-     *
-     * @param t1 the first component
-     * @param t2 the second component
-     * @return the component list
-     */
-    protected static ArrayList<Term> argumentsToList(Term t1, Term t2) {
-        var list = new ArrayList<Term>(2);
-        list.add(t1);
-        list.add(t2);
-        return list;
-    }
-
-    /**
-     * default method to make the oldName of a compound term from given fields
-     *
-     * @param op  the term operator
-     * @param arg the list of components
-     * @return the oldName of the term
-     */
-    protected static String makeCompoundName(String op, Iterable<Term> arg) {
-        var name = new StringBuilder();
-        name.append(Symbols.COMPOUND_TERM_OPENER);
-        name.append(op);
-        for (var t : arg) {
-            name.append(Symbols.ARGUMENT_SEPARATOR);
-            if (t instanceof CompoundTerm) {
-                ((CompoundTermState) t).setName(((CompoundTerm) t).makeName());
-            }
-            name.append(t.getName());
-        }
-        name.append(Symbols.COMPOUND_TERM_CLOSER);
-        return name.toString();
-    }
 
     /* static methods making new compounds, which may return null */
 
-    /**
-     * make the oldName of an ExtensionSet or IntensionSet
-     *
-     * @param opener the set opener
-     * @param closer the set closer
-     * @param arg    the list of components
-     * @return the oldName of the term
-     */
-    protected static String makeSetName(char opener, Collection<Term> arg, char closer) {
-        StringJoiner joiner = new StringJoiner(String.valueOf(Symbols.ARGUMENT_SEPARATOR), String.valueOf(opener), String.valueOf(closer));
-        for (Term term : arg) {
-            String termName = term.getName();
-            joiner.add(termName);
-        }
-        return joiner.toString();
-    }
-
-    /**
-     * default method to make the oldName of an image term from given fields
-     *
-     * @param op            the term operator
-     * @param arg           the list of components
-     * @param relationIndex the location of the place holder
-     * @return the oldName of the term
-     */
-    protected static String makeImageName(String op, List<Term> arg, int relationIndex) {
-        var name = new StringBuilder();
-        name.append(Symbols.COMPOUND_TERM_OPENER);
-        name.append(op);
-        name.append(Symbols.ARGUMENT_SEPARATOR);
-        name.append(arg.get(relationIndex).getName());
-        int bound = arg.size();
-        for (int i = 0; i < bound; i++) {
-            name.append(Symbols.ARGUMENT_SEPARATOR);
-            if (i == relationIndex) {
-                name.append(Symbols.IMAGE_PLACE_HOLDER);
-            } else {
-                name.append(arg.get(i).getName());
-            }
-        }
-        name.append(Symbols.COMPOUND_TERM_CLOSER);
-        return name.toString();
-    }
-
-    /**
-     * Deep clone an array list of terms
-     *
-     * @param original The original component list
-     * @return an identical and separate copy of the list
-     */
-    public static ArrayList<Term> cloneList(Collection<Term> original) {
-        if (original == null) {
-            return null;
-        }
-        ArrayList<Term> terms = new ArrayList<>(original.size());
-        for (Term term : original) {
-            Term clone = (Term) term.clone();
-            terms.add(clone);
-        }
-        return terms;
-    }
-
     /* ----- utilities for oldName ----- */
-
-    /**
-     * Try to remove a component from a compound
-     *
-     * @param t1     The compound
-     * @param t2     The component
-     * @param memory Reference to the memory
-     * @return The new compound
-     */
-    public static Term reduceComponents(CompoundTerm t1, Term t2, BackingStore memory) {
-        boolean success;
-        var list = t1.cloneComponents();
-        if (t1.getClass() == t2.getClass()) {
-            success = list.removeAll(((CompoundTermState) t2).getComponents());
-        } else {
-            success = list.remove(t2);
-        }
-        return (success ? Util11. make(t1, list, memory) : null);
-    }
 
     /**
      * Abstract method to get the operator of the compound
@@ -273,7 +101,7 @@ public abstract class CompoundTerm extends CompoundTermState {
     /**
      * The complexity of the term is the sum of those of the components plus 1
      */
-    private void calcComplexity() {
+    void calcComplexity() {
         setComplexity((short) 1);
         for (Term t : getComponents()) {
             setComplexity((short) (getComplexity() + t.getComplexity()));
@@ -311,8 +139,8 @@ public abstract class CompoundTerm extends CompoundTermState {
      *
      * @return the oldName of the term
      */
-    protected String makeName() {
-        return makeCompoundName(operator(), getComponents());
+    String makeName() {
+        return Util2.makeCompoundName(operator(), getComponents());
     }
 
     /* ----- extend Collection methods to component list ----- */
@@ -356,7 +184,7 @@ public abstract class CompoundTerm extends CompoundTermState {
      * @return The cloned component list
      */
     public   List<Term> cloneComponents() {
-        return cloneList(getComponents());
+        return Util2.cloneList(getComponents());
     }
 
     /**
@@ -430,7 +258,7 @@ public abstract class CompoundTerm extends CompoundTermState {
      *
      * @param map The substitution established so far
      */
-    private void renameVariables(HashMap<Variable, Variable> map) {
+    void renameVariables(HashMap<Variable, Variable> map) {
         if (containVar()) {
             for (var i = 0; i < getComponents().size(); i++) {
                 var term = componentAt(i);
@@ -505,7 +333,7 @@ public abstract class CompoundTerm extends CompoundTermState {
      * @param type           The type of TermLink to be built
      * @param term           The CompoundTerm for which the links are built
      */
-    private void prepareComponentLinks(List<TermLinkConstants> componentLinks, short type, CompoundTerm term) {
+    void prepareComponentLinks(List<TermLinkConstants> componentLinks, short type, CompoundTerm term) {
         Term t1, t2, t3;                    // components at different levels
         for (var i = 0; i < term.size(); i++) {     // first level components
             t1 = term.componentAt(i);

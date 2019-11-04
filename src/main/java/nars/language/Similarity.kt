@@ -20,7 +20,8 @@
  */
 package nars.language
 
-import nars.io.Symbols
+//import nars.io.Symbols
+import nars.io.builtin_relation_arity3
 import nars.storage.BackingStore
 import java.util.*
 
@@ -53,7 +54,7 @@ class Similarity : Statement {
      */
 
     override fun clone(): Any {
-        return Similarity(name, cloneList(components) as List<Term>, isConstant, complexity)
+        return Similarity(name, Util2.cloneList(components) as List<Term>, isConstant, complexity)
     }
 
     /**
@@ -62,9 +63,8 @@ class Similarity : Statement {
      * @return the operator of the term
      */
 
-    override fun operator(): String {
-        return Symbols.SIMILARITY_RELATION
-    }
+    override fun operator() = builtin_relation_arity3.SIMILARITY_RELATION.sym.toString()
+
 
     /**
      * Check if the compound is commutative.
@@ -90,10 +90,10 @@ class Similarity : Statement {
                 if (subject > predicate) {
                     return make(predicate, subject, memory)
                 }
-                val name = makeStatementName(subject, Symbols.SIMILARITY_RELATION, predicate)
+                val name = makeStatementName(subject, builtin_relation_arity3.SIMILARITY_RELATION.sym, predicate)
                 val t: Term? = memory.nameToListedTerm(name)
                 if (t == null) {
-                    val argument: ArrayList<Term> = argumentsToList(subject, predicate)
+                    val argument: ArrayList<Term> = Util2.argumentsToList(subject, predicate)
                     return Similarity(argument)
                 }
                 return t as Similarity

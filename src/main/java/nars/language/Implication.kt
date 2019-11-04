@@ -20,7 +20,8 @@
  */
 package nars.language
 
-import nars.io.Symbols
+//import nars.io.Symbols
+import nars.io.builtin_relation_arity3.IMPLICATION_RELATION
 import nars.storage.BackingStore
 import java.util.*
 
@@ -51,7 +52,7 @@ class Implication : Statement {
      * @return A new object
      */
     override fun clone(): Any {
-        return Implication(name, cloneList(components) as List<Term>, isConstant, complexity)
+        return Implication(name, Util2.cloneList(components) as List<Term>, isConstant, complexity)
     }
 
     /**
@@ -60,7 +61,7 @@ class Implication : Statement {
      * @return the operator of the term
      */
     override fun operator(): String {
-        return Symbols.IMPLICATION_RELATION
+        return IMPLICATION_RELATION.sym
     }
 
     companion object {
@@ -78,7 +79,7 @@ class Implication : Statement {
                 if (subject != null && predicate != null) {
                     if (subject !is Implication && subject !is Equivalence && predicate !is Equivalence) {
                         if (!invalidStatement(subject, predicate)) {
-                            val name = makeStatementName(subject, Symbols.IMPLICATION_RELATION, predicate)
+                            val name = makeStatementName(subject, IMPLICATION_RELATION.sym, predicate)
                             val t: Term? = memory.nameToListedTerm(name)
                             if (t != null) {
                                 result = t as Implication
@@ -89,7 +90,7 @@ class Implication : Statement {
                                     result = make(newCondition, predicate.predicate, memory)
                                 }
                             } else {
-                                val argument: ArrayList<Term> = argumentsToList(subject, predicate)
+                                val argument: ArrayList<Term> = Util2.argumentsToList(subject, predicate)
                                 result = Implication(argument)
                             }
                         }

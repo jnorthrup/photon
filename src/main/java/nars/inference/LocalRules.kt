@@ -27,7 +27,9 @@ import nars.entity.TruthValue
 import nars.inference.BudgetFunctions.forward
 import nars.inference.BudgetFunctions.revise
 import nars.inference.BudgetFunctions.solutionEval
-import nars.io.Symbols
+import nars.io.sentence_type
+import nars.io.var_type
+//import nars.io.Symbols
 import nars.language.*
 import nars.storage.BackingStore
 
@@ -61,7 +63,7 @@ object LocalRules {/* -------------------- same contents -------------------- */
             if (revisible(sentence, belief)) {
                 revision(sentence, belief, true, memory)
             }
-        } else if (Variable.unify(Symbols.VAR_QUERY, sentence.content, belief.content.clone() as Term)) {
+        } else if (Variable.unify(var_type.VAR_QUERY.sym, sentence.content, belief.content.clone() as Term)) {
             trySolution(belief, task, memory)
         }
     }
@@ -144,7 +146,7 @@ object LocalRules {/* -------------------- same contents -------------------- */
             truth!!.expectation / solution.content.complexity
         } else {                                    // "what" question or goal
 
-            truth!!.getConfidence()
+            truth!!.confidence
         }
     }
 
@@ -289,6 +291,6 @@ object LocalRules {/* -------------------- same contents -------------------- */
             otherTerm = if (subjT == subjB) predB else subjB
             content = Statement.make(content, subjT, otherTerm, memory)!!
         }
-        memory.singlePremiseTask(content, Symbols.JUDGMENT_MARK, newTruth, newBudget)
+        memory.singlePremiseTask(content, sentence_type.JUDGMENT_MARK.sym, newTruth, newBudget)
     }
 }

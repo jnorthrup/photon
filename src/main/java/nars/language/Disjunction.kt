@@ -20,7 +20,8 @@
  */
 package nars.language
 
-import nars.io.Symbols
+//import nars.io.Symbols
+import nars.io.compound_oper_arity2.DISJUNCTION_OPERATOR
 import nars.storage.BackingStore
 import java.util.*
 
@@ -53,7 +54,7 @@ class Disjunction : CompoundTerm {
      */
 
     override fun clone(): Any {
-        return Disjunction(name, cloneList(components) as List<Term>, isConstant, complexity)
+        return Disjunction(name, Util2.cloneList(components) as List<Term>, isConstant, complexity)
     }
 
     /**
@@ -63,7 +64,7 @@ class Disjunction : CompoundTerm {
      */
 
     override fun operator(): String {
-        return Symbols.DISJUNCTION_OPERATOR
+        return DISJUNCTION_OPERATOR.sym
     }
 
     /**
@@ -132,7 +133,7 @@ class Disjunction : CompoundTerm {
             }                         // special case: single component
 
             val argument = ArrayList(set)
-            val name: String? = makeCompoundName(Symbols.DISJUNCTION_OPERATOR, argument)
+            val name: String? = Util2.makeCompoundName(DISJUNCTION_OPERATOR.sym, argument)
             val t: Term? = memory.nameToListedTerm(name)
             return t ?: Disjunction(argument)
         }

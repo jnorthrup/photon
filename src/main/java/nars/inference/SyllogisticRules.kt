@@ -28,7 +28,8 @@ import nars.inference.BudgetFunctions.backward
 import nars.inference.BudgetFunctions.backwardWeak
 import nars.inference.BudgetFunctions.compoundForward
 import nars.inference.BudgetFunctions.forward
-import nars.io.Symbols
+import nars.io.var_type
+//import nars.io.Symbols
 import nars.language.*
 import nars.storage.BackingStore
 
@@ -249,7 +250,7 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
         val taskSentence = task.sentence
         val belief = memory.currentBelief
         val deduction = side != 0
-        val conditionalTask = Variable.hasSubstitute(Symbols.VAR_INDEPENDENT, premise2, belief!!.content)
+        val conditionalTask = Variable.hasSubstitute(var_type.VAR_INDEPENDENT.sym, premise2, belief!!.content)
         val commonComponent: Term
         var newComponent: Term? = null
         if (side == 0) {
@@ -266,9 +267,9 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
         if (index2 >= 0) {
             index1 = index2.toShort()
         } else {
-            var match = Variable.unify(Symbols.VAR_INDEPENDENT, oldCondition.componentAt(index1.toInt()), commonComponent, premise1, premise2)
+            var match = Variable.unify(var_type.VAR_INDEPENDENT.sym, oldCondition.componentAt(index1.toInt()), commonComponent, premise1, premise2)
             if (!match && commonComponent.javaClass == oldCondition.javaClass) {
-                match = Variable.unify(Symbols.VAR_INDEPENDENT, oldCondition.componentAt(index1.toInt()), (commonComponent as CompoundTerm).componentAt(index1.toInt()), premise1, premise2)
+                match = Variable.unify(var_type.VAR_INDEPENDENT.sym, oldCondition.componentAt(index1.toInt()), (commonComponent as CompoundTerm).componentAt(index1.toInt()), premise1, premise2)
             }
             if (!match) {
                 return
@@ -323,7 +324,7 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
         val task: Task = memory.currentTask!!
         val taskSentence = task.sentence
         val belief = memory.currentBelief
-        val conditionalTask = Variable.hasSubstitute(Symbols.VAR_INDEPENDENT, premise2, belief!!.content)
+        val conditionalTask = Variable.hasSubstitute(var_type.VAR_INDEPENDENT.sym, premise2, belief!!.content)
         val commonComponent: Term
         var newComponent: Term? = null
         if (side == 0) {
@@ -336,9 +337,9 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
             commonComponent = premise2
         }
         val oldCondition = premise1.subject as Conjunction
-        var match = Variable.unify(Symbols.VAR_DEPENDENT, oldCondition.componentAt(index.toInt()), commonComponent, premise1, premise2)
+        var match = Variable.unify(var_type.VAR_DEPENDENT.sym, oldCondition.componentAt(index.toInt()), commonComponent, premise1, premise2)
         if (!match && commonComponent.javaClass == oldCondition.javaClass) {
-            match = Variable.unify(Symbols.VAR_DEPENDENT, oldCondition.componentAt(index.toInt()), (commonComponent as CompoundTerm).componentAt(index.toInt()), premise1, premise2)
+            match = Variable.unify(var_type.VAR_DEPENDENT.sym, oldCondition.componentAt(index.toInt()), (commonComponent as CompoundTerm).componentAt(index.toInt()), premise1, premise2)
         }
         if (!match) {
             return
@@ -398,13 +399,13 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
 
 
         if (cond1 is Conjunction) {
-            term1 = CompoundTerm.reduceComponents(cond1, cond2, memory)
+            term1 = Util2.reduceComponents(cond1, cond2, memory)
         }
 //        if ((cond2 instanceof Conjunction) && !Variable.containVarDep(cond2.getName())) {
 
 
         if (cond2 is Conjunction) {
-            term2 = CompoundTerm.reduceComponents(cond2, cond1, memory)
+            term2 = Util2.reduceComponents(cond2, cond1, memory)
         }
         if (term1 == null && term2 == null) {
             return false
@@ -456,7 +457,7 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
      * @param memory       Reference to the memory
     </M></M> */
     internal fun elimiVarDep(compound: CompoundTerm?, component: Term?, compoundTask: Boolean, memory: BackingStore) {
-        val content: Term? = CompoundTerm.reduceComponents(compound, component, memory)
+        val content: Term? = Util2.reduceComponents(compound!!, component!!, memory)
         val task: Task = memory.currentTask!!
         val sentence = task.sentence
         val belief = memory.currentBelief

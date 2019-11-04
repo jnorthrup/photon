@@ -20,7 +20,6 @@
  */
 package nars.storage;
 
-import kotlin.collections.AbstractMutableList;
 import nars.entity.*;
 import nars.inference.BudgetFunctions;
 import nars.io.IInferenceRecorder;
@@ -71,10 +70,11 @@ public class BackingStore implements MemoryOps {
 
     /**
      * List of Strings or Tasks to be sent to the output channels
+     *
      * @return
      */ /* ---------- access utilities ---------- */
     @Override
-    public  ArrayList<String> getExportStrings() {
+    public ArrayList<String> getExportStrings() {
         return (ArrayList<String>) memoryState.getExportStrings();
     }
 
@@ -87,13 +87,20 @@ public class BackingStore implements MemoryOps {
     }
 
     @Override
-    public long getTime() {
-        return memoryState.getReasoner().getTime();
+    public void setRecorder(IInferenceRecorder recorder) {
+        memoryState.setRecorder(recorder);
     }
 
 //    public MainWindow getMainWindow() {
 //        return reasoner.getMainWindow();
 //    }
+
+    @Override
+    public long getTime() {
+        return memoryState.getReasoner().getTime();
+    }
+
+    /* ---------- conversion utilities ---------- */
 
     /**
      * Actually means that there are no new Tasks
@@ -102,8 +109,6 @@ public class BackingStore implements MemoryOps {
     public boolean noResult() {
         return memoryState.getNewTasks().isEmpty();
     }
-
-    /* ---------- conversion utilities ---------- */
 
     /**
      * Get an existing Concept for a given name <p> called from Term and
@@ -167,6 +172,8 @@ public class BackingStore implements MemoryOps {
         return concept;
     }
 
+    /* ---------- adjustment functions ---------- */
+
     /**
      * Get the current activation level of a concept.
      *
@@ -179,7 +186,11 @@ public class BackingStore implements MemoryOps {
         return Optional.ofNullable(c).map(ImmutableItemIdentity::getPriority).orElse(0f);
     }
 
-    /* ---------- adjustment functions ---------- */
+    /* ---------- new task entries ---------- */
+
+    /* There are several types of new tasks, all added into the
+     newTasks list, to be processed in the next workCycle.
+     Some of them are reported and/or logged. */
 
     /**
      * Adjust the activation level of a Concept <p> called in
@@ -194,12 +205,6 @@ public class BackingStore implements MemoryOps {
         BudgetFunctions.activate(c, b);
         memoryState.getConcepts().putBack(c);
     }
-
-    /* ---------- new task entries ---------- */
-
-    /* There are several types of new tasks, all added into the
-     newTasks list, to be processed in the next workCycle.
-     Some of them are reported and/or logged. */
 
     /**
      * Input task processing. Invoked by the outside or inside environment.
@@ -243,6 +248,8 @@ public class BackingStore implements MemoryOps {
         memoryState.getNewTasks().add(task);
     }
 
+    /* --------------- new task building --------------- */
+
     /**
      * Derived task comes from the inference rules.
      *
@@ -263,8 +270,6 @@ public class BackingStore implements MemoryOps {
             getRecorder().append("!!! Ignored: " + task + "\n");
         }
     }
-
-    /* --------------- new task building --------------- */
 
     /**
      * Shared final operations by all double-premise rules, called from the
@@ -315,6 +320,8 @@ public class BackingStore implements MemoryOps {
         singlePremiseTask(newContent, memoryState.getCurrentTask().getSentence().getPunctuation(), newTruth, newBudget);
     }
 
+    /* ---------- system working workCycle ---------- */
+
     /**
      * Shared final operations by all single-premise rules, called in
      * StructuralRules
@@ -325,7 +332,7 @@ public class BackingStore implements MemoryOps {
      * @param newBudget   The budget value in task
      */
     @Override
-    public void singlePremiseTask(Term newContent, char punctuation, TruthValue newTruth, BudgetValue newBudget) {
+    public void singlePremiseTask(Term newContent, Object  punctuation, TruthValue newTruth, BudgetValue newBudget) {
         var parentTask = memoryState.getCurrentTask().getParentTask();
         if (parentTask != null && newContent.equals(parentTask.getContent())) { // circular structural inference
             return;
@@ -340,8 +347,6 @@ public class BackingStore implements MemoryOps {
         var newTask = new Task(newSentence, newBudget, memoryState.getCurrentTask(), null);
         derivedTask(newTask);
     }
-
-    /* ---------- system working workCycle ---------- */
 
     /**
      * An atomic working cycle of the system: process new Tasks, then fire a
@@ -374,9 +379,7 @@ public class BackingStore implements MemoryOps {
         while (counter > 0) {
             counter--;
             task = memoryState.getNewTasks().remove(0);
-            if (task.isInput() || (termToConcept(task.getContent()) != null)) { // new input or existing concept
-                immediateProcess(task);
-            } else {
+            if (!task.isInput() && (termToConcept(task.getContent()) == null)) {
                 var s = task.getSentence();
                 if (s.isJudgment()) {
                     double d = s.getTruth().getExpectation();
@@ -386,6 +389,8 @@ public class BackingStore implements MemoryOps {
                         getRecorder().append("!!! Neglected: " + task + "\n");
                     }
                 }
+            } else { // new input or existing concept
+                immediateProcess(task);
             }
         }
         counter--;
@@ -402,6 +407,8 @@ public class BackingStore implements MemoryOps {
         }
     }
 
+    /* ---------- task processing ---------- */
+
     /**
      * Select a concept to fire.
      */
@@ -416,7 +423,7 @@ public class BackingStore implements MemoryOps {
         }
     }
 
-    /* ---------- task processing ---------- */
+    /* ---------- display ---------- */
 
     /**
      * Immediate processing of a new task, in constant time Local processing, in
@@ -435,8 +442,6 @@ public class BackingStore implements MemoryOps {
             memoryState.getCurrentConcept().directProcess(task);
         }
     }
-
-    /* ---------- display ---------- */
 
     /**
      * Display input/output sentence in the output channels. The only place to
@@ -473,7 +478,6 @@ public class BackingStore implements MemoryOps {
         s += sentence.toStringBrief();
         getExportStrings().add(s);
     }
-
 
     public String toString() {
         return toStringLongIfNotNull(memoryState.getConcepts(), "concepts")
@@ -647,11 +651,6 @@ public class BackingStore implements MemoryOps {
     @Override
     public Map<Term, Term> getSubstitute() {
         return memoryState.getSubstitute();
-    }
-
-    @Override
-    public void setRecorder(IInferenceRecorder recorder) {
-        memoryState.setRecorder(recorder);
     }
 
     @Override

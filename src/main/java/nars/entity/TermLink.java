@@ -20,8 +20,7 @@
  */
 package nars.entity;
 
-import nars.io.Symbols;
-import nars.language.Term;
+ import nars.language.Term;
 import org.jetbrains.annotations.Nullable;
 
 /**
@@ -110,31 +109,47 @@ public class TermLink extends   ItemIdentity implements TermLinkConstants {
         index = template.getIndices();
 //        setKey();
     }
+    enum   termlink_type     {
+        TO_COMPONENT_1(" @("),
+                TO_COMPONENT_2(")_ "),
+                TO_COMPOUND_1(" _@("),
+                TO_COMPOUND_2(") "),
+        ;
 
+        private final String sym;
+
+        termlink_type(String sym) {
+
+            this.sym = sym;
+        }
+    }
     /**
      * Set the key of the link
      */
     public   String getKey() {
-        if(this.key!=null)return key;
-        String key,at1, at2;
-        if ((type % 2) == 1) {  // to component
-            at1 = Symbols.TO_COMPONENT_1;
-            at2 = Symbols.TO_COMPONENT_2;
-        } else {                // to compound
-            at1 = Symbols.TO_COMPOUND_1;
-            at2 = Symbols.TO_COMPOUND_2;
-        }
-        var in = "T" + type;
-        if (index != null) {
-            for (short value : index) {
-                in += "-" + (value + 1);
+        if (this.key == null) {
+            String key, at1, at2;
+            if ((type % 2) == 1) {  // to component
+                at1 = termlink_type.TO_COMPONENT_1.sym;
+                at2 = termlink_type.TO_COMPONENT_2.sym;
+            } else {                // to compound
+                at1 = termlink_type.TO_COMPOUND_1.sym;
+                at2 = termlink_type.TO_COMPOUND_2.sym;
             }
+            var in = "T" + type;
+            if (index != null) {
+                for (short value : index) {
+                    in += "-" + (value + 1);
+                }
+            }
+            key = at1 + in + at2;
+            if (target != null) {
+                key += target;
+            }
+            return key;
+        } else {
+            return key;
         }
-        key = at1 + in + at2;
-        if (target != null) {
-            key += target;
-        }
-        return key;
     }
 
     /**

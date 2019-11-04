@@ -21,7 +21,8 @@
 
 package nars.language
 
-import nars.io.Symbols
+//import nars.io.Symbols
+import nars.io.compound_oper_arity1.PRODUCT_OPERATOR
 import nars.storage.BackingStore
 
 /**
@@ -52,7 +53,7 @@ class Product : CompoundTerm {
      * @return A new object, to be casted into an ImageExt
      */
     override fun clone(): Any {
-        return Product(name, cloneList(components) as List<Term>, isConstant, complexity)
+        return Product(name, Util2.cloneList(components) as List<Term>, isConstant, complexity)
     }
 
     /**
@@ -61,7 +62,7 @@ class Product : CompoundTerm {
      * @return the operator of the term
      */
     override fun operator(): String {
-        return Symbols.PRODUCT_OPERATOR
+        return PRODUCT_OPERATOR.sym
     }
 
     companion object {
@@ -73,7 +74,7 @@ class Product : CompoundTerm {
          * @return the Term generated from the arguments
          */
         @JvmStatic   fun make(argument: List<Term>, memory: BackingStore): Term {
-            val name: String? = makeCompoundName(Symbols.PRODUCT_OPERATOR, argument)
+            val name: String? = Util2.makeCompoundName(PRODUCT_OPERATOR.sym, argument)
             val t: Term? = memory.nameToListedTerm(name)
             return t ?: Product(argument)
         }

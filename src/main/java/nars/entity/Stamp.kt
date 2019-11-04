@@ -20,7 +20,10 @@
  */
 package nars.entity
 
-import nars.io.Symbols
+//import nars.io.Symbols
+import nars.io.stamp_display
+import nars.io.stamp_display.STAMP_OPENER
+import nars.io.stamp_display.STAMP_STARTER
 import nars.main_nogui.Parameters
 import nars.main_nogui.ReasonerBatch
 import kotlin.math.min
@@ -195,15 +198,15 @@ class Stamp : Cloneable {
      */
 
     override fun toString(): String {
-        val buffer = StringBuilder(" " + Symbols.STAMP_OPENER + creationTime)
-        buffer.append(" ").append(Symbols.STAMP_STARTER).append(" ")
+        val buffer = StringBuilder(" " + STAMP_OPENER.sym + creationTime)
+        buffer.append(" ").append(STAMP_STARTER.sym).append(" ")
         val bound = baseLength
-        for (i in 0 until bound) {
+        (0 until bound).forEach { i ->
             buffer.append(base[i])
             if (i < baseLength - 1) {
-                buffer.append(Symbols.STAMP_SEPARATOR)
+                buffer.append(stamp_display.STAMP_SEPARATOR.sym)
             } else {
-                buffer.append(Symbols.STAMP_CLOSER).append(" ")
+                buffer.append(stamp_display.STAMP_CLOSER.sym).append(" ")
             }
         }
         return buffer.toString()

@@ -20,7 +20,9 @@
  */
 package nars.language
 
-import nars.io.Symbols
+//import nars.io.Symbols
+import nars.io.compound_oper_arity1
+import nars.io.compound_oper_arity1.*
 import nars.storage.BackingStore
 import java.util.*
 
@@ -52,7 +54,7 @@ class DifferenceExt : CompoundTerm {
      * @return A new object, to be casted into a DifferenceExt
      */
     override fun clone(): Any {
-        return DifferenceExt(name, cloneList(components) as List<Term>, isConstant, complexity as Int)
+        return DifferenceExt(name, Util2.cloneList(components) as List<Term>, isConstant, complexity as Int)
     }
 
     /**
@@ -61,7 +63,7 @@ class DifferenceExt : CompoundTerm {
      * @return the operator of the term
      */
     override fun operator(): String {
-        return Symbols.DIFFERENCE_EXT_OPERATOR
+        return DIFFERENCE_EXT_OPERATOR.sym
     }
 
     companion object {
@@ -80,7 +82,7 @@ class DifferenceExt : CompoundTerm {
             if (argList.size != 2) {
                 return null
             }
-            val name: String? = makeCompoundName(Symbols.DIFFERENCE_EXT_OPERATOR, argList)
+            val name: String? = Util2.makeCompoundName(DIFFERENCE_EXT_OPERATOR.sym, argList)
             val t: Term? = memory.nameToListedTerm(name)
             return t ?: DifferenceExt(argList)
         }
@@ -103,7 +105,7 @@ class DifferenceExt : CompoundTerm {
 
                 return SetExt.make(set, memory)
             }
-            val list: ArrayList<Term> = argumentsToList(t1, t2)
+            val list: ArrayList<Term> = Util2.argumentsToList(t1, t2)
             return make(list, memory)
         }
     }

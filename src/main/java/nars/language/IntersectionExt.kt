@@ -20,7 +20,8 @@
  */
 package nars.language
 
-import nars.io.Symbols
+//import nars.io.Symbols
+import nars.io.compound_oper_arity1.INTERSECTION_EXT_OPERATOR
 import nars.storage.BackingStore
 import java.util.*
 
@@ -52,7 +53,7 @@ class IntersectionExt : CompoundTerm {
      * @return A new object, to be casted into a IntersectionExt
      */
     override fun clone(): Any {
-        return IntersectionExt(name, cloneList(components) as List<Term>, isConstant, complexity)
+        return IntersectionExt(name, Util2.cloneList(components) as List<Term>, isConstant, complexity)
     }
 
     /**
@@ -61,7 +62,7 @@ class IntersectionExt : CompoundTerm {
      * @return the operator of the term
      */
     override fun operator(): String {
-        return Symbols.INTERSECTION_EXT_OPERATOR
+        return INTERSECTION_EXT_OPERATOR.sym
     }
 
     /**
@@ -142,7 +143,7 @@ class IntersectionExt : CompoundTerm {
             }                         // special case: single component
 
             val argument = ArrayList(set)
-            val name: String? = makeCompoundName(Symbols.INTERSECTION_EXT_OPERATOR, argument)
+            val name: String? = Util2.makeCompoundName(INTERSECTION_EXT_OPERATOR.sym, argument)
             val t: Term? = memory.nameToListedTerm(name)
             return t ?: IntersectionExt(argument)
         }

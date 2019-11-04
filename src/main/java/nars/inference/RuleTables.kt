@@ -20,8 +20,9 @@
  */
 package nars.inference
 
+//import nars.io.Symbols
 import nars.entity.*
-import nars.io.Symbols
+import nars.io.var_type.*
 import nars.language.*
 import nars.storage.BackingStore
 
@@ -198,7 +199,7 @@ object RuleTables {
         val t1: Term?
         val t2: Term?
         when (figure) {
-            11 -> if (Variable.unify(Symbols.VAR_INDEPENDENT, s1.subject, s2.subject, s1, s2)) {
+            11 -> if (Variable.unify(VAR_INDEPENDENT.sym, s1.subject, s2.subject, s1, s2)) {
                 if (s1 == s2) {
                     return
                 }
@@ -207,31 +208,31 @@ object RuleTables {
                 CompositionalRules.composeCompound(s1, s2, 0, memory)
                 SyllogisticRules.abdIndCom(t1, t2, sentence, belief, memory)
             }
-            12 -> if (Variable.unify(Symbols.VAR_INDEPENDENT, s1.subject, s2.predicate, s1, s2)) {
+            12 -> if (Variable.unify(VAR_INDEPENDENT.sym, s1.subject, s2.predicate, s1, s2)) {
                 if (s1 == s2) {
                     return
                 }
                 t1 = s2.subject
                 t2 = s1.predicate
-                if (Variable.unify(Symbols.VAR_QUERY, t1, t2, s1, s2)) {
+                if (Variable.unify(VAR_QUERY.sym, t1, t2, s1, s2)) {
                     LocalRules.matchReverse(memory)
                 } else {
                     SyllogisticRules.dedExe(t1, t2, sentence, belief, memory)
                 }
             }
-            21 -> if (Variable.unify(Symbols.VAR_INDEPENDENT, s1.predicate, s2.subject, s1, s2)) {
+            21 -> if (Variable.unify(VAR_INDEPENDENT.sym, s1.predicate, s2.subject, s1, s2)) {
                 if (s1 == s2) {
                     return
                 }
                 t1 = s1.subject
                 t2 = s2.predicate
-                if (Variable.unify(Symbols.VAR_QUERY, t1, t2, s1, s2)) {
+                if (Variable.unify(VAR_QUERY.sym, t1, t2, s1, s2)) {
                     LocalRules.matchReverse(memory)
                 } else {
                     SyllogisticRules.dedExe(t1, t2, sentence, belief, memory)
                 }
             }
-            22 -> if (Variable.unify(Symbols.VAR_INDEPENDENT, s1.predicate, s2.predicate, s1, s2)) {
+            22 -> if (Variable.unify(VAR_INDEPENDENT.sym, s1.predicate, s2.predicate, s1, s2)) {
                 if (s1 == s2) {
                     return
                 }
@@ -263,37 +264,37 @@ object RuleTables {
         val t1: Term?
         val t2: Term?
         when (figure) {
-            11 -> if (Variable.unify(Symbols.VAR_INDEPENDENT, asymSt.subject, symSt.subject, asymSt, symSt)) {
+            11 -> if (Variable.unify(VAR_INDEPENDENT.sym, asymSt.subject, symSt.subject, asymSt, symSt)) {
                 t1 = asymSt.predicate
                 t2 = symSt.predicate
-                if (Variable.unify(Symbols.VAR_QUERY, t1, t2, asymSt, symSt)) {
+                if (Variable.unify(VAR_QUERY.sym, t1, t2, asymSt, symSt)) {
                     LocalRules.matchAsymSym(asym, sym, figure, memory)
                 } else {
                     SyllogisticRules.analogy(t2, t1, asym, sym, memory)
                 }
             }
-            12 -> if (Variable.unify(Symbols.VAR_INDEPENDENT, asymSt.subject, symSt.predicate, asymSt, symSt)) {
+            12 -> if (Variable.unify(VAR_INDEPENDENT.sym, asymSt.subject, symSt.predicate, asymSt, symSt)) {
                 t1 = asymSt.predicate
                 t2 = symSt.subject
-                if (Variable.unify(Symbols.VAR_QUERY, t1, t2, asymSt, symSt)) {
+                if (Variable.unify(VAR_QUERY.sym, t1, t2, asymSt, symSt)) {
                     LocalRules.matchAsymSym(asym, sym, figure, memory)
                 } else {
                     SyllogisticRules.analogy(t2, t1, asym, sym, memory)
                 }
             }
-            21 -> if (Variable.unify(Symbols.VAR_INDEPENDENT, asymSt.predicate, symSt.subject, asymSt, symSt)) {
+            21 -> if (Variable.unify(VAR_INDEPENDENT.sym, asymSt.predicate, symSt.subject, asymSt, symSt)) {
                 t1 = asymSt.subject
                 t2 = symSt.predicate
-                if (Variable.unify(Symbols.VAR_QUERY, t1, t2, asymSt, symSt)) {
+                if (Variable.unify(VAR_QUERY.sym, t1, t2, asymSt, symSt)) {
                     LocalRules.matchAsymSym(asym, sym, figure, memory)
                 } else {
                     SyllogisticRules.analogy(t1, t2, asym, sym, memory)
                 }
             }
-            22 -> if (Variable.unify(Symbols.VAR_INDEPENDENT, asymSt.predicate, symSt.predicate, asymSt, symSt)) {
+            22 -> if (Variable.unify(VAR_INDEPENDENT.sym, asymSt.predicate, symSt.predicate, asymSt, symSt)) {
                 t1 = asymSt.subject
                 t2 = symSt.subject
-                if (Variable.unify(Symbols.VAR_QUERY, t1, t2, asymSt, symSt)) {
+                if (Variable.unify(VAR_QUERY.sym, t1, t2, asymSt, symSt)) {
                     LocalRules.matchAsymSym(asym, sym, figure, memory)
                 } else {
                     SyllogisticRules.analogy(t1, t2, asym, sym, memory)
@@ -314,16 +315,16 @@ object RuleTables {
         val s1 = belief!!.cloneContent() as Statement
         val s2 = taskSentence.cloneContent() as Statement
         when (figure) {
-            11 -> if (Variable.unify(Symbols.VAR_INDEPENDENT, s1.subject, s2.subject, s1, s2)) {
+            11 -> if (Variable.unify(VAR_INDEPENDENT.sym, s1.subject, s2.subject, s1, s2)) {
                 SyllogisticRules.resemblance(s1.predicate, s2.predicate, belief, taskSentence, memory)
             }
-            12 -> if (Variable.unify(Symbols.VAR_INDEPENDENT, s1.subject, s2.predicate, s1, s2)) {
+            12 -> if (Variable.unify(VAR_INDEPENDENT.sym, s1.subject, s2.predicate, s1, s2)) {
                 SyllogisticRules.resemblance(s1.predicate, s2.subject, belief, taskSentence, memory)
             }
-            21 -> if (Variable.unify(Symbols.VAR_INDEPENDENT, s1.predicate, s2.subject, s1, s2)) {
+            21 -> if (Variable.unify(VAR_INDEPENDENT.sym, s1.predicate, s2.subject, s1, s2)) {
                 SyllogisticRules.resemblance(s1.subject, s2.predicate, belief, taskSentence, memory)
             }
-            22 -> if (Variable.unify(Symbols.VAR_INDEPENDENT, s1.predicate, s2.predicate, s1, s2)) {
+            22 -> if (Variable.unify(VAR_INDEPENDENT.sym, s1.predicate, s2.predicate, s1, s2)) {
                 SyllogisticRules.resemblance(s1.subject, s2.subject, belief, taskSentence, memory)
             }
         }
@@ -351,7 +352,7 @@ object RuleTables {
         if (component is Inheritance && memory.currentBelief != null) {
             if (component.isConstant()) {
                 SyllogisticRules.detachment(mainSentence, subSentence, index, memory)
-            } else if (Variable.unify(Symbols.VAR_INDEPENDENT, component, content, statement, content)) {
+            } else if (Variable.unify(VAR_INDEPENDENT.sym, component, content, statement, content)) {
                 SyllogisticRules.detachment(mainSentence, subSentence, index, memory)
             } else if (statement is Implication && statement.predicate is Statement && memory.currentTask!!.sentence.isJudgment) {
                 val s2 = statement.predicate as Statement
@@ -383,7 +384,7 @@ object RuleTables {
         } else if (statement is Implication) {
             component2 = statement.componentAt(side1.toInt())
         }
-        if (component2 != null && Variable.unify(Symbols.VAR_INDEPENDENT, component, component2, conditional, statement)) {
+        if (component2 != null && Variable.unify(VAR_INDEPENDENT.sym, component, component2, conditional, statement)) {
             SyllogisticRules.conditionalDedInd(conditional, index, statement, side1.toInt(), memory)
         }
     }
@@ -448,13 +449,11 @@ object RuleTables {
         val component: Term = compound.componentAt(index.toInt())
         val task: Task = memory.currentTask!!
         if (component.javaClass == statement.javaClass) {
-            if (compound is Conjunction && memory.currentBelief != null) {
-                if (Variable.unify(Symbols.VAR_DEPENDENT, component, statement, compound, statement)) {
-                    SyllogisticRules.elimiVarDep(compound, component, statement == beliefTerm, memory)
-                } else if (task.sentence.isJudgment) { // && !compound.containComponent(component)) {
+            if (compound is Conjunction && memory.currentBelief != null) if (Variable.unify(VAR_DEPENDENT.sym, component, statement, compound, statement)) {
+                SyllogisticRules.elimiVarDep(compound, component, statement == beliefTerm, memory)
+            } else if (task.sentence.isJudgment) { // && !compound.containComponent(component)) {
 
-                    CompositionalRules.introVarInner(statement, component as Statement, compound, memory)
-                }
+                CompositionalRules.introVarInner(statement, component as Statement, compound, memory)
             }
         } else {
 //            if (!task.isStructural() && task.getSentence().isJudgment()) {

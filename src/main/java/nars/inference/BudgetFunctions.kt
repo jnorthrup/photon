@@ -61,7 +61,7 @@ object BudgetFunctions   {/* ----------------------- Belief evaluation ---------
      */
     @JvmStatic
     fun rankBelief(judg: Sentence): Float {
-        val confidence = judg.truth!!.getConfidence()
+        val confidence = judg.truth !!.confidence
         val originality = 1.0f / (judg.stamp.length() + 1)
         return or(confidence, originality)
     }
@@ -128,7 +128,7 @@ object BudgetFunctions   {/* ----------------------- Belief evaluation ---------
             bLink!!.decPriority(1 - difB)
             bLink.decDurability(1 - difB)
         }
-        val dif = truth.getConfidence() - max(tTruth.getConfidence(), bTruth.getConfidence())
+        val dif = truth.confidence - max(tTruth.confidence, bTruth.confidence)
         val priority = or(dif, task.priority)
         val durability = aveAri(dif, task.durability)
         val quality = truthToQuality(truth)

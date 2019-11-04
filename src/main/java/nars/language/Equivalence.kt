@@ -20,7 +20,8 @@
  */
 package nars.language
 
-import nars.io.Symbols
+//import nars.io.Symbols
+import nars.io.builtin_relation_arity3.EQUIVALENCE_RELATION
 import nars.storage.BackingStore
 import java.util.*
 
@@ -52,7 +53,7 @@ class Equivalence : Statement {
      */
 
     override fun clone(): Any {
-        return Equivalence(name, cloneList(components) as List<Term>, isConstant, complexity)
+        return Equivalence(name, Util2.cloneList(components) as List<Term>, isConstant, complexity)
     }
 
     /**
@@ -62,7 +63,7 @@ class Equivalence : Statement {
      */
 
     override fun operator(): String {
-        return Symbols.EQUIVALENCE_RELATION
+        return EQUIVALENCE_RELATION.sym
     }
 
     /**
@@ -95,12 +96,12 @@ class Equivalence : Statement {
                         subject1 = predicate1
                         predicate1 = interm
                     }
-                    val name = makeStatementName(subject1, Symbols.EQUIVALENCE_RELATION, predicate1)
+                    val name = makeStatementName(subject1, EQUIVALENCE_RELATION.sym, predicate1)
                     val t: Term? = memory.nameToListedTerm(name)
                     if (t != null) {
                         return t as Equivalence
                     }
-                    val argument: ArrayList<Term> = argumentsToList(subject1, predicate1)
+                    val argument: ArrayList<Term> = Util2.argumentsToList(subject1, predicate1)
                     return Equivalence(argument)
                 }
             }

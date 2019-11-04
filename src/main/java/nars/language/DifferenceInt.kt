@@ -20,7 +20,8 @@
  */
 package nars.language
 
-import nars.io.Symbols
+//import nars.io.Symbols
+import nars.io.compound_oper_arity1.DIFFERENCE_INT_OPERATOR
 import nars.storage.BackingStore
 import java.util.*
 
@@ -52,7 +53,7 @@ class DifferenceInt : CompoundTerm {
      * @return A new object, to be casted into a DifferenceInt
      */
     override fun clone(): Any {
-        return DifferenceInt(name, cloneList(components) as List<Term>, isConstant, complexity)
+        return DifferenceInt(name, Util2.cloneList(components) as List<Term>, isConstant, complexity)
     }
 
     /**
@@ -61,7 +62,7 @@ class DifferenceInt : CompoundTerm {
      * @return the operator of the term
      */
     override fun operator(): String {
-        return Symbols.DIFFERENCE_INT_OPERATOR
+        return DIFFERENCE_INT_OPERATOR.sym
     }
 
     companion object {
@@ -80,7 +81,7 @@ class DifferenceInt : CompoundTerm {
             if (argList.size != 2) {
                 return null
             }
-            val name: String? = makeCompoundName(Symbols.DIFFERENCE_INT_OPERATOR, argList)
+            val name: String? = Util2.makeCompoundName(DIFFERENCE_INT_OPERATOR.sym, argList)
             val t: Term? = memory.nameToListedTerm(name)
             return t ?: DifferenceInt(argList)
         }
@@ -103,7 +104,7 @@ class DifferenceInt : CompoundTerm {
 
                 return SetInt.make(set, memory)
             }
-            val list: ArrayList<Term> = argumentsToList(t1, t2)
+            val list: ArrayList<Term> = Util2.argumentsToList(t1, t2)
             return make(list, memory)
         }
     }

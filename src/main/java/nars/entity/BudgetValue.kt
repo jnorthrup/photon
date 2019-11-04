@@ -22,7 +22,8 @@ package nars.entity
 
 import nars.inference.BudgetFunctions
 import nars.inference.UtilityFunctions
-import nars.io.Symbols
+import nars.io.numeric_delim
+//import nars.io.Symbols
 import nars.main_nogui.Parameters
 
 /**
@@ -166,10 +167,10 @@ class BudgetValue : BudgetTriple {
         /**
          * The character that marks the two ends of a budget value
          */
-        private const val MARK = Symbols.BUDGET_VALUE_MARK
+        private   val MARK =  numeric_delim.BUDGET_VALUE_MARK.sym
         /**
          * The character that separates the factors in a budget value
          */
-        private const val SEPARATOR = Symbols.VALUE_SEPARATOR
+        private   val SEPARATOR =  numeric_delim.VALUE_SEPARATOR.sym
     }
 }

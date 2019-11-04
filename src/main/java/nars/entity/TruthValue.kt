@@ -20,21 +20,28 @@
  */
 package nars.entity
 
-import nars.io.Symbols
+//import nars.io.Symbols
+import nars.io.numeric_delim
 import kotlin.math.abs
 
 /**
  * Frequency and confidence.
  */
-class TruthValue : Cloneable  { // implements Cloneable {
-    /**
-     * The frequency factor of the truth value
-     */
-    private var frequency: Float
-    /**
-     * The confidence factor of the truth value
-     */
-    private var confidence: Float
+class TruthValue
+/**
+ * Constructor with two Floats
+ *
+ * @param f The frequency value
+ * @param c The confidence value
+ */ @JvmOverloads constructor(
+        /**
+         * The frequency factor of the truth value
+         */
+        public var frequency: Float,
+        /**
+         * The confidence factor of the truth value
+         */
+         public  var confidence: Float, public  var analytic: Boolean = false) : Cloneable { // implements Cloneable {
     /**
      * Get the isAnalytic flag
      *
@@ -43,60 +50,16 @@ class TruthValue : Cloneable  { // implements Cloneable {
     /**
      * Whether the truth value is derived from a definition
      */
-    var analytic = false
-        private set
 
-    /**
-     * Constructor with two Floats
-     *
-     * @param f The frequency value
-     * @param c The confidence value
-     */
-    constructor(f: Float, c: Float) {
-        frequency = f
-        confidence = if (c < 1) c else 0.9999f
-    }
-
-    /**
-     * Constructor with two Floats
-     *
-     * @param f The frequency value
-     * @param c The confidence value
-     */
-    constructor(f: Float, c: Float, b: Boolean) {
-        frequency = f
-        confidence = if (c < 1) c else 0.9999f
-        analytic = b
-    }
 
     /**
      * Constructor with a TruthValue to clone
      *
      * @param v The truth value to be cloned
      */
-    constructor(v: TruthValue) {
-        frequency = v.getFrequency()
-        confidence = v.getConfidence()
-        analytic = v.analytic
-    }
 
-    /**
-     * Get the frequency value
-     *
-     * @return The frequency value
-     */
-    fun getFrequency(): Float {
-        return frequency
-    }
+    constructor(v: TruthValue) : this(v.frequency, v.confidence, v.analytic)
 
-    /**
-     * Get the confidence value
-     *
-     * @return The confidence value
-     */
-    fun getConfidence(): Float {
-        return confidence
-    }
 
     /**
      * Calculate the expectation value of the truth value
@@ -123,7 +86,7 @@ class TruthValue : Cloneable  { // implements Cloneable {
      * @return True if the frequence is less than 1/2
      */
     val isNegative: Boolean
-        get() = getFrequency() < 0.5
+        get() = frequency < 0.5
 
     /**
      * Compare two truth values
@@ -132,11 +95,7 @@ class TruthValue : Cloneable  { // implements Cloneable {
      * @return Whether the two are equivalent
      */
 
-    override fun equals(that: Any?): Boolean {
-        return (that is TruthValue
-                && getFrequency() == that.getFrequency()
-                && getConfidence() == that.getConfidence())
-    }
+    override fun equals(that: Any?) = that is TruthValue &&frequency == that.frequency && confidence == that.confidence
 
     /**
      * The hash code of a TruthValue
@@ -144,16 +103,12 @@ class TruthValue : Cloneable  { // implements Cloneable {
      * @return The hash code
      */
 
-    override fun hashCode(): Int {
-        return (expectation * 37).toInt()
-    }
+    override fun hashCode() = (expectation * 37).toInt()
 
     /**
      *
      */
-    public override fun clone(): Any {
-        return TruthValue(getFrequency(), getConfidence(), analytic)
-    }
+    public override fun clone(): Any =TruthValue(this)
 
     /**
      * The String representation of a TruthValue
@@ -172,8 +127,8 @@ class TruthValue : Cloneable  { // implements Cloneable {
      * @return The String
      */
     fun toStringBrief(): String {
-        val s1 = DELIMITER.toString() + frequency.toString() + SEPARATOR
-        val s2 = confidence.toString()
+        val s1 = "" + DELIMITER + frequency.toString() + SEPARATOR
+        val s2 = "" + confidence
         return s1 + (if (s2 == "1.00") "0.99" else s2) + DELIMITER
     }
 
@@ -182,10 +137,14 @@ class TruthValue : Cloneable  { // implements Cloneable {
         /**
          * The character that marks the two ends of a truth value
          */
-        private const val DELIMITER = Symbols.TRUTH_VALUE_MARK
+        private val DELIMITER = numeric_delim.TRUTH_VALUE_MARK.sym
         /**
          * The character that separates the factors in a truth value
          */
-        private const val SEPARATOR = Symbols.VALUE_SEPARATOR
+        private val SEPARATOR = numeric_delim.VALUE_SEPARATOR.sym
+    }
+
+    init {
+        confidence = if (confidence < 1) confidence else 0.9999f
     }
 }

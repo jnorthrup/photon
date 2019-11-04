@@ -20,8 +20,9 @@
  */
 package nars.language
 
-import nars.io.Symbols
-import java.util.*
+//import nars.io.Symbols
+ import nars.io.var_type.*
+ import java.util.*
 
 /**
  * A variable term, which does not correspond to a concept
@@ -67,7 +68,7 @@ class Variable
      * @return The complexity of the term, an integer
      */
 
-    override fun getComplexity() =0 as Short
+    override fun getComplexity() = 0 as Short
 
     /**
      * variable terms are listed first alphabetically
@@ -88,8 +89,9 @@ class Variable
          * @param n The string name to be checked
          * @return Whether the name contains an independent variable
          */
-  @JvmStatic      fun containVarIndep(n: String): Boolean {
-            return n.indexOf(Symbols.VAR_INDEPENDENT) >= 0
+        @JvmStatic
+        fun containVarIndep(n: String): Boolean {
+            return n.indexOf(VAR_INDEPENDENT.sym.toString()) >= 0
         }
 
         /**
@@ -99,8 +101,9 @@ class Variable
          * @param n The string name to be checked
          * @return Whether the name contains a dependent variable
          */
-     @JvmStatic        fun containVarDep(n: String): Boolean {
-            return n.indexOf(Symbols.VAR_DEPENDENT) >= 0
+        @JvmStatic
+        fun containVarDep(n: String): Boolean {
+            return n.indexOf( VAR_DEPENDENT.sym.toString()) >= 0
         }
 
         /**
@@ -110,8 +113,9 @@ class Variable
          * @param n The string name to be checked
          * @return Whether the name contains a query variable
          */
-    @JvmStatic         fun containVarQuery(n: String): Boolean {
-            return n.indexOf(Symbols.VAR_QUERY) >= 0
+        @JvmStatic
+        fun containVarQuery(n: String): Boolean {
+            return n.indexOf(VAR_QUERY.sym.toString()) >= 0
         }
 
         /**
@@ -121,7 +125,8 @@ class Variable
          * @param n The string name to be checked
          * @return Whether the name contains a variable
          */
-    @JvmStatic         fun containVar(n: String): Boolean {
+        @JvmStatic
+        fun containVar(n: String): Boolean {
             return containVarIndep(n) || containVarDep(n) || containVarQuery(n)
         }
 
@@ -133,7 +138,8 @@ class Variable
          * @param t2   The second term
          * @return Whether the unification is possible
          */
-     @JvmStatic        fun unify(type: Char, t1: Term, t2: Term): Boolean {
+        @JvmStatic
+        fun unify(type: Any, t1: Term, t2: Term): Boolean {
             return unify(type, t1, t2, t1, t2)
         }
 
@@ -147,7 +153,8 @@ class Variable
          * @param compound2 The compound containing the second term
          * @return Whether the unification is possible
          */
-     @JvmStatic        fun unify(type: Char, t1: Term, t2: Term, compound1: Term, compound2: Term): Boolean {
+        @JvmStatic
+        fun unify(type: Any, t1: Term, t2: Term, compound1: Term, compound2: Term): Boolean {
             val map1 = HashMap<Term, Term>()
             val map2 = HashMap<Term, Term>()
             val hasSubs = findSubstitute(type, t1, t2, map1, map2) // find substitution
@@ -176,8 +183,9 @@ class Variable
          * @param map2  The substitution for term2 formed so far
          * @return Whether there is a substitution that unifies the two Terms
          */
-    @JvmStatic           fun findSubstitute(type: Char, term1: Term, term2: Term,
-                                   map1: HashMap<Term, Term>, map2: HashMap<Term, Term>): Boolean {
+        @JvmStatic
+        fun findSubstitute(type: Any, term1: Term, term2: Term,
+                           map1: HashMap<Term, Term>, map2: HashMap<Term, Term>): Boolean {
             val t: Term?
             if (term1 is Variable) {
                 t = map1[term1]
@@ -244,7 +252,8 @@ class Variable
          * @param term2 The second term to be unified
          * @return Whether there is a substitution
          */
-      @JvmStatic        fun hasSubstitute(type: Char, term1: Term, term2: Term): Boolean {
+        @JvmStatic
+        fun hasSubstitute(type: Any, term1: Term, term2: Term): Boolean {
             return findSubstitute(type, term1, term2, HashMap(), HashMap())
         }
 
@@ -255,7 +264,8 @@ class Variable
          * @param term   The term to be processed
          * @param suffix The suffix that distinguish the variables in one premise from those from the other
          */
-       @JvmStatic         fun renameVar(map: HashMap<Term, Term>, term: Term, suffix: String) {
+        @JvmStatic
+        fun renameVar(map: HashMap<Term, Term>, term: Term, suffix: String) {
             if (term is Variable) {
                 val t = map[term]
                 if (t == null) {    // new mapped yet
@@ -272,3 +282,4 @@ class Variable
         }
     }
 }
+

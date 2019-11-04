@@ -5,7 +5,9 @@ import nars.entity.Task
 import nars.io.InputChannel
 import nars.io.OutputChannel
 import nars.io.StringParser
-import nars.io.Symbols
+import nars.io.experience_line_prefix
+import nars.io.experience_line_prefix.RESET_MARK
+//import nars.io.Symbols
 import nars.storage.BackingStore
 import java.util.*
 import java.util.concurrent.atomic.AtomicInteger
@@ -162,10 +164,10 @@ class ReasonerBatch {
             return
         }
         val c = text[0]
-        if (c == Symbols.RESET_MARK) {
+        if (c == RESET_MARK.sym) {
             reset()
             memory.exportStrings!!.add(text   )
-        } else if (c != Symbols.COMMENT_MARK) {
+        } else if (c != experience_line_prefix.COMMENT_MARK.sym) {
             // read NARS language or an integer : TODO duplicated code
 
             try {

@@ -20,7 +20,9 @@
  */
 package nars.language
 
-import nars.io.Symbols
+//import nars.io.Symbols
+import nars.io.compound_delim.SET_INT_CLOSER
+import nars.io.compound_delim.SET_INT_OPENER
 import nars.storage.BackingStore
 import java.util.*
 
@@ -52,7 +54,7 @@ class SetInt : CompoundTerm {
      * @return A new object, to be casted into a SetInt
      */
     override fun clone(): Any {
-        return SetInt(name, cloneList(components) as List<Term>, isConstant, complexity)
+        return SetInt(name, Util2.cloneList(components) as List<Term>, isConstant, complexity)
     }
 
     /**
@@ -61,7 +63,7 @@ class SetInt : CompoundTerm {
      * @return the operator of the term
      */
     override fun operator(): String {
-        return "" + Symbols.SET_INT_OPENER
+        return "" + SET_INT_OPENER.sym
     }
 
     /**
@@ -81,7 +83,7 @@ class SetInt : CompoundTerm {
      */
 
     public override fun makeName(): String {
-        return makeSetName(Symbols.SET_INT_OPENER, components, Symbols.SET_INT_CLOSER)
+        return Util2.makeSetName(SET_INT_OPENER.sym, components, SET_INT_CLOSER.sym)
     }
 
     companion object {
@@ -121,7 +123,7 @@ class SetInt : CompoundTerm {
         @JvmStatic    fun make(set: SortedSet <Term>, memory: BackingStore): Term? {
             if (!set.isEmpty()) {
                 val argument = ArrayList(set)
-                val name: String? = makeSetName(Symbols.SET_INT_OPENER, argument, Symbols.SET_INT_CLOSER)
+                val name: String? = Util2.makeSetName(SET_INT_OPENER.sym, argument, SET_INT_CLOSER.sym)
                 val t: Term? = memory.nameToListedTerm(name)
                 return t ?: SetInt(argument)
             }

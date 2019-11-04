@@ -153,7 +153,7 @@ object CompositionalRules {/* -------------------- intersections and differences
         if (compound is Statement) {
             return
         }
-        val term2 = CompoundTerm.reduceComponents(compound, component, memory) ?: return
+        val term2 = Util2.reduceComponents(compound, component, memory) ?: return
         val task: Task =  memory.currentTask!!
         val sentence = task.sentence
         val belief = memory.currentBelief
@@ -245,7 +245,7 @@ object CompositionalRules {/* -------------------- intersections and differences
             return
         }
         val belief = memory.currentBelief
-        val content = CompoundTerm.reduceComponents(compound, component, memory) ?: return
+        val content = Util2.reduceComponents(compound!!, component!!, memory) ?: return
         val v1: TruthValue?
         val v2: TruthValue?
         if (compoundTask) {

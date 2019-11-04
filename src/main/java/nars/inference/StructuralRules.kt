@@ -68,7 +68,7 @@ object StructuralRules {
                 }
                 sub = compound
                 components[index.toInt()] = pred
-                pred = Util11.make(compound, components, memory)
+                pred = Util11.make(compound, components, memory)!!
             }
         } else {
             if (components.contains(pred)) {
@@ -76,7 +76,7 @@ object StructuralRules {
                     return
                 }
                 components[index.toInt()] = sub
-                sub = Util11.make(compound, components, memory)
+                sub = Util11.make(compound, components, memory)!!
                 pred = compound
             }
         }
@@ -128,8 +128,8 @@ object StructuralRules {
         if (sub.size() != pre.size() || sub.size() <= index) {
             return
         }
-        val t1: Term  = sub.componentAt(index)
-        val t2: Term  = pre.componentAt(index)
+        val t1: Term = sub.componentAt(index)
+        val t2: Term = pre.componentAt(index)
         val content: Term?
         content = if (switchOrder(sub, index.toShort())) {
             Statement.make(statement, t2, t1, memory)
@@ -303,8 +303,8 @@ object StructuralRules {
                 return
             }
         }
-        val sub: Term  = statement.subject
-        val pre: Term  = statement.predicate
+        val sub: Term = statement.subject
+        val pre: Term = statement.predicate
         val content: Term?
         content = if (statement is Inheritance) {
             Similarity.make(sub, pre, memory)
@@ -397,7 +397,7 @@ object StructuralRules {
                 if ((oldContent is Implication || oldContent is Equivalence) && condition is Conjunction) {
                     componentList = (condition as CompoundTerm).cloneComponents()
                     componentList[indices[1].toInt()] = newInh
-                    val newCond: Term = Util11.make(condition as CompoundTerm, componentList, memory)
+                    val newCond: Term = Util11.make(condition as CompoundTerm, componentList, memory)!!
                     content = Statement.make(oldContent as Statement, newCond, oldContent.predicate, memory)
                 } else {
                     componentList = oldContent.cloneComponents()
@@ -442,7 +442,7 @@ object StructuralRules {
         if (subject is Product) {
             for (i in 0 until subject.size()) {
                 newSubj = subject.componentAt(i)
-                newPred = ImageExt .make(subject, predicate, i.toShort(), memory)
+                newPred = ImageExt.make(subject, predicate, i.toShort(), memory)
                 inheritance = Inheritance.make(newSubj, newPred, memory)
                 budget = if (truth == null) {
                     compoundBackward(inheritance!!, memory)
@@ -508,7 +508,7 @@ object StructuralRules {
                     newPred = predicate.componentAt(relationIndex)
                 } else {
                     newSubj = predicate.componentAt(i)
-                    newPred = ImageExt.make(predicate, subject, i , memory)
+                    newPred = ImageExt.make(predicate, subject, i, memory)
                 }
                 inheritance = Inheritance.make(newSubj, newPred, memory)
                 if (inheritance != null) { // jmv <<<<<
@@ -596,13 +596,13 @@ object StructuralRules {
      * @param memory    Reference to the memory
      */
     internal fun contraposition(statement: Statement, memory: BackingStore) {
-        val subj: Term  = statement.subject
-        val pred: Term  = statement.predicate
+        val subj: Term = statement.subject
+        val pred: Term = statement.predicate
         val task: Task = memory.currentTask!!
         val sentence = task.sentence
         val term = Negation.make(pred, memory) as Term
         val make = Negation.make(subj, memory)
-        val content: Term? = Statement.make(statement, term, make!!, memory)as Term
+        val content: Term? = Statement.make(statement, term, make!!, memory) as Term
         var truth = sentence.truth
         val budget: BudgetValue
         if (sentence.isQuestion) {
