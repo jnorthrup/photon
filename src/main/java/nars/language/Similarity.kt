@@ -53,7 +53,7 @@ class Similarity : Statement {
      * @return A new object, to be casted into a Similarity
      */
 
-    override fun clone(): Any {
+    override fun clone(): Term {
         return Similarity(name, Util2.cloneList(components) as List<Term>, isConstant, complexity)
     }
 

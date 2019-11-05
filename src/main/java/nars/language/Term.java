@@ -48,9 +48,9 @@ public class Term implements Cloneable, Comparable<Term> {
      *
      * @param name A String as the name of the Term
      */
-    public Term(String name) {
-        this.name = name;
-    }
+    public Term(String name) { this.name = name; }
+
+    public Term(Term term) { this(term.getName()); }
 
     /**
      * Reporting the name of the current Term.
@@ -68,8 +68,8 @@ public class Term implements Cloneable, Comparable<Term> {
      */
 
     @Override
-    public Object clone() {
-        return new Term(name);
+    public Term clone() {
+        return new Term(this);
     }
 
     /**

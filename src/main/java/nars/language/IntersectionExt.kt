@@ -52,7 +52,7 @@ class IntersectionExt : CompoundTerm {
      *
      * @return A new object, to be casted into a IntersectionExt
      */
-    override fun clone(): Any {
+    override fun clone(): Term {
         return IntersectionExt(name, Util2.cloneList(components) as List<Term>, isConstant, complexity)
     }
 

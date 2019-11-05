@@ -52,7 +52,7 @@ class IntersectionInt : CompoundTerm {
      *
      * @return A new object, to be casted into a Conjunction
      */
-    override fun clone(): Any {
+    override fun clone(): Term {
         return IntersectionInt(name, Util2.cloneList(components) as List<Term>, isConstant, complexity)
     }
 

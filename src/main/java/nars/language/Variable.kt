@@ -39,7 +39,7 @@ class Variable
      * @return The cloned Variable
      */
 
-    override fun clone(): Any {
+    override fun clone(): Term {
         return Variable(name)
     }
 

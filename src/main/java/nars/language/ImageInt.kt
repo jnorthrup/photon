@@ -76,7 +76,7 @@ class ImageInt : CompoundTerm {
      *
      * @return A new object, to be casted into an ImageInt
      */
-    override fun clone(): Any {
+    override fun clone(): Term {
         return ImageInt(name, Util2.cloneList(components) as List<Term>, isConstant, complexity, relationIndex)
     }
 

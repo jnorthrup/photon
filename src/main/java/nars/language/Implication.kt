@@ -51,7 +51,7 @@ class Implication : Statement {
      *
      * @return A new object
      */
-    override fun clone(): Any {
+    override fun clone(): Term {
         return Implication(name, Util2.cloneList(components) as List<Term>, isConstant, complexity)
     }
 

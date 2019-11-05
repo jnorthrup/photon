@@ -53,7 +53,7 @@ class Disjunction : CompoundTerm {
      * @return A new object
      */
 
-    override fun clone(): Any {
+    override fun clone(): Term {
         return Disjunction(name, Util2.cloneList(components) as List<Term>, isConstant, complexity)
     }
 

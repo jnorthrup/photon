@@ -21,7 +21,6 @@
 package nars.language
 
 //import nars.io.Symbols
-import nars.io.compound_oper_arity1
 import nars.io.compound_oper_arity1.*
 import nars.storage.BackingStore
 import java.util.*
@@ -53,7 +52,7 @@ class DifferenceExt : CompoundTerm {
      *
      * @return A new object, to be casted into a DifferenceExt
      */
-    override fun clone(): Any {
+    override fun clone(): Term {
         return DifferenceExt(name, Util2.cloneList(components) as List<Term>, isConstant, complexity as Int)
     }
 

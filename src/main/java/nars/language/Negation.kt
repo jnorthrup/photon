@@ -53,7 +53,7 @@ class Negation : CompoundTerm {
      * @return A new object
      */
 
-    override fun clone(): Any {
+    override fun clone(): Term {
         return Negation(name, Util2.cloneList(components), isConstant, complexity)
     }
 

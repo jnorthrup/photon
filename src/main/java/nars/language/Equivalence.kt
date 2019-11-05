@@ -52,7 +52,7 @@ class Equivalence : Statement {
      * @return A new object
      */
 
-    override fun clone(): Any {
+    override fun clone(): Term {
         return Equivalence(name, Util2.cloneList(components) as List<Term>, isConstant, complexity)
     }
 

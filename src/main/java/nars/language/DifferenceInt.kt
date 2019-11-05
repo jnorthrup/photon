@@ -52,7 +52,7 @@ class DifferenceInt : CompoundTerm {
      *
      * @return A new object, to be casted into a DifferenceInt
      */
-    override fun clone(): Any {
+    override fun clone(): Term {
         return DifferenceInt(name, Util2.cloneList(components) as List<Term>, isConstant, complexity)
     }
 

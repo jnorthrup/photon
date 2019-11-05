@@ -74,7 +74,7 @@ class ImageExt : CompoundTerm {
      *
      * @return A new object, to be casted into an ImageExt
      */
-    override fun clone(): Any {
+    override fun clone(): Term {
         return ImageExt(name, Util2.cloneList(components) as List<Term>, isConstant, complexity, relationIndex.toInt())
     }
 

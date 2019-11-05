@@ -53,7 +53,7 @@ class SetExt : CompoundTerm {
      *
      * @return A new object, to be casted into a SetExt
      */
-    override fun clone(): Any {
+    override fun clone(): Term {
         return SetExt(name, Util2.cloneList(components) as List<Term>, isConstant, complexity)
     }
 
