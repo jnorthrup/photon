@@ -47,8 +47,8 @@ abstract class CompoundTerm : CompoundTermState {
      * @param isConstant Whether the term refers to a concept
      * @param complexity Complexity of the compound term
      */
-    internal constructor(name: String?, components: List<Term?>?, isConstant: Boolean, complexity:  Int) : super(name!!) {
-        this.components = components as List<Term>?
+    internal constructor(name: String?, components: List<Term>?, isConstant: Boolean, complexity:  Int) : super(name!!) {
+        this.components = components
         this.constant = (isConstant)
         this.complexity = (complexity)
     }

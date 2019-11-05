@@ -47,7 +47,7 @@ abstract class Statement : CompoundTerm {
      * @param con Constant indicator
      * @param i   Syntactic complexity of the compound
      */
-    protected constructor(n: String?, cs: List<Term?>?, con: Boolean, i:  Int) : super(n, cs, con, i)
+    protected constructor(n: String?, cs: List<Term >?, con: Boolean, i:  Int) : super(n, cs, con, i)
 
     /**
      * Override the default in making the nameStr of the current term from existing fields

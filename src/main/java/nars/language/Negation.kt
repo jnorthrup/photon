@@ -45,7 +45,7 @@ class Negation : CompoundTerm {
      * @param open Open variable list
      * @param i    Syntactic complexity of the compound
      */
-    private constructor(n: String, cs: List<Term?>?, con: Boolean, i:  Int) : super(n, cs, con, i)
+    private constructor(n: String, cs: List<Term >?, con: Boolean, i:  Int) : super(n, cs, con, i)
 
     /**
      * Clone an object
