@@ -20,7 +20,7 @@
  */
 package nars.entity;
 
- import nars.language.Term;
+import nars.language.Term;
 import org.jetbrains.annotations.Nullable;
 
 /**
@@ -35,11 +35,11 @@ import org.jetbrains.annotations.Nullable;
  * <p>
  * This class is mainly used in inference.RuleTable to dispatch premises to inference rules
  */
-public class TermLink extends   ItemIdentity   {
+public class TermLink extends ItemIdentity {
+    public TermLinkConstants type;
     private String key = null;
-    public  TermLinkConstants type;
     @Nullable
-    private int [] index;
+    private int[] index;
     private Term target;
 
     /**
@@ -47,11 +47,11 @@ public class TermLink extends   ItemIdentity   {
      * <p>
      * called in CompoundTerm.prepareComponentLinks only
      *
-     * @param t       Target Term
-     * @param termlinkType       Link type
-     * @param indices Component indices in compound, may be 1 to 4
+     * @param t            Target Term
+     * @param termlinkType Link type
+     * @param indices      Component indices in compound, may be 1 to 4
      */
-    public TermLink(Term t, TermLinkConstants termlinkType, int... indices) {
+    private TermLink(Term t, TermLinkConstants termlinkType, int... indices) {
         setTarget(t);
         setType(termlinkType);
         assert (type.ordinal() % 2 == 0); // template types all point to compound, though the target is component
@@ -77,7 +77,7 @@ public class TermLink extends   ItemIdentity   {
      * @param v The budget value of the TaskLink
      */
     protected TermLink(String s, BudgetValue v) {
-        super(  v);
+        super(v);
         setKey(s);
     }
 
@@ -91,18 +91,21 @@ public class TermLink extends   ItemIdentity   {
      * @param v        Budget value of the link
      */
     public TermLink(Term t, TermLink template, BudgetValue v) {
-        super(  v);
+        super(v);
         setTarget(t);
         setType(template.type);
         if (template.getTarget().equals(t)) {
-            setType(type .ordinal()- 1);     // point to component
+            setType(type.ordinal() - 1);     // point to component
         }
         setIndex(template.getIndices());
-//        setKey();
     }
 
-    public void setKey(String key) {
-        this.key = key;
+    public TermLink() {
+
+    }
+
+    public static TermLink createTermLink(Term t, TermLinkConstants termlinkType, int... indices) {
+        return new TermLink(t, termlinkType, indices);
     }
 
     public void setType(int type) {
@@ -125,38 +128,20 @@ public class TermLink extends   ItemIdentity   {
         this.index = index;
     }
 
-    public void setTarget(Term target) {
-        this.target = target;
-    }
-
-    enum   termlink_type     {
-        TO_COMPONENT_1(" @("),
-                TO_COMPONENT_2(")_ "),
-                TO_COMPOUND_1(" _@("),
-                TO_COMPOUND_2(") "),
-        ;
-
-        private final String sym;
-
-        termlink_type(String sym) {
-
-            this.sym = sym;
-        }
-    }
     /**
      * Set the key of the link
      */
-    public   String getKey() {
+    public String getKey() {
         if (this.key == null) {
             String key, at1, at2;
             if ((type.ordinal() % 2) == 1) {  // to component
-                at1 = termlink_type.TO_COMPONENT_1.sym;
-                at2 = termlink_type.TO_COMPONENT_2.sym;
+                at1 = TermlinkAnnotationSymbols.TO_COMPONENT_1.sym;
+                at2 = TermlinkAnnotationSymbols.TO_COMPONENT_2.sym;
             } else {                // to compound
-                at1 = termlink_type.TO_COMPOUND_1.sym;
-                at2 = termlink_type.TO_COMPOUND_2.sym;
+                at1 = TermlinkAnnotationSymbols.TO_COMPOUND_1.sym;
+                at2 = TermlinkAnnotationSymbols.TO_COMPOUND_2.sym;
             }
-            var in = "T" + type;
+            var in = "" + type;
             if (getIndex() != null) {
                 for (int value : getIndex()) {
                     in += "-" + (value + 1);
@@ -172,9 +157,11 @@ public class TermLink extends   ItemIdentity   {
         }
     }
 
+    public void setKey(String key) {
+        this.key = key;
+    }
+
     /**
-     * The linked Term
-     */ /**
      * Get the target of the link
      *
      * @return The Term pointed by the link
@@ -182,6 +169,14 @@ public class TermLink extends   ItemIdentity   {
     public Term getTarget() {
         return target;
     }
+
+    public void setTarget(Term target) {
+        this.target = target;
+    }
+
+    /**
+     * The linked Term
+     */
 
     /**
      * Get all the indices
@@ -198,7 +193,7 @@ public class TermLink extends   ItemIdentity   {
      * @param i The index level
      * @return The index value
      */
-    public  int getIndex(int i) {
+    public int getIndex(int i) {
         if ((getIndex() != null) && (i < getIndex().length)) {
             return getIndex()[i];
         } else {
