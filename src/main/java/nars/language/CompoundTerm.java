@@ -188,8 +188,8 @@ public abstract class CompoundTerm extends CompoundTermState {
      *
      * @return The cloned component list
      */
-    public   List<Term> cloneComponents() {
-        return Util2.cloneList(getComponents());
+    public   ArrayList<Term> cloneComponents() {
+        return (ArrayList<Term>) Util2.cloneList(getComponents());
     }
 
     /**
@@ -267,7 +267,7 @@ public abstract class CompoundTerm extends CompoundTermState {
      *
      * @param map The substitution established so far
      */
-    void renameVariables(HashMap<Variable, Variable> map) {
+    void renameVariables( Map<Variable, Variable> map) {
         if (containVar()) {
             for (var i = 0; i < getComponents().size(); i++) {
                 var term = componentAt(i);
@@ -298,7 +298,7 @@ public abstract class CompoundTerm extends CompoundTermState {
      *
      * @param subs
      */
-    public void applySubstitute(HashMap<Term, Term> subs) {
+    public void applySubstitute( Map<Term, Term> subs) {
         Term t1, t2;
         for (var i = 0; i < size(); i++) {
             t1 = componentAt(i);
@@ -326,7 +326,7 @@ public abstract class CompoundTerm extends CompoundTermState {
      *
      * @return A list of TermLink templates
      */
-    public   List<TermLinkConstants> prepareComponentLinks() {
+    public   ArrayList <TermLinkConstants> prepareComponentLinks() {
         var componentLinks = new ArrayList<TermLinkConstants>();
         var type = (this instanceof Statement) ? TermLinkConstants.COMPOUND_STATEMENT : TermLinkConstants.COMPOUND;   // default
         prepareComponentLinks(componentLinks, type, this);

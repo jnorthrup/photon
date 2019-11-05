@@ -136,17 +136,7 @@ object Util2 {
      * @return an identical and separate copy of the list
      */
     @JvmStatic
-    fun cloneList(original: Collection<Term>?): ArrayList<Term>? {
-        if (original == null) {
-            return null
-        }
-        val terms = ArrayList<Term>(original.size)
-        for (term in original) {
-            val clone = term.clone() as Term
-            terms.add(clone)
-        }
-        return terms
-    }
+    fun cloneList(original: Collection<Term>?): List<Term>? = original?.map(::Term)
 
     /**
      * Try to remove a component from a compound
