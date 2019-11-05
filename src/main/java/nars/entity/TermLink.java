@@ -51,7 +51,7 @@ public class TermLink extends ItemIdentity {
      * @param termlinkType Link type
      * @param indices      Component indices in compound, may be 1 to 4
      */
-    private TermLink(Term t, TermLinkConstants termlinkType, int... indices) {
+   public   TermLink(Term t, TermLinkConstants termlinkType, int... indices) {
         setTarget(t);
         setType(termlinkType);
         assert (type.ordinal() % 2 == 0); // template types all point to compound, though the target is component
@@ -76,7 +76,7 @@ public class TermLink extends ItemIdentity {
      * @param s The key of the TaskLink
      * @param v The budget value of the TaskLink
      */
-    protected TermLink(String s, BudgetValue v) {
+ public     TermLink(String s, BudgetValue v) {
         super(v);
         setKey(s);
     }
@@ -135,11 +135,11 @@ public class TermLink extends ItemIdentity {
         if (this.key == null) {
             String key, at1, at2;
             if ((type.ordinal() % 2) == 1) {  // to component
-                at1 = TermlinkAnnotationSymbols.TO_COMPONENT_1.sym;
-                at2 = TermlinkAnnotationSymbols.TO_COMPONENT_2.sym;
+                at1 = TermlinkAnnotationSymbols.TO_COMPONENT_1.getSym();
+                at2 = TermlinkAnnotationSymbols.TO_COMPONENT_2.getSym();
             } else {                // to compound
-                at1 = TermlinkAnnotationSymbols.TO_COMPOUND_1.sym;
-                at2 = TermlinkAnnotationSymbols.TO_COMPOUND_2.sym;
+                at1 = TermlinkAnnotationSymbols.TO_COMPOUND_1.getSym();
+                at2 = TermlinkAnnotationSymbols.TO_COMPOUND_2.getSym();
             }
             var in = "" + type;
             if (getIndex() != null) {
