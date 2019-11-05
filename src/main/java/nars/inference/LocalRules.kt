@@ -210,9 +210,9 @@ object LocalRules {/* -------------------- same contents -------------------- */
         }
         val value1 = judgment1.truth
         val value2 = judgment2!!.truth
-        val truth: TruthValue? = TruthFunctions.intersection(value1!!, value2!!)
+        val truth: TruthValue  = TruthFunctions.intersection(value1!!, value2!!)
         val budget = memory.forward(truth)
-        memory.doublePremiseTask(content, truth, budget)
+        memory.doublePremiseTask(content!!, truth, budget)
     }
 
     /**
@@ -227,8 +227,8 @@ object LocalRules {/* -------------------- same contents -------------------- */
         val statement = asym.content as Statement
         val sub: Term  = statement.predicate
         val pre: Term  = statement.subject
-        val content: Statement? = Statement.make(statement, sub, pre, memory)
-        val truth: TruthValue? = TruthFunctions.reduceConjunction(sym.truth!!, asym.truth!!)
+        val content: Statement = Statement.make(statement, sub, pre, memory)!!
+        val truth: TruthValue  = TruthFunctions.reduceConjunction(sym.truth!!, asym.truth!!)
         val budget = memory.forward(truth)
         memory.doublePremiseTask(content, truth, budget)
     }
@@ -291,6 +291,6 @@ object LocalRules {/* -------------------- same contents -------------------- */
             otherTerm = if (subjT == subjB) predB else subjB
             content = Statement.make(content, subjT, otherTerm, memory)!!
         }
-        memory.singlePremiseTask(content, sentence_type.JUDGMENT_MARK.sym, newTruth, newBudget)
+        memory.singlePremiseTask(content, sentence_type.JUDGMENT_MARK.sym, newTruth!!, newBudget)
     }
 }

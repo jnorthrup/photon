@@ -278,15 +278,7 @@ object TruthFunctions : UtilityFunctions() {/* ----- Single argument functions, 
      * @param v2 Truth value of the second premise
      * @return Truth value of the conclusion
     </M></M> */
-    internal fun intersection(v1: TruthValue, v2: TruthValue): TruthValue {
-        val f1 = v1.frequency
-        val f2 = v2.frequency
-        val c1 = v1.confidence
-        val c2 = v2.confidence
-        val f = and(f1, f2)
-        val c = and(c1, c2)
-        return TruthValue(f, c)
-    }
+    internal fun intersection(v1: TruthValue, v2: TruthValue): TruthValue = TruthValue(and(v1.frequency, v2.frequency), and(v1.confidence, v2.confidence))
 
     /**
      * {(||, A, B), (--, B)} |- A

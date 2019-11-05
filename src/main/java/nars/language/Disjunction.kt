@@ -125,14 +125,12 @@ class Disjunction : CompoundTerm {
          * @return the Term generated from the arguments
          */
   @JvmStatic      fun make(set: TreeSet<Term>, memory: BackingStore): Term {
-            if (set.size == 1) {
-                return set.first()
-            }                         // special case: single component
-
-            val argument = ArrayList(set)
-            val name: String? = Util2.makeCompoundName(DISJUNCTION_OPERATOR.sym, argument)
-            val t: Term? = memory.nameToListedTerm(name)
-            return t ?: Disjunction(argument)
-        }
+            if (set.size != 1) {
+                val argument = ArrayList(set)
+                val t  = memory.nameToListedTerm(Util2.makeCompoundName(DISJUNCTION_OPERATOR.sym, argument))
+                return t ?: Disjunction(argument)
+            }
+            return set.first()
+        }                         // special case: single component
     }
 }

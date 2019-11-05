@@ -121,8 +121,8 @@ class SetInt : CompoundTerm {
         @JvmStatic    fun make(set: SortedSet <Term>, memory: BackingStore): Term? {
             if (!set.isEmpty()) {
                 val argument = ArrayList(set)
-                val name: String? = Util2.makeSetName(SET_INT_OPENER.sym, argument, SET_INT_CLOSER.sym)
-                val t: Term? = memory.nameToListedTerm(name)
+                val name  = Util2.makeSetName(SET_INT_OPENER.sym, argument, SET_INT_CLOSER.sym)
+                val t = memory.nameToListedTerm(name)
                 return t ?: SetInt(argument)
             }
             return null

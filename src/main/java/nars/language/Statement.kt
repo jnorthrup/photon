@@ -38,7 +38,6 @@ abstract class Statement : CompoundTerm {
     protected constructor(arg: List<Term?>?) : super(arg)
 
 
-
     /**
      * Constructor with full values, called by clone
      *
@@ -47,7 +46,7 @@ abstract class Statement : CompoundTerm {
      * @param con Constant indicator
      * @param i   Syntactic complexity of the compound
      */
-    protected constructor(n: String?, cs: List<Term >?, con: Boolean, i:  Int) : super(n, cs, con, i)
+    protected constructor(n: String?, cs: List<Term>?, con: Boolean, i: Int) : super(n, cs, con, i)
 
     /**
      * Override the default in making the nameStr of the current term from existing fields
@@ -97,7 +96,8 @@ abstract class Statement : CompoundTerm {
          * @param memory    Reference to the memory
          * @return The Statement built
          */
-      @JvmStatic  fun make(relation: String, subject: Term, predicate: Term, memory: BackingStore): Statement? {
+        @JvmStatic
+        fun make(relation: String, subject: Term, predicate: Term, memory: BackingStore): Statement? {
             if (!invalidStatement(subject, predicate)) {
                 return when (relation) {
                     INHERITANCE_RELATION.sym -> Inheritance.make(subject, predicate, memory)
@@ -123,20 +123,22 @@ abstract class Statement : CompoundTerm {
          * @param memory    Reference to the memory
          * @return The Statement built
          */
-      @JvmStatic      fun make(statement: Statement , subj: Term , pred: Term, memory: BackingStore): Statement? {
-            if (statement is Inheritance) {
-                return Inheritance.make(subj, pred, memory)
-            }
-            if (statement is Similarity) {
-                return Similarity.make(subj, pred, memory)
-            }
-            if (statement is Implication) {
-                return Implication.make(subj, pred, memory)
-            }
-            return if (statement is Equivalence) {
-                Equivalence.make(subj, pred, memory)
-            } else null
-        }
+        @JvmStatic
+        fun make(statement: Statement, subj: Term, pred: Term, memory: BackingStore) =
+                when (statement) {
+                    is Inheritance -> {
+                        Inheritance.make(subj, pred, memory)
+                    }
+                    is Similarity -> {
+                        Similarity.make(subj, pred, memory)
+                    }
+                    is Implication -> {
+                        Implication.make(subj, pred, memory)
+                    }
+                    else -> if (statement is Equivalence) {
+                        Equivalence.make(subj, pred, memory)
+                    } else null
+                }
 
         /**
          * Make a symmetric Statement from given components and temporal information, called by the rules
@@ -147,7 +149,8 @@ abstract class Statement : CompoundTerm {
          * @param memory    Reference to the memory
          * @return The Statement built
          */
-     @JvmStatic       fun makeSym(statement: Statement, subj: Term, pred: Term, memory: BackingStore): Statement? {
+        @JvmStatic
+        fun makeSym(statement: Statement, subj: Term, pred: Term, memory: BackingStore): Statement? {
             if (statement is Inheritance) {
                 return Similarity.make(subj, pred, memory)
             }
@@ -162,7 +165,8 @@ abstract class Statement : CompoundTerm {
          * @param s0 The String to be checked
          * @return if the given String is a relation symbol
          */
-     @JvmStatic       fun isRelation(s0: String): Boolean {
+        @JvmStatic
+        fun isRelation(s0: String): Boolean {
             val s = s0.trim { it <= ' ' }
             return if (s.length != 3) {
                 false
@@ -177,7 +181,8 @@ abstract class Statement : CompoundTerm {
          * @param relation  The relation operator
          * @return The nameStr of the term
          */
-     @JvmStatic       protected fun makeStatementName(subject: Term, relation: Any, predicate: Term): String {
+        @JvmStatic
+        protected fun makeStatementName(subject: Term, relation: Any, predicate: Term): String {
             val nameStr = StringBuilder()
             nameStr.append(compound_delim.STATEMENT_OPENER.sym)
             nameStr.append(subject.name)
@@ -197,7 +202,8 @@ abstract class Statement : CompoundTerm {
          * @param predicate The second component
          * @return Whether The Statement is invalid
          */
-    @JvmStatic        fun invalidStatement(subject: Term, predicate: Term): Boolean {
+        @JvmStatic
+        fun invalidStatement(subject: Term, predicate: Term): Boolean {
             if (subject == predicate) {
                 return true
             }

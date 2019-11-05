@@ -141,7 +141,7 @@ class IntersectionInt : CompoundTerm {
             }                         // special case: single component
 
             val argument = ArrayList(set)
-            val name: String? = Util2.makeCompoundName(INTERSECTION_INT_OPERATOR.sym, argument)
+            val name = Util2.makeCompoundName(INTERSECTION_INT_OPERATOR.sym, argument)
             val t: Term? = memory.nameToListedTerm(name)
             return t ?: IntersectionInt(argument)
         }

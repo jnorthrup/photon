@@ -74,8 +74,8 @@ class Product : CompoundTerm {
          * @return the Term generated from the arguments
          */
         @JvmStatic   fun make(argument: List<Term>, memory: BackingStore): Term {
-            val name: String? = Util2.makeCompoundName(PRODUCT_OPERATOR.sym, argument)
-            val t: Term? = memory.nameToListedTerm(name)
+            val name  = Util2.makeCompoundName(PRODUCT_OPERATOR.sym, argument)
+            val t = memory.nameToListedTerm(name)
             return t ?: Product(argument)
         }
 

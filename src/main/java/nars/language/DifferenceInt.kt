@@ -81,8 +81,8 @@ class DifferenceInt : CompoundTerm {
             if (argList.size != 2) {
                 return null
             }
-            val name: String? = Util2.makeCompoundName(DIFFERENCE_INT_OPERATOR.sym, argList)
-            val t: Term? = memory.nameToListedTerm(name)
+            val name  = Util2.makeCompoundName(DIFFERENCE_INT_OPERATOR.sym, argList)
+            val t = memory.nameToListedTerm(name)
             return t ?: DifferenceInt(argList)
         }
 

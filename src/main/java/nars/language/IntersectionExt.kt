@@ -140,8 +140,8 @@ class IntersectionExt : CompoundTerm {
             }                         // special case: single component
 
             val argument = ArrayList(set)
-            val name: String? = Util2.makeCompoundName(INTERSECTION_EXT_OPERATOR.sym, argument)
-            val t: Term? = memory.nameToListedTerm(name)
+            val name  = Util2.makeCompoundName(INTERSECTION_EXT_OPERATOR.sym, argument)
+            val t = memory.nameToListedTerm(name)
             return t ?: IntersectionExt(argument)
         }
     }

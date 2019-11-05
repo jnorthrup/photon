@@ -110,7 +110,7 @@ class Conjunction : CompoundTerm {
             }                         // special case: single component
 
             val argument = ArrayList(set)
-            val name: String? = Util2.makeCompoundName(CONJUNCTION_OPERATOR.sym, argument)
+            val name = Util2.makeCompoundName(CONJUNCTION_OPERATOR.sym, argument)
             val t: Term? = memory.nameToListedTerm(name)
             return t ?: Conjunction(argument)
         }

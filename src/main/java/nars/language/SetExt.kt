@@ -122,8 +122,8 @@ class SetExt : CompoundTerm {
                 return null
             }
             val argument = ArrayList(set)
-            val name: String? = Util2.makeSetName(SET_EXT_OPENER.sym, argument, SET_EXT_CLOSER.sym)
-            val t: Term? = memory.nameToListedTerm(name)
+            val name  = Util2.makeSetName(SET_EXT_OPENER.sym, argument, SET_EXT_CLOSER.sym)
+            val t = memory.nameToListedTerm(name)
             return t ?: SetExt(argument)
         }
     }

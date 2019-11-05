@@ -107,9 +107,9 @@ class Stamp : Cloneable {
      * @param second The second Stamp
      */
     private constructor(first: Stamp, second: Stamp, time: Long) {
-        var i1: Int=0
-        var i2: Int=0
-        var j: Int=0
+        var i1 =0
+        var i2 =0
+        var j =0
         baseLength = min(first.length() + second.length(), Parameters.MAXIMUM_STAMP_LENGTH)
         base = LongArray(baseLength)
         while (i2 < second.length() && j < baseLength) {

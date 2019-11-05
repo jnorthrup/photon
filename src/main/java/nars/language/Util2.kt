@@ -68,14 +68,16 @@ object Util2 {
      * @param op  the term operator
      * @param arg the list of components
      * @return the oldName of the term
-     * TODO: whoa blinding side effects!
+     *
      * */
     @JvmStatic
-      fun makeCompoundName(op: Any, arg: Iterable<Term>): String {
-        arg.filter { it is CompoundTerm }.forEach { (it as CompoundTermState).apply { this.name=((this as CompoundTerm).makeName()) } }
-        return arg.map(Term::name).joinToString(prefix = "${COMPOUND_TERM_OPENER.sym}$op", separator = ARGUMENT_SEPARATOR.sym.toString(), postfix = COMPOUND_TERM_CLOSER.sym.toString())
+    fun makeCompoundName(op: Any, arg: Iterable<Term>) =
+            arg.filter { it is CompoundTerm }.forEach { (it as CompoundTerm).apply { this.name = this.makeName() } /*TODO: whoa blinding side effects!*/ }.let {
 
-        //PRESERVED FOR VERIFICATION
+                arg.map(Term::name).joinToString(prefix = "${COMPOUND_TERM_OPENER.sym}$op", separator = ARGUMENT_SEPARATOR.sym.toString(), postfix = COMPOUND_TERM_CLOSER.sym.toString())
+            }
+
+    //PRESERVED FOR VERIFICATION
 //        var name = "${COMPOUND_TERM_OPENER.sym}$op"
 //        arg.forEach { t ->
 //            name+=(ARGUMENT_SEPARATOR.sym)
@@ -84,7 +86,6 @@ object Util2 {
 //        }
 //        name+=(COMPOUND_TERM_CLOSER.sym)
 //        return name
-    }
 
     /**
      * make the oldName of an ExtensionSet or IntensionSet
@@ -139,7 +140,7 @@ object Util2 {
      * @return an identical and separate copy of the list
      */
     @JvmStatic
-    fun cloneList(original: Collection<Term>?)  =CopyOnWriteArrayList(   original  ?: emptyList<Term>())
+    fun cloneList(original: Collection<Term>?) = CopyOnWriteArrayList(original ?: emptyList<Term>())
 
     /**
      * Try to remove a component from a compound
@@ -154,11 +155,11 @@ object Util2 {
         val success: Boolean
         val list = t1.cloneComponents()
         success = if (t1.javaClass == t2.javaClass) {
-            list!!.removeAll((t2 as CompoundTermState).components!!)
+            list.removeAll((t2 as CompoundTermState).components!!)
         } else {
-            list!!.remove(t2)
+            list.remove(t2)
         }
-        return if (success) make(t1, list!!, memory!!) else null
+        return if (success) make(t1, list, memory!!) else null
     }
 
 

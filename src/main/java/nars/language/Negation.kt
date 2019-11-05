@@ -93,7 +93,7 @@ class Negation : CompoundTerm {
         @JvmStatic      fun make(argument: List<Term>, memory: BackingStore): Term? {
             var result: Term? = null
             if (argument.size == 1) {
-                val name: String? = Util2.makeCompoundName(NEGATION_OPERATOR.sym, argument)
+                val name = Util2.makeCompoundName(NEGATION_OPERATOR.sym, argument)
                 val t: Term? = memory.nameToListedTerm(name)
                 result = t ?: Negation(argument)
             }

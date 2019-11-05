@@ -74,16 +74,17 @@ class DifferenceExt : CompoundTerm {
          * @return the Term generated from the arguments
          */
    @JvmStatic         fun make(argList: List<Term>, memory: BackingStore): Term? {
-            if (argList.size == 1) { // special case from CompoundTerm.reduceComponent
-
-                return argList[0]
-            }
-            if (argList.size != 2) {
+            if (argList.size != 1) {
+                if (argList.size == 2) {
+                    val name = Util2.makeCompoundName(DIFFERENCE_EXT_OPERATOR.sym, argList)
+                    val t  = memory.nameToListedTerm(name)
+                    return t ?: DifferenceExt(argList)
+                }
                 return null
             }
-            val name: String? = Util2.makeCompoundName(DIFFERENCE_EXT_OPERATOR.sym, argList)
-            val t: Term? = memory.nameToListedTerm(name)
-            return t ?: DifferenceExt(argList)
+            // special case from CompoundTerm.reduceComponent
+
+            return argList[0]
         }
 
         /**

@@ -143,9 +143,8 @@ abstract class Bag<E : ItemIdentity?> protected constructor(
      * @param key The key of the ImmutableItemIdentity
      * @return The ImmutableItemIdentity with the given key
      */
-    operator fun get(key: String): E? {
-        return nameTable!![key]
-    }
+    operator fun get(key: String) = nameTable?.get(key)
+
 
     /**
      * Add a new ImmutableItemIdentity into the Bag
@@ -155,7 +154,7 @@ abstract class Bag<E : ItemIdentity?> protected constructor(
      */
     fun putIn(newItem: E): Boolean {
         val newKey = newItem!!.key
-        val oldItem = nameTable!!.put(newKey, newItem)
+        val oldItem = nameTable?.put(newKey, newItem)
         if (oldItem != null) {                  // merge duplications
 
             outOfBase(oldItem)
