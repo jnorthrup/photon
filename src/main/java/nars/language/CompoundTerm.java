@@ -118,19 +118,24 @@ public abstract class CompoundTerm extends CompoundTermState {
 
     @Override
     public int compareTo(Term that) {
+        int result = 1;
+        boolean finished = false;
         if (that instanceof CompoundTerm) {
-            var t = (CompoundTerm ) that;
+            var t = (CompoundTerm) that;
             var minSize = Math.min(size(), t.size());
             for (var i = 0; i < minSize; i++) {
                 var diff = componentAt(i).compareTo(t.componentAt(i));
                 if (diff != 0) {
-                    return diff;
+                    result = diff;
+                    finished = true;
+                    break;
                 }
             }
-            return size() - t.size();
-        } else {
-            return 1;
+            if (!finished) {
+                result = size() - t.size();
+            }
         }
+        return result;
     }
 
     /**
@@ -206,12 +211,14 @@ public abstract class CompoundTerm extends CompoundTermState {
 
     @Override
     public boolean containTerm(Term target) {
+        boolean result = false;
         for (Term term : getComponents()) {
             if (term.containTerm(target)) {
-                return true;
+                result = true;
+                break;
             }
         }
-        return false;
+        return result;
     }
 
     /**
@@ -222,11 +229,13 @@ public abstract class CompoundTerm extends CompoundTermState {
      * @return Whether the components are all in the compound
      */
     public boolean containAllComponents(Term t) {
+        boolean result;
         if (getClass() == t.getClass()) {
-            return getComponents().containsAll(((CompoundTermState) t).getComponents());
+            result = getComponents().containsAll(((CompoundTermState) t).getComponents());
         } else {
-            return getComponents().contains(t);
+            result = getComponents().contains(t);
         }
+        return result;
     }
 
     /* ----- variable-related utilities ----- */
