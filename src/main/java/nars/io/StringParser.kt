@@ -92,7 +92,7 @@ object StringParser {
             val truth = parseTruth(truthString, punc)
             val content = parseTerm(str.substring(0, last), memory)
             val sentence = Sentence(content!!, punc, truth, stamp)
-            if (content is Conjunction && Variable.containVarDep(content.getName())) {
+            if (content is Conjunction && Variable.containVarDep(content.name)) {
                 sentence.revisible = false
             }
             val budget = parseBudget(budgetString, punc, truth)
@@ -312,7 +312,7 @@ object StringParser {
         return if (Variable.containVar(s)) {
             Variable(s)
         } else {
-            Term(s)
+            Term(s, constant = false)
         }
     }
 

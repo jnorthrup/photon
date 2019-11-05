@@ -47,7 +47,7 @@ class Conjunction : CompoundTerm {
      * @param con Whether the term is a constant
      * @param i   Syntactic complexity of the compound
      */
-    private constructor(n: String, cs: List<Term>, con: Boolean, i: Short) : super(n, cs, con, i)
+    private constructor(n: String, cs: List<Term>, con: Boolean, i:  Int) : super(n, cs, con, i)
 
     /**
      * Clone an object
@@ -56,7 +56,7 @@ class Conjunction : CompoundTerm {
      */
 
     override fun clone(): Term {
-        return Conjunction(name, Util2.cloneList(components) as List<Term>, isConstant, complexity)
+        return Conjunction(name, Util2.cloneList(components) as List<Term>, constant, complexity)
     }
 
     /**
@@ -75,9 +75,7 @@ class Conjunction : CompoundTerm {
      * @return true for commutative
      */
 
-    override fun isCommutative(): Boolean {
-        return true
-    }
+    override var  commutative =true
 
     companion object {
         /**
@@ -131,7 +129,7 @@ class Conjunction : CompoundTerm {
             if (term1 is Conjunction) {
                 set = TreeSet((term1 as CompoundTerm).cloneComponents())
                 if (term2 is Conjunction) {
-                    set.addAll((term2 as CompoundTerm).cloneComponents())
+                    set.addAll((term2 as CompoundTerm).cloneComponents()!!)
                 } // (&,(&,P,Q),(&,R,S)) = (&,P,Q,R,S)
                 else {
                     set.add(term2.clone() as Term)

@@ -44,7 +44,7 @@ class Equivalence : Statement {
      * @param constant   Whether the statement contains open variable
      * @param complexity Syntactic complexity of the compound
      */
-    protected constructor(n: String, components: List<Term>, constant: Boolean, complexity: Short) : super(n, components, constant, complexity)
+    protected constructor(n: String, components: List<Term>, constant: Boolean, complexity:  Int) : super(n, components, constant, complexity)
 
     /**
      * Clone an object
@@ -53,7 +53,7 @@ class Equivalence : Statement {
      */
 
     override fun clone(): Term {
-        return Equivalence(name, Util2.cloneList(components) as List<Term>, isConstant, complexity)
+        return Equivalence(name, Util2.cloneList(components) as List<Term>, constant, complexity)
     }
 
     /**
@@ -72,10 +72,7 @@ class Equivalence : Statement {
      * @return true for commutative
      */
 
-    override fun isCommutative(): Boolean {
-        return true
-    }
-
+    override val commutative=true
     companion object {
         /**
          * Try to make a new compound from two components. Called by the inference rules.

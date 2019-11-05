@@ -132,7 +132,7 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
             val sentence = memory.currentTask!!.sentence
             val taskTerm = sentence.content as CompoundTerm
             if (sentence.isQuestion) {
-                budget = if (taskTerm.isCommutative) {
+                budget = if (taskTerm.commutative) {
                     backwardWeak(asym.truth, memory)
                 } else {
                     memory.backward(sym.truth)
@@ -249,7 +249,7 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
      * for predicate, -1 for the whole term
      * @param memory   Reference to the memory
      */
-    internal fun conditionalDedInd(premise1: Implication, index: Short, premise2: Term, side: Int, memory: BackingStore) {
+    internal fun conditionalDedInd(premise1: Implication, index: Int, premise2: Term, side: Int, memory: BackingStore) {
         var index1 = index
         val task: Task = memory.currentTask!!
         val taskSentence = task.sentence
@@ -272,9 +272,9 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
             }
         }
         val oldCondition = premise1.subject as Conjunction
-        val index2 = oldCondition.components.indexOf(commonComponent)
+        val index2 = oldCondition.components!!.indexOf(commonComponent)
         if (index2 >= 0) {
-            index1 = index2.toShort()
+            index1 = index2
         } else {
             var match = Variable.unify(var_type.VAR_INDEPENDENT.sym, oldCondition.componentAt(index1.toInt()), commonComponent, premise1, premise2)
             if (!match && commonComponent.javaClass == oldCondition.javaClass) {
@@ -288,7 +288,7 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
         newCondition = if (oldCondition == commonComponent) {
             null
         } else {
-            CompoundTerm.setComponent(oldCondition, index1.toInt(), newComponent, memory)
+            CompoundTermState.setComponent(oldCondition, index1.toInt(), newComponent, memory)
         }
         val content: Term?
         content = if (newCondition != null) {
@@ -333,7 +333,7 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
      * for predicate, -1 for the whole term
      * @param memory   Reference to the memory
      */
-    internal fun conditionalAna(premise1: Equivalence, index: Short, premise2: Term, side: Int, memory: BackingStore) {
+    internal fun conditionalAna(premise1: Equivalence, index: Int, premise2: Term, side: Int, memory: BackingStore) {
         val task: Task = memory.currentTask!!
         val taskSentence = task.sentence
         val belief = memory.currentBelief
@@ -365,7 +365,7 @@ object SyllogisticRules {/* --------------- rules used in both first-tense infer
         newCondition = if (oldCondition == commonComponent) {
             null
         } else {
-            CompoundTerm.setComponent(oldCondition, index.toInt(), newComponent, memory)
+            CompoundTermState.setComponent(oldCondition, index.toInt(), newComponent, memory)
         }
         val content: Term?
         content = if (newCondition != null) {

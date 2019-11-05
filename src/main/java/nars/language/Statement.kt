@@ -37,10 +37,7 @@ abstract class Statement : CompoundTerm {
      */
     protected constructor(arg: List<Term?>?) : super(arg)
 
-    /**
-     * Default constructor
-     */
-    protected constructor()
+
 
     /**
      * Constructor with full values, called by clone
@@ -50,7 +47,7 @@ abstract class Statement : CompoundTerm {
      * @param con Constant indicator
      * @param i   Syntactic complexity of the compound
      */
-    protected constructor(n: String?, cs: List<Term?>?, con: Boolean, i: Short) : super(n, cs, con, i)
+    protected constructor(n: String?, cs: List<Term?>?, con: Boolean, i:  Int) : super(n, cs, con, i)
 
     /**
      * Override the default in making the nameStr of the current term from existing fields
@@ -80,7 +77,7 @@ abstract class Statement : CompoundTerm {
      * @return The first component
      */
     val subject: Term
-        get() = components[0]
+        get() = components!![0]
 
     /**
      * Return the second component of the statement
@@ -88,7 +85,7 @@ abstract class Statement : CompoundTerm {
      * @return The second component
      */
     val predicate: Term
-        get() = components[1]
+        get() = components!![1]
 
     companion object {
         /**
@@ -183,9 +180,9 @@ abstract class Statement : CompoundTerm {
      @JvmStatic       protected fun makeStatementName(subject: Term, relation: Any, predicate: Term): String {
             val nameStr = StringBuilder()
             nameStr.append(compound_delim.STATEMENT_OPENER.sym)
-            nameStr.append(subject.getName())
+            nameStr.append(subject.name)
             nameStr.append(' ').append(relation).append(' ')
-            nameStr.append(predicate.getName())
+            nameStr.append(predicate.name)
             nameStr.append(compound_delim.STATEMENT_CLOSER.sym)
             return nameStr.toString()
         }

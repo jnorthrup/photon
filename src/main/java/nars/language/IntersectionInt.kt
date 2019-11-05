@@ -45,7 +45,7 @@ class IntersectionInt : CompoundTerm {
      * @param open Open variable list
      * @param i    Syntactic complexity of the compound
      */
-    private constructor(n: String, cs: List<Term>, con: Boolean, i: Short) : super(n, cs, con, i)
+    private constructor(n: String, cs: List<Term>, con: Boolean, i:  Int) : super(n, cs, con, i)
 
     /**
      * Clone an object
@@ -53,7 +53,7 @@ class IntersectionInt : CompoundTerm {
      * @return A new object, to be casted into a Conjunction
      */
     override fun clone(): Term {
-        return IntersectionInt(name, Util2.cloneList(components) as List<Term>, isConstant, complexity)
+        return IntersectionInt(name, Util2.cloneList(components) as List<Term>, constant, complexity)
     }
 
     /**
@@ -70,10 +70,8 @@ class IntersectionInt : CompoundTerm {
      *
      * @return true for communitative
      */
+    override val commutative=true
 
-    override fun isCommutative(): Boolean {
-        return true
-    }
 
     companion object {
         /**

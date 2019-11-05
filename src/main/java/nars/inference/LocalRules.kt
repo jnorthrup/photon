@@ -256,7 +256,7 @@ object LocalRules {/* -------------------- same contents -------------------- */
     </S></S> */
     private fun convertRelation(memory: BackingStore) {
         var truth = memory.currentBelief!!.truth
-        truth = if ((memory.currentTask!!.content as Statement?)!!.isCommutative) {
+        truth = if ((memory.currentTask!!.content as Statement?)!!.commutative) {
             TruthFunctions.abduction(truth!!, 1.0f)
         } else {
             TruthFunctions.deduction(truth!!, 1.0f)

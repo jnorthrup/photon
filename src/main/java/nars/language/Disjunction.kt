@@ -45,7 +45,7 @@ class Disjunction : CompoundTerm {
      * @param open Open variable list
      * @param i    Syntactic complexity of the compound
      */
-    private constructor(n: String, cs: List<Term>, con: Boolean, i: Short) : super(n, cs, con, i)
+    private constructor(n: String, cs: List<Term>, con: Boolean, i:  Int) : super(n, cs, con, i)
 
     /**
      * Clone an object
@@ -54,7 +54,7 @@ class Disjunction : CompoundTerm {
      */
 
     override fun clone(): Term {
-        return Disjunction(name, Util2.cloneList(components) as List<Term>, isConstant, complexity)
+        return Disjunction(name, Util2.cloneList(components) as List<Term>, constant, complexity)
     }
 
     /**
@@ -72,10 +72,7 @@ class Disjunction : CompoundTerm {
      *
      * @return true for commutative
      */
-
-    override fun isCommutative(): Boolean {
-        return true
-    }
+    override val commutative=true
 
     companion object {
         /**
@@ -91,7 +88,7 @@ class Disjunction : CompoundTerm {
             if (term1 is Disjunction) {
                 set = TreeSet((term1 as CompoundTerm).cloneComponents())
                 if (term2 is Disjunction) {
-                    set.addAll((term2 as CompoundTerm).cloneComponents())
+                    set.addAll((term2 as CompoundTerm).cloneComponents()!!)
                 } // (&,(&,P,Q),(&,R,S)) = (&,P,Q,R,S)
                 else {
                     set.add(term2.clone() as Term)

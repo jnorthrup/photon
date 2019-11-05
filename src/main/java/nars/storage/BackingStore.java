@@ -157,7 +157,7 @@ public class BackingStore implements MemoryOps {
      */
     @Override
     public Concept getConcept(Term term) {
-        if (!term.isConstant()) {
+        if (!term.getConstant() ) {
             return null;
         }
         var n = term.getName();

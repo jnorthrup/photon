@@ -45,7 +45,7 @@ class IntersectionExt : CompoundTerm {
      * @param open Open variable list
      * @param i    Syntactic complexity of the compound
      */
-    private constructor(n: String, cs: List<Term>, con: Boolean, i: Short) : super(n, cs, con, i)
+    private constructor(n: String, cs: List<Term>, con: Boolean, i:  Int) : super(n, cs, con, i)
 
     /**
      * Clone an object
@@ -53,7 +53,7 @@ class IntersectionExt : CompoundTerm {
      * @return A new object, to be casted into a IntersectionExt
      */
     override fun clone(): Term {
-        return IntersectionExt(name, Util2.cloneList(components) as List<Term>, isConstant, complexity)
+        return IntersectionExt(name, Util2.cloneList(components) as List<Term>, constant, complexity)
     }
 
     /**
@@ -71,10 +71,7 @@ class IntersectionExt : CompoundTerm {
      * @return true for communitative
      */
 
-    override fun isCommutative(): Boolean {
-        return true
-    }
-
+    override val commutative=true
     companion object {
         /**
          * Try to make a new compound from two components. Called by the inference rules.
@@ -88,20 +85,20 @@ class IntersectionExt : CompoundTerm {
             val set: TreeSet<Term>
             if (term1 is SetInt && term2 is SetInt) {
                 set = TreeSet((term1 as CompoundTerm).cloneComponents())
-                set.addAll((term2 as CompoundTerm).cloneComponents())        // set union
+                set.addAll((term2 as CompoundTerm).cloneComponents()!!)        // set union
 
                 return SetInt.make(set, memory) as  Term
             }
             if (term1 is SetExt && term2 is SetExt) {
                 set = TreeSet((term1 as CompoundTerm).cloneComponents())
-                set.retainAll((term2 as CompoundTerm).cloneComponents())     // set intersection
+                set.retainAll((term2 as CompoundTerm).cloneComponents()!!)     // set intersection
 
                 return SetExt.make(set, memory)as Term
             }
             if (term1 is IntersectionExt) {
                 set = TreeSet((term1 as CompoundTerm).cloneComponents())
                 if (term2 is IntersectionExt) {
-                    set.addAll((term2 as CompoundTerm).cloneComponents())
+                    set.addAll((term2 as CompoundTerm).cloneComponents()!!)
                 }               // (&,(&,P,Q),(&,R,S)) = (&,P,Q,R,S)
                 else {
                     set.add(term2.clone() as Term)

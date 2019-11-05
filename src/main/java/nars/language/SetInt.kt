@@ -46,7 +46,7 @@ class SetInt : CompoundTerm {
      * @param open Open variable list
      * @param i    Syntactic complexity of the compound
      */
-    private constructor(n: String, cs: List<Term>, con: Boolean, i: Short) : super(n, cs, con, i)
+    private constructor(n: String, cs: List<Term>, con: Boolean, i:  Int) : super(n, cs, con, i)
 
     /**
      * Clone a SetInt
@@ -54,7 +54,7 @@ class SetInt : CompoundTerm {
      * @return A new object, to be casted into a SetInt
      */
     override fun clone(): Term {
-        return SetInt(name, Util2.cloneList(components) as List<Term>, isConstant, complexity)
+        return SetInt(name, Util2.cloneList(components) as List<Term>, constant, complexity)
     }
 
     /**
@@ -72,9 +72,7 @@ class SetInt : CompoundTerm {
      * @return true for communitative
      */
 
-    override fun isCommutative(): Boolean {
-        return true
-    }
+    override var commutative =true
 
     /**
      * Make a String representation of the set, override the default.
@@ -83,7 +81,7 @@ class SetInt : CompoundTerm {
      */
 
     public override fun makeName(): String {
-        return Util2.makeSetName(SET_INT_OPENER.sym, components, SET_INT_CLOSER.sym)
+        return Util2.makeSetName(SET_INT_OPENER.sym, this.components!!, SET_INT_CLOSER.sym)
     }
 
     companion object {

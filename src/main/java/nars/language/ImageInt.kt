@@ -35,18 +35,17 @@ import java.util.*
  *
  * Internally, it is actually (\,A,P)_1, with an index.
  */
-class ImageInt : CompoundTerm {
-    /**
-     * get the index of the relation in the component list
-     *
-     * @return the index of relation
-     */
-    /**
-     * The index of relation in the component list
-     */
-    var relationIndex: Short
-        private set
-
+class ImageInt
+/**
+ * Constructor with full values, called by clone
+ *
+ * @param n          The name of the term
+ * @param cs         Component list
+ * @param open       Open variable list
+ * @param complexity Syntactic complexity of the compound
+ * @param index      The index of relation in the component list
+ */
+(n: String, cs: List<Term>, con: Boolean, complexity:  Int, internal var relationIndex: Int) : CompoundTerm(n, cs, con, complexity) {
     /**
      * constructor with partial values, called by make
      *
@@ -54,22 +53,15 @@ class ImageInt : CompoundTerm {
      * @param arg   The component list of the term
      * @param index The index of relation in the component list
      */
-    private constructor(n: String, arg: List<Term>, index: Short) : super(n, arg) {
-        relationIndex = index
-    }
+    constructor(n: String, arg: List<Term>, index: Int) : this(n, arg, relationIndex = index, complexity = 0.toInt(), con = true) /*: super(n, arg)*/
+
 
     /**
-     * Constructor with full values, called by clone
+     * get the index of the relation in the component list
      *
-     * @param n          The name of the term
-     * @param cs         Component list
-     * @param open       Open variable list
-     * @param complexity Syntactic complexity of the compound
-     * @param index      The index of relation in the component list
+     * @return the index of relation
      */
-    private constructor(n: String, cs: List<Term>, con: Boolean, complexity: Short, index: Short) : super(n, cs, con, complexity) {
-        relationIndex = index
-    }
+
 
     /**
      * Clone an object
@@ -77,7 +69,7 @@ class ImageInt : CompoundTerm {
      * @return A new object, to be casted into an ImageInt
      */
     override fun clone(): Term {
-        return ImageInt(name, Util2.cloneList(components) as List<Term>, isConstant, complexity, relationIndex)
+        return ImageInt(name, Util2.cloneList(components) as List<Term>, constant, complexity, relationIndex)
     }
 
     /**
@@ -86,20 +78,16 @@ class ImageInt : CompoundTerm {
      * @return The term representing a relation
      */
     val relation: Term?
-        get() = components[relationIndex.toInt()]
+        get() = components?.get(relationIndex.toInt())
 
     /**
      * Get the other term in the Image
      *
      * @return The term related
      */
-    val theOtherComponent: Term?
-        get() {
-            if (components.size != 2) {
-                return null
-            }
-            return if (relationIndex.toInt() == 0) components[1] else components[0]
-        }
+    val theOtherComponent
+        get() = components?.takeIf { it.size == 2 }?.get(if (relationIndex == 0) 1 else 0)
+
 
     /**
      * Override the default in making the name of the current term from existing fields
@@ -108,7 +96,7 @@ class ImageInt : CompoundTerm {
      */
 
     public override fun makeName(): String {
-        return Util2.makeImageName(IMAGE_INT_OPERATOR.sym, components, relationIndex.toInt())
+        return Util2.makeImageName(IMAGE_INT_OPERATOR.sym, this.components!!, relationIndex)
     }
 
     /**
@@ -128,7 +116,8 @@ class ImageInt : CompoundTerm {
          * @param memory  Reference to the memory
          * @return the Term generated from the arguments
          */
-   @JvmStatic     fun make(argList: List<Term>, memory: BackingStore): Term? {
+        @JvmStatic
+        fun make(argList: List<Term>, memory: BackingStore): Term? {
             if (argList.size < 2) {
                 return null
             }
@@ -136,14 +125,14 @@ class ImageInt : CompoundTerm {
             val argument = ArrayList<Term>()
             var index = 0
             for (j in 1 until argList.size) {
-                if (argList[j].getName()[0] == IMAGE_PLACE_HOLDER.sym) {
+                if (argList[j].name[0] == IMAGE_PLACE_HOLDER.sym) {
                     index = j - 1
                     argument.add(relation)
                 } else {
                     argument.add(argList[j])
                 }
             }
-            return make(argument, index.toShort(), memory)
+            return make(argument, index , memory)
         }
 
         /**
@@ -155,7 +144,8 @@ class ImageInt : CompoundTerm {
          * @param memory   Reference to the memory
          * @return A compound generated or a term it reduced to
          */
-    @JvmStatic    fun make(product: Product, relation: Term, index: Short, memory: BackingStore): Term {
+        @JvmStatic
+        fun makeProduct(product: Product, relation: Term, index: Int, memory: BackingStore): Term {
             if (relation is Product) {
                 if (product.size() == 2 && relation.size() == 2) {
                     if (index.toInt() == 0 && product.componentAt(1) == relation.componentAt(1)) {// (\,_,(*,a,b),b) is reduced to a
@@ -168,9 +158,9 @@ class ImageInt : CompoundTerm {
                     }
                 }
             }
-            val argument: MutableList<Term> = product.cloneComponents()
+            val argument: MutableList<Term> = product.cloneComponents()!!
             argument[index.toInt()] = relation
-            return make(argument, index, memory)
+            return make(argument, index.toInt(), memory)
         }
 
         /**
@@ -182,13 +172,14 @@ class ImageInt : CompoundTerm {
          * @param memory    Reference to the memory
          * @return A compound generated or a term it reduced to
          */
-     @JvmStatic   fun make(oldImage: ImageInt, component: Term, index: Short, memory: BackingStore): Term {
-            val argList: MutableList<Term> = oldImage.cloneComponents()
+        @JvmStatic
+        fun make(oldImage: ImageInt, component: Term, index: Int, memory: BackingStore): Term {
+            val argList  = oldImage.cloneComponents()
             val oldIndex = oldImage.relationIndex.toInt()
             val relation = argList[oldIndex]
             argList[oldIndex] = component
             argList[index.toInt()] = relation
-            return make(argList, index, memory)
+            return make(argList, index.toInt(), memory)
         }
 
         /**
@@ -199,7 +190,8 @@ class ImageInt : CompoundTerm {
          * @param memory   Reference to the memory
          * @return the Term generated from the arguments
          */
-  @JvmStatic      fun make(argument: List<Term>, index: Short, memory: BackingStore): Term {
+        @JvmStatic
+        fun make(argument: List<Term>, index: Int, memory: BackingStore): Term {
             val name: String = Util2.makeImageName(IMAGE_INT_OPERATOR.sym, argument, index.toInt())
             val t: Term? = memory.nameToListedTerm(name)
             return t ?: ImageInt(name, argument, index)

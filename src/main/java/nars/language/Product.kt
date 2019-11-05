@@ -45,7 +45,7 @@ class Product : CompoundTerm {
      * @param open       Open variable list
      * @param complexity Syntactic complexity of the compound
      */
-    private constructor(n: String, cs: List<Term>, con: Boolean, complexity: Short) : super(n, cs, con, complexity)
+    private constructor(n: String, cs: List<Term>, con: Boolean, complexity:  Int) : super(n, cs, con, complexity)
 
     /**
      * Clone a Product
@@ -53,7 +53,7 @@ class Product : CompoundTerm {
      * @return A new object, to be casted into an ImageExt
      */
     override fun clone(): Term {
-        return Product(name, Util2.cloneList(components) as List<Term>, isConstant, complexity)
+        return Product(name, Util2.cloneList(components) as List<Term>, constant, complexity)
     }
 
     /**

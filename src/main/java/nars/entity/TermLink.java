@@ -40,12 +40,12 @@ public class TermLink extends   ItemIdentity implements TermLinkConstants {
     /**
      * The type of link, one of the above
      */
-    protected short type;
+    protected int type;
     /**
      * The index of the component in the component list of the compound, may have up to 4 levels
      */
     @Nullable
-    protected short[] index;
+    protected int [] index;
     /**
      * The linked Term
      */
@@ -60,18 +60,18 @@ public class TermLink extends   ItemIdentity implements TermLinkConstants {
      * @param p       Link type
      * @param indices Component indices in compound, may be 1 to 4
      */
-    public TermLink(Term t, short p, int... indices) {
+    public TermLink(Term t, int p, int... indices) {
         target = t;
         type = p;
         assert (type % 2 == 0); // template types all point to compound, though the target is component
         if (type == TermLinkConstants.COMPOUND_CONDITION) {  // the first index is 0 by default
-            index = new short[indices.length + 1];
+            index = new int[indices.length + 1];
             index[0] = 0;
             for (int i = 0; i < indices.length; i++) {
                 index[i + 1] = (short) indices[i];
             }
         } else {
-            index = new short[indices.length];
+            index = new int[indices.length];
             int bound = index.length;
             for (int i = 0; i < bound; i++) {
                 index[i] = (short) indices[i];
@@ -138,7 +138,7 @@ public class TermLink extends   ItemIdentity implements TermLinkConstants {
             }
             var in = "T" + type;
             if (index != null) {
-                for (short value : index) {
+                for (int value : index) {
                     in += "-" + (value + 1);
                 }
             }
@@ -166,7 +166,7 @@ public class TermLink extends   ItemIdentity implements TermLinkConstants {
      *
      * @return Type of the link
      */
-    public short getType() {
+    public int getType() {
         return type;
     }
 
@@ -175,7 +175,7 @@ public class TermLink extends   ItemIdentity implements TermLinkConstants {
      *
      * @return The index array
      */
-    public short[] getIndices() {
+    public int[] getIndices() {
         return index;
     }
 
@@ -185,7 +185,7 @@ public class TermLink extends   ItemIdentity implements TermLinkConstants {
      * @param i The index level
      * @return The index value
      */
-    public short getIndex(int i) {
+    public  int getIndex(int i) {
         if ((index != null) && (i < index.length)) {
             return index[i];
         } else {

@@ -22,6 +22,13 @@ package nars.inference
 
 //import nars.io.Symbols
 import nars.entity.*
+import nars.entity.TermLinkConstants.Companion.COMPONENT
+import nars.entity.TermLinkConstants.Companion.COMPONENT_CONDITION
+import nars.entity.TermLinkConstants.Companion.COMPONENT_STATEMENT
+import nars.entity.TermLinkConstants.Companion.COMPOUND
+import nars.entity.TermLinkConstants.Companion.COMPOUND_CONDITION
+import nars.entity.TermLinkConstants.Companion.COMPOUND_STATEMENT
+import nars.entity.TermLinkConstants.Companion.SELF
 import nars.io.var_type.*
 import nars.language.*
 import nars.storage.BackingStore
@@ -63,24 +70,24 @@ object RuleTables {
         val tIndex = tLink.getIndex(0)
         var bIndex = bLink.getIndex(0)
         when (tLink.type) {
-            TermLink.SELF -> when (bLink.type) {
-                TermLink.COMPONENT -> compoundAndSelf(taskTerm as CompoundTerm, beliefTerm, true, memory)
-                TermLink.COMPOUND -> compoundAndSelf(beliefTerm as CompoundTerm, taskTerm, false, memory)
-                TermLink.COMPONENT_STATEMENT -> if (belief != null) SyllogisticRules.detachment(task.sentence, belief, bIndex.toInt(), memory)
-                TermLink.COMPOUND_STATEMENT -> if (belief != null) SyllogisticRules.detachment(belief, task.sentence, bIndex.toInt(), memory)
-                TermLink.COMPONENT_CONDITION -> if (belief != null) {
+             SELF -> when (bLink.type) {
+                 COMPONENT -> compoundAndSelf(taskTerm as CompoundTerm, beliefTerm, true, memory)
+                 COMPOUND -> compoundAndSelf(beliefTerm as CompoundTerm, taskTerm, false, memory)
+                 COMPONENT_STATEMENT -> if (belief != null) SyllogisticRules.detachment(task.sentence, belief, bIndex.toInt(), memory)
+                 COMPOUND_STATEMENT -> if (belief != null) SyllogisticRules.detachment(belief, task.sentence, bIndex.toInt(), memory)
+                 COMPONENT_CONDITION -> if (belief != null) {
                     bIndex = bLink.getIndex(1)
                     SyllogisticRules.conditionalDedInd(taskTerm as Implication, bIndex, beliefTerm, tIndex.toInt(), memory)
                 }
-                TermLink.COMPOUND_CONDITION -> belief?.also {
+                 COMPOUND_CONDITION -> belief?.also {
                     bIndex = bLink.getIndex(1)
                     SyllogisticRules.conditionalDedInd(beliefTerm as Implication, bIndex, taskTerm, tIndex.toInt(), memory)
                 }
             }
-            TermLink.COMPOUND -> when (bLink.type) {
-                TermLink.COMPOUND -> compoundAndCompound(taskTerm as CompoundTerm, beliefTerm as CompoundTerm, memory)
-                TermLink.COMPOUND_STATEMENT -> compoundAndStatement(taskTerm as CompoundTerm, tIndex, beliefTerm as Statement, bIndex, beliefTerm, memory)
-                TermLink.COMPOUND_CONDITION -> (belief)?.also {
+             COMPOUND -> when (bLink.type) {
+                 COMPOUND -> compoundAndCompound(taskTerm as CompoundTerm, beliefTerm as CompoundTerm, memory)
+                 COMPOUND_STATEMENT -> compoundAndStatement(taskTerm as CompoundTerm, tIndex, beliefTerm as Statement, bIndex, beliefTerm, memory)
+                 COMPOUND_CONDITION -> (belief)?.also {
                     when (beliefTerm) {
                         is Implication -> {
                             SyllogisticRules.conditionalDedInd(beliefTerm, bIndex, taskTerm, -1, memory)
@@ -91,21 +98,21 @@ object RuleTables {
                     }
                 }
             }
-            TermLink.COMPOUND_STATEMENT -> when (bLink.type) {
-                TermLink.COMPONENT -> componentAndStatement(memory.currentTerm as CompoundTerm, bIndex, taskTerm as Statement, tIndex, memory)
-                TermLink.COMPOUND -> compoundAndStatement(beliefTerm as CompoundTerm, bIndex, taskTerm as Statement, tIndex, beliefTerm, memory)
-                TermLink.COMPOUND_STATEMENT -> if (belief != null) {
+             COMPOUND_STATEMENT -> when (bLink.type) {
+                 COMPONENT -> componentAndStatement(memory.currentTerm as CompoundTerm, bIndex, taskTerm as Statement, tIndex, memory)
+                 COMPOUND -> compoundAndStatement(beliefTerm as CompoundTerm, bIndex, taskTerm as Statement, tIndex, beliefTerm, memory)
+                 COMPOUND_STATEMENT -> if (belief != null) {
                     syllogisms(tLink, bLink, taskTerm, beliefTerm, memory)
                 }
-                TermLink.COMPOUND_CONDITION -> if (belief != null) {
+                 COMPOUND_CONDITION -> if (belief != null) {
                     bIndex = bLink.getIndex(1)
                     if (beliefTerm is Implication) {
                         conditionalDedIndWithVar(beliefTerm, bIndex, taskTerm as Statement, tIndex, memory)
                     }
                 }
             }
-            TermLink.COMPOUND_CONDITION -> when (bLink.type) {
-                TermLink.COMPOUND_STATEMENT -> if (belief != null) {
+             COMPOUND_CONDITION -> when (bLink.type) {
+                 COMPOUND_STATEMENT -> if (belief != null) {
                     if (taskTerm is Implication)// TODO maybe put instanceof test within conditionalDedIndWithVar()
                     {
                         conditionalDedIndWithVar(taskTerm, tIndex, beliefTerm as Statement, bIndex, memory)
@@ -352,7 +359,7 @@ object RuleTables {
         val component: Term = statement.componentAt(index)
         val content = subSentence!!.content
         if (component is Inheritance && memory.currentBelief != null) {
-            if (component.isConstant()) {
+            if (component.constant ) {
                 SyllogisticRules.detachment(mainSentence, subSentence, index, memory)
             } else if (Variable.unify(VAR_INDEPENDENT.sym, component, content, statement, content)) {
                 SyllogisticRules.detachment(mainSentence, subSentence, index, memory)
@@ -376,7 +383,7 @@ object RuleTables {
      * @param memory      Reference to the memory
      */
     @JvmStatic
-    fun conditionalDedIndWithVar(conditional: Implication, index: Short, statement: Statement, side: Short, memory: BackingStore) {
+    fun conditionalDedIndWithVar(conditional: Implication, index: Int, statement: Statement, side:  Int, memory: BackingStore) {
         var side1 = side
         val condition = conditional.subject as CompoundTerm
         val component: Term = condition.componentAt(index.toInt())
@@ -451,7 +458,7 @@ object RuleTables {
      * @param memory     Reference to the memory
      */
     @JvmStatic
-    fun compoundAndStatement(compound: CompoundTerm, index: Short, statement: Statement, side: Short, beliefTerm: Term, memory: BackingStore) {
+    fun compoundAndStatement(compound: CompoundTerm, index: Int, statement: Statement, side: Int, beliefTerm: Term, memory: BackingStore) {
         val component: Term = compound.componentAt(index.toInt())
         val task: Task = memory.currentTask!!
         /*            if (!task.isStructural() && task.getSentence().isJudgment()) {*/
@@ -488,7 +495,7 @@ object RuleTables {
      * @param memory    Reference to the memory
      */
     @JvmStatic
-    fun componentAndStatement(compound: CompoundTerm, index: Short, statement: Statement, side: Short, memory: BackingStore) {
+    fun componentAndStatement(compound: CompoundTerm, index: Int, statement: Statement, side:  Int, memory: BackingStore) {
 //        if (!memory.currentTask.isStructural()) {
 
         if (statement is Inheritance) {
@@ -524,7 +531,7 @@ object RuleTables {
     @JvmStatic
     fun transformTask(tLink: TaskLink, memory: BackingStore) {
         val content = memory.currentTask!!.content!!.clone() as CompoundTerm
-        val indices: ShortArray = tLink.indices
+        val indices:  IntArray = tLink.indices
         var inh: Term? = null
         if (indices.size == 2 || content is Inheritance) {          // <(*, term, #) --> #>
             inh = content
@@ -533,7 +540,7 @@ object RuleTables {
         } else if (indices.size == 4) {   // <(&&, <(*, term, #) --> #>, #) ==> #>
 
             val component: Term? = content.componentAt(indices[0].toInt())
-            if (component is Conjunction && (content is Implication && indices[0] == 0.toShort() || content is Equivalence)) {
+            if (component is Conjunction && (content is Implication && indices[0] == 0.toInt() || content is Equivalence)) {
                 inh = (component as CompoundTerm).componentAt(indices[1].toInt())
             } else {
                 return

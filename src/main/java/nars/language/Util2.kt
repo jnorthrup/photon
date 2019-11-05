@@ -9,11 +9,14 @@ import nars.io.special_operator.IMAGE_PLACE_HOLDER
 import nars.language.Util11.make
 import nars.storage.BackingStore
 import java.util.*
+import java.util.concurrent.CopyOnWriteArrayList
 
 object Util2 {
-    private val operators = arrayOf(INTERSECTION_EXT_OPERATOR.sym, INTERSECTION_INT_OPERATOR.sym, DIFFERENCE_EXT_OPERATOR.sym,
-            DIFFERENCE_INT_OPERATOR.sym, PRODUCT_OPERATOR.sym, IMAGE_EXT_OPERATOR.sym, IMAGE_INT_OPERATOR.sym,
-            NEGATION_OPERATOR.sym, DISJUNCTION_OPERATOR.sym, CONJUNCTION_OPERATOR.sym)
+    private val operators by lazy {
+        arrayOf(INTERSECTION_EXT_OPERATOR.sym, INTERSECTION_INT_OPERATOR.sym, DIFFERENCE_EXT_OPERATOR.sym,
+                DIFFERENCE_INT_OPERATOR.sym, PRODUCT_OPERATOR.sym, IMAGE_EXT_OPERATOR.sym, IMAGE_INT_OPERATOR.sym,
+                NEGATION_OPERATOR.sym, DISJUNCTION_OPERATOR.sym, CONJUNCTION_OPERATOR.sym)
+    }
 
     /**
      * Check CompoundTerm operator symbol
@@ -69,8 +72,8 @@ object Util2 {
      * */
     @JvmStatic
       fun makeCompoundName(op: Any, arg: Iterable<Term>): String {
-        arg.filter { it is CompoundTerm }.forEach { (it as CompoundTermState).apply { setName((this as CompoundTerm).makeName()) } }
-        return arg.map(Term::getName).joinToString(prefix = "${COMPOUND_TERM_OPENER.sym}$op", separator = ARGUMENT_SEPARATOR.sym.toString(), postfix = COMPOUND_TERM_CLOSER.sym.toString())
+        arg.filter { it is CompoundTerm }.forEach { (it as CompoundTermState).apply { this.name=((this as CompoundTerm).makeName()) } }
+        return arg.map(Term::name).joinToString(prefix = "${COMPOUND_TERM_OPENER.sym}$op", separator = ARGUMENT_SEPARATOR.sym.toString(), postfix = COMPOUND_TERM_CLOSER.sym.toString())
 
         //PRESERVED FOR VERIFICATION
 //        var name = "${COMPOUND_TERM_OPENER.sym}$op"
@@ -95,7 +98,7 @@ object Util2 {
     internal fun makeSetName(opener: Char, arg: Collection<Term>, closer: Char): String {
         val joiner = StringJoiner(ARGUMENT_SEPARATOR.sym.toString(), opener.toString(), closer.toString())
         for (term in arg) {
-            val termName = term.getName()
+            val termName = term.name
             joiner.add(termName)
         }
         return joiner.toString()
@@ -115,14 +118,14 @@ object Util2 {
         name.append(COMPOUND_TERM_OPENER.sym)
         name.append(op)
         name.append(ARGUMENT_SEPARATOR.sym)
-        name.append(arg[relationIndex].getName())
+        name.append(arg[relationIndex].name)
         val bound = arg.size
         for (i in 0 until bound) {
             name.append(ARGUMENT_SEPARATOR.sym)
             if (i == relationIndex) {
                 name.append(IMAGE_PLACE_HOLDER.sym)
             } else {
-                name.append(arg[i].getName())
+                name.append(arg[i].name)
             }
         }
         name.append(COMPOUND_TERM_CLOSER.sym)
@@ -136,7 +139,7 @@ object Util2 {
      * @return an identical and separate copy of the list
      */
     @JvmStatic
-    fun cloneList(original: Collection<Term>?): List<Term>? = original?.map(::Term)
+    fun cloneList(original: Collection<Term>?)  =CopyOnWriteArrayList(   original  ?: emptyList<Term>())
 
     /**
      * Try to remove a component from a compound
@@ -151,11 +154,11 @@ object Util2 {
         val success: Boolean
         val list = t1.cloneComponents()
         success = if (t1.javaClass == t2.javaClass) {
-            list.removeAll((t2 as CompoundTermState).components)
+            list!!.removeAll((t2 as CompoundTermState).components!!)
         } else {
-            list.remove(t2)
+            list!!.remove(t2)
         }
-        return if (success) make(t1, list, memory!!) else null
+        return if (success) make(t1, list!!, memory!!) else null
     }
 
 

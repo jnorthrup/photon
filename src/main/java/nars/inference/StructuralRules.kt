@@ -51,13 +51,13 @@ object StructuralRules {
      * @param side      The location of the indicated term in the premise
      * @param memory    Reference to the memory
     </S></S> */
-    internal fun structuralCompose2(compound: CompoundTerm, index: Short, statement: Statement, side: Short, memory: BackingStore) {
+    internal fun structuralCompose2(compound: CompoundTerm, index: Int, statement: Statement, side:  Int, memory: BackingStore) {
         if (compound == statement.componentAt(side.toInt())) {
             return
         }
         var sub: Term = statement.subject
         var pred: Term = statement.predicate
-        val components: MutableList<Term> = compound.cloneComponents()
+        val components: MutableList<Term> = compound.cloneComponents()!!
         if (side.toInt() == 0 && components.contains(pred) || side.toInt() == 1 && components.contains(sub)) {
             return
         }
@@ -131,7 +131,7 @@ object StructuralRules {
         val t1: Term = sub.componentAt(index)
         val t2: Term = pre.componentAt(index)
         val content: Term?
-        content = if (switchOrder(sub, index.toShort())) {
+        content = if (switchOrder(sub, index)) {
             Statement.make(statement, t2, t1, memory)
         } else {
             Statement.make(statement, t1, t2, memory)
@@ -162,7 +162,7 @@ object StructuralRules {
      * @param index    The location of focus in the compound
      * @return Whether the direction of inheritance should be revised
      */
-    private fun switchOrder(compound: CompoundTerm, index: Short): Boolean {
+    private fun switchOrder(compound: CompoundTerm, index: Int): Boolean {
         return ((compound is DifferenceExt || compound is DifferenceInt) && index.toInt() == 1
                 || compound is ImageExt && index != compound.relationIndex
                 || compound is ImageInt && index != compound.relationIndex)
@@ -176,7 +176,7 @@ object StructuralRules {
      * @param statement The premise
      * @param memory    Reference to the memory
     </S></S> */
-    internal fun structuralCompose1(compound: CompoundTerm, index: Short, statement: Statement, memory: BackingStore) {
+    internal fun structuralCompose1(compound: CompoundTerm, index: Int, statement: Statement, memory: BackingStore) {
         if (!memory.currentTask!!.sentence.isJudgment) {
             return
         }
@@ -223,7 +223,7 @@ object StructuralRules {
      * @param statement The premise
      * @param memory    Reference to the memory
     </S> */
-    internal fun structuralDecompose1(compound: CompoundTerm, index: Short, statement: Statement, memory: BackingStore) {
+    internal fun structuralDecompose1(compound: CompoundTerm, index: Int, statement: Statement, memory: BackingStore) {
         if (!memory.currentTask!!.sentence.isJudgment) {
             return
         }
@@ -294,7 +294,7 @@ object StructuralRules {
      * @param side      The location of the indicated term in the premise
      * @param memory    Reference to the memory
     </S> */
-    internal fun transformSetRelation(compound: CompoundTerm, statement: Statement, side: Short, memory: BackingStore) {
+    internal fun transformSetRelation(compound: CompoundTerm, statement: Statement, side:  Int, memory: BackingStore) {
         if (compound.size() > 1) {
             return
         }
@@ -342,7 +342,7 @@ object StructuralRules {
      * @param task       The task
      * @param memory     Reference to the memory
     </M></S></S></S> */
-    internal fun transformProductImage(inh: Inheritance, oldContent: CompoundTerm, indices: ShortArray, memory: BackingStore) {
+    internal fun transformProductImage(inh: Inheritance, oldContent: CompoundTerm, indices:  IntArray, memory: BackingStore) {
         var subject: Term = inh.subject
         var predicate: Term = inh.predicate
         if (inh == oldContent) {
@@ -354,53 +354,58 @@ object StructuralRules {
             }
             return
         }
-        val index = indices[indices.size - 1]
-        val side = indices[indices.size - 2]
+        val index = indices[indices.size - 1].toInt()
+        val side = indices[indices.size - 2].toInt()
         val comp = inh.componentAt(side.toInt()) as CompoundTerm
-        if (comp is Product) {
-            if (side.toInt() == 0) {
-                subject = comp.componentAt(index.toInt())
-                predicate = ImageExt.make(comp, inh.predicate, index, memory)
-            } else {
-                subject = ImageInt.make(comp, inh.subject, index, memory)
-                predicate = comp.componentAt(index.toInt())
+        when {
+            comp is Product -> {
+                if (side.toInt() == 0) {
+                    subject = comp.componentAt(index.toInt())
+                    predicate = ImageExt.make(comp as Product, inh.predicate, index, memory)
+                } else {
+                    subject = ImageInt.makeProduct((comp as Product ), inh.subject, index.toInt(), memory)
+                    predicate = comp.componentAt(index.toInt())
+                }
             }
-        } else if (comp is ImageExt && side.toInt() == 1) {
-            if (index == comp.relationIndex) {
-                subject = Product.make(comp, inh.subject, index.toInt(), memory)
-                predicate = comp.componentAt(index.toInt())
-            } else {
-                subject = comp.componentAt(index.toInt())
-                predicate = ImageExt.make(comp, inh.subject, index.toInt(), memory)
+            comp is ImageExt && side.toInt() == 1 -> {
+                if (index == comp.relationIndex) {
+                    subject = Product.make(comp as ImageExt, inh.subject, index.toInt(), memory)
+                    predicate = comp.componentAt(index.toInt())
+                } else {
+                    subject = comp.componentAt(index.toInt())
+                    predicate = ImageExt.make(comp, inh.subject, index.toInt(), memory)
+                }
             }
-        } else if (comp is ImageInt && side.toInt() == 0) {
-            if (index == comp.relationIndex) {
-                subject = comp.componentAt(index.toInt())
-                predicate = Product.make(comp, inh.predicate, index.toInt(), memory)
-            } else {
-                subject = ImageInt.make(comp, inh.predicate, index, memory)
-                predicate = comp.componentAt(index.toInt())
+            comp is ImageInt && side.toInt() == 0 -> {
+                if (index == comp.relationIndex) {
+                    subject = comp.componentAt(index.toInt())
+                    predicate = Product.make(comp, inh.predicate, index.toInt(), memory)
+                } else {
+                    subject = ImageInt.make(comp, inh.predicate, index, memory)
+                    predicate = comp.componentAt(index.toInt())
+                }
             }
-        } else {
-            return
+            else -> {
+                return
+            }
         }
         val newInh: Inheritance = Inheritance.make(subject, predicate, memory)!!
         var content: Term? = null
         if (indices.size == 2) {
             content = newInh
         } else {
-            if (oldContent is Statement && indices[0] == 1.toShort()) {
+            if (oldContent is Statement && indices[0] == 1.toInt()) {
                 content = Statement.make(oldContent, oldContent.componentAt(0), newInh, memory)
             } else {
                 val componentList: MutableList<Term>
                 val condition: Term? = oldContent.componentAt(0)
                 if ((oldContent is Implication || oldContent is Equivalence) && condition is Conjunction) {
-                    componentList = (condition as CompoundTerm).cloneComponents()
+                    componentList = (condition as CompoundTerm).cloneComponents()!!
                     componentList[indices[1].toInt()] = newInh
                     val newCond: Term = Util11.make(condition as CompoundTerm, componentList, memory)!!
                     content = Statement.make(oldContent as Statement, newCond, oldContent.predicate, memory)
                 } else {
-                    componentList = oldContent.cloneComponents()
+                    componentList = oldContent.cloneComponents()!!
                     componentList[indices[0].toInt()] = newInh
                     if (oldContent is Conjunction) {
                         content = Util11.make(oldContent, componentList, memory)
@@ -442,7 +447,7 @@ object StructuralRules {
         if (subject is Product) {
             for (i in 0 until subject.size()) {
                 newSubj = subject.componentAt(i)
-                newPred = ImageExt.make(subject, predicate, i.toShort(), memory)
+                newPred = ImageExt.make(subject as Product, predicate, i , memory)
                 inheritance = Inheritance.make(newSubj, newPred, memory)
                 budget = if (truth == null) {
                     memory.compoundBackward(inheritance!!)
@@ -458,7 +463,7 @@ object StructuralRules {
                     newSubj = subject.componentAt(relationIndex)
                     newPred = Product.make(subject, predicate, relationIndex, memory)
                 } else {
-                    newSubj = ImageInt.make(subject, predicate, i.toShort(), memory)
+                    newSubj = ImageInt.make(subject, predicate, i , memory)
                     newPred = subject.componentAt(i)
                 }
                 inheritance = Inheritance.make(newSubj, newPred, memory)
@@ -490,7 +495,7 @@ object StructuralRules {
         var newPred: Term
         if (predicate is Product) {
             for (i in 0 until predicate.size()) {
-                newSubj = ImageInt.make(predicate, subject, i.toShort(), memory)
+                newSubj = ImageInt.makeProduct(predicate, subject, i , memory)
                 newPred = predicate.componentAt(i)
                 inheritance = Inheritance.make(newSubj, newPred, memory)
                 budget = if (truth == null) {
@@ -537,7 +542,7 @@ object StructuralRules {
      * @param memory       Reference to the memory
      */
     internal fun structuralCompound(compound: CompoundTerm?, component: Term, compoundTask: Boolean, memory: BackingStore) {
-        if (!component.isConstant) {
+        if (!component.constant) {
             return
         }
         val content = if (compoundTask) component else compound!!

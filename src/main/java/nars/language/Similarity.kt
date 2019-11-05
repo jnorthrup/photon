@@ -45,7 +45,7 @@ class Similarity : Statement {
      * @param open Open variable list
      * @param i    Syntactic complexity of the compound
      */
-    private constructor(n: String, cs: List<Term>, con: Boolean, i: Short) : super(n, cs, con, i)
+    private constructor(n: String, cs: List<Term>, con: Boolean, i:  Int) : super(n, cs, con, i)
 
     /**
      * Clone an object
@@ -54,7 +54,7 @@ class Similarity : Statement {
      */
 
     override fun clone(): Term {
-        return Similarity(name, Util2.cloneList(components) as List<Term>, isConstant, complexity)
+        return Similarity(name, Util2.cloneList(components) as List<Term>, constant, complexity)
     }
 
     /**
@@ -72,9 +72,7 @@ class Similarity : Statement {
      * @return true for commutative
      */
 
-    override fun isCommutative(): Boolean {
-        return true
-    }
+    override val commutative=true
 
     companion object {
         /**

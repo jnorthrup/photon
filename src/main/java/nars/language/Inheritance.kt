@@ -45,7 +45,7 @@ class Inheritance : Statement {
      * @param open Open variable list
      * @param i    Syntactic complexity of the compound
      */
-    private constructor(n: String, cs: List<Term>, con: Boolean, i: Short) : super(n, cs, con, i)
+    private constructor(n: String, cs: List<Term>, con: Boolean, i:  Int) : super(n, cs, con, i)
 
     /**
      * Clone an object
@@ -53,7 +53,7 @@ class Inheritance : Statement {
      * @return A new object, to be casted into a SetExt
      */
     override fun clone(): Term {
-        return Inheritance(name, Util2.cloneList(components) as List<Term>, isConstant, complexity)
+        return Inheritance(name, Util2.cloneList(components) as List<Term>, constant, complexity)
     }
 
     /**

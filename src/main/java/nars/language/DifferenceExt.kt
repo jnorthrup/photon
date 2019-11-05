@@ -21,7 +21,7 @@
 package nars.language
 
 //import nars.io.Symbols
-import nars.io.compound_oper_arity1.*
+import nars.io.compound_oper_arity1.DIFFERENCE_EXT_OPERATOR
 import nars.storage.BackingStore
 import java.util.*
 
@@ -45,7 +45,7 @@ class DifferenceExt : CompoundTerm {
      * @param open Open variable list
      * @param i    Syntactic complexity of the compound
      */
-    private constructor(n: String, cs: List<Term>, con: Boolean, i: Int) : super(n, cs, con, i.toShort())
+    private constructor(n: String, cs: List<Term>, con: Boolean, i: Int) : super(n, cs, con, i.toInt())
 
     /**
      * Clone an object
@@ -53,7 +53,7 @@ class DifferenceExt : CompoundTerm {
      * @return A new object, to be casted into a DifferenceExt
      */
     override fun clone(): Term {
-        return DifferenceExt(name, Util2.cloneList(components) as List<Term>, isConstant, complexity as Int)
+        return DifferenceExt(name, Util2.cloneList(components) as List<Term>, constant, complexity as Int)
     }
 
     /**
@@ -100,7 +100,7 @@ class DifferenceExt : CompoundTerm {
             }
             if (t1 is SetExt && t2 is SetExt) {
                 val set = TreeSet((t1 as CompoundTerm).cloneComponents())
-                set.removeAll((t2 as CompoundTerm).cloneComponents())           // set difference
+                set.removeAll((t2 as CompoundTerm).cloneComponents()!!)           // set difference
 
                 return SetExt.make(set, memory)
             }

@@ -24,6 +24,7 @@ package nars.entity
 import nars.io.sentence_type.JUDGMENT_MARK
 import nars.io.sentence_type.QUESTION_MARK
 import nars.io.var_type.VAR_QUERY
+import nars.language.CompoundTerm
 import nars.language.Term
 import java.util.*
 
@@ -34,7 +35,7 @@ import java.util.*
  *
  * It is used as the premises and conclusions of all inference rules.
  */
-class Sentence : Cloneable {
+ class Sentence : Cloneable {
     /**
      * Get the content of the sentence
      *
@@ -45,15 +46,13 @@ class Sentence : Cloneable {
      *
      * @param t The new content
      */
-    /**
-     * The content of a Sentence is a Term
-     */
-    var content: Term
+
     /**
      * Get the punctuation of the sentence
      *
      * @return The character '.' or '?'
      */
+    val content:  Term
     /**
      * The punctuation also indicates the type of the Sentence: Judgment,
      * Question, or Goal
@@ -96,7 +95,7 @@ class Sentence : Cloneable {
      */
     constructor(content: Term, punctuation: Char, truth: TruthValue?, stamp: Stamp) {
         this.content = content
-        this.content.renameVariables()
+        (content as? CompoundTerm )?.renameVariables()
         this.punctuation = punctuation
         this.truth = truth
         this.stamp = stamp
@@ -115,7 +114,7 @@ class Sentence : Cloneable {
      */
     constructor(content: Term, punctuation: Any, truth: TruthValue, stamp: Stamp, revisible: Boolean) {
         this.content = content
-        this.content.renameVariables()
+        (content as? CompoundTerm)?.renameVariables()
         this.punctuation = punctuation.toString()[0]
         this.truth = truth
         this.stamp = stamp
@@ -173,7 +172,7 @@ class Sentence : Cloneable {
 
     public override fun clone(): Any {
         return if (truth == null) {
-            Sentence(content.clone() as Term, punctuation, null, stamp.clone() as Stamp)
+            Sentence(content.clone() as CompoundTerm, punctuation, null, stamp.clone() as Stamp)
         } else Sentence(content.clone() as Term, punctuation, TruthValue(truth!!), stamp.clone() as Stamp, revisible)
     }
 

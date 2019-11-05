@@ -32,7 +32,17 @@ class Variable
  * Constructor, from a given variable name
  *
  * @param s A String read from input
- */(s: String) : Term(s) {
+ */(s: String) : Term(name = s, /**
+         * A variable is not constant
+         *
+         * @return false
+         */
+        constant=false,   /**
+ * The syntactic complexity of a variable is 0, because it does not refer to
+ * any concept.
+ *
+ * @return The complexity of the term, an integer
+ */ complexity=0.toInt()) {
     /**
      * Clone a Variable
      *
@@ -51,24 +61,8 @@ class Variable
     val type: Char
         get() = name[0]
 
-    /**
-     * A variable is not constant
-     *
-     * @return false
-     */
 
-    override fun isConstant(): Boolean {
-        return false
-    }
 
-    /**
-     * The syntactic complexity of a variable is 0, because it does not refer to
-     * any concept.
-     *
-     * @return The complexity of the term, an integer
-     */
-
-    override fun getComplexity() = 0 .toShort()
 
     /**
      * variable terms are listed first alphabetically
@@ -78,7 +72,7 @@ class Variable
      */
 
     override fun compareTo(that: Term): Int {
-        return if (that is Variable) name.compareTo(that.getName()) else -1
+        return if (that is Variable) name.compareTo(that.name) else -1
     }
 
     companion object {
@@ -196,7 +190,7 @@ class Variable
 
                     if (term1.type == type) {
                         if (term2 is Variable && term2.type == type) {
-                            val `var` = Variable(term1.getName() + term2.getName())
+                            val `var` = Variable(term1.name + term2.name)
                             map1[term1] = `var`  // unify
 
                             map2[term2] = `var`  // unify
@@ -205,7 +199,7 @@ class Variable
                         }
                     } else {    // different type
 
-                        map1[term1] = Variable(term1.getName() + "-1")  // rename
+                        map1[term1] = Variable(term1.name + "-1")  // rename
                     }
                     true
                 }
@@ -220,7 +214,7 @@ class Variable
                     if (term2.type == type) {
                         map2[term2] = term2  // unify
                     } else {
-                        map2[term2] = Variable(term2.getName() + "-2")  // rename
+                        map2[term2] = Variable(term2.name + "-2")  // rename
                     }
                     true
                 }
@@ -266,17 +260,19 @@ class Variable
          */
         @JvmStatic
         fun renameVar(map: HashMap<Term, Term>, term: Term, suffix: String) {
-            if (term is Variable) {
-                val t = map[term]
-                if (t == null) {    // new mapped yet
+            when (term) {
+                is Variable -> {
+                    val t = map[term]
+                    if (t == null) {    // new mapped yet
 
-                    map[term] = Variable(term.getName() + suffix)  // rename
+                        map[term] = Variable(term.name + suffix)  // rename
+                    }
                 }
-            } else if (term is CompoundTerm) {
-                // assuming matching order, to be refined in the future
-
-                for (t in term.components) {
-                    renameVar(map, t, suffix)
+                is CompoundTerm -> {
+                    // assuming matching order, to be refined in the future
+                    for (t in term.components!!) {
+                        renameVar(map, t, suffix)
+                    }
                 }
             }
         }

@@ -44,7 +44,7 @@ class Implication : Statement {
      * @param con Whether it is a constant term
      * @param i   Syntactic complexity of the compound
      */
-    protected constructor(n: String, cs: List<Term>, con: Boolean, i: Short) : super(n, cs, con, i)
+    protected constructor(n: String, cs: List<Term>, con: Boolean, i:  Int) : super(n, cs, con, i)
 
     /**
      * Clone an object
@@ -52,7 +52,7 @@ class Implication : Statement {
      * @return A new object
      */
     override fun clone(): Term {
-        return Implication(name, Util2.cloneList(components) as List<Term>, isConstant, complexity)
+        return Implication(name, Util2.cloneList(components) as List<Term>, constant, complexity)
     }
 
     /**
