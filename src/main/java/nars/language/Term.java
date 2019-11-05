@@ -127,13 +127,15 @@ public class Term implements Cloneable, Comparable<Term> {
 
     @Override
     public int compareTo(Term that) {
+        int result;
         if (that instanceof CompoundTerm) {
-            return -1;
+            result = -1;
         } else if (that instanceof Variable) {
-            return 1;
+            result = 1;
         } else {
-            return name.compareTo(that.getName());
+            result = name.compareTo(that.getName());
         }
+        return result;
     }
 
     /**
