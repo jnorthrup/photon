@@ -256,16 +256,20 @@ object CompositionalRules {/* -------------------- intersections and differences
             v2 = sentence.truth
         }
         var truth: TruthValue? = null
-        if (compound is Conjunction) {
-            if (sentence is Sentence) {
-                truth = TruthFunctions.reduceConjunction(v1!!, v2!!)
+        when (compound) {
+            is Conjunction -> {
+                if (sentence is Sentence) {
+                    truth = TruthFunctions.reduceConjunction(v1!!, v2!!)
+                }
             }
-        } else if (compound is Disjunction) {
-            if (sentence is Sentence) {
-                truth = TruthFunctions.reduceDisjunction(v1!!, v2!!)
+            is Disjunction -> {
+                if (sentence is Sentence) {
+                    truth = TruthFunctions.reduceDisjunction(v1!!, v2!!)
+                }
             }
-        } else {
-            return
+            else -> {
+                return
+            }
         }
         val budget = memory.compoundForward(truth, content)
         memory.doublePremiseTask(content, truth, budget)
@@ -413,10 +417,13 @@ object CompositionalRules {/* -------------------- intersections and differences
         }
         content = Implication.make(premise1, oldCompound, memory)!!
         content.applySubstitute(substitute)
-        truth = if (premise1 == taskSentence.content) {
-            TruthFunctions.induction(belief.truth!!, taskSentence.truth!!)
-        } else {
-            TruthFunctions.induction(taskSentence.truth!!, belief.truth!!)
+        truth = when (premise1) {
+            taskSentence.content -> {
+                TruthFunctions.induction(belief.truth!!, taskSentence.truth!!)
+            }
+            else -> {
+                TruthFunctions.induction(taskSentence.truth!!, belief.truth!!)
+            }
         }
         budget = memory.forward(truth)
         memory.doublePremiseTask(content, truth, budget)

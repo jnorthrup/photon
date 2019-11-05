@@ -271,12 +271,10 @@ abstract class Bag<E : ItemIdentity?> protected constructor(
             while (emptyLevel(outLevel)) {
                 outLevel++
             }
-            if (outLevel > inLevel) {           // ignore the item and exit
-
-                return newItem
-            } else {                            // remove an old item in the lowest non-empty level
+            // ignore the item and exit
+            if (outLevel <= inLevel) {                            // remove an old item in the lowest non-empty level
                 oldItem = takeOutFirst(outLevel)
-            }
+            } else return newItem
         }
         itemTable!![inLevel].add(newItem)        // FIFO
 
@@ -325,10 +323,10 @@ abstract class Bag<E : ItemIdentity?> protected constructor(
 
     override fun toString(): String {
         var buf = StringBuffer(" ")
-        for (i in TOTAL_LEVEL downTo showLevel) {
+        (TOTAL_LEVEL downTo showLevel).forEach { i ->
             if (!emptyLevel(i - 1)) {
                 buf = buf.append("\n --- Level ").append(i).append(":\n ")
-                for (j in itemTable!![i - 1].indices) {
+                itemTable!![i - 1].indices.forEach { j ->
                     buf = buf.append(itemTable!![i - 1][j]!!.toStringBrief()).append("\n ")
                 }
             }

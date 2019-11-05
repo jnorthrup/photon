@@ -147,7 +147,7 @@ class Conjunction : CompoundTerm {
     }
 }
 
-public   fun getTerm(op: String, arg: List<Term>, memory: BackingStore): Term? {
+fun getTerm(op: String, arg: List<Term>, memory: BackingStore): Term? {
     if (op.length == 1) {
         if (op[0] == SET_EXT_OPENER.sym) {
             return SetExt.make(arg, memory)

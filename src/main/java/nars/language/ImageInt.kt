@@ -95,7 +95,7 @@ class ImageInt
      * @return the name of the term
      */
 
-    public override fun makeName(): String {
+    override fun makeName(): String {
         return Util2.makeImageName(IMAGE_INT_OPERATOR.sym, this.components!!, relationIndex)
     }
 

@@ -79,7 +79,7 @@ class SetExt : CompoundTerm {
      * @return true for communitative
      */
 
-    public override fun makeName(): String {
+    override fun makeName(): String {
         return Util2.makeSetName(SET_EXT_OPENER.sym, this!!.components!!, SET_EXT_CLOSER.sym)
     }
 

@@ -37,11 +37,11 @@ class TruthValue
         /**
          * The frequency factor of the truth value
          */
-        public var frequency: Float,
+        var frequency: Float,
         /**
          * The confidence factor of the truth value
          */
-         public  var confidence: Float, public  var analytic: Boolean = false) : Cloneable { // implements Cloneable {
+        var confidence: Float, var analytic: Boolean = false) : Cloneable { // implements Cloneable {
     /**
      * Get the isAnalytic flag
      *

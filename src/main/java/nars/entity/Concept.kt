@@ -227,26 +227,26 @@ class Concept(
 
         var judgment2: Sentence
         var rank2: Float
-        var i: Int = 0
+        var i = 0
+
         while (i < table.size) {
             judgment2 = table[i]
             rank2 = BudgetFunctions.rankBelief(judgment2)
             if (rank1 >= rank2) {
-                if (newSentence.equivalentTo(judgment2)) {
-                    return
+                if (!newSentence.equivalentTo(judgment2)) {
+                    table.add(i, newSentence)
+                    break
                 }
-                table.add(i, newSentence)
-                break
+                return
             }
             i++
         }
-        if (table.size >= capacity) {
-            while (table.size > capacity) {
+        if (table.size >= capacity)
+            while (table.size > capacity)
                 table.removeAt(table.size - 1)
-            }
-        } else if (i == table.size) {
-            table.add(newSentence)
-        }
+        else
+            if (i == table.size)
+                table.add(newSentence)
     }
 
     /**

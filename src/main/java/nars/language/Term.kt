@@ -34,7 +34,7 @@ open class Term(
          *
          * @return The name of the term as a String
          */
-        public open var name: String,
+        open var name: String,
 
 
         /**
@@ -51,18 +51,10 @@ open class Term(
          * @return A Term is constant by default
          */
         open var constant: Boolean = true) : Cloneable, Comparable<Term> {
-    override fun compareTo(that: Term): Int {
-        var result: Int
-        if (that is CompoundTerm) {
-            result = -1
-        } else if (that is Variable) {
-            result = 1
-        } else {
-            result = name.compareTo(that.name)
-        }
-        return result
-
-    }
+    override fun compareTo(that: Term) = (that as? CompoundTerm)
+            ?.let { -1 }
+            ?: (that as? Variable).let { 1 }
+            ?: name.compareTo(that.name)
 
     @Override
     public override fun clone(): Term {
@@ -71,95 +63,9 @@ open class Term(
 
     /**copy ctor */
     constructor(orig: Term) : this(orig.name, orig.complexity, false)
-//     * A Term is identified uniquely by its name, a sequence of characters in a
-//     * given alphabet (ASCII or Unicode)
-//     */
-//    protected String name;
-//
-//    /**
-//     * Default constructor that build an internal Term
-//     */
-//    protected Term() {
-//    }
-//
-//    /**
-//     * Constructor with a given name
-//     *
-//     * @param name A String as the name of the Term
-//     */
-//    public Term(String name) { this.name = name; }
-//
-//    public Term(Term term) { this(term.getName()); }
-//
-//    /**
-//     * Reporting the name of the current Term.
-//     *
-//     * @return The name of the term as a String
-//     */
-//    public String getName() {
-//        return name;
-//    }
-//
-//    /**
-//     * Make a new Term with the same name.
-//     *
-//     * @return The new Term
-//     */
-//
 
-//
-//    /**
-//     * Equal terms have identical name, though not necessarily the same
-//     * reference.
-//     *
-//     * @param that The Term to be compared with the current Term
-//     * @return Whether the two Terms are equal
-//     */
-//
-//    public boolean equals(Object that) {
-//        return (that instanceof Term) && name.equals(((Term) that).getName());
-//    }
-//
-//    /**
-//     * Produce a hash code for the term
-//     *
-//     * @return An integer hash code
-//     */
-//
-//    public int hashCode() {
-//        return (Optional.ofNullable(name).map(String::hashCode).orElse(7));
-//    }
-//
-//    public boolean isConstant() {
-//        return true;
-//    }
-//
-//    public void renameVariables() {
-//    }
-//
-//
-//
-//
-//
-//
-//    public short getComplexity() {
-//        return (short) 1  ;
-//    }
-//
-
-//    /**
-//     * Recursively check if a compound contains a term
-//     *
-//     * @param target The term to be searched
-//     * @return Whether the two have the same content
-//     */
-//    public boolean containTerm(Term target) {
-//        return equals(target);
-//    }
-//
-//
-override fun toString():String {
-        return name;
+    override fun toString(): String {
+        return name
     }
 }
 

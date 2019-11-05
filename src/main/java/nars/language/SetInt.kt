@@ -80,7 +80,7 @@ class SetInt : CompoundTerm {
      * @return true for communitative
      */
 
-    public override fun makeName(): String {
+    override fun makeName(): String {
         return Util2.makeSetName(SET_INT_OPENER.sym, this.components!!, SET_INT_CLOSER.sym)
     }
 

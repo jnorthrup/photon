@@ -102,7 +102,7 @@ class ImageExt : CompoundTerm {
      * @return the name of the term
      */
 
-    public override fun makeName(): String {
+    override fun makeName(): String {
         return Util2.makeImageName(IMAGE_EXT_OPERATOR.sym, components!!, relationIndex)
     }
 
