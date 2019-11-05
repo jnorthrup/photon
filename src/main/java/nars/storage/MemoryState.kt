@@ -8,15 +8,15 @@ import nars.main_nogui.ReasonerBatch
 import java.util.concurrent.atomic.AtomicInteger
 
 class MemoryState {
-      var exportStrings = mutableListOf <String>()
+    var exportStrings = mutableListOf<String>()
     /**
      * Backward pointer to the reasoner
      */
-    var reasoner/* ---------- Long-term storage for multiple cycles ---------- */: ReasonerBatch? = null
+    lateinit var reasoner/* ---------- Long-term storage for multiple cycles ---------- */: ReasonerBatch
     /**
      * Concept bag. Containing all Concepts of the system
      */
-    var concepts: ConceptBag? = null
+    lateinit var concepts: ConceptBag
     /**
      * New tasks with novel composed terms, for delayed and selective processing
      */
@@ -28,8 +28,8 @@ class MemoryState {
      * List of new tasks accumulated in one cycle, to be processed in the next
      * cycle
      */
-    var newTasks/* ---------- Short-term workspace for a single cycle ---------- */: List<Task>? = null
-        private set
+    lateinit var newTasks/* ---------- Short-term workspace for a single cycle ---------- */: MutableList<Task>
+
 
     /**
      * The selected Term
@@ -63,12 +63,9 @@ class MemoryState {
      * The substitution that unify the common term in the Task and the Belief
      * TODO unused
      */
-    var substitute: Map<Term, Term>? = null
-    var recorder: IInferenceRecorder? = null
+    lateinit var substitute: Map<Term, Term>
+    lateinit var recorder: IInferenceRecorder
 
-    fun <E> setNewTasks(newTasks: List<Task>?) {
-        this.newTasks = newTasks
-    }
 
     init {
         beliefForgettingRate = AtomicInteger(Parameters.TERM_LINK_FORGETTING_CYCLE)

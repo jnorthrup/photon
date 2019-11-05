@@ -58,8 +58,8 @@ class Task
      */
     /**
      * Belief from which the Task is derived, or null if derived from a theorem
-     */    lateinit
-    var parentBelief: Sentence
+     */
+    var parentBelief: Sentence?=null
         private set
     /**
      * Get the best-so-far solution for a Question or Goal
@@ -85,7 +85,7 @@ class Task
      * @param parentTask   The task from which this new task is derived
      * @param parentBelief The belief from which this new task is derived
      */
-    constructor(s: Sentence, b: BudgetValue, parentTask: Task, parentBelief: Sentence) : this(s, b) {
+    constructor(s: Sentence, b: BudgetValue, parentTask: Task?, parentBelief: Sentence?) : this(s, b) {
         this.parentTask = parentTask
         this.parentBelief = parentBelief
     }
@@ -161,14 +161,14 @@ class Task
         val s = StringBuilder()
         s.append(super.toString()).append(" ")
         s.append(sentence.stamp)
-        if (parentTask != null) {
-            s.append("  \n from task: ").append(parentTask!!.toStringBrief())
-            if (parentBelief != null) {
-                s.append("  \n from belief: ").append(parentBelief.toStringBrief())
+          (parentTask  )?.run {
+            s.append("  \n from task: ").append(toStringBrief())
+              (this@Task.parentBelief)?.run {
+                s.append("  \n from belief: ").append(toStringBrief())
             }
         }
-        if (bestSolution != null) {
-            s.append("  \n solution: ").append(bestSolution!!.toStringBrief())
+         (bestSolution )?.run {
+            s.append("  \n solution: ").append(toStringBrief())
         }
         return s.toString()
     }

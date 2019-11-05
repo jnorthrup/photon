@@ -46,7 +46,7 @@ class SetInt : CompoundTerm {
      * @param open Open variable list
      * @param i    Syntactic complexity of the compound
      */
-    private constructor(n: String, cs: List<Term>, con: Boolean, i:  Int) : super(n, cs, con, i)
+    private constructor(n: String, cs: List<Term>, con: Boolean, i: Int) : super(n, cs, con, i)
 
     /**
      * Clone a SetInt
@@ -72,7 +72,7 @@ class SetInt : CompoundTerm {
      * @return true for communitative
      */
 
-    override var commutative =true
+    override var commutative = true
 
     /**
      * Make a String representation of the set, override the default.
@@ -92,7 +92,8 @@ class SetInt : CompoundTerm {
          * @param memory Reference to the memeory
          * @return A compound generated or a term it reduced to
          */
-        @JvmStatic    fun make(t: Term, memory: BackingStore): Term? {
+        @JvmStatic
+        fun make(t: Term, memory: BackingStore): Term? {
             val set = TreeSet<Term>()
             set.add(t)
             return make(set, memory)
@@ -105,11 +106,8 @@ class SetInt : CompoundTerm {
          * @param memory  Reference to the memeory
          * @return the Term generated from the arguments
          */
-        @JvmStatic  fun make(argList: List<Term>?, memory: BackingStore): Term? {
-            val set = TreeSet(argList) // sort/merge arguments
-
-            return make(set, memory)
-        }
+        @JvmStatic
+        fun make(argList: List<Term> , memory: BackingStore): Term? =make(argList .toSortedSet(), memory)
 
         /**
          * Try to make a new compound from a set of components. Called by the public make methods.
@@ -118,12 +116,13 @@ class SetInt : CompoundTerm {
          * @param memory Reference to the memeory
          * @return the Term generated from the arguments
          */
-        @JvmStatic    fun make(set: SortedSet <Term>, memory: BackingStore): Term? {
+        @JvmStatic
+        fun make(set:  Set<Term>, memory: BackingStore): Term? {
             if (!set.isEmpty()) {
-                val argument = ArrayList(set)
-                val name  = Util2.makeSetName(SET_INT_OPENER.sym, argument, SET_INT_CLOSER.sym)
+                val argument = set
+                val name = Util2.makeSetName(SET_INT_OPENER.sym, argument, SET_INT_CLOSER.sym)
                 val t = memory.nameToListedTerm(name)
-                return t ?: SetInt(argument)
+                return t
             }
             return null
         }

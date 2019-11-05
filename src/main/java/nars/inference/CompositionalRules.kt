@@ -48,18 +48,20 @@ object CompositionalRules {/* -------------------- intersections and differences
      * @param memory       Reference to the memory
      */
     internal fun composeCompound(taskContent: Statement, beliefContent: Statement, index: Int, memory: BackingStore) {
-        if (memory.currentTask.sentence.isJudgment && taskContent.javaClass == beliefContent.javaClass) {
+        if (memory.currentTask!!.sentence.isJudgment && taskContent.javaClass == beliefContent.javaClass) {
             val componentT: Term = taskContent.componentAt(1 - index)
             val componentB: Term = beliefContent.componentAt(1 - index)
             val componentCommon: Term = taskContent.componentAt(index)
-            if (componentT is CompoundTerm && componentT.containAllComponents(componentB)) {
+            if (componentT !is CompoundTerm || !componentT.containAllComponents(componentB)) {
+                if (componentB is CompoundTerm && componentB.containAllComponents(componentT)) {
+                    decomposeCompound(componentB, componentT, componentCommon, index, false, memory)
+                    return
+                }
+            } else {
                 decomposeCompound(componentT, componentB, componentCommon, index, true, memory)
                 return
-            } else if (componentB is CompoundTerm && componentB.containAllComponents(componentT)) {
-                decomposeCompound(componentB, componentT, componentCommon, index, false, memory)
-                return
             }
-            val truthT = memory.currentTask.sentence.truth
+            val truthT = memory.currentTask!!.sentence.truth
             val truthB = memory.currentBelief!!.truth
             val truthOr: TruthValue? = TruthFunctions.union(truthT!!, truthB!!)
             val truthAnd: TruthValue? = TruthFunctions.intersection(truthT, truthB)
@@ -151,7 +153,7 @@ object CompositionalRules {/* -------------------- intersections and differences
     private fun decomposeCompound(compound: CompoundTerm, component: Term, term1: Term, index: Int, compoundTask: Boolean, memory: BackingStore) {
         if (compound !is Statement) {
             val term2 = Util2.reduceComponents(compound, component, memory) ?: return
-            val task: Task = memory.currentTask
+            val task: Task = memory.currentTask!!
             val sentence = task.sentence
             val belief = memory.currentBelief
             val oldContent = task.content as Statement
@@ -250,7 +252,7 @@ object CompositionalRules {/* -------------------- intersections and differences
      * @param memory          Reference to the memory
      */
     internal fun decomposeStatement(compound: CompoundTerm?, component: Term?, compoundTask: Boolean, memory: BackingStore) {
-        val task: Task = memory.currentTask
+        val task: Task = memory.currentTask!!
         val sentence = task.sentence
         if (sentence.isQuestion) {
             return
@@ -300,7 +302,7 @@ object CompositionalRules {/* -------------------- intersections and differences
      * @param memory        Reference to the memory
     </M></M> */
     private fun introVarOuter(taskContent: Statement, beliefContent: Statement, index: Int, memory: BackingStore) {
-        val truthT = memory.currentTask.sentence.truth
+        val truthT = memory.currentTask!!.sentence.truth
         val truthB = memory.currentBelief!!.truth
         val varInd = Variable("\$varInd1")
         val varInd2 = Variable("\$varInd2")
@@ -390,7 +392,7 @@ object CompositionalRules {/* -------------------- intersections and differences
      * @param memory        Reference to the memory
     </M></M></M></M></M></M> */
     internal fun introVarInner(premise1: Statement, premise2: Statement, oldCompound: CompoundTerm, memory: BackingStore) {
-        val task: Task = memory.currentTask
+        val task: Task = memory.currentTask!!
         val taskSentence = task.sentence
         if (!taskSentence.isJudgment || premise1.javaClass != premise2.javaClass || oldCompound.containComponent(premise1)) {
             return

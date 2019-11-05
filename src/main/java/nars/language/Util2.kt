@@ -96,7 +96,7 @@ object Util2 {
      * @return the oldName of the term
      */
     @JvmStatic
-    internal fun makeSetName(opener: Char, arg: Collection<Term>, closer: Char): String {
+    internal fun makeSetName(opener: Char, arg: Iterable<Term>, closer: Char): String {
         val joiner = StringJoiner(ARGUMENT_SEPARATOR.sym.toString(), opener.toString(), closer.toString())
         for (term in arg) {
             val termName = term.name

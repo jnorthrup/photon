@@ -125,7 +125,7 @@ object LocalRules {/* -------------------- same contents -------------------- */
         }
         val budget = memory.solutionEval(problem, belief, task)
         if (budget != null && budget.aboveThreshold()) {
-            memory.activatedTask(budget, belief, task.parentBelief)
+            memory.activatedTask(budget, belief, task.parentBelief!!)
         }
     }
 

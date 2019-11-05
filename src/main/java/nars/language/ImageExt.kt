@@ -65,7 +65,7 @@ class ImageExt : CompoundTerm {
      * @param complexity Syntactic complexity of the compound
      * @param index      The index of relation in the component list
      */
-    private constructor(n: String, cs: List<Term>, con: Boolean, complexity:  Int, index: Int) : super(n, cs, con, complexity) {
+    constructor(n: String, cs: List<Term>, con: Boolean, complexity: Int, index: Int) : super(n, cs, con, complexity) {
         relationIndex = index
     }
 
@@ -93,7 +93,7 @@ class ImageExt : CompoundTerm {
      */
     val theOtherComponent
         get() = (this as? CompoundTermState)?.let {
-            components?.takeIf { it?.size == 2 }?.get(   if (relationIndex == 0) 1 else 0)
+            components?.takeIf { it.size == 2 }?.get(if (relationIndex == 0) 1 else 0)
         }
 
     /**
@@ -139,7 +139,7 @@ class ImageExt : CompoundTerm {
                     argument.add(argList[j])
                 }
             }
-            return make(argument, index , memory)
+            return make(argument, index, memory)
         }
 
         /**
@@ -152,20 +152,17 @@ class ImageExt : CompoundTerm {
          */
         @JvmStatic
         fun make(product: Product, relation: Term, index: Int, memory: BackingStore): Term {
-            if (relation is Product) {
-                if (product.size() == 2 && relation.size() == 2) {
-                    if (index.toInt() == 0 && product.componentAt(1) == relation.componentAt(1)) { // (/,_,(*,a,b),b) is reduced to a
+            // (/,_,(*,a,b),b) is reduced to a
+            when {
+                relation is Product && product.size() == 2 && relation.size() == 2 -> when {
+                    index == 0 && product.componentAt(1) == relation.componentAt(1) -> return relation.componentAt(0)
+                    index == 1 && product.componentAt(0) == relation.componentAt(0) ->
+                        return relation.componentAt(1) // (/,(*,a,b),a,_) is reduced to b
 
-                        return relation.componentAt(0)
-                    }
-                    if (index.toInt() == 1 && product.componentAt(0) == relation.componentAt(0)) { // (/,(*,a,b),a,_) is reduced to b
-
-                        return relation.componentAt(1)
-                    }
                 }
             }
-            val argument: MutableList<Term> = product.cloneComponents()!!
-            argument[index.toInt()] = relation
+            val argument: MutableList<Term> = product.cloneComponents()
+            argument[index] = relation
             return make(argument, index, memory)
         }
 
@@ -179,12 +176,12 @@ class ImageExt : CompoundTerm {
          */
         @JvmStatic
         fun make(oldImage: ImageExt, component: Term, index: Int, memory: BackingStore): Term {
-            val argList  = oldImage.cloneComponents()!!
+            val argList = oldImage.cloneComponents()
             val oldIndex = oldImage.relationIndex
             val relation = argList[oldIndex]
             argList[oldIndex] = component
             argList[index] = relation
-            return make(argList, index , memory)
+            return make(argList, index, memory)
         }
 
         /**
@@ -196,9 +193,9 @@ class ImageExt : CompoundTerm {
          */
         @JvmStatic
         fun make(argument: List<Term>, index: Int, memory: BackingStore): Term {
-            val name: String = Util2.makeImageName(IMAGE_EXT_OPERATOR.sym, argument, index.toInt())
+            val name: String = Util2.makeImageName(IMAGE_EXT_OPERATOR.sym, argument, index)
             val t: Term? = memory.nameToListedTerm(name)
-            return t ?: ImageExt(name, argument, index.toInt())
+            return t ?: ImageExt(name, argument, index)
         }
     }
 }
