@@ -35,9 +35,9 @@ import org.jetbrains.annotations.Nullable;
  * <p>
  * This class is mainly used in inference.RuleTable to dispatch premises to inference rules
  */
-public class TermLink extends   ItemIdentity implements TermLinkConstants {
+public class TermLink extends   ItemIdentity   {
     private String key = null;
-    private int type;
+    public  TermLinkConstants type;
     @Nullable
     private int [] index;
     private Term target;
@@ -48,14 +48,14 @@ public class TermLink extends   ItemIdentity implements TermLinkConstants {
      * called in CompoundTerm.prepareComponentLinks only
      *
      * @param t       Target Term
-     * @param p       Link type
+     * @param termlinkType       Link type
      * @param indices Component indices in compound, may be 1 to 4
      */
-    public TermLink(Term t, int p, int... indices) {
+    public TermLink(Term t, TermLinkConstants termlinkType, int... indices) {
         setTarget(t);
-        setType(p);
-        assert (getType() % 2 == 0); // template types all point to compound, though the target is component
-        if (getType() == TermLinkConstants.COMPOUND_CONDITION) {  // the first index is 0 by default
+        setType(termlinkType);
+        assert (type.ordinal() % 2 == 0); // template types all point to compound, though the target is component
+        if (type == TermLinkConstants.COMPOUND_CONDITION) {  // the first index is 0 by default
             setIndex(new int[indices.length + 1]);
             getIndex()[0] = 0;
             for (int i = 0; i < indices.length; i++) {
@@ -93,9 +93,9 @@ public class TermLink extends   ItemIdentity implements TermLinkConstants {
     public TermLink(Term t, TermLink template, BudgetValue v) {
         super(  v);
         setTarget(t);
-        setType(template.getType());
+        setType(template.type);
         if (template.getTarget().equals(t)) {
-            setType(getType() - 1);     // point to component
+            setType(type .ordinal()- 1);     // point to component
         }
         setIndex(template.getIndices());
 //        setKey();
@@ -106,7 +106,11 @@ public class TermLink extends   ItemIdentity implements TermLinkConstants {
     }
 
     public void setType(int type) {
-        this.type = type;
+        setType(TermLinkConstants.values()[type]);
+    }
+
+    public void setType(TermLinkConstants v) {
+        this.type = v;
     }
 
     /**
@@ -145,14 +149,14 @@ public class TermLink extends   ItemIdentity implements TermLinkConstants {
     public   String getKey() {
         if (this.key == null) {
             String key, at1, at2;
-            if ((getType() % 2) == 1) {  // to component
+            if ((type.ordinal() % 2) == 1) {  // to component
                 at1 = termlink_type.TO_COMPONENT_1.sym;
                 at2 = termlink_type.TO_COMPONENT_2.sym;
             } else {                // to compound
                 at1 = termlink_type.TO_COMPOUND_1.sym;
                 at2 = termlink_type.TO_COMPOUND_2.sym;
             }
-            var in = "T" + getType();
+            var in = "T" + type;
             if (getIndex() != null) {
                 for (int value : getIndex()) {
                     in += "-" + (value + 1);
@@ -177,17 +181,6 @@ public class TermLink extends   ItemIdentity implements TermLinkConstants {
      */
     public Term getTarget() {
         return target;
-    }
-
-    /**
-     * The type of link, one of the above
-     */ /**
-     * Get the link type
-     *
-     * @return Type of the link
-     */
-    public int getType() {
-        return type;
     }
 
     /**

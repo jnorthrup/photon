@@ -22,13 +22,13 @@ package nars.inference
 
 //import nars.io.Symbols
 import nars.entity.*
-import nars.entity.TermLinkConstants.Companion.COMPONENT
-import nars.entity.TermLinkConstants.Companion.COMPONENT_CONDITION
-import nars.entity.TermLinkConstants.Companion.COMPONENT_STATEMENT
-import nars.entity.TermLinkConstants.Companion.COMPOUND
-import nars.entity.TermLinkConstants.Companion.COMPOUND_CONDITION
-import nars.entity.TermLinkConstants.Companion.COMPOUND_STATEMENT
-import nars.entity.TermLinkConstants.Companion.SELF
+import nars.entity.TermLinkConstants. COMPONENT
+import nars.entity.TermLinkConstants. COMPONENT_CONDITION
+import nars.entity.TermLinkConstants. COMPONENT_STATEMENT
+import nars.entity.TermLinkConstants. COMPOUND
+import nars.entity.TermLinkConstants. COMPOUND_CONDITION
+import nars.entity.TermLinkConstants. COMPOUND_STATEMENT
+import nars.entity.TermLinkConstants. SELF
 import nars.io.var_type.*
 import nars.language.*
 import nars.storage.BackingStore

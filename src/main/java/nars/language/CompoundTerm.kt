@@ -22,6 +22,7 @@ package nars.language
 
 import nars.entity.TermLink
 import nars.entity.TermLinkConstants
+import nars.entity.TermLinkConstants.*
 import nars.language.Util2.cloneList
 import nars.language.Util2.makeCompoundName
 import nars.language.Variable.Companion.containVar
@@ -294,9 +295,9 @@ abstract class CompoundTerm : CompoundTermState {
      *
      * @return A list of TermLink templates
      */
-    fun prepareComponentLinks(): ArrayList<TermLinkConstants> {
-        val componentLinks = ArrayList<TermLinkConstants>()
-        val type = if (this is Statement) TermLinkConstants.COMPOUND_STATEMENT else TermLinkConstants.COMPOUND // default
+    fun prepareComponentLinks():  List<TermLink > {
+        val componentLinks = ArrayList<TermLink >()
+        val type = if (this is Statement) COMPOUND_STATEMENT else COMPOUND // default
         prepareComponentLinks(componentLinks, type, this)
         return componentLinks
     }
@@ -311,7 +312,7 @@ abstract class CompoundTerm : CompoundTermState {
      * @param type           The type of TermLink to be built
      * @param term           The CompoundTerm for which the links are built
      */
-    fun prepareComponentLinks(componentLinks: MutableList<TermLinkConstants>, type:  Int, term: CompoundTerm) {
+    fun prepareComponentLinks(componentLinks: MutableList<TermLink >, type: TermLinkConstants, term: CompoundTerm) {
         var t1: Term
         var t2: Term
         var t3: Term // components at different levels
@@ -321,16 +322,16 @@ abstract class CompoundTerm : CompoundTermState {
                 componentLinks.add(TermLink(t1, type, i))
             }
             if (t1 is Conjunction && (this is Equivalence || this is Implication && i == 0)) {
-                (t1 as CompoundTerm).prepareComponentLinks(componentLinks, TermLinkConstants.COMPOUND_CONDITION, t1 as CompoundTerm)
+                (t1 as CompoundTerm).prepareComponentLinks(componentLinks, COMPOUND_CONDITION, t1 as CompoundTerm)
             } else if (t1 is CompoundTerm) {
                 for (j in 0 until t1.size()) { // second level components
                     t2 = t1.componentAt(j)
                     if (t2.constant) {
                         if (t1 is Product || t1 is ImageExt || t1 is ImageInt) {
-                            if (type == TermLinkConstants.COMPOUND_CONDITION) {
-                                componentLinks.add(TermLink(t2, TermLinkConstants.TRANSFORM, 0, i, j))
+                            if (type == COMPOUND_CONDITION) {
+                                componentLinks.add(TermLink(t2, TRANSFORM, 0, i, j))
                             } else {
-                                componentLinks.add(TermLink(t2, TermLinkConstants.TRANSFORM, i, j))
+                                componentLinks.add(TermLink(t2, TRANSFORM, i, j))
                             }
                         } else {
                             componentLinks.add(TermLink(t2, type, i, j))
@@ -340,10 +341,10 @@ abstract class CompoundTerm : CompoundTermState {
                         for (k in 0 until (t2 as CompoundTerm).size()) {
                             t3 = t2.componentAt(k)
                             if (t3.constant) { // third level
-                                if (type == TermLinkConstants.COMPOUND_CONDITION) {
-                                    componentLinks.add(TermLink(t3, TermLinkConstants.TRANSFORM, 0, i, j, k))
+                                if (type == COMPOUND_CONDITION) {
+                                    componentLinks.add(TermLink(t3, TRANSFORM, 0, i, j, k))
                                 } else {
-                                    componentLinks.add(TermLink(t3, TermLinkConstants.TRANSFORM, i, j, k))
+                                    componentLinks.add(TermLink(t3, TRANSFORM, i, j, k))
                                 }
                             }
                         }

@@ -20,6 +20,7 @@
  */
 package nars.entity
 
+import nars.entity.TermLinkConstants.SELF
 import nars.main_nogui.Parameters
 
 /**
@@ -100,7 +101,7 @@ class TaskLink(t: Task?, template: TermLink?, v: BudgetValue?) : TermLink("", v)
     init {
         tasklinkState.targetTask = t
         if (template == null) {
-            type = TermLinkConstants.SELF
+            type = SELF
             index = null
         } else {
             type = template.type
