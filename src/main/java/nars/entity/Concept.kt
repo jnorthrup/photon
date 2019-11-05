@@ -306,7 +306,7 @@ class Concept(
             val subBudget: BudgetValue = BudgetFunctions.distributeAmongLinks(taskBudget, termLinkTemplates!!.size)
             if (subBudget.aboveThreshold()) {
                 for (template in termLinkTemplates!!) {
-                    if (template.type != TermLinkConstants.TRANSFORM) {
+                    if (template.type != TermLinkType.TRANSFORM) {
                         t = template.target
                         concept = memory.getConcept(t)
                         if (concept != null) {
@@ -433,7 +433,7 @@ class Concept(
         memory.recorder!!.append(" * Selected TaskLink: $currentTaskLink\n")
         memory.currentTask = currentTaskLink.targetTask
 //      memory.getRecorder().append(" * Selected Task: " + task + "\n");    // for debugging
-        if (currentTaskLink.type == TermLinkConstants.TRANSFORM) {
+        if (currentTaskLink.type == TermLinkType.TRANSFORM) {
             memory.currentBelief = null
             RuleTables.transformTask(currentTaskLink, memory)  // to turn this into structural inference as below?
         } else {

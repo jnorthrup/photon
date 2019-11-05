@@ -1,6 +1,6 @@
 package nars.entity
 
-enum class TermLinkConstants {
+enum class TermLinkType {
     /**
      * At C, point to C; TaskLink only
      */

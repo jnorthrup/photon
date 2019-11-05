@@ -20,7 +20,7 @@
  */
 package nars.entity
 
-import nars.entity.TermLinkConstants.SELF
+import nars.entity.TermLinkType.SELF
 import nars.main_nogui.Parameters
 
 /**

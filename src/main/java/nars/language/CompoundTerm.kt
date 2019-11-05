@@ -21,8 +21,8 @@
 package nars.language
 
 import nars.entity.TermLink
-import nars.entity.TermLinkConstants
-import nars.entity.TermLinkConstants.*
+import nars.entity.TermLinkType
+import nars.entity.TermLinkType.*
 import nars.language.Util2.cloneList
 import nars.language.Util2.makeCompoundName
 import nars.language.Variable.Companion.containVar
@@ -312,7 +312,7 @@ abstract class CompoundTerm : CompoundTermState {
      * @param type           The type of TermLink to be built
      * @param term           The CompoundTerm for which the links are built
      */
-    fun prepareComponentLinks(componentLinks: MutableList<TermLink >, type: TermLinkConstants, term: CompoundTerm) {
+    fun prepareComponentLinks(componentLinks: MutableList<TermLink >, type: TermLinkType, term: CompoundTerm) {
         var t1: Term
         var t2: Term
         var t3: Term // components at different levels

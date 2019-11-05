@@ -36,7 +36,7 @@ import org.jetbrains.annotations.Nullable;
  * This class is mainly used in inference.RuleTable to dispatch premises to inference rules
  */
 public class TermLink extends ItemIdentity {
-    public TermLinkConstants type;
+    public TermLinkType type;
     private String key = null;
     @Nullable
     private int[] index;
@@ -51,11 +51,11 @@ public class TermLink extends ItemIdentity {
      * @param termlinkType Link type
      * @param indices      Component indices in compound, may be 1 to 4
      */
-   public   TermLink(Term t, TermLinkConstants termlinkType, int... indices) {
+   public   TermLink(Term t, TermLinkType termlinkType, int... indices) {
         setTarget(t);
         setType(termlinkType);
         assert (type.ordinal() % 2 == 0); // template types all point to compound, though the target is component
-        if (type == TermLinkConstants.COMPOUND_CONDITION) {  // the first index is 0 by default
+        if (type == TermLinkType.COMPOUND_CONDITION) {  // the first index is 0 by default
             setIndex(new int[indices.length + 1]);
             getIndex()[0] = 0;
             for (int i = 0; i < indices.length; i++) {
@@ -104,15 +104,15 @@ public class TermLink extends ItemIdentity {
 
     }
 
-    public static TermLink createTermLink(Term t, TermLinkConstants termlinkType, int... indices) {
+    public static TermLink createTermLink(Term t, TermLinkType termlinkType, int... indices) {
         return new TermLink(t, termlinkType, indices);
     }
 
     public void setType(int type) {
-        setType(TermLinkConstants.values()[type]);
+        setType(TermLinkType.values()[type]);
     }
 
-    public void setType(TermLinkConstants v) {
+    public void setType(TermLinkType v) {
         this.type = v;
     }
 
