@@ -30,7 +30,7 @@ import nars.main_nogui. *;
  */
 public class TaskLink extends TermLink {
 
-    final TasklinkState tasklinkState = new TasklinkState();
+    private final TasklinkState tasklinkState = new TasklinkState();
 
     /**
      * Constructor
@@ -43,21 +43,21 @@ public class TaskLink extends TermLink {
      */
     public TaskLink(Task t, TermLink template, BudgetValue v) {
         super("", v);
-        tasklinkState.targetTask = t;
+        getTasklinkState().setTargetTask(t);
         if (template == null) {
-            type = TermLinkConstants.SELF;
-            index = null;
+            setType(TermLinkConstants.SELF);
+            setIndex(null);
         } else {
-            type = template.getType();
-            index = template.getIndices();
+            setType(template.getType());
+            setIndex(template.getIndices());
         }
-        tasklinkState.recordedLinks = new String[Parameters.TERM_LINK_RECORD_LENGTH];
-        tasklinkState.recordingTime = new long[Parameters.TERM_LINK_RECORD_LENGTH];
-        tasklinkState.counter = 0;
+        getTasklinkState().setRecordedLinks(new String[Parameters.TERM_LINK_RECORD_LENGTH]);
+        getTasklinkState().setRecordingTime(new long[Parameters.TERM_LINK_RECORD_LENGTH]);
+        getTasklinkState().setCounter(0);
     }
 
     public String getKey() {
-        return super.getKey() + tasklinkState.targetTask.getKey();
+        return super.getKey() + getTasklinkState().getTargetTask().getKey();
     }
 
     /**
@@ -66,7 +66,7 @@ public class TaskLink extends TermLink {
      * @return The linked Task
      */
     public Task getTargetTask() {
-        return tasklinkState.targetTask;
+        return getTasklinkState().getTargetTask();
     }
 
     /**
@@ -81,27 +81,27 @@ public class TaskLink extends TermLink {
      */
     public boolean novel(TermLink termLink, long currentTime) {
         var bTerm = termLink.getTarget();
-        if (bTerm.equals(tasklinkState.targetTask.getSentence().getContent())) {
+        if (bTerm.equals(getTasklinkState().getTargetTask().getSentence().getContent())) {
             return false;
         }
         var linkKey = termLink.getKey();
         int next, i;
-        for (i = 0; i < tasklinkState.counter; i++) {
+        for (i = 0; i < getTasklinkState().getCounter(); i++) {
             next = i % Parameters.TERM_LINK_RECORD_LENGTH;
-            if (linkKey.equals(tasklinkState.recordedLinks[next])) {
-                if (currentTime < tasklinkState.recordingTime[next] + Parameters.TERM_LINK_RECORD_LENGTH) {
+            if (linkKey.equals(getTasklinkState().getRecordedLinks()[next])) {
+                if (currentTime < getTasklinkState().getRecordingTime()[next] + Parameters.TERM_LINK_RECORD_LENGTH) {
                     return false;
                 } else {
-                    tasklinkState.recordingTime[next] = currentTime;
+                    getTasklinkState().getRecordingTime()[next] = currentTime;
                     return true;
                 }
             }
         }
         next = i % Parameters.TERM_LINK_RECORD_LENGTH;
-        tasklinkState.recordedLinks[next] = linkKey;       // add knowledge reference to recordedLinks
-        tasklinkState.recordingTime[next] = currentTime;
-        if (tasklinkState.counter < Parameters.TERM_LINK_RECORD_LENGTH) { // keep a constant length
-            tasklinkState.counter++;
+        getTasklinkState().getRecordedLinks()[next] = linkKey;       // add knowledge reference to recordedLinks
+        getTasklinkState().getRecordingTime()[next] = currentTime;
+        if (getTasklinkState().getCounter() < Parameters.TERM_LINK_RECORD_LENGTH) { // keep a constant length
+            getTasklinkState().setCounter(getTasklinkState().getCounter() + 1);
         }
         return true;
     }
@@ -109,5 +109,9 @@ public class TaskLink extends TermLink {
 
     public String toString() {
         return super.toString() + " " + getTargetTask().getSentence().getStamp();
+    }
+
+    public TasklinkState getTasklinkState() {
+        return tasklinkState;
     }
 }

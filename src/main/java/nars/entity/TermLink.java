@@ -37,18 +37,9 @@ import org.jetbrains.annotations.Nullable;
  */
 public class TermLink extends   ItemIdentity implements TermLinkConstants {
     private String key = null;
-    /**
-     * The type of link, one of the above
-     */
-    protected int type;
-    /**
-     * The index of the component in the component list of the compound, may have up to 4 levels
-     */
+    private int type;
     @Nullable
-    protected int [] index;
-    /**
-     * The linked Term
-     */
+    private int [] index;
     private Term target;
 
     /**
@@ -61,20 +52,20 @@ public class TermLink extends   ItemIdentity implements TermLinkConstants {
      * @param indices Component indices in compound, may be 1 to 4
      */
     public TermLink(Term t, int p, int... indices) {
-        target = t;
-        type = p;
-        assert (type % 2 == 0); // template types all point to compound, though the target is component
-        if (type == TermLinkConstants.COMPOUND_CONDITION) {  // the first index is 0 by default
-            index = new int[indices.length + 1];
-            index[0] = 0;
+        setTarget(t);
+        setType(p);
+        assert (getType() % 2 == 0); // template types all point to compound, though the target is component
+        if (getType() == TermLinkConstants.COMPOUND_CONDITION) {  // the first index is 0 by default
+            setIndex(new int[indices.length + 1]);
+            getIndex()[0] = 0;
             for (int i = 0; i < indices.length; i++) {
-                index[i + 1] = (short) indices[i];
+                getIndex()[i + 1] = (short) indices[i];
             }
         } else {
-            index = new int[indices.length];
-            int bound = index.length;
+            setIndex(new int[indices.length]);
+            int bound = getIndex().length;
             for (int i = 0; i < bound; i++) {
-                index[i] = (short) indices[i];
+                getIndex()[i] = (short) indices[i];
             }
         }
     }
@@ -87,7 +78,7 @@ public class TermLink extends   ItemIdentity implements TermLinkConstants {
      */
     protected TermLink(String s, BudgetValue v) {
         super(  v);
-        key=s ;
+        setKey(s);
     }
 
     /**
@@ -101,14 +92,39 @@ public class TermLink extends   ItemIdentity implements TermLinkConstants {
      */
     public TermLink(Term t, TermLink template, BudgetValue v) {
         super(  v);
-        target = t;
-        type = template.getType();
+        setTarget(t);
+        setType(template.getType());
         if (template.getTarget().equals(t)) {
-            type--;     // point to component
+            setType(getType() - 1);     // point to component
         }
-        index = template.getIndices();
+        setIndex(template.getIndices());
 //        setKey();
     }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    /**
+     * The index of the component in the component list of the compound, may have up to 4 levels
+     */
+    @Nullable
+    public int[] getIndex() {
+        return index;
+    }
+
+    public void setIndex(@Nullable int[] index) {
+        this.index = index;
+    }
+
+    public void setTarget(Term target) {
+        this.target = target;
+    }
+
     enum   termlink_type     {
         TO_COMPONENT_1(" @("),
                 TO_COMPONENT_2(")_ "),
@@ -129,22 +145,22 @@ public class TermLink extends   ItemIdentity implements TermLinkConstants {
     public   String getKey() {
         if (this.key == null) {
             String key, at1, at2;
-            if ((type % 2) == 1) {  // to component
+            if ((getType() % 2) == 1) {  // to component
                 at1 = termlink_type.TO_COMPONENT_1.sym;
                 at2 = termlink_type.TO_COMPONENT_2.sym;
             } else {                // to compound
                 at1 = termlink_type.TO_COMPOUND_1.sym;
                 at2 = termlink_type.TO_COMPOUND_2.sym;
             }
-            var in = "T" + type;
-            if (index != null) {
-                for (int value : index) {
+            var in = "T" + getType();
+            if (getIndex() != null) {
+                for (int value : getIndex()) {
                     in += "-" + (value + 1);
                 }
             }
             key = at1 + in + at2;
-            if (target != null) {
-                key += target;
+            if (getTarget() != null) {
+                key += getTarget();
             }
             return key;
         } else {
@@ -153,6 +169,8 @@ public class TermLink extends   ItemIdentity implements TermLinkConstants {
     }
 
     /**
+     * The linked Term
+     */ /**
      * Get the target of the link
      *
      * @return The Term pointed by the link
@@ -162,6 +180,8 @@ public class TermLink extends   ItemIdentity implements TermLinkConstants {
     }
 
     /**
+     * The type of link, one of the above
+     */ /**
      * Get the link type
      *
      * @return Type of the link
@@ -176,7 +196,7 @@ public class TermLink extends   ItemIdentity implements TermLinkConstants {
      * @return The index array
      */
     public int[] getIndices() {
-        return index;
+        return getIndex();
     }
 
     /**
@@ -186,8 +206,8 @@ public class TermLink extends   ItemIdentity implements TermLinkConstants {
      * @return The index value
      */
     public  int getIndex(int i) {
-        if ((index != null) && (i < index.length)) {
-            return index[i];
+        if ((getIndex() != null) && (i < getIndex().length)) {
+            return getIndex()[i];
         } else {
             return -1;
         }
