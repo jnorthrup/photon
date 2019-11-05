@@ -29,7 +29,7 @@ import nars.main_nogui.Parameters
 /**
  * A triple of priority (current), durability (decay), and quality (long-term average).
  */
-class BudgetValue : BudgetTriple {
+class BudgetValue : BudgetTriple  {
     /**
      * The relative share of time resource to be allocated
      */
@@ -158,8 +158,8 @@ class BudgetValue : BudgetTriple {
      * @return String representation of the value with 2-digit accuracy
      */
     fun toStringBrief(): String {
-        return toString()
-//        return MARK + priority.toStringBrief() + SEPARATOR + durability.toStringBrief() + SEPARATOR + quality.toStringBrief() + MARK;
+//        return toString()
+      return ""+ MARK + priority.toStringBrief() + SEPARATOR + durability.toStringBrief() + SEPARATOR + quality.toStringBrief() + MARK;
 
     }
 
@@ -174,3 +174,5 @@ class BudgetValue : BudgetTriple {
         private   val SEPARATOR =  numeric_delim.VALUE_SEPARATOR.sym
     }
 }
+
+private fun Float.toStringBrief() =String.format("%.2f",this )

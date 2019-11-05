@@ -50,6 +50,6 @@ class ConceptBag
      */
 
     override fun forgetRate(): Int {
-        return memory.conceptForgettingRate!!.get()
+        return memory.conceptForgettingRate.get()
     }
 }

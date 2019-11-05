@@ -49,8 +49,8 @@ class BackingStore(reasoner: ReasonerBatch ) : MemoryOps {
      * @return
      */
 /* ---------- access utilities ---------- */
-    override val exportStrings: ArrayList<String>
-        get() = memoryState.exportStrings as ArrayList<String>
+    override val exportStrings:  MutableList <String>
+        get() = memoryState.exportStrings as MutableList<String>
 
     /**
      * Inference record text to be written into a log file
@@ -84,7 +84,7 @@ class BackingStore(reasoner: ReasonerBatch ) : MemoryOps {
      * @return a Concept or null
      */
     override fun nameToConcept(name: String): Concept {
-        return memoryState.concepts!![name]!!
+        return memoryState.concepts[name]!!
     }
 
     /**
@@ -230,10 +230,12 @@ class BackingStore(reasoner: ReasonerBatch ) : MemoryOps {
      * @param newBudget  The budget value in task
      */
     override fun doublePremiseTask(newContent: Term, newTruth: TruthValue, newBudget: BudgetValue) {
-        if (newContent != null) {
-            val newSentence = Sentence(newContent, memoryState.currentTask!!.sentence.punctuation, newTruth, memoryState.newStamp!!)
-            val newTask = Task(newSentence, newBudget, memoryState.currentTask!!, memoryState.currentBelief!!)
-            derivedTask(newTask)
+        when {
+            newContent != null -> {
+                val newSentence = Sentence(newContent, memoryState.currentTask!!.sentence.punctuation, newTruth, memoryState.newStamp!!)
+                val newTask = Task(newSentence, newBudget, memoryState.currentTask!!, memoryState.currentBelief!!)
+                derivedTask(newTask)
+            }
         }
     }
 

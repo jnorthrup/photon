@@ -35,7 +35,7 @@ import kotlin.math.sqrt
 /**
  * Budget functions for resources allocation
  */
-object BudgetFunctions   {/* ----------------------- Belief evaluation ----------------------- */
+object BudgetFunctions {/* ----------------------- Belief evaluation ----------------------- */
 
     /**
      * Determine the quality of a judgment by its truth value alone
@@ -61,7 +61,7 @@ object BudgetFunctions   {/* ----------------------- Belief evaluation ---------
      */
     @JvmStatic
     fun rankBelief(judg: Sentence): Float {
-        val confidence = judg.truth !!.confidence
+        val confidence = judg.truth!!.confidence
         val originality = 1.0f / (judg.stamp.length() + 1)
         return or(confidence, originality)
     }
@@ -80,7 +80,8 @@ object BudgetFunctions   {/* ----------------------- Belief evaluation ---------
      * @return The budget for the new task which is the belief activated, if
      * necessary
      */
- @JvmStatic     fun BackingStore.solutionEval(problem: Sentence?, solution: Sentence, task: Task?): BudgetValue? {
+    @JvmStatic
+    fun BackingStore.solutionEval(problem: Sentence?, solution: Sentence, task: Task?): BudgetValue? {
         var task1 = task
         var budget: BudgetValue? = null
         var feedbackToLinks = false
@@ -98,7 +99,7 @@ object BudgetFunctions   {/* ----------------------- Belief evaluation ---------
             task1.priority = min(1 - quality, taskPriority)
         }
         if (feedbackToLinks) {
-            val tLink: TaskLink =  currentTaskLink!!
+            val tLink: TaskLink = currentTaskLink!!
             tLink.priority = min(1 - quality, tLink.priority)
             val bLink = currentBeliefLink
             bLink!!.incPriority(quality)
@@ -114,13 +115,14 @@ object BudgetFunctions   {/* ----------------------- Belief evaluation ---------
      * @param truth  The truth value of the conclusion of revision
      * @return The budget for the new task
      */
-     @JvmStatic   fun BackingStore.revise(tTruth: TruthValue, bTruth: TruthValue, truth: TruthValue, feedbackToLinks: Boolean): BudgetValue {
+    @JvmStatic
+    fun BackingStore.revise(tTruth: TruthValue, bTruth: TruthValue, truth: TruthValue, feedbackToLinks: Boolean): BudgetValue {
         val difT = truth.getExpDifAbs(tTruth)
-        val task: Task =  currentTask!!
+        val task: Task = currentTask!!
         task.decPriority(1 - difT)
         task.decDurability(1 - difT)
         if (feedbackToLinks) {
-            val tLink: TaskLink =  currentTaskLink!!
+            val tLink: TaskLink = currentTaskLink!!
             tLink.decPriority(1 - difT)
             tLink.decDurability(1 - difT)
             val bLink = currentBeliefLink
@@ -167,7 +169,7 @@ object BudgetFunctions   {/* ----------------------- Belief evaluation ---------
         val durability = aveAri(concept.durability, budget.durability)
         val quality = concept.quality
         concept.priority = priority
-        concept.durability = durability .toFloat()
+        concept.durability = durability.toFloat()
         concept.quality = quality
     }
 
@@ -208,11 +210,8 @@ object BudgetFunctions   {/* ----------------------- Belief evaluation ---------
      * @param adjustValue The budget doing the adjusting
      */
     @JvmStatic
-    fun merge(baseValue: BudgetValue, adjustValue: BudgetTriple) {
-        baseValue.priority = max(baseValue.priority, adjustValue.priority)
-        baseValue.durability = max(baseValue.durability, adjustValue.durability)
-        baseValue.quality = max(baseValue.quality, adjustValue.quality)
-    }
+    fun merge(baseValue: BudgetTriple, adjustValue: BudgetTriple) =
+            (baseValue).zip(adjustValue, ::max).let { (a, b, c) -> baseValue(a, b, c) }
 
     /* ----- Task derivation in LocalRules and SyllogisticRules ----- */
 
@@ -224,7 +223,8 @@ object BudgetFunctions   {/* ----------------------- Belief evaluation ---------
      * @return The budget value of the conclusion
      */
 
-    @JvmStatic      fun BackingStore.forward(truth: TruthValue?): BudgetValue {
+    @JvmStatic
+    fun BackingStore.forward(truth: TruthValue?): BudgetValue {
         return budgetInference(truthToQuality(truth), 1)
     }
 
@@ -265,7 +265,7 @@ object BudgetFunctions   {/* ----------------------- Belief evaluation ---------
      */
     @JvmStatic
     fun BackingStore.compoundForward(truth: TruthValue?, content: Term): BudgetValue {
-        return this.budgetInference(truthToQuality(truth), content.complexity as Int)
+        return this.budgetInference(truthToQuality(truth), content.complexity)
     }
 
     /**
@@ -277,7 +277,7 @@ object BudgetFunctions   {/* ----------------------- Belief evaluation ---------
      */
     @JvmStatic
     fun BackingStore.compoundBackward(content: Term): BudgetValue {
-        return this.budgetInference(1f, content.complexity as Int)
+        return this.budgetInference(1f, content.complexity)
     }
 
     /**
@@ -289,7 +289,7 @@ object BudgetFunctions   {/* ----------------------- Belief evaluation ---------
      */
     @JvmStatic
     fun BackingStore.compoundBackwardWeak(content: Term): BudgetValue {
-        return this.budgetInference(w2c(1f), content.complexity as Int)
+        return this.budgetInference(w2c(1f), content.complexity)
     }
 
     /**
@@ -300,7 +300,8 @@ object BudgetFunctions   {/* ----------------------- Belief evaluation ---------
      * @param this@budgetInference     Reference to the memory
      * @return Budget of the conclusion task
      */
-    @JvmStatic    fun BackingStore.budgetInference(qual: Float, complexity: Int): BudgetValue {
+    @JvmStatic
+    fun BackingStore.budgetInference(qual: Float, complexity: Int): BudgetValue {
         var t: BudgetTriple? = currentTaskLink
         if (t == null) {
             t = currentTask

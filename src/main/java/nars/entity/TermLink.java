@@ -100,9 +100,7 @@ public class TermLink extends ItemIdentity {
         setIndex(template.getIndices());
     }
 
-    public TermLink() {
 
-    }
 
     public static TermLink createTermLink(Term t, TermLinkType termlinkType, int... indices) {
         return new TermLink(t, termlinkType, indices);
