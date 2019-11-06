@@ -13,7 +13,6 @@ hs_err_pid*
 target
 *.class
 *.ipr
-opennars.iml
 .classpath
 .idea
 .project
