@@ -298,7 +298,7 @@ class Concept(
      * @param taskBudget The BudgetValue of the task
      */
     private fun buildTermLinks(taskBudget: BudgetValue) {
-        var t: Term
+        var term: Term
         var concept: Concept?
         var termLink1: TermLink
         var termLink2: TermLink
@@ -307,16 +307,16 @@ class Concept(
             if (subBudget.aboveThreshold()) {
                 for (template in termLinkTemplates!!) {
                     if (template.type != TermLinkType.TRANSFORM) {
-                        t = template.target
-                        concept = memory.getConcept(t)
+                        term = template.target
+                        concept = memory.getConcept(term)
                         if (concept != null) {
-                            termLink1 = TermLink(t, template, subBudget)
+                            termLink1 = TermLink(term, template, subBudget)
                             insertTermLink(termLink1)   // this termLink to that
 
-                            termLink2 = TermLink(term, template, subBudget)
+                            termLink2 = TermLink(this.term, template, subBudget)
                             concept.insertTermLink(termLink2)   // that termLink to this
 
-                            if (t is CompoundTerm) {
+                            if (term is CompoundTerm) {
                                 concept.buildTermLinks(subBudget)
                             }
                         }

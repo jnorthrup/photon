@@ -39,7 +39,7 @@ abstract class ItemIdentity (
      */
 
     override fun toStringBrief(): String? {
-        return budget.toStringBrief() + " " + key
+        return "${budget.toStringBrief()} $key"
     }
 
     /**

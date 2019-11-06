@@ -43,6 +43,17 @@ public class TermLink extends ItemIdentity {
     private Term target;
 
     /**
+     * called from TaskLink
+     *
+     * @param key The key of the TaskLink
+     * @param budgetValue The budget value of the TaskLink
+     */
+    public TermLink(String key, BudgetValue budgetValue) {
+        super(budgetValue);
+        setKey(key);
+    }
+
+    /**
      * Constructor for TermLink template
      * <p>
      * called in CompoundTerm.prepareComponentLinks only
@@ -51,9 +62,8 @@ public class TermLink extends ItemIdentity {
      * @param termlinkType Link type
      * @param indices      Component indices in compound, may be 1 to 4
      */
-   public   TermLink(Term t, TermLinkType termlinkType, int... indices) {
-        setTarget(t);
-        setType(termlinkType);
+    public TermLink(Term t, TermLinkType termlinkType, int... indices) {
+        this("", new BudgetValue(), t, termlinkType);
         assert (type.ordinal() % 2 == 0); // template types all point to compound, though the target is component
         if (type == TermLinkType.COMPOUND_CONDITION) {  // the first index is 0 by default
             setIndex(new int[indices.length + 1]);
@@ -70,41 +80,30 @@ public class TermLink extends ItemIdentity {
         }
     }
 
-    /**
-     * called from TaskLink
-     *
-     * @param s The key of the TaskLink
-     * @param v The budget value of the TaskLink
-     */
- public     TermLink(String s, BudgetValue v) {
-        super(v);
-        setKey(s);
-    }
 
     /**
      * Constructor to make actual TermLink from a template
      * <p>
      * called in Concept.buildTermLinks only
      *
-     * @param t        Target Term
+     * @param term     Target Term
      * @param template TermLink template previously prepared
      * @param v        Budget value of the link
      */
-    public TermLink(Term t, TermLink template, BudgetValue v) {
-        super(v);
-        setTarget(t);
-        setType(template.type);
-        if (template.getTarget().equals(t)) {
-            setType(type.ordinal() - 1);     // point to component
-        }
+    public TermLink(Term term, TermLink template, BudgetValue v) {
+        this(">"+template.getKey(), v, term,
+                template.getTarget().equals(term) ? TermLinkType.values()[template.type.ordinal() - 1] : template.type);
+        ;
+
         setIndex(template.getIndices());
     }
 
-
-
-    public static TermLink createTermLink(Term t, TermLinkType termlinkType, int... indices) {
-        return new TermLink(t, termlinkType, indices);
+    public TermLink(String key, BudgetValue v, Term t, TermLinkType ttype) {
+        this(key, v);
+        setTarget(t);
+        setType(ttype);
     }
+
 
     public void setType(int type) {
         setType(TermLinkType.values()[type]);
@@ -130,8 +129,8 @@ public class TermLink extends ItemIdentity {
      * Set the key of the link
      */
     public String getKey() {
-        if (this.key == null) {
-            String key, at1, at2;
+        if (null==key|| key.isBlank()) {
+            String  at1, at2;
             if ((type.ordinal() % 2) == 1) {  // to component
                 at1 = TermlinkAnnotationSymbols.TO_COMPONENT_1.getSym();
                 at2 = TermlinkAnnotationSymbols.TO_COMPONENT_2.getSym();
@@ -149,10 +148,8 @@ public class TermLink extends ItemIdentity {
             if (getTarget() != null) {
                 key += getTarget();
             }
-            return key;
-        } else {
-            return key;
         }
+        return key;
     }
 
     public void setKey(String key) {
