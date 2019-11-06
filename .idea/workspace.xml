@@ -2,209 +2,240 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="552e4fbc-c84e-40e4-83f2-839eac17de96" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
+      <change afterPath="$PROJECT_DIR$/nars/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pars/pars.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pars/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/BudgetValue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/BudgetValueAtomic.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/Concept.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/ConceptAtomic.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/EntityObserver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/Item.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/ItemAtomic.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/Sentence.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/SentenceHandle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/ShortFloat.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/Stamp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/StampHandle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/Task.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/TaskHandle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/TaskLink.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/TaskLinkHandle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/TermLink.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/TermLinkHandle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/TruthValue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/TruthValueRefier.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/package.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/gui/BagWindow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/gui/ConceptWindow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/gui/InferenceRecorder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/gui/InferenceWindow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/gui/InputWindow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/gui/MainWindow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/gui/MessageDialog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/gui/NarsFrame.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/gui/ParameterWindow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/gui/TermWindow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/gui/package.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/inference/BudgetFunctions.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/inference/CompositionalRules.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/inference/LocalRules.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/inference/RuleTables.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/inference/StructuralRules.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/inference/SyllogisticRules.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/inference/TruthFunctions.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/inference/UtilityFunctions.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/inference/package.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/io/ExperienceReader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/io/ExperienceWriter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/io/IInferenceRecorder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/io/InputChannel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/io/OutputChannel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/io/StringParser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/io/Symbols.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/io/package.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/CompoundTerm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/Conjunction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/DifferenceExt.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/DifferenceInt.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/Disjunction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/Equivalence.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/ImageExt.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/ImageInt.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/Implication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/Inheritance.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/Instance.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/InstanceProperty.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/IntersectionExt.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/IntersectionInt.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/Negation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/Product.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/Property.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/SetExt.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/SetInt.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/Similarity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/Statement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/Term.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/Variable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/package.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/main/NARS.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/main/Reasoner.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/main/package.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/main_nogui/CommandLineParameters.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/main_nogui/NARSBatch.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/main_nogui/Parameters.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/main_nogui/ReasonerBatch.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/main_nogui/package.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/overview.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/storage/Bag.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/storage/BagObserver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/storage/ConceptBag.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/storage/Distributor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/storage/Memory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/storage/NovelTaskBag.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/storage/NullBagObserver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/storage/TaskLinkBag.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/storage/TermLinkBag.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nars/storage/package.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples-1.3.3/Example-NAL7-abridged.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples-1.3.3/Example-NAL7-complete.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples-1.3.3/Example-NAL8-1-abridged.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples-1.3.3/Example-NAL8-1-complete.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples-1.3.3/Example-NAL8-2-abridged.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples-1.3.3/Example-NAL8-2-complete.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples-1.3.3/Example-NAL8-3-abridged.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples-1.3.3/Example-NAL8-3-complete.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples-1.3.3/Example-NAL8-4-abridged.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples-1.3.3/Example-NAL8-4-complete.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples-1.3.3/Example-NAL8-5-abridged.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples-1.3.3/Example-NAL8-5-complete.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples/Example-MultiStep-edited.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples/Example-MultiStep-unedited.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples/Example-NAL1-edited.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples/Example-NAL1-unedited.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples/Example-NAL2-edited.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples/Example-NAL2-unedited.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples/Example-NAL3-edited.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples/Example-NAL3-unedited.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples/Example-NAL4-edited.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples/Example-NAL4-unedited.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples/Example-NAL5-edited.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples/Example-NAL5-unedited.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples/Example-NAL6-edited.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples/Example-NAL6-unedited.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples/Example-NLP-edited.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples/Example-NLP-unedited.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/NARS-applet.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/README.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/README_USER.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tests/nal1/forward-in.nars" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tests/nal1/revision_choice-in.nars" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tests/nal2/similarity-in.nars" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tests/nal4/definition-in.nars" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tests/nal4/definition2-in.nars" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tests/nal5/syllogism-in.nars" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tests/nal6/dependent_variable_introduction-in.nars" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tests/nal6/independent_variable_introduction-in.nars" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tests/nal6/multi-variable_introduction-in.nars" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tests/nal6/variable-elimination-in.nars" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/use_cases/pattern_matching1/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/use_cases/pattern_matching1/pattern_matching_1.3.3_all.nars" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/use_cases/pattern_matching1/pattern_matching_1.3.3_case1.nars" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/use_cases/pattern_matching1/pattern_matching_1.3.3_case1_simpler.nars" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/use_cases/pattern_matching1/pattern_matching_1.5_all.nars" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/use_cases/pattern_matching1/pattern_matching_1.5_case1.nars" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/use_cases/pattern_matching1/pattern_matching_1.5_case1_simpler.nars" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/use_cases/pattern_matching1/pattern_matching_1.5_case2.nars" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/use_cases/pattern_matching1/pattern_matching_1.5_case3.nars" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/entity/BudgetValue.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/entity/Concept.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/entity/Item.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/entity/Sentence.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/entity/ShortFloat.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/entity/Stamp.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/entity/Task.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/entity/TaskLink.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/entity/TermLink.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/entity/TruthValue.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/gui/BagWindow.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/gui/ConceptWindow.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/gui/InferenceWindow.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/gui/InputWindow.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/gui/MainWindow.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/gui/MessageDialog.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/gui/NarsFrame.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/gui/ParameterWindow.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/gui/TermWindow.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/inference/BudgetFunctions.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/inference/CompositionalRules.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/inference/LocalRules.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/inference/RuleTables.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/inference/StructuralRules.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/inference/SyllogisticRules.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/inference/TruthFunctions.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/inference/UtilityFunctions.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/io/ExperienceReader.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/io/ExperienceWriter.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/io/InferenceRecorder.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/io/InputChannel.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/io/OutputChannel.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/io/StringParser.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/io/Symbols.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/CompoundTerm.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/Conjunction.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/DifferenceExt.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/DifferenceInt.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/Disjunction.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/Equivalence.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/ImageExt.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/ImageInt.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/Implication.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/Inheritance.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/Instance.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/InstanceProperty.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/IntersectionExt.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/IntersectionInt.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/Negation.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/Product.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/Property.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/SetExt.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/SetInt.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/Similarity.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/Statement.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/Term.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/Variable.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/main/NARS.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/main/Parameters.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/main/Reasoner.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/main_nogui/NARSBatch.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/storage/Bag.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/storage/ConceptBag.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/storage/Distributor.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/storage/Memory.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/storage/NovelTaskBag.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/storage/TaskLinkBag.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/storage/TermLinkBag.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/staging.iml" beforeDir="false" afterPath="$PROJECT_DIR$/staging.iml" afterDir="false" />
     </list>
-    <ignored path="opennars.iws" />
-    <ignored path=".idea/workspace.xml" />
-    <ignored path="$PROJECT_DIR$/out/" />
-    <ignored path="$PROJECT_DIR$/nars_core/target/" />
-    <ignored path=".idea/dataSources.local.xml" />
-    <ignored path="$PROJECT_DIR$/target/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="opennars" />
   </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="NovelTaskBag.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/nars/storage/NovelTaskBag.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="30" column="48" selection-start-line="30" selection-start-column="48" selection-end-line="30" selection-end-column="48" />
-              <folding>
-                <element signature="e#0#1496#0" expanded="false" />
-                <element signature="imports" expanded="false" />
-                <element signature="e#1066#1067#0" expanded="false" />
-                <element signature="e#1095#1096#0" expanded="false" />
-                <element signature="e#1234#1235#0" expanded="false" />
-                <element signature="e#1284#1285#0" expanded="false" />
-                <element signature="e#1432#1433#0" expanded="false" />
-                <element signature="e#1491#1492#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Memory.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/nars/storage/Memory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3315">
-              <caret line="237" column="42" selection-start-line="237" selection-start-column="42" selection-end-line="237" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ConceptBag.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/nars/storage/ConceptBag.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="30" column="50" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
-              <folding>
-                <element signature="e#0#1516#0" expanded="false" />
-                <element signature="imports" expanded="false" />
-                <element signature="e#1055#1056#0" expanded="false" />
-                <element signature="e#1084#1085#0" expanded="false" />
-                <element signature="e#1240#1241#0" expanded="false" />
-                <element signature="e#1290#1291#0" expanded="false" />
-                <element signature="e#1454#1455#0" expanded="false" />
-                <element signature="e#1513#1514#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TaskLinkBag.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/nars/storage/TaskLinkBag.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="30" column="51" selection-start-line="30" selection-start-column="51" selection-end-line="30" selection-end-column="51" />
-              <folding>
-                <element signature="e#0#1515#0" expanded="false" />
-                <element signature="imports" expanded="false" />
-                <element signature="e#1080#1081#0" expanded="false" />
-                <element signature="e#1109#1110#0" expanded="false" />
-                <element signature="e#1247#1248#0" expanded="false" />
-                <element signature="e#1299#1300#0" expanded="false" />
-                <element signature="e#1451#1452#0" expanded="false" />
-                <element signature="e#1510#1511#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TermLinkBag.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/nars/storage/TermLinkBag.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="68" column="45" selection-start-line="68" selection-start-column="45" selection-end-line="68" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ConceptAtomic.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/nars/entity/ConceptAtomic.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="496">
-              <caret line="560" column="0" selection-start-line="560" selection-start-column="0" selection-end-line="560" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SyllogisticRules.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/nars/inference/SyllogisticRules.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="701">
-              <caret line="461" column="12" selection-start-line="461" selection-start-column="12" selection-end-line="461" selection-end-column="12" />
-              <folding>
-                <element signature="e#0#20127#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SetInt.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/nars/language/SetInt.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="94" column="28" selection-start-line="94" selection-start-column="28" selection-end-line="94" selection-end-column="28" />
-              <folding>
-                <element signature="e#0#3838#0" expanded="true" />
-                <element signature="imports" expanded="true" />
-                <element signature="e#2090#2096#0" expanded="true" />
-                <element signature="e#2487#2493#0" expanded="true" />
-                <element signature="e#3001#3007#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CompoundTerm.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/nars/language/CompoundTerm.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
-              <caret line="238" column="29" selection-start-line="238" selection-start-column="29" selection-end-line="238" selection-end-column="29" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Task.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/nars/entity/Task.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" />
-  <component name="JsBuildToolPackageJson" detection-done="true" />
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="Bundled (Maven 3)" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
-  <component name="MavenProjectNavigator">
-    <treeState>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="anars" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="anars" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Lifecycle" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$LifecycleNode" />
-        </PATH_ELEMENT>
-      </PATH>
-    </treeState>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
@@ -212,77 +243,16 @@
     <option name="width" value="1936" />
     <option name="height" value="1066" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
-    <OptionsSetting value="true" id="Add" />
-    <OptionsSetting value="true" id="Remove" />
-    <OptionsSetting value="true" id="Checkout" />
-    <OptionsSetting value="true" id="Update" />
-    <OptionsSetting value="true" id="Status" />
-    <OptionsSetting value="true" id="Edit" />
+  <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
-    <ConfirmationsSetting value="0" id="Remove" />
   </component>
-  <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
-      <flattenPackages />
-      <showMembers />
-      <showModules />
-      <showLibraryContents />
-      <hideEmptyPackages />
-      <abbreviatePackageNames />
-      <autoscrollToSource />
-      <autoscrollFromSource />
-      <sortByType />
-      <manualOrder />
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="opennars" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="opennars" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="opennars" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="opennars" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="opennars" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="old" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-    </panes>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/tests/nal2/similarity-in.nars" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
-      <module name="" />
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
-      <option name="PROGRAM_PARAMETERS" />
-      <method />
-    </configuration>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
       <module name="" />
       <option name="DEPLOY" value="true" />
@@ -328,80 +298,6 @@
       <module />
       <method />
     </configuration>
-    <configuration default="true" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <envs />
-      <properties />
-      <listeners />
-      <method />
-    </configuration>
     <configuration default="true" type="BashConfigurationType" factoryName="Bash">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="INTERPRETER_PATH" value="" />
@@ -423,111 +319,6 @@
       <option name="PARAMETERS" value="" />
       <method />
     </configuration>
-    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="myFilePath" />
-      <option name="GLUE" />
-      <option name="myNameFilter" />
-      <option name="myGeneratedName" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
-      <option name="BCName" value="" />
-      <option name="IOSSimulatorSdkPath" value="" />
-      <option name="adlOptions" value="" />
-      <option name="airProgramParameters" value="" />
-      <option name="appDescriptorForEmulator" value="Android" />
-      <option name="debugTransport" value="USB" />
-      <option name="debuggerSdkRaw" value="BC SDK" />
-      <option name="emulator" value="NexusOne" />
-      <option name="emulatorAdlOptions" value="" />
-      <option name="fastPackaging" value="true" />
-      <option name="fullScreenHeight" value="0" />
-      <option name="fullScreenWidth" value="0" />
-      <option name="launchUrl" value="false" />
-      <option name="launcherParameters">
-        <LauncherParameters>
-          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
-          <option name="launcherType" value="OSDefault" />
-          <option name="newPlayerInstance" value="false" />
-          <option name="playerPath" value="FlashPlayerDebugger.exe" />
-        </LauncherParameters>
-      </option>
-      <option name="mobileRunTarget" value="Emulator" />
-      <option name="moduleName" value="" />
-      <option name="overriddenMainClass" value="" />
-      <option name="overriddenOutputFileName" value="" />
-      <option name="overrideMainClass" value="false" />
-      <option name="runTrusted" value="true" />
-      <option name="screenDpi" value="0" />
-      <option name="screenHeight" value="0" />
-      <option name="screenWidth" value="0" />
-      <option name="url" value="http://" />
-      <option name="usbDebugPort" value="7936" />
-      <method />
-    </configuration>
-    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
-      <option name="BCName" value="" />
-      <option name="launcherParameters">
-        <LauncherParameters>
-          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
-          <option name="launcherType" value="OSDefault" />
-          <option name="newPlayerInstance" value="false" />
-          <option name="playerPath" value="FlashPlayerDebugger.exe" />
-        </LauncherParameters>
-      </option>
-      <option name="moduleName" value="" />
-      <option name="trusted" value="true" />
-      <method />
-    </configuration>
-    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list />
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <method />
-    </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
     <configuration default="true" type="JUnitTestDiscovery" factoryName="JUnit Test Discovery" changeList="All">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -547,91 +338,6 @@
       </option>
       <envs />
       <patterns />
-      <method />
-    </configuration>
-    <configuration default="true" type="JarApplication" factoryName="JAR Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="Java Scratch" factoryName="Java Scratch">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="SCRATCH_FILE_ID" value="0" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
-      <method />
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="staging" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
-      <method />
-    </configuration>
-    <configuration default="true" type="TestNG" factoryName="TestNG">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <envs />
-      <properties />
-      <listeners />
       <method />
     </configuration>
     <configuration default="true" type="TestNGTestDiscovery" factoryName="TestNG Test Discovery" changeList="All">
@@ -675,492 +381,260 @@
       <setting name="rowsRange" value="" />
       <method />
     </configuration>
-    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
-      <method />
+    <configuration name="NARSBatch" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="nars.main_nogui.NARSBatch" />
+      <module name="staging" />
+      <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/src/main/resources/tests/nal2/similarity-in.nars" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="nars.main_nogui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
-      <command value="run-script" />
-      <scripts />
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="FlashRunConfigurationType">
+      <option name="BCName" value="" />
+      <option name="IOSSimulatorDevice" value="" />
+      <option name="IOSSimulatorSdkPath" value="" />
+      <option name="adlOptions" value="" />
+      <option name="airProgramParameters" value="" />
+      <option name="appDescriptorForEmulator" value="Android" />
+      <option name="clearAppDataOnEachLaunch" value="true" />
+      <option name="debugTransport" value="USB" />
+      <option name="debuggerSdkRaw" value="BC SDK" />
+      <option name="emulator" value="NexusOne" />
+      <option name="emulatorAdlOptions" value="" />
+      <option name="fastPackaging" value="true" />
+      <option name="fullScreenHeight" value="0" />
+      <option name="fullScreenWidth" value="0" />
+      <option name="launchUrl" value="false" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="FlashPlayerDebugger.exe" />
+        </LauncherParameters>
+      </option>
+      <option name="mobileRunTarget" value="Emulator" />
+      <option name="moduleName" value="" />
+      <option name="overriddenMainClass" value="" />
+      <option name="overriddenOutputFileName" value="" />
+      <option name="overrideMainClass" value="false" />
+      <option name="runTrusted" value="true" />
+      <option name="screenDpi" value="0" />
+      <option name="screenHeight" value="0" />
+      <option name="screenWidth" value="0" />
+      <option name="url" value="http://" />
+      <option name="usbDebugPort" value="7936" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="FlexUnitRunConfigurationType" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
+      <option name="BCName" value="" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="FlashPlayerDebugger.exe" />
+        </LauncherParameters>
+      </option>
+      <option name="moduleName" value="" />
+      <option name="trusted" value="true" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+      <module name="staging" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <module name="" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file enabled="true" id="idea.log" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
       <envs />
-      <method />
+      <method v="2" />
     </configuration>
-    <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
-      <method />
-    </configuration>
-    <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
-      <method />
-    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.NARSBatch" />
+      </list>
+    </recent_temporary>
   </component>
-  <component name="ShelveChangesManager" show_recycled="false">
-    <option name="remove_strategy" value="false" />
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView />
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
   </component>
   <component name="TaskManager">
     <servers />
   </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="68000" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
-  <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="false" />
-    <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290461" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3411514" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3290461" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290461" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23773988" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="ASM" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39978564" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290461" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-    </layout>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager />
-    <watches-manager />
+  <component name="WindowStateProjectService">
+    <state x="417" y="163" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1573035130866">
+      <screen x="0" y="0" width="1920" height="1028" />
+    </state>
+    <state x="417" y="163" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1028/1920.0.2560.1080@0.0.1920.1028" timestamp="1573035130866" />
+    <state x="807" y="397" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1573035087077">
+      <screen x="0" y="0" width="1920" height="1028" />
+    </state>
+    <state x="807" y="397" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1028/1920.0.2560.1080@0.0.1920.1028" timestamp="1573035087077" />
+    <state x="742" y="263" key="FileChooserDialogImpl" timestamp="1573035129578">
+      <screen x="0" y="0" width="1920" height="1028" />
+    </state>
+    <state x="742" y="263" key="FileChooserDialogImpl/0.0.1920.1028/1920.0.2560.1080@0.0.1920.1028" timestamp="1573035129578" />
+    <state width="1874" height="257" key="GridCell.Tab.0.bottom" timestamp="1573035353054">
+      <screen x="0" y="0" width="1920" height="1028" />
+    </state>
+    <state width="1874" height="257" key="GridCell.Tab.0.bottom/0.0.1920.1028/1920.0.2560.1080@0.0.1920.1028" timestamp="1573035353054" />
+    <state width="1874" height="257" key="GridCell.Tab.0.center" timestamp="1573035353054">
+      <screen x="0" y="0" width="1920" height="1028" />
+    </state>
+    <state width="1874" height="257" key="GridCell.Tab.0.center/0.0.1920.1028/1920.0.2560.1080@0.0.1920.1028" timestamp="1573035353054" />
+    <state width="1874" height="257" key="GridCell.Tab.0.left" timestamp="1573035353054">
+      <screen x="0" y="0" width="1920" height="1028" />
+    </state>
+    <state width="1874" height="257" key="GridCell.Tab.0.left/0.0.1920.1028/1920.0.2560.1080@0.0.1920.1028" timestamp="1573035353054" />
+    <state width="1874" height="257" key="GridCell.Tab.0.right" timestamp="1573035353054">
+      <screen x="0" y="0" width="1920" height="1028" />
+    </state>
+    <state width="1874" height="257" key="GridCell.Tab.0.right/0.0.1920.1028/1920.0.2560.1080@0.0.1920.1028" timestamp="1573035353054" />
+    <state x="542" y="251" key="IDE.errors.dialog" timestamp="1573036161167">
+      <screen x="0" y="0" width="1920" height="1028" />
+    </state>
+    <state x="542" y="251" key="IDE.errors.dialog/0.0.1920.1028/1920.0.2560.1080@0.0.1920.1028" timestamp="1573036161167" />
+    <state x="592" y="203" key="new project wizard" timestamp="1573035348770">
+      <screen x="0" y="0" width="1920" height="1028" />
+    </state>
+    <state x="592" y="203" key="new project wizard/0.0.1920.1028/1920.0.2560.1080@0.0.1920.1028" timestamp="1573035348770" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/old/open-nars/src/java_cup/runtime/Scanner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old/open-nars/src/java_cup/runtime/Symbol.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1221">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/parser/loan/Loan/Yylex.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/parser/loan/Loan/Yylex">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/parser/loan/Loan/VisitSkel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/parser/loan/Loan/Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/parser/loan/Loan/PrettyPrinter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/parser/loan/Loan/sym.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/parser/loan/Loan/FoldVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/parser/loan/Loan/ComposVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="96" selection-start-line="9" selection-start-column="96" selection-end-line="9" selection-end-column="96" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/parser/loan/Loan/Absyn/Doc.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/parser/loan/Loan/Absyn/BaseRule.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/parser/loan/Loan/Absyn/BaseR.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/parser/loan/Loan/Absyn/SentOp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/parser/loan/Loan/Absyn/StmNot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/parser/loan/Loan/Absyn/TrmExInt.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/parser/loan/Loan/Absyn/TruthE.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/parser/loan/Loan/Absyn/URIRef.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/parser/loan/Loan/Absyn/DocBR.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/parser/loan/Loan/Absyn/ListTerm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/operation/GoTo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/operation/Open.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/operation/Operator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/main/Reasoner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/main/Parameters.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old/open-nars/src/com/googlecode/opennars/main/Memory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="57" selection-start-line="8" selection-start-column="57" selection-end-line="8" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nars/main/Reasoner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nars/main/NARS.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="43" column="28" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nars/main_nogui/NARSBatch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1220">
-          <caret line="38" column="13" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old/nars/gui/ConceptWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="37" column="10" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old/dist/javadoc/nars/entity/BudgetValue.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2244">
-          <caret line="139" column="27" selection-start-line="139" selection-start-column="27" selection-end-line="139" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nars/entity/StampHandle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nars/entity/ItemAtomic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1122">
-          <caret line="28" column="22" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nars/storage/Bag.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-413">
-          <caret line="43" column="22" selection-start-line="43" selection-start-column="22" selection-end-line="43" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nars/storage/BagObserver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nars/entity/TruthValueRefier.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nars/entity/TermLinkHandle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="39" column="39" selection-start-line="39" selection-start-column="39" selection-end-line="39" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nars/entity/ShortFloat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nars/entity/SentenceHandle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="31" column="20" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nars/entity/Sentence.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nars/entity/EntityObserver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nars/entity/Task.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nars/storage/NovelTaskBag.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="30" column="48" selection-start-line="30" selection-start-column="48" selection-end-line="30" selection-end-column="48" />
-          <folding>
-            <element signature="e#0#1496#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#1066#1067#0" expanded="false" />
-            <element signature="e#1095#1096#0" expanded="false" />
-            <element signature="e#1234#1235#0" expanded="false" />
-            <element signature="e#1284#1285#0" expanded="false" />
-            <element signature="e#1432#1433#0" expanded="false" />
-            <element signature="e#1491#1492#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nars/storage/ConceptBag.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="30" column="50" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#1516#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#1055#1056#0" expanded="false" />
-            <element signature="e#1084#1085#0" expanded="false" />
-            <element signature="e#1240#1241#0" expanded="false" />
-            <element signature="e#1290#1291#0" expanded="false" />
-            <element signature="e#1454#1455#0" expanded="false" />
-            <element signature="e#1513#1514#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nars/storage/TaskLinkBag.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="30" column="51" selection-start-line="30" selection-start-column="51" selection-end-line="30" selection-end-column="51" />
-          <folding>
-            <element signature="e#0#1515#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#1080#1081#0" expanded="false" />
-            <element signature="e#1109#1110#0" expanded="false" />
-            <element signature="e#1247#1248#0" expanded="false" />
-            <element signature="e#1299#1300#0" expanded="false" />
-            <element signature="e#1451#1452#0" expanded="false" />
-            <element signature="e#1510#1511#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nars/storage/Memory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3315">
-          <caret line="237" column="42" selection-start-line="237" selection-start-column="42" selection-end-line="237" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nars/storage/TermLinkBag.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="68" column="45" selection-start-line="68" selection-start-column="45" selection-end-line="68" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nars/entity/ConceptAtomic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="496">
-          <caret line="560" column="0" selection-start-line="560" selection-start-column="0" selection-end-line="560" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nars/inference/SyllogisticRules.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="701">
-          <caret line="461" column="12" selection-start-line="461" selection-start-column="12" selection-end-line="461" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#20127#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nars/language/CompoundTerm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="238" column="29" selection-start-line="238" selection-start-column="29" selection-end-line="238" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nars/language/SetInt.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="94" column="28" selection-start-line="94" selection-start-column="28" selection-end-line="94" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#3838#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-            <element signature="e#2090#2096#0" expanded="true" />
-            <element signature="e#2487#2493#0" expanded="true" />
-            <element signature="e#3001#3007#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
   </component>
 </project>

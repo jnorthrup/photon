@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/anars.iml" filepath="$PROJECT_DIR$/anars.iml" />
       <module fileurl="file://$PROJECT_DIR$/nars_core/core.iml" filepath="$PROJECT_DIR$/nars_core/core.iml" />
-      <module fileurl="file://$PROJECT_DIR$/staging.iml" filepath="$PROJECT_DIR$/staging.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nars/nars.iml" filepath="$PROJECT_DIR$/nars/nars.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pars/pars.iml" filepath="$PROJECT_DIR$/pars/pars.iml" />
     </modules>
   </component>
 </project>
