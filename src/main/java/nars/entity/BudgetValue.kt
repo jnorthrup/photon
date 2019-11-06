@@ -115,11 +115,8 @@ class BudgetValue : BudgetTriple  {
      * @param that The other Budget
      */
 
-    override fun merge(that: BudgetTriple?) {
-        if (that != null) {
-            BudgetFunctions.merge(this, that)
-        }
-    }
+    override fun merge(that: BudgetTriple ) = BudgetFunctions.merge(this, that)
+
 
     /**
      * To summarize a BudgetValue into a single number in [0, 1]
@@ -173,6 +170,12 @@ class BudgetValue : BudgetTriple  {
          */
         private   val SEPARATOR =  numeric_delim.VALUE_SEPARATOR.sym
     }
+//    inline operator fun    BudgetTriple .iterator() = let { (a, b, c) -> arrayOf(a, b, c).iterator() }
+    override fun iterator(): Iterator<Float>   = let { (a, b, c) -> arrayOf(a, b, c).iterator() }
 }
+inline operator fun    BudgetTriple .component1() = priority
+inline operator fun    BudgetTriple .component2() = durability
+inline operator fun    BudgetTriple .component3() = quality
+inline operator fun    BudgetTriple .invoke(a: Float, b: Float, c: Float) =  apply { priority = a;durability = b;quality = c }
 
 private fun Float.toStringBrief() =String.format("%.2f",this )

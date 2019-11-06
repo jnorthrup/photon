@@ -19,9 +19,8 @@ abstract class ItemIdentity (
      *
      * @param that The ImmutableItemIdentity to be merged
      */
-    override fun merge(that: BudgetTriple?) {
-        budget.merge(that)
-    }
+    override fun merge(that: BudgetTriple )  = budget.merge(that)
+
 
     /**
      * Return a String representation of the ImmutableItemIdentity
