@@ -1,3 +1,23 @@
+package nars.io;
+
+//import com.fasterxml.jackson.annotation.JsonInclude;
+//import com.fasterxml.jackson.core.JsonProcessingException;
+//import com.fasterxml.jackson.databind.ObjectMapper;
+//import com.fasterxml.jackson.databind.ObjectWriter;
+//import com.fasterxml.jackson.databind.SerializationFeature;
+//import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.InputStreamReader;
+import java.util.*;
+import java.util.stream.Stream;
+
+import static nars.io.Symbols.*;
 /*
  * StringParser.java
  *
@@ -18,22 +38,56 @@
  * You should have received a copy of the GNU General Public License
  * along with Open-NARS.  If not, see <http://www.gnu.org/licenses/>.
  */
-package nars.io;
-
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.Set;
-import java.util.SortedSet;
-
-import static nars.io.Symbols.*;
-import static nars.io.Symbols.INTERSECTION_EXT_OPERATOR;
 
 
 /**
  * Parse input String into Task or Term. Abstract class with static methods
  * only.
  */
-public abstract class StringParser {
+public class StringParser {
+     static int steps;
+
+    public static void main(String[] args) throws FileNotFoundException  {
+        BufferedReader input;
+//        ObjectMapper mapper = new ObjectMapper();
+//        mapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
+//        var objectWriter = mapper.writerWithDefaultPrettyPrinter();
+        if (args.length > 0) {
+            input = new BufferedReader(new FileReader(args[0]));
+        } else input = new BufferedReader(new InputStreamReader(System.in));
+
+        Memory memory = new Memory();
+        Stream<String> lines = input.lines();
+        Iterator<String> iterator = lines.iterator();
+        while (iterator.hasNext()) {
+
+            String text = iterator.next();
+            if (!text.isBlank()) {
+                char c = text.charAt(0);
+                if (c == Symbols.RESET_MARK) {
+                    memory = new Memory();
+                    memory.getExportStrings().add(text);
+                } else if (c != Symbols.COMMENT_MARK) {
+                    // read NARS language or an integer : TODO duplicated code
+                    try {
+                        int i = Integer.parseInt(text);
+                        walk(i);
+                    } catch (NumberFormatException e) {
+                        Task task = StringParser.parseExperience(new StringBuffer(text), memory, System.currentTimeMillis());
+                        if (task != null) {
+                            memory.inputTask(task);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    static void walk(int i) {
+        steps += i;
+    }
+
 
     /**
      * Parse a line of input experience
@@ -53,8 +107,7 @@ public abstract class StringParser {
                 if (INPUT_LINE.equals(prefix)) {
                     buffer.delete(0, i + 1);
                 }
-            }
-            else return null;
+            } else return null;
         }
         char c = buffer.charAt(buffer.length() - 1);
         if (c == STAMP_CLOSER) {
@@ -121,6 +174,7 @@ public abstract class StringParser {
 
 
     /* ---------- parse values ---------- */
+
     /**
      * Return the postfix of a task string that contains a TruthValue
      *
@@ -174,7 +228,7 @@ public abstract class StringParser {
      * parse the input String into a BudgetValue
      *
      * @param truth       the TruthValue of the task
-     * @param inputString           input String
+     * @param inputString input String
      * @param punctuation Task punctuation
      * @return the input BudgetValue
      * @throws nars.io.StringParser.InvalidInputException If the String cannot
@@ -221,7 +275,8 @@ public abstract class StringParser {
      * @return the Term generated from the String
      */
     public static Term parseTerm(String s0, Memory memory) {
-        String s = s0.trim();
+        Term result = null;
+        String s = s0.replaceAll("\\s+", "");
         try {
             if (s.length() != 0) {
                 Term t = memory.nameToListedTerm(s);    // existing constant or operator
@@ -233,21 +288,26 @@ public abstract class StringParser {
                         case COMPOUND_TERM_OPENER:
                             assert last == COMPOUND_TERM_CLOSER : "missing CompoundTerm closer";
                             CompoundTerm compoundTerm = (CompoundTerm) CompoundTerm.parseCompoundTerm(s.substring(1, index), memory);
-                            return compoundTerm;
+                            result = compoundTerm;
+                            break;
                         case SET_EXT_OPENER:
                             assert last == SET_EXT_CLOSER : "missing ExtensionSet closer";
-                            return (ExtensionSet) ExtensionSet.make(parseArguments(s.substring(1, index) + ARGUMENT_SEPARATOR, memory), memory);
+                            result = (ExtensionSet) new ExtensionSet(parseArguments(s.substring(1, index) + ARGUMENT_SEPARATOR, memory), memory);
+                            break;
                         case SET_INT_OPENER:
                             assert last == SET_INT_CLOSER : "missing IntensionSet closer";
-                            return (IntensionSet) IntensionSet.make(parseArguments(s.substring(1, index) + ARGUMENT_SEPARATOR, memory), memory);
+                            result = (IntensionSet) new IntensionSet(parseArguments(s.substring(1, index) + ARGUMENT_SEPARATOR, memory), memory);
+                            break;
                         case STATEMENT_OPENER:
                             assert last == STATEMENT_CLOSER : "missing Statement closer";
-                            return (Statement)parseStatement(s.substring(1, index), memory);
+                            result = (Statement) parseStatement(s.substring(1, index), memory);
+                            break;
                         default:
-                            return parseAtomicTerm(s);
+                            result = parseAtomicTerm(s);
+                            break;
                     }
                 } else {
-                    return t;
+                    result = t;
                 }                           // existing Term
             } else {
                 throw new InvalidInputException("missing content");
@@ -257,11 +317,12 @@ public abstract class StringParser {
             System.out.println(message);
 //            showWarning(message);
         }
-        return null;
+        return result;
     }
 
 
     /* ---------- parse String into term ---------- */
+
     /**
      * Parse a Term that has no internal structure.
      * <p>
@@ -289,6 +350,7 @@ public abstract class StringParser {
 //		new TemporaryFrame( message + "\n( the faulty line has been kept in the input window )",
 //				40000, TemporaryFrame.WARNING );
 //    }
+
     /**
      * Parse a String to create a Statement.
      *
@@ -360,18 +422,21 @@ public abstract class StringParser {
 
 
     /* ---------- locate top-level substring ---------- */
+
     /**
      * locate the top-level relation in a statement
      *
      * @param s The String to be parsed
      * @return the index of the top-level relation
      */
-    public static int topRelation(String s) {      // need efficiency improvement
+    public static int topRelation(String s) {
+        int result = -1;      // need efficiency improvement
         int levelCounter = 0;
         int i = 0;
         while (i < s.length() - 3) {    // don't need to check the last 3 characters
             if ((levelCounter == 0) && (Statement.isRelation(s.substring(i, i + 3)))) {
-                return i;
+                result = i;
+                break;
             }
             if (isOpener(s, i)) {
                 levelCounter++;
@@ -380,7 +445,7 @@ public abstract class StringParser {
             }
             i++;
         }
-        return -1;
+        return result;
     }
 
     /**
@@ -391,22 +456,23 @@ public abstract class StringParser {
      * @return if the given String is an opener symbol
      */
     public static boolean isOpener(String s, int i) {
+        boolean result = false;
         char c = s.charAt(i);
-        boolean b = (c == nars.io.Symbols.COMPOUND_TERM_OPENER)
+        boolean b = (c == Symbols.COMPOUND_TERM_OPENER)
                 || (c == SET_EXT_OPENER)
                 || (c == SET_INT_OPENER)
                 || (c == STATEMENT_OPENER);
-        if (!b) {
-            return false;
+        if (b) {
+            if (i + 3 > s.length() || !Statement.isRelation(s.substring(i, i + 3))) {
+                result = true;
+            }
         }
-        if (i + 3 <= s.length() && Statement.isRelation(s.substring(i, i + 3))) {
-            return false;
-        }
-        return true;
+        return result;
     }
 
 
     /* ---------- recognize symbols ---------- */
+
     /**
      * Check CompoundTerm closer symbol
      *
@@ -415,18 +481,55 @@ public abstract class StringParser {
      * @return if the given String is a closer symbol
      */
     public static boolean isCloser(String s, int i) {
+        boolean result = false;
         char c = s.charAt(i);
         boolean b = (c == COMPOUND_TERM_CLOSER)
                 || (c == SET_EXT_CLOSER)
                 || (c == SET_INT_CLOSER)
                 || (c == STATEMENT_CLOSER);
-        if (!b) {
-            return false;
+        if (b) {
+            if (i < 2 || !Statement.isRelation(s.substring(i - 2, i + 1))) {
+                result = true;
+            }
         }
-        if (i >= 2 && Statement.isRelation(s.substring(i - 2, i + 1))) {
-            return false;
+        return result;
+    }
+
+    /**
+     * Make a Statement from String, called by StringParser
+     *
+     * @param relation  The relation String
+     * @param subject   The first component
+     * @param predicate The second component
+     * @param memory    Reference to the memory
+     * @return The Statement built
+     */
+    public static Statement make(String relation, Term subject, Term predicate, Memory memory) {
+        if (Statement.invalidStatement(subject, predicate)) {
+            return null;
         }
-        return true;
+        if (relation.equals(Symbols.INHERITANCE_RELATION)) {
+            return new Inheritance(subject, predicate, memory);
+        }
+        if (relation.equals(Symbols.SIMILARITY_RELATION)) {
+            return new Similarity(subject, predicate, memory);
+        }
+        if (relation.equals(Symbols.INSTANCE_RELATION)) {
+            return new Statement.Instance(subject, predicate, memory);
+        }
+        if (relation.equals(Symbols.PROPERTY_RELATION)) {
+            return new Statement.Property(subject, predicate, memory);
+        }
+        if (relation.equals(Symbols.INSTANCE_PROPERTY_RELATION)) {
+            return new Statement.InstanceProperty(subject, predicate, memory);
+        }
+        if (relation.equals(Symbols.IMPLICATION_RELATION)) {
+            return new Statement.Implication(subject, predicate, memory);
+        }
+        if (relation.equals(Symbols.EQUIVALENCE_RELATION)) {
+            return (Equivalence) new Equivalence(subject, predicate, memory);
+        }
+        return null;
     }
 
     /**
@@ -444,17 +547,20 @@ public abstract class StringParser {
         }
 
     }
+
     static class StampHandle {
 
         public StampHandle(long time) {
         }
     }
+
     static class TruthValueRefier {
 
     }
+
     static class Term {
 
-        private final String name;
+         final String name;
 
         public Term(String name) {
             this.name = name;
@@ -465,7 +571,6 @@ public abstract class StringParser {
         }
 
 
-
     }
 
     static class Variable extends Term {
@@ -474,6 +579,7 @@ public abstract class StringParser {
             super(s);
 
         }
+
         public static boolean containVarDep(String name) {
             return false;
         }
@@ -483,6 +589,7 @@ public abstract class StringParser {
         }
 
     }
+
     static class Conjunction extends Term {
 
         public Conjunction(String s) {
@@ -492,34 +599,41 @@ public abstract class StringParser {
 
     static class BudgetValue {
 
-        private final float priority;
-        private final float durability;
-        private final float quality;
+         final float priority;
+         final float durability;
+         final float quality;
+
         public BudgetValue(float priority, float durability, float quality) {
             this.priority = priority;
             this.durability = durability;
             this.quality = quality;
         }
     }
+
     static class TruthValue {
-        private final float frequency;
-        private final float confidence;
+         final float frequency;
+         final float confidence;
+
         public TruthValue(float frequency, float confidence) {
             this.frequency = frequency;
             this.confidence = confidence;
         }
     }
+
     static class BudgetFunctions {
-        private static TruthValue truth;
+         static TruthValue truth;
+
         public static float truthToQuality(TruthValue truth) {
             BudgetFunctions.truth = truth;
             return 0;
         }
     }
+
     static class Task {
 
-        private final Sentence sentence;
-        private final BudgetValue budget;
+         final Sentence sentence;
+         final BudgetValue budget;
+
         public Task(Sentence sentence, BudgetValue budget) {
 
             this.sentence = sentence;
@@ -527,40 +641,390 @@ public abstract class StringParser {
         }
 
     }
+
     static class Memory {
 
-        private LinkedHashMap<String, Term> terms = new LinkedHashMap<>();
+         LinkedHashMap<String, Term> terms = new LinkedHashMap<>();
+         Collection<String> exportStrings = new LinkedHashSet<>();
+         Gson gson;
+
 
         public Term nameToListedTerm(String termName) {
-            return terms.computeIfAbsent(termName, (named -> new Term(named)));
+//            return terms.computeIfAbsent(termName, (named -> new Term(named)));
+            return terms.get(termName);//
+        }
+
+        public Collection<String> getExportStrings() {
+            return exportStrings;
+        }
+
+        public void setExportStrings(Collection<String> exportStrings) {
+            this.exportStrings = exportStrings;
+        }
+
+        public void init() {
+ this.gson=        new GsonBuilder().setPrettyPrinting().create();
+        }
+
+        public void workCycle(long clock) {
 
         }
 
+        public void inputTask(Task task)  {
+            var x =gson.toJson(task);
+            System.out.println(x);
+
+        }
     }
 
-    static class Statement extends Term {
+     static class Inheritance extends Statement {
+
+
+         final Term subject;
+         final Term predicate;
+         final Memory memory;
+
+
+        public Inheritance(Term subject, Term predicate, Memory memory) {
+            super(subject, predicate, memory);
+            this.subject = subject;
+            this.predicate = predicate;
+            this.memory = memory;
+        }
+
+        @Override
+        String operator() {
+            return null;
+        }
+    }
+
+     static class Similarity extends Statement {
+         final Term subject;
+         final Term predicate;
+         final Memory memory;
+
+        public Similarity(Term subject, Term predicate, Memory memory) {
+            super("");
+            this.subject = subject;
+            this.predicate = predicate;
+            this.memory = memory;
+        }
+
+
+        @Override
+        String operator() {
+            return null;
+        }
+    }
+
+    public static abstract class Statement extends CompoundTerm {
+        private  Term subject;
+        private  Term predicate;
+        private  Memory memory;
+        List<Term> components;
+
+        public Statement(Term subject, Term predicate, Memory memory) {
+          super("");  this.subject = subject;
+            this.predicate = predicate;
+            this.memory = memory;
+        }
 
         public Statement(String s) {
             super(s);
         }
 
+
+        /**
+         * Make a Statement from String, called by StringParser
+         *
+         * @param relation  The relation String
+         * @param subject   The first component
+         * @param predicate The second component
+         * @param memory    Reference to the memory
+         * @return The Statement built
+         */
         public static Statement make(String relation, Term subject, Term predicate, Memory memory) {
+            if (invalidStatement(subject, predicate)) {
+                return null;
+            }
+            if (relation.equals(Symbols.INHERITANCE_RELATION)) {
+                return (Inheritance) new Inheritance(subject, predicate, memory);
+            }
+            if (relation.equals(Symbols.SIMILARITY_RELATION)) {
+                return (Similarity) new Similarity(subject, predicate, memory);
+            }
+            if (relation.equals(Symbols.INSTANCE_RELATION)) {
+                return (Instance) new Instance(subject, predicate, memory);
+            }
+            if (relation.equals(Symbols.PROPERTY_RELATION)) {
+                return (Property) new Property(subject, predicate, memory);
+            }
+            if (relation.equals(Symbols.INSTANCE_PROPERTY_RELATION)) {
+                return (InstanceProperty) new InstanceProperty(subject, predicate, memory);
+            }
+            if (relation.equals(Symbols.IMPLICATION_RELATION)) {
+                return (Implication) new Implication(subject, predicate, memory);
+            }
+            if (relation.equals(Symbols.EQUIVALENCE_RELATION)) {
+                return (Equivalence) new Equivalence(subject, predicate, memory);
+            }
             return null;
         }
 
-        public static boolean isRelation(String substring) {
+        /**
+         * Make a Statement from given components, called by the rules
+         *
+         * @param subj      The first component
+         * @param pred      The second component
+         * @param statement A sample statement providing the class type
+         * @param memory    Reference to the memory
+         * @return The Statement built
+         */
+        public static Statement make(Statement statement, Term subj, Term pred, Memory memory) {
+            if (statement instanceof Inheritance) {
+                return new Inheritance(subj, pred, memory);
+            }
+            if (statement instanceof Similarity) {
+                return new Similarity(subj, pred, memory);
+            }
+            if (statement instanceof Implication) {
+                return new Implication(subj, pred, memory);
+            }
+            if (statement instanceof Equivalence) {
+                return new Equivalence(subj, pred, memory);
+            }
+            return null;
+        }
+
+        /**
+         * Make a symmetric Statement from given components and temporal information, called by the rules
+         *
+         * @param statement A sample asymmetric statement providing the class type
+         * @param subj      The first component
+         * @param pred      The second component
+         * @param memory    Reference to the memory
+         * @return The Statement built
+         */
+        public static Statement makeSym(Statement statement, Term subj, Term pred, Memory memory) {
+            if (statement instanceof Inheritance) {
+                return new Similarity(subj, pred, memory);
+            }
+            if (statement instanceof Implication) {
+                return new Equivalence(subj, pred, memory);
+            }
+            return null;
+        }
+
+        /**
+         * Default method to make the nameStr of an image term from given fields
+         *
+         * @param subject   The first component
+         * @param predicate The second component
+         * @param relation  The relation operator
+         * @return The nameStr of the term
+         */
+        public static String makeStatementName(Term subject, String relation, Term predicate) {
+            StringBuilder nameStr = new StringBuilder();
+            nameStr.append(Symbols.STATEMENT_OPENER);
+            nameStr.append(subject.getName());
+            nameStr.append(' ').append(relation).append(' ');
+            nameStr.append(predicate.getName());
+            nameStr.append(Symbols.STATEMENT_CLOSER);
+            return nameStr.toString();
+        }
+
+        /**
+         * Check the validity of a potential Statement. [To be refined]
+         * <p>
+         * Minimum requirement: the two terms cannot be the same, or containing each other as component
+         *
+         * @param subject   The first component
+         * @param predicate The second component
+         * @return Whether The Statement is invalid
+         */
+        public static boolean invalidStatement(Term subject, Term predicate) {
+            if (subject.equals(predicate)) {
+                return true;
+            }
+            if ((subject instanceof CompoundTerm) && ((CompoundTerm) subject).containComponent(predicate)) {
+                return true;
+            }
+            if ((predicate instanceof CompoundTerm) && ((CompoundTerm) predicate).containComponent(subject)) {
+                return true;
+            }
+            if ((subject instanceof Statement) && (predicate instanceof Statement)) {
+                Statement s1 = (Statement) subject;
+                Statement s2 = (Statement) predicate;
+                Term t11 = s1.getSubject();
+                Term t12 = s1.getPredicate();
+                Term t21 = s2.getSubject();
+                Term t22 = s2.getPredicate();
+                if (t11.equals(t22) && t12.equals(t21)) {
+                    return true;
+                }
+            }
             return false;
         }
 
+        /**
+         * Check Statement relation symbol, called in StringPaser
+         *
+         * @param s0 The String to be checked
+         * @return if the given String is a relation symbol
+         */
+        public static boolean isRelation(String s0) {
+            String s = s0.trim();
+            return Set.of(INHERITANCE_RELATION,
+                    SIMILARITY_RELATION,
+                    INSTANCE_RELATION,
+                    PROPERTY_RELATION,
+                    INSTANCE_PROPERTY_RELATION,
+                    IMPLICATION_RELATION,
+                    EQUIVALENCE_RELATION).contains(s);
+
+
+        }
+
+        /**
+         * Check the validity of a potential Statement. [To be refined]
+         * <p>
+         * Minimum requirement: the two terms cannot be the same, or containing each other as component
+         *
+         * @return Whether The Statement is invalid
+         */
+        public boolean invalid() {
+            return invalidStatement(getSubject(), getPredicate());
+        }
+
+        /**
+         * Return the first component of the statement
+         *
+         * @return The first component
+         */
+        public Term getSubject() {
+            return components.get(0);
+        }
+
+        /**
+         * Return the second component of the statement
+         *
+         * @return The second component
+         */
+        public Term getPredicate() {
+            return components.get(1);
+        }
+
+        /**
+         * Override the default in making the nameStr of the current term from existing fields
+         *
+         * @return the nameStr of the term
+         */
+        public String makeName() {
+            return makeStatementName(getSubject(), operator(), getPredicate());
+        }
+
+        abstract String operator();
+
+        static class Instance extends Statement {
+             final Term subject;
+             final Term predicate;
+             final Memory memory;
+
+            public Instance(Term subject, Term predicate, Memory memory) {
+                super("");
+                this.subject = subject;
+                this.predicate = predicate;
+                this.memory = memory;
+            }
+
+            @Override
+            String operator() {
+                return null;
+            }
+        }
+
+         static class Property extends Statement {
+
+             final Term subject;
+             final Term predicate;
+             final Memory memory;
+
+            public Property(Term subject, Term predicate, Memory memory) {
+                super("");
+                this.subject = subject;
+                this.predicate = predicate;
+                this.memory = memory;
+            }
+
+            @Override
+            String operator() {
+                return null;
+            }
+        }
+
+         static class InstanceProperty extends Statement {
+             private final Term subject;
+             private final Term predicate;
+             private final Memory memory;
+
+
+            public InstanceProperty(Term subject, Term predicate, Memory memory) {
+                super("");
+                this.subject = subject;
+                this.predicate = predicate;
+                this.memory = memory;
+            }
+
+            @Override
+            String operator() {
+                return null;
+            }
+        }
+
+         static class Implication extends Statement {
+            public Implication(String s) {
+                super(s);
+            }
+
+            public Implication(Term subject, Term predicate, Memory memory) {
+                super("");
+            }
+
+            @Override
+            String operator() {
+                return null;
+            }
+        }
+
+         static class Equivalence extends Statement {
+
+
+             private final Term subject;
+             private final Term predicate;
+             private final Memory memory;
+
+             public Equivalence(Term subject, Term predicate, Memory memory) {
+                 super("");
+                 this.subject = subject;
+                 this.predicate = predicate;
+                 this.memory = memory;
+             }
+
+            @Override
+            String operator() {
+                return null;
+            }
+        }
     }
 
     static class Sentence {
 
-        private final Term content;
-        private final char punc;
-        private final TruthValue truth;
-        private final StampHandle stamp;
+         final Term content;
+         final char punc;
+         final TruthValue truth;
+         final StampHandle stamp;
         boolean revisible;
+
         public Sentence(Term content, char punc, TruthValue truth, StampHandle stamp) {
 
             this.content = content;
@@ -579,8 +1043,7 @@ public abstract class StringParser {
 
     }
 
-    private static class CompoundTerm extends Term
-    {
+     static class CompoundTerm extends Term {
 
         public static final Set<String> COMP_OPERATORS = Set.of(
                 INTERSECTION_EXT_OPERATOR,
@@ -594,18 +1057,29 @@ public abstract class StringParser {
                 DISJUNCTION_OPERATOR,
                 CONJUNCTION_OPERATOR
         );
+         private  Term subject;
+         private  Term predicate;
+         private  Memory memory;
 
-        public CompoundTerm(String name) {
-            super(name);
-        }
+         public CompoundTerm(Term subject, Term predicate, Memory memory) {
+            super("");
 
-        /**
+             this.subject = subject;
+             this.predicate = predicate;
+             this.memory = memory;
+         }
+
+         public CompoundTerm(String s) {
+             super(s);
+         }
+
+         /**
          * Parse a String to create a CompoundTerm.
          *
          * @param s0 The String to be parsed
          * @return the Term generated from the String
          * @throws InvalidInputException the String cannot be
-         *                                                    parsed into a Term
+         *                               parsed into a Term
          */
         public static Term parseCompoundTerm(String s0, Memory memory) throws InvalidInputException {
             String s = s0.trim();
@@ -618,7 +1092,7 @@ public abstract class StringParser {
             return t;
         }
 
-        private static Term make(String op, ArrayList<Term> arg, Memory memory) {
+        static Term make(String op, ArrayList<Term> arg, Memory memory) {
             return null;
         }
 
@@ -626,36 +1100,63 @@ public abstract class StringParser {
         /**
          * Check CompoundTerm operator symbol
          *
-         * @return if the given String is an operator symbol
          * @param s The String to be checked
+         * @return if the given String is an operator symbol
          */
         public static boolean isOperator(String s) {
-            return              COMP_OPERATORS.contains(s);
+            return COMP_OPERATORS.contains(s);
 
         }
 
-    }
-
-    private static class ExtensionSet extends Term {
-        public ExtensionSet(String name) {
-            super(name);
-        }
-
-        public static ExtensionSet make(ArrayList<Term> parseArguments, Memory memory) {
-            return null;
+        protected boolean containComponent(Term predicate) {
+            return false;
         }
     }
 
-    private static class IntensionSet extends Term {
-        public IntensionSet(String name) {
-            super(name);
+     static class ExtensionSet extends Term {
+         final ArrayList<Term> parseArguments;
+         final Memory memory;
+
+
+        public ExtensionSet(ArrayList<Term> parseArguments, Memory memory) {
+            super("");
+            this.parseArguments = parseArguments;
+            this.memory = memory;
+        }
+    }
+
+     static class IntensionSet extends Term {
+
+         final ArrayList<Term> parseArguments;
+         final Memory memory;
+
+        public IntensionSet(ArrayList<Term> parseArguments, Memory memory) {
+            super(" ");
+            this.parseArguments = parseArguments;
+            this.memory = memory;
+        }
+    }
+
+     static class Equivalence extends Statement {
+         final Term subject;
+         final Term predicate;
+         final Memory memory;
+
+
+        public Equivalence(Term subject, Term predicate, Memory memory) {
+            super("");
+            this.subject = subject;
+            this.predicate = predicate;
+            this.memory = memory;
         }
 
-        public static IntensionSet make(ArrayList<Term> parseArguments, Memory memory) {
+        @Override
+        String operator() {
             return null;
         }
     }
 }
+
 /**
  * Collected system parameters. To be modified before compiling.
  */
@@ -789,22 +1290,6 @@ class Parameters {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /**
  * The ASCII symbols used in I/O.
  */
@@ -880,21 +1365,37 @@ class Symbols {
     public static final String TO_COMPOUND_1 = " _@(";
     public static final String TO_COMPOUND_2 = ") ";
 
-    /** At C, point to C; TaskLink only */
+    /**
+     * At C, point to C; TaskLink only
+     */
     public static final short SELF = 0;
-    /** At (&&, A, C), point to C */
+    /**
+     * At (&&, A, C), point to C
+     */
     public static final short COMPONENT = 1;
-    /** At C, point to (&&, A, C) */
+    /**
+     * At C, point to (&&, A, C)
+     */
     public static final short COMPOUND = 2;
-    /** At <C --> A>, point to C */
+    /**
+     * At <C --> A>, point to C
+     */
     public static final short COMPONENT_STATEMENT = 3;
-    /** At C, point to <C --> A> */
+    /**
+     * At C, point to <C --> A>
+     */
     public static final short COMPOUND_STATEMENT = 4;
-    /** At <(&&, C, B) ==> A>, point to C */
+    /**
+     * At <(&&, C, B) ==> A>, point to C
+     */
     public static final short COMPONENT_CONDITION = 5;
-    /** At C, point to <(&&, C, B) ==> A> */
+    /**
+     * At C, point to <(&&, C, B) ==> A>
+     */
     public static final short COMPOUND_CONDITION = 6;
-    /** At C, point to <(*, C, B) --> A>; TaskLink only */
+    /**
+     * At C, point to <(*, C, B) --> A>; TaskLink only
+     */
     public static final short TRANSFORM = 8;
 }
 

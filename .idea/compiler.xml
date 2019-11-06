@@ -35,7 +35,7 @@
       <module name="entity" target="1.7" />
       <module name="gui" target="1.7" />
       <module name="inference" target="1.7" />
-      <module name="io" target="9" />
+      <module name="io" target="11" />
       <module name="language" target="1.7" />
       <module name="main" target="1.7" />
       <module name="main_nogui" target="1.7" />
