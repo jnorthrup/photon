@@ -16,17 +16,33 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="entity" />
+        <module name="inference" />
+        <module name="io" />
+        <module name="language" />
+        <module name="gui" />
         <module name="core" />
         <module name="nars" />
+        <module name="main" />
         <module name="pars" />
+        <module name="main_nogui" />
+        <module name="storage" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="anars" target="1.7" />
       <module name="core" target="1.5" />
+      <module name="entity" target="1.7" />
+      <module name="gui" target="1.7" />
+      <module name="inference" target="1.7" />
+      <module name="io" target="9" />
+      <module name="language" target="1.7" />
+      <module name="main" target="1.7" />
+      <module name="main_nogui" target="1.7" />
       <module name="nars" target="1.7" />
       <module name="pars" target="1.7" />
       <module name="staging" target="1.7" />
+      <module name="storage" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

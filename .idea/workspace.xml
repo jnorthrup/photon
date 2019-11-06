@@ -2,226 +2,112 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="552e4fbc-c84e-40e4-83f2-839eac17de96" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/nars/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pars/pars.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pars/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entity/entity.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gui/gui.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/inference/inference.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/io/io.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/language/language.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main_nogui/main_nogui.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage/storage.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/anars.iml" beforeDir="false" afterPath="$PROJECT_DIR$/anars.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/nars/entity/BudgetValue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/nars/entity/BudgetValueAtomic.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/nars/entity/Concept.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/nars/entity/ConceptAtomic.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/nars/entity/EntityObserver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/nars/entity/Item.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/nars/entity/ItemAtomic.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/nars/entity/Sentence.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/nars/entity/SentenceHandle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/nars/entity/ShortFloat.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/nars/entity/Stamp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/nars/entity/StampHandle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/nars/entity/Task.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/nars/entity/TaskHandle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/nars/entity/TaskLink.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/nars/entity/TaskLinkHandle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/nars/entity/TermLink.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/nars/entity/TermLinkHandle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/nars/entity/TruthValue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/nars/entity/TruthValueRefier.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/src/main/java/nars/entity/package.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/nars/gui/BagWindow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/nars/gui/ConceptWindow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/nars/gui/InferenceRecorder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/nars/gui/InferenceWindow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/nars/gui/InputWindow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/nars/gui/MainWindow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/nars/gui/MessageDialog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/nars/gui/NarsFrame.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/nars/gui/ParameterWindow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/nars/gui/TermWindow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/nars/gui/package.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inference/src/main/java/nars/inference/BudgetFunctions.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inference/src/main/java/nars/inference/CompositionalRules.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inference/src/main/java/nars/inference/LocalRules.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inference/src/main/java/nars/inference/RuleTables.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inference/src/main/java/nars/inference/StructuralRules.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inference/src/main/java/nars/inference/SyllogisticRules.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inference/src/main/java/nars/inference/TruthFunctions.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inference/src/main/java/nars/inference/UtilityFunctions.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inference/src/main/java/nars/inference/package.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/io/src/main/java/nars/io/ExperienceReader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/io/src/main/java/nars/io/ExperienceWriter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/io/src/main/java/nars/io/IInferenceRecorder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/io/src/main/java/nars/io/InputChannel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/io/src/main/java/nars/io/OutputChannel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/io/src/main/java/nars/io/StringParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/io/src/main/java/nars/io/StringParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/io/src/main/java/nars/io/Symbols.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/language/src/main/java/nars/language/CompoundTerm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/language/src/main/java/nars/language/Conjunction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/language/src/main/java/nars/language/DifferenceExt.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/language/src/main/java/nars/language/DifferenceInt.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/language/src/main/java/nars/language/Disjunction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/language/src/main/java/nars/language/Equivalence.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/language/src/main/java/nars/language/ImageExt.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/language/src/main/java/nars/language/ImageInt.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/language/src/main/java/nars/language/Implication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/language/src/main/java/nars/language/Inheritance.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/language/src/main/java/nars/language/Instance.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/language/src/main/java/nars/language/InstanceProperty.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/language/src/main/java/nars/language/IntersectionExt.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/language/src/main/java/nars/language/IntersectionInt.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/language/src/main/java/nars/language/Negation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/language/src/main/java/nars/language/Product.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/language/src/main/java/nars/language/Property.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/language/src/main/java/nars/language/SetExt.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/language/src/main/java/nars/language/SetInt.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/language/src/main/java/nars/language/Similarity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/language/src/main/java/nars/language/Statement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/language/src/main/java/nars/language/Term.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/language/src/main/java/nars/language/Variable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/language/src/main/java/nars/language/package.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/nars/main/NARS.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/nars/main/Reasoner.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/nars/main/package.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_nogui/src/main/java/nars/main_nogui/CommandLineParameters.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_nogui/src/main/java/nars/main_nogui/NARSBatch.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_nogui/src/main/java/nars/main_nogui/Parameters.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_nogui/src/main/java/nars/main_nogui/ReasonerBatch.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_nogui/src/main/java/nars/main_nogui/package.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nars/nars.iml" beforeDir="false" afterPath="$PROJECT_DIR$/nars/nars.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pars/pars.iml" beforeDir="false" afterPath="$PROJECT_DIR$/pars/pars.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/BudgetValue.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/BudgetValueAtomic.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/Concept.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/ConceptAtomic.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/EntityObserver.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/Item.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/ItemAtomic.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/Sentence.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/SentenceHandle.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/ShortFloat.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/Stamp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/StampHandle.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/Task.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/TaskHandle.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/TaskLink.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/TaskLinkHandle.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/TermLink.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/TermLinkHandle.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/TruthValue.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/TruthValueRefier.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/entity/package.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/gui/BagWindow.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/gui/ConceptWindow.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/gui/InferenceRecorder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/gui/InferenceWindow.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/gui/InputWindow.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/gui/MainWindow.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/gui/MessageDialog.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/gui/NarsFrame.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/gui/ParameterWindow.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/gui/TermWindow.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/gui/package.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/inference/BudgetFunctions.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/inference/CompositionalRules.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/inference/LocalRules.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/inference/RuleTables.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/inference/StructuralRules.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/inference/SyllogisticRules.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/inference/TruthFunctions.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/inference/UtilityFunctions.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/inference/package.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/io/ExperienceReader.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/io/ExperienceWriter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/io/IInferenceRecorder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/io/InputChannel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/io/OutputChannel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/io/StringParser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/io/Symbols.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/io/package.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/CompoundTerm.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/Conjunction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/DifferenceExt.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/DifferenceInt.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/Disjunction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/Equivalence.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/ImageExt.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/ImageInt.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/Implication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/Inheritance.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/Instance.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/InstanceProperty.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/IntersectionExt.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/IntersectionInt.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/Negation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/Product.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/Property.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/SetExt.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/SetInt.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/Similarity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/Statement.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/Term.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/Variable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/language/package.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/main/NARS.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/main/Reasoner.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/main/package.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/main_nogui/CommandLineParameters.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/main_nogui/NARSBatch.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/main_nogui/Parameters.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/main_nogui/ReasonerBatch.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/main_nogui/package.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/overview.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/storage/Bag.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/storage/BagObserver.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/storage/ConceptBag.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/storage/Distributor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/storage/Memory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/storage/NovelTaskBag.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/storage/NullBagObserver.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/storage/TaskLinkBag.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/storage/TermLinkBag.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nars/storage/package.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples-1.3.3/Example-NAL7-abridged.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples-1.3.3/Example-NAL7-complete.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples-1.3.3/Example-NAL8-1-abridged.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples-1.3.3/Example-NAL8-1-complete.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples-1.3.3/Example-NAL8-2-abridged.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples-1.3.3/Example-NAL8-2-complete.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples-1.3.3/Example-NAL8-3-abridged.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples-1.3.3/Example-NAL8-3-complete.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples-1.3.3/Example-NAL8-4-abridged.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples-1.3.3/Example-NAL8-4-complete.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples-1.3.3/Example-NAL8-5-abridged.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples-1.3.3/Example-NAL8-5-complete.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples/Example-MultiStep-edited.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples/Example-MultiStep-unedited.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples/Example-NAL1-edited.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples/Example-NAL1-unedited.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples/Example-NAL2-edited.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples/Example-NAL2-unedited.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples/Example-NAL3-edited.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples/Example-NAL3-unedited.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples/Example-NAL4-edited.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples/Example-NAL4-unedited.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples/Example-NAL5-edited.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples/Example-NAL5-unedited.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples/Example-NAL6-edited.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples/Example-NAL6-unedited.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples/Example-NLP-edited.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Examples/Example-NLP-unedited.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/NARS-applet.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/README.TXT" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/README_USER.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tests/nal1/forward-in.nars" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tests/nal1/revision_choice-in.nars" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tests/nal2/similarity-in.nars" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tests/nal4/definition-in.nars" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tests/nal4/definition2-in.nars" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tests/nal5/syllogism-in.nars" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tests/nal6/dependent_variable_introduction-in.nars" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tests/nal6/independent_variable_introduction-in.nars" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tests/nal6/multi-variable_introduction-in.nars" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tests/nal6/variable-elimination-in.nars" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/use_cases/pattern_matching1/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/use_cases/pattern_matching1/pattern_matching_1.3.3_all.nars" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/use_cases/pattern_matching1/pattern_matching_1.3.3_case1.nars" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/use_cases/pattern_matching1/pattern_matching_1.3.3_case1_simpler.nars" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/use_cases/pattern_matching1/pattern_matching_1.5_all.nars" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/use_cases/pattern_matching1/pattern_matching_1.5_case1.nars" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/use_cases/pattern_matching1/pattern_matching_1.5_case1_simpler.nars" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/use_cases/pattern_matching1/pattern_matching_1.5_case2.nars" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/use_cases/pattern_matching1/pattern_matching_1.5_case3.nars" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/entity/BudgetValue.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/entity/Concept.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/entity/Item.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/entity/Sentence.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/entity/ShortFloat.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/entity/Stamp.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/entity/Task.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/entity/TaskLink.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/entity/TermLink.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/entity/TruthValue.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/gui/BagWindow.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/gui/ConceptWindow.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/gui/InferenceWindow.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/gui/InputWindow.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/gui/MainWindow.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/gui/MessageDialog.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/gui/NarsFrame.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/gui/ParameterWindow.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/gui/TermWindow.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/inference/BudgetFunctions.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/inference/CompositionalRules.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/inference/LocalRules.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/inference/RuleTables.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/inference/StructuralRules.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/inference/SyllogisticRules.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/inference/TruthFunctions.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/inference/UtilityFunctions.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/io/ExperienceReader.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/io/ExperienceWriter.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/io/InferenceRecorder.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/io/InputChannel.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/io/OutputChannel.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/io/StringParser.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/io/Symbols.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/CompoundTerm.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/Conjunction.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/DifferenceExt.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/DifferenceInt.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/Disjunction.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/Equivalence.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/ImageExt.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/ImageInt.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/Implication.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/Inheritance.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/Instance.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/InstanceProperty.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/IntersectionExt.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/IntersectionInt.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/Negation.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/Product.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/Property.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/SetExt.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/SetInt.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/Similarity.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/Statement.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/Term.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/language/Variable.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/main/NARS.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/main/Parameters.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/main/Reasoner.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/main_nogui/NARSBatch.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/storage/Bag.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/storage/ConceptBag.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/storage/Distributor.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/storage/Memory.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/storage/NovelTaskBag.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/storage/TaskLinkBag.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/nars/storage/TermLinkBag.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/staging.iml" beforeDir="false" afterPath="$PROJECT_DIR$/staging.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/src/main/java/nars/storage/Bag.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/src/main/java/nars/storage/BagObserver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/src/main/java/nars/storage/ConceptBag.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/src/main/java/nars/storage/Distributor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/src/main/java/nars/storage/Memory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/src/main/java/nars/storage/NovelTaskBag.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/src/main/java/nars/storage/NullBagObserver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/src/main/java/nars/storage/TaskLinkBag.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/src/main/java/nars/storage/TermLinkBag.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/src/main/java/nars/storage/package.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -234,23 +120,64 @@
   <component name="FavoritesManager">
     <favorites_list name="opennars" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1066" />
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
   </component>
+  <component name="ProjectId" id="1TErnadwdzIq30lTfFTujEPi1eE" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+  <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="flattenPackages" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+    <option name="showVisibilityIcons" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/tests/nal2/similarity-in.nars" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/io/src/main/java/nars/io" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveMembersDialog.RECENTS_KEY">
+      <recent name="nars.io.StringParser.CompoundTerm" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="nars.io" />
+      <recent name="nars.storage" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="nars.io" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
@@ -582,56 +509,115 @@
     <configuration />
   </component>
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <created>1573036263200</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1573036263200</updated>
+      <workItem from="1573036264437" duration="6418000" />
+    </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="554" y="167" key="#Project_Structure" timestamp="1573036278309">
+      <screen x="0" y="0" width="1920" height="1028" />
+    </state>
+    <state x="554" y="167" key="#Project_Structure/0.0.1920.1028/1920.0.2560.1080@0.0.1920.1028" timestamp="1573036278309" />
     <state x="417" y="163" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1573035130866">
       <screen x="0" y="0" width="1920" height="1028" />
     </state>
     <state x="417" y="163" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1028/1920.0.2560.1080@0.0.1920.1028" timestamp="1573035130866" />
+    <state x="767" y="227" key="#com.intellij.ide.util.MemberChooser" timestamp="1573041374056">
+      <screen x="0" y="0" width="1920" height="1028" />
+    </state>
+    <state x="767" y="227" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1028/1920.0.2560.1080@0.0.1920.1028" timestamp="1573041374056" />
     <state x="807" y="397" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1573035087077">
       <screen x="0" y="0" width="1920" height="1028" />
     </state>
     <state x="807" y="397" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1028/1920.0.2560.1080@0.0.1920.1028" timestamp="1573035087077" />
+    <state x="737" y="369" width="445" height="307" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1573037964282">
+      <screen x="0" y="0" width="1920" height="1028" />
+    </state>
+    <state x="737" y="369" width="445" height="307" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1028/1920.0.2560.1080@0.0.1920.1028" timestamp="1573037964282" />
+    <state x="669" y="215" key="#com.intellij.refactoring.move.moveMembers.MoveMembersDialog" timestamp="1573041171778">
+      <screen x="0" y="0" width="1920" height="1028" />
+    </state>
+    <state x="669" y="215" key="#com.intellij.refactoring.move.moveMembers.MoveMembersDialog/0.0.1920.1028/1920.0.2560.1080@0.0.1920.1028" timestamp="1573041171778" />
+    <state x="692" y="257" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1573038513668">
+      <screen x="0" y="0" width="1920" height="1028" />
+    </state>
+    <state x="692" y="257" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1028/1920.0.2560.1080@0.0.1920.1028" timestamp="1573038513668" />
     <state x="742" y="263" key="FileChooserDialogImpl" timestamp="1573035129578">
       <screen x="0" y="0" width="1920" height="1028" />
     </state>
     <state x="742" y="263" key="FileChooserDialogImpl/0.0.1920.1028/1920.0.2560.1080@0.0.1920.1028" timestamp="1573035129578" />
-    <state width="1874" height="257" key="GridCell.Tab.0.bottom" timestamp="1573035353054">
+    <state x="768" y="410" key="Github.CreateGistDialog" timestamp="1573042691451">
       <screen x="0" y="0" width="1920" height="1028" />
     </state>
-    <state width="1874" height="257" key="GridCell.Tab.0.bottom/0.0.1920.1028/1920.0.2560.1080@0.0.1920.1028" timestamp="1573035353054" />
-    <state width="1874" height="257" key="GridCell.Tab.0.center" timestamp="1573035353054">
+    <state x="768" y="410" key="Github.CreateGistDialog/0.0.1920.1028/1920.0.2560.1080@0.0.1920.1028" timestamp="1573042691451" />
+    <state width="1874" height="248" key="GridCell.Tab.0.bottom" timestamp="1573036237331">
       <screen x="0" y="0" width="1920" height="1028" />
     </state>
-    <state width="1874" height="257" key="GridCell.Tab.0.center/0.0.1920.1028/1920.0.2560.1080@0.0.1920.1028" timestamp="1573035353054" />
-    <state width="1874" height="257" key="GridCell.Tab.0.left" timestamp="1573035353054">
+    <state width="1874" height="248" key="GridCell.Tab.0.bottom/0.0.1920.1028/1920.0.2560.1080@0.0.1920.1028" timestamp="1573036237331" />
+    <state width="1874" height="248" key="GridCell.Tab.0.center" timestamp="1573036237331">
       <screen x="0" y="0" width="1920" height="1028" />
     </state>
-    <state width="1874" height="257" key="GridCell.Tab.0.left/0.0.1920.1028/1920.0.2560.1080@0.0.1920.1028" timestamp="1573035353054" />
-    <state width="1874" height="257" key="GridCell.Tab.0.right" timestamp="1573035353054">
+    <state width="1874" height="248" key="GridCell.Tab.0.center/0.0.1920.1028/1920.0.2560.1080@0.0.1920.1028" timestamp="1573036237331" />
+    <state width="1874" height="248" key="GridCell.Tab.0.left" timestamp="1573036237331">
       <screen x="0" y="0" width="1920" height="1028" />
     </state>
-    <state width="1874" height="257" key="GridCell.Tab.0.right/0.0.1920.1028/1920.0.2560.1080@0.0.1920.1028" timestamp="1573035353054" />
+    <state width="1874" height="248" key="GridCell.Tab.0.left/0.0.1920.1028/1920.0.2560.1080@0.0.1920.1028" timestamp="1573036237331" />
+    <state width="1874" height="248" key="GridCell.Tab.0.right" timestamp="1573036237331">
+      <screen x="0" y="0" width="1920" height="1028" />
+    </state>
+    <state width="1874" height="248" key="GridCell.Tab.0.right/0.0.1920.1028/1920.0.2560.1080@0.0.1920.1028" timestamp="1573036237331" />
     <state x="542" y="251" key="IDE.errors.dialog" timestamp="1573036161167">
       <screen x="0" y="0" width="1920" height="1028" />
     </state>
     <state x="542" y="251" key="IDE.errors.dialog/0.0.1920.1028/1920.0.2560.1080@0.0.1920.1028" timestamp="1573036161167" />
+    <state x="492" y="166" key="Maven.ArtifactSearchDialog" timestamp="1573037582852">
+      <screen x="0" y="0" width="1920" height="1028" />
+    </state>
+    <state x="492" y="166" key="Maven.ArtifactSearchDialog/0.0.1920.1028/1920.0.2560.1080@0.0.1920.1028" timestamp="1573037582852" />
+    <state x="759" y="221" key="RollbackChangesDialog" timestamp="1573037749520">
+      <screen x="0" y="0" width="1920" height="1028" />
+    </state>
+    <state x="759" y="221" key="RollbackChangesDialog/0.0.1920.1028/1920.0.2560.1080@0.0.1920.1028" timestamp="1573037749520" />
+    <state x="755" y="294" key="chooseDestDirectoryDialog" timestamp="1573037963406">
+      <screen x="0" y="0" width="1920" height="1028" />
+    </state>
+    <state x="755" y="294" key="chooseDestDirectoryDialog/0.0.1920.1028/1920.0.2560.1080@0.0.1920.1028" timestamp="1573037963406" />
     <state x="592" y="203" key="new project wizard" timestamp="1573035348770">
       <screen x="0" y="0" width="1920" height="1028" />
     </state>
     <state x="592" y="203" key="new project wizard/0.0.1920.1028/1920.0.2560.1080@0.0.1920.1028" timestamp="1573035348770" />
+    <state x="618" y="231" key="run.anything.popup" timestamp="1573038811737">
+      <screen x="0" y="0" width="1920" height="1028" />
+    </state>
+    <state x="618" y="231" key="run.anything.popup/0.0.1920.1028/1920.0.2560.1080@0.0.1920.1028" timestamp="1573038811737" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1573042365195">
+      <screen x="0" y="0" width="1920" height="1028" />
+    </state>
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1028/1920.0.2560.1080@0.0.1920.1028" timestamp="1573042365195" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />

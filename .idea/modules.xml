@@ -4,8 +4,16 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/anars.iml" filepath="$PROJECT_DIR$/anars.iml" />
       <module fileurl="file://$PROJECT_DIR$/nars_core/core.iml" filepath="$PROJECT_DIR$/nars_core/core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/entity/entity.iml" filepath="$PROJECT_DIR$/entity/entity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gui/gui.iml" filepath="$PROJECT_DIR$/gui/gui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/inference/inference.iml" filepath="$PROJECT_DIR$/inference/inference.iml" />
+      <module fileurl="file://$PROJECT_DIR$/io/io.iml" filepath="$PROJECT_DIR$/io/io.iml" />
+      <module fileurl="file://$PROJECT_DIR$/language/language.iml" filepath="$PROJECT_DIR$/language/language.iml" />
+      <module fileurl="file://$PROJECT_DIR$/main/main.iml" filepath="$PROJECT_DIR$/main/main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/main_nogui/main_nogui.iml" filepath="$PROJECT_DIR$/main_nogui/main_nogui.iml" />
       <module fileurl="file://$PROJECT_DIR$/nars/nars.iml" filepath="$PROJECT_DIR$/nars/nars.iml" />
       <module fileurl="file://$PROJECT_DIR$/pars/pars.iml" filepath="$PROJECT_DIR$/pars/pars.iml" />
+      <module fileurl="file://$PROJECT_DIR$/storage/storage.iml" filepath="$PROJECT_DIR$/storage/storage.iml" />
     </modules>
   </component>
 </project>
